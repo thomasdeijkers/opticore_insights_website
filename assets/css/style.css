@@ -120,3 +120,29 @@ h3 { font-size: 21px; }
   font-size: 13px;
   line-height: 1.55;
 }
+
+
+.text-link { display: inline-flex; margin-top: 12px; color: #8bbcff; font-weight: 800; }
+.text-link:hover { color: var(--white); }
+.dashboard-showcase { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr); gap: 18px; }
+.demo-dashboard { border: 1px solid var(--line); border-radius: 8px; background: linear-gradient(180deg, rgba(26, 115, 232, 0.18), rgba(255, 255, 255, 0.035)); box-shadow: var(--shadow); padding: 22px; min-width: 0; }
+.demo-dashboard.wide { grid-row: span 2; }
+.demo-top { display: flex; justify-content: space-between; gap: 16px; align-items: start; margin-bottom: 18px; }
+.demo-top p { margin: 6px 0 0; color: var(--muted); }
+.demo-top span { flex: 0 0 auto; border: 1px solid rgba(255, 111, 0, 0.45); border-radius: 999px; padding: 5px 9px; color: #ffd0ad; font-size: 12px; font-weight: 800; }
+.demo-kpis, .market-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.demo-kpis div, .market-grid p, .forecast-list p, .job-list p { margin: 0; border: 1px solid var(--line); border-radius: 8px; background: rgba(0, 0, 0, 0.18); padding: 13px; }
+.demo-kpis small, .market-grid b, .forecast-list span { color: var(--muted); font-size: 12px; font-weight: 800; }
+.demo-kpis strong, .market-grid span { display: block; font-size: 20px; line-height: 1.2; margin-top: 5px; }
+.demo-kpis em { display: inline-flex; margin-top: 8px; color: #35d083; font-style: normal; font-size: 12px; font-weight: 900; }
+.demo-bars { min-height: 210px; margin: 18px 0; display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; align-items: end; padding: 18px; border: 1px solid rgba(26, 115, 232, 0.24); border-radius: 8px; background: linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px), rgba(26, 115, 232, 0.08); background-size: 100% 42px, auto; }
+.demo-bars i { display: block; min-height: 40px; border-radius: 6px 6px 0 0; background: linear-gradient(180deg, #ff9a70, #ff4d1c); box-shadow: 0 14px 30px rgba(255, 111, 0, 0.18); }
+.demo-bars i:nth-child(odd) { background: linear-gradient(180deg, #6aa7ff, var(--blue)); box-shadow: 0 14px 30px rgba(26, 115, 232, 0.18); }
+.forecast-list, .job-list { display: grid; gap: 10px; }
+.forecast-list strong, .forecast-list span { display: block; }
+.job-list p { display: flex; align-items: center; gap: 10px; color: var(--muted); }
+.job-list i { width: 10px; height: 10px; border-radius: 999px; flex: 0 0 auto; }
+.job-list .ok { background: #35d083; }
+.job-list .warn { background: #ffb02e; }
+@media (max-width: 960px) { .dashboard-showcase, .demo-kpis, .market-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 760px) { .dashboard-showcase, .demo-kpis, .market-grid { grid-template-columns: 1fr; } .demo-top { display: block; } .demo-top span { margin-top: 10px; } }
