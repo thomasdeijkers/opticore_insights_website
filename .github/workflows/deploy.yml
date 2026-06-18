@@ -23,7 +23,7 @@ jobs:
           port: ${{ secrets.TRANSIP_SFTP_PORT }}
           local_path: ./
           remote_path: ${{ secrets.TRANSIP_SFTP_TARGET }}
-          sftp_only: true
+          sftp_only: false
           delete_remote_files: true
           rsyncArgs: >-
             --exclude=.git
