@@ -24,7 +24,7 @@ jobs:
           local_path: ./
           remote_path: ${{ secrets.TRANSIP_SFTP_TARGET }}
           sftp_only: true
-          delete_remote_files: false
+          delete_remote_files: true
           rsyncArgs: >-
             --exclude=.git
             --exclude=.github
