@@ -1,0 +1,7 @@
+﻿.env
+node_modules/
+backups/
+*.zip
+*.bak
+*.tmp
+.DS_Store

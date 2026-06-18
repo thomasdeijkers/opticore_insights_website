@@ -1,0 +1,38 @@
+﻿name: Deploy static site to TransIP
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Upload via SFTP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy website files
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
+        with:
+          server: ${{ secrets.TRANSIP_SFTP_HOST }}
+          username: ${{ secrets.TRANSIP_SFTP_USERNAME }}
+          password: ${{ secrets.TRANSIP_SFTP_PASSWORD }}
+          port: ${{ secrets.TRANSIP_SFTP_PORT }}
+          local_path: ./
+          remote_path: ${{ secrets.TRANSIP_SFTP_TARGET }}
+          sftp_only: true
+          delete_remote_files: false
+          rsyncArgs: >-
+            --exclude=.git
+            --exclude=.github
+            --exclude=README.md
+            --exclude=.gitignore
+            --exclude=.env
+            --exclude=node_modules
+            --exclude=backups
+            --exclude=*.zip
+            --exclude=*.bak
+            --exclude=*.tmp
