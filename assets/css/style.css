@@ -269,3 +269,67 @@ h3 { font-size: 19px; }
   margin: 0;
   color: var(--muted);
 }
+
+
+/* Slim business footer */
+.site-footer {
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+  background: rgba(7, 12, 26, 0.72);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+}
+
+.footer-logo {
+  width: 136px;
+  margin: 0 0 6px;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer p:first-of-type {
+  display: none;
+}
+
+.footer-legal {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.site-footer nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.site-footer nav a:hover {
+  color: var(--white);
+}
+
+@media (max-width: 760px) {
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .site-footer nav {
+    justify-content: flex-start;
+    margin-top: 0;
+  }
+}
