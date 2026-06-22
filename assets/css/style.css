@@ -1525,3 +1525,75 @@ body {
   background: rgba(26,115,232,.08);
   border-color: rgba(26,115,232,.18);
 }
+
+/* Service CTA placement and compact footer polish */
+.service-title {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: start;
+  column-gap: 12px;
+  row-gap: 12px;
+}
+
+.service-title .service-cta {
+  grid-column: 2;
+  justify-self: start;
+  margin-top: 0;
+}
+
+.service-cta,
+:root[data-theme="light"] .service-cta {
+  color: #fff;
+  background: #ff6f00;
+  border-color: #ff6f00;
+  box-shadow: 0 12px 28px rgba(255, 111, 0, .22);
+}
+
+.service-cta:hover,
+:root[data-theme="light"] .service-cta:hover {
+  color: #fff;
+  background: #ff8124;
+  border-color: #ff8124;
+}
+
+.site-footer {
+  padding: 14px 0;
+  background: #0f1226;
+}
+
+.footer-grid {
+  min-height: 48px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.footer-logo {
+  width: 118px;
+  max-height: 38px;
+  object-fit: contain;
+  object-position: left center;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  margin: 0 0 4px;
+}
+
+.footer-legal {
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.site-footer nav {
+  gap: 14px;
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .service-title {
+    grid-template-columns: 34px minmax(0, 1fr);
+  }
+  .footer-logo {
+    width: 128px;
+    max-height: 42px;
+  }
+}
