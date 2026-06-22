@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 function clean_text($value) {
     $value = trim((string) $value);
     return str_replace(["\r", "\n"], ' ', $value);
@@ -8,12 +8,13 @@ function render_page($title, $message, $is_success = false) {
     $safe_title = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
     $safe_message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
     $heading = $is_success ? 'Bedankt voor je bericht.' : 'Bericht niet verzonden.';
-    echo "<!doctype html><html lang=\"nl\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>{$safe_title} | OptiCore Insights</title><link rel=\"stylesheet\" href=\"assets/css/style.css\"></head><body><main class=\"section\"><div class=\"container text-page info-panel\"><h1>{$heading}</h1><p>{$safe_message}</p><div class=\"actions\"><a class=\"button button-primary\" href=\"contact.html\">Terug naar contact</a><a class=\"button button-secondary\" href=\"index.html\">Naar home</a></div></div></main></body></html>";
+    $status_class = $is_success ? 'success-panel' : 'error-panel';
+    echo "<!doctype html><html lang=\"nl\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>{$safe_title} | OptiCore Insights</title><link rel=\"stylesheet\" href=\"/assets/css/style.css\"></head><body><main class=\"section\"><div class=\"container text-page info-panel {$status_class}\"><h1>{$heading}</h1><p>{$safe_message}</p><div class=\"actions\"><a class=\"button button-primary\" href=\"/contact\">Terug naar contact</a><a class=\"button button-secondary\" href=\"/\">Naar home</a></div></div></main></body></html>";
     exit;
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: contact.html');
+    header('Location: /contact');
     exit;
 }
 
@@ -40,18 +41,19 @@ if (strlen($message) > 5000) {
 
 $to = 'info@opticore-insights.nl';
 $mail_subject = 'Contactaanvraag via OptiCore Insights: ' . $subject_input;
-$body = "Naam: {$name}\nBedrijf: {$company}\nE-mail: {$email}\nTelefoon: {$phone}\nOnderwerp: {$subject_input}\n\nBericht:\n{$message}\n";
+$body = "Naam: {$name}\nBedrijf: {$company}\nE-mail: {$email}\nTelefoon: {$phone}\nOnderwerp: {$subject_input}\n\nBericht:\n{$message}\n\n---\nVerzonden via opticore-insights.nl/contact\n";
 $headers = [
-    'From: OptiCore Website <info@opticore-insights.nl>',
+    'From: OptiCore Insights <info@opticore-insights.nl>',
     'Reply-To: ' . $email,
+    'MIME-Version: 1.0',
     'Content-Type: text/plain; charset=UTF-8',
     'X-Mailer: PHP/' . phpversion()
 ];
 
-$sent = mail($to, $mail_subject, $body, implode("\r\n", $headers));
+$sent = mail($to, $mail_subject, $body, implode("\r\n", $headers), '-finfo@opticore-insights.nl');
 
 if ($sent) {
-    render_page('Bericht verzonden', 'Je bericht is verzonden. We nemen zo snel mogelijk contact met je op.', true);
+    render_page('Bericht verzonden', 'Je bericht is verzonden naar info@opticore-insights.nl. We nemen zo snel mogelijk contact met je op.', true);
 }
 
-render_page('Mail niet beschikbaar', 'Het bericht kon niet via de server worden verzonden. Stuur je vraag rechtstreeks naar info@opticore-insights.nl.');
+render_page('Mail niet beschikbaar', 'De server kon het bericht niet verzenden. Stuur je vraag rechtstreeks naar info@opticore-insights.nl.');
