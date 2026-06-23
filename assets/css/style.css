@@ -2989,10 +2989,6 @@ body::after {
   line-height: 1;
 }
 
-.hero-benefits p:nth-child(1) i::before { content: "?"; }
-.hero-benefits p:nth-child(2) i::before { content: "?"; }
-.hero-benefits p:nth-child(3) i::before { content: "?"; }
-.hero-benefits p:nth-child(4) i::before { content: "?"; }
 
 .concept-service-grid article {
   display: flex;
@@ -3074,5 +3070,105 @@ body::after {
   .service-title h2,
   .service-title .service-cta {
     grid-column: 1;
+  }
+}
+
+
+/* Icon cleanup and contact page expansion */
+.hero-benefits i,
+.hero-benefits i::before {
+  display: none !important;
+  content: none !important;
+}
+
+.hero-benefits .benefit-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 8px;
+  background: rgba(255,255,255,.08);
+  color: #ffffff;
+}
+
+.hero-benefits .benefit-icon svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero-benefits p {
+  grid-template-columns: 42px 1fr;
+}
+
+.contact-section .contact-grid {
+  grid-template-columns: minmax(300px, .82fr) minmax(0, 1.18fr);
+  gap: 28px;
+}
+
+.contact-aside {
+  display: grid;
+  gap: 18px;
+}
+
+.contact-aside p {
+  margin: 0;
+}
+
+.contact-help {
+  border-top: 1px solid var(--brand-line);
+  padding-top: 18px;
+}
+
+.contact-help h3,
+.form-intro h2 {
+  color: var(--brand-ink);
+}
+
+.contact-help ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: #334155;
+}
+
+.contact-help li {
+  margin: 6px 0;
+}
+
+.form-intro {
+  margin-bottom: 2px;
+}
+
+.form-intro h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.form-intro p {
+  max-width: 720px;
+  margin: 0;
+  color: #334155;
+}
+
+.contact-routes {
+  background: var(--brand-soft);
+}
+
+.contact-routes .card {
+  min-height: 230px;
+}
+
+.notice {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .contact-section .contact-grid {
+    grid-template-columns: 1fr;
   }
 }
