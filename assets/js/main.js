@@ -60,3 +60,17 @@ if (contactForm) {
     window.location.href = `mailto:info@opticore-insights.nl?subject=${subject}&body=${body}`;
   });
 }
+
+
+document.querySelectorAll("[data-tabs]").forEach((group) => {
+  const buttons = Array.from(group.querySelectorAll("[data-tab]"));
+  const panes = Array.from(group.querySelectorAll("[data-pane]"));
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = button.getAttribute("data-tab");
+      buttons.forEach((item) => item.classList.toggle("is-active", item === button));
+      panes.forEach((pane) => pane.classList.toggle("is-active", pane.getAttribute("data-pane") === target));
+    });
+  });
+});

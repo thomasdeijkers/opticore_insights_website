@@ -3172,3 +3172,234 @@ body::after {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* Readability and interactive project page pass */
+.timeline-section .section-head p,
+.timeline-section .timeline-list p,
+.timeline-section .timeline-tags span,
+.about-origin-section p,
+.about-timeline-card p,
+.about-timeline-mini p {
+  color: #dbeafe !important;
+}
+
+.timeline-section .timeline-list article,
+.about-timeline-card,
+.about-timeline-mini article {
+  border-color: rgba(147, 197, 253, 0.28) !important;
+  background: #13243a !important;
+}
+
+.timeline-section .timeline-list h3,
+.about-timeline-card h2,
+.about-timeline-mini h3 {
+  color: #ffffff !important;
+}
+
+.timeline-section .timeline-tags span {
+  border-color: rgba(191, 219, 254, 0.34);
+  background: rgba(191, 219, 254, 0.11);
+}
+
+.demo-dashboard,
+.demo-kpis div,
+.market-grid p,
+.forecast-list p,
+.job-list p {
+  color: #0f172a !important;
+}
+
+.demo-kpis div,
+.market-grid p,
+.forecast-list p,
+.job-list p {
+  border-color: #c8d6e8 !important;
+  background: #f8fbff !important;
+}
+
+.demo-kpis small,
+.market-grid b,
+.forecast-list span,
+.job-list p {
+  color: #334155 !important;
+}
+
+.demo-kpis strong,
+.market-grid span,
+.forecast-list strong,
+.demo-dashboard h3,
+.demo-dashboard p {
+  color: #0f172a !important;
+}
+
+.demo-kpis em {
+  color: #047857 !important;
+}
+
+.demo-bars {
+  background: linear-gradient(rgba(37, 111, 209, .12) 1px, transparent 1px), #eef6ff !important;
+  border-color: #b9cce5 !important;
+}
+
+.case-card p,
+.case-card blockquote {
+  color: #334155 !important;
+}
+
+.case-card blockquote {
+  margin: 18px 0 0;
+  padding: 14px 0 0;
+  border-top: 1px solid #e2e8f0;
+  font-weight: 750;
+}
+
+.case-card {
+  position: relative;
+}
+
+.case-card .case-actions,
+.concept-project-grid .case-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.case-card .case-link,
+.concept-project-grid .case-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  border: 1px solid rgba(255, 107, 33, .58);
+  border-radius: 8px;
+  padding: 9px 13px;
+  color: #d94f0d;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.case-card .case-link:hover,
+.concept-project-grid .case-link:hover {
+  color: #fff;
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+}
+
+.concept-project-grid article {
+  display: flex;
+  flex-direction: column;
+}
+
+.concept-project-grid article > div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.concept-project-grid .case-actions {
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.interactive-shell {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(320px, .62fr);
+  gap: 30px;
+  align-items: start;
+}
+
+.interactive-panel,
+.next-step-panel {
+  border: 1px solid var(--brand-line);
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 24px;
+}
+
+.interactive-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.interactive-tabs button {
+  min-height: 38px;
+  border: 1px solid #c8d6e8;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #1e3a5f;
+  background: #f8fbff;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.interactive-tabs button.is-active {
+  color: #ffffff;
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+}
+
+.interactive-pane {
+  display: none;
+}
+
+.interactive-pane.is-active {
+  display: grid;
+  gap: 14px;
+}
+
+.interactive-pane p,
+.next-step-panel p,
+.detail-metric small {
+  color: #334155;
+}
+
+.detail-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.detail-metric {
+  border: 1px solid #d7e2ef;
+  border-radius: 8px;
+  background: #f8fbff;
+  padding: 14px;
+}
+
+.detail-metric strong {
+  display: block;
+  margin-top: 4px;
+  color: #0f172a;
+  font-size: 22px;
+}
+
+.detail-checklist {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.detail-checklist li {
+  border-left: 3px solid var(--brand-orange);
+  padding: 10px 12px;
+  color: #172033;
+  background: #fff7ed;
+}
+
+.next-step-panel .button {
+  margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+  .interactive-shell,
+  .detail-metrics {
+    grid-template-columns: 1fr;
+  }
+}
