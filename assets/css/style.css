@@ -3655,3 +3655,87 @@ body::after {
   border: 1px solid #31557c !important;
   color: #e6f0fb !important;
 }
+/* Immediate dashboard visibility and hard contrast fix */
+.dashboard-showcase.pro-dashboards {
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr) !important;
+  gap: 14px !important;
+  align-items: start !important;
+}
+
+.dashboard-showcase.pro-dashboards .demo-dashboard.wide {
+  grid-row: auto !important;
+}
+
+.dashboard-showcase.pro-dashboards .demo-dashboard {
+  min-height: unset !important;
+  height: auto !important;
+  padding: 16px !important;
+  background: #ffffff !important;
+  border-color: #aebfd3 !important;
+}
+
+.dashboard-showcase.pro-dashboards .demo-dashboard.wide {
+  grid-column: span 1 !important;
+}
+
+.dashboard-showcase.pro-dashboards .demo-kpis,
+.dashboard-showcase.pro-dashboards .market-grid {
+  gap: 8px !important;
+}
+
+.dashboard-showcase.pro-dashboards .demo-kpis div,
+.dashboard-showcase.pro-dashboards .market-grid p,
+.dashboard-showcase.pro-dashboards .forecast-list p,
+.dashboard-showcase.pro-dashboards .job-list p,
+.dashboard-showcase.pro-dashboards .demo-table p,
+.dashboard-showcase.pro-dashboards .pipeline-list p {
+  background: #eef4fb !important;
+  border: 1px solid #b7c7da !important;
+  padding: 10px 11px !important;
+}
+
+.dashboard-showcase.pro-dashboards .demo-kpis small,
+.dashboard-showcase.pro-dashboards .forecast-list span,
+.dashboard-showcase.pro-dashboards .market-grid b,
+.dashboard-showcase.pro-dashboards .demo-table em,
+.dashboard-showcase.pro-dashboards .pipeline-list em {
+  color: #1c314b !important;
+  opacity: 1 !important;
+  font-weight: 850 !important;
+}
+
+.dashboard-showcase.pro-dashboards .demo-kpis strong,
+.dashboard-showcase.pro-dashboards .forecast-list strong,
+.dashboard-showcase.pro-dashboards .job-list p,
+.dashboard-showcase.pro-dashboards .market-grid strong,
+.dashboard-showcase.pro-dashboards .market-grid span,
+.dashboard-showcase.pro-dashboards .demo-table strong,
+.dashboard-showcase.pro-dashboards .demo-table span,
+.dashboard-showcase.pro-dashboards .pipeline-list strong {
+  color: #06172d !important;
+  opacity: 1 !important;
+}
+
+.dashboard-showcase.pro-dashboards .demo-bars,
+.dashboard-showcase.pro-dashboards .mini-line-chart {
+  min-height: 92px !important;
+  margin: 10px 0 !important;
+  padding: 12px !important;
+}
+
+.dashboard-showcase.pro-dashboards .demo-bars i {
+  min-height: 24px;
+}
+
+.dashboard-showcase.pro-dashboards .forecast-list,
+.dashboard-showcase.pro-dashboards .job-list,
+.dashboard-showcase.pro-dashboards .demo-table,
+.dashboard-showcase.pro-dashboards .pipeline-list {
+  gap: 8px !important;
+}
+
+@media (max-width: 980px) {
+  .dashboard-showcase.pro-dashboards {
+    grid-template-columns: 1fr !important;
+  }
+}
