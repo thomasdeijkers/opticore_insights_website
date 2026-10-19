@@ -1,0 +1,106 @@
+{
+  "articles": [
+    {
+      "slug": "ai-softwareonderhoud-mkb",
+      "kind": "nieuws",
+      "title": "AI bij softwareonderhoud: kansen voor het mkb",
+      "description": "AI kan helpen bij onderhoud aan bedrijfssoftware. ✓ Duiding van een recente praktijkpublicatie ✓ Wat dit betekent voor je dashboard en automatisering.",
+      "summary": "Een recente publicatie over AI bij softwareonderhoud laat zien waarom bewijs, controle en een afgebakende eerste stap belangrijk blijven. Mijn vertaling naar het mkb.",
+      "published_at": "2026-10-20T01:40:00+02:00",
+      "modified_at": "2026-10-20T01:40:00+02:00",
+      "sections": [
+        {
+          "heading": "De ontwikkeling: AI helpt ook bij bestaand werk",
+          "paragraphs": [
+            "OpenAI publiceerde op 14 oktober 2026 hoe het eigen Core Experimentation-team coding agents inzet voor softwareonderhoud. Het team beschrijft onder meer het onderzoeken van ongebruikte code, het opruimen van verouderde experimenten en verbeteringen aan geautomatiseerde controles. Bewijs verzamelen en de voorgestelde wijzigingen beoordelen horen bij die werkwijze."
+          ]
+        },
+        {
+          "heading": "Mijn vertaling naar een kleiner bedrijf",
+          "paragraphs": [
+            "De interessante vraag voor een ondernemer is welke bestaande werkstap beter kan. Denk aan een koppeling die regelmatig vastloopt, een rapport dat veel handwerk vraagt of een controle die steeds terugkomt. Daar kan gericht onderhoud aan de software en het proces zinvol zijn.",
+            "Ik zou beginnen bij één terugkerend knelpunt. Eerst begrijpen wat de toepassing doet en wie ervan afhankelijk is. Daarna een afgebakende wijziging maken en toetsen of het dagelijkse werk er daadwerkelijk beter van wordt."
+          ],
+          "bullets": [
+            "Kies een probleem dat je kunt aanwijzen, zoals herhaalde invoer of een foutgevoelige overdracht.",
+            "Bepaal vooraf waaraan je merkt dat de verbetering werkt.",
+            "Controleer ook uitzonderingen: ontbrekende gegevens, een onderbroken verwerking of een mislukte koppeling."
+          ]
+        },
+        {
+          "heading": "Van ontwikkeling naar een bruikbare eerste stap",
+          "paragraphs": [
+            "Voor bedrijven met een jaaromzet van €250.000 tot €25 miljoen is het vaak praktisch om één proces tegelijk aan te pakken. Dat houdt de investering en de verandering bespreekbaar. Een werkende verbetering geeft vervolgens een betere basis voor een volgende stap.",
+            "Mijn advies: kijk deze week eens welke terugkerende handeling je team om een omweg vraagt. Leg vast wat er gebeurt, hoeveel herstelwerk nodig is en welk resultaat je wilt bereiken. Dat is een concreet begin voor advies en uitvoering."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI: Maintaining software with the GPT-6 family",
+          "url": "https://developers.openai.com/blog/maintaining-software-with-the-gpt-6-family",
+          "published": "2026-10-14",
+          "checked": "2026-10-20"
+        }
+      ],
+      "related": [
+        {"url": "/procesautomatisering/", "title": "Een bedrijfsproces verbeteren en automatiseren"},
+        {"url": "/over/#bedrijfsprocessen", "title": "Hoe ik je bedrijfsproces doorgrond"}
+      ]
+    },
+    {
+      "slug": "olympus-bouw-documentintake-hervatten",
+      "kind": "project",
+      "project": "olympus-bouw",
+      "title": "Olympus Bouw: verder kunnen na een onderbroken upload",
+      "description": "Doorontwikkeling van de documentintake voor Olympus Bouw. ✓ Openstaand werk terugvinden ✓ Bewust opnieuw proberen ✓ Meer grip op de verwerking.",
+      "summary": "Wat gebeurt er met een serie documenten als je wegklikt of de pagina herlaadt? In de Olympus-applicatie is juist die onderbreking onderdeel van de doorontwikkeling.",
+      "published_at": "2026-10-20T01:40:00+02:00",
+      "modified_at": "2026-10-20T01:40:00+02:00",
+      "image": {
+        "src": "/assets/img/project-olympus-demo.jpg",
+        "width": 1265,
+        "height": 712,
+        "alt": "Takenoverzicht van de Olympus-applicatie met fictieve dossiers en aantallen",
+        "caption": "Het takenoverzicht van de gemaakte applicatie. Dit beeld toont de algemene werkruimte; personen, opdrachten en aantallen zijn fictief."
+      },
+      "sections": [
+        {
+          "heading": "Het probleem zit vaak in de onderbreking",
+          "paragraphs": [
+            "Een document uploaden is een korte handeling. Een hele serie documenten verwerken is een werkproces. Je selecteert bestanden, kijkt naar de voortgang en wilt intussen soms naar een andere pagina. Als daarna onduidelijk is wat al binnen is, begint het zoekwerk opnieuw.",
+            "In de doorontwikkeling voor Olympus Bouw heb ik daarom aandacht besteed aan openstaande bestanden en herkenbare voortgang bij het wisselen van scherm of herladen van de pagina. Het doel is dat de gebruiker kan zien waar de verwerking is gebleven en welke volgende stap passend is."
+          ]
+        },
+        {
+          "heading": "Niet verstuurd en een onbekende uitkomst vragen iets anders",
+          "paragraphs": [
+            "Een bestand dat nog niet is verstuurd, kun je anders behandelen dan een upload waarvan de bevestiging ontbreekt. In het tweede geval kan het document al ontvangen zijn. Meteen opnieuw verzenden kan dan dubbel werk opleveren.",
+            "De werkstroom houdt die situaties uit elkaar. Nog niet verstuurde bestanden kunnen, wanneer ze in de lokale browseropslag beschikbaar zijn, met hun oorspronkelijke context worden hervat. Bij een onzekere uitkomst wordt eerst gecontroleerd of het document al ontvangen is."
+          ]
+        },
+        {
+          "heading": "Een fout krijgt een duidelijke vervolghandeling",
+          "paragraphs": [
+            "Bij mislukte invoer kan de gebruiker bewust opnieuw proberen of de mislukte invoer uit de wachtrij halen. De actie wordt gekoppeld aan de status van het bestand. Daarmee blijft duidelijk wat er nog moet gebeuren en voorkom je dat een actief of onzeker proces zomaar wordt weggeklikt.",
+            "De werking is gecontroleerd met geautomatiseerde scenario’s voor onder meer navigeren tijdens verwerking, hervatten na herladen, ontbrekende lokale bestanden en het voorkomen van dubbel verzenden. Ook het opnieuw proberen en het opruimen van mislukte invoer zijn daarbij meegenomen."
+          ]
+        },
+        {
+          "heading": "Wat dit in het dagelijkse werk oplevert",
+          "paragraphs": [
+            "De winst zit in minder uitzoeken welke bestanden je opnieuw moet aanbieden en minder onzekerheid over de uitkomst. Dat maakt de verwerking beter te volgen, ook wanneer het werk wordt onderbroken.",
+            "Een concrete urenbesparing is hiervoor nog niet gemeten. Wel is de verbetering direct te beoordelen op gedrag: blijft openstaand werk zichtbaar, krijgt een onzeker resultaat de juiste controle en is de volgende handeling duidelijk? Dat zijn de vragen waarmee ik deze doorontwikkeling toets."
+          ]
+        }
+      ],
+      "sources": [
+        {"title": "Het volledige projectverhaal van Olympus Bouw", "url": "/projecten/olympus-bouw/", "checked": "2026-10-20"}
+      ],
+      "related": [
+        {"url": "/projecten/olympus-bouw/", "title": "Van planning naar een controleerbaar dossier"},
+        {"url": "/ocr-documentverwerking/", "title": "Documentherkenning met een controlelaag"}
+      ]
+    }
+  ]
+}

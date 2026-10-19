@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>OptiCore Insights — Nieuws en praktijk</title>
+    <link>https://opticore-insights.nl/nieuws/</link>
+    <description>Nieuws, duiding en updates over dashboards, automatisering, websites en projecten.</description>
+    <language>nl-NL</language>
+    <lastBuildDate>Mon, 19 Oct 2026 23:40:00 GMT</lastBuildDate>
+    <atom:link href="https://opticore-insights.nl/nieuws/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI bij softwareonderhoud: kansen voor het mkb</title>
+      <link>https://opticore-insights.nl/nieuws/ai-softwareonderhoud-mkb/</link>
+      <description>Een recente publicatie over AI bij softwareonderhoud laat zien waarom bewijs, controle en een afgebakende eerste stap belangrijk blijven. Mijn vertaling naar het mkb.</description>
+      <category>Nieuws &amp; duiding</category>
+      <pubDate>Mon, 19 Oct 2026 23:40:00 GMT</pubDate>
+      <guid isPermaLink="true">https://opticore-insights.nl/nieuws/ai-softwareonderhoud-mkb/</guid>
+    </item>
+    <item>
+      <title>Olympus Bouw: verder kunnen na een onderbroken upload</title>
+      <link>https://opticore-insights.nl/nieuws/olympus-bouw-documentintake-hervatten/</link>
+      <description>Wat gebeurt er met een serie documenten als je wegklikt of de pagina herlaadt? In de Olympus-applicatie is juist die onderbreking onderdeel van de doorontwikkeling.</description>
+      <category>Projectupdate</category>
+      <pubDate>Mon, 19 Oct 2026 23:40:00 GMT</pubDate>
+      <guid isPermaLink="true">https://opticore-insights.nl/nieuws/olympus-bouw-documentintake-hervatten/</guid>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,23 @@
+.news-byline{display:flex;flex-wrap:wrap;gap:7px 20px;font-size:13px;color:var(--muted);margin:0 0 16px}
+.news-card h2{font-size:24px;margin-bottom:14px}
+.news-card .eyebrow{margin-bottom:9px}
+.news-card p{font-size:16px}
+.news-card .text-link{margin-top:auto}
+.news-overview-note{max-width:790px;margin-top:24px;font-size:14px}
+.news-article{max-width:800px;margin-inline:auto}
+.news-article section+section{margin-top:34px}
+.news-article h2{font-size:27px}
+.news-article li{margin-top:11px}
+.news-article .news-image{margin:0 0 34px;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.news-image img{width:100%;height:auto}
+.news-image figcaption{background:var(--soft);padding:13px 17px;font-size:13px;line-height:1.65;color:var(--muted)}
+.news-sources{border-top:1px solid var(--line);padding-top:27px;font-size:15px}
+.news-sources h2{font-size:22px}
+.news-sources small{display:block;color:var(--muted);margin-top:5px}
+.news-related{padding-top:27px;border-top:1px solid var(--line)}
+.news-related ul{list-style:none;padding:0}
+.home-updates .resource-list{max-width:850px}
+.home-updates .news-byline{margin:0 0 5px}
+.home-updates .resource-list p{font-size:16px}
+.news-related a,.news-sources a{overflow-wrap:anywhere}
+@media(max-width:560px){.news-card h2,.news-article h2{font-size:24px}.news-byline{font-size:12px;gap:5px 14px}.news-article section+section{margin-top:28px}}

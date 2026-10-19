@@ -1,0 +1,53 @@
+{
+  "started_on": "2026-10-20",
+  "last_run": "2026-10-20",
+  "projects": [
+    {
+      "repository": "opticore-intern",
+      "path": "C:\\Users\\thoma\\OneDrive\\projects_github\\opticore-intern",
+      "since_commit": "6813615f42fe95c7d59af6dca1fc2460404aad9b"
+    },
+    {
+      "repository": "olympus_bouw",
+      "path": "C:\\Users\\thoma\\OneDrive\\projects_github\\olympus_bouw",
+      "since_commit": "b23350550b7c7938b1ba9bc585c102707f5c9422"
+    },
+    {
+      "repository": "top_groep_nederland",
+      "path": "C:\\Users\\thoma\\OneDrive\\projects_github\\top_groep_nederland",
+      "since_commit": "b5e2449d1fd9d7ef10699aa1e7bba6a7a01be675"
+    },
+    {
+      "repository": "devalkadvies",
+      "path": "C:\\Users\\thoma\\OneDrive\\projects_github\\devalkadvies",
+      "since_commit": "5492025e44eefb48af1c8999cccd0b60bb5ec381"
+    },
+    {
+      "repository": "Home_assistant",
+      "path": "C:\\Users\\thoma\\OneDrive\\projects_github\\Home_assistant",
+      "since_commit": "fc8404b2e972cd9f0fe6d3811e36743389ca24c3"
+    },
+    {
+      "repository": "rustwerkt_website",
+      "path": "C:\\Users\\thoma\\OneDrive\\projects_github\\rustwerkt_website",
+      "since_commit": null
+    }
+  ],
+  "published": [
+    {
+      "slug": "olympus-bouw-documentintake-hervatten",
+      "repository": "olympus_bouw",
+      "commits": [
+        "e8d5104",
+        "96fb8e1"
+      ],
+      "verification": "23 isolated frontend intake tests passed; no production data accessed"
+    },
+    {
+      "slug": "ai-softwareonderhoud-mkb",
+      "source": "https://developers.openai.com/blog/maintaining-software-with-the-gpt-6-family",
+      "source_published": "2026-10-14",
+      "checked": "2026-10-20"
+    }
+  ]
+}

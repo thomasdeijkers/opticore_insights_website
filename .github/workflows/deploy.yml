@@ -16,6 +16,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Render and validate news
+        run: python3 scripts/news.py --write
+
       - name: Generate and validate sitemap
         run: python3 scripts/sitemap.py --write
 
@@ -42,3 +45,5 @@ jobs:
             --exclude=*.bak
             --exclude=*.tmp
             --exclude=scripts
+            --exclude=docs
+            --exclude=content
