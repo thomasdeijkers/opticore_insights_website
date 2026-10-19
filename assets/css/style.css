@@ -1024,7 +1024,7 @@ body {
 
 .about-profile-card p,
 .about-profile-card dd {
-  color: rgba(255,255,255,.72);
+  color: #dce9f8;
 }
 
 .about-profile-card dl {
@@ -1039,7 +1039,7 @@ body {
 }
 
 .about-profile-card dt {
-  color: #b6baff;
+  color: #c6ddff;
   font-weight: 900;
 }
 
@@ -1859,6 +1859,7 @@ body {
 
 .about-profile-card img {
   width: min(230px, 100%);
+  height: auto;
   padding: 10px;
   border-radius: 10px;
   background: #ffffff;
@@ -2829,6 +2830,14 @@ body::after {
   align-items: center;
 }
 
+.page-hero-grid > * {
+  min-width: 0;
+}
+
+.page-hero h1 {
+  overflow-wrap: anywhere;
+}
+
 .page-hero-image {
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -2869,7 +2878,7 @@ body::after {
 @media (max-width: 900px) {
   .concept-hero-grid,
   .page-hero-grid,
-  .concept-timeline-grid { grid-template-columns: 1fr; }
+  .concept-timeline-grid { grid-template-columns: minmax(0, 1fr); }
   .concept-visual { min-height: 520px; }
   .floating-dashboard { left: 16px; right: 16px; }
   .concept-project-grid { grid-template-columns: 1fr; }
@@ -3573,8 +3582,7 @@ body::after {
 }
 
 .interactive-tabs button,
-.detail-metric,
-.tech-tags span {
+.detail-metric {
   color: #f8fbff !important;
 }
 
