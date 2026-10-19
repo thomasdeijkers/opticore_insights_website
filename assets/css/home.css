@@ -1,0 +1,27 @@
+/* The homepage introduces Thomas and points visitors to the detailed pages. */
+.home-intro{padding:48px 0 44px;background:var(--soft);border-bottom:1px solid var(--line)}
+.home-intro h1{font-size:44px;max-width:820px;margin-bottom:20px}
+.home-intro .lead{max-width:810px;margin-bottom:18px}
+.home-intro-copy{max-width:750px;margin-bottom:0}
+.home-intro .actions{margin-top:25px}
+.home-support{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.home-support h2{max-width:450px}
+.home-support p{max-width:520px}
+.home-support-list{list-style:none;padding:0;margin:0}
+.home-support-list li{border-top:1px solid var(--line);padding:17px 0;margin:0}
+.home-support-list li:first-child{padding-top:0;border:0}
+.home-support-list h3{font-size:18px;margin-bottom:7px}
+.home-support-list p{font-size:16px;margin:0}
+.home-service-links{display:grid;gap:10px;margin-top:auto;padding-top:8px}
+.home-service-links a{font-size:15px;font-weight:650}
+.home-work{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:36px;align-items:start}
+.home-work-image{margin:0;background:#fff;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.home-work-image>a{display:block}
+.home-work-image img{width:100%;height:auto}
+.home-work-image figcaption{padding:14px 17px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);line-height:1.6}
+.home-work-image figcaption a{display:inline-block;margin-top:5px;font-weight:600}
+.home-work .resource-list li{padding-block:14px}
+.home-work .resource-list li:first-child{padding-top:0}
+.home-work .resource-list p{font-size:15px}
+@media(max-width:800px){.home-support{gap:30px}.home-work{grid-template-columns:1fr;gap:25px}.home-work-image{max-width:720px}.home-work .resource-list{max-width:720px}}
+@media(max-width:560px){.home-intro{padding:32px 0}.home-intro h1{font-size:34px;letter-spacing:-.6px}.home-intro .lead{font-size:18px}.home-intro .actions{gap:18px}.home-support{grid-template-columns:1fr;gap:28px}.home-support h2{font-size:25px}.home-work{gap:23px}.home-work-image figcaption{padding:13px 15px}}
