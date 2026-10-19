@@ -59,6 +59,6 @@ Maak eerst een volledige backup van de bestaande WordPress-bestanden en database
 
 De hoofdroute is Home → Diensten / Portfolio → onderwerp of case → Contact. De kennisbank is bereikbaar via de voettekst en gerelateerde onderwerpen.
 
-Elke pagina bevat een unieke titel en metaomschrijving, één H1, een canonieke URL met afsluitende slash en gestructureerde gegevens voor de pagina en broodkruimels. Werk bij wijzigingen ook de bijbehorende `.html`-alias bij; de mapversie `index.html` is de voorkeursroute. De sitemap bevat alleen de canonieke, indexeerbare routes. Oude generieke projectopzetten blijven bereikbaar met `noindex,follow`; de vijf uitgewerkte klantcases zijn wel indexeerbaar.
+Elke pagina bevat een unieke titel en metaomschrijving, één H1, een canonieke URL met afsluitende slash en gestructureerde gegevens voor de pagina en broodkruimels. Werk bij wijzigingen ook de bijbehorende `.html`-alias bij; de mapversie `index.html` is de voorkeursroute. De sitemap bevat alleen de canonieke, indexeerbare routes. Oude generieke projectopzetten blijven bereikbaar met `noindex,follow`; de zes uitgewerkte klantcases zijn wel indexeerbaar.
 
 Google kan titels en snippets zelf samenstellen. Vinkjes in metaomschrijvingen zijn tekst en geven geen garantie op een specifieke weergave of positie.

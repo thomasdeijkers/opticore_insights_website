@@ -1,0 +1,28 @@
+.website-example {
+  margin: 0 0 32px;
+}
+.website-example > a {
+  display: block;
+  border: 1px solid #d6d3cc;
+  background: #ffffff;
+}
+.website-example img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.website-example figcaption {
+  margin-top: 12px;
+  color: #626a6e;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.website-example figcaption a {
+  color: #9b481f;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.website-example a:focus-visible {
+  outline: 3px solid #2d79cb;
+  outline-offset: 4px;
+}
