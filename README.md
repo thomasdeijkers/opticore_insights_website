@@ -6,13 +6,19 @@ Statische HTML/CSS/JS website voor OptiCore Insights. De site is bedoeld als sne
 
 - `index.html` - Home
 - `diensten.html` - Diensten
-- `projecten.html` - Voorbeeldprojecten
+- `projecten.html` / `projecten/index.html` - Portfolio-overzicht
+- `projecten/dashboards`, `projecten/documentverwerking`, `projecten/websites` - Categorieën met echte cases
+- `projecten/tijdlijn` - Chronologische weergave met filters
+- `website-ontwikkeling.html` - Websiteontwikkeling
+- `kennisbank.html` - Onderwerpen gegroepeerd per toepassing
 - `over.html` - Over Thomas Deijkers / OptiCore Insights
 - `contact.html` - Contactformulier
 - `privacy.html` - Privacyverklaring
 - `contact.php` - Simpele PHP mail fallback
 - `assets/css/style.css` - Styling
 - `assets/js/main.js` - Mobiel menu en lokale mail fallback
+- `assets/css/structure.css` - Gedeelde navigatie, broodkruimels en overzichtspagina’s
+- `sitemap.xml` - Canonieke, indexeerbare pagina’s
 - `.github/workflows/deploy.yml` - Deploy via SFTP naar TransIP
 
 ## Lokaal testen
@@ -48,3 +54,11 @@ De workflow uploadt de statische site via SFTP/SSH en maakt de doelmap eerst lee
 ## Belangrijk voor livegang
 
 Maak eerst een volledige backup van de bestaande WordPress-bestanden en database voordat je deze statische site live zet. Controleer daarna welke map TransIP als webroot gebruikt en upload daar pas de statische bestanden naartoe.
+
+## Paginastructuur en SEO
+
+De hoofdroute is Home → Diensten / Portfolio → onderwerp of case → Contact. De kennisbank is bereikbaar via de voettekst en gerelateerde onderwerpen.
+
+Elke pagina bevat een unieke titel en metaomschrijving, één H1, een canonieke URL met afsluitende slash en gestructureerde gegevens voor de pagina en broodkruimels. Werk bij wijzigingen ook de bijbehorende `.html`-alias bij; de mapversie `index.html` is de voorkeursroute. De sitemap bevat alleen de canonieke, indexeerbare routes. Oude generieke projectopzetten blijven bereikbaar met `noindex,follow`; de vijf uitgewerkte klantcases zijn wel indexeerbaar.
+
+Google kan titels en snippets zelf samenstellen. Vinkjes in metaomschrijvingen zijn tekst en geven geen garantie op een specifieke weergave of positie.
