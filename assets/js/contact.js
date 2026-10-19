@@ -18,6 +18,12 @@
       : '';
   }
 
+  // Only select a known topic; URL text is never rendered as HTML or form content.
+  const requestedTopic = new URLSearchParams(window.location.search).get('onderwerp');
+  if (panels.some(panel => panel.dataset.contactTopic === requestedTopic)) {
+    choice.value = requestedTopic;
+  }
+
   choice.addEventListener('change', () => update(true));
   // Restore the selected form when returning through browser history.
   window.addEventListener('pageshow', () => update());
