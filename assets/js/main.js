@@ -1,31 +1,3 @@
-const root = document.documentElement;
-const themeToggle = document.querySelector("[data-theme-toggle]");
-const themeLabel = document.querySelector("[data-theme-label]");
-const storedTheme = localStorage.getItem("opticore-theme");
-const initialTheme = storedTheme || "dark";
-
-function applyTheme(theme) {
-  root.setAttribute("data-theme", theme);
-  if (themeToggle) {
-    const isLight = theme === "light";
-    themeToggle.setAttribute("aria-pressed", String(isLight));
-    themeToggle.setAttribute("aria-label", isLight ? "Schakel donker thema in" : "Schakel licht thema in");
-  }
-  if (themeLabel) {
-    themeLabel.textContent = theme === "light" ? "Dark" : "Light";
-  }
-}
-
-applyTheme(initialTheme);
-
-if (themeToggle) {
-  themeToggle.addEventListener("click", () => {
-    const nextTheme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
-    localStorage.setItem("opticore-theme", nextTheme);
-    applyTheme(nextTheme);
-  });
-}
-
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const menu = document.querySelector("[data-menu]");
 
@@ -33,8 +5,18 @@ if (menuToggle && menu) {
   menuToggle.addEventListener("click", () => {
     const isOpen = menu.classList.toggle("is-open");
     menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Menu sluiten" : "Menu openen");
   });
 }
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && menu && menu.classList.contains("is-open")) {
+    menu.classList.remove("is-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Menu openen");
+    menuToggle.focus();
+  }
+});
 
 const contactForm = document.querySelector("[data-contact-form]");
 
