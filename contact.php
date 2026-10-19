@@ -1,6 +1,6 @@
 <?php
 function clean_text($value) {
-    $value = trim((string) $value);
+    $value = is_string($value) ? trim($value) : '';
     return str_replace(["\r", "\n"], ' ', $value);
 }
 
@@ -14,7 +14,7 @@ function render_page($title, $message, $is_success = false) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: /contact');
+    header('Location: /contact/');
     exit;
 }
 
@@ -27,21 +27,119 @@ $company = clean_text($_POST['company'] ?? '');
 $email_raw = clean_text($_POST['email'] ?? '');
 $email = filter_var($email_raw, FILTER_VALIDATE_EMAIL);
 $phone = clean_text($_POST['phone'] ?? '');
-$subject_input = clean_text($_POST['subject'] ?? '');
-$message = trim((string) ($_POST['message'] ?? ''));
+$topics = json_decode(<<<'JSON'
+{
+  "dashboard": {
+    "label": "Een dashboard",
+    "question": "Waar wil je meer inzicht in krijgen?",
+    "fields": {
+      "sources": {
+        "label": "Waar staan je gegevens nu?",
+        "required": false
+      },
+      "users": {
+        "label": "Wie gaat het dashboard gebruiken?",
+        "required": false
+      }
+    }
+  },
+  "automation": {
+    "label": "Automatisering of een koppeling",
+    "question": "Welk werk wil je makkelijker maken?",
+    "fields": {
+      "systems": {
+        "label": "Welke systemen of bestanden gebruik je?",
+        "required": false
+      },
+      "frequency": {
+        "label": "Hoe vaak komt dit werk terug?",
+        "required": false
+      }
+    }
+  },
+  "website": {
+    "label": "Een website in HTML",
+    "question": "Wat moet je website voor je doen?",
+    "fields": {
+      "current_site": {
+        "label": "Heb je al een website?",
+        "required": false
+      },
+      "content": {
+        "label": "Welke inhoud heb je al beschikbaar?",
+        "required": false
+      }
+    }
+  },
+  "choice-guide": {
+    "label": "Een keuzehulp",
+    "question": "Waar moeten je bezoekers een keuze in maken?",
+    "fields": {
+      "range": {
+        "label": "Hoe groot is het aanbod?",
+        "required": false
+      },
+      "guide_site": {
+        "label": "Op welke website wil je de keuzehulp gebruiken?",
+        "required": false
+      }
+    }
+  },
+  "existing": {
+    "label": "Een bestaande opdracht",
+    "question": "Waar kan ik je mee helpen?",
+    "fields": {
+      "project": {
+        "label": "Om welke opdracht of website gaat het?",
+        "required": true
+      }
+    }
+  },
+  "other": {
+    "label": "Iets anders / ik weet het nog niet",
+    "question": "Wat wil je bespreken?",
+    "fields": {}
+  }
+}
+JSON
+, true);
+$topic_key = clean_text($_POST['topic'] ?? '');
+$topic = $topics[$topic_key] ?? null;
+if ($topic_key !== '' && !$topic) {
+    render_page('Kies een onderwerp', 'Kies een onderwerp uit de lijst op de contactpagina.');
+}
+// Keep forms opened before this update working, too.
+$subject_input = $topic ? $topic['label'] : clean_text($_POST['subject'] ?? '');
+$message = is_string($_POST['message'] ?? null) ? trim($_POST['message']) : '';
 $privacy = $_POST['privacy'] ?? '';
 
 if ($name === '' || !$email || $subject_input === '' || $message === '' || $privacy !== 'accepted') {
     render_page('Controleer je gegevens', 'Niet alle verplichte velden zijn correct ingevuld. Controleer je naam, e-mail, onderwerp, bericht en privacybevestiging.');
 }
 
-if (strlen($message) > 5000) {
+if (strlen($name) > 480 || strlen($company) > 720 || strlen($email_raw) > 254 || strlen($phone) > 320 || strlen($subject_input) > 600 || strlen($message) > 20000) {
     render_page('Bericht te lang', 'Het bericht is langer dan verwacht. Maak het iets korter of stuur rechtstreeks een e-mail naar info@opticore-insights.nl.');
 }
 
+$details = '';
+$submitted_details = is_array($_POST['details'] ?? null) ? $_POST['details'] : [];
+foreach (($topic['fields'] ?? []) as $key => $field) {
+    $answer = clean_text($submitted_details[$key] ?? '');
+    if ($field['required'] && $answer === '') {
+        render_page('Controleer je gegevens', 'Vul in om welke opdracht of website je vraag gaat.');
+    }
+    if (strlen($answer) > 4000) {
+        render_page('Antwoord te lang', 'Maak je toelichting iets korter of mail rechtstreeks naar info@opticore-insights.nl.');
+    }
+    if ($answer !== '') {
+        $details .= $field['label'] . ': ' . $answer . "\n";
+    }
+}
+$question_label = $topic['question'] ?? 'Bericht';
+
 $to = 'info@opticore-insights.nl';
 $mail_subject = 'Contactaanvraag via OptiCore Insights: ' . $subject_input;
-$body = "Naam: {$name}\nBedrijf: {$company}\nE-mail: {$email}\nTelefoon: {$phone}\nOnderwerp: {$subject_input}\n\nBericht:\n{$message}\n\n---\nVerzonden via opticore-insights.nl/contact\n";
+$body = "Naam: {$name}\nBedrijf: {$company}\nE-mail: {$email}\nTelefoon: {$phone}\nOnderwerp: {$subject_input}\n\n{$question_label}\n{$message}\n\n{$details}\n---\nVerzonden via opticore-insights.nl/contact\n";
 $headers = [
     'From: OptiCore Insights <info@opticore-insights.nl>',
     'Reply-To: ' . $email,

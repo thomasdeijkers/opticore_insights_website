@@ -28,7 +28,12 @@ if (contactForm) {
 
     event.preventDefault();
     const data = new FormData(contactForm);
-    const subject = encodeURIComponent(`Contactaanvraag: ${data.get("subject") || "OptiCore Insights"}`);
+    const topic = contactForm.querySelector('[name="topic"]');
+    const topicLabel = topic?.selectedOptions[0]?.textContent;
+    const details = Array.from(contactForm.querySelectorAll('fieldset:not([disabled]) [data-contact-detail]'))
+      .filter(field => field.value.trim())
+      .map(field => `${field.dataset.mailLabel}: ${field.value.trim()}`);
+    const subject = encodeURIComponent(`Contactaanvraag: ${topicLabel || data.get("subject") || "OptiCore Insights"}`);
     const body = encodeURIComponent([
       `Naam: ${data.get("name") || ""}`,
       `Bedrijf: ${data.get("company") || ""}`,
@@ -36,7 +41,9 @@ if (contactForm) {
       `Telefoon: ${data.get("phone") || ""}`,
       "",
       "Bericht:",
-      data.get("message") || ""
+      data.get("message") || "",
+      "",
+      ...details
     ].join("\n"));
 
     window.location.href = `mailto:info@opticore-insights.nl?subject=${subject}&body=${body}`;
