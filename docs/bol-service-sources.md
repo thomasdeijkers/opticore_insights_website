@@ -21,6 +21,19 @@ Officiële bol-bronnen gecontroleerd voor de uitleg van ACoS, TACoS en conversie
 
 Het bestaande `dashboard-forecast-demo.jpg` is eveneens de echte forecastinterface met fictieve gegevens. De bron- en screenshotfixtures staan buiten Git onder `.codex/website-checks`; alleen de bedoelde publieke afbeeldingen worden gepubliceerd.
 
+## Prominente plaatsing en originele bol-beelden
+
+De homepage toont de bol-app direct na de introductie van Thomas. De dienstenpagina begint na de inleiding met dezelfde ingang. Alle pagina's hebben een eigen menulink en footerlink voor bol-verkopers. Het menu klapt tot 1000 px in, zodat de extra ingang niet tot een overvolle bovenbalk leidt.
+
+De twee `bol-partnerplatform-*.png` schermbeelden zijn op 20 oktober 2026 rechtstreeks vastgelegd van de openbare Partnerplatform-pagina's over het koopblok en Sponsored Products. Er is geen verkoopaccount geopend. De beelden bevatten geen klantgegevens. Bij ieder beeld staan het platform, de opnamedatum, een vergroting en een link naar de oorspronkelijke pagina. Ze dienen als inhoudelijke verwijzing bij de uitleg; de appbeelden blijven afzonderlijk als eigen interface met fictieve gegevens benoemd.
+
+- Koopblok: https://partnerplatform.bol.com/nl/idp/koopblok
+- Sponsored Products: https://partnerplatform.bol.com/nl/cdp/sponsored-products
+- `bol-partnerplatform-logo.svg`: ongewijzigd origineel uit https://partnerplatform.bol.com/assets/partnerplatform_logo-DXDbiPVg.svg
+- `bol-wordmark.svg`: uitsluitend de eerste vier originele bol-letterpaden uit ditzelfde SVG, ongewijzigd wit op een blauwe ondergrond; het aanvullende woord Partnerplatform is weggelaten bij de eigen appintroductie.
+
+Er wordt geen officieel partnerschap of certificering geclaimd. Persbeelden uit de beeldbank met een beperking tot mediapublicaties zijn niet overgenomen.
+
 ## Controle
 
 HTML/SEO, identieke aliases, sitemapbereikbaarheid, nieuwsrenderer, PHP-syntax, responsive weergave, ankers, afbeeldingslinks en het vooraf geselecteerde contactonderwerp. Geen echte contactaanvraag of advertentiewijziging tijdens controle uitvoeren.

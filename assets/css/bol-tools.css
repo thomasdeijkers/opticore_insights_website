@@ -43,3 +43,15 @@
 .bol-faq p{font-size:16px;line-height:1.85;margin:14px 0 0}
 @media(max-width:900px){.bol-overview{grid-template-columns:repeat(2,minmax(0,1fr))}.bol-detail-grid{gap:25px 30px}.bol-example-list article{grid-template-columns:220px minmax(0,1fr);gap:25px}}
 @media(max-width:560px){.bol-overview{grid-template-columns:1fr;gap:20px}.bol-overview h3{font-size:19px}.bol-section-heading{margin-bottom:23px}.bol-section-heading .lead{font-size:18px}.bol-detail-grid{grid-template-columns:1fr;gap:25px}.bol-screen{margin:25px 0}.bol-screen figcaption{padding:12px 14px;font-size:12px}.bol-screen figcaption a{margin-left:0}.bol-example-list article{grid-template-columns:1fr;gap:9px;padding-block:18px}.bol-example-list h4{font-size:18px}.bol-measures dl{grid-template-columns:1fr;gap:20px}.bol-callout{padding:21px}.bol-section-note{font-size:13px}.bol-workflow ol{font-size:15px}.bol-faq p{font-size:15px}.bol-personal{font-size:13px}.bol-intro .actions .button{font-size:15px}.bol-faq details{padding:18px 0}}
+
+.bol-source{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:30px;align-items:center;padding-top:30px;margin-top:32px;border-top:1px solid var(--line)}
+.bol-source figure{margin:0;border:1px solid var(--line);border-radius:5px;overflow:hidden;background:#fff}
+.bol-source figure img{width:100%;height:auto}
+.bol-source figcaption{padding:11px 14px;font-size:12px;line-height:1.7;border-top:1px solid var(--line);color:var(--muted)}
+.bol-source figcaption a{white-space:nowrap}
+.bol-source-logo{width:227px;height:auto;box-sizing:content-box;padding:12px 16px;background:#0000a4;border-radius:3px;margin-bottom:17px;max-width:calc(100% - 32px)}
+.bol-source .eyebrow{font-size:12px;margin-bottom:8px}
+.bol-source h3{font-size:22px;margin-bottom:12px}
+.bol-source p{font-size:15px;line-height:1.8}
+.bol-source .text-link{font-size:14px}
+@media(max-width:700px){.bol-source{grid-template-columns:1fr;gap:22px}.bol-source>div{grid-row:1}.bol-source-logo{width:190px}.bol-source figure{max-width:650px}}

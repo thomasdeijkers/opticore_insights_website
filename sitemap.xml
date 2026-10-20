@@ -4,6 +4,12 @@
     <loc>https://opticore-insights.nl/</loc>
     <lastmod>2026-10-20</lastmod>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-demo.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/bol-wordmark.svg</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/clients/de-valk-advies.webp</image:loc>
     </image:image>
     <image:image>
@@ -66,7 +72,19 @@
       <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/bol-partnerplatform-koopblok.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/bol-partnerplatform-logo.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/bol-partnerplatform-sponsored-products.png</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-demo.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/bol-wordmark.svg</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-demo.jpg</image:loc>
@@ -131,6 +149,12 @@
   <url>
     <loc>https://opticore-insights.nl/diensten/</loc>
     <lastmod>2026-10-20</lastmod>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-demo.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/bol-wordmark.svg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/ecommerce-automatisering/</loc>

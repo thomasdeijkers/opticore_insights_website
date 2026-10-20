@@ -207,3 +207,26 @@ button{cursor:pointer}
 .page-category-icon{display:block;margin-bottom:18px}
 .page-category-icon .rubric-icon{width:45px;height:45px;padding:10px}
 @media(max-width:560px){.client-grid{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:25px}.client-grid a{height:100px;padding:10px}.client-grid .client-brand img{max-width:130px;max-height:47px}.client-grid .client-brand--home-assistant-hub{gap:0}.client-grid .client-brand--home-assistant-hub img{width:43px;height:43px}.client-grid .hub-brand-name{font-size:11px}.client-grid .hub-brand-name small{font-size:11px}.client-grid .client-brand--top-groep-nederland img{max-height:56px}.case-identity{gap:12px 20px}.case-identity .case-client{border:0;padding:0;flex-basis:100%}.rubric-title{gap:11px}.rubric-icon{width:35px;height:35px;padding:7px}.rubric-icon--small{width:17px;height:17px;padding:0}}
+
+/* A direct route to the bol service, with the app itself as the main visual. */
+.bol-brand-line{display:flex;align-items:center;gap:17px;margin-bottom:24px}
+.bol-brand-line .eyebrow{margin:0;font-size:14px;letter-spacing:0}
+.bol-wordmark{display:flex;align-items:center;justify-content:center;background:#0000a4;border-radius:4px;padding:5px 12px;flex-shrink:0}
+.bol-wordmark img{width:66px;height:36px}
+.bol-promo{border-bottom:1px solid var(--line);background:#fff}
+.bol-promo-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:40px;align-items:center}
+.bol-promo h2{font-size:32px;max-width:550px}
+.bol-promo-grid>div>p{font-size:17px;max-width:550px}
+.bol-promo-links{list-style:none;padding:0;margin:22px 0 0}
+.bol-promo-links li{padding:12px 0;border-top:1px solid var(--line);margin:0}
+.bol-promo-links a{font-size:16px;font-weight:700}
+.bol-promo-links span{display:block;font-size:14px;line-height:1.65;margin-top:4px}
+.bol-promo .actions{gap:18px;margin-top:22px}
+.bol-promo .button{font-size:15px}
+.bol-promo-screen{margin:0;border:1px solid #bdcbd7;border-radius:6px;overflow:hidden;background:#fff}
+.bol-promo-screen img{width:100%;height:auto}
+.bol-promo-screen figcaption{padding:13px 16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.65}
+.bol-promo-screen figcaption a{display:block;font-weight:600;margin-top:4px}
+@media(min-width:1001px){.site-nav{gap:19px}}
+@media(max-width:1000px){:root{--header-height:97px}.nav-wrap{display:grid;grid-template-columns:1fr auto;grid-template-rows:96px auto;min-height:96px;gap:0}.brand img{width:120px}.menu-button{display:block}.site-nav{display:none;grid-column:1/-1;width:100%;max-height:calc(100dvh - var(--header-height));overflow-y:auto;overscroll-behavior:contain;padding:8px 0 18px;align-items:stretch;gap:0;flex-direction:column}.site-nav.is-open{display:flex}.site-nav a{padding:11px 0;font-size:16px}.site-nav .nav-contact{padding:10px 0;border:0}.bol-promo-grid{grid-template-columns:1fr;gap:28px}.bol-promo-screen{max-width:800px}}
+@media(max-width:560px){.bol-promo h2{font-size:27px}.bol-brand-line{gap:12px;margin-bottom:21px}.bol-brand-line .eyebrow{font-size:12px;line-height:1.6}.bol-wordmark{padding:3px 9px}.bol-wordmark img{width:55px;height:30px}.bol-promo-grid>div>p{font-size:16px}.bol-promo .actions{align-items:flex-start;flex-direction:column;gap:16px}.bol-promo .button{max-width:100%;font-size:14px}.bol-promo-screen figcaption{font-size:12px}}
