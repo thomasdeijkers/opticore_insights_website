@@ -1,0 +1,30 @@
+/* A readable experience timeline, inspired by professional profile pages. */
+.career-section{border-bottom:1px solid var(--line)}
+.career-layout{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,1.7fr);gap:64px;align-items:start}
+.career-introduction{position:sticky;top:28px}
+.career-introduction h2{max-width:290px;font-size:30px}
+.career-introduction p:not(.eyebrow){font-size:16px}
+.career-timeline{list-style:none;margin:0;padding:0}
+.career-entry{display:grid;grid-template-columns:72px minmax(0,1fr);gap:23px;position:relative;margin:0;padding:0 0 34px}
+.career-entry:last-child{padding-bottom:0}
+.career-entry:not(:last-child):before{content:"";position:absolute;width:2px;left:35px;top:82px;bottom:10px;background:#bccbd7}
+.career-company-mark{width:72px;height:72px;border:1px solid var(--line);border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;padding:8px;position:relative;z-index:1}
+.career-company-mark img{width:100%;height:auto;max-height:54px;object-fit:contain}
+.career-initials{font-size:21px;font-weight:700;color:var(--ink)}
+.career-symbol{width:30px;height:30px;color:#235a83}
+.career-position{border-bottom:1px solid var(--line);padding:0 0 27px;min-width:0}
+.career-entry:last-child .career-position{border:0;padding-bottom:0}
+.career-position-head{display:flex;align-items:center;gap:9px 15px;flex-wrap:wrap;margin-bottom:6px}
+.career-position h3{font-size:22px;margin:0}
+.career-current{font-size:11px;font-weight:600;line-height:1.5;color:#23523b;background:#eaf3ed;border:1px solid #bfd5c6;padding:3px 8px;border-radius:4px;white-space:nowrap}
+.career-position .career-role{font-size:16px;color:var(--ink);font-weight:600;line-height:1.6;margin:0 0 5px}
+.career-position .career-period{font-size:14px;line-height:1.6;color:var(--muted);margin-bottom:15px}
+.career-position .career-description{font-size:16px;line-height:1.75;margin-bottom:14px}
+.career-links{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:14px;font-weight:600;line-height:1.6}
+.career-sources{margin:28px 0 0 95px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+.career-sources summary{cursor:pointer;color:var(--ink);font-weight:600}
+.career-sources[open] summary{margin-bottom:13px}
+.career-sources p{margin-bottom:10px}
+.career-sources ul{padding-left:20px;margin-bottom:0}
+@media(max-width:900px){.career-layout{grid-template-columns:1fr;gap:30px}.career-introduction{position:static;max-width:720px}.career-introduction h2{max-width:none;font-size:28px}}
+@media(max-width:560px){.career-entry{grid-template-columns:54px minmax(0,1fr);gap:15px;padding-bottom:27px}.career-company-mark{width:54px;height:54px;padding:6px;border-radius:6px}.career-entry:not(:last-child):before{left:26px;top:64px;bottom:9px}.career-position h3{font-size:20px}.career-current{font-size:10px}.career-position .career-role{font-size:15px}.career-position .career-period{font-size:13px}.career-position .career-description{font-size:15px;line-height:1.75}.career-links{font-size:13px;gap:11px;flex-direction:column}.career-sources{margin-left:0}.career-position{padding-bottom:23px}}
