@@ -2,6 +2,14 @@ const menuToggle = document.querySelector("[data-menu-toggle]");
 const menu = document.querySelector("[data-menu]");
 
 if (menuToggle && menu) {
+  // Collapse the mobile menu before following a page or section link.
+  menu.addEventListener("click", (event) => {
+    if (event.target.closest("a")) {
+      menu.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Menu openen");
+    }
+  });
   menuToggle.addEventListener("click", () => {
     const isOpen = menu.classList.toggle("is-open");
     menuToggle.setAttribute("aria-expanded", String(isOpen));

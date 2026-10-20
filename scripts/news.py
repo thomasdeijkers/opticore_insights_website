@@ -105,9 +105,9 @@ def render():
 <meta property="og:title" content="{escape(full_title,quote=True)}"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{url}"><meta property="og:type" content="{'article' if article else 'website'}"><meta property="og:site_name" content="OptiCore Insights"><meta property="og:locale" content="nl_NL"><meta property="og:image" content="{image}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(full_title,quote=True)}"><meta name="twitter:description" content="{escape(description,quote=True)}"><meta name="twitter:image" content="{image}">
 <script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':schema},ensure_ascii=False,separators=(',',':'))}</script>
-<link rel="stylesheet" href="/assets/css/site.css?v=20261020e"><link rel="stylesheet" href="/assets/css/news.css?v=20261020a"><link rel="alternate" type="application/rss+xml" title="OptiCore Insights — Nieuws en praktijk" href="{BASE}/nieuws/feed.xml">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261020f"><link rel="stylesheet" href="/assets/css/news.css?v=20261020a"><link rel="alternate" type="application/rss+xml" title="OptiCore Insights — Nieuws en praktijk" href="{BASE}/nieuws/feed.xml">
 </head><body><a class="skip-link" href="#inhoud">Direct naar inhoud</a>{header}
-<main id="inhoud">{main}</main>{footer}<script src="/assets/js/main.js?v=20261020c" defer></script></body></html>
+<main id="inhoud">{main}</main>{footer}<script src="/assets/js/main.js?v=20261020d" defer></script></body></html>
 '''
 
     outputs = {}

@@ -1,7 +1,7 @@
 /* A readable experience timeline, inspired by professional profile pages. */
 .career-section{border-bottom:1px solid var(--line)}
 .career-layout{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,1.7fr);gap:64px;align-items:start}
-.career-introduction{position:sticky;top:28px}
+.career-introduction{position:sticky;top:calc(var(--header-height) + 28px)}
 .career-introduction h2{max-width:290px;font-size:30px}
 .career-introduction p:not(.eyebrow){font-size:16px}
 .career-timeline{list-style:none;margin:0;padding:0}

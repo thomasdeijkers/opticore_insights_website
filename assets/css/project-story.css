@@ -15,7 +15,7 @@
 .case-screen figcaption strong{display:block;color:var(--ink);font-size:16px;margin-bottom:5px}
 .case-screen figcaption a{display:inline-block;font-weight:600;margin-top:5px}
 .case-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:60px;align-items:start;padding-top:52px;padding-bottom:30px}
-.case-chapters{position:sticky;top:24px;font-size:14px}
+.case-chapters{position:sticky;top:calc(var(--header-height) + 24px);font-size:14px}
 .case-chapters h2{font-size:16px;margin-bottom:17px}
 .case-chapters nav{display:grid;gap:11px}
 .case-chapters nav a{color:var(--muted);text-decoration:none;line-height:1.5}
