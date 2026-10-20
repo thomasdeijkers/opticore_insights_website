@@ -9,7 +9,7 @@ function render_page($title, $message, $is_success = false) {
     $safe_message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
     $heading = $is_success ? 'Bedankt voor je bericht.' : 'Bericht niet verzonden.';
     $status_class = $is_success ? 'success-panel' : 'error-panel';
-    echo "<!doctype html><html lang=\"nl\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>{$safe_title} | OptiCore Insights</title><link rel=\"stylesheet\" href=\"/assets/css/site.css?v=20261020b\"></head><body><main class=\"section\"><div class=\"container text-page info-panel {$status_class}\"><h1>{$heading}</h1><p>{$safe_message}</p><div class=\"actions\"><a class=\"button button-primary\" href=\"/contact/\">Terug naar contact</a><a class=\"button button-secondary\" href=\"/\">Naar home</a></div></div></main></body></html>";
+    echo "<!doctype html><html lang=\"nl\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>{$safe_title} | OptiCore Insights</title><link rel=\"stylesheet\" href=\"/assets/css/site.css?v=20261020f\"></head><body><main class=\"section\"><div class=\"container text-page info-panel {$status_class}\"><h1>{$heading}</h1><p>{$safe_message}</p><div class=\"actions\"><a class=\"button button-primary\" href=\"/contact/\">Terug naar contact</a><a class=\"button button-secondary\" href=\"/\">Naar home</a></div></div></main></body></html>";
     exit;
 }
 
@@ -29,6 +29,11 @@ $email = filter_var($email_raw, FILTER_VALIDATE_EMAIL);
 $phone = clean_text($_POST['phone'] ?? '');
 $topics = json_decode(<<<'JSON'
 {
+  "business-scan": {
+    "label": "Mijn bedrijfsscan bespreken",
+    "question": "Mijn bedrijfsscan en voorstel",
+    "fields": {}
+  },
   "dashboard": {
     "label": "Een dashboard",
     "question": "Waar wil je meer inzicht in krijgen?",
@@ -117,7 +122,7 @@ if ($name === '' || !$email || $subject_input === '' || $message === '' || $priv
     render_page('Controleer je gegevens', 'Niet alle verplichte velden zijn correct ingevuld. Controleer je naam, e-mail, onderwerp, bericht en privacybevestiging.');
 }
 
-if (strlen($name) > 480 || strlen($company) > 720 || strlen($email_raw) > 254 || strlen($phone) > 320 || strlen($subject_input) > 600 || strlen($message) > 20000) {
+if (strlen($name) > 480 || strlen($company) > 720 || strlen($email_raw) > 254 || strlen($phone) > 320 || strlen($subject_input) > 600 || strlen($message) > ($topic_key === 'business-scan' ? 72000 : 20000)) {
     render_page('Bericht te lang', 'Het bericht is langer dan verwacht. Maak het iets korter of stuur rechtstreeks een e-mail naar info@opticore-insights.nl.');
 }
 

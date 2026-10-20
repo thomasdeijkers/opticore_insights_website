@@ -1,0 +1,52 @@
+/* A calm questionnaire, using the existing form and brand styles. */
+.scan-layout{display:grid;grid-template-columns:minmax(0,780px) minmax(220px,1fr);gap:48px;align-items:start}
+.scan-intro-note{font-size:14px;color:var(--muted);margin:20px 0 0}
+.scan-progress{list-style:none;display:grid;grid-template-columns:repeat(6,1fr);gap:8px;padding:0;margin:0 0 25px}
+.scan-progress li{margin:0;padding:10px 0;border-top:3px solid var(--line);font-size:12px;line-height:1.5;color:var(--muted)}
+.scan-progress li[aria-current=step]{border-color:var(--accent);color:var(--ink);font-weight:700}
+.scan-progress li.is-complete{border-color:#45684f}
+.scan-progress span{display:block;font-size:14px;font-weight:700}
+.scan-step-label{font-size:13px;font-weight:650;color:var(--muted);margin-bottom:15px}
+.scan-questionnaire{background:#fff}
+.scan-required-note{margin:0 0 24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.scan-panel>legend.visually-hidden{width:1px!important;height:1px!important}
+.scan-panel h2,.scan-result h2,#scan-contact-title{scroll-margin-top:16px;outline-offset:6px}
+.scan-panel-intro{font-size:16px;line-height:1.65;margin-bottom:24px}
+.scan-options{margin-bottom:23px!important}
+.scan-options legend{font-size:15px;line-height:1.6;margin-bottom:9px}
+.scan-choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.scan-choice{display:flex!important;align-items:flex-start;gap:10px;padding:12px;border:1px solid #718397;border-radius:5px;margin:0!important;line-height:1.5;font-weight:400!important;background:#fff}
+.scan-choice:has(input:checked){border-color:var(--ink);background:#eef3f7;box-shadow:inset 0 0 0 1px var(--ink)}
+.scan-choice input{width:18px;height:18px;flex-shrink:0;margin:2px 0 0;accent-color:var(--ink)}
+.scan-controls{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;margin-top:28px;border-top:1px solid var(--line);padding-top:23px}
+.scan-controls .button{margin-left:auto}
+.scan-back{background:none;border:0;padding:9px 0;font-size:14px;text-align:left;color:var(--link);text-decoration:underline;text-underline-offset:4px}
+.scan-controls button:disabled{opacity:.65;cursor:wait}
+.scan-status{font-size:15px;color:var(--text);margin:20px 0 0}
+.scan-status:empty{display:none}
+.scan-error,.scan-group-error{color:#8a2020;font-size:14px}
+.scan-error{padding:15px 18px;border:1px solid #b96a6a;background:#fff6f6;border-radius:5px;margin-top:18px}
+.scan-group-error{margin:10px 0 0}
+.scan-answer-review{margin:25px 0;padding:17px 0;border-block:1px solid var(--line);font-size:14px}
+.scan-answer-review summary{cursor:pointer;color:var(--ink);font-weight:650}
+.scan-answer-review dl{margin-bottom:0}
+.scan-answer-review dt{font-weight:650;color:var(--ink);margin:17px 0 3px}
+.scan-answer-review dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.scan-ai-consent{padding:15px;background:var(--soft);border-radius:5px}
+.scan-result{background:#fff}
+.scan-result>p,#scan-contact-form>p{font-size:15px}
+.scan-result textarea{min-height:140px}
+.scan-result-details{border-top:1px solid var(--line);padding-top:22px;margin-top:25px;font-size:15px}
+.scan-result-details h3{font-size:18px;margin-top:22px}
+.scan-result-details h3:first-child{margin-top:0}
+.scan-result-details ul{margin-bottom:0}
+.scan-aside{padding-top:10px;font-size:15px}
+.scan-aside h2{font-size:20px}
+.scan-aside ol{padding-left:20px}
+.scan-aside li{padding-left:4px;margin-bottom:22px}
+.scan-aside strong{color:var(--ink)}
+.scan-aside>p{font-size:14px}
+.scan-aside-links{margin-top:25px;line-height:2}
+@media(max-width:1000px){.scan-layout{grid-template-columns:minmax(0,1fr) 220px;gap:30px}.scan-choice-grid{grid-template-columns:1fr}}
+@media(max-width:800px){.scan-layout{grid-template-columns:1fr}.scan-aside{border-top:1px solid var(--line);padding-top:25px;max-width:620px}.scan-aside ol{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}.scan-choice-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.scan-progress{grid-template-columns:repeat(3,1fr);gap:5px 12px}.scan-progress li{font-size:12px}.scan-progress span{font-size:13px}.scan-layout{gap:32px}.scan-choice-grid{grid-template-columns:1fr}.scan-questionnaire,.scan-result,#scan-contact-form{padding:20px}.scan-panel-intro{font-size:15px}.scan-controls{align-items:stretch;flex-direction:column-reverse;gap:14px}.scan-controls .button{width:100%;margin:0;font-size:15px;padding-inline:12px}.scan-back{align-self:flex-start}.scan-aside ol{display:block}.scan-progress li[aria-current=step]{font-weight:700}}

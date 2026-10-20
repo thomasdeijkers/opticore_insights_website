@@ -5,3 +5,6 @@ backups/
 *.bak
 *.tmp
 .DS_Store
+
+# Ephemeral deploy credentials; never commit or upload into the public webroot.
+.scan-deploy/

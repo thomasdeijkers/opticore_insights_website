@@ -22,6 +22,32 @@ jobs:
       - name: Generate and validate sitemap
         run: python3 scripts/sitemap.py --write
 
+      - name: Validate business scan
+        run: |
+          php -l api/bedrijfsscan.php
+          php -l api/scan-lib.php
+          php -l contact.php
+          php scripts/test-business-scan.php
+          node --check assets/js/bedrijfsscan.js
+
+      - name: Prepare private AI configuration
+        env:
+          OPTICORE_SCAN_API_KEY: ${{ secrets.OPTICORE_SCAN_OPENAI_API_KEY }}
+        run: python3 scripts/write_scan_config.py
+
+      - name: Upload AI configuration outside the webroot
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
+        with:
+          server: ${{ secrets.TRANSIP_SFTP_HOST }}
+          username: ${{ secrets.TRANSIP_SFTP_USERNAME }}
+          password: ${{ secrets.TRANSIP_SFTP_PASSWORD }}
+          port: ${{ secrets.TRANSIP_SFTP_PORT }}
+          local_path: ./.scan-deploy/*
+          remote_path: ${{ secrets.TRANSIP_SFTP_TARGET }}/../opticore-scan-private/
+          sftp_only: false
+          sftpArgs: '-p'
+          delete_remote_files: false
+
       - name: Deploy website files
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
@@ -35,6 +61,7 @@ jobs:
           delete_remote_files: true
           rsyncArgs: >-
             --exclude=.git
+            --exclude=.scan-deploy
             --exclude=.github
             --exclude=README.md
             --exclude=.gitignore
@@ -47,3 +74,7 @@ jobs:
             --exclude=scripts
             --exclude=docs
             --exclude=content
+
+      - name: Remove temporary AI configuration
+        if: always()
+        run: python3 -c "from pathlib import Path; Path('.scan-deploy/config.json').unlink(missing_ok=True)"

@@ -1,0 +1,255 @@
+{
+  "steps": [
+    {
+      "title": "Je bedrijf",
+      "intro": "Vertel kort wie je bent en hoe je bedrijf werkt. Je contactgegevens gebruiken we straks voor het conceptbericht; die gaan niet naar de AI.",
+      "fields": [
+        {
+          "key": "company",
+          "label": "Bedrijfsnaam",
+          "type": "text",
+          "required": true,
+          "max": 180,
+          "autocomplete": "organization",
+          "ai": false
+        },
+        {
+          "key": "sector",
+          "label": "Wat doet je bedrijf?",
+          "type": "text",
+          "required": true,
+          "max": 250,
+          "placeholder": "Bijvoorbeeld een installatiebedrijf, groothandel of webshop.",
+          "ai": true
+        },
+        {
+          "key": "team",
+          "label": "Met hoeveel mensen werken jullie?",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Alleen ik",
+            "2–5 mensen",
+            "6–15 mensen",
+            "16–50 mensen",
+            "Meer dan 50 mensen"
+          ],
+          "ai": true
+        },
+        {
+          "key": "revenue",
+          "label": "Wat is ongeveer de jaaromzet?",
+          "type": "select",
+          "options": [
+            "Minder dan €250.000",
+            "€250.000–€1 miljoen",
+            "€1–5 miljoen",
+            "€5–25 miljoen",
+            "Meer dan €25 miljoen",
+            "Liever niet delen"
+          ],
+          "ai": true
+        },
+        {
+          "key": "name",
+          "label": "Je naam",
+          "type": "text",
+          "required": true,
+          "max": 120,
+          "autocomplete": "name",
+          "ai": false
+        },
+        {
+          "key": "email",
+          "label": "Je e-mailadres",
+          "type": "email",
+          "required": true,
+          "max": 254,
+          "autocomplete": "email",
+          "ai": false
+        },
+        {
+          "key": "phone",
+          "label": "Telefoonnummer",
+          "type": "tel",
+          "max": 80,
+          "autocomplete": "tel",
+          "ai": false
+        }
+      ]
+    },
+    {
+      "title": "Het dagelijkse werk",
+      "intro": "Kies vooral het werk waar je nu tegenaan loopt. Eén concreet voorbeeld helpt meer dan een perfecte omschrijving.",
+      "fields": [
+        {
+          "key": "areas",
+          "label": "Welke processen vragen aandacht?",
+          "type": "checkboxes",
+          "required": true,
+          "options": [
+            "Verkoop en klantaanvragen",
+            "Orders en administratie",
+            "Inkoop en voorraad",
+            "Planning en uitvoering",
+            "Financiën en rapportages",
+            "Productgegevens en webshop",
+            "Documenten en controles",
+            "Samenwerking en overdracht"
+          ],
+          "ai": true
+        },
+        {
+          "key": "pain",
+          "label": "Welk terugkerend werk kost nu onnodig moeite?",
+          "type": "textarea",
+          "required": true,
+          "min": 20,
+          "max": 1200,
+          "placeholder": "Bijvoorbeeld: elke maandag verzamelen we orders uit drie systemen en zetten die handmatig in Excel. Afwijkingen zien we pas achteraf.",
+          "ai": true
+        },
+        {
+          "key": "frequency",
+          "label": "Hoe vaak komt dit voor?",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Meerdere keren per dag",
+            "Dagelijks",
+            "Wekelijks",
+            "Maandelijks",
+            "Wisselend / per project"
+          ],
+          "ai": true
+        },
+        {
+          "key": "hours",
+          "label": "Hoeveel tijd kost dit ongeveer voor het hele team?",
+          "type": "select",
+          "options": [
+            "Minder dan 2 uur per week",
+            "2–5 uur per week",
+            "5–10 uur per week",
+            "10–20 uur per week",
+            "Meer dan 20 uur per week",
+            "Dat weet ik nog niet"
+          ],
+          "ai": true
+        },
+        {
+          "key": "impact",
+          "label": "Wat merk je ervan?",
+          "type": "checkboxes",
+          "options": [
+            "Dubbel werk of overtypen",
+            "Fouten en herstelwerk",
+            "Wachten of gemiste afspraken",
+            "Onduidelijk wie iets oppakt",
+            "Geen actueel overzicht",
+            "Besluiten op gevoel",
+            "Klanten moeten navragen",
+            "Werk blijft bij één persoon hangen"
+          ],
+          "ai": true
+        }
+      ]
+    },
+    {
+      "title": "Systemen en inzicht",
+      "intro": "We kijken hoe informatie door je bedrijf gaat én of je vanuit die informatie verder kunt handelen.",
+      "fields": [
+        {
+          "key": "systems",
+          "label": "Welke systemen, apps of bestanden gebruiken jullie?",
+          "type": "textarea",
+          "required": true,
+          "max": 800,
+          "placeholder": "Bijvoorbeeld Excel, Exact, een planningstool, je webshop, e-mail of papieren formulieren. Geen technische kennis nodig.",
+          "ai": true
+        },
+        {
+          "key": "transfer",
+          "label": "Hoe gaat informatie van de ene stap naar de volgende?",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Vooral handmatig kopiëren of overtypen",
+            "Via e-mail en losse bestanden",
+            "Gedeeltelijk gekoppeld",
+            "Grotendeels automatisch",
+            "Dat weet ik niet precies"
+          ],
+          "ai": true
+        },
+        {
+          "key": "missing",
+          "label": "Welk inzicht mis je om goed te kunnen sturen?",
+          "type": "textarea",
+          "max": 1000,
+          "placeholder": "Bijvoorbeeld marge per opdracht, openstaande acties, beschikbare voorraad of de capaciteit voor volgende week.",
+          "ai": true
+        },
+        {
+          "key": "action",
+          "label": "Wat zou je direct willen kunnen doen vanuit dat overzicht?",
+          "type": "textarea",
+          "max": 1000,
+          "placeholder": "Bijvoorbeeld een bestelling voorbereiden, werk toewijzen, een klant opvolgen of een afwijking controleren.",
+          "ai": true
+        }
+      ]
+    },
+    {
+      "title": "Doel en prioriteit",
+      "intro": "Wat moet een verbetering in de praktijk opleveren? Hierna maakt AI een eerste voorstel op basis van jouw antwoorden.",
+      "fields": [
+        {
+          "key": "goal",
+          "label": "Wat moet er na een verbetering merkbaar anders zijn?",
+          "type": "textarea",
+          "required": true,
+          "min": 20,
+          "max": 1200,
+          "placeholder": "Bijvoorbeeld: op maandagochtend meteen zien welke orders aandacht vragen en die direct aan een collega kunnen toewijzen.",
+          "ai": true
+        },
+        {
+          "key": "priority",
+          "label": "Wat weegt voor jou het zwaarst?",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Minder handwerk en tijdverlies",
+            "Minder fouten en betrouwbaardere gegevens",
+            "Meer grip en sneller besluiten",
+            "Betere planning en samenwerking",
+            "Groei opvangen zonder extra administratie",
+            "Betere klantervaring"
+          ],
+          "ai": true
+        },
+        {
+          "key": "timing",
+          "label": "Wanneer wil je hiermee aan de slag?",
+          "type": "select",
+          "options": [
+            "Zo snel mogelijk",
+            "Binnen 1–3 maanden",
+            "Binnen 3–6 maanden",
+            "Ik ben me aan het oriënteren"
+          ],
+          "ai": true
+        },
+        {
+          "key": "constraints",
+          "label": "Waar moeten we rekening mee houden?",
+          "type": "textarea",
+          "max": 1000,
+          "placeholder": "Bijvoorbeeld systemen die moeten blijven, een beschikbare collega, een budgetrichting of een eerdere poging. Je mag dit openlaten.",
+          "ai": true
+        }
+      ]
+    }
+  ]
+}

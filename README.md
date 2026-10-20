@@ -62,3 +62,7 @@ De hoofdroute is Home → Diensten / Portfolio → onderwerp of case → Contact
 Elke pagina bevat een unieke titel en metaomschrijving, één H1, een canonieke URL met afsluitende slash en gestructureerde gegevens voor de pagina en broodkruimels. Werk bij wijzigingen ook de bijbehorende `.html`-alias bij; de mapversie `index.html` is de voorkeursroute. De sitemap bevat alleen de canonieke, indexeerbare routes. Oude generieke projectopzetten blijven bereikbaar met `noindex,follow`; de zes uitgewerkte klantcases zijn wel indexeerbaar.
 
 Google kan titels en snippets zelf samenstellen. Vinkjes in metaomschrijvingen zijn tekst en geven geen garantie op een specifieke weergave of positie.
+
+## Bedrijfsscan
+
+De route `/bedrijfsscan/` bevat een vragenlijst, een echte AI-samenvatting en een vooraf ingevuld contactconcept. Alleen de laatste verzendstap verstuurt mail. Zie [configuratie, privacy en controles](docs/business-scan.md). De bestaande deployroute publiceert ook de AI-configuratie **buiten de webroot**, vanuit een GitHub Actions-secret; de sleutel hoort nooit in deze repository.
