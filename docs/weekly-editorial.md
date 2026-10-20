@@ -42,7 +42,8 @@ projectontwikkelingen van de week mee; maak losse berichten als dat duidelijker 
   bronrepositories niet. Een lokale checkout kan achterlopen; onbevestigd lokaal
   werk mag niet als live functionaliteit worden beschreven.
 - Bestaande publieke cases: Smartlife Domotica, Olympus Bouw, Top Groep Nederland,
-  De Valk Advies, Rust Werkt en Home Assistant hub. Rust Werkt is een concept.
+  De Valk Advies, Rust Werkt, Home Assistant hub en HelloSmart.nl. Rust Werkt is een concept.
+  HelloSmart: zie `docs/hellosmart-case-evidence.md` voor bevestigde projectfeiten.
 - Beschrijf probleem, gemaakte verbetering, praktische vervolghandeling en hoe de
   werking is gecontroleerd. Noem livegang alleen na bevestigde deployment.
 - Publiceer alleen verifieerbare, voor publicatie geschikte functionaliteit. Geen

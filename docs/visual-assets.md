@@ -2,6 +2,8 @@
 
 Original assets copied without changes from the existing project repositories:
 
+- `hellosmart.png`: `Home_assistant/transip-migration/dist/assets/dealer-hellosmart.png`.
+
 - `smartlife-domotica.svg`: `Home_assistant/transip-migration/dist/assets/dealer-smartlife.svg`.
 - `top-groep-nederland.png`: `top_groep_nederland/apps/dashboard/static/top-groep-nederland.png`.
 - `de-valk-advies.webp`: `devalkadvies/logo.webp`.
@@ -17,3 +19,5 @@ Brand images retain their original colors and proportions, on white backgrounds.
 `assets/img/rubric-icons.svg` is a local, code-drawn set of decorative line icons.
 Visible category names remain the accessible labels; icons are aria-hidden.
 No external font, icon CDN or runtime dependency is needed.
+
+`project-hellosmart.jpg` is a direct browser screenshot of the public HelloSmart homepage, captured on 2026-10-20; no private store data is shown.

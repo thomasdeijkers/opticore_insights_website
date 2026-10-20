@@ -7,6 +7,9 @@
       <image:loc>https://opticore-insights.nl/assets/img/clients/de-valk-advies.webp</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/clients/hellosmart.png</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/clients/olympus-bouw.png</image:loc>
     </image:image>
     <image:image>
@@ -245,6 +248,9 @@
       <image:loc>https://opticore-insights.nl/assets/img/clients/de-valk-advies.webp</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/clients/hellosmart.png</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/clients/olympus-bouw.png</image:loc>
     </image:image>
     <image:image>
@@ -261,6 +267,9 @@
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/project-de-valk-demo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/project-hellosmart.jpg</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/project-home-assistant-hub.jpg</image:loc>
@@ -327,6 +336,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://opticore-insights.nl/projecten/hellosmart/</loc>
+    <lastmod>2026-10-20</lastmod>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/project-hellosmart.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://opticore-insights.nl/projecten/home-assistant-hub/</loc>
     <lastmod>2026-10-20</lastmod>
     <image:image>
@@ -367,6 +383,9 @@
       <image:loc>https://opticore-insights.nl/assets/img/clients/de-valk-advies.webp</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/clients/hellosmart.png</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/clients/olympus-bouw.png</image:loc>
     </image:image>
     <image:image>
@@ -390,7 +409,13 @@
     <loc>https://opticore-insights.nl/projecten/websites/</loc>
     <lastmod>2026-10-20</lastmod>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/clients/hellosmart.png</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/clients/rust-werkt.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/project-hellosmart.jpg</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/project-home-assistant-hub.jpg</image:loc>

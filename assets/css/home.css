@@ -25,3 +25,7 @@
 .home-work .resource-list p{font-size:15px}
 @media(max-width:800px){.home-support{gap:30px}.home-work{grid-template-columns:1fr;gap:25px}.home-work-image{max-width:720px}.home-work .resource-list{max-width:720px}}
 @media(max-width:560px){.home-intro{padding:32px 0}.home-intro h1{font-size:34px;letter-spacing:-.6px}.home-intro .lead{font-size:18px}.home-intro .actions{gap:18px}.home-support{grid-template-columns:1fr;gap:28px}.home-support h2{font-size:25px}.home-work{gap:23px}.home-work-image figcaption{padding:13px 15px}}
+
+/* Let the final project fill the row when the logo count is uneven. */
+@media(min-width:561px){.client-grid li:last-child:nth-child(3n + 1){grid-column:1/-1}}
+@media(max-width:560px){.client-grid li:last-child:nth-child(2n + 1){grid-column:1/-1}}
