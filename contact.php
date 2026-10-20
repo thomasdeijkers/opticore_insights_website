@@ -29,6 +29,14 @@ $email = filter_var($email_raw, FILTER_VALIDATE_EMAIL);
 $phone = clean_text($_POST['phone'] ?? '');
 $topics = json_decode(<<<'JSON'
 {
+  "bol-tools": {
+    "label": "De app voor bol-ondernemers",
+    "question": "Waar wil je meer grip op krijgen?",
+    "fields": {
+      "bol_account": {"label": "Verkoop je al op bol?", "required": false},
+      "assortment": {"label": "Hoe groot is je assortiment?", "required": false}
+    }
+  },
   "business-scan": {
     "label": "Mijn bedrijfsscan bespreken",
     "question": "Mijn bedrijfsscan en voorstel",
