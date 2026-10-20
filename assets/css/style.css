@@ -2075,7 +2075,7 @@ body {
   min-width: 34px;
   height: 28px;
   border-radius: 999px;
-  color: #ffffff;
+  color: #10243c;
   background: #f36b21;
   font-size: 11px;
   font-weight: 900;
@@ -3184,10 +3184,9 @@ body::after {
 
 
 /* Readability and interactive project page pass */
-.timeline-section .section-head p,
+/* Keep light text confined to the panels that retain a dark background. */
 .timeline-section .timeline-list p,
 .timeline-section .timeline-tags span,
-.about-origin-section p,
 .about-timeline-card p,
 .about-timeline-mini p {
   color: #dbeafe !important;

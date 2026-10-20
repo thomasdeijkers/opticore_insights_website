@@ -1,0 +1,7 @@
+# Revalidate pages and styles so a returning browser receives matching versions.
+# Images keep the hosting provider's existing caching policy.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|css|js)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
