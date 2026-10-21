@@ -100,7 +100,7 @@ $topics = json_decode(<<<'JSON'
   },
   "existing": {
     "label": "Een bestaande opdracht",
-    "question": "Waar kan ik je mee helpen?",
+    "question": "Waar kunnen we je mee helpen?",
     "fields": {
       "project": {
         "label": "Om welke opdracht of website gaat het?",

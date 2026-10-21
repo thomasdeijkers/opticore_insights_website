@@ -5,7 +5,7 @@
       "kind": "nieuws",
       "title": "AI bij softwareonderhoud: kansen voor het mkb",
       "description": "AI kan helpen bij onderhoud aan bedrijfssoftware. ✓ Duiding van een recente praktijkpublicatie ✓ Wat dit betekent voor je dashboard en automatisering.",
-      "summary": "Een recente publicatie over AI bij softwareonderhoud laat zien waarom bewijs, controle en een afgebakende eerste stap belangrijk blijven. Mijn vertaling naar het mkb.",
+      "summary": "Een recente publicatie over AI bij softwareonderhoud laat zien waarom bewijs, controle en een afgebakende eerste stap belangrijk blijven. Onze vertaling naar het mkb.",
       "published_at": "2026-10-20T01:40:00+02:00",
       "modified_at": "2026-10-20T01:40:00+02:00",
       "sections": [
@@ -16,10 +16,10 @@
           ]
         },
         {
-          "heading": "Mijn vertaling naar een kleiner bedrijf",
+          "heading": "Onze vertaling naar een kleiner bedrijf",
           "paragraphs": [
             "De interessante vraag voor een ondernemer is welke bestaande werkstap beter kan. Denk aan een koppeling die regelmatig vastloopt, een rapport dat veel handwerk vraagt of een controle die steeds terugkomt. Daar kan gericht onderhoud aan de software en het proces zinvol zijn.",
-            "Ik zou beginnen bij één terugkerend knelpunt. Eerst begrijpen wat de toepassing doet en wie ervan afhankelijk is. Daarna een afgebakende wijziging maken en toetsen of het dagelijkse werk er daadwerkelijk beter van wordt."
+            "We beginnen bij één terugkerend knelpunt. Eerst begrijpen wat de toepassing doet en wie ervan afhankelijk is. Daarna een afgebakende wijziging maken en toetsen of het dagelijkse werk er daadwerkelijk beter van wordt."
           ],
           "bullets": [
             "Kies een probleem dat je kunt aanwijzen, zoals herhaalde invoer of een foutgevoelige overdracht.",
@@ -31,7 +31,7 @@
           "heading": "Van ontwikkeling naar een bruikbare eerste stap",
           "paragraphs": [
             "Voor bedrijven met een jaaromzet van €250.000 tot €25 miljoen is het vaak praktisch om één proces tegelijk aan te pakken. Dat houdt de investering en de verandering bespreekbaar. Een werkende verbetering geeft vervolgens een betere basis voor een volgende stap.",
-            "Mijn advies: kijk deze week eens welke terugkerende handeling je team om een omweg vraagt. Leg vast wat er gebeurt, hoeveel herstelwerk nodig is en welk resultaat je wilt bereiken. Dat is een concreet begin voor advies en uitvoering."
+            "Ons advies: kijk deze week eens welke terugkerende handeling je team om een omweg vraagt. Leg vast wat er gebeurt, hoeveel herstelwerk nodig is en welk resultaat je wilt bereiken. Dat is een concreet begin voor advies en uitvoering."
           ]
         }
       ],
@@ -45,7 +45,7 @@
       ],
       "related": [
         {"url": "/procesautomatisering/", "title": "Een bedrijfsproces verbeteren en automatiseren"},
-        {"url": "/over/#bedrijfsprocessen", "title": "Hoe ik je bedrijfsproces doorgrond"}
+        {"url": "/over/#bedrijfsprocessen", "title": "Hoe we je bedrijfsproces doorgronden"}
       ]
     },
     {
@@ -69,7 +69,7 @@
           "heading": "Het probleem zit vaak in de onderbreking",
           "paragraphs": [
             "Een document uploaden is een korte handeling. Een hele serie documenten verwerken is een werkproces. Je selecteert bestanden, kijkt naar de voortgang en wilt intussen soms naar een andere pagina. Als daarna onduidelijk is wat al binnen is, begint het zoekwerk opnieuw.",
-            "In de doorontwikkeling voor Olympus Bouw heb ik daarom aandacht besteed aan openstaande bestanden en herkenbare voortgang bij het wisselen van scherm of herladen van de pagina. Het doel is dat de gebruiker kan zien waar de verwerking is gebleven en welke volgende stap passend is."
+            "In de doorontwikkeling voor Olympus Bouw hebben we daarom aandacht besteed aan openstaande bestanden en herkenbare voortgang bij het wisselen van scherm of herladen van de pagina. Het doel is dat de gebruiker kan zien waar de verwerking is gebleven en welke volgende stap passend is."
           ]
         },
         {
@@ -90,7 +90,7 @@
           "heading": "Wat dit in het dagelijkse werk oplevert",
           "paragraphs": [
             "De winst zit in minder uitzoeken welke bestanden je opnieuw moet aanbieden en minder onzekerheid over de uitkomst. Dat maakt de verwerking beter te volgen, ook wanneer het werk wordt onderbroken.",
-            "Een concrete urenbesparing is hiervoor nog niet gemeten. Wel is de verbetering direct te beoordelen op gedrag: blijft openstaand werk zichtbaar, krijgt een onzeker resultaat de juiste controle en is de volgende handeling duidelijk? Dat zijn de vragen waarmee ik deze doorontwikkeling toets."
+            "Een concrete urenbesparing is hiervoor nog niet gemeten. Wel is de verbetering direct te beoordelen op gedrag: blijft openstaand werk zichtbaar, krijgt een onzeker resultaat de juiste controle en is de volgende handeling duidelijk? Dat zijn de vragen waarmee we deze doorontwikkeling toetsen."
           ]
         }
       ],

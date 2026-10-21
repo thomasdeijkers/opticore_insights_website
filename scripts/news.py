@@ -129,7 +129,7 @@ def render():
             if source.get('published'): dates.append('Gepubliceerd '+date_label(source['published']))
             if source.get('checked'): dates.append('Geraadpleegd '+date_label(source['checked']))
             sources.append(f'<li><a href="{safe_link(source["url"])}">{escape(source["title"])}</a><small>{" · ".join(dates)}</small></li>')
-        body.append('<section class="news-sources"><h2>'+('Bron en duiding' if article['kind']=='nieuws' else 'Bij dit project')+'</h2>'+('<p>De externe ontwikkeling komt uit onderstaande publicatie. De vertaling naar bedrijfsprocessen en het mkb is mijn eigen analyse.</p>' if article['kind']=='nieuws' else '')+'<ul>'+''.join(sources)+'</ul></section>')
+        body.append('<section class="news-sources"><h2>'+('Bron en duiding' if article['kind']=='nieuws' else 'Bij dit project')+'</h2>'+('<p>De externe ontwikkeling komt uit onderstaande publicatie. De vertaling naar bedrijfsprocessen en het mkb is onze eigen analyse.</p>' if article['kind']=='nieuws' else '')+'<ul>'+''.join(sources)+'</ul></section>')
         related = ''.join(f'<li><a href="{safe_link(link["url"])}">{escape(link["title"])} →</a></li>' for link in article['related'])
         body.append('<section class="news-related"><h2>Verder lezen</h2><ul>'+related+'<li><a href="/nieuws/">Alle nieuws- en praktijkberichten →</a></li></ul></section>')
         modified = '' if article['modified_at']==article['published_at'] else f'<p class="news-byline">Bijgewerkt <time datetime="{article["modified_at"]}">{date_label(article["modified_at"])}</time></p>'
@@ -140,12 +140,12 @@ def render():
         outputs[ROOT/url.lstrip('/')/'index.html'] = document(url,article['title'],article['description'],main,article)
 
     overview = '''<nav class="breadcrumbs" aria-label="Broodkruimelpad"><ol class="container"><li><a href="/">Home</a></li><li><span aria-current="page">Nieuws en praktijk</span></li></ol></nav>
-<section class="page-intro"><div class="container"><h1>Nieuws en praktijk.</h1><p class="lead">Wat ontwikkelingen in dashboards, automatisering en websites voor je bedrijf kunnen betekenen. En hoe ik die inzichten toepas in mijn werk.</p></div></section>
-<section class="section"><div class="container"><div class="cards">'''+''.join(cards)+'''</div><p class="news-overview-note">Nieuwsberichten bevatten bronverwijzingen en mijn duiding. Projectupdates gaan over aantoonbare werkzaamheden. <a href="/projecten/">Bekijk ook de volledige projectverhalen →</a></p><p class="section-more"><a href="/nieuws/feed.xml">Volg de berichten via RSS →</a></p></div></section>'''
+<section class="page-intro"><div class="container"><h1>Nieuws en praktijk.</h1><p class="lead">Wat ontwikkelingen in dashboards, automatisering en websites voor je bedrijf kunnen betekenen. En hoe we die inzichten toepassen in onze opdrachten.</p></div></section>
+<section class="section"><div class="container"><div class="cards">'''+''.join(cards)+'''</div><p class="news-overview-note">Nieuwsberichten bevatten bronverwijzingen en onze duiding. Projectupdates gaan over aantoonbare werkzaamheden. <a href="/projecten/">Bekijk ook de volledige projectverhalen →</a></p><p class="section-more"><a href="/nieuws/feed.xml">Volg de berichten via RSS →</a></p></div></section>'''
     outputs[ROOT/'nieuws/index.html'] = document('/nieuws/','Nieuws en praktijk: data, processen & automatisering','Ontwikkelingen in dashboards, automatisering en websites. ✓ Duiding voor ondernemers ✓ Updates uit echte projecten ✓ Praktische verbeteringen voor je bedrijf.',overview)
 
     items = ''.join(f'<li>{byline(a)}<a href="{route(a)}">{escape(a["title"])} →</a><p>{escape(a["summary"])}</p></li>' for a in articles[:2])
-    latest = f'{START}\n<section class="section home-updates"><div class="container"><div class="section-heading"><h2>Nieuws en praktijk</h2><p>Ontwikkelingen in mijn vakgebied en verbeteringen uit mijn projecten.</p></div><ul class="resource-list">{items}</ul><p class="section-more"><a href="/nieuws/">Alle berichten →</a></p></div></section>\n{END}'
+    latest = f'{START}\n<section class="section home-updates"><div class="container"><div class="section-heading"><h2>Nieuws en praktijk</h2><p>Ontwikkelingen in ons vakgebied en verbeteringen uit onze projecten.</p></div><ul class="resource-list">{items}</ul><p class="section-more"><a href="/nieuws/">Alle berichten →</a></p></div></section>\n{END}'
     if home.count(START)!=1 or home.count(END)!=1:
         raise ValueError('Homepage needs one NEWS-LATEST marker pair')
     home = re.sub(re.escape(START)+r'.*?'+re.escape(END),lambda _:latest,home,flags=re.S)

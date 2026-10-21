@@ -57,6 +57,12 @@ Maak eerst een volledige backup van de bestaande WordPress-bestanden en database
 
 ## Paginastructuur en SEO
 
+### Schrijfstijl
+
+Schrijf namens OptiCore Insights, in de wij-vorm of met de bedrijfsnaam. Gebruik bijvoorbeeld ‘onze marketingagent’, ‘we ontwikkelen’ en ‘onze aanpak’; gebruik geen ‘mijn’, ‘ik’ of ‘mij’ voor de onderneming of haar diensten. Pas dit ook toe in projectverhalen, nieuws, metadata en tekstsjablonen voor nieuwe pagina’s.
+
+Beschrijf de persoonlijke loopbaan van Thomas in de derde persoon en houd eerdere functies bij andere werkgevers aan hem gekoppeld. Antwoorden, toestemmingen en berichtconcepten die de bezoeker zelf invult of verstuurt, mogen vanuit die bezoeker in de ik-vorm blijven staan.
+
 De hoofdroute is Home → Diensten / Portfolio → onderwerp of case → Contact. De kennisbank is bereikbaar via de voettekst en gerelateerde onderwerpen.
 
 Elke pagina bevat een unieke titel en metaomschrijving, één H1, een canonieke URL met afsluitende slash en gestructureerde gegevens voor de pagina en broodkruimels. Werk bij wijzigingen ook de bijbehorende `.html`-alias bij; de mapversie `index.html` is de voorkeursroute. De sitemap bevat alleen de canonieke, indexeerbare routes. Oude generieke projectopzetten blijven bereikbaar met `noindex,follow`; de zes uitgewerkte klantcases zijn wel indexeerbaar.
