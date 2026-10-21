@@ -17,15 +17,13 @@ Officiële bol-bronnen gecontroleerd voor de uitleg van ACoS, TACoS en conversie
 
 ## Schermbeelden
 
-`bol-ranking-demo.png` en `bol-marketing-agent-demo.png` tonen de bestaande HTML/CSS/JS en geselecteerde pure renderfuncties uit de app, lokaal gerenderd met uitsluitend fictieve `DEMO-*` artikelen, zoekwoorden en cijfers. Geen database, bedrijfsgegevens, credentials of live API-koppeling geladen. De ranking-JS leest alleen een lokale synthetische JSON-route; POST is geblokkeerd. De marketingpagina voert geen app-JavaScript of acties uit. De website benoemt de fictieve gegevens bij ieder schermbeeld. Er is geen AI-afbeelding als echte app voorgesteld.
-
-Het bestaande `dashboard-forecast-demo.jpg` is eveneens de echte forecastinterface met fictieve gegevens. De bron- en screenshotfixtures staan buiten Git onder `.codex/website-checks`; alleen de bedoelde publieke afbeeldingen worden gepubliceerd.
+Vanaf 22 oktober 2026 gebruiken de appvoorbeelden een neutrale huisstijl, op verzoek van de gebruiker. De ranking-, marketing-, forecasting- en voorraadbeelden onder `assets/img/examples/` illustreren de functionaliteit met uitsluitend fictieve artikelen, zoekwoorden en cijfers. Het zijn geen kopieën van de productie-interface. De bron is zelfstandige statische HTML/CSS uit `scripts/neutral_visuals.py`; er wordt geen appcode, database, credential of API gebruikt. Zie het capturemanifest en `docs/visual-assets.md`.
 
 ## Prominente plaatsing en originele bol-beelden
 
 De homepage toont de bol-app direct na de introductie van Thomas. De dienstenpagina begint na de inleiding met dezelfde ingang. Alle pagina's hebben een eigen menulink en footerlink voor bol-verkopers. Het menu klapt tot 1000 px in, zodat de extra ingang niet tot een overvolle bovenbalk leidt.
 
-De twee `bol-partnerplatform-*.png` schermbeelden zijn op 20 oktober 2026 rechtstreeks vastgelegd van de openbare Partnerplatform-pagina's over het koopblok en Sponsored Products. Er is geen verkoopaccount geopend. De beelden bevatten geen klantgegevens. Bij de inhoudelijke uitleg staan het platform en een link naar de oorspronkelijke pagina. De beelden openen in de gedeelde fotoviewer. De appbeelden blijven afzonderlijk herkenbaar als eigen interface met fictieve gegevens. Zie `docs/screenshot-gallery.md` voor de mobiele beelden en galerij.
+De twee `bol-partnerplatform-*.png` schermbeelden zijn op 20 oktober 2026 rechtstreeks vastgelegd van de openbare Partnerplatform-pagina's over het koopblok en Sponsored Products. Er is geen verkoopaccount geopend. De beelden bevatten geen klantgegevens. Bij de inhoudelijke uitleg staan het platform en een link naar de oorspronkelijke pagina. De beelden openen in de gedeelde fotoviewer. De appbeelden zijn afzonderlijk herkenbaar als neutrale voorbeeldweergaven met fictieve gegevens. Zie `docs/screenshot-gallery.md` voor de mobiele beelden en galerij.
 
 - Koopblok: https://partnerplatform.bol.com/nl/idp/koopblok
 - Sponsored Products: https://partnerplatform.bol.com/nl/cdp/sponsored-products

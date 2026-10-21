@@ -4,24 +4,6 @@
     <loc>https://opticore-insights.nl/</loc>
     <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile-overview.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-demo.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile-overview.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile.png</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/bol-wordmark.svg</image:loc>
     </image:image>
     <image:image>
@@ -43,22 +25,40 @@
       <image:loc>https://opticore-insights.nl/assets/img/clients/top-groep-nederland.png</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-overview-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-overview-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -80,22 +80,22 @@
     <loc>https://opticore-insights.nl/api-integraties/</loc>
     <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -114,15 +114,6 @@
     <loc>https://opticore-insights.nl/bol-ondernemers/</loc>
     <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile-overview.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile.png</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/bol-partnerplatform-koopblok.png</image:loc>
     </image:image>
     <image:image>
@@ -132,34 +123,43 @@
       <image:loc>https://opticore-insights.nl/assets/img/bol-partnerplatform-sponsored-products.png</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-demo.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile-overview.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile.png</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/bol-wordmark.svg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-overview-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-overview-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -174,46 +174,46 @@
     <loc>https://opticore-insights.nl/dashboard-ontwikkeling/</loc>
     <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile-overview.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-demo.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile-overview.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile.png</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/clients/smartlife-domotica.svg</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/clients/top-groep-nederland.png</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-overview-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-overview-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -222,27 +222,27 @@
   </url>
   <url>
     <loc>https://opticore-insights.nl/data-analyse/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-demo.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile-overview.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-overview-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -267,56 +267,56 @@
     <loc>https://opticore-insights.nl/diensten/</loc>
     <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile-overview.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-demo.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile-overview.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile.png</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/bol-wordmark.svg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-overview-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-overview-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/ecommerce-automatisering/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile-overview.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-overview-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -330,7 +330,7 @@
       <image:loc>https://opticore-insights.nl/assets/img/clients/de-valk-advies.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/project-de-valk-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-desktop.jpg</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/technology/excel.svg</image:loc>
@@ -338,24 +338,24 @@
   </url>
   <url>
     <loc>https://opticore-insights.nl/forecasting/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -375,27 +375,27 @@
   </url>
   <url>
     <loc>https://opticore-insights.nl/kpi-dashboard/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile-overview.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-overview-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -407,58 +407,58 @@
   </url>
   <url>
     <loc>https://opticore-insights.nl/marketplace-synchronisatie/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile-overview.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-overview-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/modulaire-webapp/</loc>
     <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile.png</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/clients/smartlife-domotica.svg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -471,9 +471,9 @@
   </url>
   <url>
     <loc>https://opticore-insights.nl/nieuws/olympus-bouw-documentintake-hervatten/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/project-olympus-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-desktop.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -494,7 +494,7 @@
       <image:loc>https://opticore-insights.nl/assets/img/clients/top-groep-nederland.png</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/project-top-groep-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-desktop.jpg</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/technology/postgresql.png</image:loc>
@@ -507,16 +507,16 @@
       <image:loc>https://opticore-insights.nl/assets/img/clients/smartlife-domotica.svg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/power-bi-customer-profitability.png</image:loc>
@@ -540,61 +540,61 @@
     <loc>https://opticore-insights.nl/procesautomatisering/</loc>
     <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile-overview.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-demo.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile-overview.png</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile.png</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/clients/de-valk-advies.webp</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/clients/olympus-bouw.png</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-overview-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-overview-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/productdata/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile-overview.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-overview-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-demo.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile-overview.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-overview-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/projecten/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/clients/de-valk-advies.webp</image:loc>
     </image:image>
@@ -614,10 +614,16 @@
       <image:loc>https://opticore-insights.nl/assets/img/clients/top-groep-nederland.png</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/project-de-valk-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-desktop.jpg</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/project-hellosmart.jpg</image:loc>
@@ -626,18 +632,12 @@
       <image:loc>https://opticore-insights.nl/assets/img/project-home-assistant-hub.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/project-olympus-demo.jpg</image:loc>
-    </image:image>
-    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/project-rust-werkt-concept.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/project-top-groep-demo.jpg</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/projecten/dashboards/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/clients/olympus-bouw.png</image:loc>
     </image:image>
@@ -648,25 +648,25 @@
       <image:loc>https://opticore-insights.nl/assets/img/clients/top-groep-nederland.png</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/project-olympus-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/project-top-groep-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-desktop.jpg</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/projecten/de-valk-advies/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/project-de-valk-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-desktop.jpg</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/projecten/documentverwerking/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/clients/de-valk-advies.webp</image:loc>
     </image:image>
@@ -677,13 +677,13 @@
       <image:loc>https://opticore-insights.nl/assets/img/clients/top-groep-nederland.png</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/project-de-valk-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/project-olympus-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/project-top-groep-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-desktop.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -702,9 +702,9 @@
   </url>
   <url>
     <loc>https://opticore-insights.nl/projecten/olympus-bouw/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/project-olympus-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-desktop.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -716,42 +716,42 @@
   </url>
   <url>
     <loc>https://opticore-insights.nl/projecten/smartlife-domotica/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile-overview.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-demo.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile-overview.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/bol-ranking-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/marketing-overview-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-overview-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -778,9 +778,9 @@
   </url>
   <url>
     <loc>https://opticore-insights.nl/projecten/top-groep-nederland/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/project-top-groep-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-desktop.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -809,7 +809,7 @@
       <image:loc>https://opticore-insights.nl/assets/img/clients/de-valk-advies.webp</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/project-de-valk-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-desktop.jpg</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/technology/python.svg</image:loc>
@@ -824,24 +824,24 @@
   </url>
   <url>
     <loc>https://opticore-insights.nl/voorraadanalyses/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-demo.jpg</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-desktop.jpg</image:loc>
     </image:image>
     <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-mobile.png</image:loc>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>

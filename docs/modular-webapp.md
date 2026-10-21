@@ -4,7 +4,7 @@ De pagina `/modulaire-webapp/` beschrijft webapps op maat met twaalf mogelijke m
 
 De modulekeuze gebruikt alleen publieke module-ID’s en neemt de selectie mee naar het onderwerp `webapp` op de contactpagina. Alleen bekende ID’s worden omgezet naar bewerkbare tekst. De laatste contactverzendknop blijft de enige mailactie. Houd de labels in de modulekaarten en `assets/js/modular-webapp.js` gelijk.
 
-De galerij hergebruikt echte schermen met fictieve gegevens en de bestaande automatische mobiele/desktopselectie. De gegevensstromen en voorbeeldmodules beschrijven maatwerk dat we per opdracht uitwerken; ze doen geen toezegging dat elke leverancier alle gewenste acties ondersteunt.
+De galerij gebruikt neutrale voorbeeldweergaven met fictieve gegevens en de bestaande automatische mobiele/desktopselectie. De beelden illustreren functionaliteit; ze zijn geen kopieën van productieschermen. De gegevensstromen en voorbeeldmodules beschrijven maatwerk dat we per opdracht uitwerken; ze doen geen toezegging dat elke leverancier alle gewenste acties ondersteunt.
 
 ## API-voorbeelden
 

@@ -44,8 +44,14 @@
         }
       ],
       "related": [
-        {"url": "/procesautomatisering/", "title": "Een bedrijfsproces verbeteren en automatiseren"},
-        {"url": "/over/#bedrijfsprocessen", "title": "Hoe we je bedrijfsproces doorgronden"}
+        {
+          "url": "/procesautomatisering/",
+          "title": "Een bedrijfsproces verbeteren en automatiseren"
+        },
+        {
+          "url": "/over/#bedrijfsprocessen",
+          "title": "Hoe we je bedrijfsproces doorgronden"
+        }
       ]
     },
     {
@@ -58,11 +64,11 @@
       "published_at": "2026-10-20T01:40:00+02:00",
       "modified_at": "2026-10-20T01:40:00+02:00",
       "image": {
-        "src": "/assets/img/project-olympus-demo.jpg",
-        "width": 1265,
-        "height": 712,
-        "alt": "Takenoverzicht van de Olympus-applicatie met fictieve dossiers en aantallen",
-        "caption": "Het takenoverzicht van de gemaakte applicatie. Dit beeld toont de algemene werkruimte; personen, opdrachten en aantallen zijn fictief."
+        "src": "/assets/img/examples/document-intake-desktop.jpg",
+        "width": 1280,
+        "height": 900,
+        "alt": "Neutrale voorbeeldweergave van documentintake en dossieropvolging met fictieve personen en opdrachten.",
+        "caption": "Neutrale voorbeeldweergave van documentintake en dossieropvolging met fictieve personen en opdrachten."
       },
       "sections": [
         {
@@ -95,11 +101,21 @@
         }
       ],
       "sources": [
-        {"title": "Het volledige projectverhaal van Olympus Bouw", "url": "/projecten/olympus-bouw/", "checked": "2026-10-20"}
+        {
+          "title": "Het volledige projectverhaal van Olympus Bouw",
+          "url": "/projecten/olympus-bouw/",
+          "checked": "2026-10-20"
+        }
       ],
       "related": [
-        {"url": "/projecten/olympus-bouw/", "title": "Van planning naar een controleerbaar dossier"},
-        {"url": "/ocr-documentverwerking/", "title": "Documentherkenning met een controlelaag"}
+        {
+          "url": "/projecten/olympus-bouw/",
+          "title": "Van planning naar een controleerbaar dossier"
+        },
+        {
+          "url": "/ocr-documentverwerking/",
+          "title": "Documentherkenning met een controlelaag"
+        }
       ]
     }
   ]

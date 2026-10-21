@@ -37,4 +37,16 @@ Added for the Power BI, Excel, Python and PostgreSQL explanations and the relate
 - `technology/postgresql.png`: original PostgreSQL elephant from `https://www.postgresql.org/media/img/about/press/elephant.png`, linked by `https://www.postgresql.org/about/press/presskit18/#graphics`. See the project's trademark policy at `https://www.postgresql.org/about/policies/trademarks/`.
 - `power-bi-customer-report.png` (1954 × 1141) and `power-bi-customer-profitability.png` (578 × 569): unmodified `customer2.png` and `power-bi-dash.png` from `https://learn.microsoft.com/en-us/power-bi/create-reports/media/sample-customer-profitability/`. The Microsoft/obviEnce sample and its context: `https://learn.microsoft.com/en-us/power-bi/create-reports/sample-customer-profitability`. They are labelled as Microsoft sample reports, separately from OptiCore's own project screenshots.
 
-The project examples reuse existing, anonymized images of the actual De Valk Advies, Top Groep Nederland and Smartlife applications. Smartlife uses the existing mobile/desktop image pairs. Public Power BI samples and project screenshots without a mobile variant retain their original layout and can be opened in the common image viewer; no fabricated mobile screenshots are used.
+The technology examples now use neutral illustrations for the De Valk Advies, Top Groep Nederland and Smartlife functionality, as described below. Public Power BI samples retain their original layout and attribution.
+
+## Neutral dashboard and application examples — 22 October 2026
+
+At the user's request, fifteen images of the actual application interfaces were replaced with a consistent neutral visual style. No client logos, OptiCore application branding, original app CSS, database, API or application code is included. Figures, names and articles are fictitious. These images illustrate functionality and must not be described as production screenshots.
+
+- Editable source: `scripts/neutral_visuals.py` and `scripts/neutral_visuals.css`.
+- Capture manifest: `scripts/neutral_visuals_manifest.json` (page, public filename, old filename, dimensions and alt text).
+- Public assets: `assets/img/examples/`. Eight desktop images at 1280 × 900; seven phone images at 390 × 844.
+- Generate static source pages with `python scripts/neutral_visuals.py <scratch-directory>` and serve that directory on loopback. Capture each manifest entry with the browser at the stated viewport size. Commit the reviewed JPEGs, not scratch HTML output.
+- The same responsive HTML/CSS produces the phone and desktop layouts. Keep full viewport captures and the gallery's existing automatic device selection.
+- Existing product logos and unmodified Microsoft/bol source screenshots remain separate from this neutral example collection. Public website project screenshots are also unchanged.
+- The superseded application-interface assets were removed from the repository and are no longer deployed.

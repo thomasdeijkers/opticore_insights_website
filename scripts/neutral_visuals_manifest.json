@@ -1,0 +1,122 @@
+[
+  {
+    "old": "dashboard-management-demo.jpg",
+    "file": "management-desktop.jpg",
+    "page": "management",
+    "width": 1280,
+    "height": 900,
+    "alt": "Neutrale voorbeeldweergave van een managementdashboard met fictieve omzet, marge en orders."
+  },
+  {
+    "old": "dashboard-management-mobile.png",
+    "file": "management-mobile.jpg",
+    "page": "management",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutrale mobiele voorbeeldweergave van een managementdashboard met fictieve gegevens."
+  },
+  {
+    "old": "dashboard-forecast-demo.jpg",
+    "file": "forecast-desktop.jpg",
+    "page": "forecast",
+    "width": 1280,
+    "height": 900,
+    "alt": "Neutrale voorbeeldweergave van omzetforecasting en inkoopplanning met fictieve gegevens."
+  },
+  {
+    "old": "dashboard-forecast-mobile.png",
+    "file": "forecast-mobile.jpg",
+    "page": "forecast",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutrale mobiele voorbeeldweergave van omzetforecasting met fictieve gegevens."
+  },
+  {
+    "old": "dashboard-voorraad-demo.jpg",
+    "file": "stock-desktop.jpg",
+    "page": "stock",
+    "width": 1280,
+    "height": 900,
+    "alt": "Neutrale voorbeeldweergave van voorraad en besteladvies met fictieve artikelen."
+  },
+  {
+    "old": "dashboard-voorraad-mobile.png",
+    "file": "stock-mobile.jpg",
+    "page": "stock",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutrale mobiele voorbeeldweergave van voorraad en besteladvies met fictieve artikelen."
+  },
+  {
+    "old": "bol-ranking-demo.png",
+    "file": "ranking-desktop.jpg",
+    "page": "ranking",
+    "width": 1280,
+    "height": 900,
+    "alt": "Neutrale voorbeeldweergave van ranking en zoekwoordposities met fictieve metingen."
+  },
+  {
+    "old": "bol-ranking-mobile.png",
+    "file": "ranking-mobile.jpg",
+    "page": "ranking-detail",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutrale mobiele voorbeeldweergave van zoekwoorddetails met fictieve metingen."
+  },
+  {
+    "old": "bol-ranking-mobile-overview.png",
+    "file": "ranking-overview-mobile.jpg",
+    "page": "ranking",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutrale mobiele voorbeeldweergave van ranking per artikel met fictieve gegevens."
+  },
+  {
+    "old": "bol-marketing-agent-demo.png",
+    "file": "marketing-desktop.jpg",
+    "page": "marketing",
+    "width": 1280,
+    "height": 900,
+    "alt": "Neutrale voorbeeldweergave van marketingvoorstellen en campagnebeoordeling met fictieve gegevens."
+  },
+  {
+    "old": "bol-marketing-mobile.png",
+    "file": "marketing-mobile.jpg",
+    "page": "marketing",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutrale mobiele voorbeeldweergave van marketingvoorstellen met fictieve gegevens."
+  },
+  {
+    "old": "bol-marketing-mobile-overview.png",
+    "file": "marketing-overview-mobile.jpg",
+    "page": "marketing-overview",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutrale mobiele voorbeeldweergave van campagneprestaties met fictieve gegevens."
+  },
+  {
+    "old": "project-top-groep-demo.jpg",
+    "file": "timesheets-desktop.jpg",
+    "page": "timesheets",
+    "width": 1280,
+    "height": 900,
+    "alt": "Neutrale voorbeeldweergave van uren en periodecontrole, met fictieve medewerkers en aantallen."
+  },
+  {
+    "old": "project-de-valk-demo.jpg",
+    "file": "document-review-desktop.jpg",
+    "page": "documents",
+    "width": 1280,
+    "height": 900,
+    "alt": "Neutrale voorbeeldweergave van begrotingscontrole met fictieve regels en een controleverschil van 240 euro."
+  },
+  {
+    "old": "project-olympus-demo.jpg",
+    "file": "document-intake-desktop.jpg",
+    "page": "intake",
+    "width": 1280,
+    "height": 900,
+    "alt": "Neutrale voorbeeldweergave van documentintake en dossieropvolging met fictieve personen en opdrachten."
+  }
+]

@@ -50,7 +50,7 @@ projectontwikkelingen van de week mee; maak losse berichten als dat duidelijker 
   nieuwe klantnamen zonder bestaande publicatie of uitdrukkelijke toestemming.
   Geen persoonsgegevens, echte omzetcijfers, tarieven, documenten, credentials,
   interne adressen of vertrouwelijke roadmap. Gebruik geen runtimegegevens.
-- Screenshots komen uit de echte interface met uitsluitend fictieve gegevens.
+- Gebruik voor dashboards en applicaties neutrale voorbeeldweergaven met fictieve gegevens. Presenteer die niet als productieschermen. Originele openbare website- en leveranciersbeelden blijven herkenbaar als bronbeelden, met bronverwijzing.
   Gebruik bestaande veilige beelden, of maak een lokale geïsoleerde fixture.
   Verzin geen schermen, testimonials, resultaten, urenbesparing of percentages.
 - Wijzig de bronprojecten niet. Verstuur geen berichten naar andere taken of mensen.
