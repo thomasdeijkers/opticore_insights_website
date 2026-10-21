@@ -19,8 +19,10 @@ jobs:
       - name: Render and validate news
         run: python3 scripts/news.py --write
 
-      - name: Generate and validate sitemap
-        run: python3 scripts/sitemap.py --write
+      - name: Generate and validate sitemap and metadata
+        run: |
+          python3 scripts/sitemap.py --write
+          python3 scripts/metadata.py --check
 
       - name: Validate business scan
         run: |

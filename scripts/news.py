@@ -78,7 +78,7 @@ def render():
 
     def document(path, title, description, main, article=None):
         url = BASE + path
-        full_title = title + ' | OptiCore Insights'
+        full_title = (article.get('seo_title', title) if article else title) + ' | OptiCore Insights'
         schema = deepcopy(identity)
         crumbs = [('Home',BASE+'/'),('Nieuws en praktijk',BASE+'/nieuws/')]
         if article:
@@ -142,7 +142,7 @@ def render():
     overview = '''<nav class="breadcrumbs" aria-label="Broodkruimelpad"><ol class="container"><li><a href="/">Home</a></li><li><span aria-current="page">Nieuws en praktijk</span></li></ol></nav>
 <section class="page-intro"><div class="container"><h1>Nieuws en praktijk.</h1><p class="lead">Wat ontwikkelingen in dashboards, automatisering en websites voor je bedrijf kunnen betekenen. En hoe we die inzichten toepassen in onze opdrachten.</p></div></section>
 <section class="section"><div class="container"><div class="cards">'''+''.join(cards)+'''</div><p class="news-overview-note">Nieuwsberichten bevatten bronverwijzingen en onze duiding. Projectupdates gaan over aantoonbare werkzaamheden. <a href="/projecten/">Bekijk ook de volledige projectverhalen →</a></p><p class="section-more"><a href="/nieuws/feed.xml">Volg de berichten via RSS →</a></p></div></section>'''
-    outputs[ROOT/'nieuws/index.html'] = document('/nieuws/','Nieuws en praktijk: data, processen & automatisering','Ontwikkelingen in dashboards, automatisering en websites. ✓ Duiding voor ondernemers ✓ Updates uit echte projecten ✓ Praktische verbeteringen voor je bedrijf.',overview)
+    outputs[ROOT/'nieuws/index.html'] = document('/nieuws/','Nieuws over data & bedrijfsprocessen','Lees nieuws en praktijkverhalen over data, automatisering en websites. ✓ Duiding voor ondernemers ✓ Updates over de oplossingen die we ontwikkelen.',overview)
 
     items = ''.join(f'<li>{byline(a)}<a href="{route(a)}">{escape(a["title"])} →</a><p>{escape(a["summary"])}</p></li>' for a in articles[:2])
     latest = f'{START}\n<section class="section home-updates"><div class="container"><div class="section-heading"><h2>Nieuws en praktijk</h2><p>Ontwikkelingen in ons vakgebied en verbeteringen uit onze projecten.</p></div><ul class="resource-list">{items}</ul><p class="section-more"><a href="/nieuws/">Alle berichten →</a></p></div></section>\n{END}'

@@ -4,7 +4,7 @@
       "slug": "ai-softwareonderhoud-mkb",
       "kind": "nieuws",
       "title": "AI bij softwareonderhoud: kansen voor het mkb",
-      "description": "AI kan helpen bij onderhoud aan bedrijfssoftware. ✓ Duiding van een recente praktijkpublicatie ✓ Wat dit betekent voor je dashboard en automatisering.",
+      "description": "Wat kan AI betekenen voor onderhoud aan bedrijfssoftware? ✓ Onze duiding voor het mkb ✓ Een gerichte aanpak met bewijs, controle en een afgebakende eerste stap.",
       "summary": "Een recente publicatie over AI bij softwareonderhoud laat zien waarom bewijs, controle en een afgebakende eerste stap belangrijk blijven. Onze vertaling naar het mkb.",
       "published_at": "2026-10-20T01:40:00+02:00",
       "modified_at": "2026-10-20T01:40:00+02:00",
@@ -52,14 +52,15 @@
           "url": "/over/#bedrijfsprocessen",
           "title": "Hoe we je bedrijfsproces doorgronden"
         }
-      ]
+      ],
+      "seo_title": "AI bij softwareonderhoud voor het mkb"
     },
     {
       "slug": "olympus-bouw-documentintake-hervatten",
       "kind": "project",
       "project": "olympus-bouw",
       "title": "Olympus Bouw: verder kunnen na een onderbroken upload",
-      "description": "Doorontwikkeling van de documentintake voor Olympus Bouw. ✓ Openstaand werk terugvinden ✓ Bewust opnieuw proberen ✓ Meer grip op de verwerking.",
+      "description": "Lees hoe de documentintake voor Olympus Bouw verder kan na een onderbreking. ✓ Openstaand werk terugvinden ✓ Opnieuw proberen met controle op de verwerking.",
       "summary": "Wat gebeurt er met een serie documenten als je wegklikt of de pagina herlaadt? In de Olympus-applicatie is juist die onderbreking onderdeel van de doorontwikkeling.",
       "published_at": "2026-10-20T01:40:00+02:00",
       "modified_at": "2026-10-20T01:40:00+02:00",
@@ -116,7 +117,8 @@
           "url": "/ocr-documentverwerking/",
           "title": "Documentherkenning met een controlelaag"
         }
-      ]
+      ],
+      "seo_title": "Olympus Bouw: documentintake hervatten"
     }
   ]
 }

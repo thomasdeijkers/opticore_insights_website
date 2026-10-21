@@ -84,3 +84,9 @@ De route `/bedrijfsscan/` bevat een vragenlijst, een echte AI-samenvatting en ee
 `/keuzehulpen/` legt de werkwijze, toepassingen en aanpak uit. `/demo/keuzehulp/` sluit de drie originele openbare HTML-toepassingen in vanaf `https://vps.smartlife-domotica.nl/`: `keuzehulp-draadloze-schakelaars.html`, `keuzehulp_thermostaten.html` en `ketelhulp.html`. Er worden geen HTML- of feedkopieën uit de app gepubliceerd. De oude fictieve demo is vervangen.
 
 `assets/js/choice-guide.js` verzorgt toegankelijke tabs en de bekende `voorbeeld`-parameters `schakelaars`, `thermostaten` en `ketelhulp`. De iframes blijven bestaan bij tabwissels, zodat keuzes behouden blijven. Zonder JavaScript staan alle drie de ingesloten voorbeelden onder elkaar. De externe toepassingen houden hun eigen gegevens, huisstijl en scrollgedrag; ‘Open apart’ opent dezelfde hulp in een nieuw tabblad. Controleer bij wijzigingen zowel de buitenpagina als de daadwerkelijke selectie en uitkomst binnen ieder iframe, op telefoon en desktop.
+
+## Metadata controleren en exporteren
+
+`python scripts/metadata.py --check` controleert canonieke titels, omschrijvingen, HTML-aliassen en overeenkomst met Open Graph en Twitter. `--verify-live` vergelijkt alle canonieke pagina’s met de gepubliceerde website. Met `--export <absolute map buiten deze repository>` maak je een HTML-tabel en een tekstlijst met alle URL’s, titels, omschrijvingen, lengtes en robots-instellingen. Bewaar gegenereerde rapporten buiten de gepubliceerde broncode.
+
+Nieuwstitels voor SEO kunnen via `seo_title` in `content/news.json` worden verkort zonder de zichtbare artikelkop of publicatiedatum te veranderen. De renderer houdt paginatitels, sociale metadata en gestructureerde paginagegevens gelijk. Zie [de SEO-afspraken](docs/seo-metadata.md).
