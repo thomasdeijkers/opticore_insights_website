@@ -50,3 +50,7 @@ At the user's request, fifteen images of the actual application interfaces were 
 - The same responsive HTML/CSS produces the phone and desktop layouts. Keep full viewport captures and the gallery's existing automatic device selection.
 - Existing product logos and unmodified Microsoft/bol source screenshots remain separate from this neutral example collection. Public website project screenshots are also unchanged.
 - The superseded application-interface assets were removed from the repository and are no longer deployed.
+
+## Security and login examples — 22 October 2026
+
+`assets/img/security/` contains two original empty Olympus login screenshots and four unmodified public Google Authenticator assets. These were requested specifically for the security explanation; they do not replace or expose dashboard screens. No credentials, real QR enrollment codes or recovery keys are shown. Source URLs, dimensions and usage distinctions are documented in [security-page.md](security-page.md). Product attribution is visible on `/beveiliging/`.

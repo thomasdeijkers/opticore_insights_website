@@ -11,6 +11,7 @@ Statische HTML/CSS/JS website voor OptiCore Insights. De site is bedoeld als sne
 - `projecten/dashboards`, `projecten/documentverwerking`, `projecten/websites` - Categorieën met echte cases
 - `projecten/tijdlijn` - Chronologische weergave met filters
 - `website-ontwikkeling.html` - Websiteontwikkeling
+- `beveiliging.html` / `beveiliging/index.html` - Beveiliging, wachtwoordhashing, Google Authenticator en toegangsbeheer; zie `docs/security-page.md`
 - `kennisbank.html` - Onderwerpen gegroepeerd per toepassing
 - `over.html` - Over Thomas Deijkers / OptiCore Insights
 - `contact.html` - Contactformulier
