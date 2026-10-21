@@ -46,10 +46,10 @@ def byline(article):
 def render():
     home = (ROOT / 'index.html').read_text(encoding='utf-8')
     header = re.search(r'<header class="site-header">.*?</header>', home, re.S).group()
-    header = header.replace(' aria-current="page"', '').replace('href="/nieuws/"', 'href="/nieuws/" aria-current="page"', 1)
-    if 'href="/nieuws/"' not in header:
-        raise ValueError('Add the Actueel navigation link before rendering news')
+    header = header.replace(' aria-current="page"', '')
     footer = re.search(r'<footer class="site-footer">.*?</footer>', home, re.S).group()
+    if 'href="/nieuws/"' not in footer:
+        raise ValueError('Keep the news overview reachable from the footer')
     graph = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', home, re.S).group(1))['@graph']
     identity = [item for item in graph if item['@type'] in ['Organization','WebSite']]
     articles = json.loads((ROOT / 'content/news.json').read_text(encoding='utf-8'))['articles']
@@ -105,9 +105,9 @@ def render():
 <meta property="og:title" content="{escape(full_title,quote=True)}"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{url}"><meta property="og:type" content="{'article' if article else 'website'}"><meta property="og:site_name" content="OptiCore Insights"><meta property="og:locale" content="nl_NL"><meta property="og:image" content="{image}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(full_title,quote=True)}"><meta name="twitter:description" content="{escape(description,quote=True)}"><meta name="twitter:image" content="{image}">
 <script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':schema},ensure_ascii=False,separators=(',',':'))}</script>
-<link rel="stylesheet" href="/assets/css/site.css?v=20261021a"><link rel="stylesheet" href="/assets/css/news.css?v=20261020a"><link rel="alternate" type="application/rss+xml" title="OptiCore Insights — Nieuws en praktijk" href="{BASE}/nieuws/feed.xml">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261021b"><link rel="stylesheet" href="/assets/css/news.css?v=20261020a"><link rel="alternate" type="application/rss+xml" title="OptiCore Insights — Nieuws en praktijk" href="{BASE}/nieuws/feed.xml">
 <link rel="stylesheet" href="/assets/css/screenshot-gallery.css?v=20261021c"></head><body><a class="skip-link" href="#inhoud">Direct naar inhoud</a>{header}
-<main id="inhoud">{main}</main>{footer}<script src="/assets/js/main.js?v=20261020d" defer></script><script src="/assets/js/screenshot-gallery.js?v=20261021c" defer></script></body></html>
+<main id="inhoud">{main}</main>{footer}<script src="/assets/js/main.js?v=20261021a" defer></script><script src="/assets/js/screenshot-gallery.js?v=20261021c" defer></script></body></html>
 '''
 
     outputs = {}

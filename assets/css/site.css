@@ -27,9 +27,10 @@ button{cursor:pointer}
 .brand img{width:144px;height:auto;flex-shrink:0}
 .site-nav{display:flex;align-items:center;gap:24px}
 .site-nav a{font-size:15px;color:var(--ink);text-decoration:none;font-weight:600;white-space:nowrap;padding:8px 0}
-.site-nav a:hover,.site-nav a[aria-current=page]{color:var(--link);text-decoration:underline;text-underline-offset:8px}
+.site-nav a:hover,.site-nav a[aria-current=page]{color:var(--link);text-decoration:none}
 .site-nav .nav-contact{border:1px solid var(--line);padding:8px 18px;border-radius:5px}
-.menu-button{display:none;border:1px solid var(--line);background:#fff;padding:8px 12px;color:var(--ink);border-radius:5px;font-size:15px}
+.menu-button{display:none;min-height:44px;min-width:76px;border:1px solid #175a96;background:#175a96;padding:8px 14px;color:#fff;border-radius:5px;font-size:15px;font-weight:650;line-height:1.5}
+.menu-button:hover,.menu-button[aria-expanded=true]{background:#104877;border-color:#104877}
 .menu-button span{padding-left:8px}
 .skip-link{position:absolute;top:0;left:20px;transform:translateY(-140%);z-index:101;background:var(--ink);color:#fff;padding:12px 20px}
 .skip-link:focus{transform:translateY(0)}
@@ -110,8 +111,8 @@ button{cursor:pointer}
 .portfolio-nav{border-bottom:1px solid var(--line);background:var(--soft)}
 .portfolio-nav>.container{display:flex;gap:12px 30px;flex-wrap:wrap;padding-block:18px}
 .portfolio-nav a{font-size:15px;color:var(--muted);text-decoration:none;padding:3px 0}
-.portfolio-nav a[aria-current=page]{font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:7px}
-.portfolio-nav a:hover{text-decoration:underline}
+.portfolio-nav a[aria-current=page]{font-weight:700;color:var(--ink);text-decoration:none}
+.portfolio-nav a:hover{text-decoration:none;color:var(--link)}
 .portfolio-toolbar{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:30px}
 .portfolio-filters{display:flex;flex-wrap:wrap;gap:9px}
 .portfolio-filters button{padding:7px 15px;border:1px solid #c5d1dd;background:#fff;color:var(--ink);border-radius:5px;font-size:14px}
@@ -233,3 +234,7 @@ button{cursor:pointer}
 @media(max-width:560px){.bol-promo h2{font-size:27px}.bol-brand-line{gap:12px;margin-bottom:21px}.bol-brand-line .eyebrow{font-size:12px;line-height:1.6}.bol-wordmark{padding:3px 9px}.bol-wordmark img{width:55px;height:30px}.bol-promo-grid>div>p{font-size:16px}.bol-promo .actions{align-items:flex-start;flex-direction:column;gap:16px}.bol-promo .button{max-width:100%;font-size:14px}.bol-promo-screen figcaption{font-size:12px}}
 
 @media(max-width:360px){.brand{gap:8px}.brand img{width:78px}.brand-tagline{max-width:84px;font-size:9px;flex-shrink:0}.nav-wrap{column-gap:8px}}
+
+/* Keep navigation labels plain and the mobile list short, with clear tap targets. */
+nav a,nav a:hover,.topic-index a,.topic-index a:hover,.site-footer a,.site-footer a:hover{text-decoration:none}
+@media(max-width:1120px){.site-nav{padding:2px 0 12px}.site-nav a,.site-nav .nav-contact{min-height:44px;padding:10px 12px;border:0;border-radius:5px;font-size:15px;line-height:1.6}.site-nav a:hover,.site-nav a[aria-current=page]{background:#edf4fa}}
