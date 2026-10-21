@@ -121,6 +121,42 @@ $topics = json_decode(<<<'JSON'
     "label": "Iets anders / ik weet het nog niet",
     "question": "Wat wil je bespreken?",
     "fields": {}
+  },
+  "team": {
+    "label": "Werken bij OptiCore",
+    "question": "Ervaring en motivatie",
+    "fields": {
+      "collaboration": {
+        "label": "Samenwerkingsvorm",
+        "required": true,
+        "options": {
+          "zzp": "Als zzp’er",
+          "loondienst": "In loondienst"
+        }
+      },
+      "expertise": {
+        "label": "Expertise of gewenste rol",
+        "required": true
+      },
+      "availability": {
+        "label": "Beschikbaarheid",
+        "required": false
+      },
+      "profile": {
+        "label": "Portfolio, website of LinkedIn",
+        "required": false
+      },
+      "rate": {
+        "label": "Uurtarief exclusief btw",
+        "required": false,
+        "collaboration": "zzp"
+      },
+      "hours": {
+        "label": "Gewenste uren per week",
+        "required": false,
+        "collaboration": "loondienst"
+      }
+    }
   }
 }
 JSON
@@ -146,9 +182,16 @@ if (strlen($name) > 480 || strlen($company) > 720 || strlen($email_raw) > 254 ||
 $details = '';
 $submitted_details = is_array($_POST['details'] ?? null) ? $_POST['details'] : [];
 foreach (($topic['fields'] ?? []) as $key => $field) {
+    if (isset($field['collaboration']) && $field['collaboration'] !== ($submitted_details['collaboration'] ?? null)) continue;
     $answer = clean_text($submitted_details[$key] ?? '');
     if ($field['required'] && $answer === '') {
-        render_page('Controleer je gegevens', 'Vul in om welke opdracht of website je vraag gaat.');
+        render_page('Controleer je gegevens', 'Vul het verplichte veld in: ' . $field['label'] . '.');
+    }
+    if (isset($field['options'])) {
+        if (!isset($field['options'][$answer])) {
+            render_page('Controleer je gegevens', 'Kies een geldige optie bij: ' . $field['label'] . '.');
+        }
+        $answer = $field['options'][$answer];
     }
     if (strlen($answer) > 4000) {
         render_page('Antwoord te lang', 'Maak je toelichting iets korter of mail rechtstreeks naar info@opticore-insights.nl.');

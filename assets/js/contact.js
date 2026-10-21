@@ -6,6 +6,15 @@
   if (!choice || !fields) return;
 
   const panels = [...fields.querySelectorAll('[data-contact-topic]')];
+  const teamType = form.querySelector('#team-type');
+  const teamPanels = [...fields.querySelectorAll('[data-team-type]')];
+  function updateTeam() {
+    for (const panel of teamPanels) {
+      const active = choice.value === 'team' && panel.dataset.teamType === teamType?.value;
+      panel.hidden = !active;
+      panel.disabled = !active;
+    }
+  }
   function update(announce = false) {
     const active = panels.find(panel => panel.dataset.contactTopic === choice.value);
     for (const panel of panels) {
@@ -13,6 +22,7 @@
       panel.disabled = panel !== active;
     }
     fields.hidden = !active;
+    updateTeam();
     status.textContent = active && announce
       ? `De vragen voor ‘${choice.selectedOptions[0].textContent}’ staan hieronder.`
       : '';
@@ -25,6 +35,7 @@
   }
 
   choice.addEventListener('change', () => update(true));
+  teamType?.addEventListener('change', updateTeam);
   // Restore the selected form when returning through browser history.
   window.addEventListener('pageshow', () => update());
   form.addEventListener('reset', () => requestAnimationFrame(() => update()));
