@@ -37,7 +37,7 @@ if (!isset($_SESSION['csrf'], $_SESSION['issued']) || time() - $_SESSION['issued
     $_SESSION['issued'] = time();
 }
 if ($method === 'GET') scan_reply(200, ['ready' => $ready, 'csrf' => $_SESSION['csrf']]);
-if (!hash_equals($_SESSION['csrf'], $_SERVER['HTTP_X_SCAN_CSRF'] ?? '')) scan_reply(403, ['message' => 'Je scansessie is verlopen. Klik opnieuw op het maken van je voorstel. Je antwoorden blijven staan.']);
+if (!hash_equals($_SESSION['csrf'], $_SERVER['HTTP_X_SCAN_CSRF'] ?? '')) scan_reply(403, ['message' => 'Je scansessie is verlopen. Maak de samenvatting opnieuw. Je antwoorden blijven staan.']);
 if (!$ready) scan_reply(503, ['message' => 'De AI-scan is tijdelijk niet beschikbaar. Probeer het later opnieuw.']);
 if (stripos($_SERVER['CONTENT_TYPE'] ?? '', 'application/json') !== 0) scan_reply(415, ['message' => 'De scan verwacht een geldig formulier.']);
 if ((int) ($_SERVER['CONTENT_LENGTH'] ?? 0) > 40000) scan_reply(413, ['message' => 'Je antwoorden zijn te lang. Maak je toelichting iets korter.']);
@@ -45,8 +45,8 @@ try {
     $raw = file_get_contents('php://input', false, null, 0, 40001);
     if (strlen($raw) > 40000) scan_reply(413, ['message' => 'Maak je antwoorden iets korter.']);
     $data = json_decode($raw, true, 32, JSON_THROW_ON_ERROR);
-    if (!is_array($data) || ($data['consent'] ?? false) !== true || !empty($data['website'] ?? '')) {
-        scan_reply(422, ['message' => 'Controleer je antwoorden en bevestig dat je een AI-samenvatting wilt laten maken.']);
+    if (!is_array($data) || !empty($data['website'] ?? '')) {
+        scan_reply(422, ['message' => 'Controleer de antwoorden van je bedrijfsscan.']);
     }
     $answers = scan_validate_answers($data['answers'] ?? null);
 } catch (JsonException | InvalidArgumentException $failure) {
@@ -70,7 +70,7 @@ Geef precies: problem (maximaal 120 woorden), approach (maximaal 150 woorden), s
 Problem: vat oorzaak en merkbare gevolgen samen, onderscheid wat de bezoeker zegt van wat nog een vermoeden is.
 Approach: beschrijf een beperkte inventarisatie, prioriteren, een kleine eerste versie, testen met de gebruiker en invoering. Maak de aanpak passend bij het specifieke proces. Adviseer ook een eenvoudigere werkafspraak als techniek niet nodig blijkt.
 Solution: stel een proportionele richting voor (bijvoorbeeld werkafspraak, koppeling, documentverwerking, dashboard of gerichte toepassing), zonder te doen alsof de haalbaarheid al vaststaat. Verbind inzicht aan een concrete vervolgactie als de antwoorden daar aanleiding toe geven, zodat het niet bij monitoren blijft. Stel niet standaard alle diensten voor.
-Benefits: kwalitatieve mogelijke verbeteringen; schat of beloof geen besparing. Als de gebruiker een tijdsbesteding opgeeft is dat de huidige tijdsbesteding, niet de te behalen tijdwinst.
+Benefits: kwalitatieve mogelijke verbeteringen; schat of beloof geen besparing. Als de gebruiker een tijdsbesteding opgeeft is dat de huidige tijdsbesteding, niet de te behalen tijdwinst. Neem een tijdsbesteding alleen letterlijk over met de opgegeven eenheid. Houd frequentie en tijdsbesteding apart: 'dagelijks' werk met '5–10 uur per week' kost samen 5–10 uur PER WEEK, nooit per dag. Bereken of extrapoleer geen nieuwe tijdsbedragen.
 Questions: de belangrijkste nog te controleren aannames voor een menselijk gesprek met Thomas. Dit is een bewerkbaar startpunt en geen afgerond advies of offerte.
 PROMPT;
 $payload = [

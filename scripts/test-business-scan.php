@@ -38,6 +38,18 @@ $bad = $input; $bad['sector'] = "\xB1\x31";
 rejects_scan(fn() => scan_validate_answers($bad), InvalidArgumentException::class);
 $bad = $input; $bad['areas'] = [];
 rejects_scan(fn() => scan_validate_answers($bad), InvalidArgumentException::class);
+// The selected checkbox choices must survive validation, without accepting arbitrary text.
+expect_scan(is_array($clean['systems']['answer']) && $clean['systems']['answer'] === $input['systems'], 'System choices were lost');
+foreach (['pain', 'systems', 'missing', 'action', 'goal'] as $field) {
+    $bad = $input; $bad[$field] = ['not an offered choice'];
+    rejects_scan(fn() => scan_validate_answers($bad), InvalidArgumentException::class);
+}
+$optional = $input; $optional['constraints'] = ''; $optional['missing'] = []; $optional['action'] = [];
+expect_scan(scan_validate_answers($optional)['constraints']['answer'] === '', 'Optional text became mandatory');
+$bad = $input; $bad['constraints'] = str_repeat('a', 1001);
+rejects_scan(fn() => scan_validate_answers($bad), InvalidArgumentException::class);
+$duplicate = $input; $duplicate['systems'] = [$input['systems'][0], $input['systems'][0]];
+expect_scan(count(scan_validate_answers($duplicate)['systems']['answer']) === 1, 'Duplicate choices retained');
 $validResult = ['problem' => 'Probleem', 'approach' => 'Aanpak', 'solution' => 'Oplossing', 'benefits' => ['Minder dubbel werk.'], 'questions' => ['Welke controle is nodig?']];
 expect_scan(scan_validate_result($validResult) === $validResult, 'Valid result rejected');
 $badResult = $validResult; $badResult['problem'] = '';

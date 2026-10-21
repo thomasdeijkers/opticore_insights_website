@@ -1,7 +1,7 @@
 /* A calm questionnaire, using the existing form and brand styles. */
 .scan-layout{display:grid;grid-template-columns:minmax(0,780px) minmax(220px,1fr);gap:48px;align-items:start}
 .scan-intro-note{font-size:14px;color:var(--muted);margin:20px 0 0}
-.scan-progress{list-style:none;display:grid;grid-template-columns:repeat(6,1fr);gap:8px;padding:0;margin:0 0 25px}
+.scan-progress{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:0;margin:0 0 25px}
 .scan-progress li{margin:0;padding:10px 0;border-top:3px solid var(--line);font-size:12px;line-height:1.5;color:var(--muted)}
 .scan-progress li[aria-current=step]{border-color:var(--accent);color:var(--ink);font-weight:700}
 .scan-progress li.is-complete{border-color:#45684f}
@@ -10,7 +10,7 @@
 .scan-questionnaire{background:#fff}
 .scan-required-note{margin:0 0 24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
 .scan-panel>legend.visually-hidden{width:1px!important;height:1px!important}
-.scan-panel h2,.scan-result h2,#scan-contact-title{scroll-margin-top:16px;outline-offset:6px}
+.scan-panel h2,.scan-result h2{scroll-margin-top:140px;outline-offset:6px}
 .scan-panel-intro{font-size:16px;line-height:1.65;margin-bottom:24px}
 .scan-options{margin-bottom:23px!important}
 .scan-options legend{font-size:15px;line-height:1.6;margin-bottom:9px}
@@ -32,8 +32,8 @@
 .scan-answer-review dl{margin-bottom:0}
 .scan-answer-review dt{font-weight:650;color:var(--ink);margin:17px 0 3px}
 .scan-answer-review dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
-.scan-ai-consent{padding:15px;background:var(--soft);border-radius:5px}
-.scan-result{background:#fff}
+.scan-choice-help{font-size:13px;color:var(--muted);margin:0 0 10px}.scan-loading{padding:20px;background:var(--soft);border-left:3px solid var(--accent)}
+.scan-result{background:#fff}.scan-result .contact-person{border-top:1px solid var(--line);margin-top:24px;padding-top:24px}.scan-result .contact-person legend{float:none;padding-top:0}.scan-result .contact-person .field-grid{clear:none}
 .scan-result>p,#scan-contact-form>p{font-size:15px}
 .scan-result textarea{min-height:140px}
 .scan-result-details{border-top:1px solid var(--line);padding-top:22px;margin-top:25px;font-size:15px}
@@ -49,4 +49,4 @@
 .scan-aside-links{margin-top:25px;line-height:2}
 @media(max-width:1000px){.scan-layout{grid-template-columns:minmax(0,1fr) 220px;gap:30px}.scan-choice-grid{grid-template-columns:1fr}}
 @media(max-width:800px){.scan-layout{grid-template-columns:1fr}.scan-aside{border-top:1px solid var(--line);padding-top:25px;max-width:620px}.scan-aside ol{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}.scan-choice-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.scan-progress{grid-template-columns:repeat(3,1fr);gap:5px 12px}.scan-progress li{font-size:12px}.scan-progress span{font-size:13px}.scan-layout{gap:32px}.scan-choice-grid{grid-template-columns:1fr}.scan-questionnaire,.scan-result,#scan-contact-form{padding:20px}.scan-panel-intro{font-size:15px}.scan-controls{align-items:stretch;flex-direction:column-reverse;gap:14px}.scan-controls .button{width:100%;margin:0;font-size:15px;padding-inline:12px}.scan-back{align-self:flex-start}.scan-aside ol{display:block}.scan-progress li[aria-current=step]{font-weight:700}}
+@media(max-width:560px){.scan-progress{grid-template-columns:repeat(3,1fr);gap:5px 12px}.scan-progress li{font-size:12px}.scan-progress span{font-size:13px}.scan-layout{gap:32px}.scan-choice-grid{grid-template-columns:1fr}.scan-questionnaire,.scan-result{padding:20px}.scan-panel-intro{font-size:15px}.scan-controls{align-items:stretch;flex-direction:column-reverse;gap:14px}.scan-controls .button{width:100%;margin:0;font-size:15px;padding-inline:12px}.scan-back{align-self:flex-start}.scan-aside ol{display:block}.scan-progress li[aria-current=step]{font-weight:700}}
