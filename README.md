@@ -65,6 +65,8 @@ Beschrijf de persoonlijke loopbaan van Thomas in de derde persoon en houd eerder
 
 Houd het hoofdmenu beperkt tot Diensten, Bol ondernemers, Portfolio, Over OptiCore en Contact. Home blijft bereikbaar via het logo. Gebruik geen streepjes in menuteksten of onderstrepingen bij menu-items, ook niet voor de actieve pagina. Verdiepende routes blijven bereikbaar via de inhoud en voettekst.
 
+Gebruik bij uitleg over software herkenbare originele productlogo’s en relevant beeldmateriaal. Vermeld de bron van openbare voorbeelden en houd die herkenbaar gescheiden van onze eigen opdrachten. Projectbeelden tonen echte applicaties met geanonimiseerde gegevens en gebruiken de gedeelde galerij met vergrootvenster. Zie `docs/visual-assets.md` voor herkomst en gebruik.
+
 De hoofdroute is Home → Diensten / Portfolio → onderwerp of case → Contact. De kennisbank is bereikbaar via de voettekst en gerelateerde onderwerpen.
 
 Elke pagina bevat een unieke titel en metaomschrijving, één H1, een canonieke URL met afsluitende slash en gestructureerde gegevens voor de pagina en broodkruimels. Werk bij wijzigingen ook de bijbehorende `.html`-alias bij; de mapversie `index.html` is de voorkeursroute. De sitemap bevat alleen de canonieke, indexeerbare routes. Oude generieke projectopzetten blijven bereikbaar met `noindex,follow`; de zes uitgewerkte klantcases zijn wel indexeerbaar.
