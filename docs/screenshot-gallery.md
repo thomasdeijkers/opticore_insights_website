@@ -10,8 +10,8 @@ De geïsoleerde fixtures onder `C:/Users/thoma/.codex/website-checks` bevatten u
 
 ## Gedrag
 
-- Tot en met 760 px staan mobiele screenshots eerst, daarboven desktopbeelden. Dit gebruikt de schermbreedte, zonder cookies of apparaatregistratie.
-- Mobiel/Desktop-knoppen geven bezoekers zelf de keuze; daarna blijft die keuze tijdens de huidige paginabezoek behouden.
+- Alleen een telefoonformaat rechtop (maximaal 599 px breed en portrait) toont de mobiele collectie. Tablet, desktop en landscape tonen uitsluitend desktopbeelden. Dit gebruikt schermbreedte en oriëntatie, zonder cookies of apparaatregistratie.
+- Er zijn geen Mobiel/Desktop-keuzeknoppen. De slider en pop-up bladeren uitsluitend door de passende collectie. Als het apparaat draait, wordt de collectie direct aangepast, ook in een open pop-up; waar mogelijk blijft hetzelfde onderwerp geselecteerd.
 - Geen automatisch afspelen. Bladeren werkt met knoppen, pijltjestoetsen en horizontaal vegen. Verticaal scrollen en pinch-zoom blijven beschikbaar.
 - Een native `dialog` toont de afbeelding met een vaste Sluiten-knop, vorige/volgende, teller en vergroten/passend maken. Escape sluit ook. Focus en paginascroll worden hersteld.
 - Andere directe foto- en screenshotlinks gebruiken dezelfde viewer. Zonder JavaScript blijven gewone afbeeldingslinks en een passende eerste afbeelding beschikbaar.
@@ -19,4 +19,8 @@ De geïsoleerde fixtures onder `C:/Users/thoma/.codex/website-checks` bevatten u
 
 ## Controle
 
-JavaScript-syntax, HTML/SEO, gelijke URL-aliases, nieuwsrenderer en sitemap. Browsercontrole op 320, 390 en desktop, eerste apparaatweergave, meerdere afbeeldingen, moduskeuze, vergroting, sluiten, Escape, pijltjestoetsen, focusherstel en scrollherstel. Geen echte campagneactie of contactaanvraag uitgevoerd.
+JavaScript-syntax, HTML/SEO, gelijke URL-aliases, nieuwsrenderer en sitemap. Browsercontrole op 320/390 portrait, telefoonlandscape, tablet en desktop, passende collectie, meerdere afbeeldingen, draaien met open pop-up, vergroting, sluiten, Escape, pijltjestoetsen, focusherstel en scrollherstel. Geen echte campagneactie of contactaanvraag uitgevoerd.
+
+## Voorbeelden bij dienstenteksten
+
+Negen pagina's tonen een concreet praktijkvoorbeeld met korte toelichting, dezelfde galerij en een projectlink: procesautomatisering, forecasting, voorraadanalyses, KPI-dashboard, data-analyse, e-commerceautomatisering, API-integraties, marketplace-synchronisatie en productdata. De teksten beschrijven wat de bestaande schermen laten zien en welke vervolgstap dat ondersteunt. Achterliggende koppelingen worden niet als zichtbare schermen voorgesteld; het productdata-voorbeeld benoemt expliciet de analysekant van productbeheer. De mobiele en desktopafbeeldingen komen uit dezelfde eerder vastgelegde verzameling met fictieve gegevens.

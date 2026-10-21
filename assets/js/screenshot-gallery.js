@@ -1,5 +1,6 @@
 (() => {
-  const mobile = window.matchMedia('(max-width: 760px)');
+  // Only phone-sized portrait viewports use the mobile screenshot collection.
+  const mobile = window.matchMedia('(max-width: 599px) and (orientation: portrait)');
   const imageLinks = 'a[href^="/assets/img/"]';
   let viewer;
   let active;
@@ -13,6 +14,7 @@
       src: link.getAttribute('href'),
       alt: image.alt,
       title: link.dataset.screenTitle || (image.alt.length > 80 ? `${image.alt.slice(0, 77)}…` : image.alt),
+      scene: (link.dataset.screenTitle || image.alt).split(' · ')[0],
       device: link.dataset.screenDevice || 'desktop',
       demo: link.dataset.screenDemo === 'true' || /fictie|DEMO-/i.test(image.alt)
     };
@@ -118,9 +120,9 @@
     renderViewer();
   }
 
-  function openViewer(items, index, trigger) {
+  function openViewer(items, index, trigger, owner = null) {
     viewer ||= createViewer();
-    active = { items, index };
+    active = { items, index, owner };
     opener = trigger;
     renderViewer();
     previousOverflow = document.documentElement.style.overflow;
@@ -130,45 +132,28 @@
   }
 
   document.querySelectorAll('[data-screen-gallery]').forEach(root => {
-    const items = Array.from(root.querySelectorAll('[data-screen-device]')).map(readItem);
-    if (!items.length) return;
+    const allItems = Array.from(root.querySelectorAll('[data-screen-device]')).map(readItem);
+    if (!allItems.length) return;
+    let items = [];
     const stage = root.querySelector('.screen-gallery-stage');
-    const state = { selected: false, index: 0 };
+    const state = { index: 0 };
     const toolbar = document.createElement('div');
     toolbar.className = 'screen-gallery-toolbar';
     const title = document.createElement('strong');
     title.className = 'screen-gallery-title';
     const controls = document.createElement('div');
     controls.className = 'screen-gallery-controls';
-    const modes = document.createElement('div');
-    modes.className = 'screen-gallery-modes';
-    modes.setAttribute('role', 'group');
-    modes.setAttribute('aria-label', 'Kies een schermweergave');
-    const choose = device => {
-      const index = items.findIndex(item => item.device === device);
-      if (index < 0) return;
-      state.selected = true;
-      state.index = index;
-      render();
-    };
-    const phone = button('Toon mobiele beelden', 'Mobiel', () => choose('mobile'));
-    const desktop = button('Toon desktopbeelden', 'Desktop', () => choose('desktop'));
-    phone.hidden = !items.some(item => item.device === 'mobile');
-    desktop.hidden = !items.some(item => item.device === 'desktop');
-    modes.append(phone, desktop);
     const count = document.createElement('span');
     count.className = 'screen-gallery-count';
     count.setAttribute('role', 'status');
     count.setAttribute('aria-live', 'polite');
     const move = delta => {
-      state.selected = true;
       state.index = (state.index + delta + items.length) % items.length;
       render();
     };
     const prev = button('Vorige afbeelding', '←', () => move(-1));
     const next = button('Volgende afbeelding', '→', () => move(1));
-    prev.disabled = next.disabled = items.length < 2;
-    controls.append(modes, prev, count, next);
+    controls.append(prev, count, next);
     toolbar.append(title, controls);
     root.prepend(toolbar);
     const hint = document.createElement('span');
@@ -180,19 +165,17 @@
       root.dataset.device = item.device;
       title.textContent = item.title;
       count.textContent = `${state.index + 1} / ${items.length}`;
-      phone.setAttribute('aria-pressed', String(item.device === 'mobile'));
-      desktop.setAttribute('aria-pressed', String(item.device === 'desktop'));
-      items.forEach((entry, index) => { entry.link.hidden = index !== state.index; });
+      prev.disabled = next.disabled = items.length < 2;
+      allItems.forEach(entry => { entry.link.hidden = entry !== item; });
       item.link.querySelector('img').loading = 'eager';
       root.classList.add('is-ready');
     }
-    items.forEach(item => {
+    allItems.forEach(item => {
       item.link.setAttribute('aria-haspopup', 'dialog');
       item.link.addEventListener('click', event => {
         if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
         event.preventDefault();
-        state.selected = true;
-        openViewer(items, items.indexOf(item), item.link);
+        openViewer(items, items.indexOf(item), item.link, root);
       });
     });
     swipe(stage, move);
@@ -203,11 +186,17 @@
       }
     });
     const adapt = () => {
-      if (!state.selected) {
-        const device = mobile.matches ? 'mobile' : 'desktop';
-        items.sort((a, b) => Number(b.device === device) - Number(a.device === device));
-        state.index = 0;
-        render();
+      const current = active?.owner === root ? active.items[active.index] : items[state.index];
+      const device = mobile.matches ? 'mobile' : 'desktop';
+      const matching = allItems.filter(item => item.device === device);
+      items = matching.length ? matching : allItems;
+      state.index = Math.max(0, items.findIndex(item => item.scene === current?.scene));
+      render();
+      if (active?.owner === root) {
+        active.items = items;
+        active.index = state.index;
+        opener = items[state.index].link;
+        renderViewer();
       }
     };
     mobile.addEventListener('change', adapt);
