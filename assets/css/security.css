@@ -3,8 +3,6 @@
 .security-split{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:54px;align-items:center}
 .security-copy{min-width:0}.security-copy p:last-child{margin-bottom:0}
 .security-login-gallery,.security-auth-gallery{margin:0;width:100%}
-.security-login-gallery.is-ready .screen-gallery-stage{height:410px}
-.security-auth-gallery.is-ready[data-device=mobile] .screen-gallery-stage{height:550px;min-height:0}
 .security-note{padding:28px;background:#fff;border:1px solid var(--line);border-radius:8px}
 .security-note h3{font-size:20px}.security-note>p{font-size:15px;margin:22px 0 0}
 .security-flow{padding-left:23px;margin:0}.security-flow li{padding:8px 0 12px 9px}.security-flow strong,.security-flow span{display:block}.security-flow span{font-size:15px;margin-top:4px}
@@ -14,8 +12,5 @@
 .security-topics{display:grid;grid-template-columns:1fr 1fr;gap:30px 54px}.security-topics h3{font-size:21px}.security-topics p{margin:0;font-size:16px}
 .security-faq details{padding:19px 0;border-bottom:1px solid var(--line);max-width:900px}.security-faq summary{font-weight:650;color:var(--ink);cursor:pointer;padding-right:12px}.security-faq details p{margin:14px 0 0}
 .security-sources{border-top:1px solid var(--line);margin-top:38px;padding-top:24px;max-width:900px}.security-sources h3{font-size:17px}.security-sources p{font-size:14px;margin-bottom:12px}
-@media(max-width:850px){.security-split{grid-template-columns:1fr;gap:28px}.security-topics{gap:25px 32px}.security-login-gallery.is-ready .screen-gallery-stage{height:auto;aspect-ratio:16/10}}
-@media(max-width:560px){.security-intro .on-this-page{gap:11px 20px}.security-intro .on-this-page a{white-space:normal}.security-topics{grid-template-columns:1fr;gap:28px}.security-note{padding:22px}.security-login-gallery.is-ready[data-device=mobile] .screen-gallery-stage{height:min(65svh,570px);aspect-ratio:auto}.security-auth-gallery.is-ready[data-device=mobile] .screen-gallery-stage{height:min(65svh,570px)}.security-subsection{margin-top:32px}.security-sources{margin-top:30px}.security-faq summary{font-size:17px}}
-
-.security-auth-gallery:not(.is-ready) .screen-slide:first-child{display:block}
-.security-login-gallery:not(.is-ready) img,.security-auth-gallery:not(.is-ready) img{width:100%;max-height:550px;object-fit:contain;background:#f3f6f9}
+@media(max-width:850px){.security-split{grid-template-columns:1fr;gap:28px}.security-topics{gap:25px 32px}}
+@media(max-width:560px){.security-intro .on-this-page{gap:11px 20px}.security-intro .on-this-page a{white-space:normal}.security-topics{grid-template-columns:1fr;gap:28px}.security-note{padding:22px}.security-subsection{margin-top:32px}.security-sources{margin-top:30px}.security-faq summary{font-size:17px}}

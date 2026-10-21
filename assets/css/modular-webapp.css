@@ -3,9 +3,7 @@
 .webapp-intro h1{font-size:45px;max-width:570px;line-height:1.15}
 .webapp-intro .lead{font-size:19px;max-width:570px}
 .webapp-intro .actions{gap:18px}
-.webapp-intro .screen-gallery{margin:0;background:#fff}
-.webapp-intro .screen-gallery.is-ready .screen-gallery-stage{height:360px}
-.webapp-intro .screen-gallery.is-ready[data-device=mobile] .screen-gallery-stage{height:min(60svh,510px)}
+.webapp-intro .screen-gallery{margin:0;}
 .webapp-page-nav{padding-block:18px;margin-top:0;border-bottom:1px solid var(--line)}
 .webapp-module-picker{padding:0;border:0;margin:0;min-width:0}
 .webapp-module-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
@@ -47,5 +45,5 @@
 .webapp-faq summary{cursor:pointer;font-weight:650;color:var(--ink)}
 .webapp-faq details p{font-size:16px;margin:15px 0 0}
 @media(max-width:1000px){.webapp-module-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.webapp-intro-grid{gap:28px}.webapp-intro h1{font-size:38px}.webapp-intro .lead{font-size:18px}}
-@media(max-width:800px){.webapp-intro-grid{grid-template-columns:1fr}.webapp-intro .screen-gallery{max-width:720px}.webapp-intro .screen-gallery.is-ready .screen-gallery-stage{height:auto;aspect-ratio:16/10}.webapp-intro .screen-gallery.is-ready[data-device=mobile] .screen-gallery-stage{height:min(60svh,510px);aspect-ratio:auto}.webapp-price-grid,.webapp-dataflow{gap:20px}.webapp-selection{grid-template-columns:1fr;gap:15px}.webapp-selection-actions{align-items:flex-start;flex-direction:row;flex-wrap:wrap}}
+@media(max-width:800px){.webapp-intro-grid{grid-template-columns:1fr}.webapp-intro .screen-gallery{max-width:720px}.webapp-price-grid,.webapp-dataflow{gap:20px}.webapp-selection{grid-template-columns:1fr;gap:15px}.webapp-selection-actions{align-items:flex-start;flex-direction:row;flex-wrap:wrap}}
 @media(max-width:560px){.webapp-intro{padding:30px 0}.webapp-intro h1{font-size:33px}.webapp-intro .lead{font-size:17px}.webapp-intro .actions{gap:16px}.webapp-module-grid,.webapp-price-grid,.webapp-api-grid,.webapp-dataflow{grid-template-columns:1fr}.webapp-module{padding:18px}.webapp-module-title{font-size:18px}.webapp-selection{padding:20px}.webapp-price-grid{gap:24px}.webapp-api-group{padding-inline:17px}.webapp-api-group summary{font-size:17px}.webapp-page-nav{gap:10px 20px}.webapp-page-nav span{display:none}}

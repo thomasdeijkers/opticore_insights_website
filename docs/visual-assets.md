@@ -54,3 +54,9 @@ At the user's request, fifteen images of the actual application interfaces were 
 ## Security and login examples — 22 October 2026
 
 `assets/img/security/` contains two original empty Olympus login screenshots and four unmodified public Google Authenticator assets. These were requested specifically for the security explanation; they do not replace or expose dashboard screens. No credentials, real QR enrollment codes or recovery keys are shown. Source URLs, dimensions and usage distinctions are documented in [security-page.md](security-page.md). Product attribution is visible on `/beveiliging/`.
+
+## Plain screenshot previews — 22 October 2026
+
+All example galleries use the same borderless image layout. There is no inline toolbar, frame, caption panel or enlarge badge. Phone portrait selects the phone collection and shows its first two distinct screenshots side by side; desktop, tablets and phone landscape select one desktop preview. When a collection only has phone images (the official Authenticator examples), its first two phone images also appear on larger screens. A collection with only one suitable image keeps that image on its own.
+
+Clicking either preview opens the existing image dialog at that exact image, with all distinct images for the selected device available by swipe/drag, arrows and keyboard. Closing restores focus. Static `data-screen-preview` and collection counts provide the same initial previews without JavaScript. Public project screenshots outside galleries use the same viewer; portfolio-cover links keep their route to the project story. Image sources and metadata are preserved.

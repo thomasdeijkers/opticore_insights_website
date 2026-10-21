@@ -4,17 +4,14 @@
 .topic-intro-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:center}
 .topic-intro-grid .lead{margin-bottom:20px}
 .topic-intro-grid .screen-gallery{margin:0}
-.topic-intro-grid .screen-gallery.is-ready .screen-gallery-stage{height:340px;background:#fff}
 .topic-intro-grid .screen-slide{background:#fff}
 .topic-case-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:32px;align-items:start}
 .topic-case-grid .screen-gallery{margin:0}
-.topic-case-grid .screen-gallery.is-ready .screen-gallery-stage{height:390px}
-.topic-case-grid .screen-gallery.is-ready[data-device=mobile] .screen-gallery-stage{height:min(65svh,570px)}
 .technology-resource{display:inline-flex;align-items:center;gap:12px;max-width:100%}
 .technology-resource img{width:32px;height:32px;object-fit:contain;flex-shrink:0}
 .technology-resource span{min-width:0}
 .technology-credits{margin:0 0 28px;font-size:12px;line-height:1.65;color:var(--muted)}
 .technology-credits summary{cursor:pointer;max-width:max-content}
 .technology-credits p{margin:10px 0 0;max-width:760px}
-@media(max-width:800px){.topic-intro-grid,.topic-case-grid{grid-template-columns:1fr;gap:26px}.topic-intro-grid .screen-gallery{max-width:650px}.topic-intro-grid .screen-gallery.is-ready .screen-gallery-stage{height:auto;aspect-ratio:16/10}.topic-case-grid .screen-gallery.is-ready .screen-gallery-stage{height:auto;aspect-ratio:4/3}.topic-case-grid .screen-gallery.is-ready[data-device=mobile] .screen-gallery-stage{height:min(65svh,570px);aspect-ratio:auto}}
-@media(max-width:560px){.technology-label{gap:12px;margin-bottom:18px}.technology-label img{width:42px;height:42px}.technology-label strong{font-size:16px}.topic-intro-grid .screen-gallery-toolbar{padding:10px 12px}.topic-intro-grid .screen-gallery-title{font-size:13px}.topic-case-grid{gap:20px}}
+@media(max-width:800px){.topic-intro-grid,.topic-case-grid{grid-template-columns:1fr;gap:26px}.topic-intro-grid .screen-gallery{max-width:650px}}
+@media(max-width:560px){.technology-label{gap:12px;margin-bottom:18px}.technology-label img{width:42px;height:42px}.technology-label strong{font-size:16px}.topic-case-grid{gap:20px}}

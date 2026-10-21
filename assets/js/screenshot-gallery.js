@@ -14,7 +14,7 @@
       src: link.getAttribute('href'),
       alt: image.alt,
       title: link.dataset.screenTitle || (image.alt.length > 80 ? `${image.alt.slice(0, 77)}…` : image.alt),
-      scene: (link.dataset.screenTitle || image.alt).split(' · ')[0],
+      scene: link.dataset.screenTitle || image.alt,
       device: link.dataset.screenDevice || 'desktop',
       demo: link.dataset.screenDemo === 'true' || /fictie|DEMO-/i.test(image.alt)
     };
@@ -32,8 +32,9 @@
   function swipe(element, move, disabled = () => false) {
     let start;
     element.addEventListener('pointerdown', event => {
-      if (event.pointerType === 'touch' && event.isPrimary && !disabled()) {
+      if (event.isPrimary && event.button === 0 && !disabled()) {
         start = { x: event.clientX, y: event.clientY };
+        element.setPointerCapture(event.pointerId);
       }
     });
     element.addEventListener('pointerup', event => {
@@ -55,6 +56,7 @@
     close.className = 'image-viewer-close';
     dialog.querySelector('.image-viewer-header').append(close);
     const stage = dialog.querySelector('.image-viewer-stage');
+    stage.querySelector('img').draggable = false;
     const arrows = dialog.querySelector('.image-viewer-arrows');
     const prev = button('Vorige afbeelding', '←', () => moveViewer(-1));
     const next = button('Volgende afbeelding', '→', () => moveViewer(1));
@@ -135,41 +137,6 @@
     const allItems = Array.from(root.querySelectorAll('[data-screen-device]')).map(readItem);
     if (!allItems.length) return;
     let items = [];
-    const stage = root.querySelector('.screen-gallery-stage');
-    const state = { index: 0 };
-    const toolbar = document.createElement('div');
-    toolbar.className = 'screen-gallery-toolbar';
-    const title = document.createElement('strong');
-    title.className = 'screen-gallery-title';
-    const controls = document.createElement('div');
-    controls.className = 'screen-gallery-controls';
-    const count = document.createElement('span');
-    count.className = 'screen-gallery-count';
-    count.setAttribute('role', 'status');
-    count.setAttribute('aria-live', 'polite');
-    const move = delta => {
-      state.index = (state.index + delta + items.length) % items.length;
-      render();
-    };
-    const prev = button('Vorige afbeelding', '←', () => move(-1));
-    const next = button('Volgende afbeelding', '→', () => move(1));
-    controls.append(prev, count, next);
-    toolbar.append(title, controls);
-    root.prepend(toolbar);
-    const hint = document.createElement('span');
-    hint.className = 'screen-gallery-open';
-    hint.textContent = 'Vergroten ↗';
-    stage.append(hint);
-    function render() {
-      const item = items[state.index];
-      root.dataset.device = item.device;
-      title.textContent = item.title;
-      count.textContent = `${state.index + 1} / ${items.length}`;
-      prev.disabled = next.disabled = items.length < 2;
-      allItems.forEach(entry => { entry.link.hidden = entry !== item; });
-      item.link.querySelector('img').loading = 'eager';
-      root.classList.add('is-ready');
-    }
     allItems.forEach(item => {
       item.link.setAttribute('aria-haspopup', 'dialog');
       item.link.addEventListener('click', event => {
@@ -178,24 +145,26 @@
         openViewer(items, items.indexOf(item), item.link, root);
       });
     });
-    swipe(stage, move);
-    root.addEventListener('keydown', event => {
-      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
-        event.preventDefault();
-        move(event.key === 'ArrowRight' ? 1 : -1);
-      }
-    });
     const adapt = () => {
-      const current = active?.owner === root ? active.items[active.index] : items[state.index];
+      const current = active?.owner === root ? active.items[active.index] : null;
       const device = mobile.matches ? 'mobile' : 'desktop';
       const matching = allItems.filter(item => item.device === device);
-      items = matching.length ? matching : allItems;
-      state.index = Math.max(0, items.findIndex(item => item.scene === current?.scene));
-      render();
+      const candidates = matching.length ? matching : allItems;
+      const seen = new Set();
+      items = candidates.filter(item => {
+        if (seen.has(item.src)) return false;
+        seen.add(item.src);
+        return true;
+      });
+      const previews = items.slice(0, items[0].device === 'mobile' ? 2 : 1);
+      root.dataset.device = items[0].device;
+      root.dataset.previewCount = String(previews.length);
+      allItems.forEach(item => { item.link.hidden = !previews.includes(item); });
+      root.classList.add('is-ready');
       if (active?.owner === root) {
         active.items = items;
-        active.index = state.index;
-        opener = items[state.index].link;
+        active.index = Math.max(0, items.findIndex(item => item.scene === current?.scene));
+        opener = previews.includes(items[active.index]) ? items[active.index].link : previews[0].link;
         renderViewer();
       }
     };
