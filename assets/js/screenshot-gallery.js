@@ -54,8 +54,8 @@
     dialog.querySelector('.image-viewer-header').append(close);
     const stage = dialog.querySelector('.image-viewer-stage');
     const arrows = dialog.querySelector('.image-viewer-arrows');
-    const prev = button('Vorige afbeelding', '← Vorige', () => moveViewer(-1));
-    const next = button('Volgende afbeelding', 'Volgende →', () => moveViewer(1));
+    const prev = button('Vorige afbeelding', '←', () => moveViewer(-1));
+    const next = button('Volgende afbeelding', '→', () => moveViewer(1));
     arrows.append(prev, next);
     const zoom = button('Afbeelding vergroten', 'Vergroten +', () => {
       const zoomed = stage.classList.toggle('is-zoomed');

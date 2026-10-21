@@ -106,8 +106,8 @@ def render():
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(full_title,quote=True)}"><meta name="twitter:description" content="{escape(description,quote=True)}"><meta name="twitter:image" content="{image}">
 <script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':schema},ensure_ascii=False,separators=(',',':'))}</script>
 <link rel="stylesheet" href="/assets/css/site.css?v=20261020h"><link rel="stylesheet" href="/assets/css/news.css?v=20261020a"><link rel="alternate" type="application/rss+xml" title="OptiCore Insights — Nieuws en praktijk" href="{BASE}/nieuws/feed.xml">
-<link rel="stylesheet" href="/assets/css/screenshot-gallery.css?v=20261021a"></head><body><a class="skip-link" href="#inhoud">Direct naar inhoud</a>{header}
-<main id="inhoud">{main}</main>{footer}<script src="/assets/js/main.js?v=20261020d" defer></script><script src="/assets/js/screenshot-gallery.js?v=20261021a" defer></script></body></html>
+<link rel="stylesheet" href="/assets/css/screenshot-gallery.css?v=20261021b"></head><body><a class="skip-link" href="#inhoud">Direct naar inhoud</a>{header}
+<main id="inhoud">{main}</main>{footer}<script src="/assets/js/main.js?v=20261020d" defer></script><script src="/assets/js/screenshot-gallery.js?v=20261021b" defer></script></body></html>
 '''
 
     outputs = {}

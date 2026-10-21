@@ -40,5 +40,5 @@
 @media(prefers-reduced-motion:reduce){.screen-gallery-stage,.image-viewer-stage{scroll-behavior:auto}}
 
 .image-viewer-header>div{min-width:0}
-@media(max-width:760px){.image-viewer-arrows button{font-size:0;min-width:44px;padding:8px}.image-viewer-arrows button::before{font-size:20px;line-height:1}.image-viewer-arrows button:first-child::before{content:"←"}.image-viewer-arrows button:last-child::before{content:"→"}}
+.image-viewer-arrows button{font-size:20px;line-height:1;min-width:44px;padding:8px}
 @media(max-width:360px){.screen-gallery-controls,.screen-gallery-modes{gap:5px}.screen-gallery button{padding:8px}.screen-gallery-count{min-width:30px}}
