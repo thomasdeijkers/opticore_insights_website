@@ -21,3 +21,9 @@ Visible category names remain the accessible labels; icons are aria-hidden.
 No external font, icon CDN or runtime dependency is needed.
 
 `project-hellosmart.jpg` is a direct browser screenshot of the public HelloSmart homepage, captured on 2026-10-20; no private store data is shown.
+
+`home-workspace.webp` is a decorative stock workspace photograph by Carter Hightower on Unsplash:
+https://unsplash.com/photos/4GD9RphwnZA (Unsplash License).
+Downloaded at 1920px wide in WebP format from
+https://images.unsplash.com/photo-1743796055651-41c743ff2465?auto=format&fit=crop&fm=webp&q=78&w=1920
+on 2026-10-21. It illustrates working with digital tools and notes; it is not presented as an OptiCore office, employee or product screenshot. A light overlay keeps foreground text readable on mobile and desktop.
