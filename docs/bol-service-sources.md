@@ -25,7 +25,7 @@ Het bestaande `dashboard-forecast-demo.jpg` is eveneens de echte forecastinterfa
 
 De homepage toont de bol-app direct na de introductie van Thomas. De dienstenpagina begint na de inleiding met dezelfde ingang. Alle pagina's hebben een eigen menulink en footerlink voor bol-verkopers. Het menu klapt tot 1000 px in, zodat de extra ingang niet tot een overvolle bovenbalk leidt.
 
-De twee `bol-partnerplatform-*.png` schermbeelden zijn op 20 oktober 2026 rechtstreeks vastgelegd van de openbare Partnerplatform-pagina's over het koopblok en Sponsored Products. Er is geen verkoopaccount geopend. De beelden bevatten geen klantgegevens. Bij ieder beeld staan het platform, de opnamedatum, een vergroting en een link naar de oorspronkelijke pagina. Ze dienen als inhoudelijke verwijzing bij de uitleg; de appbeelden blijven afzonderlijk als eigen interface met fictieve gegevens benoemd.
+De twee `bol-partnerplatform-*.png` schermbeelden zijn op 20 oktober 2026 rechtstreeks vastgelegd van de openbare Partnerplatform-pagina's over het koopblok en Sponsored Products. Er is geen verkoopaccount geopend. De beelden bevatten geen klantgegevens. Bij de inhoudelijke uitleg staan het platform en een link naar de oorspronkelijke pagina. De beelden openen in de gedeelde fotoviewer. De appbeelden blijven afzonderlijk herkenbaar als eigen interface met fictieve gegevens. Zie `docs/screenshot-gallery.md` voor de mobiele beelden en galerij.
 
 - Koopblok: https://partnerplatform.bol.com/nl/idp/koopblok
 - Sponsored Products: https://partnerplatform.bol.com/nl/cdp/sponsored-products
