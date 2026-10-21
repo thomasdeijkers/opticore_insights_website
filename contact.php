@@ -29,6 +29,15 @@ $email = filter_var($email_raw, FILTER_VALIDATE_EMAIL);
 $phone = clean_text($_POST['phone'] ?? '');
 $topics = json_decode(<<<'JSON'
 {
+  "webapp": {
+    "label": "Een modulaire webapp",
+    "question": "Welk werk moet de webapp makkelijker maken?",
+    "fields": {
+      "modules": {"label": "Welke modules wil je bespreken?", "required": false},
+      "systems": {"label": "Welke systemen moeten we koppelen?", "required": false},
+      "users": {"label": "Wie gaat de webapp gebruiken?", "required": false}
+    }
+  },
   "bol-tools": {
     "label": "De app voor bol-ondernemers",
     "question": "Waar wil je meer grip op krijgen?",

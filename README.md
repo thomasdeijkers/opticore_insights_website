@@ -6,6 +6,7 @@ Statische HTML/CSS/JS website voor OptiCore Insights. De site is bedoeld als sne
 
 - `index.html` - Home
 - `diensten.html` - Diensten
+- `modulaire-webapp.html` / `modulaire-webapp/index.html` - Webapp per module, API-voorbeelden en modulekeuze voor contact; zie `docs/modular-webapp.md`
 - `projecten.html` / `projecten/index.html` - Portfolio-overzicht
 - `projecten/dashboards`, `projecten/documentverwerking`, `projecten/websites` - Categorieën met echte cases
 - `projecten/tijdlijn` - Chronologische weergave met filters

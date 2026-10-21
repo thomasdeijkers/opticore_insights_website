@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://opticore-insights.nl/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
     </image:image>
@@ -78,7 +78,7 @@
   </url>
   <url>
     <loc>https://opticore-insights.nl/api-integraties/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-demo.jpg</image:loc>
     </image:image>
@@ -112,7 +112,7 @@
   </url>
   <url>
     <loc>https://opticore-insights.nl/bol-ondernemers/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
     </image:image>
@@ -164,7 +164,7 @@
   </url>
   <url>
     <loc>https://opticore-insights.nl/contact/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
   </url>
   <url>
     <loc>https://opticore-insights.nl/dashboard-aanvragen/</loc>
@@ -265,7 +265,7 @@
   </url>
   <url>
     <loc>https://opticore-insights.nl/diensten/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
     </image:image>
@@ -431,6 +431,37 @@
     </image:image>
   </url>
   <url>
+    <loc>https://opticore-insights.nl/modulaire-webapp/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-agent-demo.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/bol-marketing-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/clients/smartlife-domotica.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-demo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/dashboard-forecast-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-demo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/dashboard-management-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-demo.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/dashboard-voorraad-mobile.png</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://opticore-insights.nl/nieuws/</loc>
     <lastmod>2026-10-21</lastmod>
   </url>
@@ -499,7 +530,7 @@
   </url>
   <url>
     <loc>https://opticore-insights.nl/prijzen/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
   </url>
   <url>
     <loc>https://opticore-insights.nl/privacy/</loc>
