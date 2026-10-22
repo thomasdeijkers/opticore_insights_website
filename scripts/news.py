@@ -12,6 +12,7 @@ import json
 from pathlib import Path
 import re
 from urllib.parse import urlsplit
+from screenshot_gallery import gallery_for_image
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -106,8 +107,8 @@ def render():
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(full_title,quote=True)}"><meta name="twitter:description" content="{escape(description,quote=True)}"><meta name="twitter:image" content="{image}">
 <script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':schema},ensure_ascii=False,separators=(',',':'))}</script>
 <link rel="stylesheet" href="/assets/css/site.css?v=20261022c"><link rel="stylesheet" href="/assets/css/news.css?v=20261022g"><link rel="alternate" type="application/rss+xml" title="OptiCore Insights — Nieuws en praktijk" href="{BASE}/nieuws/feed.xml">
-<link rel="stylesheet" href="/assets/css/screenshot-gallery.css?v=20261022f"></head><body><a class="skip-link" href="#inhoud">Direct naar inhoud</a>{header}
-<main id="inhoud">{main}</main>{footer}<script src="/assets/js/main.js?v=20261021a" defer></script><script src="/assets/js/screenshot-gallery.js?v=20261022f" defer></script></body></html>
+<link rel="stylesheet" href="/assets/css/screenshot-gallery.css?v=20261022h"></head><body><a class="skip-link" href="#inhoud">Direct naar inhoud</a>{header}
+<main id="inhoud">{main}</main>{footer}<script src="/assets/js/main.js?v=20261021a" defer></script><script src="/assets/js/screenshot-gallery.js?v=20261022h" defer></script></body></html>
 '''
 
     outputs = {}
@@ -117,7 +118,7 @@ def render():
         cards.append(f'<article class="card news-card">{byline(article)}<h2><a href="{url}">{escape(article["title"])}</a></h2><p>{escape(article["summary"])}</p><a class="text-link" href="{url}">Lees het bericht →</a></article>')
         body = []
         if image := article.get('image'):
-            body.append(f'<figure class="news-image"><a href="{image["src"]}" target="_blank" rel="noopener" aria-label="Vergroot de applicatiescreenshot"><img src="{image["src"]}" width="{image["width"]}" height="{image["height"]}" alt="{escape(image["alt"],quote=True)}"></a></figure>')
+            body.append(gallery_for_image(image['src']) or f'<figure class="news-image"><a href="{image["src"]}" target="_blank" rel="noopener" aria-label="Vergroot de applicatiescreenshot"><img src="{image["src"]}" width="{image["width"]}" height="{image["height"]}" alt="{escape(image["alt"],quote=True)}"></a></figure>')
         for section in article['sections']:
             text = ''.join('<p>'+escape(p)+'</p>\n' for p in section.get('paragraphs',[]))
             if section.get('bullets'):

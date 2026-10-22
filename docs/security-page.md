@@ -37,3 +37,7 @@ The accounts and codes in the Google image are Google's public sample content. N
 - OWASP Password Storage Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
 
 Inbound contextual links: services, dashboards, modular webapp, API integrations, Olympus project story and knowledge index. The main menu stays compact. The canonical page is included in the crawlable sitemap.
+
+## Huidige beeldweergave
+
+De Olympus-inlogcaptures zijn vervangen door neutrale inlogvoorbeelden onder assets/img/examples/login-*. De galerij toont op mobiel het lege inlogvenster en de voorbeeldstap voor extra verificatie naast elkaar. De tekst beschrijft ze als illustratie, zonder te suggereren dat Olympus al Authenticator ondersteunt. De feitelijke beschrijving van scrypt en sessies voor Olympus blijft behouden. Officiele Google-appbeelden blijven ongewijzigd met bronvermelding. Zie scripts/neutral_visuals_manifest.json en docs/screenshot-gallery.md.

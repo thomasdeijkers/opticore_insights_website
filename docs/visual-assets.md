@@ -1,5 +1,11 @@
 # Project brands and category icons
 
+## Mobiele document- en inlogvoorbeelden — aanvullende ronde
+
+Negen aanvullende PNG-browsercaptures maken de collectie volledig voor telefoonweergave: twee voor documentcontrole, twee voor weekstaten, twee voor dossierintake, twee voor inloggen/verificatie en één desktopinlogvoorbeeld. Ze zijn zonder beeldbewerking vastgelegd vanuit de code-native voorbeelden op de manifestafmetingen. De collectie telt nu 27 beelden (17 mobiel, 10 desktop). Alle nieuwe personen, dossiers, uren en bedragen zijn fictief. De neutrale verificatieafbeelding bevat geen echte codes of enrollmentgegevens.
+
+De portfolio-kaarten, projectcases, technische uitleg en nieuwsrenderer delen dezelfde collecties via `scripts/screenshot_gallery.py`. De originele lege Olympus-inlogbeelden zijn door neutrale voorbeelden vervangen. Publieke websites, productlogo’s en de officiële bol-, Microsoft- en Google-bronbeelden behouden hun herkenbare productcontext en bronvermelding.
+
 Original assets copied without changes from the existing project repositories:
 
 - `hellosmart.png`: `Home_assistant/transip-migration/dist/assets/dealer-hellosmart.png`.

@@ -139,5 +139,68 @@
     "width": 1280,
     "height": 900,
     "alt": "Neutrale voorbeeldweergave van listingoptimalisatie met fictieve controlepunten en een tekstbrief."
+  },
+  {
+    "file": "document-review-mobile.png",
+    "page": "documents-phone",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutraal mobiel voorbeeld van documentcontrole met fictieve bedragen."
+  },
+  {
+    "file": "document-review-detail-mobile.png",
+    "page": "documents-detail",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutraal mobiel voorbeeld van de beoordeling van een fictieve begrotingsregel."
+  },
+  {
+    "file": "timesheets-mobile.png",
+    "page": "timesheets-phone",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutraal mobiel voorbeeld van weekstaten met fictieve medewerkers en uren."
+  },
+  {
+    "file": "timesheets-detail-mobile.png",
+    "page": "timesheets-detail",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutraal mobiel voorbeeld van een weekstaatcontrole met fictieve uren."
+  },
+  {
+    "file": "document-intake-mobile.png",
+    "page": "intake-phone",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutraal mobiel voorbeeld van documentintake en taken met fictieve dossiers."
+  },
+  {
+    "file": "document-intake-detail-mobile.png",
+    "page": "intake-detail",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutraal mobiel voorbeeld van dossiercontrole met fictieve gegevens."
+  },
+  {
+    "file": "login-mobile.png",
+    "page": "login",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutraal mobiel voorbeeld van een leeg inlogvenster."
+  },
+  {
+    "file": "login-verification-mobile.png",
+    "page": "login-verify",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutraal mobiel voorbeeld van tweestapsverificatie zonder echte codes."
+  },
+  {
+    "file": "login-desktop.png",
+    "page": "login",
+    "width": 1280,
+    "height": 900,
+    "alt": "Neutraal desktopvoorbeeld van een leeg inlogvenster."
   }
 ]

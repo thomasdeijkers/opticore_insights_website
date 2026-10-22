@@ -138,6 +138,15 @@
     <loc>https://opticore-insights.nl/beveiliging/</loc>
     <lastmod>2026-10-22</lastmod>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/login-desktop.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/login-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/login-verification-mobile.png</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/security/google-authenticator-codes.jpg</image:loc>
     </image:image>
     <image:image>
@@ -145,12 +154,6 @@
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/security/google-authenticator-verification.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/security/olympus-login-desktop.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/security/olympus-login-mobile.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -433,6 +436,12 @@
       <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-desktop.jpg</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-detail-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-mobile.png</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/technology/excel.svg</image:loc>
     </image:image>
   </url>
@@ -591,6 +600,12 @@
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-desktop.jpg</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-detail-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-mobile.png</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/ocr-documentverwerking/</loc>
@@ -642,6 +657,12 @@
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-detail-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-mobile.png</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/technology/postgresql.png</image:loc>
@@ -764,13 +785,46 @@
       <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-desktop.jpg</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-detail-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-mobile.png</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-detail-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-mobile.jpg</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-detail-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-mobile.png</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/project-hellosmart.jpg</image:loc>
@@ -798,10 +852,37 @@
       <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-desktop.jpg</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-detail-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/management-desktop.jpg</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/management-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-detail-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-mobile.png</image:loc>
     </image:image>
   </url>
   <url>
@@ -809,6 +890,12 @@
     <lastmod>2026-10-22</lastmod>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-detail-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-mobile.png</image:loc>
     </image:image>
   </url>
   <url>
@@ -827,10 +914,28 @@
       <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-desktop.jpg</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-detail-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-mobile.png</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-desktop.jpg</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-detail-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-mobile.png</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-detail-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-mobile.png</image:loc>
     </image:image>
   </url>
   <url>
@@ -852,6 +957,12 @@
     <lastmod>2026-10-22</lastmod>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-detail-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-mobile.png</image:loc>
     </image:image>
   </url>
   <url>
@@ -929,6 +1040,12 @@
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-desktop.jpg</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-detail-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/timesheets-mobile.png</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/projecten/websites/</loc>
@@ -957,6 +1074,12 @@
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-desktop.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-detail-mobile.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/examples/document-review-mobile.png</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/technology/python.svg</image:loc>

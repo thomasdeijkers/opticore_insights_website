@@ -21,6 +21,7 @@ jobs:
 
       - name: Generate and validate sitemap and metadata
         run: |
+          python3 scripts/check_screenshot_galleries.py
           python3 scripts/sitemap.py --write
           python3 scripts/metadata.py --check
 

@@ -1,5 +1,13 @@
 # Screenshotgalerij
 
+## Volledige toepassing — aanvullende ronde 22 oktober 2026
+
+Alle neutrale applicatiebeelden, inclusief portfolioafbeeldingen, projectcases en het Olympus-nieuwsbericht, staan nu in de gedeelde galerij. Afbeeldingen in portfolio-kaarten openen de beelden; de aparte tekstlink blijft naar het projectverhaal gaan. Documentcontrole, documentintake en weekstaten hebben elk twee afzonderlijk ontworpen mobiele weergaven. De beveiligingspagina gebruikt twee neutrale inlogvoorbeelden (inloggen en extra verificatie) en één desktopvoorbeeld. De originele Olympus-inlogafbeeldingen zijn verwijderd; de officiële Google-appbeelden blijven als toegeschreven productuitleg staan.
+
+`scripts/screenshot_gallery.py` definieert de aanvullende collecties en wordt ook door de nieuwsrenderer gebruikt. `scripts/check_screenshot_galleries.py` controleert tijdens deployment dat ieder neutraal applicatiebeeld in een galerij staat, dat twee verschillende mobiele previews aanwezig zijn en dat desktopbeelden en de actuele gedeelde viewer geladen worden. Dit voorkomt dat toekomstige project- of nieuwsupdates weer losse desktopbeelden terugzetten.
+
+De componentversie is `20261022h`. HTML krijgt via `.htaccess` een hercontrole-instructie voor browsercaching; CSS/JS blijven versieerbaar. Live headers worden na de publicatie gecontroleerd. Beide domeinvarianten en de HTML-alias van de bolpagina toonden vóór deze ronde al de neutrale rankingbeelden. De oude afbeelding uit de aangeleverde screenshot kon niet op de huidige server worden gereproduceerd.
+
 De homepage, dienstenpagina, dashboardpagina, bol-pagina en Smartlife-case gebruiken dezelfde galerij. De bestaande verklarende onderschriften onder foto's zijn verwijderd. De bronverwijzingen naar bol blijven bij de inhoudelijke uitleg staan. Nieuws krijgt dezelfde viewer via de nieuwsrenderer.
 
 ## Beelden

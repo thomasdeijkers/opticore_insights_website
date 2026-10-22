@@ -125,6 +125,29 @@ def intake():
     return metrics([('Te controleren','4','Documenten met een aandachtspunt'),('Planning aanvullen','2','Opdrachtgegevens ontbreken'),('Klaar voor akkoord','3','Controleer de dossiers'),('Gereed voor factuur','6','Voorbereiding afgerond')])+panel('Taken en dossiers',table(['Document of opdracht','Dossier','Aandachtspunt','Vervolg'],[['<strong>Weekstaat 043.pdf</strong><span class="sub">Medewerker A</span>','Project Noord','Uren nalopen','<button class="action" type="button">Controleren</button>'],['<strong>Opdracht 012</strong><span class="sub">Medewerker B</span>','Project West','Tarief bevestigen','<button class="action" type="button">Dossier openen</button>'],['<strong>Factuurvoorbereiding</strong><span class="sub">Medewerker C</span>','Project Zuid','Klaar voor akkoord','<button class="action" type="button">Beoordelen</button>']]),'Van document naar een herkenbare vervolgstap',link='Alle taken')+'<div class="grid equal below">'+panel('Verwerking volgen',tasks([('✓','Documenten ontvangen','18 bestanden in de voorbeeldperiode.'),('↗','Uitzonderingen opvolgen','4 documenten hebben een controle nodig.')]))+panel('Voortgang', '<div class="panel-body"><div class="summary-row"><span>Gegevens herkend</span><strong>16 van 18</strong></div><div class="progress"><i style="width:89%"></i></div><div class="summary-row"><span>Wacht op beoordeling</span><strong>4 dossiers</strong></div></div>')+'</div>'
 
 
+def mobile_work(kind, detail=False):
+    """Readable phone-first records, rather than a shrunken desktop table."""
+    if kind == 'timesheets':
+        if detail:
+            return panel('Weekstaat controleren','<div class="panel-body"><span class="tag amber">Wacht op beoordeling</span><h3 class="record-title">Medewerker A · Project Noord</h3><p class="muted small">Week 43 · Uitsluitend fictieve gegevens</p>'+''.join(f'<div class="summary-row"><span>{day}</span><strong>{hours} uur</strong></div>' for day,hours in [('Maandag','8'),('Dinsdag','8'),('Woensdag','8'),('Donderdag','8'),('Vrijdag','6')])+'<div class="summary-row"><span>Totaal</span><strong>38 uur</strong></div></div>')+panel('Controle en vervolg',tasks([('✓','Project en periode herkend','Controleer de bron en gemaakte afspraken.'),('↗','Twee uur verschil','Vergelijk met de geplande 40 uur.')])+'<div class="panel-body"><button class="action primary">Ter beoordeling klaarzetten</button></div>',classes='below')
+        return metrics([('Weekstaten','18','Deze periode'),('Te controleren','4','Actie nodig'),('Klaar voor akkoord','12','Volgende stap'),('Uren deze week','1.360','Fictief totaal')])+panel('Weekstaten en acties',tasks([('▤','Medewerker A · Project Noord','38 uur · verschil met planning controleren.'),('✓','Medewerker B · Project West','36 uur · klaar voor beoordeling.'),('▤','Medewerker C · Project Zuid','32 uur · bronbestand bekijken.')]))+panel('Deze periode',tasks([('↗','Factuurvoorbereiding','Verzamel de gecontroleerde weekstaten.')]),classes='below')
+    if kind == 'documents':
+        if detail:
+            return panel('Begrotingsregel beoordelen','<div class="panel-body"><span class="tag amber">Controle nodig</span><h3 class="record-title">Schilderwerk</h3><p class="muted small">Begroting 014.pdf · regel 4 · fictief voorbeeld</p>'+''.join(f'<div class="summary-row"><span>{k}</span><strong>{v}</strong></div>' for k,v in [('Hoeveelheid','200 m²'),('Prijs per eenheid','€ 18,00'),('Regeltotaal','€ 3.600,00'),('Herkenning','78%')])+'</div>')+panel('Vergelijk met de bron','<div class="panel-body"><p>Controleer de hoeveelheid en eenheidsprijs voordat je de regel overneemt.</p><div class="source-example">Schilderwerk<br>200 m² × € 18,00 = € 3.600,00</div><div class="actions"><button class="action primary">Regel bevestigen</button><button class="action">Aanpassen</button></div></div>','Fictief bronfragment',classes='below')
+        return metrics([('Brontotaal','€ 20.280','Uit het document'),('Regeltotaal','€ 20.040','Herkende regels'),('Verschil','€ 240','Te controleren'),('Regels','5','2 aandachtspunten')])+panel('Documentcontrole',tasks([('▤','Begroting 014.pdf','Voorbeeldproject · 5 herkende regels.'),('↗','Controleverschil van € 240','Vergelijk regels en bronbedrag.'),('✓','Twee regels nalopen','Schilderwerk en binnendeuren.')]))+panel('Volgende stap','<div class="panel-body"><p class="muted small">Bevestig de gecontroleerde regels en bereid de export voor.</p><button class="action primary">Regels controleren</button></div>',classes='below')
+    if detail:
+        return panel('Document beoordelen','<div class="panel-body"><span class="tag amber">Uren nalopen</span><h3 class="record-title">Weekstaat 043.pdf</h3><p class="muted small">Medewerker A · Project Noord · fictief dossier</p>'+''.join(f'<div class="summary-row"><span>{k}</span><strong>{v}</strong></div>' for k,v in [('Document ontvangen','Ja'),('Project herkend','Project Noord'),('Gevonden uren','38'),('Geplande uren','40')])+'</div>')+panel('Van controle naar actie',tasks([('✓','Vergelijk met de bron','Open het document en controleer de uren.'),('↗','Zet klaar voor beoordeling','De verantwoordelijke controleert het dossier.')])+'<div class="panel-body"><button class="action primary">Naar beoordelingslijst</button></div>',classes='below')
+    return metrics([('Te controleren','4','Documenten'),('Planning aanvullen','2','Opdrachten'),('Klaar voor akkoord','3','Dossiers'),('Factuurvoorbereiding','6','Vervolg mogelijk')])+panel('Taken en dossiers',tasks([('▤','Weekstaat 043.pdf','Medewerker A · uren nalopen.'),('↗','Opdracht 012','Project West · tarief bevestigen.'),('✓','Factuurvoorbereiding','Project Zuid · klaar voor akkoord.')]))+panel('Verwerking volgen','<div class="panel-body"><div class="summary-row"><span>Gegevens herkend</span><strong>16 van 18</strong></div><div class="progress"><i style="width:89%"></i></div><p class="muted small">Elk document blijft gekoppeld aan zijn dossier.</p></div>',classes='below')
+
+
+def login(verify=False):
+    fields = '<label>Gebruikersnaam<input type="text" placeholder="Gebruikersnaam" autocomplete="off"></label><label>Wachtwoord<input type="password" placeholder="Wachtwoord" autocomplete="off"></label>'
+    if verify:
+        fields = '<p>Open je authenticator-app en vul de tijdelijke code in.</p><label>Verificatiecode<input type="text" inputmode="numeric" placeholder="6 cijfers" autocomplete="off"></label>'
+    title = 'Extra controle' if verify else 'Veilig inloggen'
+    return '<div class="login-example"><span class="login-symbol" aria-hidden="true">✓</span><h2>'+title+'</h2><p class="muted small">Neutrale voorbeeldomgeving</p>'+fields+'<button class="action primary">'+('Code controleren' if verify else 'Inloggen')+'</button><p class="login-note">Voorbeeldscherm · vul hier geen echte gegevens in.</p></div>'
+
+
 def document(title,section,body):
     nav=''.join('<div class="nav-item'+(' active' if section==label else '')+f'"><b>{symbol}</b>{label}</div>' for symbol,label in [('◫','Overzicht'),('▤','Verkoop'),('↗','Vooruitkijken'),('▦','Voorraad'),('□','Inkoop'),('◎','Marketing'),('✓','Werkvoorraad')])
     style=Path(__file__).with_suffix('.css').read_text(encoding='utf-8')
@@ -149,8 +172,18 @@ def main():
         'documents':('Documentcontrole','Werkvoorraad',documents()),
         'intake':('Taken en dossiers','Werkvoorraad',intake())
     }
+    for kind,title in [('timesheets','Weekstaten'),('documents','Documentcontrole'),('intake','Taken en dossiers')]:
+        pages[kind+'-phone']=(title,'Werkvoorraad',mobile_work(kind))
+        pages[kind+'-detail']=(title+' controleren','Werkvoorraad',mobile_work(kind,True))
+    pages['login']=('Toegang tot je omgeving','Beveiliging',login())
+    pages['login-verify']=('Tweestapsverificatie','Beveiliging',login(True))
     for name,(title,section,body) in pages.items():
-        (args.output/(name+'.html')).write_text(document(title,section,body),encoding='utf-8')
+        html=document(title,section,body)
+        if name.startswith('login'):
+            html=html.replace('<div class="layout">','<div class="layout auth-layout">')
+            html=html.replace('<aside class="sidebar">','<aside class="sidebar" hidden>')
+            html=html.replace('<div class="mobile-bottom">','<div class="mobile-bottom" hidden>')
+        (args.output/(name+'.html')).write_text(html,encoding='utf-8')
     print(f'{len(pages)} static, neutral examples written to {args.output}')
 
 
