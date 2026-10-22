@@ -1,7 +1,0 @@
-# HTML must be revalidated so old page markup does not keep old screenshots alive.
-# Assets retain normal caching and use versioned CSS/JS URLs.
-<IfModule mod_headers.c>
-  <FilesMatch "\.html$">
-    Header set Cache-Control "no-cache, max-age=0, must-revalidate"
-  </FilesMatch>
-</IfModule>
