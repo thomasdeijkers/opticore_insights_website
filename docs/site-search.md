@@ -9,3 +9,5 @@ Er is geen externe zoekdienst of API nodig. Zoektermen worden lokaal verwerkt in
 `assets/js/search-core.js` verwerkt accenten, hoofdletters, woordbeginnen, meerdere zoekwoorden en een beperkte Nederlandse synoniemenlijst. Paginatitels, relevante tussenkoppen en bestaande sectieankers wegen zwaarder dan losse vermeldingen. `assets/js/site-search.js` verzorgt de bediening, fragmenten, markeringen, filters, statusmeldingen en extra resultaten. De zoekopdracht is maximaal 120 tekens; maximaal twaalf zoektermen worden vergeleken.
 
 Controles: `python scripts/search_index.py --check`, `node scripts/test_site_search.cjs`, de bestaande metadata-/sitemapcontroles en browsercontroles op 320/390 pixels, tablet en desktop. Test ook een lege zoekopdracht, geen resultaten, toetsenbord, rubriekfilter, directe query-URL, meerdere zoekwoorden en navigatie naar het juiste paginaonderdeel. Bij een ontbrekende index blijven rechtstreekse links naar diensten, projecten en kennisbank beschikbaar.
+
+De zoekvelden gebruiken bij focus een subtiele blauwe rand binnen het veld, zonder het algemene oranje kader buiten het veld. Dit geldt voor het menuzoekveld en de zoekpagina.
