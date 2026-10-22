@@ -101,6 +101,17 @@ def marketing(overview=False):
     return kpis+'<div class="tabs"><span class="'+('active' if overview else '')+'">Overzicht</span><span class="'+('' if overview else 'active')+'">Voorstellen</span><span>Campagnes</span></div>'+body
 
 
+def listing(editor=False):
+    if editor:
+        before=panel('Huidige titel en tekst','<div class="panel-body"><h3>Schakelaar wit</h3><p>Witte draadloze schakelaar voor bediening.</p><p class="muted small">Toepassing en montage zijn nog niet duidelijk uitgelegd.</p></div>','Voorbeeldartikel ART-001')
+        after=panel('Tekstvoorstel ter controle','<div class="panel-body"><span class="tag">Concept</span><h3 style="margin-top:12px">Voorbeeldmerk draadloze schakelaar — wit, wandmontage</h3><p><strong>Bediening op een vaste plek</strong><br>Een witte draadloze schakelaar voor wandmontage. Controleer bij dit voorbeeld welke ontvanger en voeding nodig zijn.</p><p><strong>Controleer vóór publicatie</strong><br>Productfeiten, montage, verpakkingsinhoud en de gekozen zoekterm.</p><div class="actions"><button class="action primary" type="button">Tekst beoordelen</button><button class="action" type="button">Aanpassen</button></div></div>','Jouw beoordeling bepaalt de vervolgstap')
+        return '<div class="notice"><span>Fictief tekstvoorstel · nog niet gepubliceerd</span></div><div class="grid">'+before+after+'</div>'
+    kpis=metrics([('Listing-score','58 / 100','Eigen controle · geen bol-score'),('Tekstacties','3','Ter beoordeling'),('Retoursignalen','2','Fictieve meldingen'),('Controle','Open','Controleer de brongegevens')])
+    checks=panel('Dit vraagt aandacht',tasks([('↗','Relevante zoekterm ontbreekt','Beoordeel “draadloze schakelaar” voor de titel.'),('▤','Toepassing verduidelijken','Leg montage en benodigde onderdelen uit.'),('✓','Productgegevens controleren','Bevestig de verpakkingsinhoud vanuit de bron.')]),'ART-001 · Voorbeeldartikel')
+    brief=panel('Opdracht voor tekstoptimalisatie','<div class="panel-body"><p>Werk de drie tekstpunten uit met bevestigde productinformatie.</p><p class="muted small">Retoursignalen geven aanleiding tot controle. Ze bewijzen geen producteigenschap.</p><div class="actions"><button class="action primary" type="button">Maak een tekstvoorstel</button><button class="action" type="button">Later beoordelen</button></div></div>','Eerst beoordelen, dan verder')
+    return kpis+'<div class="grid">'+checks+brief+'</div>'
+
+
 def timesheets():
     return metrics([('Ontvangen','18','Weekstaten in deze periode'),('Gecontroleerd','16','Relatie en project herkend'),('Wacht op akkoord','12','Volgende beoordelingsstap'),('Uren deze week','1.360','<strong>+6,3%</strong> t.o.v. vorig jaar')])+'<div class="grid">'+panel('Uren per week',bars([980,1120,1040,1280,1200,1360],[900,1040,960,1200,1120,1280],['38','39','40','41','42','43']),'Fictieve periode · dit jaar en vorig jaar')+panel('Werkvoorraad',tasks([('▤','4 weekstaten controleren','Afwijkende uren of ontbrekende gegevens.'),('✓','12 klaar voor akkoord','Beoordeel de periode en voorbereiding.'),('↗','8 loonberekeningen voorbereiden','Controleer de afgesproken gegevens.')]))+'</div>'+panel('Laatste weekstaten',table(['Medewerker','Project','Uren','Status'],[['Medewerker A','Project Noord','40','<span class="tag">Gecontroleerd</span>'],['Medewerker B','Project West','36','<span class="tag amber">Controleren</span>'],['Medewerker C','Project Zuid','32','<span class="tag">Klaar voor akkoord</span>']]),classes='below desktop-only')
 
@@ -132,6 +143,8 @@ def main():
         'ranking-detail':('Slimme schakelaar','Marketing',ranking(True)),
         'marketing':('Marketingvoorstellen','Marketing',marketing()),
         'marketing-overview':('Campagneoverzicht','Marketing',marketing(True)),
+        'listing':('Listing beoordelen','Marketing',listing()),
+        'listing-editor':('Listing verbeteren','Marketing',listing(True)),
         'timesheets':('Uren en periodecontrole','Werkvoorraad',timesheets()),
         'documents':('Documentcontrole','Werkvoorraad',documents()),
         'intake':('Taken en dossiers','Werkvoorraad',intake())

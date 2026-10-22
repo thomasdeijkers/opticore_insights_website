@@ -45,7 +45,7 @@ At the user's request, fifteen images of the actual application interfaces were 
 
 - Editable source: `scripts/neutral_visuals.py` and `scripts/neutral_visuals.css`.
 - Capture manifest: `scripts/neutral_visuals_manifest.json` (page, public filename, old filename, dimensions and alt text).
-- Public assets: `assets/img/examples/`. Eight desktop images at 1280 × 900; seven phone images at 390 × 844.
+- Public assets: `assets/img/examples/`. Nine desktop images at 1280 × 900; nine phone images at 390 × 844, including the three listing examples added below.
 - Generate static source pages with `python scripts/neutral_visuals.py <scratch-directory>` and serve that directory on loopback. Capture each manifest entry with the browser at the stated viewport size. Commit the reviewed JPEGs, not scratch HTML output.
 - The same responsive HTML/CSS produces the phone and desktop layouts. Keep full viewport captures and the gallery's existing automatic device selection.
 - Existing product logos and unmodified Microsoft/bol source screenshots remain separate from this neutral example collection. Public website project screenshots are also unchanged.
@@ -60,3 +60,9 @@ At the user's request, fifteen images of the actual application interfaces were 
 All example galleries use the same borderless image layout. There is no inline toolbar, frame, caption panel or enlarge badge. Phone portrait selects the phone collection and shows its first two distinct screenshots side by side; desktop, tablets and phone landscape select one desktop preview. When a collection only has phone images (the official Authenticator examples), its first two phone images also appear on larger screens. A collection with only one suitable image keeps that image on its own.
 
 Clicking either preview opens the existing image dialog at that exact image, with all distinct images for the selected device available by swipe/drag, arrows and keyboard. Closing restores focus. Static `data-screen-preview` and collection counts provide the same initial previews without JavaScript. Public project screenshots outside galleries use the same viewer; portfolio-cover links keep their route to the project story. Image sources and metadata are preserved.
+
+## Listing examples — 22 October 2026
+
+`listing-mobile.jpg`, `listing-editor-mobile.jpg` and `listing-desktop.jpg` are browser captures of the code-native neutral `listing` and `listing-editor` examples in `scripts/neutral_visuals.py`. They illustrate listing checks, a text optimization brief and a proposed title/description. All scores, articles and return counts are fictitious. They do not copy the private application's interface or display customer data. The listing gallery uses the same plain paired phone previews, automatic device selection and closeable swipe viewer as the existing examples.
+
+The explanation was checked against the read-only app sources in `opticore-intern`: `marketing_agent.py` (`_listing_report`, optimization brief, score controls), `shared/product_improvements.py` (article comparison, text proposals and scope), `shared/listing_advice_decisions.py` (start, reject, defer), and the associated listing tests. ProductFlow publication follows the configured supported route; availability depends on account rights and setup. Public content guidance: https://partnerplatform.bol.com/nl/idp/productinformatie.

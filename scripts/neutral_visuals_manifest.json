@@ -118,5 +118,26 @@
     "width": 1280,
     "height": 900,
     "alt": "Neutrale voorbeeldweergave van documentintake en dossieropvolging met fictieve personen en opdrachten."
+  },
+  {
+    "file": "listing-mobile.jpg",
+    "page": "listing",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutrale mobiele voorbeeldweergave van een listingcontrole met fictieve score en tekstacties."
+  },
+  {
+    "file": "listing-editor-mobile.jpg",
+    "page": "listing-editor",
+    "width": 390,
+    "height": 844,
+    "alt": "Neutrale mobiele voorbeeldweergave van een fictief producttekstvoorstel ter beoordeling."
+  },
+  {
+    "file": "listing-desktop.jpg",
+    "page": "listing",
+    "width": 1280,
+    "height": 900,
+    "alt": "Neutrale voorbeeldweergave van listingoptimalisatie met fictieve controlepunten en een tekstbrief."
   }
 ]
