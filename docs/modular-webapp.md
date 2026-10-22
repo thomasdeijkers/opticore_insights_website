@@ -8,7 +8,7 @@ De galerij gebruikt neutrale voorbeeldweergaven met fictieve gegevens en de best
 
 ## API-voorbeelden
 
-De onderstaande catalogus bevat 44 voorbeelden, gegroepeerd op toepassing. Ze verwijzen naar informatie van de leverancier. Bereikbaarheid gecontroleerd op 22 oktober 2026. Het CCV Shop-developerportaal reageerde niet binnen de controletermijn; de publieke CCV Shop-site is daarom de link bij dat voorbeeld. De eBay- en Salesforce-portalen beperken geautomatiseerde HTTP-verzoeken, maar de officiële developerpagina’s zijn ook via webzoekresultaten gecontroleerd. De overige developerbronnen reageerden succesvol. API-rechten, abonnementsvoorwaarden, ondersteunde endpoints en limieten worden per klant gecontroleerd.
+De onderstaande catalogus bevat 45 voorbeelden, gegroepeerd op toepassing. Ze verwijzen naar informatie van de leverancier. Bereikbaarheid gecontroleerd op 22 oktober 2026. Het CCV Shop-developerportaal reageerde niet binnen de controletermijn; de publieke CCV Shop-site is daarom de link bij dat voorbeeld. De eBay- en Salesforce-portalen beperken geautomatiseerde HTTP-verzoeken, maar de officiële developerpagina’s zijn ook via webzoekresultaten gecontroleerd. De overige developerbronnen reageerden succesvol. API-rechten, abonnementsvoorwaarden, ondersteunde endpoints en limieten worden per klant gecontroleerd.
 
 ### Webshops
 
@@ -47,6 +47,7 @@ De onderstaande catalogus bevat 44 voorbeelden, gegroepeerd op toepassing. Ze ve
 ### Magazijn en verzending
 
 - Picqer: https://picqer.com/en/api
+- QLS: https://knowledge.qls.nl/nl/api-documentatie
 - Sendcloud: https://sendcloud.dev/
 - PostNL: https://developer.postnl.nl/
 - DHL: https://developer.dhl.com/

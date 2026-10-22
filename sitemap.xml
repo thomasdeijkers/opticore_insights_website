@@ -60,6 +60,30 @@
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/amazon.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/brico.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/ccv-shop.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/lightspeed.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/praxis.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/qls.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/sendcloud.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/shopify.svg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/ai-assistenten/</loc>
@@ -188,6 +212,30 @@
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/stock-mobile.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/amazon.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/brico.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/ccv-shop.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/lightspeed.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/praxis.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/qls.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/sendcloud.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/shopify.svg</image:loc>
     </image:image>
   </url>
   <url>
@@ -321,6 +369,30 @@
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/ranking-overview-mobile.jpg</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/amazon.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/brico.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/ccv-shop.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/lightspeed.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/praxis.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/qls.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/sendcloud.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/shopify.svg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/ecommerce-automatisering/</loc>
@@ -434,6 +506,22 @@
     </image:image>
   </url>
   <url>
+    <loc>https://opticore-insights.nl/marketplace-koppelingen/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/bol-wordmark.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/amazon.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/brico.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/praxis.png</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://opticore-insights.nl/marketplace-synchronisatie/</loc>
     <lastmod>2026-10-22</lastmod>
     <image:image>
@@ -514,6 +602,37 @@
   <url>
     <loc>https://opticore-insights.nl/over/</loc>
     <lastmod>2026-10-22</lastmod>
+  </url>
+  <url>
+    <loc>https://opticore-insights.nl/platform-koppelingen/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/bol-wordmark.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/amazon.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/brico.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/ccv-shop.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/lightspeed.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/praxis.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/qls.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/sendcloud.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/shopify.svg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/postgresql-database/</loc>
@@ -851,6 +970,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://opticore-insights.nl/verzendsoftware-koppelingen/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/qls.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/sendcloud.svg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://opticore-insights.nl/voorraadanalyses/</loc>
     <lastmod>2026-10-22</lastmod>
     <image:image>
@@ -882,6 +1011,19 @@
   <url>
     <loc>https://opticore-insights.nl/webhooks/</loc>
     <lastmod>2026-10-22</lastmod>
+  </url>
+  <url>
+    <loc>https://opticore-insights.nl/webshop-koppelingen/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/ccv-shop.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/lightspeed.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/shopify.svg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/website-ontwikkeling/</loc>
