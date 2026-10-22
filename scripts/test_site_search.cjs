@@ -1,0 +1,28 @@
+/* User-facing retrieval checks against the real generated public content. */
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const core = require('../assets/js/search-core.js');
+const index = JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/search-index.json'),'utf8'));
+const pages = core.prepare(index.pages);
+const results = (query, category='') => core.search(pages,query,category);
+assert.equal(results('marketingagent')[0].url, '/bol-ondernemers/#marketingagent');
+assert.equal(results('Shopify voorraad')[0].url, '/webshop-koppelingen/#shopify');
+assert.equal(results('Google Authenticator')[0].url, '/beveiliging/#authenticator');
+assert.equal(results('prijzen')[0].page.url, '/prijzen/');
+assert.equal(results('power bi')[0].page.url, '/power-bi-dashboard/');
+assert.equal(results('bol marketing agent')[0].page.url, '/bol-ondernemers/');
+assert(results('Olympus','Projecten').some(result=>result.page.url==='/projecten/olympus-bouw/'));
+assert(results('Olympus','Nieuws').every(result=>result.page.category==='Nieuws'));
+assert.deepEqual(results('onvindbaarxyz987'), []);
+assert.deepEqual(results(''), []);
+assert.deepEqual(results('<script>alert(1)</script>'), []);
+assert.equal(core.normalize('ÉÉN API-koppeling'), 'een api koppeling');
+assert(results('voorraad').some(result=>result.page.url==='/voorraadanalyses/'));
+assert(results('stock').some(result=>result.page.url==='/voorraadanalyses/'));
+assert(pages.every(page=>!page.url.includes('.html') && page.url!=='/zoeken/'));
+assert(!JSON.stringify(index).includes('Hoe wil je samenwerken?'));
+assert(new Set(pages.map(page=>page.url)).size===pages.length);
+const result=results('marketingagent')[0];
+assert(core.excerpt(result,'marketingagent').length<=230);
+console.log(`Site search OK: relevance, deep links, synonyms, categories and empty/untrusted queries; ${pages.length} public pages.`);

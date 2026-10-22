@@ -1,0 +1,11 @@
+# Zoeken op de website
+
+`/zoeken/` is bereikbaar via het vergrootglas in iedere bovenbalk en een footerlink. De vijf hoofdnavigatielinks blijven behouden. De zoekpagina toont resultaten tijdens het typen, een zoekknop, rubriekfilters, relevante tekstfragmenten en directe links naar bestaande paginaonderdelen. De query en rubriek staan in de URL, zodat een zoekopdracht deelbaar is en terugnavigeren de zoekopdracht behoudt.
+
+`python scripts/search_index.py --write` bouwt `assets/search-index.json` uit canonieke, indexeerbare HTML-pagina’s. Deze gegenereerde JSON staat in `.gitignore` en wordt bij iedere deployment opnieuw gemaakt, na de nieuwsrenderer. De upload publiceert de JSON als gewoon statisch bestand. Nieuwe nieuwsberichten worden dus automatisch meegenomen. Formulierinhoud, navigatie, screenshotbesturing en niet-geïndexeerde voorbeeldpagina’s worden uitgesloten. Publieke, indexeerbare demo’s mogen wel worden gevonden. De zoekpagina heeft `noindex,follow` en komt niet in de sitemap of eigen zoekindex.
+
+Er is geen externe zoekdienst of API nodig. Zoektermen worden lokaal verwerkt in de browser. De index bevat uitsluitend bestaande openbare website-inhoud. Zoekresultaten en zoekwoorden worden als tekst opgebouwd met DOM-nodes, zonder HTML-injectie uit de zoekopdracht. De index wordt met hercontrole opgehaald zodat gepubliceerde inhoud actueel blijft.
+
+`assets/js/search-core.js` verwerkt accenten, hoofdletters, woordbeginnen, meerdere zoekwoorden en een beperkte Nederlandse synoniemenlijst. Paginatitels, relevante tussenkoppen en bestaande sectieankers wegen zwaarder dan losse vermeldingen. `assets/js/site-search.js` verzorgt de bediening, fragmenten, markeringen, filters, statusmeldingen en extra resultaten. De zoekopdracht is maximaal 120 tekens; maximaal twaalf zoektermen worden vergeleken.
+
+Controles: `python scripts/search_index.py --check`, `node scripts/test_site_search.cjs`, de bestaande metadata-/sitemapcontroles en browsercontroles op 320/390 pixels, tablet en desktop. Test ook een lege zoekopdracht, geen resultaten, toetsenbord, rubriekfilter, directe query-URL, meerdere zoekwoorden en navigatie naar het juiste paginaonderdeel. Bij een ontbrekende index blijven rechtstreekse links naar diensten, projecten en kennisbank beschikbaar.

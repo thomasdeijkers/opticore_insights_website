@@ -1,0 +1,28 @@
+.search-layout{max-width:860px}
+.search-section{padding-top:24px}
+.search-form{display:flex;gap:12px;align-items:stretch;margin:24px 0 18px}
+.search-form input{flex:1;min-width:0;width:100%;padding:13px 16px;background:#fff;border:1px solid #7c91a3;border-radius:5px;color:var(--ink);font-size:18px;line-height:1.5}
+.search-form .button{background:var(--link);border-color:var(--link);padding-inline:25px}
+.search-form .button:hover{background:#104877}
+.search-help{font-size:14px;color:var(--muted);margin:0 0 24px}
+.search-filters{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 25px}
+.search-filters button{border:1px solid #b8c7d4;border-radius:5px;background:#fff;color:var(--ink);padding:8px 14px;min-height:44px;font-size:14px;line-height:1.5}
+.search-filters button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.search-status{font-size:15px;color:var(--muted);margin-bottom:26px;overflow-wrap:anywhere;min-height:26px}
+.search-results{padding:0;margin:0;list-style:none}
+.search-results>li{padding:25px 0;border-top:1px solid var(--line);margin:0;overflow-wrap:anywhere}
+.search-results h2{font-size:24px;margin:0 0 12px;text-wrap:initial}
+.search-results h2 a{text-decoration:none}
+.search-results h2 a:hover{text-decoration:underline}
+.search-results p{font-size:16px;line-height:1.7;margin:0}
+.search-results .search-result-category{font-size:12px;letter-spacing:.4px;font-weight:650;color:var(--muted);margin-bottom:10px}
+.search-results .search-result-context{font-size:14px;font-weight:650;color:var(--ink);margin-bottom:7px}
+.search-results mark{background:#fff0c2;color:inherit;padding:0 1px}
+.search-more{margin-top:25px}
+.search-suggestions{border-top:1px solid var(--line);padding-top:26px;margin-top:10px}
+.search-suggestions h2{font-size:22px}
+.search-suggestions ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px 24px;padding:0;margin:0}
+.search-suggestions li{margin:0}
+.search-suggestions a{display:inline-block;min-height:44px;padding:8px 0;font-size:15px}
+.search-error{padding:20px;background:var(--soft);border:1px solid var(--line);border-radius:5px}
+@media(max-width:560px){.search-section{padding-top:12px}.search-form{gap:8px}.search-form input{font-size:16px;padding:12px;min-width:0}.search-form .button{padding:10px 15px;font-size:15px}.search-filters{gap:6px}.search-filters button{padding:8px 9px;font-size:12px}.search-results h2{font-size:21px}.search-results>li{padding:22px 0}.search-help{font-size:13px}}

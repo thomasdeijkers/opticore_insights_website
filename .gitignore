@@ -1,6 +1,8 @@
 ﻿.env
 node_modules/
 __pycache__/
+# Search content is rebuilt from public HTML during deployment.
+assets/search-index.json
 backups/
 *.zip
 *.bak

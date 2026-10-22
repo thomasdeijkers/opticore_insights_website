@@ -19,6 +19,12 @@ jobs:
       - name: Render and validate news
         run: python3 scripts/news.py --write
 
+      - name: Build and validate site search
+        run: |
+          python3 scripts/search_index.py --write
+          node --check assets/js/site-search.js
+          node scripts/test_site_search.cjs
+
       - name: Generate and validate sitemap and metadata
         run: |
           python3 scripts/check_screenshot_galleries.py
