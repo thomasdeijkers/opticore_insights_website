@@ -71,3 +71,21 @@
 .webapp-selection h4{font-size:16px;margin:18px 0 10px}.webapp-selection ol{margin:10px 0 20px;padding-left:24px}.webapp-selection ol li{background:none;border:0;border-radius:0;padding:2px 0;font-size:15px}
 .webapp-totals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:20px 0}.webapp-totals dt{font-size:14px}.webapp-totals dd{font-size:27px;font-weight:700;color:var(--ink);margin:3px 0 0}
 @media(max-width:560px){.webapp-base{grid-template-columns:1fr;padding:20px;gap:16px}.webapp-totals{grid-template-columns:1fr;gap:12px}.webapp-totals dd{font-size:24px}}
+
+/* Prices, selection and source explanation live in the same module card. */
+.webapp-module-card{display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid #bdcad5;border-radius:7px}
+.webapp-module-card:has(input:checked){border-color:var(--link);background:#edf4fa;box-shadow:inset 0 0 0 1px var(--link)}
+.webapp-module-card .webapp-module{border:0;border-radius:7px 7px 0 0;background:transparent;box-shadow:none}
+.webapp-module-card .webapp-module:has(input:checked){background:transparent;box-shadow:none}
+.webapp-module-card .webapp-module-details{border:0;border-top:1px solid var(--line);margin:0 21px;padding:0;margin-top:auto}
+.webapp-module-card .webapp-module-details summary{padding:15px 0;font-size:14px;line-height:1.5}
+.webapp-module-card .webapp-module-details dl{grid-template-columns:1fr;gap:16px;margin:0 0 21px}
+.webapp-module-card .webapp-module-details dt{font-size:14px;margin-bottom:6px}
+.webapp-module-card .webapp-module-details dd{font-size:14px;line-height:1.65}
+@media(max-width:560px){.webapp-module-card .webapp-module-details{margin-inline:18px}}
+
+.webapp-module-details h4{font-size:15px;margin:2px 0 8px}.webapp-module-details .webapp-example-note{font-size:13px;line-height:1.6;color:var(--muted)}
+.webapp-module-details .screen-gallery{margin:14px 0}.webapp-module-details>p{font-size:14px;margin-bottom:20px}.webapp-module-details[open]{padding-bottom:3px}
+.webapp-discount dd{color:#246649}.webapp-expansion-note{margin:24px 0;padding:22px;background:#f1f5f8;border:1px solid var(--line);border-radius:7px}.webapp-expansion-note h3{font-size:20px;margin-bottom:10px}.webapp-expansion-note p,.webapp-expansion-note li{font-size:15px;line-height:1.65}.webapp-expansion-note p:last-child{margin-bottom:0}
+.webapp-demo-links{margin:20px 0}.webapp-demo-frame{display:block;width:100%;height:900px;border:1px solid #bdcad5;border-radius:8px;background:#f3f6f8}
+@media(max-width:560px){.webapp-demo-frame{height:1000px}.webapp-expansion-note{padding:18px}}

@@ -33,7 +33,7 @@ $topics = json_decode(<<<'JSON'
     "label": "Een modulaire webapp",
     "question": "Welk werk moet de webapp makkelijker maken?",
     "fields": {
-      "modules": {"label": "Welke modules wil je bespreken?", "required": false},
+      "modules": {"label": "Gekozen modules en prijsindicatie", "required": false},
       "systems": {"label": "Welke systemen moeten we koppelen?", "required": false},
       "users": {"label": "Wie gaat de webapp gebruiken?", "required": false}
     }
@@ -184,6 +184,10 @@ $submitted_details = is_array($_POST['details'] ?? null) ? $_POST['details'] : [
 foreach (($topic['fields'] ?? []) as $key => $field) {
     if (isset($field['collaboration']) && $field['collaboration'] !== ($submitted_details['collaboration'] ?? null)) continue;
     $answer = clean_text($submitted_details[$key] ?? '');
+    // Module selection is body text; preserve the readable implementation order.
+    if ($topic_key === 'webapp' && $key === 'modules' && is_string($submitted_details[$key] ?? null)) {
+        $answer = trim(str_replace(["\r\n", "\r"], "\n", $submitted_details[$key]));
+    }
     if ($field['required'] && $answer === '') {
         render_page('Controleer je gegevens', 'Vul het verplichte veld in: ' . $field['label'] . '.');
     }

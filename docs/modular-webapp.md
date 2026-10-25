@@ -1,10 +1,10 @@
 # Modulaire webapp
 
-De pagina `/modulaire-webapp/` bevat twaalf modules met door de eigenaar op 25 oktober 2026 goedgekeurde inrichtings- en maandprijzen. De basisomgeving (€ 1.500 inrichting, € 79/mnd) is altijd verplicht en wordt eenmaal geteld. Het blijft een aanvraagselectie, geen bestelling of moduleactivatie. Alle bedragen zijn exclusief btw; offerte en afgesproken scope blijven nodig.
+De pagina `/modulaire-webapp/` bevat twaalf modules met door de eigenaar op 25–26 oktober 2026 goedgekeurde inrichtings- en maandprijzen. De basisomgeving (€ 1.500 inrichting, € 79/mnd) is altijd verplicht en wordt eenmaal geteld. Het blijft een aanvraagselectie, geen bestelling of moduleactivatie. Alle bedragen zijn exclusief btw; offerte en afgesproken scope blijven nodig.
 
 ## Prijzen en implementatievolgorde
 
-De publieke kaarten tonen statisch de tarieven en voorwaarden, ook zonder JavaScript. `assets/js/modular-webapp.js` bevat dezelfde catalogus met bedragen en afhankelijkheden, berekent de transitieve selectie zonder dubbeltelling en sorteert voorgangers vóór uitbreidingen. `scripts/test_modular_webapp.cjs` controleert de catalogus tegen de HTML-kaarten en controleert prijzen, volgorde, gedeelde afhankelijkheden en onbekende IDs.
+Iedere modulekaart combineert keuze, tarieven, voorwaarden en een uitklapbare uitleg over essentiële gegevens, extra bronnen en verwerking. De twaalf verklaringen staan niet meer in een aparte sectie; hun bestaande `gegevens-*`-ankers blijven behouden. Het oude `gegevens-per-module`-anker verwijst naar de modulekaarten. De publieke kaarten tonen statisch de tarieven en voorwaarden, ook zonder JavaScript. `assets/js/modular-webapp.js` bevat dezelfde catalogus met bedragen en afhankelijkheden, berekent de transitieve selectie zonder dubbeltelling en sorteert voorgangers vóór uitbreidingen. `scripts/test_modular_webapp.cjs` controleert de catalogus tegen de HTML-kaarten en controleert prijzen, volgorde, gedeelde afhankelijkheden en onbekende IDs.
 
 Iedere module vereist de basis. Aanvullende voorgangers:
 
@@ -16,9 +16,9 @@ Iedere module vereist de basis. Aanvullende voorgangers:
 - Taken en controles: planning en projecten.
 - Omzetrapportage, voorraad, productbeheer, orders en retouren, documentverwerking en planning kunnen direct op de basis starten.
 
-De basis telt mee voordat een module is gekozen. Vereiste voorgangers worden automatisch aangevinkt en blijven vergrendeld zolang een gekozen uitbreiding ze nodig heeft. Verwijder eerst die uitbreiding. Handmatig gekozen voorgangers blijven behouden bij verwijderen van een uitbreiding; alleen automatisch toegevoegde voorgangers vervallen als ze niet meer nodig zijn. Reset wist alle modules en behoudt de verplichte basis.
+De basis blijft € 79/mnd; losse modules zijn op hele tientallen afgerond (€ 40–€ 130). Daardoor eindigt ieder selectietotaal op 9. Inrichtingskosten blijven gelijk. De basis telt mee voordat een module is gekozen. Vereiste voorgangers worden automatisch aangevinkt en blijven vergrendeld zolang een gekozen uitbreiding ze nodig heeft. Verwijder eerst die uitbreiding. Handmatig gekozen voorgangers blijven behouden bij verwijderen van een uitbreiding; alleen automatisch toegevoegde voorgangers vervallen als ze niet meer nodig zijn. Reset wist alle modules en behoudt de verplichte basis.
 
-Het contactconcept bevat alleen bekende module-ID’s, benodigde voorgangers, basis en prijsindicatie. De klant kan de tekst bewerken; alleen de laatste contactknop verstuurt mail. Documentverwerking heeft aanvullend verbruik. Nieuwe koppelingen, aanvullend maatwerk en externe diensten vallen buiten de selectietotalen. De basis omvat alleen een al bestaande standaardkoppeling na controle van de situatie; de API-catalogus is geen lijst met gegarandeerd beschikbare connectors.
+Het contactconcept bevat alleen bekende module-ID’s, benodigde voorgangers, basis en prijsindicatie. Het webapponderwerp opent automatisch, met een bewerkbaar tekstvak bovenaan met de genummerde implementatievolgorde en bedragen. De inhoud gaat als `details[modules]` mee in het bestaande formulier; de mailbody bewaart de regelafbrekingen. Een teruglink herstelt de modulekeuze uit bekende ID’s. De klant kan de tekst bewerken; alleen de laatste contactknop verstuurt mail. Documentverwerking heeft aanvullend verbruik. Nieuwe koppelingen, aanvullend maatwerk en externe diensten vallen buiten de selectietotalen. De basis omvat alleen een al bestaande standaardkoppeling na controle van de situatie; de API-catalogus is geen lijst met gegarandeerd beschikbare connectors.
 
 De prijzenpagina en `.html`-aliassen volgen dezelfde tarieven en verwijzen naar de modulekeuze. De galerij toont neutrale voorbeelden met fictieve gegevens.
 
@@ -94,3 +94,17 @@ De onderstaande catalogus bevat 45 voorbeelden, gegroepeerd op toepassing. Ze ve
 - Stripe: https://docs.stripe.com/api
 - Adyen: https://docs.adyen.com/api-explorer/
 - PayPal: https://developer.paypal.com/api/rest/
+
+## Gecombineerde kaarten, screenshots en demo — 26 oktober 2026
+
+Iedere module heeft een uitklapbare sectie `Meer info`: twee voorbeeldweergaven (Overzicht en Details en werkvoorraad), in mobiele en desktopversie, plus de bestaande uitleg over gegevens en verwerking. De 48 JPEG-bestanden staan onder `assets/img/module-examples/` en zijn browsercaptures van de eigen openbare demo, niet van een productieapp. Ze gebruiken de bestaande screenshotgalerij met twee mobiele previews, desktopselectie en vergrootvenster. Titels en alt-teksten benoemen de fictieve gegevens.
+
+De zelfstandige, niet-geïndexeerde `/demo/modulaire-webapp/` gebruikt `assets/js/module-demo.js` en `assets/css/module-demo.css`. Alle gegevens, orders, leveranciers, campagnes en bedragen zijn fictief en staan in deze bron. Er zijn geen API-koppelingen, accounts, cookies, uploads of productiegegevens. Menu, weergavekeuze, zoeken, regeldetails, voorbeeldactie en reset werken lokaal; voorbeeldacties sturen niets naar buiten. De modulepagina sluit af met deze demo in een iframe en biedt een link om hem apart te openen.
+
+Voor nieuwe captures: serveer de website lokaal, bezoek `/demo/modulaire-webapp/?module=<bekend-module-id>&view=overzicht` of `view=details` met de browser op 1280×900 (desktop) en 390×844 (mobiel), en maak JPEG-viewportcaptures. Naam: `<module>-<overzicht|details>-<desktop|mobile>.jpg`. Bron, screenshot en kaart moeten bij dezelfde module horen. Commit alleen de bedoelde publieke assets.
+
+## Bundelkorting
+
+Bij een gezamenlijke eerste afname: 1 module 0%, 2–3 modules 10%, 4–5 modules 20%, 6–12 modules 30% korting op de totale eenmalige inrichting, inclusief basis. Benodigde voorgangers tellen als modules, de basis zelf niet. `resolve()` geeft het brutobedrag, percentage, kortingsbedrag, nettobedrag en ongewijzigde maandprijs terug. De calculator en het contactconcept tonen die uitsplitsing apart. Latere uitbreidingen krijgen een offerte; de eerste-afnamekorting is niet met terugwerkende kracht van toepassing. Maandtarieven en externe verbruikskosten krijgen deze korting niet.
+
+Controles: Node-tests voor tarieven, alle maandtotaalcombinaties, kortingsgrenzen, afhankelijkheden, screenshots en aliassen; browsercontrole op 1440/393/320 px voor selectie, galerij, iframe, zoeken, detailactie, reset en contactoverdracht. De PHP-mailbody is lokaal gecontroleerd met de mailfunctie uitgeschakeld en vervangen door een teststub, zonder bericht te versturen.

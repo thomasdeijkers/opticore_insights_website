@@ -34,6 +34,7 @@ jobs:
       - name: Validate module pricing and dependencies
         run: |
           node --check assets/js/modular-webapp.js
+          node --check assets/js/module-demo.js
           node scripts/test_modular_webapp.cjs
 
       - name: Validate business scan
