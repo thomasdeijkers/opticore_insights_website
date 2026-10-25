@@ -47,3 +47,14 @@
 @media(max-width:1000px){.webapp-module-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.webapp-intro-grid{gap:28px}.webapp-intro h1{font-size:38px}.webapp-intro .lead{font-size:18px}}
 @media(max-width:800px){.webapp-intro-grid{grid-template-columns:1fr}.webapp-intro .screen-gallery{max-width:720px}.webapp-price-grid,.webapp-dataflow{gap:20px}.webapp-selection{grid-template-columns:1fr;gap:15px}.webapp-selection-actions{align-items:flex-start;flex-direction:row;flex-wrap:wrap}}
 @media(max-width:560px){.webapp-intro{padding:30px 0}.webapp-intro h1{font-size:33px}.webapp-intro .lead{font-size:17px}.webapp-intro .actions{gap:16px}.webapp-module-grid,.webapp-price-grid,.webapp-api-grid,.webapp-dataflow{grid-template-columns:1fr}.webapp-module{padding:18px}.webapp-module-title{font-size:18px}.webapp-selection{padding:20px}.webapp-price-grid{gap:24px}.webapp-api-group{padding-inline:17px}.webapp-api-group summary{font-size:17px}.webapp-page-nav{gap:10px 20px}.webapp-page-nav span{display:none}}
+
+/* Essential inputs, useful additions and processing stay readable on every screen. */
+.webapp-source{border-top:1px solid var(--line);padding:0 0 3px}
+.webapp-source:last-child{border-bottom:1px solid var(--line)}
+.webapp-source summary{cursor:pointer;padding:18px 0;font-weight:650;color:var(--ink)}
+.webapp-source-title{display:inline-flex;align-items:center;gap:10px;vertical-align:middle}
+.webapp-source-title svg{width:23px;height:23px;flex-shrink:0;color:var(--link)}
+.webapp-source dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin:0 0 24px;padding:0}
+.webapp-source dt{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:9px}
+.webapp-source dd{font-size:15px;line-height:1.7;margin:0}
+@media(max-width:800px){.webapp-source dl{grid-template-columns:1fr;gap:19px}.webapp-source-title{font-size:16px}}
