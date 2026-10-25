@@ -18,7 +18,7 @@ assert.equal(combined.modules.filter(id => id === 'voorraad').length, 1);
 assert.equal(combined.setup, 5600);
 assert.equal(combined.monthly, 579);
 assert.deepEqual(resolve(['<script>', '__proto__', 'constructor', 'unknown']), resolve([]));
-assert.equal(resolve(['documenten']).usage, true);
+assert.deepEqual(resolve(['documenten','planning']),resolve([]),'Removed construction/document modules are not offered');
 for (const id of Object.keys(catalogue)) {
   const selected = resolve([id]);
   for (const required of catalogue[id].requires) {
@@ -30,8 +30,8 @@ for (const id of Object.keys(catalogue)) {
   assert(card.includes(money(catalogue[id].monthly) + ' per maand'), 'Visible monthly price: ' + id);
   for (const required of catalogue[id].requires) assert(card.includes(catalogue[required].label), 'Visible dependency: ' + id);
 }
-assert.equal(new Set(resolve(Object.keys(catalogue)).modules).size, 12);
-assert.equal((html.match(/class="webapp-module-card"/g)||[]).length,12);
+assert.equal(new Set(resolve(Object.keys(catalogue)).modules).size, 10);
+assert.equal((html.match(/class="webapp-module-card"/g)||[]).length,10);
 assert(!html.includes('<section class="section" id="gegevens-per-module"'),'No separate duplicate module explanation');
 for (const id of Object.keys(catalogue)) {
   assert.equal(catalogue[id].monthly % 10, 0, 'Module fees are multiples of ten');

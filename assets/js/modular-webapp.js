@@ -39,7 +39,7 @@
     ]
   },
   "producten": {
-    "label": "Productbeheer",
+    "label": "Productbeheer en publicaties",
     "setup": 1000,
     "monthly": 80,
     "requires": []
@@ -67,24 +67,13 @@
       "omzet"
     ]
   },
-  "documenten": {
-    "label": "Documentverwerking",
-    "setup": 1250,
-    "monthly": 80,
-    "requires": []
-  },
-  "planning": {
-    "label": "Planning en projecten",
-    "setup": 750,
-    "monthly": 50,
-    "requires": []
-  },
   "controles": {
-    "label": "Taken en controles",
+    "label": "Signalen en controles",
     "setup": 500,
     "monthly": 40,
     "requires": [
-      "planning"
+      "omzet",
+      "voorraad"
     ]
   }
 };
@@ -103,7 +92,7 @@
     const discountRate = modules.length >= 6 ? 30 : modules.length >= 4 ? 20 : modules.length >= 2 ? 10 : 0;
     const discount = setupSubtotal * discountRate / 100;
     return { modules, setupSubtotal, discountRate, discount, setup: setupSubtotal - discount,
-      monthly: base.monthly + modules.reduce((n, id) => n + catalogue[id].monthly, 0), usage: ordered.has('documenten') };
+      monthly: base.monthly + modules.reduce((n, id) => n + catalogue[id].monthly, 0), usage: false };
   }
   if (typeof module !== 'undefined' && module.exports) module.exports = { catalogue, base, resolve };
   if (typeof document === 'undefined') return;
@@ -152,6 +141,14 @@
     window.addEventListener('pageshow', update);
     update();
   }
+  // Keep embedded dialogs clear of the site's sticky navigation.
+  window.addEventListener('message', event => {
+    const frame = document.querySelector('.webapp-demo-frame');
+    if (!frame || event.origin !== location.origin || event.source !== frame.contentWindow || event.data?.type !== 'opticore-demo-dialog') return;
+    const header = document.querySelector('.site-header');
+    const inset = (header?.getBoundingClientRect().height || 0) + 16;
+    window.scrollTo({ top: window.scrollY + frame.getBoundingClientRect().top - inset, behavior: 'instant' });
+  });
   // Carry only known module IDs, their prerequisites and the basis into an editable draft.
   const field = document.querySelector('#webapp-modules');
   const params = new URLSearchParams(window.location.search);
