@@ -1,5 +1,5 @@
 /* Pricing follows the same readable layout as the service pages. */
-.pricing-intro{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;margin-bottom:44px;align-items:start}
+.pricing-intro{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;margin-bottom:0;align-items:start}
 .pricing-intro p{margin:0}
 .pricing-terms{padding:22px 25px;background:var(--soft);border-left:3px solid var(--accent);font-size:15px}
 .pricing-terms strong{color:var(--ink)}
@@ -16,3 +16,12 @@
 .package-bottom .text-link{display:block;margin-top:10px;font-size:14px}
 @media(max-width:800px){.pricing-intro{grid-template-columns:1fr;gap:22px}.pricing-card{padding:24px}}
 @media(max-width:560px){.pricing-intro{margin-bottom:32px}.pricing-card .package-price{font-size:32px}.pricing-card h3{font-size:22px}.package-bottom .button{width:100%}}
+
+/* Keep website prices, webapp modules and recurring costs distinct. */
+.pricing-breakdown{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 40px;margin-bottom:30px}
+.pricing-breakdown article{min-width:0;border-top:2px solid var(--line);padding-top:20px}
+.pricing-breakdown h3{font-size:21px}
+.pricing-breakdown p{font-size:16px}
+.pricing-breakdown p:last-child,.pricing-terms p:last-child{margin-bottom:0}
+.pricing-terms p{margin-top:10px}
+@media(max-width:560px){.pricing-intro{margin-bottom:0}.pricing-breakdown{grid-template-columns:1fr;gap:24px}.pricing-breakdown h3{font-size:20px}}
