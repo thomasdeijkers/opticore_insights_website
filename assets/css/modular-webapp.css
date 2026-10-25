@@ -58,3 +58,16 @@
 .webapp-source dt{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:9px}
 .webapp-source dd{font-size:15px;line-height:1.7;margin:0}
 @media(max-width:800px){.webapp-source dl{grid-template-columns:1fr;gap:19px}.webapp-source-title{font-size:16px}}
+
+/* Module pricing and prerequisite-aware selection. */
+.webapp-base{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;border:2px solid #175a96;background:#fff;padding:24px;border-radius:7px;margin-bottom:18px}
+.webapp-base h3{margin:0 0 8px}.webapp-base p:last-child{margin-bottom:0}.webapp-base-price{display:flex;flex-direction:column;gap:7px;justify-content:center}
+.webapp-base-price strong{font-size:22px;color:var(--ink)}.webapp-required{font-size:13px;color:#175a96;font-weight:700}
+.webapp-module-help{font-size:15px;max-width:900px;margin-bottom:22px}
+.webapp-module-price{display:flex;flex-direction:column;gap:3px;margin-top:16px;padding-top:12px;border-top:1px solid var(--line);color:var(--ink);font-size:15px}
+.webapp-module-price strong{font-size:17px}.webapp-module-requires{display:block;margin-top:12px;font-size:13px;line-height:1.6;color:var(--muted)}
+.webapp-module-auto{display:block;margin-top:10px;font-size:13px;line-height:1.5;color:#175a96;font-weight:600}.webapp-module-auto[hidden]{display:none}
+.webapp-module:has(input:disabled){cursor:default}.webapp-module input:disabled{opacity:1}
+.webapp-selection h4{font-size:16px;margin:18px 0 10px}.webapp-selection ol{margin:10px 0 20px;padding-left:24px}.webapp-selection ol li{background:none;border:0;border-radius:0;padding:2px 0;font-size:15px}
+.webapp-totals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:20px 0}.webapp-totals dt{font-size:14px}.webapp-totals dd{font-size:27px;font-weight:700;color:var(--ink);margin:3px 0 0}
+@media(max-width:560px){.webapp-base{grid-template-columns:1fr;padding:20px;gap:16px}.webapp-totals{grid-template-columns:1fr;gap:12px}.webapp-totals dd{font-size:24px}}

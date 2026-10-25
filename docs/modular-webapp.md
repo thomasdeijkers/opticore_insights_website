@@ -1,10 +1,26 @@
 # Modulaire webapp
 
-De pagina `/modulaire-webapp/` beschrijft webapps op maat met twaalf mogelijke modules. Het is een dienstenpagina en een aanvraagselectie; de pagina activeert geen modules en rekent niets af. Een voorstel specificeert basisomgeving, eenmalige inrichting, periodieke modulekosten, koppelingen, gebruikers en beheer. Er worden geen tarieven of bestaande kant-en-klare connectors verzonnen.
+De pagina `/modulaire-webapp/` bevat twaalf modules met door de eigenaar op 25 oktober 2026 goedgekeurde inrichtings- en maandprijzen. De basisomgeving (€ 1.500 inrichting, € 79/mnd) is altijd verplicht en wordt eenmaal geteld. Het blijft een aanvraagselectie, geen bestelling of moduleactivatie. Alle bedragen zijn exclusief btw; offerte en afgesproken scope blijven nodig.
 
-De modulekeuze gebruikt alleen publieke module-ID’s en neemt de selectie mee naar het onderwerp `webapp` op de contactpagina. Alleen bekende ID’s worden omgezet naar bewerkbare tekst. De laatste contactverzendknop blijft de enige mailactie. Houd de labels in de modulekaarten en `assets/js/modular-webapp.js` gelijk.
+## Prijzen en implementatievolgorde
 
-De galerij gebruikt neutrale voorbeeldweergaven met fictieve gegevens en de bestaande automatische mobiele/desktopselectie. De beelden illustreren functionaliteit; ze zijn geen kopieën van productieschermen. De gegevensstromen en voorbeeldmodules beschrijven maatwerk dat we per opdracht uitwerken; ze doen geen toezegging dat elke leverancier alle gewenste acties ondersteunt.
+De publieke kaarten tonen statisch de tarieven en voorwaarden, ook zonder JavaScript. `assets/js/modular-webapp.js` bevat dezelfde catalogus met bedragen en afhankelijkheden, berekent de transitieve selectie zonder dubbeltelling en sorteert voorgangers vóór uitbreidingen. `scripts/test_modular_webapp.cjs` controleert de catalogus tegen de HTML-kaarten en controleert prijzen, volgorde, gedeelde afhankelijkheden en onbekende IDs.
+
+Iedere module vereist de basis. Aanvullende voorgangers:
+
+- Forecasting: omzetrapportage.
+- Inkoop en bestellen: omzetrapportage en voorraad. Forecasting is optioneel.
+- Magazijn en logistiek: voorraad en orders en retouren.
+- Marketing en ranking: omzetrapportage en productbeheer.
+- Financieel overzicht: omzetrapportage.
+- Taken en controles: planning en projecten.
+- Omzetrapportage, voorraad, productbeheer, orders en retouren, documentverwerking en planning kunnen direct op de basis starten.
+
+De basis telt mee voordat een module is gekozen. Vereiste voorgangers worden automatisch aangevinkt en blijven vergrendeld zolang een gekozen uitbreiding ze nodig heeft. Verwijder eerst die uitbreiding. Handmatig gekozen voorgangers blijven behouden bij verwijderen van een uitbreiding; alleen automatisch toegevoegde voorgangers vervallen als ze niet meer nodig zijn. Reset wist alle modules en behoudt de verplichte basis.
+
+Het contactconcept bevat alleen bekende module-ID’s, benodigde voorgangers, basis en prijsindicatie. De klant kan de tekst bewerken; alleen de laatste contactknop verstuurt mail. Documentverwerking heeft aanvullend verbruik. Nieuwe koppelingen, aanvullend maatwerk en externe diensten vallen buiten de selectietotalen. De basis omvat alleen een al bestaande standaardkoppeling na controle van de situatie; de API-catalogus is geen lijst met gegarandeerd beschikbare connectors.
+
+De prijzenpagina en `.html`-aliassen volgen dezelfde tarieven en verwijzen naar de modulekeuze. De galerij toont neutrale voorbeelden met fictieve gegevens.
 
 ## API-voorbeelden
 

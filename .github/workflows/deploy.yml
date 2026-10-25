@@ -31,6 +31,11 @@ jobs:
           python3 scripts/sitemap.py --write
           python3 scripts/metadata.py --check
 
+      - name: Validate module pricing and dependencies
+        run: |
+          node --check assets/js/modular-webapp.js
+          node scripts/test_modular_webapp.cjs
+
       - name: Validate business scan
         run: |
           php -l api/bedrijfsscan.php
