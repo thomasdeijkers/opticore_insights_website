@@ -4,7 +4,8 @@
     "label": "Omzetrapportage",
     "setup": 750,
     "monthly": 60,
-    "requires": []
+    "requires": [],
+    "monthlyDiscount": 10
   },
   "forecasting": {
     "label": "Forecasting",
@@ -12,13 +13,15 @@
     "monthly": 100,
     "requires": [
       "omzet"
-    ]
+    ],
+    "monthlyDiscount": 20
   },
   "voorraad": {
     "label": "Voorraad",
     "setup": 750,
     "monthly": 60,
-    "requires": []
+    "requires": [],
+    "monthlyDiscount": 10
   },
   "inkoop": {
     "label": "Inkoop en bestellen",
@@ -27,7 +30,8 @@
     "requires": [
       "omzet",
       "voorraad"
-    ]
+    ],
+    "monthlyDiscount": 20
   },
   "logistiek": {
     "label": "Magazijn en logistiek",
@@ -36,19 +40,22 @@
     "requires": [
       "voorraad",
       "orders"
-    ]
+    ],
+    "monthlyDiscount": 20
   },
   "producten": {
     "label": "Productbeheer en publicaties",
     "setup": 1000,
     "monthly": 80,
-    "requires": []
+    "requires": [],
+    "monthlyDiscount": 20
   },
   "orders": {
     "label": "Orders en retouren",
     "setup": 1000,
     "monthly": 80,
-    "requires": []
+    "requires": [],
+    "monthlyDiscount": 20
   },
   "marketing": {
     "label": "Marketing en ranking",
@@ -57,7 +64,8 @@
     "requires": [
       "omzet",
       "producten"
-    ]
+    ],
+    "monthlyDiscount": 30
   },
   "financieel": {
     "label": "Financieel overzicht",
@@ -65,7 +73,8 @@
     "monthly": 80,
     "requires": [
       "omzet"
-    ]
+    ],
+    "monthlyDiscount": 20
   },
   "controles": {
     "label": "Signalen en controles",
@@ -74,7 +83,8 @@
     "requires": [
       "omzet",
       "voorraad"
-    ]
+    ],
+    "monthlyDiscount": 10
   }
 };
   const base = { label: 'Basisomgeving', setup: 1500, monthly: 79 };
@@ -91,10 +101,16 @@
     const setupSubtotal = base.setup + modules.reduce((n, id) => n + catalogue[id].setup, 0);
     const discountRate = modules.length >= 6 ? 30 : modules.length >= 4 ? 20 : modules.length >= 2 ? 10 : 0;
     const discount = setupSubtotal * discountRate / 100;
+    const standardMonthly = base.monthly + modules.reduce((n, id) => n + catalogue[id].monthly, 0);
+    const monthlyDiscount = modules.reduce((n, id) => n + catalogue[id].monthlyDiscount, 0);
     return { modules, setupSubtotal, discountRate, discount, setup: setupSubtotal - discount,
-      monthly: base.monthly + modules.reduce((n, id) => n + catalogue[id].monthly, 0), usage: false };
+      standardMonthly, monthlyDiscount, monthly: standardMonthly - monthlyDiscount, usage: false };
   }
-  if (typeof module !== 'undefined' && module.exports) module.exports = { catalogue, base, resolve };
+  function contactDraft(selected) {
+    return 'Implementatievolgorde:\n' + [base.label, ...selected.modules.map(id => catalogue[id].label)].map((label, i) => `${i + 1}. ${label}`).join('\n')
+      + `\n\nInrichting vóór korting: ${money(selected.setupSubtotal)}\nBundelkorting (${selected.discountRate}%): − ${money(selected.discount)}\nEenmalige inrichting na korting: ${money(selected.setup)}\nStandaard per maand: ${money(selected.standardMonthly)}\nMaandkorting modules: − ${money(selected.monthlyDiscount)}\nPer maand na korting: ${money(selected.monthly)}${selected.usage ? ' + verbruik' : ''}\nPrijsindicatie exclusief btw; offerte volgt na afstemming.`;
+  }
+  if (typeof module !== 'undefined' && module.exports) module.exports = { catalogue, base, resolve, contactDraft };
   if (typeof document === 'undefined') return;
   const root = document.querySelector('[data-webapp-picker]');
   if (root) {
@@ -124,6 +140,8 @@
       root.querySelector('[data-module-discount-label]').textContent = `Bundelkorting (${selected.discountRate}%)`;
       root.querySelector('[data-module-discount]').textContent = selected.discount ? '− ' + money(selected.discount) : money(0);
       root.querySelector('[data-module-setup]').textContent = money(selected.setup);
+      root.querySelector('[data-module-monthly-standard]').textContent = money(selected.standardMonthly);
+      root.querySelector('[data-module-monthly-discount]').textContent = selected.monthlyDiscount ? '− ' + money(selected.monthlyDiscount) : money(0);
       root.querySelector('[data-module-monthly]').textContent = money(selected.monthly) + (selected.usage ? ' + verbruik' : '');
       root.querySelector('[data-module-usage]').hidden = !selected.usage;
       const params = new URLSearchParams({ onderwerp: 'webapp' });
@@ -155,8 +173,7 @@
   if (field && params.get('onderwerp') === 'webapp' && !field.value) {
     const selected = resolve((params.get('modules') || '').slice(0, 500).split(','));
     if (selected.modules.length) {
-      field.value = 'Implementatievolgorde:\n' + [base.label, ...selected.modules.map(id => catalogue[id].label)].map((label, i) => `${i + 1}. ${label}`).join('\n')
-        + `\n\nInrichting vóór korting: ${money(selected.setupSubtotal)}\nBundelkorting (${selected.discountRate}%): − ${money(selected.discount)}\nEenmalige inrichting na korting: ${money(selected.setup)}\nPer maand: ${money(selected.monthly)}${selected.usage ? ' + verbruik' : ''}\nPrijsindicatie exclusief btw; offerte volgt na afstemming.`;
+      field.value = contactDraft(selected);
       const edit = document.querySelector('[data-module-edit]');
       if (edit) edit.href = '/modulaire-webapp/?' + new URLSearchParams({ modules: selected.modules.join(',') }) + '#modules';
     }
