@@ -79,6 +79,7 @@ def render():
 
     def document(path, title, description, main, article=None):
         url = BASE + path
+        nav_header = header.replace('<a href="/nieuws/">Nieuws</a>', '<a href="/nieuws/" aria-current="page">Nieuws</a>') if path == '/nieuws/' else header
         full_title = (article.get('seo_title', title) if article else title) + ' | OptiCore Insights'
         schema = deepcopy(identity)
         crumbs = [('Home',BASE+'/'),('Nieuws en praktijk',BASE+'/nieuws/')]
@@ -107,7 +108,7 @@ def render():
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(full_title,quote=True)}"><meta name="twitter:description" content="{escape(description,quote=True)}"><meta name="twitter:image" content="{image}">
 <script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':schema},ensure_ascii=False,separators=(',',':'))}</script>
 <link rel="stylesheet" href="/assets/css/site.css?v=20261026a"><link rel="stylesheet" href="/assets/css/news.css?v=20261022g"><link rel="alternate" type="application/rss+xml" title="OptiCore Insights — Nieuws en praktijk" href="{BASE}/nieuws/feed.xml">
-<link rel="stylesheet" href="/assets/css/screenshot-gallery.css?v=20261022h"></head><body><a class="skip-link" href="#inhoud">Direct naar inhoud</a>{header}
+<link rel="stylesheet" href="/assets/css/screenshot-gallery.css?v=20261022h"></head><body><a class="skip-link" href="#inhoud">Direct naar inhoud</a>{nav_header}
 <main id="inhoud">{main}</main>{footer}<script src="/assets/js/main.js?v=20261026a" defer></script><script src="/assets/js/screenshot-gallery.js?v=20261022h" defer></script></body></html>
 '''
 
