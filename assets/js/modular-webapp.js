@@ -154,6 +154,8 @@
       show('[data-module-monthly-standard]', money(selected.standardMonthly));
       show('[data-module-monthly-discount]', selected.monthlyDiscount ? '− ' + money(selected.monthlyDiscount) : money(0));
       show('[data-module-monthly]', money(selected.monthly) + (selected.usage ? ' + verbruik' : ''));
+      root.querySelector('[data-price-setup-was]').hidden = selected.discount === 0;
+      root.querySelector('[data-price-monthly-was]').hidden = selected.monthlyDiscount === 0;
       root.querySelector('[data-module-usage]').hidden = !selected.usage;
       const params = new URLSearchParams({ onderwerp: 'webapp' });
       if (selected.modules.length) params.set('modules', selected.modules.join(','));
