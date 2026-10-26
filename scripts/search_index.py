@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://opticore-insights.nl'
 OUTPUT = ROOT / 'assets/search-index.json'
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}
-SERVICES = {'diensten','dashboard-ontwikkeling','procesautomatisering','modulaire-webapp',
+SERVICES = {'diensten','dashboard-ontwikkeling','procesautomatisering','modulaire-webapp','webapp-samenstellen',
             'website-ontwikkeling','keuzehulpen','bol-ondernemers','platform-koppelingen',
             'marketplace-koppelingen','webshop-koppelingen','verzendsoftware-koppelingen',
             'prijzen','bedrijfsscan','beveiliging'}

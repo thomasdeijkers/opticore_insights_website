@@ -1,10 +1,27 @@
 # Modulaire webapp
 
-De pagina `/modulaire-webapp/` bevat tien modules met door de eigenaar op 25–26 oktober 2026 goedgekeurde inrichtings- en maandprijzen. De basisomgeving (€ 1.500 inrichting, € 79/mnd) is altijd verplicht en wordt eenmaal geteld. Het blijft een aanvraagselectie, geen bestelling of moduleactivatie. Alle bedragen zijn exclusief btw; offerte en afgesproken scope blijven nodig.
+De informatiepagina `/modulaire-webapp/` beschrijft tien modules met door de eigenaar op 25–26 oktober 2026 goedgekeurde inrichtings- en maandprijzen. De basisomgeving (€ 1.500 inrichting, € 79/mnd) is altijd verplicht en wordt eenmaal geteld. Het blijft een aanvraagselectie, geen bestelling of moduleactivatie. Alle bedragen zijn exclusief btw; offerte en afgesproken scope blijven nodig.
+
+## Aparte rekenpagina
+
+De interactieve modulekeuze staat op `/webapp-samenstellen/` (ook als `.html`-alias).
+De informatiepagina houdt de tien modulekaarten en hun `gegevens-*`-ankers,
+met per module een link naar de rekenpagina met die keuze. Bestaande knoppen
+om samen te stellen gaan rechtstreeks naar de rekenpagina. Oude WebApp-URL’s
+met `?modules=...` leiden via een gevalideerde selectie door naar de calculator.
+
+De calculator toont de netto inrichting en het maandtotaal in een sticky balk
+onder de hoofdnavigatie, op desktop en mobiel. `ResizeObserver` stemt de
+bovenmarge af op de werkelijke headerhoogte. De prijsopbouw, kortingen en lijst
+met modules zijn bovenin via een toegankelijk `details`-paneel te openen; er
+staat geen prijswidget onder de kaarten. De balk en het paneel gebruiken dezelfde
+berekening. Beide aanvraagknoppen geven dezelfde selectie aan het contactformulier.
+Wijzigingen blijven via de URL bewaard bij herladen. De teruglink vanuit contact
+herstelt de keuze op de aparte rekenpagina.
 
 ## Prijzen en implementatievolgorde
 
-Iedere modulekaart combineert keuze, tarieven, voorwaarden en een uitklapbare uitleg over essentiële gegevens, extra bronnen en verwerking. De tien verklaringen staan niet meer in een aparte sectie; hun bestaande `gegevens-*`-ankers blijven behouden. Het oude `gegevens-per-module`-anker verwijst naar de modulekaarten. De publieke kaarten tonen statisch de tarieven en voorwaarden, ook zonder JavaScript. `assets/js/modular-webapp.js` bevat dezelfde catalogus met bedragen en afhankelijkheden, berekent de transitieve selectie zonder dubbeltelling en sorteert voorgangers vóór uitbreidingen. `scripts/test_modular_webapp.cjs` controleert de catalogus tegen de HTML-kaarten en controleert prijzen, volgorde, gedeelde afhankelijkheden en onbekende IDs.
+Iedere modulekaart combineert keuze, tarieven, voorwaarden en een uitklapbare uitleg over essentiële gegevens, extra bronnen en verwerking. De tien verklaringen staan niet meer in een aparte sectie; hun bestaande `gegevens-*`-ankers blijven behouden. Het oude `gegevens-per-module`-anker verwijst naar de modulekaarten. De publieke kaarten op beide pagina’s tonen statisch de tarieven en voorwaarden, ook zonder JavaScript. `assets/js/modular-webapp.js` bevat dezelfde catalogus met bedragen en afhankelijkheden, berekent de transitieve selectie zonder dubbeltelling en sorteert voorgangers vóór uitbreidingen. `scripts/test_modular_webapp.cjs` controleert de catalogus tegen de HTML-kaarten en controleert prijzen, volgorde, gedeelde afhankelijkheden en onbekende IDs.
 
 Iedere module vereist de basis. Aanvullende voorgangers:
 
@@ -118,3 +135,13 @@ De demo gebruikt zes fictieve artikelen en vijf kanalen (bol NL, Amazon NL/DE, P
 Functionele aansluiting is gecontroleerd tegen de interne artikelkaart in `main.py` en de documentatie `docs/purchase_orders.md`, `docs/fulfilment.md`, `docs/ads-engine.md` en `docs/bol_ranking.md` van opticore-intern. De openbare demo bevat eigen neutrale HTML/CSS/JavaScript en fictieve data; geen private UI, runtimegegevens of koppelingen. `scripts/test_marketplace_demo.cjs` controleert onder meer kanaalreconciliatie, reserveringen, voorraadvalidatie, eenmalige ontvangsten en signaalhistorie.
 
 De bestaande openbare kanaallogo�s worden gebruikt voor herkenbaarheid, met behoud van verhouding en kleuren. De witte bol-markering staat op de blauwe merkachtergrond. De iframehoogte volgt de viewport en geopende detailvensters worden onder de vaste websitekop uitgelijnd.
+
+## Controle aparte calculator — 26 oktober 2026
+
+De catalogus- en afhankelijkheidscontrole blijft alle combinaties doorrekenen.
+Een geïsoleerde DOM-controle op de echte HTML en JavaScript controleerde beide
+prijsweergaven, benodigde modules, handmatige keuzes, reset, sluiten van het
+prijspaneel, herstel via de URL en overdracht naar het contactformulier.
+De controle gebruikte jsdom buiten de repository, zonder browser of netwerk.
+Visuele browsercontrole was niet beschikbaar: de Windows-bediening kon de
+huidige browser-URL niet betrouwbaar vaststellen en werd afgebroken.

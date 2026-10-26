@@ -110,17 +110,27 @@
     return 'Implementatievolgorde:\n' + [base.label, ...selected.modules.map(id => catalogue[id].label)].map((label, i) => `${i + 1}. ${label}`).join('\n')
       + `\n\nInrichting vóór korting: ${money(selected.setupSubtotal)}\nBundelkorting (${selected.discountRate}%): − ${money(selected.discount)}\nEenmalige inrichting na korting: ${money(selected.setup)}\nStandaard per maand: ${money(selected.standardMonthly)}\nMaandkorting modules: − ${money(selected.monthlyDiscount)}\nPer maand na korting: ${money(selected.monthly)}${selected.usage ? ' + verbruik' : ''}\nPrijsindicatie exclusief btw; offerte volgt na afstemming.`;
   }
-  if (typeof module !== 'undefined' && module.exports) module.exports = { catalogue, base, resolve, contactDraft };
+  function calculatorURL(ids) {
+    const known = [...new Set(ids.filter(id => Object.hasOwn(catalogue, id)))];
+    return '/webapp-samenstellen/' + (known.length ? '?' + new URLSearchParams({ modules: known.join(',') }) : '') + '#modules';
+  }
+  if (typeof module !== 'undefined' && module.exports) module.exports = { catalogue, base, resolve, contactDraft, calculatorURL };
   if (typeof document === 'undefined') return;
+  const legacyModules = new URLSearchParams(window.location.search);
+  if (/^\/modulaire-webapp(?:\/|\.html)?$/.test(window.location.pathname) && legacyModules.has('modules')) {
+    window.location.replace(calculatorURL((legacyModules.get('modules') || '').slice(0, 500).split(',')));
+    return;
+  }
   const root = document.querySelector('[data-webapp-picker]');
   if (root) {
     const choices = [...root.querySelectorAll('input[type="checkbox"]')];
     const summary = root.querySelector('[data-module-summary]');
     const count = root.querySelector('[data-module-count]');
-    const contact = root.querySelector('[data-module-contact]');
+    const contacts = [...root.querySelectorAll('[data-module-contact]')];
     const reset = root.querySelector('[data-module-reset]');
     const restored = new URLSearchParams(window.location.search).get('modules');
     let requested = new Set(restored !== null ? restored.slice(0, 500).split(',').filter(id => Object.hasOwn(catalogue, id)) : choices.filter(input => input.checked).map(input => input.value));
+    const show = (selector, value) => root.querySelectorAll(selector).forEach(node => { node.textContent = value; });
     function update() {
       const selected = resolve(requested);
       choices.forEach(input => {
@@ -136,18 +146,23 @@
         const item = document.createElement('li'); item.textContent = label; return item;
       }));
       count.textContent = selected.modules.length ? `${selected.modules.length} ${selected.modules.length === 1 ? "module" : "modules"} naast de basisomgeving, inclusief benodigde voorgangers.` : 'De basisomgeving is inbegrepen. Kies je eerste module.';
-      root.querySelector('[data-module-subtotal]').textContent = money(selected.setupSubtotal);
-      root.querySelector('[data-module-discount-label]').textContent = `Bundelkorting (${selected.discountRate}%)`;
-      root.querySelector('[data-module-discount]').textContent = selected.discount ? '− ' + money(selected.discount) : money(0);
-      root.querySelector('[data-module-setup]').textContent = money(selected.setup);
-      root.querySelector('[data-module-monthly-standard]').textContent = money(selected.standardMonthly);
-      root.querySelector('[data-module-monthly-discount]').textContent = selected.monthlyDiscount ? '− ' + money(selected.monthlyDiscount) : money(0);
-      root.querySelector('[data-module-monthly]').textContent = money(selected.monthly) + (selected.usage ? ' + verbruik' : '');
+      show('[data-module-bar-count]', selected.modules.length ? `${selected.modules.length} ${selected.modules.length === 1 ? 'module' : 'modules'} + basis` : base.label);
+      show('[data-module-subtotal]', money(selected.setupSubtotal));
+      show('[data-module-discount-label]', `Bundelkorting (${selected.discountRate}%)`);
+      show('[data-module-discount]', selected.discount ? '− ' + money(selected.discount) : money(0));
+      show('[data-module-setup]', money(selected.setup));
+      show('[data-module-monthly-standard]', money(selected.standardMonthly));
+      show('[data-module-monthly-discount]', selected.monthlyDiscount ? '− ' + money(selected.monthlyDiscount) : money(0));
+      show('[data-module-monthly]', money(selected.monthly) + (selected.usage ? ' + verbruik' : ''));
       root.querySelector('[data-module-usage]').hidden = !selected.usage;
       const params = new URLSearchParams({ onderwerp: 'webapp' });
       if (selected.modules.length) params.set('modules', selected.modules.join(','));
-      contact.href = `/contact/?${params}#contact-form`;
+      contacts.forEach(contact => { contact.href = `/contact/?${params}#contact-form`; });
       reset.hidden = requested.size === 0;
+      const address = new URL(window.location.href);
+      if (requested.size) address.searchParams.set('modules', [...requested].join(','));
+      else address.searchParams.delete('modules');
+      window.history.replaceState(null, '', address);
     }
     root.addEventListener('change', event => {
       const input = event.target;
@@ -158,6 +173,30 @@
     reset.addEventListener('click', () => { requested.clear(); update(); });
     window.addEventListener('pageshow', update);
     update();
+    const priceDetails = root.querySelector('[data-price-details]');
+    document.addEventListener('click', event => {
+      if (priceDetails?.open && !priceDetails.contains(event.target)) priceDetails.open = false;
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && priceDetails?.open) {
+        priceDetails.open = false;
+        priceDetails.querySelector('summary').focus();
+      }
+    });
+    const header = document.querySelector('.site-header');
+    const pricebar = root.querySelector('.webapp-pricebar');
+    const setInsets = () => {
+      if (!header || !pricebar) return;
+      document.documentElement.style.setProperty('--calculator-header-height', `${header.getBoundingClientRect().height}px`);
+      document.documentElement.style.setProperty('--calculator-bar-height', `${pricebar.getBoundingClientRect().height}px`);
+    };
+    if (header && pricebar && typeof ResizeObserver !== 'undefined') {
+      const observer = new ResizeObserver(setInsets);
+      observer.observe(header);
+      observer.observe(pricebar);
+    }
+    window.addEventListener('resize', setInsets);
+    setInsets();
   }
   // Keep embedded dialogs clear of the site's sticky navigation.
   window.addEventListener('message', event => {
@@ -175,7 +214,7 @@
     if (selected.modules.length) {
       field.value = contactDraft(selected);
       const edit = document.querySelector('[data-module-edit]');
-      if (edit) edit.href = '/modulaire-webapp/?' + new URLSearchParams({ modules: selected.modules.join(',') }) + '#modules';
+      if (edit) edit.href = calculatorURL(selected.modules);
     }
   }
 })();

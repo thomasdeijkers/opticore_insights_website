@@ -1,8 +1,9 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const { catalogue, base, resolve, contactDraft } = require('../assets/js/modular-webapp.js');
-const html = fs.readFileSync(path.join(__dirname, '../modulaire-webapp/index.html'), 'utf8');
+const { catalogue, base, resolve, contactDraft, calculatorURL } = require('../assets/js/modular-webapp.js');
+const html = fs.readFileSync(path.join(__dirname, '../webapp-samenstellen/index.html'), 'utf8');
+const overview = fs.readFileSync(path.join(__dirname, '../modulaire-webapp/index.html'), 'utf8');
 const money = n => '€ ' + n.toLocaleString('nl-NL');
 assert.deepEqual(resolve([]), { modules: [], setupSubtotal: 1500, discountRate: 0, discount: 0, setup: 1500, standardMonthly: 79, monthlyDiscount: 0, monthly: 79, usage: false });
 assert.deepEqual(resolve(['forecasting']).modules, ['omzet', 'forecasting']);
@@ -60,12 +61,12 @@ for(const [selected,rate] of [[['forecasting'],10],[['omzet','forecasting','voor
   assert.equal(total.setup,total.setupSubtotal-total.discount);
 }
 assert(html.includes('data-module-subtotal'));assert(html.includes('data-module-discount'));
-assert(html.includes('<iframe class="webapp-demo-frame"'));
-assert(html.indexOf('id="demo"')>html.indexOf('id="kosten"'));
+assert(overview.includes('<iframe class="webapp-demo-frame"'));
+assert(overview.indexOf('id="demo"')>overview.indexOf('id="kosten"'));
 assert(fs.readFileSync(path.join(__dirname,'../contact/index.html'),'utf8').includes('<textarea id="webapp-modules"'),'Readable module draft field');
 assert(html.includes(money(base.setup) + ' inrichting'));
 assert(html.includes(money(base.monthly) + ' per maand'));
-for (const page of ['modulaire-webapp', 'prijzen', 'contact']) {
+for (const page of ['modulaire-webapp', 'webapp-samenstellen', 'prijzen', 'contact']) {
   assert.equal(fs.readFileSync(path.join(__dirname, '..', page + '.html'), 'utf8'), fs.readFileSync(path.join(__dirname, '..', page, 'index.html'), 'utf8'), 'Canonical and HTML alias: ' + page);
 }
 console.log('Module pricing OK: public prices, prerequisites, order, deduplication, untrusted IDs and aliases.');
@@ -89,3 +90,13 @@ for(const line of ['Standaard per maand: € 219','Maandkorting modules: − €
 assert(contactDraft(resolve(ids)).length<=1000,'Full selection fits the editable contact field');
 assert(html.includes('data-module-monthly-standard')&&html.includes('data-module-monthly-discount'));
 console.log('Monthly discount OK: original rates retained, reduced fees, dependencies, all combinations and contact totals.');
+
+// The calculator has its own route; the overview stays useful without selection controls.
+assert(!overview.includes('data-webapp-picker'));
+assert(!overview.includes('type="checkbox"'));
+assert.equal((overview.match(/class="webapp-module-choose"/g)||[]).length,10);
+assert(html.indexOf('class="webapp-pricebar"')<html.indexOf('class="webapp-module-grid"'));
+assert(html.includes('data-price-details'));
+assert.equal(calculatorURL(['omzet','omzet','<script>','__proto__']),'/webapp-samenstellen/?modules=omzet#modules');
+assert.equal(calculatorURL([]),'/webapp-samenstellen/#modules');
+console.log('Dedicated calculator OK: separate overview, top price summary and safe selection routes.');

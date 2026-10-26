@@ -94,3 +94,6 @@
 .webapp-standard-monthly s{text-decoration-thickness:1px}
 .webapp-module-price .webapp-current-monthly{font-size:17px;color:#175a96}
 .webapp-monthly-saving{font-size:13px;font-weight:650;color:#246649}
+
+.webapp-module-card .webapp-module-choose{display:block;margin:0 21px 18px;font-size:14px;font-weight:650}
+.webapp-module[data-module-overview]{cursor:default}
