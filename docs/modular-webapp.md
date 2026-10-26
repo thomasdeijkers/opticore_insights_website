@@ -145,3 +145,16 @@ prijspaneel, herstel via de URL en overdracht naar het contactformulier.
 De controle gebruikte jsdom buiten de repository, zonder browser of netwerk.
 Visuele browsercontrole was niet beschikbaar: de Windows-bediening kon de
 huidige browser-URL niet betrouwbaar vaststellen en werd afgebroken.
+
+
+## Volledige openbare app-demo — 26 oktober 2026
+
+De zelfstandige `/demo/modulaire-webapp/` opent nu op een bedrijfsoverzicht met omzet, marge, open orders en signalen. Het gegroepeerde app-menu bevat 27 schermkeuzes voor de tien aangeboden modules, aangevuld met het bedrijfsoverzicht, artikelbeheer, leveranciers, marketingagent, voorstelhistorie en demo-instellingen. Op mobiel opent het menu als zijpaneel; op desktop blijft het naast de werkplek staan.
+
+De werking is opnieuw vergeleken met de eigen WebApp in `C:/Users/thoma/.codex/worktrees/f440/opticore-intern` op commit `08536f24`: `apps/operations_dashboard/main.py` en de bestaande documentatie over inkoop, fulfilment, advertenties en ranking. Deze bronrepository is uitsluitend gelezen. De openbare demo is een eigen neutrale HTML/CSS/JavaScript-uitwerking met fictieve artikelen, leveranciers, orders en bedragen. Voorbeeldhandelingen zijn lokale simulaties en bevestigen geen externe acties of beschikbaarheid daarvan in productie.
+
+Te proberen: artikelen aanmaken en bewerken, artikelkaarten openen, listingconcepten aanpassen, orders doorzetten, retouren verwerken, voorraad tellen, inkoopvoorstellen maken, deelontvangsten boeken, fulfilmentzendingen reserveren en ontvangen, campagnebudgetten aanpassen, marketingvoorstellen beoordelen/heropenen en de zichtbare tabel als CSV downloaden. Ranking voor Nederland en België is afzonderlijk te kiezen. Alle schermen gebruiken dezelfde tijdelijke voorbeeldstatus. Ontvangsten kunnen niet dubbel worden verwerkt; nieuwe catalogusprijzen wijzigen historische omzet en orderprijzen niet.
+
+De licht/donker-schakelaar staat op elk scherm in de app-kop. Alleen de voorkeur `opticore-webapp-demo-theme` wordt lokaal opgeslagen; de fictieve werkgegevens blijven in het geheugen en verdwijnen bij herladen/reset. Er zijn geen echte accounts, API-aanroepen, uploads of klantgegevens. Reset behoudt de gekozen uitstraling. De demo blijft `noindex,follow` en is nu direct bereikbaar vanuit de intro van de WebApp, de vanafprijs op de prijzenpagina en de aparte prijsopbouwpagina. Het bestaande iframe blijft beschikbaar.
+
+Validatie: de permanente datatests controleren deelontvangsten, dubbele referenties, reserveringen, overdracht naar externe voorraad, historische prijzen, ongeldige invoer, orderstappen, voorstelhistorie en veilige CSV-uitvoer. Een geïsoleerde DOM-integratietest controleerde alle 27 schermkeuzes, beide thema's, mobiele menustatus, formulieren en voorbeeldhandelingen, filterwissels, export en reset op de echte publieke HTML/CSS/JavaScript. De Windows-browserbediening kon de huidige browser-URL niet betrouwbaar vaststellen; visuele browsercontrole is daarom afgebroken. Er zijn tijdens deze uitbreiding geen nieuwe screenshots gemaakt; de bestaande 40 neutrale modulebeelden blijven eerdere opnamen van de openbare demo.

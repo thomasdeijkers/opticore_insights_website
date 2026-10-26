@@ -22,10 +22,21 @@
     signalsDone:['DEMO-1003-aging'],growth:0
   };
   const clone = value => JSON.parse(JSON.stringify(value));
-  const createState = () => { const state=clone(seed); state.products.forEach((p,i)=>{p.previousHistory=p.history.map(n=>Math.round(n*(i===3?1.3:i%2?.95:.8)));if(i===2)p.previousHistory=[20,18,16,15,14,12,11,9,8,6,4,3];}); state.campaigns.forEach(c=>{c.historyCosts=[.62,.7,.8,.76,.72,.8,.85,.9,.86,.92,.95,1].map(f=>Math.round(c.cost*f));});return state; };
+  const createState = () => {
+    const state=clone(seed);
+    state.products.forEach((p,i)=>{
+      p.historyPrice=p.price;p.historyCost=p.cost;p.title=p.name;p.description='Voorbeeldproduct voor een slimme woning. Controleer altijd de toepassing en compatibiliteit.';
+      p.previousHistory=p.history.map(n=>Math.round(n*(i===3?1.3:i%2?.95:.8)));
+      if(i===2)p.previousHistory=[20,18,16,15,14,12,11,9,8,6,4,3];
+    });
+    state.campaigns.forEach(c=>{c.historyCosts=[.62,.7,.8,.76,.72,.8,.85,.9,.86,.92,.95,1].map(f=>Math.round(c.cost*f));});
+    state.orders.forEach(o=>{o.unitPrice=product(state,o.sku).price;});
+    state.shipments.filter(s=>s.status==='Onderweg').forEach(s=>{product(state,s.sku).reserved+=s.qty;s.reservation=true;});
+    state.adviceReviews={};state.adviceHistory={};state.receipts=[];return state;
+  };
   const product = (state,sku) => state.products.find(p=>p.sku===sku);
   const available = p => Math.max(0,p.stock-p.reserved);
-  const ordered = (state,p) => state.purchases.filter(o=>o.sku===p.sku&&!o.received).reduce((n,o)=>n+o.qty,0);
+  const ordered = (state,p) => state.purchases.filter(o=>o.sku===p.sku&&!o.received).reduce((n,o)=>n+o.qty-(o.receivedQty||0),0);
   const forecast = (state,p,n=3) => Math.ceil(p.history.slice(-3).reduce((a,b)=>a+b,0)/3*n*1.12*(1+state.growth/100));
   const coverage = p => {const daily=p.history.slice(-3).reduce((a,b)=>a+b,0)/90;return daily?Math.floor(available(p)/daily):null;};
   const need = (state,p) => Math.ceil(Math.max(0,forecast(state,p)+p.minimum-available(p)-ordered(state,p))/p.batch)*p.batch;
@@ -33,7 +44,7 @@
     const qty=(previous?p.previousHistory:p.history).slice(-period).reduce((a,b)=>a+b,0);
     const returned=Math.min(qty,Math.round((p.returns+(previous?0:state.returns.filter(r=>r.sku===p.sku&&r.received).reduce((n,r)=>n+r.qty,0)))*period/12));
     const weight=channel==='all'?1:p.weights[channels.findIndex(c=>c.id===channel)]||0;
-    const net=(qty-returned)*weight, revenue=net*p.price, cost=net*p.cost, fee=revenue*.12, shipping=net*3.2;
+    const net=(qty-returned)*weight, revenue=net*(p.historyPrice??p.price), cost=net*(p.historyCost??p.cost), fee=revenue*.12, shipping=net*3.2;
     return {qty:qty*weight,returned:returned*weight,revenue,cost,fee,shipping,profit:revenue-cost-fee-shipping};
   }
   function totals(state,period=12,channel='all',previous=false) {
@@ -60,9 +71,13 @@
     const order={id:'DEMO-IO-'+(105+state.purchases.length),sku,qty,received:false,status:'Te beoordelen',supplier:p.supplier,eta:'Na akkoord · '+p.lead+' dagen'};
     state.purchases.push(order);return order;
   }
-  function receivePurchase(state,id) {
+  function receivePurchase(state,id,qty,reference) {
     const o=state.purchases.find(o=>o.id===id);if(!o||o.received)return false;
-    product(state,o.sku).stock+=o.qty;o.received=true;o.status='Ontvangen';return true;
+    if(reference&&state.receipts.some(r=>r.reference===reference))return false;
+    const remaining=o.qty-(o.receivedQty||0),amount=qty===undefined?remaining:qty;
+    if(!Number.isInteger(amount)||amount<1||amount>remaining)throw new Error('Kies een heel aantal tussen 1 en '+remaining+'.');
+    product(state,o.sku).stock+=amount;o.receivedQty=(o.receivedQty||0)+amount;o.received=o.receivedQty===o.qty;
+    o.status=o.received?'Ontvangen':'Deels ontvangen';state.receipts.push({order:id,qty:amount,reference:reference||'DEMO-ONTV-'+(state.receipts.length+1)});return true;
   }
   function receiveReturn(state,id) {
     const r=state.returns.find(r=>r.id===id);if(!r||r.received)return false;
@@ -78,6 +93,58 @@
     c.budget=budget;
   }
   function completeSignal(state,id){if(signalRows(state).some(s=>s.id===id)&&!state.signalsDone.includes(id))state.signalsDone.push(id);}
-  const api={channels,months,createState,product,available,ordered,forecast,coverage,need,sales,totals,signalRows,advertising,countStock,propose,receivePurchase,receiveReturn,setOffer,setBudget,completeSignal};
+  function createShipment(state,sku,destination,qty){
+    const p=product(state,sku);
+    if(!p||!channels.some(c=>c.id.startsWith('amazon')&&c.label===destination)||!Number.isInteger(qty)||qty<1||qty>available(p))throw new Error('Kies een bestemming en een aantal binnen de beschikbare voorraad.');
+    p.reserved+=qty;
+    const shipment={id:'DEMO-FBA-'+(33+state.shipments.length),sku,destination,qty,status:'Onderweg',reservation:true};
+    state.shipments.push(shipment);return shipment;
+  }
+  function receiveShipment(state,id){
+    const s=state.shipments.find(s=>s.id===id);if(!s||s.status!=='Onderweg')return false;
+    const p=product(state,s.sku);if(!s.reservation||p.stock<s.qty||p.reserved<s.qty)throw new Error('Controleer eerst de voorbeeldvoorraad van deze zending.');
+    p.stock-=s.qty;p.reserved-=s.qty;p.external+=s.qty;s.status='Ontvangen';return true;
+  }
+  function updateProduct(state,sku,changes){
+    const p=product(state,sku);if(!p)throw new Error('Artikel niet gevonden.');
+    const text={};for(const key of ['name','title','description'])if(key in changes){
+      text[key]=String(changes[key]).trim();if(!text[key]||text[key].length>(key==='description'?1500:150))throw new Error('Vul een korte, geldige naam of tekst in.');
+    }
+    const amounts={};for(const key of ['price','cost'])if(key in changes){
+      const n=Number(changes[key]);if(!Number.isFinite(n)||n<0||n>10000||(key==='price'&&n===0))throw new Error('Vul een geldig bedrag tot 10.000 euro in.');amounts[key]=n;
+    }
+    Object.assign(p,text,amounts);return p;
+  }
+  function addProduct(state,values){
+    const name=String(values.name||'').trim(),price=Number(values.price),cost=Number(values.cost),stock=Number(values.stock);
+    if(!name||name.length>150||!Number.isFinite(price)||price<=0||price>10000||!Number.isFinite(cost)||cost<0||cost>10000||!Number.isInteger(stock)||stock<0||stock>10000)throw new Error('Vul een naam, geldige prijzen en een heel voorraadaantal in.');
+    const serial=1001+state.products.length,p={...clone(seed.products[0]),sku:'DEMO-'+serial,ean:'DEMO-EAN-'+serial,name,title:name,description:'Nieuw fictief demoartikel.',price,cost,stock,reserved:0,external:0,location:'N-01',category:'Nieuw assortiment',supplier:'Voorbeeldleverancier Noord',listing:40,returns:0,lastSale:0,rank:null,previousRank:null,history:Array(12).fill(0),previousHistory:Array(12).fill(0),offers:channels.map(()=> 'disabled')};
+    state.products.push(p);return p;
+  }
+  function advanceOrder(state,id){
+    const o=state.orders.find(o=>o.id===id);if(!o)throw new Error('Order niet gevonden.');
+    if(o.status==='Verzonden')return false;
+    o.status=o.status==='Te picken'?'In verwerking':'Verzonden';return true;
+  }
+  function adviceRows(state){
+    const rows=state.campaigns.filter(c=>c.sales>0&&c.cost/c.sales*100>c.target).map(c=>({id:'budget-'+c.id,sku:c.sku,type:'Campagne',title:'Advertentiekosten vragen aandacht',reason:'De advertentiekosten zijn '+Math.round(c.cost/c.sales*100)+'% van de toegeschreven omzet; het doel is '+c.target+'%.',proposal:'Beoordeel het dagbudget en de productpagina voordat je verder opschaalt.',action:{kind:'budget',id:c.id}}));
+    for(const p of state.products){
+      if(p.listing<85)rows.push({id:'listing-'+p.sku,sku:p.sku,type:'Listing',title:'Maak de productinformatie completer',reason:'De fictieve listingcontrole vindt verbeterpunten in titel en kenmerken.',proposal:'Bekijk het tekstvoorstel en pas het aan voor jouw artikel.',action:{kind:'listing',id:p.sku}});
+      if(coverage(p)!==null&&coverage(p)<p.lead)rows.push({id:'stock-'+p.sku,sku:p.sku,type:'Voorraad',title:'Controleer de voorraad voor je campagne',reason:'De voorraaddekking is korter dan de levertijd.',proposal:'Bekijk verkoop, voorraad en openstaande inkoop samen.',action:{kind:'proposal',id:p.sku}});
+    }
+    for(const old of Object.values(state.adviceHistory))if(!rows.some(r=>r.id===old.id))rows.push(clone(old));
+    return rows.map(r=>({...r,decision:state.adviceReviews[r.id]||'open'}));
+  }
+  function reviewAdvice(state,id,decision){
+    const row=adviceRows(state).find(a=>a.id===id);
+    if(!row||!['open','approved','snoozed','rejected'].includes(decision))throw new Error('Onbekend voorbeeldvoorstel.');
+    state.adviceHistory[id]=clone(row);
+    state.adviceReviews[id]=decision;
+  }
+  function csv(headers,rows){
+    const cell=value=>{let text=String(value??'');if(/^[\s]*[=+@-]/.test(text))text="'"+text;return '"'+text.replace(/"/g,'""')+'"';};
+    return '\ufeff'+[headers,...rows].map(row=>row.map(cell).join(';')).join('\r\n');
+  }
+  const api={channels,months,createState,product,available,ordered,forecast,coverage,need,sales,totals,signalRows,advertising,countStock,propose,receivePurchase,receiveReturn,setOffer,setBudget,completeSignal,createShipment,receiveShipment,updateProduct,addProduct,advanceOrder,adviceRows,reviewAdvice,csv};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;else scope.MarketplaceDemo=api;
 })(typeof window!=='undefined'?window:globalThis);

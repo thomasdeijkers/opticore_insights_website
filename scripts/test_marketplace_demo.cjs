@@ -27,6 +27,37 @@ D.setBudget(s,'C-1',25);assert.equal(s.campaigns[0].budget,25);assert.throws(()=
 const signal=D.signalRows(s).find(x=>!x.done),revenueBefore=D.totals(s).revenue;D.completeSignal(s,signal.id);D.completeSignal(s,signal.id);
 assert.equal(s.signalsDone.filter(id=>id===signal.id).length,1);assert.equal(D.totals(s).revenue,revenueBefore,'Resolving a signal never deletes revenue');
 assert(D.advertising(s,12)>D.advertising(s,1));assert.equal(D.createState().products[0].stock,before,'New demo state resets mutations');
+// Partial deliveries move only the received quantity from pipeline to stock.
+const partial=D.createState(),pending=partial.purchases[0],part=D.product(partial,pending.sku),partStock=part.stock;
+assert(D.receivePurchase(partial,pending.id,25,'receipt-one'));
+assert.equal(part.stock,partStock+25);assert.equal(D.ordered(partial,part),75);
+assert.equal(pending.status,'Deels ontvangen');
+assert.equal(D.receivePurchase(partial,pending.id,25,'receipt-one'),false,'Receipt reference cannot be applied twice');
+assert.throws(()=>D.receivePurchase(partial,pending.id,76,'receipt-invalid'));
+assert.equal(part.stock,partStock+25,'Invalid receipt leaves stock unchanged');
+assert(D.receivePurchase(partial,pending.id));assert.equal(D.ordered(partial,part),0);assert.equal(part.stock,partStock+100);
+// Fulfilment reserves local stock, then transfers ownership to external stock once.
+const fulfil=D.createState(),fp=D.product(fulfil,'DEMO-1004'),availableBefore=D.available(fp),externalBefore=fp.external;
+const shipment=D.createShipment(fulfil,fp.sku,'Amazon NL',10);
+assert.equal(D.available(fp),availableBefore-10);
+assert.throws(()=>D.createShipment(fulfil,fp.sku,'Amazon NL',availableBefore));
+assert(D.receiveShipment(fulfil,shipment.id));assert.equal(D.available(fp),availableBefore-10);
+assert.equal(fp.external,externalBefore+10);assert.equal(D.receiveShipment(fulfil,shipment.id),false);
+// Catalogue edits do not rewrite historical revenue, costs or order prices.
+const edit=D.createState(),ep=edit.products[0],salesBefore=D.sales(edit,ep),orderPrice=edit.orders[0].unitPrice;
+D.updateProduct(edit,ep.sku,{price:99,cost:35});assert.deepEqual(D.sales(edit,ep),salesBefore);assert.equal(edit.orders[0].unitPrice,orderPrice);
+assert.throws(()=>D.updateProduct(edit,ep.sku,{name:'Should not save',price:-1}));assert.equal(ep.name,'Thermostaat Luma','Failed edits are atomic');
+assert.throws(()=>D.addProduct(edit,{name:'Invalid',price:20,cost:5,stock:1.5}));assert.equal(edit.products.length,6);
+const added=D.addProduct(edit,{name:'Nieuw voorbeeldartikel',price:20,cost:5,stock:10});
+assert.equal(added.sku,'DEMO-1007');assert.equal(D.sales(edit,added).revenue,0);assert(added.offers.every(status=>status==='disabled'));
+const openOrder=edit.orders[0];assert(D.advanceOrder(edit,openOrder.id));assert.equal(openOrder.status,'In verwerking');
+assert(D.advanceOrder(edit,openOrder.id));assert.equal(openOrder.status,'Verzonden');assert.equal(D.advanceOrder(edit,openOrder.id),false);
+const advice=D.adviceRows(edit).find(a=>a.type==='Listing');D.reviewAdvice(edit,advice.id,'approved');
+D.product(edit,advice.sku).listing=100;assert.equal(D.adviceRows(edit).find(a=>a.id===advice.id).decision,'approved','Reviewed proposal survives changed source data');
+D.reviewAdvice(edit,advice.id,'open');assert.equal(D.adviceRows(edit).find(a=>a.id===advice.id).decision,'open');
+assert.throws(()=>D.reviewAdvice(edit,advice.id,'unknown'));
+const exported=D.csv(['Artikel','Tekst'],[['="formula"','A;B'],['normal','a"b']]);
+assert(exported.startsWith('\ufeff'));assert(exported.includes('"\'=""formula"""'));assert(exported.includes('"A;B"'));assert(exported.includes('"a""b"'));
 for(const c of D.channels)assert(fs.existsSync(path.join(__dirname,'..',c.logo)),'Local channel logo exists: '+c.label);
 const source=fs.readFileSync(path.join(__dirname,'../assets/js/module-demo.js'),'utf8');
 for(const key of Object.keys(catalogue))assert(source.includes(key+':{label:'),'Demo has priced marketplace module '+key);
@@ -36,4 +67,10 @@ for(const key of Object.keys(catalogue)){
   assert(fs.statSync(path.join(__dirname,`../assets/img/module-examples/${key}-${view}-${device}.jpg`)).size>1000);
  }
 }
-console.log('Marketplace demo OK: shared articles, reconciled channels, YoY, reservations, purchase/return idempotency, stock, forecast, offers, budgets and signal history.');
+const demoHtml=fs.readFileSync(path.join(__dirname,'../demo/modulaire-webapp/index.html'),'utf8');
+assert(demoHtml.includes('data-demo-theme role="switch"'));assert(demoHtml.includes('noindex,follow'));
+for(const file of ['modulaire-webapp.html','prijzen.html','webapp-samenstellen.html']){
+ const page=fs.readFileSync(path.join(__dirname,'..',file),'utf8');
+ assert(page.includes('href="/demo/modulaire-webapp/"'),'Prominent standalone demo link on '+file);
+}
+console.log('Marketplace demo OK: all priced modules, reconciled figures, partial/duplicate receipts, fulfilment reservations, immutable sales history, article edits, order flow, advice history, CSV safety and demo entry links.');
