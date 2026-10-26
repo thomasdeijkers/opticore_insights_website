@@ -15,6 +15,11 @@
 .webapp-module-title{display:flex;align-items:center;gap:9px;font-size:18px;line-height:1.4;font-weight:700;color:var(--ink);margin-bottom:10px}
 .webapp-module-title svg{width:23px;height:23px;flex-shrink:0;color:#175a96}
 .webapp-module-copy{display:block;font-size:15px;line-height:1.65}
+.webapp-module-included{display:grid;gap:11px;margin:14px 0;padding-top:13px;border-top:1px solid var(--line)}
+.webapp-module-included>span{display:block}
+.webapp-module-included strong,.webapp-module-included>span>span{display:block;font-size:13px;line-height:1.6}
+.webapp-module-included strong{color:var(--ink)}
+.webapp-module-included>span>span{color:var(--muted)}
 .webapp-selection{background:#f1f5f8;border:1px solid var(--line);border-radius:7px;margin-top:24px;padding:24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center}
 .webapp-selection h3{font-size:20px;margin-bottom:8px}
 .webapp-selection p{margin-bottom:8px;font-size:15px}

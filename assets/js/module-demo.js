@@ -17,7 +17,7 @@
   };
   const groups=[
     ['Overzicht','dashboard',[['Bedrijfsoverzicht','dashboard'],['Artikelkaarten','omzet','details']]],
-    ['Producten','data',[['Artikelbeheer','producten','overzicht','catalogus'],['Publicaties','producten'],['Listingoptimalisatie','producten','details']]],
+    ['Producten','data',[['Artikelbeheer','producten','overzicht','catalogus'],['Publicaties','producten'],['Listingoptimalisatie','producten','details'],['Product Image Studio','producten','overzicht','studio']]],
     ['Orders en verkoop','shop',[['Orderoverzicht','orders'],['Retouren','orders','details']]],
     ['Omzet','dashboard',[['Omzet per kanaal','omzet'],['Omzet per artikel','omzet','details'],['Forecasting','forecasting']]],
     ['Inkoop','shop',[['Besteladvies','inkoop'],['In bestelling','inkoop','details'],['Leveranciers','inkoop','overzicht','leveranciers']]],
@@ -28,13 +28,14 @@
     ['Financieel','data',[['Exploitatie','financieel'],['Marketplace-tegoeden','financieel','details']]],
     ['Systeem','security',[['Koppelingen','systeem'],['Demo-instellingen','systeem','details']]]
   ];
-  const specialScreens={producten:['catalogus'],inkoop:['leveranciers'],marketing:['agent','historie']};
+  const specialScreens={producten:['catalogus','studio'],inkoop:['leveranciers'],marketing:['agent','historie']};
   const root=document.querySelector('[data-demo]');if(!root||!D)return;
   let state=D.createState();
   const params=new URLSearchParams(location.search);
   let current=Object.hasOwn(modules,params.get('module'))?params.get('module'):'dashboard';
   let work=params.get('view')==='details';let special=specialScreens[current]?.includes(params.get('screen'))?params.get('screen'):'';let rows=[];let active={};
   let navOpen=false,receiptSerial=0,rankCountry=params.get('country')==='BE'?'BE':'NL';
+  let studioSku='DEMO-1001',studioImage=0;
   const rankFor=(p,previous=false)=>{const n=previous?p.previousRank:p.rank;return n===null?null:n+(rankCountry==='BE'?3:0);};
   const q=selector=>root.querySelector(selector), esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const money=n=>new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
@@ -130,8 +131,34 @@
     const max=Math.max(1,...values);
     q('[data-demo-bars]').innerHTML=values.map((v,i)=>`<div title="${esc(labels[i])}: ${number(v)}"><i style="height:${Math.max(0,v/max*80)}%"></i><span>${esc(labels[i])}</span></div>`).join('');
   }
+  const studioLabels=['Vrijstaand product','In een rustige omgeving','Productinformatie'];
+  function studioState(){
+    if(!D.product(state,studioSku))studioSku=state.products[0].sku;
+    state.studio??={};
+    const p=D.product(state,studioSku);
+    if(!state.studio[studioSku]||state.studio[studioSku].name!==p.name)state.studio[studioSku]={name:p.name,order:[0,1,2],approved:false};
+    return state.studio[studioSku];
+  }
+  function studioSVG(sku,kind){
+    const p=D.product(state,sku),shape={
+      'DEMO-1001':'<rect x="-100" y="-100" width="200" height="200" rx="30" fill="#eef2f5" stroke="#b7c5ce" stroke-width="4"/><rect x="-70" y="-65" width="140" height="90" rx="12" fill="#183244"/><text x="0" y="-5" text-anchor="middle" font-size="36" fill="#fff">20.5°</text><circle cy="65" r="17" fill="#c1cfd8"/>',
+      'DEMO-1002':'<rect x="-75" y="-95" width="150" height="190" rx="45" fill="#f3f5f7" stroke="#bac8d0" stroke-width="4"/><circle cy="-12" r="47" fill="#e1e8ed" stroke="#c1ced7" stroke-width="5"/><circle cx="-17" cy="-12" r="7" fill="#708291"/><circle cx="17" cy="-12" r="7" fill="#708291"/><circle cy="67" r="8" fill="#61aeaf"/>',
+      'DEMO-1003':'<rect x="-80" y="-100" width="85" height="200" rx="25" fill="#f0f4f7" stroke="#b8c9d3" stroke-width="4"/><rect x="28" y="-100" width="45" height="200" rx="18" fill="#e4ecf1" stroke="#b8c9d3" stroke-width="4"/><circle cx="-38" cy="-63" r="5" fill="#69a9ae"/>',
+      'DEMO-1004':'<rect x="-100" y="-100" width="200" height="200" rx="14" fill="#eff4f6" stroke="#bacbd3" stroke-width="4"/><path d="M0 -80V80M-80 0H80" stroke="#b9c8d1" stroke-width="3"/>',
+      'DEMO-1005':'<rect x="-95" y="-95" width="190" height="190" rx="20" fill="#edf3f6" stroke="#b7c8d1" stroke-width="4"/><circle r="58" fill="#d9e5eb" stroke="#9aafb9" stroke-width="4"/><path d="M0 -40V-18" stroke="#557b8c" stroke-width="6" stroke-linecap="round"/>',
+      'DEMO-1006':'<rect x="-65" y="-100" width="130" height="200" rx="43" fill="#f0f5f8" stroke="#b8c8d2" stroke-width="4"/><path d="M-45 15Q0 -25 45 15V62Q0 95 -45 62Z" fill="#d3e0e8"/><circle cy="-56" r="7" fill="#639fa9"/>'
+    }[sku]||'<rect x="-90" y="-90" width="180" height="180" rx="22" fill="#e6eef3" stroke="#a6bdc9" stroke-width="4"/>';
+    const background=kind===1?'<rect width="640" height="640" fill="#eef5f3"/><path d="M0 420H640V640H0Z" fill="#d3e4e0"/><path d="M70 0V420M0 420H640" stroke="#b6ceca" stroke-width="3"/><rect x="470" y="365" width="75" height="55" rx="6" fill="#8eb2aa"/><path d="M507 365V210M507 290Q440 270 458 220Q505 220 507 290M507 330Q570 290 551 255Q506 265 507 330" stroke="#739c90" stroke-width="12" fill="none"/>':kind===2?'<rect width="640" height="640" fill="#f0f6f9"/><path d="M0 0H640V150H0Z" fill="#d9ebf1"/>':'<rect width="640" height="640" fill="#fff"/>';
+    const title=kind===2?`<text x="42" y="75" fill="#183244" font-size="26" font-weight="700">${esc(p.name)}</text><text x="42" y="115" fill="#506f80" font-size="17">${esc(p.category)} · fictief voorbeeld</text>`:'';
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" font-family="Arial, sans-serif" role="img" aria-label="Schematisch voorbeeld: ${esc(p.name)} · ${esc(studioLabels[kind])}"><title>${esc(p.name)} · ${esc(studioLabels[kind])}</title>${background}${title}<ellipse cx="320" cy="490" rx="135" ry="20" fill="#183244" opacity=".09"/><g transform="translate(320 ${kind===2?350:315})">${shape}</g><text x="320" y="592" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" fill="#627587">Fictief product · schematisch demobeeld</text></svg>`;
+  }
+  function renderStudio(){
+    const project=studioState(),p=D.product(state,studioSku);
+    q('[data-demo-special]').innerHTML=`<div class="demo-studio-toolbar"><label>Artikel<select data-studio-product>${state.products.map(p=>`<option value="${esc(p.sku)}"${p.sku===studioSku?' selected':''}>${esc(p.name)} · ${esc(p.sku)}</option>`).join('')}</select></label><span>${project.approved?'Beeldset beoordeeld':'Concept · nog beoordelen'}</span></div><div class="demo-studio"><div><figure class="demo-studio-preview">${studioSVG(studioSku,studioImage)}<figcaption>${esc(studioLabels[studioImage])}${project.order[0]===studioImage?' · hoofdbeeld':''}</figcaption></figure><div class="demo-studio-thumbnails" aria-label="Kies een voorbeeldbeeld">${project.order.map((kind,i)=>`<button type="button" data-studio-image="${kind}" aria-pressed="${studioImage===kind}">${studioSVG(studioSku,kind)}<span>${i===0?'Hoofdbeeld':esc(studioLabels[kind])}</span></button>`).join('')}</div></div><article class="demo-studio-controls"><p class="demo-eyebrow">BEELDEN BIJ JE ARTIKEL</p><h2>${esc(p.name)}</h2><p>${esc(p.sku)} · ${esc(p.category)}</p><h3>Een samenhangende beeldset</h3><p>Kies uit drie vaste voorbeeldbeelden. Verander het hoofdbeeld, bekijk de hele set en beoordeel het resultaat.</p><p>In de echte Studio kun je bestaande beelden aanpassen met een opdracht, een serie maken op basis van een voorbeeldartikel en het resultaat controleren voordat je publiceert.</p><div class="demo-studio-actions"><button type="button" data-studio-main${project.order[0]===studioImage?' disabled':''}>Als hoofdbeeld instellen</button><button type="button" data-studio-review class="demo-primary">Beeldset beoordelen</button><button type="button" data-studio-download>Download dit voorbeeld (SVG)</button><button type="button" data-studio-reset>Originele volgorde herstellen</button></div><p class="demo-studio-disclaimer">Dit is een lokale demonstratie met fictieve illustraties. Er wordt geen AI-aanvraag uitgevoerd en niets naar bol of een ander platform verstuurd.</p></article></div>`;
+  }
   function render() {
     if(special&&!specialScreens[current]?.includes(special))special='';
+    if(special==='studio')work=false;
     root.dataset.module=current;root.dataset.screen=special;root.dataset.view=work?'details':'overzicht';
     const m=modules[current];q('[data-demo-title]').textContent=m.label;q('[data-demo-intro]').textContent=m.intro;q('[data-demo-note]').textContent=m.note;
     if(special==='agent'){q('[data-demo-title]').textContent='Marketingagent';q('[data-demo-intro]').textContent='Van verkoop, voorraad en advertenties naar voorstellen die je zelf beoordeelt.';}
@@ -143,8 +170,14 @@
     q('[data-demo-channel]').closest('label').hidden=current==='marketing'&&work;
     q('[data-demo-home]').hidden=current!=='dashboard';
     q('[data-demo-home]').innerHTML=current==='dashboard'?'<div class="demo-quick-actions"><button type="button" data-route="producten|overzicht|catalogus"><strong>Artikelen beheren</strong><span>Open een artikelkaart of voeg een voorbeeld toe →</span></button><button type="button" data-route="inkoop|overzicht|"><strong>Inkoop voorbereiden</strong><span>Van besteladvies naar een bestelling →</span></button><button type="button" data-route="marketing|overzicht|agent"><strong>Voorstellen beoordelen</strong><span>Bekijk kansen voor listings en campagnes →</span></button></div>':'';
-    const agent=current==='marketing'&&['agent','historie'].includes(special),settings=current==='systeem'&&work;
-    q('[data-demo-special]').hidden=!agent&&!settings;
+    const agent=current==='marketing'&&['agent','historie'].includes(special),settings=current==='systeem'&&work,studio=current==='producten'&&special==='studio';
+    q('[data-demo-special]').hidden=!agent&&!settings&&!studio;
+    if(studio){
+      q('[data-demo-title]').textContent='Product Image Studio';
+      q('[data-demo-intro]').textContent='Bekijk een beeldset, kies het hoofdbeeld en beoordeel de afbeeldingen voordat je verdergaat.';
+      q('[data-demo-note]').textContent='Vaste, schematische voorbeelden met fictieve producten. Deze demo genereert geen AI-beelden en publiceert niets naar een platform.';
+      renderStudio();
+    }
     if(agent){
       const decisions={approved:'Goedgekeurd',snoozed:'Uitgesteld',rejected:'Afgewezen',open:'Open'};
       const advice=D.adviceRows(state).filter(a=>special==='historie'?a.decision!=='open':a.decision==='open');
@@ -152,9 +185,10 @@
     }else if(settings){
       q('[data-demo-special]').innerHTML='<article class="demo-settings"><h2>Maak de werkplek prettig voor jou</h2><p>Probeer de lichte en donkere weergave. Alleen je weergavevoorkeur wordt bewaard.</p><label>Weergave<select data-demo-settings-theme><option value="light"'+(theme==='light'?' selected':'')+'>Licht</option><option value="dark"'+(theme==='dark'?' selected':'')+'>Donker</option></select></label><h3>Opnieuw proberen</h3><p>Reset herstelt de fictieve artikelen, bestellingen en voorstellen. Je gekozen weergave blijft behouden.</p><button type="button" data-demo-settings-reset>Herstel de voorbeeldgegevens</button><a href="/webapp-samenstellen/" target="_top">Stel jouw eigen WebApp samen →</a></article>';
     }
-    q('.demo-filters').hidden=agent||current==='systeem';
+    q('.demo-filters').hidden=agent||studio||current==='systeem';
     q('.demo-tabs').hidden=Boolean(special);
-    q('.demo-table-panel').hidden=agent||settings;
+    q('.demo-table-panel').hidden=agent||settings||studio;
+    q('[data-demo-metrics]').hidden=studio;
     q('[data-demo-create]').hidden=current!=='producten'||special!=='catalogus';
     q('[data-demo-metrics]').innerHTML=fields().map(s=>`<article><span>${esc(s.label)}</span><strong>${esc(s.value)}</strong><small>${esc(s.note)}</small></article>`).join('');
     q('[data-demo-channel]').disabled=!['dashboard','omzet','producten','orders','marketing','financieel'].includes(current)||special==='leveranciers';
@@ -237,13 +271,18 @@
     message('Het overzicht met fictieve gegevens is geëxporteerd.');
   });
   root.addEventListener('click',event=>{
+    const image=event.target.closest('[data-studio-image]');if(image){const value=Number(image.dataset.studioImage);if([0,1,2].includes(value)){studioImage=value;render();}return;}
+    if(event.target.closest('[data-studio-main]')){const project=studioState();project.order=[studioImage,...project.order.filter(i=>i!==studioImage)];project.approved=false;render();message('Hoofdbeeld gewijzigd in het concept.');return;}
+    if(event.target.closest('[data-studio-reset]')){const project=studioState();project.order=[0,1,2];project.approved=false;studioImage=0;render();message('De oorspronkelijke beeldvolgorde is hersteld.');return;}
+    if(event.target.closest('[data-studio-review]')){const project=studioState();open('Beoordeel de voorbeeldbeelden','<p>Bekijk de volledige set. Je bevestigt alleen deze lokale demoversie; er wordt niets gepubliceerd.</p><div class="demo-studio-review">'+project.order.map((kind,i)=>'<figure>'+studioSVG(studioSku,kind)+'<figcaption>'+(i===0?'Hoofdbeeld':esc(studioLabels[kind]))+'</figcaption></figure>').join('')+'</div>'+button('Beeldset in demo goedkeuren'),{kind:'studio-review',sku:studioSku,signature:JSON.stringify(project.order)});return;}
+    if(event.target.closest('[data-studio-download]')){const blob=new Blob([studioSVG(studioSku,studioImage)],{type:'image/svg+xml'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=studioSku+'-voorbeeld-'+(studioImage+1)+'.svg';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message('Het schematische voorbeeld is gedownload.');return;}
     const route=event.target.closest('[data-route]');if(route){choose(...route.dataset.route.split('|'));return;}
     const openArticle=event.target.closest('[data-open-article]');if(openArticle&&!dialog.contains(openArticle)){article(openArticle.dataset.openArticle);return;}
     const review=event.target.closest('[data-advice-review]');if(review){D.reviewAdvice(state,review.dataset.adviceReview,review.dataset.decision);render();message('Je keuze bij het voorstel is bewaard.');return;}
     const proposal=event.target.closest('[data-advice-action]');if(proposal){const advice=D.adviceRows(state).find(a=>a.id===proposal.dataset.adviceAction);action({...advice.action,adviceId:advice.id},advice.sku);return;}
     if(event.target.closest('[data-demo-settings-reset]'))resetDemo();
   });
-  root.addEventListener('change',event=>{if(event.target.matches('[data-demo-settings-theme]')){applyTheme(event.target.value);render();}});
+  root.addEventListener('change',event=>{if(event.target.matches('[data-demo-settings-theme]')){applyTheme(event.target.value);render();}if(event.target.matches('[data-studio-product]')&&D.product(state,event.target.value)){studioSku=event.target.value;studioImage=studioState().order[0];render();}});
   q('[data-demo-dialog-content]').addEventListener('click',e=>{
     const shipment=e.target.closest('[data-new-shipment]');if(shipment){action({kind:'shipment-create',id:shipment.dataset.newShipment});return;}
     const edit=e.target.closest('[data-edit-article]');if(edit){action({kind:'product-edit',id:edit.dataset.editArticle});return;}
@@ -256,6 +295,7 @@
       if(active.adviceId)D.reviewAdvice(state,active.adviceId,'approved');
       let text='Voorbeeldactie opgeslagen.';const value=Number(q('[data-action-value]')?.value);
       switch(active.kind){
+        case 'studio-review':if(active.sku!==studioSku||active.signature!==JSON.stringify(studioState().order))throw new Error('Bekijk eerst de actuele beeldset.');studioState().approved=true;text='De voorbeeldbeeldset is beoordeeld. Er is niets gepubliceerd.';break;
         case 'count':D.countStock(state,active.sku,value);text='Telling opgeslagen; beschikbare voorraad en besteladvies zijn bijgewerkt.';break;
         case 'proposal':D.propose(state,active.sku,value);current='inkoop';work=true;q('[data-demo-search]').value='';text='Bestelvoorstel klaargezet. Open de bestelling om een ontvangst te registreren.';break;
         case 'receive-purchase':D.receivePurchase(state,active.id,value,active.receiptReference);text='Levering verwerkt; de openstaande bestelling en voorraad zijn bijgewerkt.';break;
@@ -272,7 +312,7 @@
       dialog.close();render();message(text);
     }catch(error){if(active.adviceId)state.adviceReviews[active.adviceId]=previousDecision;q('[data-demo-dialog-error]').textContent=error.message;}
   });
-  function resetDemo(){state=D.createState();rankCountry='NL';q('[data-demo-period]').value='12';choose('dashboard');message('De oorspronkelijke voorbeeldgegevens zijn hersteld.');}
+  function resetDemo(){state=D.createState();rankCountry='NL';studioSku='DEMO-1001';studioImage=0;q('[data-demo-period]').value='12';choose('dashboard');message('De oorspronkelijke voorbeeldgegevens zijn hersteld.');}
   q('[data-demo-reset]').addEventListener('click',resetDemo);
   setMenu(false);
   render();
