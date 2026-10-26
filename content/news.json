@@ -1,6 +1,154 @@
 {
   "articles": [
     {
+      "slug": "shopify-api-orders-volledig-bijwerken",
+      "kind": "nieuws",
+      "title": "Shopify wijzigt een API-filter: komen alle orders nog binnen?",
+      "seo_title": "Shopify API: controle op complete ordergegevens",
+      "description": "Shopify wijzigt een tijdsfilter in API-versie 2026-10. Lees wat dit betekent voor orderkoppelingen en hoe we volledigheid en dubbele verwerking controleren.",
+      "summary": "Een kleine wijziging in een API kan gevolgen hebben voor de orders die je dashboard ophaalt. Een recente Shopify-update laat zien waarom controle op volledigheid bij de koppeling hoort.",
+      "published_at": "2026-10-26T10:13:20+01:00",
+      "modified_at": "2026-10-26T10:13:20+01:00",
+      "sections": [
+        {
+          "heading": "Wat Shopify op 19 oktober bekendmaakte",
+          "paragraphs": [
+            "Shopify beschrijft een wijziging in de GraphQL Admin API vanaf versie 2026-10. Een tijdsfilter met een exclusieve ondergrens zonder fracties van seconden sluit voortaan de hele opgegeven seconde uit. Dat raakt koppelingen die steeds gegevens ophalen na het tijdstip van het laatst ontvangen record.",
+            "De eerdere versies 2026-07 en ouder veranderen hierdoor niet. Shopify adviseert vóór de overstap zulke filters te controleren. Als records uit dezelfde seconde moeten meekomen, noemt de leverancier een inclusieve ondergrens met ontdubbeling op het unieke ID. Het gaat om deze specifieke zoekfilters, niet om een algemene storing van alle Shopify-koppelingen."
+          ]
+        },
+        {
+          "heading": "Onze duiding: een bijgewerkt scherm kan toch onvolledig zijn",
+          "paragraphs": [
+            "Voor een ondernemer is het verschil praktisch. Stel dat twee orders kort na elkaar ontstaan. Een koppeling die alleen naar het laatst opgeslagen tijdstip kijkt, moet precies weten waar de volgende gegevensophaling begint. Anders kan een grensgeval buiten het opgehaalde bereik vallen.",
+            "Dat merk je mogelijk pas verderop: een omzetoverzicht wijkt af, een order ontbreekt in de werkvoorraad of de voorraadplanning gebruikt een onvolledige verkoopgeschiedenis. Een recente bijwerktijd vertelt op zichzelf niet of alle verwachte gegevens verwerkt zijn. Dit zijn mogelijke gevolgen die wij uit de wijziging afleiden; geen vastgestelde problemen bij onze klanten."
+          ]
+        },
+        {
+          "heading": "Automatische updates én een controle op de uitkomst",
+          "paragraphs": [
+            "Shopify benoemt daarnaast in de webhookdocumentatie dat berichten dubbel kunnen worden aangeboden. De leverancier beschrijft ook periodieke gegevensophaling via de API als aanvulling om gemiste gebeurtenissen te kunnen herstellen. Automatisch ontvangen en volledig verwerkt zijn dus afzonderlijke controlepunten."
+          ],
+          "bullets": [
+            "Controleer welke API-versie de koppeling gebruikt en welke wijzigingsfilters worden toegepast.",
+            "Toets grensgevallen: meerdere orders binnen dezelfde seconde, herhaalde berichten en een hervatting na een onderbreking.",
+            "Vergelijk ontvangen ordernummers, aantallen en relevante totalen met de bron, binnen dezelfde periode en definities.",
+            "Maak achterlopende verwerking zichtbaar en spreek af wie een afwijking onderzoekt."
+          ]
+        },
+        {
+          "heading": "Een afgebakende eerste stap voor je eigen bedrijf",
+          "paragraphs": [
+            "Begin met één verkoopkanaal en één werkdag. Laat de aansluiting op orderniveau vergelijken en leg uit waarom eventuele verschillen ontstaan. Dat is concreter dan alleen kijken of de omzetgrafiek beweegt.",
+            "We richten gegevensophaling voor dagelijks gebruik via API-koppelingen in. Bij de opstart kunnen testgegevens helpen om de werking te laten zien; losse imports vormen geen terugkerende vervanging voor de koppeling. Welke controle nodig is, hangt af van de bron en het proces dat erop volgt."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Shopify: Exclusive > timestamp filters exclude the full second",
+          "url": "https://shopify.dev/changelog/posts/exclusive-timestamp-filters",
+          "published": "2026-10-19",
+          "checked": "2026-10-26"
+        },
+        {
+          "title": "Shopify: Verify webhook deliveries, duplicaten en aanvullende gegevensophaling",
+          "url": "https://shopify.dev/docs/apps/build/webhooks/verify-deliveries",
+          "checked": "2026-10-26"
+        },
+        {
+          "title": "Shopify: Search query syntax en vergelijkingsoperatoren",
+          "url": "https://shopify.dev/docs/api/usage/search-syntax",
+          "checked": "2026-10-26"
+        }
+      ],
+      "related": [
+        {
+          "url": "/api-integraties/#gegevens-ophalen",
+          "title": "Hoe we gegevens automatisch via API’s ophalen"
+        },
+        {
+          "url": "/logging-monitoring/",
+          "title": "Zien of een verwerking loopt en waar ze vastloopt"
+        },
+        {
+          "url": "/modulaire-webapp/#gegevens-per-module",
+          "title": "Essentiële gegevens en verwerking per module"
+        }
+      ]
+    },
+    {
+      "slug": "projectupdate-aanbod-inkoop-weekdossiers",
+      "kind": "project",
+      "title": "Meer grip op aanbod, inkoop en weekdossiers",
+      "seo_title": "Projectupdate: aanbod, inkoop en weekdossiers",
+      "description": "Nieuwe verbeteringen bij Smartlife Domotica en Olympus Bouw: aanbodstatus per kanaal, controle op inkoopontvangsten en beter onderbouwde factuurvoorbereiding.",
+      "summary": "Bij Smartlife Domotica en Olympus Bouw werken we verder aan dezelfde vraag: wat is de status, welke informatie hoort erbij en welke vervolgstap mag je uitvoeren?",
+      "published_at": "2026-10-26T10:13:20+01:00",
+      "modified_at": "2026-10-26T10:13:20+01:00",
+      "image": {
+        "src": "/assets/img/examples/management-desktop.jpg",
+        "width": 1280,
+        "height": 900,
+        "alt": "Neutrale voorbeeldweergave van een managementdashboard met volledig fictieve omzet, marge en orders.",
+        "caption": "Neutrale voorbeeldweergave met fictieve gegevens; geen productiescherm van de beschreven verbeteringen."
+      },
+      "sections": [
+        {
+          "heading": "Smartlife Domotica: ook een kanaal zonder omzet blijft zichtbaar",
+          "paragraphs": [
+            "In de artikelweergave staan nu ook verkoopkanalen waarvoor geen omzet is gemeten. Daarbij wordt de waargenomen aanbodstatus apart getoond. Zo verdwijnt een kanaal zonder verkopen niet uit de beoordeling van een artikel.",
+            "De ingestelde schakelaar en de bevestigde publicatiestatus blijven verschillende dingen. Een ingeschakeld aanbod bewijst niet dat het product daadwerkelijk zichtbaar is op de marketplace. Een fout, wachtrij of onbekende uitkomst blijft daarom herkenbaar.",
+            "Het aanbod kan per artikel en kanaal bewust worden aan- of uitgezet. De toepassing controleert de artikelidentiteit en bestaande instelling, voert de gerichte wijziging uit en leest de status terug. Een onzekere uitkomst vraagt eerst nieuwe controle; de schrijfhandeling wordt niet blind herhaald."
+          ]
+        },
+        {
+          "heading": "Inkoop: afzonderlijke orders en controle op deelontvangsten",
+          "paragraphs": [
+            "De inkoopwerkplek werkt met afzonderlijk genummerde orders, orderregels, bijlagen en ontvangsten. Hetzelfde artikel kan daardoor bij dezelfde leverancier in meerdere open orders voorkomen. Een deelontvangst vermindert de betreffende orderregel; afgeronde orders en ontvangsten blijven in het archief beschikbaar.",
+            "Ook hier is een ontbrekende bevestiging een eigen situatie. Bij een onzekere voorraadbijwerking blijft de ontvangst ter beoordeling staan. Eerst wordt uitgezocht wat het aangesloten systeem heeft verwerkt, voordat een volgende ontvangst van hetzelfde artikel wordt geboekt."
+          ]
+        },
+        {
+          "heading": "Olympus Bouw: de juiste weekstaat en kosten bij hetzelfde project",
+          "paragraphs": [
+            "Bij de factuurvoorbereiding kan de verwerking afzonderlijke projecten binnen dezelfde week uit elkaar houden. Kostenbewijs moet bij de geselecteerde weekstaat en het betreffende project passen. Een werkbon of onderaannemersbon wordt bovendien onderscheiden van een kostenbewijs; een genoemd totaal wordt niet vanzelf als extra kosten overgenomen.",
+            "Voor de arbeidsberekening ondersteunt de toepassing naast uren ook een gecontroleerde aanneemsom. Die vaste som moet aansluiten op de beoordeelde weekbron. Een wijziging van berekeningswijze mag zo geen omweg worden om een afwijkend arbeidsbedrag ongecontroleerd over te nemen.",
+            "De weekplanning kan daarnaast naar Excel worden geëxporteerd met de bijbehorende statussen. Zo blijft ook in het uitgegeven overzicht herkenbaar welke stukken aanwezig zijn en wat nog niet klaar is."
+          ]
+        },
+        {
+          "heading": "Wat we hebben gecontroleerd en wat we niet als resultaat claimen",
+          "paragraphs": [
+            "De beschreven functies zijn terug te vinden in de afgeronde bronwijzigingen. De deployments van beide toepassingen zijn geslaagd. De aanwezige geautomatiseerde controles behandelen onder meer onbekende publicatiestatus, gerichte kanaalwijzigingen, deelontvangsten, projectgebonden kosten en het aansluiten van de aanneemsom op de gecontroleerde bron.",
+            "De praktische verbetering is een duidelijker onderscheid tussen instelling, waargenomen status en toegestane vervolgstap. Voor deze update publiceren we geen gemeten urenbesparing of omzetresultaat. De voorbeeldbeelden gebruiken fictieve gegevens en tonen geen klantadministratie."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Het projectverhaal van Smartlife Domotica",
+          "url": "/projecten/smartlife-domotica/#doorontwikkeling",
+          "checked": "2026-10-26"
+        },
+        {
+          "title": "Het projectverhaal van Olympus Bouw",
+          "url": "/projecten/olympus-bouw/#doorontwikkeling",
+          "checked": "2026-10-26"
+        }
+      ],
+      "related": [
+        {
+          "url": "/modulaire-webapp/",
+          "title": "Modules voor voorraad, inkoop, orders en controles"
+        },
+        {
+          "url": "/ocr-documentverwerking/",
+          "title": "Documentgegevens herkennen en controleren"
+        }
+      ]
+    },
+    {
       "slug": "ai-softwareonderhoud-mkb",
       "kind": "nieuws",
       "title": "AI bij softwareonderhoud: kansen voor het mkb",

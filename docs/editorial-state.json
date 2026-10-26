@@ -1,21 +1,21 @@
 {
   "started_on": "2026-10-20",
-  "last_run": "2026-10-20",
+  "last_run": "2026-10-26",
   "projects": [
     {
       "repository": "opticore-intern",
       "path": "C:\\Users\\thoma\\OneDrive\\projects_github\\opticore-intern",
-      "since_commit": "6813615f42fe95c7d59af6dca1fc2460404aad9b"
+      "since_commit": "8a22fbf39acb708137838f21e13807ca83b18f55"
     },
     {
       "repository": "olympus_bouw",
       "path": "C:\\Users\\thoma\\OneDrive\\projects_github\\olympus_bouw",
-      "since_commit": "b23350550b7c7938b1ba9bc585c102707f5c9422"
+      "since_commit": "d50e124e8f24e5b08234a3b8dcb9e4043e51320f"
     },
     {
       "repository": "top_groep_nederland",
       "path": "C:\\Users\\thoma\\OneDrive\\projects_github\\top_groep_nederland",
-      "since_commit": "b5e2449d1fd9d7ef10699aa1e7bba6a7a01be675"
+      "since_commit": "138eda583120ed6dcad0a70b80630e99f19ce97d"
     },
     {
       "repository": "devalkadvies",
@@ -48,6 +48,136 @@
       "source": "https://developers.openai.com/blog/maintaining-software-with-the-gpt-6-family",
       "source_published": "2026-10-14",
       "checked": "2026-10-20"
+    },
+    {
+      "slug": "shopify-api-orders-volledig-bijwerken",
+      "sources": [
+        {
+          "title": "Shopify: Exclusive > timestamp filters exclude the full second",
+          "url": "https://shopify.dev/changelog/posts/exclusive-timestamp-filters",
+          "published": "2026-10-19",
+          "checked": "2026-10-26"
+        },
+        {
+          "title": "Shopify: Verify webhook deliveries, duplicaten en aanvullende gegevensophaling",
+          "url": "https://shopify.dev/docs/apps/build/webhooks/verify-deliveries",
+          "checked": "2026-10-26"
+        },
+        {
+          "title": "Shopify: Search query syntax en vergelijkingsoperatoren",
+          "url": "https://shopify.dev/docs/api/usage/search-syntax",
+          "checked": "2026-10-26"
+        }
+      ],
+      "checked": "2026-10-26"
+    },
+    {
+      "slug": "projectupdate-aanbod-inkoop-weekdossiers",
+      "repositories": [
+        "opticore-intern",
+        "olympus_bouw"
+      ],
+      "commits": [
+        "61c925d1",
+        "4a5b57c1",
+        "863567bd",
+        "d50e124",
+        "6ad18a7",
+        "279d796",
+        "d0f36e2"
+      ],
+      "verification": "Broncode en bijbehorende controles read-only beoordeeld; beide nieuwste deploymentruns success. Geen productiegegevens of bronbestanden gewijzigd."
+    }
+  ],
+  "last_run_at": "2026-10-26T10:13:20+01:00",
+  "runs": [
+    {
+      "at": "2026-10-26T10:13:20+01:00",
+      "website_base_commit": "1b7f8f2",
+      "reviewed_projects": [
+        {
+          "repository": "opticore-intern",
+          "previous_commit": "6813615f42fe95c7d59af6dca1fc2460404aad9b",
+          "reviewed_commit": "8a22fbf39acb708137838f21e13807ca83b18f55",
+          "outcome": "Gepubliceerd: aanbodstatus, gerichte offerbediening en inkooporders/ontvangsten. Overige UI-, ranking- en presentatieverfijningen beoordeeld; geen afzonderlijk nieuws. Search Console-module niet als gevulde gegevensbron gepresenteerd.",
+          "deployment": {
+            "run": 40221073778,
+            "conclusion": "success"
+          },
+          "evidence": [
+            "61c925d1",
+            "4a5b57c1",
+            "863567bd",
+            "tests/test_article_channels.py",
+            "tests/test_publication_controls.py",
+            "docs/purchase_orders.md"
+          ]
+        },
+        {
+          "repository": "olympus_bouw",
+          "previous_commit": "b23350550b7c7938b1ba9bc585c102707f5c9422",
+          "reviewed_commit": "d50e124e8f24e5b08234a3b8dcb9e4043e51320f",
+          "outcome": "Gepubliceerd: projectgebonden weekkosten, gecontroleerde aanneemsom, werkbonclassificatie en planningexport. Laatste taakuitkomst bevat uitgestelde kaarten; die zijn niet als afgerond werk opgenomen.",
+          "deployment": {
+            "run": 40034253267,
+            "conclusion": "success"
+          },
+          "evidence": [
+            "d50e124",
+            "6ad18a7",
+            "279d796",
+            "d0f36e2"
+          ]
+        },
+        {
+          "repository": "top_groep_nederland",
+          "previous_commit": "b5e2449d1fd9d7ef10699aa1e7bba6a7a01be675",
+          "reviewed_commit": "138eda583120ed6dcad0a70b80630e99f19ce97d",
+          "outcome": "Remote bevat oudere ontwikkelingen tot september 2026 ten opzichte van de verouderde baseline. Geen aantoonbare ontwikkeling in de beoordeelde week; niet als nieuw gepubliceerd."
+        },
+        {
+          "repository": "devalkadvies",
+          "previous_commit": "5492025e44eefb48af1c8999cccd0b60bb5ec381",
+          "reviewed_commit": "5492025e44eefb48af1c8999cccd0b60bb5ec381",
+          "outcome": "Geen commits sinds bewaarde baseline; geen projectupdate."
+        },
+        {
+          "repository": "Home_assistant",
+          "previous_commit": "fc8404b2e972cd9f0fe6d3811e36743389ca24c3",
+          "reviewed_commit": "fc8404b2e972cd9f0fe6d3811e36743389ca24c3",
+          "outcome": "Lokale Git-repository zonder origin. Recente voltooide taak meldt favicon en metadata voor bestaande taalpagina’s; routine-onderhoud, geen afzonderlijk projectnieuws. Bronbestanden ongemoeid gelaten."
+        },
+        {
+          "repository": "rustwerkt_website",
+          "previous_commit": null,
+          "reviewed_commit": null,
+          "outcome": "Map bestaat zonder Git-historie of aantoonbare nieuwe oplevering. Geen voortgang afgeleid; blijft websiteconcept."
+        }
+      ],
+      "published_slugs": [
+        "shopify-api-orders-volledig-bijwerken",
+        "projectupdate-aanbod-inkoop-weekdossiers"
+      ],
+      "researched_not_selected": [
+        {
+          "url": "https://community.fabric.microsoft.com/blog/fbc_pbiupdatesblog/power-bi-october-2026-feature-summary/5374650",
+          "reason": "Actueel maar minder directe aansluiting dan de concrete API-wijziging; enkele aangekondigde functies blijken in reacties vertraagd."
+        },
+        {
+          "url": "https://shopify.dev/changelog/posts/metaobject-analytics-queryable-capability-available-in-the-admin-api",
+          "reason": "Betreft versie 2027-01; geen algemene huidige functionaliteit voorgesteld."
+        }
+      ],
+      "completed_task_reviews": [
+        "01a17430-28d8-7661-a89f-0915957c1074",
+        "01a1738e-9491-7192-8aa2-5daea86b6a80",
+        "01a08fd6-aae2-7d11-a231-ce8274b8f318",
+        "01a11fea-4786-7440-b550-dda14af89106"
+      ],
+      "unavailable_task_review": [
+        "01a17235-db3b-7f83-b639-ab48e93de48a: niet beschikbaar; geen claims op gebaseerd"
+      ],
+      "verification_note": "Canonieke pagina-audit sluit de afzonderlijke noindex moduledemo uit; die heeft bewust geen canonieke pagina-opbouw en valt onder de bestaande dedicated demo-controles."
     }
   ]
 }
