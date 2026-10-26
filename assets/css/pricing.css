@@ -25,3 +25,9 @@
 .pricing-breakdown p:last-child,.pricing-terms p:last-child{margin-bottom:0}
 .pricing-terms p{margin-top:10px}
 @media(max-width:560px){.pricing-intro{margin-bottom:0}.pricing-breakdown{grid-template-columns:1fr;gap:24px}.pricing-breakdown h3{font-size:20px}}
+
+/* The modular WebApp is the first package, with a complete starter price. */
+.pricing-webapp-start h2{font-size:24px;margin-bottom:14px}
+.pricing-webapp-start .pricing-start-setup{font-size:18px;margin:12px 0}
+.pricing-webapp-start .package-note{margin-top:16px;margin-bottom:0}
+.pricing-intro>div>.section-more{margin-top:22px}

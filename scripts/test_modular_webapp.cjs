@@ -100,3 +100,14 @@ assert(html.includes('data-price-details'));
 assert.equal(calculatorURL(['omzet','omzet','<script>','__proto__']),'/webapp-samenstellen/?modules=omzet#modules');
 assert.equal(calculatorURL([]),'/webapp-samenstellen/#modules');
 console.log('Dedicated calculator OK: separate overview, top price summary and safe selection routes.');
+
+// Advertised entry pricing includes both the mandatory base and an actual start module.
+const pricingPage=fs.readFileSync(path.join(__dirname,'../prijzen/index.html'),'utf8');
+const starter=resolve(['omzet']);
+const starterCard=pricingPage.match(/<article class="card pricing-card pricing-webapp-start">[\s\S]*?<\/article>/)?.[0];
+assert(starterCard);
+assert(starterCard.includes('Vanaf</span> '+money(starter.monthly)));
+assert(starterCard.includes('<strong>'+money(starter.setup)+'</strong>'));
+assert(starterCard.includes('/webapp-samenstellen/?modules=omzet'));
+assert(pricingPage.indexOf('pricing-webapp-start')<pricingPage.indexOf('id="html-websites"'));
+console.log('Pricing entry package OK: advertised amounts include the base and preselect the matching start module.');
