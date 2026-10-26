@@ -44,6 +44,13 @@ def byline(article):
     return f'<p class="news-byline">{text}</p>'
 
 
+def brand_logos(article):
+    logos = []
+    for brand in article.get('brands', []):
+        logos.append(f'<a href="{safe_link(brand["url"])}" aria-label="{escape(brand["alt"],quote=True)}: bron of project bekijken"><img src="{escape(brand["src"],quote=True)}" alt="{escape(brand["alt"],quote=True)}" width="{brand["width"]}" height="{brand["height"]}" loading="lazy"></a>')
+    return '<div class="news-brands">'+''.join(logos)+'</div>' if logos else ''
+
+
 def render():
     home = (ROOT / 'index.html').read_text(encoding='utf-8')
     header = re.search(r'<header class="site-header">.*?</header>', home, re.S).group()
@@ -70,6 +77,16 @@ def render():
             raise ValueError(f'Article needs substantive content and sources: {slug}')
         for link in article['sources'] + article['related']:
             safe_link(link['url'])
+        for brand in article.get('brands', []):
+            if not brand['src'].startswith('/assets/img/') or not (ROOT / brand['src'].lstrip('/')).is_file():
+                raise ValueError(f'Missing brand image: {slug}')
+            if not brand.get('alt') or brand['width'] <= 0 or brand['height'] <= 0:
+                raise ValueError(f'Brand identity missing: {slug}')
+            safe_link(brand['url'])
+        for section in article['sections']:
+            for ref in section.get('source_refs', []):
+                if type(ref) is not int or not 0 <= ref < len(article['sources']):
+                    raise ValueError(f'Invalid section source reference: {slug}')
         if image := article.get('image'):
             if not image['src'].startswith('/assets/img/') or not (ROOT / image['src'].lstrip('/')).is_file():
                 raise ValueError(f'Missing article image: {slug}')
@@ -107,7 +124,7 @@ def render():
 <meta property="og:title" content="{escape(full_title,quote=True)}"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{url}"><meta property="og:type" content="{'article' if article else 'website'}"><meta property="og:site_name" content="OptiCore Insights"><meta property="og:locale" content="nl_NL"><meta property="og:image" content="{image}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(full_title,quote=True)}"><meta name="twitter:description" content="{escape(description,quote=True)}"><meta name="twitter:image" content="{image}">
 <script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':schema},ensure_ascii=False,separators=(',',':'))}</script>
-<link rel="stylesheet" href="/assets/css/site.css?v=20261026a"><link rel="stylesheet" href="/assets/css/news.css?v=20261022g"><link rel="alternate" type="application/rss+xml" title="OptiCore Insights — Nieuws en praktijk" href="{BASE}/nieuws/feed.xml">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261026-search-wide"><link rel="stylesheet" href="/assets/css/news.css?v=20261026-wide"><link rel="alternate" type="application/rss+xml" title="OptiCore Insights — Nieuws en praktijk" href="{BASE}/nieuws/feed.xml">
 <link rel="stylesheet" href="/assets/css/screenshot-gallery.css?v=20261022h"></head><body><a class="skip-link" href="#inhoud">Direct naar inhoud</a>{nav_header}
 <main id="inhoud">{main}</main>{footer}<script src="/assets/js/main.js?v=20261026a" defer></script><script src="/assets/js/screenshot-gallery.js?v=20261022h" defer></script></body></html>
 '''
@@ -116,7 +133,11 @@ def render():
     cards = []
     for article in articles:
         url = route(article)
-        cards.append(f'<article class="card news-card">{byline(article)}<h2><a href="{url}">{escape(article["title"])}</a></h2><p>{escape(article["summary"])}</p><a class="text-link" href="{url}">Lees het bericht →</a></article>')
+        logos = brand_logos(article)
+        first_source = article['sources'][0]
+        source_label = 'Projectverhaal →' if article['kind']=='project' else 'Originele bron ↗'
+        source_link = f'<a class="news-original-source" href="{safe_link(first_source["url"])}">{source_label}</a>'
+        cards.append(f'<article class="card news-card{" news-card-with-brands" if logos else ""}">{logos}<div class="news-card-content">{byline(article)}<h2><a href="{url}">{escape(article["title"])}</a></h2><p>{escape(article["summary"])}</p><div class="news-card-links"><a class="text-link" href="{url}">Lees het bericht →</a>{source_link}</div></div></article>')
         body = []
         if image := article.get('image'):
             body.append(gallery_for_image(image['src']) or f'<figure class="news-image"><a href="{image["src"]}" target="_blank" rel="noopener" aria-label="Vergroot de applicatiescreenshot"><img src="{image["src"]}" width="{image["width"]}" height="{image["height"]}" alt="{escape(image["alt"],quote=True)}"></a></figure>')
@@ -124,6 +145,9 @@ def render():
             text = ''.join('<p>'+escape(p)+'</p>\n' for p in section.get('paragraphs',[]))
             if section.get('bullets'):
                 text += '<ul>'+''.join('<li>'+escape(item)+'</li>' for item in section['bullets'])+'</ul>'
+            if refs := section.get('source_refs', []):
+                links = [f'<a href="{safe_link(article["sources"][ref]["url"])}">{escape(article["sources"][ref]["title"])}</a>' for ref in refs]
+                text += '<p class="news-section-sources">Bron: '+' · '.join(links)+'</p>'
             body.append('<section><h2>'+escape(section['heading'])+'</h2>'+text+'</section>')
         sources = []
         for source in article['sources']:
@@ -131,19 +155,19 @@ def render():
             if source.get('published'): dates.append('Gepubliceerd '+date_label(source['published']))
             if source.get('checked'): dates.append('Geraadpleegd '+date_label(source['checked']))
             sources.append(f'<li><a href="{safe_link(source["url"])}">{escape(source["title"])}</a><small>{" · ".join(dates)}</small></li>')
-        body.append('<section class="news-sources"><h2>'+('Bron en duiding' if article['kind']=='nieuws' else 'Bij dit project')+'</h2>'+('<p>De externe ontwikkeling komt uit onderstaande publicatie. De vertaling naar bedrijfsprocessen en het mkb is onze eigen analyse.</p>' if article['kind']=='nieuws' else '')+'<ul>'+''.join(sources)+'</ul></section>')
+        body.append('<section class="news-sources" id="bronnen"><h2>'+('Bron en duiding' if article['kind']=='nieuws' else 'Bij dit project')+'</h2>'+('<p>De externe ontwikkeling komt uit onderstaande publicatie. De vertaling naar bedrijfsprocessen en het mkb is onze eigen analyse.</p>' if article['kind']=='nieuws' else '')+'<ul>'+''.join(sources)+'</ul></section>')
         related = ''.join(f'<li><a href="{safe_link(link["url"])}">{escape(link["title"])} →</a></li>' for link in article['related'])
         body.append('<section class="news-related"><h2>Verder lezen</h2><ul>'+related+'<li><a href="/nieuws/">Alle nieuws- en praktijkberichten →</a></li></ul></section>')
         modified = '' if article['modified_at']==article['published_at'] else f'<p class="news-byline">Bijgewerkt <time datetime="{article["modified_at"]}">{date_label(article["modified_at"])}</time></p>'
         main = f'''<nav class="breadcrumbs" aria-label="Broodkruimelpad"><ol class="container"><li><a href="/">Home</a></li><li><a href="/nieuws/">Nieuws en praktijk</a></li><li><span aria-current="page">{escape(article['title'])}</span></li></ol></nav>
-<section class="page-intro"><div class="container">{byline(article)}<h1>{escape(article['title'])}</h1><p class="lead">{escape(article['summary'])}</p><p class="news-byline">Door <a href="/over/">Thomas Deijkers</a></p>{modified}</div></section>
+<section class="page-intro news-page-intro"><div class="container"><div class="news-identity">{logos}<div class="news-source-shortcuts">{source_link}<a href="#bronnen">Alle bronnen ({len(article["sources"])}) ↓</a></div></div>{byline(article)}<h1>{escape(article['title'])}</h1><p class="lead">{escape(article['summary'])}</p><p class="news-byline">Door <a href="/over/">Thomas Deijkers</a></p>{modified}</div></section>
 <div class="container section"><article class="news-article" aria-label="{escape(article['title'],quote=True)}">{''.join(body)}</article></div>
 <section class="section soft"><div class="container"><div class="section-heading"><h2>Wat zou in jouw bedrijf beter kunnen?</h2></div><div class="contact-strip"><p>Vertel welk werk tijd kost of welk inzicht je mist. Dan bespreken we een concrete eerste stap.</p><a class="button" href="/contact/">Bespreek je vraag</a></div></div></section>'''
         outputs[ROOT/url.lstrip('/')/'index.html'] = document(url,article['title'],article['description'],main,article)
 
     overview = '''<nav class="breadcrumbs" aria-label="Broodkruimelpad"><ol class="container"><li><a href="/">Home</a></li><li><span aria-current="page">Nieuws en praktijk</span></li></ol></nav>
 <section class="page-intro"><div class="container"><h1>Nieuws en praktijk.</h1><p class="lead">Wat ontwikkelingen in dashboards, automatisering en websites voor je bedrijf kunnen betekenen. En hoe we die inzichten toepassen in onze opdrachten.</p></div></section>
-<section class="section"><div class="container"><div class="cards">'''+''.join(cards)+'''</div><p class="news-overview-note">Nieuwsberichten bevatten bronverwijzingen en onze duiding. Projectupdates gaan over aantoonbare werkzaamheden. <a href="/projecten/">Bekijk ook de volledige projectverhalen →</a></p><p class="section-more"><a href="/nieuws/feed.xml">Volg de berichten via RSS →</a></p></div></section>'''
+<section class="section"><div class="container"><div class="cards news-grid">'''+''.join(cards)+'''</div><p class="news-overview-note">Nieuwsberichten bevatten bronverwijzingen en onze duiding. Projectupdates gaan over aantoonbare werkzaamheden. <a href="/projecten/">Bekijk ook de volledige projectverhalen →</a></p><p class="section-more"><a href="/nieuws/feed.xml">Volg de berichten via RSS →</a></p></div></section>'''
     outputs[ROOT/'nieuws/index.html'] = document('/nieuws/','Nieuws over data & bedrijfsprocessen','Lees nieuws en praktijkverhalen over data, automatisering en websites. ✓ Duiding voor ondernemers ✓ Updates over de oplossingen die we ontwikkelen.',overview)
 
     items = ''.join(f'<li>{byline(a)}<a href="{route(a)}">{escape(a["title"])} →</a><p>{escape(a["summary"])}</p></li>' for a in articles[:2])

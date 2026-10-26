@@ -15,6 +15,10 @@
           "paragraphs": [
             "Shopify beschrijft een wijziging in de GraphQL Admin API vanaf versie 2026-10. Een tijdsfilter met een exclusieve ondergrens zonder fracties van seconden sluit voortaan de hele opgegeven seconde uit. Dat raakt koppelingen die steeds gegevens ophalen na het tijdstip van het laatst ontvangen record.",
             "De eerdere versies 2026-07 en ouder veranderen hierdoor niet. Shopify adviseert vóór de overstap zulke filters te controleren. Als records uit dezelfde seconde moeten meekomen, noemt de leverancier een inclusieve ondergrens met ontdubbeling op het unieke ID. Het gaat om deze specifieke zoekfilters, niet om een algemene storing van alle Shopify-koppelingen."
+          ],
+          "source_refs": [
+            0,
+            2
           ]
         },
         {
@@ -34,6 +38,9 @@
             "Toets grensgevallen: meerdere orders binnen dezelfde seconde, herhaalde berichten en een hervatting na een onderbreking.",
             "Vergelijk ontvangen ordernummers, aantallen en relevante totalen met de bron, binnen dezelfde periode en definities.",
             "Maak achterlopende verwerking zichtbaar en spreek af wie een afwijking onderzoekt."
+          ],
+          "source_refs": [
+            1
           ]
         },
         {
@@ -75,6 +82,15 @@
           "url": "/modulaire-webapp/#gegevens-per-module",
           "title": "Essentiële gegevens en verwerking per module"
         }
+      ],
+      "brands": [
+        {
+          "src": "/assets/img/platforms/shopify.svg",
+          "alt": "Shopify",
+          "width": 89,
+          "height": 101,
+          "url": "https://shopify.dev/changelog/posts/exclusive-timestamp-filters"
+        }
       ]
     },
     {
@@ -100,6 +116,9 @@
             "In de artikelweergave staan nu ook verkoopkanalen waarvoor geen omzet is gemeten. Daarbij wordt de waargenomen aanbodstatus apart getoond. Zo verdwijnt een kanaal zonder verkopen niet uit de beoordeling van een artikel.",
             "De ingestelde schakelaar en de bevestigde publicatiestatus blijven verschillende dingen. Een ingeschakeld aanbod bewijst niet dat het product daadwerkelijk zichtbaar is op de marketplace. Een fout, wachtrij of onbekende uitkomst blijft daarom herkenbaar.",
             "Het aanbod kan per artikel en kanaal bewust worden aan- of uitgezet. De toepassing controleert de artikelidentiteit en bestaande instelling, voert de gerichte wijziging uit en leest de status terug. Een onzekere uitkomst vraagt eerst nieuwe controle; de schrijfhandeling wordt niet blind herhaald."
+          ],
+          "source_refs": [
+            0
           ]
         },
         {
@@ -107,6 +126,9 @@
           "paragraphs": [
             "De inkoopwerkplek werkt met afzonderlijk genummerde orders, orderregels, bijlagen en ontvangsten. Hetzelfde artikel kan daardoor bij dezelfde leverancier in meerdere open orders voorkomen. Een deelontvangst vermindert de betreffende orderregel; afgeronde orders en ontvangsten blijven in het archief beschikbaar.",
             "Ook hier is een ontbrekende bevestiging een eigen situatie. Bij een onzekere voorraadbijwerking blijft de ontvangst ter beoordeling staan. Eerst wordt uitgezocht wat het aangesloten systeem heeft verwerkt, voordat een volgende ontvangst van hetzelfde artikel wordt geboekt."
+          ],
+          "source_refs": [
+            0
           ]
         },
         {
@@ -115,6 +137,9 @@
             "Bij de factuurvoorbereiding kan de verwerking afzonderlijke projecten binnen dezelfde week uit elkaar houden. Kostenbewijs moet bij de geselecteerde weekstaat en het betreffende project passen. Een werkbon of onderaannemersbon wordt bovendien onderscheiden van een kostenbewijs; een genoemd totaal wordt niet vanzelf als extra kosten overgenomen.",
             "Voor de arbeidsberekening ondersteunt de toepassing naast uren ook een gecontroleerde aanneemsom. Die vaste som moet aansluiten op de beoordeelde weekbron. Een wijziging van berekeningswijze mag zo geen omweg worden om een afwijkend arbeidsbedrag ongecontroleerd over te nemen.",
             "De weekplanning kan daarnaast naar Excel worden geëxporteerd met de bijbehorende statussen. Zo blijft ook in het uitgegeven overzicht herkenbaar welke stukken aanwezig zijn en wat nog niet klaar is."
+          ],
+          "source_refs": [
+            1
           ]
         },
         {
@@ -146,6 +171,22 @@
           "url": "/ocr-documentverwerking/",
           "title": "Documentgegevens herkennen en controleren"
         }
+      ],
+      "brands": [
+        {
+          "src": "/assets/img/clients/smartlife-domotica.svg",
+          "alt": "Smartlife Domotica",
+          "width": 300,
+          "height": 59,
+          "url": "/projecten/smartlife-domotica/"
+        },
+        {
+          "src": "/assets/img/clients/olympus-bouw.png",
+          "alt": "Olympus Bouw",
+          "width": 210,
+          "height": 105,
+          "url": "/projecten/olympus-bouw/"
+        }
       ]
     },
     {
@@ -161,6 +202,9 @@
           "heading": "De ontwikkeling: AI helpt ook bij bestaand werk",
           "paragraphs": [
             "OpenAI publiceerde op 14 oktober 2026 hoe het eigen Core Experimentation-team coding agents inzet voor softwareonderhoud. Het team beschrijft onder meer het onderzoeken van ongebruikte code, het opruimen van verouderde experimenten en verbeteringen aan geautomatiseerde controles. Bewijs verzamelen en de voorgestelde wijzigingen beoordelen horen bij die werkwijze."
+          ],
+          "source_refs": [
+            0
           ]
         },
         {
@@ -201,7 +245,16 @@
           "title": "Hoe we je bedrijfsproces doorgronden"
         }
       ],
-      "seo_title": "AI bij softwareonderhoud voor het mkb"
+      "seo_title": "AI bij softwareonderhoud voor het mkb",
+      "brands": [
+        {
+          "src": "/assets/img/technology/openai-developers.svg",
+          "alt": "OpenAI Developers",
+          "width": 211,
+          "height": 22,
+          "url": "https://developers.openai.com/blog/maintaining-software-with-the-gpt-6-family"
+        }
+      ]
     },
     {
       "slug": "olympus-bouw-documentintake-hervatten",
@@ -225,6 +278,9 @@
           "paragraphs": [
             "Een document uploaden is een korte handeling. Een hele serie documenten verwerken is een werkproces. Je selecteert bestanden, kijkt naar de voortgang en wilt intussen soms naar een andere pagina. Als daarna onduidelijk is wat al binnen is, begint het zoekwerk opnieuw.",
             "In de doorontwikkeling voor Olympus Bouw hebben we daarom aandacht besteed aan openstaande bestanden en herkenbare voortgang bij het wisselen van scherm of herladen van de pagina. Het doel is dat de gebruiker kan zien waar de verwerking is gebleven en welke volgende stap passend is."
+          ],
+          "source_refs": [
+            0
           ]
         },
         {
@@ -266,7 +322,16 @@
           "title": "Documentherkenning met een controlelaag"
         }
       ],
-      "seo_title": "Olympus Bouw: documentintake hervatten"
+      "seo_title": "Olympus Bouw: documentintake hervatten",
+      "brands": [
+        {
+          "src": "/assets/img/clients/olympus-bouw.png",
+          "alt": "Olympus Bouw",
+          "width": 210,
+          "height": 105,
+          "url": "/projecten/olympus-bouw/"
+        }
+      ]
     }
   ]
 }

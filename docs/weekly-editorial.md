@@ -64,6 +64,10 @@ projectontwikkelingen van de week mee; maak losse berichten als dat duidelijker 
    `nieuws`, `project` of `inzicht`. Geef elk bericht een concrete eigen invalshoek,
    duidelijke titel, metaomschrijving, korte samenvatting, bruikbare koppen,
    bronverwijzingen en relevante interne links naar diensten en projectverhalen.
+   Voeg waar relevant `brands` toe met een bestaand, geverifieerd logo (`src`, `alt`,
+   `width`, `height`, `url`). Gebruik `source_refs` als lijst met bronindices per
+   sectie voor directe verwijzingen bij bronfeiten. De renderer toont logo’s, een
+   primaire bronlink en het volledige bronnenoverzicht; verzin geen merkassets.
 3. Gebruik de echte publicatietijd met tijdzone voor `published_at` en aanvankelijk
    dezelfde `modified_at`. Pas `modified_at` alleen bij wezenlijke inhoudelijke
    wijziging aan. Laat bestaande datums en slugs intact.

@@ -282,3 +282,17 @@ nav a,nav a:hover,.topic-index a,.topic-index a:hover,.site-footer a,.site-foote
 .site-nav a,.site-nav .nav-contact{min-height:44px;padding:10px 12px;border:0;border-radius:5px;font-size:15px;line-height:1.6}
 .site-nav a:hover,.site-nav a[aria-current=page]{background:#edf4fa}
 }
+
+/* A wide search form is centered between the brand and the desktop menu. */
+.header-search-form{display:none}
+@media(min-width:1121px){
+.nav-wrap{display:grid;grid-template-columns:minmax(0,1fr) min(46%,520px) minmax(0,1fr);gap:24px}
+.nav-wrap>.brand{grid-column:1;grid-row:1}
+.header-actions{grid-column:3;grid-row:1;justify-self:end}
+.header-search-form{display:flex;grid-column:2;grid-row:1;align-items:stretch;width:100%;min-width:0;gap:0}
+.header-search-form input{flex:1;min-width:0;width:100%;min-height:46px;padding:10px 15px;border:1px solid #8fa3b5;border-right:0;border-radius:5px 0 0 5px;background:#fff;color:var(--ink);font-size:16px;line-height:1.5}
+.header-search-form input:focus{outline:none;border-color:#175a96;box-shadow:inset 0 0 0 1px #175a96}
+.header-search-form button{display:flex;align-items:center;justify-content:center;min-width:48px;border:1px solid #175a96;border-radius:0 5px 5px 0;background:#175a96;color:#fff;padding:10px}
+.header-search-form button:hover{background:#104877;border-color:#104877}
+.header-search-form svg{width:21px;height:21px}
+}

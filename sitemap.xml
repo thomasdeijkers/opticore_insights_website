@@ -772,14 +772,32 @@
   <url>
     <loc>https://opticore-insights.nl/nieuws/</loc>
     <lastmod>2026-10-26</lastmod>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/clients/olympus-bouw.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/clients/smartlife-domotica.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/shopify.svg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/technology/openai-developers.svg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/nieuws/ai-softwareonderhoud-mkb/</loc>
     <lastmod>2026-10-26</lastmod>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/technology/openai-developers.svg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/nieuws/olympus-bouw-documentintake-hervatten/</loc>
     <lastmod>2026-10-26</lastmod>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/clients/olympus-bouw.png</image:loc>
+    </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/document-intake-desktop.jpg</image:loc>
     </image:image>
@@ -793,6 +811,12 @@
   <url>
     <loc>https://opticore-insights.nl/nieuws/projectupdate-aanbod-inkoop-weekdossiers/</loc>
     <lastmod>2026-10-26</lastmod>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/clients/olympus-bouw.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/clients/smartlife-domotica.svg</image:loc>
+    </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/examples/forecast-desktop.jpg</image:loc>
     </image:image>
@@ -815,6 +839,9 @@
   <url>
     <loc>https://opticore-insights.nl/nieuws/shopify-api-orders-volledig-bijwerken/</loc>
     <lastmod>2026-10-26</lastmod>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/platforms/shopify.svg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://opticore-insights.nl/ocr-documentverwerking/</loc>

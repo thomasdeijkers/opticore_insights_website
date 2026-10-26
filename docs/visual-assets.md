@@ -78,3 +78,8 @@ The explanation was checked against the read-only app sources in `opticore-inter
 `assets/img/module-examples/` contains 40 original browser captures of `/demo/modulaire-webapp/`: ten marketplace modules, two views (overview and work details), each at 1280×900 desktop and 390×844 phone size. These are code-native neutral examples with fictional data, captured from `assets/js/marketplace-demo-data.js`, `assets/js/module-demo.js` and `assets/css/module-demo.css`. They do not use production source, private screens, customer branding or real company data. Each module card identifies the images as fictional and uses the shared responsive gallery/viewer. See `docs/modular-webapp.md` for capture URLs and filenames.
 
 Channel identification in these examples reuses the existing public bol, Amazon, Praxis and Brico logo assets. Logos retain their original proportions and colors and identify the demo marketplaces; they do not imply endorsement. Desktop and phone images are recaptured from the same functioning demo, including article, offer and keyword dialogs.
+
+
+## News brand identification — 26 October 2026
+
+News uses existing Shopify, Smartlife Domotica and Olympus Bouw logos without altering their proportions or colors. `assets/img/technology/openai-developers.svg` is the unmodified OpenAI Developers wordmark served at https://developers.openai.com/OpenAI_Developers.svg and observed in the official developer site's header. It identifies the OpenAI developer publication discussed in the article and links to that source. Source: https://developers.openai.com/; brand guidance: https://openai.com/brand/. Logos identify article subjects and sources, not a partnership or endorsement.
