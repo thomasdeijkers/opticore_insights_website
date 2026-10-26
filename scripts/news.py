@@ -13,6 +13,7 @@ from pathlib import Path
 import re
 from urllib.parse import urlsplit
 from screenshot_gallery import gallery_for_image
+from external_links import external_links_in_new_tabs
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -117,7 +118,7 @@ def render():
         else:
             schema.append({'@type':'ItemList','itemListElement':[{'@type':'ListItem','position':i+1,'name':a['title'],'url':BASE+route(a)} for i,a in enumerate(articles)]})
         image = BASE + (article.get('image',{}).get('src','/assets/img/opticore-insights-logo.png') if article else '/assets/img/opticore-insights-logo.png')
-        return f'''<!doctype html>
+        return external_links_in_new_tabs(f'''<!doctype html>
 <html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <title>{escape(full_title)}</title><meta name="description" content="{escape(description,quote=True)}"><link rel="canonical" href="{url}"><meta name="robots" content="index,follow,max-image-preview:large">
@@ -127,7 +128,7 @@ def render():
 <link rel="stylesheet" href="/assets/css/site.css?v=20261026-search-wide"><link rel="stylesheet" href="/assets/css/news.css?v=20261026-wide"><link rel="alternate" type="application/rss+xml" title="OptiCore Insights — Nieuws en praktijk" href="{BASE}/nieuws/feed.xml">
 <link rel="stylesheet" href="/assets/css/screenshot-gallery.css?v=20261022h"></head><body><a class="skip-link" href="#inhoud">Direct naar inhoud</a>{nav_header}
 <main id="inhoud">{main}</main>{footer}<script src="/assets/js/main.js?v=20261026a" defer></script><script src="/assets/js/screenshot-gallery.js?v=20261022h" defer></script></body></html>
-'''
+''')
 
     outputs = {}
     cards = []

@@ -68,6 +68,9 @@ projectontwikkelingen van de week mee; maak losse berichten als dat duidelijker 
    `width`, `height`, `url`). Gebruik `source_refs` als lijst met bronindices per
    sectie voor directe verwijzingen bij bronfeiten. De renderer toont logo’s, een
    primaire bronlink en het volledige bronnenoverzicht; verzin geen merkassets.
+   Externe links openen in een nieuw tabblad via `scripts/external_links.py`.
+   Platformvoorbeelden linken naar algemene product- of bedrijfswebsites;
+   nieuwsbronnen blijven verwijzen naar de oorspronkelijke publicatie.
 3. Gebruik de echte publicatietijd met tijdzone voor `published_at` en aanvankelijk
    dezelfde `modified_at`. Pas `modified_at` alleen bij wezenlijke inhoudelijke
    wijziging aan. Laat bestaande datums en slugs intact.

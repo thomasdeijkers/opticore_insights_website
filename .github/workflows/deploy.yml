@@ -17,7 +17,9 @@ jobs:
           fetch-depth: 0
 
       - name: Render and validate news
-        run: python3 scripts/news.py --write
+        run: |
+          python3 scripts/news.py --write
+          python3 scripts/external_links.py --check
 
       - name: Build and validate site search
         run: |
