@@ -195,6 +195,19 @@
       ],
       "publication_dates": "Beide delen behouden de oorspronkelijke publicatiedatum van het reeds gepubliceerde materiaal; modified_at vermeldt de herziening.",
       "standing_rule": "Eén klant/project per bericht; geen publieke RSS-oproep."
+    },
+    {
+      "at": "2026-10-26T21:19:04+01:00",
+      "reason": "Gebruiker vraagt begrijpelijke, algemenere nieuwsberichten voor potentiële klanten, zonder technische voortgangstaal.",
+      "slugs": [
+        "shopify-api-orders-volledig-bijwerken",
+        "projectupdate-aanbod-inkoop-weekdossiers",
+        "olympus-bouw-weekkosten-planning",
+        "ai-softwareonderhoud-mkb",
+        "olympus-bouw-documentintake-hervatten"
+      ],
+      "changes": "Titels, samenvattingen, metadata en hoofdteksten van vijf bestaande artikelen herschreven vanuit dagelijks gebruik. Oorspronkelijke URL’s, publicatiedatums, onderliggende bronnen en projectafbakening behouden; geen nieuwe projectclaims toegevoegd.",
+      "standing_rule": "Toegankelijke taal voor ondernemers; technische bewijslast blijft intern."
     }
   ]
 }

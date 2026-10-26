@@ -3,84 +3,77 @@
     {
       "slug": "shopify-api-orders-volledig-bijwerken",
       "kind": "nieuws",
-      "title": "Shopify wijzigt een API-filter: komen alle orders nog binnen?",
-      "seo_title": "Shopify API: controle op complete ordergegevens",
-      "description": "Shopify wijzigt een tijdsfilter in API-versie 2026-10. Lees wat dit betekent voor orderkoppelingen en hoe we volledigheid en dubbele verwerking controleren.",
-      "summary": "Een kleine wijziging in een API kan gevolgen hebben voor de orders die je dashboard ophaalt. Een recente Shopify-update laat zien waarom controle op volledigheid bij de koppeling hoort.",
+      "title": "Shopify: blijven al je bestellingen in beeld?",
+      "seo_title": "Shopify: overzicht over al je bestellingen",
+      "description": "Een wijziging bij Shopify laat zien waarom je webshop en dashboard goed moeten blijven samenwerken. Wat betekent dat voor je bestellingen en voorraad?",
+      "summary": "Als je webshop is verbonden met je voorraad of dashboard, wil je erop kunnen vertrouwen dat alle bestellingen meekomen. Een recente wijziging bij Shopify laat zien waarom dat aandacht blijft vragen.",
       "published_at": "2026-10-26T10:13:20+01:00",
-      "modified_at": "2026-10-26T10:13:20+01:00",
+      "modified_at": "2026-10-26T21:19:04+01:00",
       "sections": [
         {
-          "heading": "Wat Shopify op 19 oktober bekendmaakte",
+          "heading": "Een wijziging achter de schermen",
           "paragraphs": [
-            "Shopify beschrijft een wijziging in de GraphQL Admin API vanaf versie 2026-10. Een tijdsfilter met een exclusieve ondergrens zonder fracties van seconden sluit voortaan de hele opgegeven seconde uit. Dat raakt koppelingen die steeds gegevens ophalen na het tijdstip van het laatst ontvangen record.",
-            "De eerdere versies 2026-07 en ouder veranderen hierdoor niet. Shopify adviseert vóór de overstap zulke filters te controleren. Als records uit dezelfde seconde moeten meekomen, noemt de leverancier een inclusieve ondergrens met ontdubbeling op het unieke ID. Het gaat om deze specifieke zoekfilters, niet om een algemene storing van alle Shopify-koppelingen."
+            "Shopify maakte op 19 oktober een wijziging bekend in de manier waarop koppelingen recente gegevens selecteren. Bij sommige koppelingen moet daarom worden gecontroleerd of alle nieuwe bestellingen nog worden opgehaald.",
+            "Dat is iets wat we bij het onderhoud van een koppeling moeten meenemen. Voor jou als ondernemer is vooral de uitkomst belangrijk: komen de bestellingen in je WebApp overeen met wat er in je webshop gebeurt?"
           ],
           "source_refs": [
-            0,
-            2
+            0
           ]
         },
         {
-          "heading": "Onze duiding: een bijgewerkt scherm kan toch onvolledig zijn",
+          "heading": "Wat betekent dit voor je dagelijkse werk?",
           "paragraphs": [
-            "Voor een ondernemer is het verschil praktisch. Stel dat twee orders kort na elkaar ontstaan. Een koppeling die alleen naar het laatst opgeslagen tijdstip kijkt, moet precies weten waar de volgende gegevensophaling begint. Anders kan een grensgeval buiten het opgehaalde bereik vallen.",
-            "Dat merk je mogelijk pas verderop: een omzetoverzicht wijkt af, een order ontbreekt in de werkvoorraad of de voorraadplanning gebruikt een onvolledige verkoopgeschiedenis. Een recente bijwerktijd vertelt op zichzelf niet of alle verwachte gegevens verwerkt zijn. Dit zijn mogelijke gevolgen die wij uit de wijziging afleiden; geen vastgestelde problemen bij onze klanten."
+            "Stel dat je webshop bestellingen ontvangt, maar je voorraadplanning er één mist. Dan kijk je naar een ander beeld dan wat er werkelijk is verkocht. Hetzelfde geldt voor je omzetoverzicht of de lijst met orders die nog moeten worden verstuurd.",
+            "Daarom kijken we bij een koppeling ook of de ontvangen bestellingen overeenkomen met de webshop. Zo kun je een verschil opmerken voordat je op basis van onvolledige cijfers verder werkt."
           ]
         },
         {
-          "heading": "Automatische updates én een controle op de uitkomst",
+          "heading": "Vertrouwen op de cijfers in je WebApp",
           "paragraphs": [
-            "Shopify benoemt daarnaast in de webhookdocumentatie dat berichten dubbel kunnen worden aangeboden. De leverancier beschrijft ook periodieke gegevensophaling via de API als aanvulling om gemiste gebeurtenissen te kunnen herstellen. Automatisch ontvangen en volledig verwerkt zijn dus afzonderlijke controlepunten."
-          ],
-          "bullets": [
-            "Controleer welke API-versie de koppeling gebruikt en welke wijzigingsfilters worden toegepast.",
-            "Toets grensgevallen: meerdere orders binnen dezelfde seconde, herhaalde berichten en een hervatting na een onderbreking.",
-            "Vergelijk ontvangen ordernummers, aantallen en relevante totalen met de bron, binnen dezelfde periode en definities.",
-            "Maak achterlopende verwerking zichtbaar en spreek af wie een afwijking onderzoekt."
+            "Shopify beschrijft ook dat automatische meldingen soms opnieuw worden aangeboden en dat aanvullende controles kunnen helpen om gemiste updates te vinden. Een koppeling heeft dus onderhoud nodig, ook wanneer je er zelf weinig van merkt.",
+            "Binnen een modulaire WebApp gebruiken omzet, voorraad en inkoop dezelfde verkoopgegevens. Een goede aansluiting op je webshop helpt om die onderdelen met elkaar te laten samenwerken."
           ],
           "source_refs": [
             1
           ]
         },
         {
-          "heading": "Een afgebakende eerste stap voor je eigen bedrijf",
+          "heading": "Begin bij één duidelijk overzicht",
           "paragraphs": [
-            "Begin met één verkoopkanaal en één werkdag. Laat de aansluiting op orderniveau vergelijken en leg uit waarom eventuele verschillen ontstaan. Dat is concreter dan alleen kijken of de omzetgrafiek beweegt.",
-            "We richten gegevensophaling voor dagelijks gebruik via API-koppelingen in. Bij de opstart kunnen testgegevens helpen om de werking te laten zien; losse imports vormen geen terugkerende vervanging voor de koppeling. Welke controle nodig is, hangt af van de bron en het proces dat erop volgt."
+            "Wil je weten hoe jouw webshop en bedrijfssoftware op elkaar aansluiten? Begin met een vergelijking van de bestellingen over één dag. Staan dezelfde orders en aantallen in beide systemen? Dat geeft een concreet vertrekpunt voor een gesprek over jouw WebApp."
           ]
         }
       ],
       "sources": [
         {
-          "title": "Shopify: Exclusive > timestamp filters exclude the full second",
+          "title": "Shopify over de wijziging bij het ophalen van gegevens",
           "url": "https://shopify.dev/changelog/posts/exclusive-timestamp-filters",
           "published": "2026-10-19",
           "checked": "2026-10-26"
         },
         {
-          "title": "Shopify: Verify webhook deliveries, duplicaten en aanvullende gegevensophaling",
+          "title": "Shopify over het controleren van ontvangen updates",
           "url": "https://shopify.dev/docs/apps/build/webhooks/verify-deliveries",
           "checked": "2026-10-26"
         },
         {
-          "title": "Shopify: Search query syntax en vergelijkingsoperatoren",
+          "title": "Shopify over het selecteren van gegevens",
           "url": "https://shopify.dev/docs/api/usage/search-syntax",
           "checked": "2026-10-26"
         }
       ],
       "related": [
         {
-          "url": "/api-integraties/#gegevens-ophalen",
-          "title": "Hoe we gegevens automatisch via API’s ophalen"
+          "url": "/modulaire-webapp/",
+          "title": "Ontdek de modules voor jouw WebApp"
         },
         {
-          "url": "/logging-monitoring/",
-          "title": "Zien of een verwerking loopt en waar ze vastloopt"
+          "url": "/webshop-koppelingen/",
+          "title": "Je webshop verbinden met voorraad en rapportages"
         },
         {
-          "url": "/modulaire-webapp/#gegevens-per-module",
-          "title": "Essentiële gegevens en verwerking per module"
+          "url": "/api-integraties/",
+          "title": "Hoe we je systemen met elkaar laten samenwerken"
         }
       ],
       "brands": [
@@ -96,12 +89,12 @@
     {
       "slug": "projectupdate-aanbod-inkoop-weekdossiers",
       "kind": "project",
-      "title": "Smartlife Domotica: meer overzicht in aanbod en inkoop",
-      "seo_title": "Smartlife Domotica: aanbod en inkoop",
-      "description": "Bij Smartlife Domotica blijven verkoopkanalen zonder omzet zichtbaar. Lees hoe aanbodstatus, inkooporders en deelontvangsten beter op elkaar aansluiten.",
-      "summary": "Bij Smartlife Domotica maken we de status van artikelen, verkoopkanalen en inkooporders beter zichtbaar. Dat helpt bij het beoordelen van aanbod en het verwerken van leveringen.",
+      "title": "Smartlife Domotica: meer overzicht in verkoop en inkoop",
+      "seo_title": "Smartlife Domotica: grip op verkoop en inkoop",
+      "description": "Bij Smartlife Domotica brengen we verkoopkanalen, bestellingen en leveringen beter in beeld. Lees hoe de WebApp helpt overzicht te houden in het dagelijkse werk.",
+      "summary": "Verkopen via meerdere kanalen betekent ook meer informatie om bij te houden. Bij Smartlife Domotica verbeteren we het overzicht van artikelen, inkoopbestellingen en binnenkomende leveringen.",
       "published_at": "2026-10-26T10:13:20+01:00",
-      "modified_at": "2026-10-26T20:57:45+01:00",
+      "modified_at": "2026-10-26T21:19:04+01:00",
       "image": {
         "src": "/assets/img/examples/management-desktop.jpg",
         "width": 1280,
@@ -111,34 +104,24 @@
       },
       "sections": [
         {
-          "heading": "Aanbodstatus per verkoopkanaal",
+          "heading": "Zien wat er met je artikelen gebeurt",
           "paragraphs": [
-            "In de artikelweergave staan nu ook verkoopkanalen waarvoor geen omzet is gemeten. Daarbij wordt de waargenomen aanbodstatus apart getoond. Zo verdwijnt een kanaal zonder verkopen niet uit de beoordeling van een artikel.",
-            "De ingestelde schakelaar en de bevestigde publicatiestatus blijven verschillende dingen. Een ingeschakeld aanbod bewijst niet dat het product daadwerkelijk zichtbaar is op de marketplace. Een fout, wachtrij of onbekende uitkomst blijft daarom herkenbaar.",
-            "Het aanbod kan per artikel en kanaal bewust worden aan- of uitgezet. De toepassing controleert de artikelidentiteit en bestaande instelling, voert de gerichte wijziging uit en leest de status terug. Een onzekere uitkomst vraagt eerst nieuwe controle; de schrijfhandeling wordt niet blind herhaald."
-          ],
-          "source_refs": [
-            0
+            "Een artikel kan via meerdere verkoopkanalen worden aangeboden. Als het ergens niet verkoopt, wil je kunnen uitzoeken waar dat aan ligt. Wordt het artikel daar wel aangeboden, of vraagt er iets aandacht?",
+            "In de WebApp van Smartlife Domotica blijven ook verkoopkanalen zonder omzet zichtbaar. Per artikel is daardoor beter te bekijken hoe het aanbod ervoor staat en waar verder onderzoek nodig is."
           ]
         },
         {
-          "heading": "Inkooporders en deelontvangsten bij elkaar",
+          "heading": "Wat is besteld en wat is al binnen?",
           "paragraphs": [
-            "De inkoopwerkplek werkt met afzonderlijk genummerde orders, orderregels, bijlagen en ontvangsten. Hetzelfde artikel kan daardoor bij dezelfde leverancier in meerdere open orders voorkomen. Een deelontvangst vermindert de betreffende orderregel; afgeronde orders en ontvangsten blijven in het archief beschikbaar.",
-            "Ook hier is een ontbrekende bevestiging een eigen situatie. Bij een onzekere voorraadbijwerking blijft de ontvangst ter beoordeling staan. Eerst wordt uitgezocht wat het aangesloten systeem heeft verwerkt, voordat een volgende ontvangst van hetzelfde artikel wordt geboekt."
-          ],
-          "source_refs": [
-            0
+            "Een inkoopbestelling komt niet altijd in één keer binnen. Soms wordt een deel geleverd en volgt de rest later. Dan helpt het als je per bestelling kunt zien wat is besteld, wat al is ontvangen en wat nog openstaat.",
+            "De verbeterde inkoopwerkplek houdt die informatie per bestelling bij elkaar. Ook afgeronde bestellingen blijven terug te vinden. Dat helpt bij het volgen van leveringen en het beoordelen van de voorraad."
           ]
         },
         {
-          "heading": "Controle op status en verwerking",
+          "heading": "Verkoop, voorraad en inkoop horen bij elkaar",
           "paragraphs": [
-            "De afgeronde wijzigingen zijn uitgerold. De bijbehorende geautomatiseerde controles behandelen onder meer onbekende publicatiestatus, gerichte kanaalwijzigingen en het verwerken van deelontvangsten.",
-            "De werkplek maakt onderscheid tussen wat je hebt ingesteld, welke status het verkoopkanaal bevestigt en welke vervolgstap nodig is. Zo zie je of je verder kunt of eerst een uitkomst moet controleren."
-          ],
-          "source_refs": [
-            0
+            "Deze onderdelen worden in dezelfde WebApp verder ontwikkeld. Vanuit een artikel kun je daardoor de samenhang bekijken tussen het verkoopkanaal, de beschikbare voorraad en je inkoop.",
+            "Het doel is praktisch: weten waar aandacht nodig is en met de juiste informatie een volgende stap zetten. Dat is ook het uitgangspunt van onze modulaire WebApp voor andere ondernemers."
           ]
         }
       ],
@@ -152,11 +135,11 @@
       "related": [
         {
           "url": "/modulaire-webapp/",
-          "title": "Modules voor voorraad, inkoop, orders en controles"
+          "title": "Ontdek de modules voor verkoop, voorraad en inkoop"
         },
         {
           "url": "/projecten/smartlife-domotica/",
-          "title": "Het volledige projectverhaal van Smartlife Domotica"
+          "title": "Lees meer over Smartlife Domotica"
         }
       ],
       "brands": [
@@ -174,12 +157,12 @@
       "slug": "olympus-bouw-weekkosten-planning",
       "kind": "project",
       "project": "olympus-bouw",
-      "title": "Olympus Bouw: weekkosten en planning per project",
-      "seo_title": "Olympus Bouw: weekkosten en planning",
-      "description": "Bij Olympus Bouw sluiten kosten en de aanneemsom aan op de juiste weekstaat. Lees hoe projectcontrole en een Excel-export de factuurvoorbereiding ondersteunen.",
-      "summary": "Bij Olympus Bouw verbeteren we de voorbereiding van weekdossiers. Kosten blijven bij het juiste project, de arbeidsberekening sluit aan op de gecontroleerde bron en de weekplanning kan mee naar Excel.",
+      "title": "Olympus Bouw: meer overzicht van werk en kosten",
+      "seo_title": "Olympus Bouw: overzicht van werk en kosten",
+      "description": "Werkzaamheden, kosten en planning horen bij hetzelfde project. Lees hoe we de WebApp van Olympus Bouw verbeteren voor meer overzicht bij de administratie.",
+      "summary": "Op de bouw gebeurt veel tegelijk. Voor Olympus Bouw verbeteren we de WebApp die helpt werkzaamheden, kosten en planning per project bij elkaar te houden. Zo wordt de voorbereiding van de administratie overzichtelijker.",
       "published_at": "2026-10-26T10:13:20+01:00",
-      "modified_at": "2026-10-26T20:57:45+01:00",
+      "modified_at": "2026-10-26T21:19:04+01:00",
       "image": {
         "src": "/assets/img/examples/document-review-desktop.jpg",
         "width": 1280,
@@ -189,40 +172,24 @@
       },
       "sections": [
         {
-          "heading": "Kosten bij de juiste weekstaat",
+          "heading": "Van het werk buiten naar de administratie",
           "paragraphs": [
-            "Bij de factuurvoorbereiding kan de verwerking afzonderlijke projecten binnen dezelfde week uit elkaar houden. Kostenbewijs moet bij de geselecteerde weekstaat en het betreffende project passen. Een werkbon of onderaannemersbon wordt bovendien onderscheiden van een kostenbewijs; een genoemd totaal wordt niet vanzelf als extra kosten overgenomen."
-          ],
-          "source_refs": [
-            0
+            "Als er meerdere projecten lopen, komt informatie uit verschillende hoeken binnen. Denk aan gewerkte uren, werkbonnen en kosten. Bij het voorbereiden van een factuur wil je weten welke informatie bij welk project hoort.",
+            "Voor Olympus Bouw hebben we het overzicht hiervan verder verbeterd. Werkzaamheden en kosten worden bij het betreffende project en de juiste week gehouden, zodat je ze samen kunt bekijken."
           ]
         },
         {
-          "heading": "Uren of een afgesproken aanneemsom",
+          "heading": "Duidelijk welke afspraken en kosten erbij horen",
           "paragraphs": [
-            "Voor de arbeidsberekening ondersteunt de toepassing naast uren ook een gecontroleerde aanneemsom. Die vaste som moet aansluiten op de beoordeelde weekbron. Een wijziging van berekeningswijze mag zo geen omweg worden om een afwijkend arbeidsbedrag ongecontroleerd over te nemen."
-          ],
-          "source_refs": [
-            0
+            "Het ene werk wordt op basis van uren berekend, het andere met een afgesproken vast bedrag. In de WebApp blijft zichtbaar welke afspraak wordt gebruikt en welke informatie daarbij hoort.",
+            "Ook werkbonnen en kosten worden van elkaar onderscheiden. Zo kun je bij de voorbereiding controleren wat is uitgevoerd en welke bedragen bij de factuur horen."
           ]
         },
         {
-          "heading": "Weekplanning naar Excel",
+          "heading": "Een planning die je kunt meenemen",
           "paragraphs": [
-            "De weekplanning kan daarnaast naar Excel worden geëxporteerd met de bijbehorende statussen. Zo blijft ook in het uitgegeven overzicht herkenbaar welke stukken aanwezig zijn en wat nog niet klaar is."
-          ],
-          "source_refs": [
-            0
-          ]
-        },
-        {
-          "heading": "Controle op de factuurvoorbereiding",
-          "paragraphs": [
-            "De afgeronde wijzigingen zijn uitgerold. De bijbehorende geautomatiseerde controles behandelen onder meer projectgebonden kosten, het onderscheid tussen werkbonnen en kostenbewijs en het aansluiten van de aanneemsom op de gecontroleerde bron.",
-            "De voorbereiding maakt zichtbaar welke stukken bij de gekozen week en het project horen. Dat geeft een duidelijker vertrekpunt voor het beoordelen van kosten en het klaarzetten van de factuur."
-          ],
-          "source_refs": [
-            0
+            "De weekplanning kan naar Excel worden overgezet. In dat overzicht blijft zichtbaar welke stukken aanwezig zijn en wat nog aandacht nodig heeft.",
+            "Zo sluiten de planning en de voorbereiding van de administratie beter op elkaar aan. De verbetering draait om een herkenbare vraag: wat is er gedaan, wat hoort erbij en wat moet nog worden opgepakt?"
           ]
         }
       ],
@@ -236,11 +203,11 @@
       "related": [
         {
           "url": "/projecten/olympus-bouw/",
-          "title": "Het volledige projectverhaal van Olympus Bouw"
+          "title": "Lees meer over de WebApp voor Olympus Bouw"
         },
         {
-          "url": "/ocr-documentverwerking/",
-          "title": "Documentgegevens herkennen en controleren"
+          "url": "/modulaire-webapp/",
+          "title": "Een WebApp die aansluit op jouw bedrijfsprocessen"
         }
       ],
       "brands": [
@@ -256,44 +223,40 @@
     {
       "slug": "ai-softwareonderhoud-mkb",
       "kind": "nieuws",
-      "title": "AI bij softwareonderhoud: kansen voor het mkb",
-      "description": "Wat kan AI betekenen voor onderhoud aan bedrijfssoftware? ✓ Onze duiding voor het mkb ✓ Een gerichte aanpak met bewijs, controle en een afgebakende eerste stap.",
-      "summary": "Een recente publicatie over AI bij softwareonderhoud laat zien waarom bewijs, controle en een afgebakende eerste stap belangrijk blijven. Onze vertaling naar het mkb.",
+      "title": "AI helpt ook bij het verbeteren van bestaande software",
+      "description": "AI kan helpen bij het onderhouden en verbeteren van bestaande software. Lees wat deze ontwikkeling kan betekenen voor de WebApp en werkprocessen van je bedrijf.",
+      "summary": "AI wordt vaak besproken als hulpmiddel om iets nieuws te maken. Een publicatie van OpenAI laat zien dat het ook kan helpen bij het onderhoud van software die een bedrijf al gebruikt.",
       "published_at": "2026-10-20T01:40:00+02:00",
-      "modified_at": "2026-10-20T01:40:00+02:00",
+      "modified_at": "2026-10-26T21:19:04+01:00",
       "sections": [
         {
-          "heading": "De ontwikkeling: AI helpt ook bij bestaand werk",
+          "heading": "Ook bestaande software heeft aandacht nodig",
           "paragraphs": [
-            "OpenAI publiceerde op 14 oktober 2026 hoe het eigen Core Experimentation-team coding agents inzet voor softwareonderhoud. Het team beschrijft onder meer het onderzoeken van ongebruikte code, het opruimen van verouderde experimenten en verbeteringen aan geautomatiseerde controles. Bewijs verzamelen en de voorgestelde wijzigingen beoordelen horen bij die werkwijze."
+            "Bedrijfssoftware verandert mee met je organisatie. Werkwijzen worden aangepast, systemen krijgen updates en onderdelen die ooit handig waren, kunnen later in de weg zitten.",
+            "OpenAI beschreef op 14 oktober hoe het AI gebruikt om bestaande software te onderzoeken, op te ruimen en verbeteringen voor te bereiden. Medewerkers blijven de voorgestelde aanpassingen beoordelen."
           ],
           "source_refs": [
             0
           ]
         },
         {
-          "heading": "Onze vertaling naar een kleiner bedrijf",
+          "heading": "Wat merk je daar als ondernemer van?",
           "paragraphs": [
-            "De interessante vraag voor een ondernemer is welke bestaande werkstap beter kan. Denk aan een koppeling die regelmatig vastloopt, een rapport dat veel handwerk vraagt of een controle die steeds terugkomt. Daar kan gericht onderhoud aan de software en het proces zinvol zijn.",
-            "We beginnen bij één terugkerend knelpunt. Eerst begrijpen wat de toepassing doet en wie ervan afhankelijk is. Daarna een afgebakende wijziging maken en toetsen of het dagelijkse werk er daadwerkelijk beter van wordt."
-          ],
-          "bullets": [
-            "Kies een probleem dat je kunt aanwijzen, zoals herhaalde invoer of een foutgevoelige overdracht.",
-            "Bepaal vooraf waaraan je merkt dat de verbetering werkt.",
-            "Controleer ook uitzonderingen: ontbrekende gegevens, een onderbroken verwerking of een mislukte koppeling."
+            "De interessante vraag is welk terugkerend probleem je ermee kunt aanpakken. Denk aan een rapport waarvoor iemand elke week gegevens moet overtypen, of een koppeling waarbij regelmatig iets moet worden hersteld.",
+            "Een gerichte verbetering aan de software kan helpen om zo’n werkstap eenvoudiger te maken. Of dat ook lukt, moet blijken in het dagelijkse gebruik. AI is daarbij een hulpmiddel voor de mensen die de software onderhouden."
           ]
         },
         {
-          "heading": "Van ontwikkeling naar een bruikbare eerste stap",
+          "heading": "Begin met iets dat je team herkent",
           "paragraphs": [
-            "Voor bedrijven met een jaaromzet van €250.000 tot €25 miljoen is het vaak praktisch om één proces tegelijk aan te pakken. Dat houdt de investering en de verandering bespreekbaar. Een werkende verbetering geeft vervolgens een betere basis voor een volgende stap.",
-            "Ons advies: kijk deze week eens welke terugkerende handeling je team om een omweg vraagt. Leg vast wat er gebeurt, hoeveel herstelwerk nodig is en welk resultaat je wilt bereiken. Dat is een concreet begin voor advies en uitvoering."
+            "Kies één handeling die regelmatig tijd of uitzoekwerk kost. Bespreek met de mensen die ermee werken wat er lastig aan is en hoe een betere werkwijze eruit zou zien.",
+            "Ook bij een modulaire WebApp kun je op die manier doorontwikkelen. Je begint met de onderdelen die je nodig hebt en verbetert ze op basis van het gebruik. Zo sluit de software aan op de praktijk van je bedrijf."
           ]
         }
       ],
       "sources": [
         {
-          "title": "OpenAI: Maintaining software with the GPT-6 family",
+          "title": "OpenAI over AI bij softwareonderhoud",
           "url": "https://developers.openai.com/blog/maintaining-software-with-the-gpt-6-family",
           "published": "2026-10-14",
           "checked": "2026-10-20"
@@ -301,15 +264,15 @@
       ],
       "related": [
         {
-          "url": "/procesautomatisering/",
-          "title": "Een bedrijfsproces verbeteren en automatiseren"
+          "url": "/modulaire-webapp/",
+          "title": "Jouw WebApp stap voor stap opbouwen"
         },
         {
-          "url": "/over/#bedrijfsprocessen",
-          "title": "Hoe we je bedrijfsproces doorgronden"
+          "url": "/procesautomatisering/",
+          "title": "Terugkerend werk eenvoudiger maken"
         }
       ],
-      "seo_title": "AI bij softwareonderhoud voor het mkb",
+      "seo_title": "AI voor onderhoud aan bedrijfssoftware",
       "brands": [
         {
           "src": "/assets/img/technology/openai-developers.svg",
@@ -324,11 +287,11 @@
       "slug": "olympus-bouw-documentintake-hervatten",
       "kind": "project",
       "project": "olympus-bouw",
-      "title": "Olympus Bouw: verder kunnen na een onderbroken upload",
-      "description": "Lees hoe de documentintake voor Olympus Bouw verder kan na een onderbreking. ✓ Openstaand werk terugvinden ✓ Opnieuw proberen met controle op de verwerking.",
-      "summary": "Wat gebeurt er met een serie documenten als je wegklikt of de pagina herlaadt? In de Olympus-applicatie is juist die onderbreking onderdeel van de doorontwikkeling.",
+      "title": "Olympus Bouw: overzicht bij het aanleveren van documenten",
+      "description": "Bij Olympus Bouw maken we het aanleveren van documenten overzichtelijker. Je ziet wat al is verwerkt en welke bestanden nog aandacht nodig hebben.",
+      "summary": "Bij het aanleveren van meerdere documenten wil je weten wat al is verwerkt en wat nog moet gebeuren. Voor Olympus Bouw hebben we dat overzicht verbeterd, ook wanneer het werk even wordt onderbroken.",
       "published_at": "2026-10-20T01:40:00+02:00",
-      "modified_at": "2026-10-20T01:40:00+02:00",
+      "modified_at": "2026-10-26T21:19:04+01:00",
       "image": {
         "src": "/assets/img/examples/document-intake-desktop.jpg",
         "width": 1280,
@@ -338,34 +301,24 @@
       },
       "sections": [
         {
-          "heading": "Het probleem zit vaak in de onderbreking",
+          "heading": "Verder werken na een onderbreking",
           "paragraphs": [
-            "Een document uploaden is een korte handeling. Een hele serie documenten verwerken is een werkproces. Je selecteert bestanden, kijkt naar de voortgang en wilt intussen soms naar een andere pagina. Als daarna onduidelijk is wat al binnen is, begint het zoekwerk opnieuw.",
-            "In de doorontwikkeling voor Olympus Bouw hebben we daarom aandacht besteed aan openstaande bestanden en herkenbare voortgang bij het wisselen van scherm of herladen van de pagina. Het doel is dat de gebruiker kan zien waar de verwerking is gebleven en welke volgende stap passend is."
-          ],
-          "source_refs": [
-            0
+            "Je levert een aantal documenten aan en gaat intussen verder met iets anders. Als je daarna terugkomt, wil je niet opnieuw hoeven uitzoeken welke bestanden zijn aangekomen.",
+            "In de WebApp van Olympus Bouw is daarom meer aandacht besteed aan het overzicht van aangeleverde documenten. Bij het wisselen van scherm of opnieuw openen blijft herkenbaar welke bestanden nog aandacht nodig hebben."
           ]
         },
         {
-          "heading": "Niet verstuurd en een onbekende uitkomst vragen iets anders",
+          "heading": "Weten wat de volgende stap is",
           "paragraphs": [
-            "Een bestand dat nog niet is verstuurd, kun je anders behandelen dan een upload waarvan de bevestiging ontbreekt. In het tweede geval kan het document al ontvangen zijn. Meteen opnieuw verzenden kan dan dubbel werk opleveren.",
-            "De werkstroom houdt die situaties uit elkaar. Nog niet verstuurde bestanden kunnen, wanneer ze in de lokale browseropslag beschikbaar zijn, met hun oorspronkelijke context worden hervat. Bij een onzekere uitkomst wordt eerst gecontroleerd of het document al ontvangen is."
+            "Wanneer het aanleveren van een bestand niet goed gaat, moet duidelijk zijn wat je kunt doen. Opnieuw proberen kan een passende stap zijn. Soms moet eerst worden nagekeken of het document toch al is ontvangen.",
+            "De WebApp helpt die situaties uit elkaar te houden. Dat geeft de gebruiker houvast bij het afronden van het aanleveren, zonder zomaar dezelfde documenten nog een keer te versturen."
           ]
         },
         {
-          "heading": "Een fout krijgt een duidelijke vervolghandeling",
+          "heading": "Een kleine verbetering in het dagelijkse werk",
           "paragraphs": [
-            "Bij mislukte invoer kan de gebruiker bewust opnieuw proberen of de mislukte invoer uit de wachtrij halen. De actie wordt gekoppeld aan de status van het bestand. Daarmee blijft duidelijk wat er nog moet gebeuren en voorkom je dat een actief of onzeker proces zomaar wordt weggeklikt.",
-            "De werking is gecontroleerd met geautomatiseerde scenario’s voor onder meer navigeren tijdens verwerking, hervatten na herladen, ontbrekende lokale bestanden en het voorkomen van dubbel verzenden. Ook het opnieuw proberen en het opruimen van mislukte invoer zijn daarbij meegenomen."
-          ]
-        },
-        {
-          "heading": "Wat dit in het dagelijkse werk oplevert",
-          "paragraphs": [
-            "De winst zit in minder uitzoeken welke bestanden je opnieuw moet aanbieden en minder onzekerheid over de uitkomst. Dat maakt de verwerking beter te volgen, ook wanneer het werk wordt onderbroken.",
-            "Een concrete urenbesparing is hiervoor nog niet gemeten. Wel is de verbetering direct te beoordelen op gedrag: blijft openstaand werk zichtbaar, krijgt een onzeker resultaat de juiste controle en is de volgende handeling duidelijk? Dat zijn de vragen waarmee we deze doorontwikkeling toetsen."
+            "Documenten aanleveren is één onderdeel van de administratie. Een duidelijk overzicht helpt om het werk op te pakken waar je gebleven was en te zien wat nog moet gebeuren.",
+            "Dit soort verbeteringen nemen we mee bij het doorontwikkelen van een WebApp: hoe werkt iemand ermee, waar ontstaat twijfel en wat helpt om verder te kunnen?"
           ]
         }
       ],
@@ -379,14 +332,14 @@
       "related": [
         {
           "url": "/projecten/olympus-bouw/",
-          "title": "Van planning naar een controleerbaar dossier"
+          "title": "Lees meer over de WebApp voor Olympus Bouw"
         },
         {
-          "url": "/ocr-documentverwerking/",
-          "title": "Documentherkenning met een controlelaag"
+          "url": "/modulaire-webapp/",
+          "title": "Een WebApp voor jouw dagelijkse werk"
         }
       ],
-      "seo_title": "Olympus Bouw: documentintake hervatten",
+      "seo_title": "Olympus Bouw: documenten zonder zoekwerk",
       "brands": [
         {
           "src": "/assets/img/clients/olympus-bouw.png",

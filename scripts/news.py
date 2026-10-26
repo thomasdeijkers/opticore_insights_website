@@ -169,7 +169,7 @@ def render():
             if source.get('published'): dates.append('Gepubliceerd '+date_label(source['published']))
             if source.get('checked'): dates.append('Geraadpleegd '+date_label(source['checked']))
             sources.append(f'<li><a href="{safe_link(source["url"])}">{escape(source["title"])}</a><small>{" · ".join(dates)}</small></li>')
-        body.append('<section class="news-sources" id="bronnen"><h2>'+('Bron en duiding' if article['kind']=='nieuws' else 'Bij dit project')+'</h2>'+('<p>De externe ontwikkeling komt uit onderstaande publicatie. De vertaling naar bedrijfsprocessen en het mkb is onze eigen analyse.</p>' if article['kind']=='nieuws' else '')+'<ul>'+''.join(sources)+'</ul></section>')
+        body.append('<section class="news-sources" id="bronnen"><h2>'+('Bronnen' if article['kind']=='nieuws' else 'Over dit project')+'</h2><ul>'+''.join(sources)+'</ul></section>')
         related = ''.join(f'<li><a href="{safe_link(link["url"])}">{escape(link["title"])} →</a></li>' for link in article['related'])
         body.append('<section class="news-related"><h2>Verder lezen</h2><ul>'+related+'<li><a href="/nieuws/">Alle nieuws- en praktijkberichten →</a></li></ul></section>')
         modified = '' if article['modified_at']==article['published_at'] else f'<p class="news-byline">Bijgewerkt <time datetime="{article["modified_at"]}">{date_label(article["modified_at"])}</time></p>'
@@ -181,7 +181,7 @@ def render():
 
     overview = '''<nav class="breadcrumbs" aria-label="Broodkruimelpad"><ol class="container"><li><a href="/">Home</a></li><li><span aria-current="page">Nieuws en praktijk</span></li></ol></nav>
 <section class="page-intro"><div class="container"><h1>Nieuws en praktijk.</h1><p class="lead">Wat ontwikkelingen in dashboards, automatisering en websites voor je bedrijf kunnen betekenen. En hoe we die inzichten toepassen in onze opdrachten.</p></div></section>
-<section class="section"><div class="container"><div class="cards news-grid">'''+''.join(cards)+'''</div><p class="news-overview-note">Nieuwsberichten bevatten bronverwijzingen en onze duiding. Projectupdates gaan over aantoonbare werkzaamheden. <a href="/projecten/">Bekijk ook de volledige projectverhalen →</a></p></div></section>'''
+<section class="section"><div class="container"><div class="cards news-grid">'''+''.join(cards)+'''</div><p class="news-overview-note"><a href="/projecten/">Bekijk ook onze projecten →</a></p></div></section>'''
     outputs[ROOT/'nieuws/index.html'] = document('/nieuws/','Nieuws over data & bedrijfsprocessen','Lees nieuws en praktijkverhalen over data, automatisering en websites. ✓ Duiding voor ondernemers ✓ Updates over de oplossingen die we ontwikkelen.',overview)
 
     items = ''.join(f'<li>{byline(a)}<a href="{route(a)}">{escape(a["title"])} →</a><p>{escape(a["summary"])}</p></li>' for a in articles[:2])

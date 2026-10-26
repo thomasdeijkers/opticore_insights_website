@@ -12,6 +12,23 @@ doorziet processen snel, adviseert over verbeteringen en voert die ook uit met
 dashboards, automatisering, koppelingen, documentverwerking, websites en keuzehulpen.
 Leg uit wat een ontwikkeling voor het dagelijkse werk, grip en inzicht betekent.
 
+## Schrijf voor de ondernemer
+
+- Schrijf toegankelijk Nederlands, ongeveer op B1-niveau. Ga uit van een lezer
+  zonder technische kennis. Begin bij een herkenbare situatie in het bedrijf.
+- Vertel wat speelde, wat is verbeterd en wat iemand ermee kan in het dagelijkse
+  werk. Gebruik gewone woorden als bestelling, levering, kosten en planning.
+- Maak er een leesbaar nieuws- of praktijkverhaal van, geen technisch wijzigingslog,
+  testverslag of interne voortgangsnotitie. Laat versienummers, code, technische
+  controles, interne procesnamen en details over uitrol uit de hoofdtekst.
+- Noem alleen functionaliteit die al is onderbouwd, maar bewaar de technische
+  bewijslast in de interne redactiegegevens. Verzin geen besparingen of resultaten.
+- Gebruik korte alinea’s en begrijpelijke koppen. Leg een noodzakelijke vakterm
+  meteen uit. Bronlinks blijven beschikbaar; gebruik begrijpelijke linkteksten.
+- Lees titel, samenvatting en hoofdtekst voor publicatie alsof je zelf een
+  potentiële klant bent: begrijp je het zonder uitleg van een ontwikkelaar?
+
+
 De modulaire WebApp is de centrale propositie. Positioneer bol-functionaliteit
 als onderdelen van diezelfde WebApp en verwijs waar passend naar
 `/modulaire-webapp/` of de modulekeuze, zodat lezers kunnen ontdekken welke
@@ -53,8 +70,9 @@ ontwikkelingen mee in het bericht van het betreffende project.
 - Bestaande publieke cases: Smartlife Domotica, Olympus Bouw, Top Groep Nederland,
   De Valk Advies, Rust Werkt, Home Assistant hub en HelloSmart.nl. Rust Werkt is een concept.
   HelloSmart: zie `docs/hellosmart-case-evidence.md` voor bevestigde projectfeiten.
-- Beschrijf probleem, gemaakte verbetering, praktische vervolghandeling en hoe de
-  werking is gecontroleerd. Noem livegang alleen na bevestigde deployment.
+- Beschrijf het herkenbare probleem, de verbetering en het dagelijkse gebruik.
+  Bewaar hoe de werking is gecontroleerd in de interne redactiegegevens.
+  Noem livegang alleen na bevestigde deployment.
 - Publiceer alleen verifieerbare, voor publicatie geschikte functionaliteit. Geen
   nieuwe klantnamen zonder bestaande publicatie of uitdrukkelijke toestemming.
   Geen persoonsgegevens, echte omzetcijfers, tarieven, documenten, credentials,
