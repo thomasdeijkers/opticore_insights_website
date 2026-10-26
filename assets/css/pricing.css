@@ -1,33 +1,104 @@
-/* Pricing follows the same readable layout as the service pages. */
-.pricing-intro{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;margin-bottom:0;align-items:start}
-.pricing-intro p{margin:0}
-.pricing-terms{padding:22px 25px;background:var(--soft);border-left:3px solid var(--accent);font-size:15px}
+/* Compact, stacked offers with optional detail; the WebApp stays first. */
+.pricing-page .page-intro{padding-bottom:30px}
+.pricing-page .page-intro .lead{max-width:850px}
+.pricing-page .on-this-page{margin-top:22px}
+.pricing-page .pricing-offers-section{padding-block:24px}
+.pricing-page .pricing-offers-section:first-of-type{padding-top:30px}
+.pricing-stack{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.pricing-card{padding:0;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:none}
+.pricing-offer-main{display:grid;grid-template-columns:minmax(0,1fr) 175px 220px;align-items:center;gap:26px;padding:25px 28px}
+.pricing-offer-main>div{min-width:0}
+.pricing-offer-copy h2,.pricing-offer-copy h3{font-size:23px;line-height:1.35;margin:0 0 9px}
+.pricing-card .pricing-offer-copy>p:last-child{font-size:15px;line-height:1.6;margin:0;color:var(--muted);max-width:610px}
+.pricing-card .rubric-icon{width:38px;height:38px;flex:none;padding:8px}
+.pricing-card .rubric-title{gap:12px}
+.pricing-offer-price .package-price{font-size:31px;line-height:1.25;font-weight:700;letter-spacing:-.7px;color:var(--ink);margin:0;white-space:nowrap}
+.package-price>span{font-size:13px;font-weight:400;letter-spacing:0}
+.package-price small{display:block;margin-top:5px;font-size:11px;line-height:1.5;font-weight:400;letter-spacing:0;color:var(--muted);white-space:normal}
+.pricing-offer-action{display:flex;flex-direction:column;align-items:stretch;gap:10px}
+.pricing-offer-action .button{font-size:14px;padding:10px 15px;text-align:center;min-height:44px}
+.pricing-card .pricing-offer-action .text-link{margin:0;padding:0;text-align:center;align-self:center;font-size:13px}
+.pricing-webapp-start{border-color:#91aebe;background:#f8fbfd}
+.pricing-webapp-start .pricing-offer-main{grid-template-columns:minmax(0,1fr) 200px 220px;padding-block:30px}
+.pricing-webapp-start .pricing-offer-copy h2{font-size:27px}
+.pricing-webapp-start .package-price{font-size:36px}
+.pricing-card .pricing-start-setup{margin:9px 0 0;font-size:12px;line-height:1.55;color:var(--muted)}
+.pricing-start-setup strong{color:var(--ink);white-space:nowrap}
+.pricing-more{border-top:1px solid var(--line)}
+.pricing-more>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 28px;list-style:none;cursor:pointer;font-size:14px;font-weight:650;color:var(--link)}
+.pricing-more>summary::-webkit-details-marker{display:none}
+.pricing-more>summary::after{content:'+';font-size:22px;font-weight:400;line-height:1;flex:none}
+.pricing-more[open]>summary::after{content:'−'}
+.pricing-more>summary:hover{background:#edf4f8}
+.pricing-more>summary:focus-visible{outline:2px solid var(--link);outline-offset:-3px}
+.pricing-more-content{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:25px;padding:4px 28px 25px}
+.pricing-more-content>div{min-width:0}
+.pricing-card .pricing-more-content ul{padding-left:20px;font-size:15px;line-height:1.7;margin:0}
+.pricing-card .pricing-more-content li+li{margin-top:6px}
+.pricing-card .pricing-more-content p{font-size:14px;margin:0 0 12px;color:var(--muted)}
+.pricing-card .pricing-more-content .text-link{display:inline-block;margin:0;padding:0;font-size:14px}
+.pricing-more-webapp{display:block}
+.pricing-breakdown{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 30px;margin-bottom:20px}
+.pricing-breakdown article{min-width:0}
+.pricing-breakdown h3{font-size:18px;margin:0 0 8px}
+.pricing-breakdown p{font-size:15px;line-height:1.65;margin:0 0 12px}
+.pricing-breakdown p:last-child{margin-bottom:0}
+.pricing-more-webapp>p:last-child{margin-bottom:0}
+.pricing-footnote{font-size:13px;color:var(--muted);margin:19px 0 0;max-width:850px}
+.pricing-page .pricing-costs-section{padding-block:24px}
+.pricing-costs{border:1px solid var(--line);border-radius:var(--radius);background:var(--soft)}
+.pricing-costs>summary{font-size:18px;padding:20px 28px}
+.pricing-costs-content{padding:0 28px 25px}
+.pricing-costs-content>p{font-size:15px;margin:0 0 23px;max-width:850px}
+.pricing-terms{border-top:1px solid var(--line);padding-top:18px;font-size:14px;color:var(--muted)}
 .pricing-terms strong{color:var(--ink)}
-.pricing-terms ul{margin:10px 0 0;padding-left:19px}
-.pricing-card{padding:28px 30px;border-top:3px solid var(--accent)}
-.pricing-card h3{font-size:23px}
-.pricing-card .package-price{font-size:35px;font-weight:700;line-height:1.3;color:var(--ink);margin:3px 0 22px;letter-spacing:-.7px}
-.package-price span{font-size:16px;font-weight:400;letter-spacing:0}
-.package-price small{display:block;font-size:13px;font-weight:400;color:var(--muted);letter-spacing:0;margin-top:5px}
-.pricing-card ul{font-size:16px;margin:0 0 23px;padding-left:20px}
-.package-bottom{margin-top:auto;padding-top:20px;border-top:1px solid var(--line)}
-.pricing-card .package-note{font-size:13px;line-height:1.6;color:var(--muted);margin-bottom:17px}
-.package-bottom .button{align-self:start}
-.package-bottom .text-link{display:block;margin-top:10px;font-size:14px}
-@media(max-width:800px){.pricing-intro{grid-template-columns:1fr;gap:22px}.pricing-card{padding:24px}}
-@media(max-width:560px){.pricing-intro{margin-bottom:32px}.pricing-card .package-price{font-size:32px}.pricing-card h3{font-size:22px}.package-bottom .button{width:100%}}
-
-/* Keep website prices, webapp modules and recurring costs distinct. */
-.pricing-breakdown{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 40px;margin-bottom:30px}
-.pricing-breakdown article{min-width:0;border-top:2px solid var(--line);padding-top:20px}
-.pricing-breakdown h3{font-size:21px}
-.pricing-breakdown p{font-size:16px}
-.pricing-breakdown p:last-child,.pricing-terms p:last-child{margin-bottom:0}
-.pricing-terms p{margin-top:10px}
-@media(max-width:560px){.pricing-intro{margin-bottom:0}.pricing-breakdown{grid-template-columns:1fr;gap:24px}.pricing-breakdown h3{font-size:20px}}
-
-/* The modular WebApp is the first package, with a complete starter price. */
-.pricing-webapp-start h2{font-size:24px;margin-bottom:14px}
-.pricing-webapp-start .pricing-start-setup{font-size:18px;margin:12px 0}
-.pricing-webapp-start .package-note{margin-top:16px;margin-bottom:0}
-.pricing-intro>div>.section-more{margin-top:22px}
+.pricing-terms p{margin:7px 0 0}
+.pricing-costs-content .actions{margin-top:20px}
+.pricing-costs-content .button{font-size:14px}
+.pricing-page .pricing-contact-section{padding-top:24px}
+.pricing-contact-section h2{font-size:25px}
+@media(max-width:950px){
+.pricing-offer-main,.pricing-webapp-start .pricing-offer-main{grid-template-columns:minmax(0,1fr) 185px;gap:18px 25px}
+.pricing-offer-copy{grid-row:span 2}
+.pricing-offer-action{grid-column:2}
+.pricing-offer-action .button{font-size:13px}
+.pricing-offer-price .package-price{font-size:29px}
+}
+@media(max-width:650px){
+.pricing-page .page-intro{padding-bottom:24px}
+.pricing-page .pricing-offers-section{padding-block:19px}
+.pricing-page .section-heading{margin-bottom:18px}
+.pricing-page .section-heading h2{font-size:24px}
+.pricing-page .section-heading p{font-size:15px}
+.pricing-offer-main,.pricing-webapp-start .pricing-offer-main{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:17px 15px;padding:21px 20px}
+.pricing-offer-copy{grid-column:1/-1;grid-row:auto}
+.pricing-offer-copy h2,.pricing-offer-copy h3{font-size:20px;margin-bottom:9px}
+.pricing-webapp-start .pricing-offer-copy h2{font-size:24px}
+.pricing-card .pricing-offer-copy>p:last-child{font-size:14px}
+.pricing-card .rubric-icon{width:32px;height:32px;padding:7px}
+.pricing-card .rubric-title{gap:10px}
+.pricing-offer-price .package-price{font-size:28px}
+.pricing-webapp-start .package-price{font-size:31px}
+.package-price>span{font-size:12px}
+.package-price small{font-size:10px}
+.pricing-offer-action{grid-column:2;gap:9px}
+.pricing-offer-action .button{font-size:12px;padding:9px 10px}
+.pricing-card .pricing-offer-action .text-link{font-size:11px}
+.pricing-card .pricing-start-setup{font-size:11px}
+.pricing-more>summary{padding:12px 20px;font-size:13px}
+.pricing-more-content{grid-template-columns:1fr;gap:16px;padding:4px 20px 21px}
+.pricing-card .pricing-more-content ul{font-size:14px}
+.pricing-breakdown{grid-template-columns:1fr;gap:20px}
+.pricing-breakdown h3{font-size:18px}
+.pricing-costs>summary{font-size:17px;padding:18px 20px}
+.pricing-costs-content{padding:0 20px 22px}
+.pricing-costs-content .button{width:100%}
+.pricing-footnote{font-size:12px}
+}
+@media(max-width:380px){
+.pricing-offer-main,.pricing-webapp-start .pricing-offer-main{grid-template-columns:minmax(0,1fr);gap:15px;padding:19px 17px}
+.pricing-offer-copy,.pricing-offer-action{grid-column:1}
+.pricing-offer-action .button{font-size:13px}
+.pricing-more>summary{padding-inline:17px}
+.pricing-more-content{padding-inline:17px}
+}
