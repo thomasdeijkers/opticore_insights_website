@@ -6,18 +6,18 @@
     "monthly": 0,
     "requires": [],
     "monthlyDiscount": 0,
-    "previousSetup": 750,
-    "included": true
+    "included": true,
+    "standardSetup": 0
   },
   "forecasting": {
     "label": "Forecasting",
     "setup": 200,
-    "monthly": 100,
+    "monthly": 31,
     "requires": [
       "omzet"
     ],
-    "monthlyDiscount": 75,
-    "previousSetup": 1250
+    "monthlyDiscount": 6,
+    "standardSetup": 250
   },
   "voorraad": {
     "label": "Voorraad",
@@ -25,38 +25,38 @@
     "monthly": 0,
     "requires": [],
     "monthlyDiscount": 0,
-    "previousSetup": 750,
-    "included": true
+    "included": true,
+    "standardSetup": 0
   },
   "inkoop": {
     "label": "Inkoop en bestellen",
     "setup": 300,
-    "monthly": 100,
+    "monthly": 44,
     "requires": [
       "omzet",
       "voorraad"
     ],
-    "monthlyDiscount": 65,
-    "previousSetup": 1250
+    "monthlyDiscount": 9,
+    "standardSetup": 375
   },
   "logistiek": {
     "label": "Magazijn en logistiek",
     "setup": 400,
-    "monthly": 100,
+    "monthly": 50,
     "requires": [
       "voorraad",
       "orders"
     ],
-    "monthlyDiscount": 60,
-    "previousSetup": 1500
+    "monthlyDiscount": 10,
+    "standardSetup": 500
   },
   "producten": {
     "label": "Productbeheer en publicaties",
     "setup": 300,
-    "monthly": 80,
+    "monthly": 56,
     "requires": [],
-    "monthlyDiscount": 35,
-    "previousSetup": 1000
+    "monthlyDiscount": 11,
+    "standardSetup": 375
   },
   "orders": {
     "label": "Orders en retouren",
@@ -64,44 +64,44 @@
     "monthly": 0,
     "requires": [],
     "monthlyDiscount": 0,
-    "previousSetup": 1000,
-    "included": true
+    "included": true,
+    "standardSetup": 0
   },
   "marketing": {
     "label": "Marketing en ranking",
     "setup": 400,
-    "monthly": 130,
+    "monthly": 69,
     "requires": [
       "omzet",
       "producten"
     ],
-    "monthlyDiscount": 75,
-    "previousSetup": 1500
+    "monthlyDiscount": 14,
+    "standardSetup": 500
   },
   "financieel": {
     "label": "Financieel overzicht",
     "setup": 250,
-    "monthly": 80,
+    "monthly": 38,
     "requires": [
       "omzet"
     ],
-    "monthlyDiscount": 50,
-    "previousSetup": 1000
+    "monthlyDiscount": 8,
+    "standardSetup": 313
   },
   "controles": {
     "label": "Signalen en controles",
     "setup": 150,
-    "monthly": 40,
+    "monthly": 25,
     "requires": [
       "omzet",
       "voorraad"
     ],
-    "monthlyDiscount": 20,
-    "previousSetup": 500
+    "monthlyDiscount": 5,
+    "standardSetup": 188
   }
 };
   const includedModules = ["omzet", "voorraad", "orders"];
-  const base = { label: 'Startpakket', setup: 995, previousSetup: 1500, monthly: 279, monthlyDiscount: 130 };
+  const base = { label: 'Startpakket', setup: 995, standardSetup: 1244, monthly: 186, monthlyDiscount: 37 };
   const money = value => new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value);
   function resolve(ids) {
     const ordered = new Set();
@@ -113,10 +113,8 @@
     includedModules.forEach(add);
     [...new Set(ids)].forEach(add);
     const modules = [...ordered], extraModules = modules.filter(id => !catalogue[id].included);
-    // Reference: the previously published calculator, including its setup bundle discount.
-    const previousGross = base.previousSetup + modules.reduce((n,id) => n + catalogue[id].previousSetup, 0);
-    const previousRate = modules.length >= 6 ? 30 : modules.length >= 4 ? 20 : 10;
-    const setupSubtotal = previousGross * (100 - previousRate) / 100;
+    // Standard rates and promotional rates differ by approximately 20%.
+    const setupSubtotal = base.standardSetup + extraModules.reduce((n,id) => n + catalogue[id].standardSetup, 0);
     const setup = base.setup + extraModules.reduce((n,id) => n + catalogue[id].setup, 0);
     const discount = setupSubtotal - setup;
     const standardMonthly = base.monthly + extraModules.reduce((n,id) => n + catalogue[id].monthly, 0);
@@ -127,7 +125,7 @@
   const selectionLabels = selected => ['Startpakket: omzetrapportage, voorraad en orders/retouren', ...selected.extraModules.map(id => catalogue[id].label)];
   function contactDraft(selected) {
     return 'Jouw pakket:\n' + selectionLabels(selected).map((label,i) => `${i+1}. ${label}`).join('\n')
-      + `\n\nEerdere inrichtingsindicatie: ${money(selected.setupSubtotal)}\nPakketvoordeel inrichting: − ${money(selected.discount)}\nEenmalige inrichting: ${money(selected.setup)}\nStandaard per maand: ${money(selected.standardMonthly)}\nMaandkorting pakket: − ${money(selected.monthlyDiscount)}\nPer maand na korting: ${money(selected.monthly)}\nPrijsindicatie exclusief btw; offerte volgt na afstemming.`;
+      + `\n\nStandaard inrichting: ${money(selected.setupSubtotal)}\nActiekorting inrichting: − ${money(selected.discount)}\nEenmalige inrichting: ${money(selected.setup)}\nStandaard per maand: ${money(selected.standardMonthly)}\nActiekorting per maand: − ${money(selected.monthlyDiscount)}\nPer maand na korting: ${money(selected.monthly)}\nPrijsindicatie exclusief btw; offerte volgt na afstemming.`;
   }
   function calculatorURL(ids) {
     const known = [...new Set(ids.filter(id => Object.hasOwn(catalogue, id) && !catalogue[id].included))];
@@ -167,7 +165,7 @@
       count.textContent = selected.extraModules.length ? `Startpakket met ${selected.extraModules.length} extra ${selected.extraModules.length === 1 ? 'module' : 'modules'}, inclusief benodigde onderdelen.` : 'Omzetrapportage, voorraad en orders/retouren zijn inbegrepen in het startpakket.';
       show('[data-module-bar-count]', selected.extraModules.length ? `Startpakket + ${selected.extraModules.length} uitbreidingen` : base.label);
       show('[data-module-subtotal]', money(selected.setupSubtotal));
-      show('[data-module-discount-label]', 'Pakketvoordeel inrichting');
+      show('[data-module-discount-label]', 'Actiekorting inrichting');
       show('[data-module-discount]', selected.discount ? '− ' + money(selected.discount) : money(0));
       show('[data-module-setup]', money(selected.setup));
       show('[data-module-monthly-standard]', money(selected.standardMonthly));

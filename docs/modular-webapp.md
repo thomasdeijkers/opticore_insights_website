@@ -181,3 +181,8 @@ De actuele startpakket- en uitbreidingstarieven, prijsreferenties en bronnen sta
 ## Dashboard channel drilldowns - 26 October 2026
 
 The public demo now includes seven channels, including MediaMarkt NL and Kaufland DE. Native details elements provide channel, month and metric depth with year-on-year comparisons, whole sales/return counts and distinct open surfaces in light and dark mode. Monthly values reconcile with annual totals. A fictitious order heatmap and explained 2026/2027 forecast scenarios complete the dashboard. See docs/visual-assets.md for capture provenance and browser validation.
+
+
+## Standard and promotional prices - 27 October 2026
+
+The user requested a standard price minus approximately 20%, replacing the larger comparison with the previously published calculator. Existing promotional setup and monthly fees remain unchanged. Standard setup fees now total EUR 1244 for the start package and EUR 3745 for all modules; promotional setup remains EUR 995 and EUR 2995. Standard monthly fees total EUR 186 and EUR 499; promotional monthly fees remain EUR 149 and EUR 399. Whole-euro rounding makes individual discounts approximate. All 1024 selections are checked for the intended discount range. The calculator, collapsed/expanded cards, contact summary and initial HTML use the same current standard rates. The promotion still ends on 31 December 2027.

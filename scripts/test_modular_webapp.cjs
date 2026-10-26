@@ -5,15 +5,15 @@ const overview=fs.readFileSync(path.join(__dirname,'../modulaire-webapp/index.ht
 const money=n=>'€ '+n.toLocaleString('nl-NL');
 assert.deepEqual(includedModules,['omzet','voorraad','orders']);
 const basic=resolve([]);assert.deepEqual(basic.modules,includedModules);assert.deepEqual(basic.extraModules,[]);
-assert.equal(basic.setup,995);assert.equal(basic.monthly,149);assert.equal(basic.setupSubtotal,3600);assert.equal(basic.standardMonthly,279);
+assert.equal(basic.setup,995);assert.equal(basic.monthly,149);assert.equal(basic.setupSubtotal,1244);assert.equal(basic.standardMonthly,186);
 assert.deepEqual(resolve(['constructor','__proto__','<script>','documenten','planning']),basic,'Unknown IDs never add modules or fees');
 const fees={forecasting:[200,25],inkoop:[300,35],logistiek:[400,40],producten:[300,45],marketing:[400,55],financieel:[250,30],controles:[150,20]};
 for(const id of includedModules){assert(catalogue[id].included);assert.equal(catalogue[id].setup,0);assert.equal(catalogue[id].monthly,0);assert.equal(catalogue[id].monthlyDiscount,0);}
 for(const [id,[setup,monthly]] of Object.entries(fees)){assert.equal(catalogue[id].setup,setup);assert.equal(catalogue[id].monthly-catalogue[id].monthlyDiscount,monthly);}
-const growth=resolve(['inkoop','logistiek']);assert.equal(growth.setup,1695);assert.equal(growth.monthly,224);assert.equal(growth.setupSubtotal,5400);
+const growth=resolve(['inkoop','logistiek']);assert.equal(growth.setup,1695);assert.equal(growth.monthly,224);assert.equal(growth.setupSubtotal,2119);
 const marketing=resolve(['marketing']);assert.deepEqual(marketing.extraModules,['producten','marketing']);assert.equal(marketing.setup,1695);assert.equal(marketing.monthly,249);
-const complete=resolve(Object.keys(catalogue));assert.equal(complete.modules.length,10);assert.equal(complete.setup,2995);assert.equal(complete.monthly,399);assert.equal(complete.setupSubtotal,8400);assert.equal(complete.standardMonthly,909);assert.equal(complete.monthlyDiscount,510);
-const oldSetup={omzet:750,forecasting:1250,voorraad:750,inkoop:1250,logistiek:1500,producten:1000,orders:1000,marketing:1500,financieel:1000,controles:500};
+const complete=resolve(Object.keys(catalogue));assert.equal(complete.modules.length,10);assert.equal(complete.setup,2995);assert.equal(complete.monthly,399);assert.equal(complete.setupSubtotal,3745);assert.equal(complete.standardMonthly,499);assert.equal(complete.monthlyDiscount,100);
+const standardSetup={forecasting:250,inkoop:375,logistiek:500,producten:375,marketing:500,financieel:313,controles:188};
 const ids=Object.keys(catalogue);
 for(let mask=0;mask<(1<<ids.length);mask++){
  const chosen=ids.filter((_,i)=>mask&(1<<i)),total=resolve(chosen);
@@ -23,8 +23,9 @@ for(let mask=0;mask<(1<<ids.length);mask++){
  assert.equal(total.setup,995+total.extraModules.reduce((n,id)=>n+fees[id][0],0));
  assert.equal(total.monthly,149+total.extraModules.reduce((n,id)=>n+fees[id][1],0));
  assert.equal(total.monthly,total.standardMonthly-total.monthlyDiscount);
- const previousRate=total.modules.length>=6?30:total.modules.length>=4?20:10;
- assert.equal(total.setupSubtotal,(1500+total.modules.reduce((n,id)=>n+oldSetup[id],0))*(100-previousRate)/100,'Reference matches the previously published price for the same scope');
+ assert.equal(total.setupSubtotal,1244+total.extraModules.reduce((n,id)=>n+standardSetup[id],0));
+ assert(Math.abs(total.discountRate-20)<.2,'Setup promotion remains about 20% for every selection');
+ assert(Math.abs(total.monthlyDiscount/total.standardMonthly*100-20)<1.1,'Monthly promotion remains about 20% for every selection');
  assert.equal(total.discount,total.setupSubtotal-total.setup);assert(total.discount>=0);
  assert.deepEqual(resolve([...chosen,...chosen]),total,'No duplicate module fees');
 }
@@ -54,4 +55,4 @@ const pricing=fs.readFileSync(path.join(__dirname,'../prijzen/index.html'),'utf8
 assert(starter.includes('Vanaf</span> € 149'));assert(starter.includes('<strong>€ 995</strong>'));assert(starter.includes('href="/webapp-samenstellen/"'));
 assert(pricing.indexOf('pricing-webapp-start')<pricing.indexOf('id="html-websites"'));
 for(const vendor of ['MarktMentor','Channable','EffectConnect','Picqer','Logic4'])assert(pricing.includes(vendor));
-console.log('Market pricing OK: three included modules, seven expansion fees, all 1024 combinations, dependencies, exact earlier-price references, van/voor totals, read-only contact draft, aliases and advertised package examples.');
+console.log('Market pricing OK: three included modules, seven expansion fees, all 1024 combinations, dependencies, approximately 20% promotions, van/voor totals, read-only contact draft, aliases and advertised package examples.');
