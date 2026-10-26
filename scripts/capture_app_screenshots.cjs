@@ -13,8 +13,8 @@ const records=[];
 (async()=>{
  const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})});
  try{
-  async function capture(url,file,width,height,{modal,fullPage=false}={}){
-   const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1,colorScheme:'dark',reducedMotion:'reduce'}),errors=[];
+  async function capture(url,file,width,height,{modal,fullPage=false,scale=1}={}){
+   const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:scale,colorScheme:'dark',reducedMotion:'reduce'}),errors=[];
    await page.route('**/*',route=>[site.origin,fixtures.origin].includes(new URL(route.request().url()).origin)?route.continue():route.abort());
    page.on('pageerror',e=>errors.push(e.message));
    const response=await page.goto(url,{waitUntil:'networkidle'});assert(response.ok(),url);
@@ -27,18 +27,19 @@ const records=[];
    const target=path.join(ROOT,'assets/img',file);fs.mkdirSync(path.dirname(target),{recursive:true});
    await page.screenshot({path:target,fullPage,...(/\.jpg$/.test(file)?{type:'jpeg',quality:88}:{type:'png'})});
    const actualHeight=fullPage?await page.evaluate(()=>document.documentElement.scrollHeight):height;
-   records.push({file,width,height:actualHeight,url,theme:'dark'});await page.close();
+   records.push({file,width,height:actualHeight,scale,url,theme:'dark'});await page.close();
   }
   const app=(module,view='overzicht',screen='')=>new URL('demo/modulaire-webapp/?'+new URLSearchParams({module,view,theme:'dark',...(screen?{screen}:{})}),site).href;
-  for(const [device,width,height] of [['desktop',1280,900],['mobile',390,844]]){
+  const teaserOnly=process.argv.includes('--teaser-only');
+  await capture(app('dashboard'),'demo/dashboard-portrait-dark-3x.png',390,844,{fullPage:true,scale:3});
+  if(!teaserOnly)for(const [device,width,height] of [['desktop',1280,900],['mobile',390,844]]){
    for(const module of Object.keys(catalogue))for(const view of ['overzicht','details']){
     const modal=view==='details'?(module==='omzet'?'[data-article]':module==='producten'?'[data-demo-row]':null):null;
     await capture(app(module,view),`module-examples/${module}-${view}-${device}-dark.jpg`,width,height,{modal});
    }
-   await capture(app('dashboard'),`demo/dashboard-${device}-dark.jpg`,width,height,{fullPage:true});
-   console.log(device+' module screens and dashboard captured.');
+   console.log(device+' module screens captured.');
   }
-  for(const item of manifest){
+  if(!teaserOnly)for(const item of manifest){
    const name=item.file.replace(/-dark(?=\.[^.]+$)/,'');
    let url=new URL(item.page+'.html',fixtures).href,modal;
    if(name.startsWith('management-'))url=app('dashboard');

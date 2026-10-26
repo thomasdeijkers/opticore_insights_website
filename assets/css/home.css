@@ -32,3 +32,8 @@
 /* Let the final project fill the row when the logo count is uneven. */
 @media(min-width:561px){.client-grid li:last-child:nth-child(3n + 1){grid-column:1/-1}}
 @media(max-width:560px){.client-grid li:last-child:nth-child(2n + 1){grid-column:1/-1}}
+
+/* Keep the demo visible beside the introduction, then stacked on phones. */
+.home-intro-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,390px);gap:48px;align-items:center}
+.home-intro-copy{min-width:0}
+@media(max-width:900px){.home-intro-grid{grid-template-columns:1fr;gap:32px}.home-intro .webapp-demo-teaser{justify-self:center}}
