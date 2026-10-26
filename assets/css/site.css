@@ -270,3 +270,15 @@ nav a,nav a:hover,.topic-index a,.topic-index a:hover,.site-footer a,.site-foote
 @media(max-width:1050px){.footer-grid{gap:24px 32px}}
 @media(max-width:650px){.site-footer{padding-top:32px}.footer-grid{grid-template-columns:1fr 1fr;gap:24px 22px;padding-bottom:20px}.footer-identity{grid-column:1/-1;padding-bottom:23px;border-bottom:1px solid var(--line)}.footer-brand img{width:174px}.site-footer .footer-tagline{margin:10px 0 12px}.footer-description{max-width:310px;margin-bottom:13px}.site-footer h2{margin-bottom:10px}.footer-nav a{font-size:13px;padding:6px 0}.footer-contact{gap:12px;padding-top:20px}.site-footer .footer-contact h2{font-size:15px}.site-footer .footer-contact-link{gap:9px;padding:9px 11px;font-size:12px;min-height:44px;white-space:nowrap}.footer-bottom{display:grid;grid-template-columns:1fr auto;gap:10px 16px}.footer-bottom p{grid-column:1/-1}.footer-legal{padding:17px 0}.footer-legal-links{flex-direction:column;align-items:flex-start;gap:4px}.footer-ventures{flex-direction:column;align-items:flex-end;gap:4px;font-size:11px}.footer-ventures img{width:104px}}
 @media(max-width:360px){.site-footer .footer-contact h2{font-size:14px}.footer-contact{gap:8px}.site-footer .footer-contact-link{padding-inline:9px;gap:6px}}
+
+/* The desktop header uses the same menu button, with a compact dropdown. */
+@media(min-width:1121px){
+.nav-wrap{position:relative}
+.menu-button{display:inline-flex;align-items:center;justify-content:center;gap:9px}
+.menu-button::before{content:"";display:block;width:18px;height:14px;flex-shrink:0;background:linear-gradient(currentColor,currentColor) top/100% 2px no-repeat,linear-gradient(currentColor,currentColor) center/100% 2px no-repeat,linear-gradient(currentColor,currentColor) bottom/100% 2px no-repeat}
+.menu-button[aria-expanded=true]::before{height:18px;background:linear-gradient(45deg,transparent calc(50% - 1px),currentColor calc(50% - 1px),currentColor calc(50% + 1px),transparent calc(50% + 1px)),linear-gradient(-45deg,transparent calc(50% - 1px),currentColor calc(50% - 1px),currentColor calc(50% + 1px),transparent calc(50% + 1px))}
+.site-nav{display:none;position:absolute;top:calc(100% - 8px);right:0;width:320px;max-width:100%;max-height:calc(100dvh - var(--header-height) - 24px);overflow-y:auto;overscroll-behavior:contain;flex-direction:column;align-items:stretch;gap:0;padding:10px;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 12px 30px #152c4226}
+.site-nav.is-open{display:flex}
+.site-nav a,.site-nav .nav-contact{min-height:44px;padding:10px 12px;border:0;border-radius:5px;font-size:15px;line-height:1.6}
+.site-nav a:hover,.site-nav a[aria-current=page]{background:#edf4fa}
+}

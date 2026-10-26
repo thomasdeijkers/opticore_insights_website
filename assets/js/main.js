@@ -9,7 +9,7 @@ function setMenuOpen(isOpen) {
 }
 
 if (menuToggle && menu) {
-  // Collapse the mobile menu before following a page or section link.
+  // Collapse navigation before following a page or section link.
   menu.addEventListener("click", (event) => {
     if (event.target.closest("a")) {
       setMenuOpen(false);
@@ -17,6 +17,11 @@ if (menuToggle && menu) {
   });
   menuToggle.addEventListener("click", () => {
     setMenuOpen(!menu.classList.contains("is-open"));
+  });
+  document.addEventListener("click", (event) => {
+    if (menu.classList.contains("is-open") && !menu.contains(event.target) && !menuToggle.contains(event.target)) {
+      setMenuOpen(false);
+    }
   });
 }
 
