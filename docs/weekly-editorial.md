@@ -12,6 +12,11 @@ doorziet processen snel, adviseert over verbeteringen en voert die ook uit met
 dashboards, automatisering, koppelingen, documentverwerking, websites en keuzehulpen.
 Leg uit wat een ontwikkeling voor het dagelijkse werk, grip en inzicht betekent.
 
+De modulaire WebApp is de centrale propositie. Positioneer bol-functionaliteit
+als onderdelen van diezelfde WebApp en verwijs waar passend naar
+`/modulaire-webapp/` of de modulekeuze, zodat lezers kunnen ontdekken welke
+modules bij hun bedrijf passen.
+
 Streef per week naar één goed onderbouwd nieuws- of duidingsartikel en een
 afzonderlijke projectupdate per klant als er aantoonbaar relevant werk is gedaan. Publiceer minder als
 er geen betekenisvolle ontwikkeling is. Vul een week niet met herhalingen, losse
