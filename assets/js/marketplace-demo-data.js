@@ -2,7 +2,8 @@
   'use strict';
   const channels = [
     {id:'bol',logo:'/assets/img/bol-wordmark.svg',label:'bol NL',country:'NL'}, {id:'amazon_nl',logo:'/assets/img/platforms/amazon.svg',label:'Amazon NL',country:'NL'},
-    {id:'amazon_de',logo:'/assets/img/platforms/amazon.svg',label:'Amazon DE',country:'DE'}, {id:'praxis',logo:'/assets/img/platforms/praxis.png',label:'Praxis NL',country:'NL'}, {id:'brico',logo:'/assets/img/platforms/brico.png',label:'Brico BE',country:'BE'}
+    {id:'amazon_de',logo:'/assets/img/platforms/amazon.svg',label:'Amazon DE',country:'DE'}, {id:'praxis',logo:'/assets/img/platforms/praxis.png',label:'Praxis NL',country:'NL'}, {id:'brico',logo:'/assets/img/platforms/brico.png',label:'Brico BE',country:'BE'},
+    {id:'mediamarkt',logo:'/assets/img/platforms/mediamarkt.svg',label:'MediaMarkt NL',country:'NL'}, {id:'kaufland',logo:'/assets/img/platforms/kaufland.svg',label:'Kaufland DE',country:'DE'}
   ];
   const months = ['Nov','Dec','Jan','Feb','Mrt','Apr','Mei','Jun','Jul','Aug','Sep','Okt'];
   const seed = {
@@ -15,7 +16,7 @@
       {sku:'DEMO-1006',name:'Bewegingssensor Sense',ean:'DEMO-EAN-1006',category:'Sensoren',supplier:'Voorbeeldleverancier West',cost:9,price:29,stock:44,reserved:3,external:10,location:'C-02',minimum:18,lead:21,batch:20,lastSale:2,rank:11,previousRank:15,listing:84,returns:2,weights:[.6,.2,.1,.1,0],offers:['published','published','queued','published','disabled'],history:[17,20,18,19,18,20,22,21,24,25,27,30]}
     ],
     purchases:[{id:'DEMO-IO-104',sku:'DEMO-1002',qty:100,received:false,status:'Bevestigd',supplier:'Voorbeeldleverancier Zuid',eta:'Over 10 dagen'}],
-    orders:[{id:'DEMO-O-2041',sku:'DEMO-1001',channel:'bol',qty:1,status:'Te picken'}, {id:'DEMO-O-2042',sku:'DEMO-1002',channel:'amazon_nl',qty:2,status:'In verwerking'}, {id:'DEMO-O-2043',sku:'DEMO-1005',channel:'praxis',qty:1,status:'Verzonden'}, {id:'DEMO-O-2044',sku:'DEMO-1006',channel:'brico',qty:1,status:'Te picken'}],
+    orders:[{id:'DEMO-O-2041',sku:'DEMO-1001',channel:'bol',qty:1,status:'Te picken'}, {id:'DEMO-O-2042',sku:'DEMO-1002',channel:'amazon_nl',qty:2,status:'In verwerking'}, {id:'DEMO-O-2043',sku:'DEMO-1005',channel:'praxis',qty:1,status:'Verzonden'}, {id:'DEMO-O-2044',sku:'DEMO-1006',channel:'brico',qty:1,status:'Te picken'}, {id:'DEMO-O-2045',sku:'DEMO-1004',channel:'mediamarkt',qty:1,status:'In verwerking'}, {id:'DEMO-O-2046',sku:'DEMO-1005',channel:'kaufland',qty:2,status:'Te picken'}],
     returns:[{id:'DEMO-R-81',sku:'DEMO-1001',channel:'bol',qty:1,reason:'Past niet',sellable:true,received:false},{id:'DEMO-R-82',sku:'DEMO-1002',channel:'amazon_nl',qty:1,reason:'Defect gemeld',sellable:false,received:false}],
     shipments:[{id:'DEMO-FBA-31',sku:'DEMO-1001',destination:'Amazon DE',qty:12,status:'Onderweg'},{id:'DEMO-FBA-32',sku:'DEMO-1006',destination:'Amazon NL',qty:10,status:'Ontvangen'}],
     campaigns:[{id:'C-1',name:'Klimaat · handmatig',channel:'bol',sku:'DEMO-1001',cost:168,sales:840,clicks:310,budget:18,target:25}, {id:'C-2',name:'Schakelen · automatisch',channel:'amazon_nl',sku:'DEMO-1002',cost:225,sales:675,clicks:420,budget:24,target:25}, {id:'C-3',name:'Sensoren · catch-all',channel:'bol',sku:'DEMO-1006',cost:98,sales:560,clicks:190,budget:12,target:25}],
@@ -24,7 +25,9 @@
   const clone = value => JSON.parse(JSON.stringify(value));
   const createState = () => {
     const state=clone(seed);
+    const channelWeights=[[.5,.17,.1,.08,0,.04,.11],[.55,.18,.08,.04,0,.01,.14],[.65,.15,.1,0,0,.1,0],[.2,.08,.07,.1,.1,.4,.05],[.45,.13,.08,.15,.1,.02,.07],[.5,.17,.08,.1,0,.02,.13]];
     state.products.forEach((p,i)=>{
+      p.weights=channelWeights[i];p.offers.push(i===2?'disabled':'published',i===2?'disabled':i===4?'queued':'published');
       p.historyPrice=p.price;p.historyCost=p.cost;p.title=p.name;p.description='Voorbeeldproduct voor een slimme woning. Controleer altijd de toepassing en compatibiliteit.';
       p.previousHistory=p.history.map(n=>Math.round(n*(i===3?1.3:i%2?.95:.8)));
       if(i===2)p.previousHistory=[20,18,16,15,14,12,11,9,8,6,4,3];
@@ -40,15 +43,55 @@
   const forecast = (state,p,n=3) => Math.ceil(p.history.slice(-3).reduce((a,b)=>a+b,0)/3*n*1.12*(1+state.growth/100));
   const coverage = p => {const daily=p.history.slice(-3).reduce((a,b)=>a+b,0)/90;return daily?Math.floor(available(p)/daily):null;};
   const need = (state,p) => Math.ceil(Math.max(0,forecast(state,p)+p.minimum-available(p)-ordered(state,p))/p.batch)*p.batch;
-  function sales(state,p,period=12,channel='all',previous=false) {
-    const qty=(previous?p.previousHistory:p.history).slice(-period).reduce((a,b)=>a+b,0);
-    const returned=Math.min(qty,Math.round((p.returns+(previous?0:state.returns.filter(r=>r.sku===p.sku&&r.received).reduce((n,r)=>n+r.qty,0)))*period/12));
-    const weight=channel==='all'?1:p.weights[channels.findIndex(c=>c.id===channel)]||0;
-    const net=(qty-returned)*weight, revenue=net*(p.historyPrice??p.price), cost=net*(p.historyCost??p.cost), fee=revenue*.12, shipping=net*3.2;
-    return {qty:qty*weight,returned:returned*weight,revenue,cost,fee,shipping,profit:revenue-cost-fee-shipping};
+  function allocateCount(count,weights,capacity){
+    const sum=weights.reduce((a,b)=>a+b,0);if(!sum)return weights.map(()=>0);
+    const ideal=weights.map(w=>count*w/sum),values=ideal.map((n,i)=>Math.min(Math.floor(n),capacity?capacity[i]:count));
+    const priority=ideal.map((n,i)=>({i,fraction:n-Math.floor(n)})).sort((a,b)=>b.fraction-a.fraction||a.i-b.i);
+    let left=count-values.reduce((a,b)=>a+b,0);
+    while(left>0)for(const {i} of priority)if(left>0&&(!capacity||values[i]<capacity[i])){values[i]++;left--;}
+    return values;
   }
-  function totals(state,period=12,channel='all',previous=false) {
-    return state.products.reduce((total,p)=>{const s=sales(state,p,period,channel,previous);for(const k of Object.keys(s))total[k]=(total[k]||0)+s[k];return total;},{});
+  function sales(state,p,period=12,channel='all',previous=false,offset=0) {
+    const history=previous?p.previousHistory:p.history,end=history.length-offset,start=Math.max(0,end-period);
+    const sum=values=>values.reduce((a,b)=>a+b,0),qty=sum(history.slice(start,end)),yearQty=sum(history);
+    const yearReturns=Math.min(yearQty,p.returns+(previous?0:state.returns.filter(r=>r.sku===p.sku&&r.received).reduce((n,r)=>n+r.qty,0)));
+    // Allocate returns cumulatively: the twelve monthly views reconcile with the year.
+    let returned=yearQty?Math.floor(yearReturns*sum(history.slice(0,end))/yearQty)-Math.floor(yearReturns*sum(history.slice(0,start))/yearQty):0,channelQty=qty;
+    if(channel!=='all'){
+      const index=channels.findIndex(c=>c.id===channel);channelQty=0;returned=0;
+      for(let i=start;i<end;i++){
+        const gross=allocateCount(history[i],p.weights),monthReturns=yearQty?Math.floor(yearReturns*sum(history.slice(0,i+1))/yearQty)-Math.floor(yearReturns*sum(history.slice(0,i))/yearQty):0;
+        const returns=allocateCount(monthReturns,gross,gross);channelQty+=gross[index]||0;returned+=returns[index]||0;
+      }
+    }
+    const net=channelQty-returned,revenue=net*(p.historyPrice??p.price),cost=net*(p.historyCost??p.cost),fee=revenue*.12,shipping=net*3.2;
+    return {qty:channelQty,returned,revenue,cost,fee,shipping,profit:revenue-cost-fee-shipping};
+  }
+  function totals(state,period=12,channel='all',previous=false,offset=0) {
+    return state.products.reduce((total,p)=>{const s=sales(state,p,period,channel,previous,offset);for(const k of Object.keys(s))total[k]=(total[k]||0)+s[k];return total;},{});
+  }
+  function channelMonths(state,id){
+    return months.map((month,i)=>{
+      const current=totals(state,1,id,false,11-i),previous=totals(state,1,id,true,11-i);
+      const enrich=(value,old)=>({...value,orders:Math.round(value.qty/1.15),margin:value.revenue?value.profit/value.revenue*100:0,returnRate:value.qty?value.returned/value.qty*100:0,share:totals(state,1,'all',old,11-i).revenue?value.revenue/totals(state,1,'all',old,11-i).revenue*100:0});
+      return {month,year:i<2?2025:2026,current:enrich(current,false),previous:enrich(previous,true)};
+    }).reverse();
+  }
+  function dashboardHeatmap(state){
+    const count=channels.reduce((n,c)=>n+channelMonths(state,c.id)[0].current.orders,0);
+    const days=['Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag','Zondag'],times=['00–04','04–08','08–12','12–16','16–20','20–24'];
+    const weights=days.flatMap((_,d)=>times.map((_,h)=>[1.35,1.08,1,.96,.9,.75,.65][d]*[.1,.16,.65,.8,1.4,.72][h]));
+    const sum=weights.reduce((a,b)=>a+b,0),values=weights.map(w=>Math.floor(count*w/sum));
+    weights.map((w,i)=>({i,remainder:count*w/sum-values[i]})).sort((a,b)=>b.remainder-a.remainder||a.i-b.i).slice(0,count-values.reduce((a,b)=>a+b,0)).forEach(x=>values[x.i]++);
+    const peak=values.indexOf(Math.max(...values));return {days,times,values,count,peakDay:days[Math.floor(peak/6)],peakTime:times[peak%6]};
+  }
+  function annualForecast(state){
+    const all=totals(state),old=totals(state,12,'all',true),factor=Math.max(.3,(old.revenue?all.revenue/old.revenue:1)*(1+state.growth/100));
+    const elapsed=totals(state,10),remaining=totals(state,2,'all',false,10),prior=totals(state,10,'all',true);
+    const ad=state.campaigns.reduce((n,c)=>n+c.historyCosts.slice(2).reduce((a,b)=>a+b,0)+c.historyCosts.slice(0,2).reduce((a,b)=>a+b,0)*factor,0);
+    const revenue=elapsed.revenue+remaining.revenue*factor,profit=elapsed.profit+remaining.profit*factor,previous=prior.revenue+remaining.revenue;
+    const nextFactor=1.15*(1+state.growth/100);
+    return [{year:2026,revenue,ebit:profit-ad-5040,previous},{year:2027,revenue:revenue*nextFactor,ebit:(profit-ad)*nextFactor-5040,previous:revenue}];
   }
   const advertising = (state,period=12,channel='all') => state.campaigns.filter(c=>channel==='all'||c.channel===channel).reduce((n,c)=>n+c.historyCosts.slice(-period).reduce((a,b)=>a+b,0),0);
   function signalRows(state) {
@@ -119,7 +162,7 @@
     const name=String(values.name||'').trim(),price=Number(values.price),cost=Number(values.cost),stock=Number(values.stock);
     if(!name||name.length>150||!Number.isFinite(price)||price<=0||price>10000||!Number.isFinite(cost)||cost<0||cost>10000||!Number.isInteger(stock)||stock<0||stock>10000)throw new Error('Vul een naam, geldige prijzen en een heel voorraadaantal in.');
     const serial=1001+state.products.length,p={...clone(seed.products[0]),sku:'DEMO-'+serial,ean:'DEMO-EAN-'+serial,name,title:name,description:'Nieuw fictief demoartikel.',price,cost,stock,reserved:0,external:0,location:'N-01',category:'Nieuw assortiment',supplier:'Voorbeeldleverancier Noord',listing:40,returns:0,lastSale:0,rank:null,previousRank:null,history:Array(12).fill(0),previousHistory:Array(12).fill(0),offers:channels.map(()=> 'disabled')};
-    state.products.push(p);return p;
+    p.weights=channels.map((_,i)=>i===0?1:0);state.products.push(p);return p;
   }
   function advanceOrder(state,id){
     const o=state.orders.find(o=>o.id===id);if(!o)throw new Error('Order niet gevonden.');
@@ -145,6 +188,6 @@
     const cell=value=>{let text=String(value??'');if(/^[\s]*[=+@-]/.test(text))text="'"+text;return '"'+text.replace(/"/g,'""')+'"';};
     return '\ufeff'+[headers,...rows].map(row=>row.map(cell).join(';')).join('\r\n');
   }
-  const api={channels,months,createState,product,available,ordered,forecast,coverage,need,sales,totals,signalRows,advertising,countStock,propose,receivePurchase,receiveReturn,setOffer,setBudget,completeSignal,createShipment,receiveShipment,updateProduct,addProduct,advanceOrder,adviceRows,reviewAdvice,csv};
+  const api={channels,months,createState,product,available,ordered,forecast,coverage,need,sales,totals,channelMonths,dashboardHeatmap,annualForecast,signalRows,advertising,countStock,propose,receivePurchase,receiveReturn,setOffer,setBudget,completeSignal,createShipment,receiveShipment,updateProduct,addProduct,advanceOrder,adviceRows,reviewAdvice,csv};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;else scope.MarketplaceDemo=api;
 })(typeof window!=='undefined'?window:globalThis);

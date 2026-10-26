@@ -71,7 +71,7 @@
   const labels={published:'Offer gepubliceerd',failed:'Publicatiefout',disabled:'Niet gepubliceerd',queued:'In wachtrij'};
   const offer=status=>`<span class="offer-badge is-${status}" title="${labels[status]}"><b aria-hidden="true">${status==='published'?'✓':status==='failed'?'×':status==='queued'?'…':'−'}</b>${labels[status]}</span>`;
   const channelName=id=>D.channels.find(c=>c.id===id)?.label||id;
-  const channelBrand=id=>{const c=D.channels.find(c=>c.id===id);return c?`<span class="channel-brand"><img src="${esc(c.logo)}" alt="${esc(c.label.replace(/ (NL|DE|BE)$/,''))}" width="74" height="27"><span class="channel-country" aria-label="${esc(c.country)}">${c.country}</span></span>`:esc(id);};
+  const channelBrand=id=>{const c=D.channels.find(c=>c.id===id);return c?`<span class="channel-brand"><img src="${esc(c.logo)}" alt="${esc(c.label.replace(/ (NL|DE|BE)$/,''))}" width="74" height="27"><span class="channel-country demo-flag demo-flag-${c.country}" role="img" aria-label="${esc(c.country)}">${c.country}</span></span>`:esc(id);};
   const strip=document.createElement('div');strip.className='demo-channel-strip';strip.setAttribute('aria-label','Voorbeeldkanalen');strip.innerHTML=D.channels.map(c=>channelBrand(c.id)).join('');q('[data-demo-intro]').after(strip);
   const period=()=>Number(q('[data-demo-period]').value);
   const channel=()=>q('[data-demo-channel]').value;
@@ -161,6 +161,25 @@
   function dashboardTile(label,value,note,route,icon='chart',delta=null){
     return `<button type="button" class="demo-dashboard-tile" data-route="${route}"><span class="demo-dashboard-tile-top"><span>${esc(label)}</span>${delta!==null?`<span class="demo-dashboard-delta${delta<0?' is-down':''}">${delta>0?'+':''}${esc(pct(delta))} YoY</span>`:dashboardIcon(icon)}</span><strong>${esc(value)}</strong><small>${esc(note)}</small></button>`;
   }
+  function dashboardDelta(current,previous){
+    const value=safeRatio(current-previous,previous);
+    return `<span class="demo-dashboard-delta${value===null?' is-neutral':value<0?' is-down':''}">${value===null?'Nieuw':(value>0?'+':'')+esc(pct(value))+' YoY'}</span>`;
+  }
+  function dashboardChannels(){
+    const exact=n=>new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(n);
+    const fields=[['Omzet','revenue',exact],['Winst','profit',exact],['Marge','margin',pct],['Omzetaandeel','share',pct],['Orders','orders',number],['Verkocht','qty',number],['Retouren','returned',number],['Retourpercentage','returnRate',pct]];
+    return '<p class="demo-channel-hint">Open een kanaal en daarna een maand voor de onderliggende cijfers.</p><div class="demo-dashboard-channels">'+[...D.channels].sort((a,b)=>D.totals(state,1,b.id).revenue-D.totals(state,1,a.id).revenue).map(c=>{
+      const months=D.channelMonths(state,c.id),latest=months[0];
+      return `<details class="demo-channel-detail" data-channel-detail="${c.id}"><summary>${channelBrand(c.id)}<span class="demo-channel-stats">${esc(pct(latest.current.margin))} marge<small>${esc(pct(latest.current.share))} aandeel</small></span><strong>${esc(money(latest.current.revenue))}</strong>${dashboardDelta(latest.current.revenue,latest.previous.revenue)}</summary><div class="demo-channel-months"><h3>Laatste 12 maanden</h3>`+months.map(m=>`<details class="demo-channel-month"><summary><span class="demo-month-label">${m.month}<small>${m.year}</small></span><span class="demo-channel-stats">${esc(pct(m.current.margin))} marge<small>${number(m.current.orders)} orders</small></span><strong>${esc(money(m.current.revenue))}</strong>${dashboardDelta(m.current.revenue,m.previous.revenue)}</summary><dl>${fields.map(([label,key,format])=>`<div><dt>${label}</dt><dd><span>VJ ${esc(format(m.previous[key]))}</span><strong>${esc(format(m.current[key]))}</strong></dd></div>`).join('')}</dl></details>`).join('')+`<p class="demo-channel-explanation">Netto omzet na retouren, exclusief btw. Winst is omzet minus inkoop, kanaal- en verzendkosten, vóór advertenties en vaste kosten. Orderaantallen zijn een fictieve verdeling van de verkoophistorie. VJ = vorig jaar.</p><button type="button" data-dashboard-channel="${c.id}">Bekijk de artikelen van ${esc(c.label)} →</button></div></details>`;
+    }).join('')+'</div>';
+  }
+  function dashboardHeatmap(){
+    const h=D.dashboardHeatmap(state),max=Math.max(...h.values,1);
+    return `<details class="demo-dashboard-heatmap"><summary><strong>🔥 Heatmap</strong><span>Drukst: ${h.peakDay} · ${h.peakTime} uur</span></summary><div class="demo-heatmap-content"><p>Fictieve verdeling van ${number(h.count)} orders uit de laatste demomaand. Een intensere kleur betekent meer orders.</p><div class="demo-heatmap-scroll"><div class="demo-heatmap-grid"><span></span>${h.times.map(t=>`<span class="demo-heatmap-label">${t}</span>`).join('')}${h.days.map((d,i)=>`<span class="demo-heatmap-day">${d}</span>`+h.times.map((t,j)=>{const count=h.values[i*6+j],level=count?Math.max(1,Math.ceil(count/max*4)):0;return `<span class="demo-heatmap-cell" data-level="${level}" aria-label="${d}, ${t} uur: ${count} orders">${count}</span>`;}).join('')).join('')}</div></div><div class="demo-heatmap-key"><span>Minder</span>${[0,1,2,3,4].map(n=>`<i class="demo-heatmap-cell" data-level="${n}"></i>`).join('')}<span>Meer orders</span></div></div></details>`;
+  }
+  function dashboardForecasts(){
+    return D.annualForecast(state).map(f=>`<section class="demo-dashboard-section"><h2>Forecast ${f.year}</h2><div class="demo-dashboard-grid">${dashboardTile('Omzetforecast',money(f.revenue),'Illustratief jaarscenario','forecasting|overzicht|','chart',safeRatio(f.revenue-f.previous,f.previous))}<button class="demo-dashboard-tile" type="button" data-route="financieel|overzicht|"><span class="demo-dashboard-tile-top">Forecast EBIT ${dashboardIcon('money')}</span><strong>${esc(money(f.ebit))} <span class="demo-forecast-rate${f.ebit<0?' is-down':''}">${esc(pct(safeRatio(f.ebit,f.revenue)))}</span></strong><small>Na advertentiekosten en fictieve vaste kosten</small></button></div></section>`).join('')+'<details class="demo-forecast-method"><summary>Hoe komt deze voorbeeldforecast tot stand?</summary><p>Voor 2026 vullen we januari tot en met oktober aan met november en december, op basis van de eerdere verkoophistorie en de groei tegenover vorig jaar. Het scenario voor 2027 rekent met 15% extra omzet. Het groeiscenario in Forecasting past beide ramingen aan. EBIT trekt inkoop, kanaal-, verzend- en advertentiekosten en € 420 vaste kosten per maand af. Alle uitkomsten zijn fictieve rekenvoorbeelden.</p></details>';
+  }
   function renderDashboard(){
     const all=D.totals(state),month=D.totals(state,1),previous=D.totals(state,1,'all',true),old=D.totals(state,12,'all',true);
     const openOrders=state.orders.filter(o=>o.status!=='Verzonden'),returns=state.returns.filter(r=>!r.received),signals=D.signalRows(state).filter(s=>!s.done);
@@ -185,13 +204,15 @@
       dashboardTile('Open voorstellen',number(D.adviceRows(state).filter(a=>a.decision==='open').length),'Listings, campagnes en voorraad','marketing|overzicht|agent','signal'),
       dashboardTile('Campagnes',number(state.campaigns.length),'Fictieve campagnes · bol en Amazon','marketing|overzicht|','chart')
     ]))+
+    dashboardHeatmap()+
+    section('Marketplace omzet · laatste 30 dagen',dashboardChannels())+
+    dashboardForecasts()+
     section('Voorraad &amp; inkoop',tiles([
       dashboardTile('Beschikbaar',number(stockQty)+' stuks','Magazijnvoorraad na reserveringen','voorraad|overzicht|','stock'),
       dashboardTile('Besteladvies',money(buyValue),number(buyQty)+' stuks · inclusief open inkoop','inkoop|overzicht|','cart'),
       dashboardTile('In bestelling',number(state.products.reduce((n,p)=>n+D.ordered(state,p),0))+' stuks','Nog te ontvangen bij je leveranciers','inkoop|details|','stock'),
       dashboardTile('Extern opgeslagen',number(state.products.reduce((n,p)=>n+p.external,0))+' stuks','Apart van voorraad in je eigen magazijn','logistiek|details|','stock')
     ]))+
-    section('Marketplace omzet · laatste 30 dagen','<div class="demo-dashboard-channels">'+D.channels.map(c=>{const t=D.totals(state,1,c.id),share=month.revenue?t.revenue/month.revenue*100:0;return `<button type="button" data-dashboard-channel="${c.id}">${channelBrand(c.id)}<span class="demo-dashboard-channel-track"><i style="width:${share}%"></i></span><strong>${money(t.revenue)}</strong></button>`;}).join('')+'</div>')+
     section('Resultaat &amp; vooruitkijken',tiles([
       dashboardTile('Marge · 12 maanden',pct(safeRatio(all.profit,all.revenue)),money(all.profit)+' vóór advertenties en vaste kosten','financieel|overzicht|','money'),
       dashboardTile('Afzet komende 3 maanden',number(state.products.reduce((n,p)=>n+D.forecast(state,p),0))+' stuks','Illustratief scenario voor je volgende inkoop','forecasting|overzicht|','chart')

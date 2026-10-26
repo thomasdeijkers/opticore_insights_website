@@ -7,6 +7,31 @@ const total=D.totals(s),channelSum=D.channels.reduce((n,c)=>n+D.totals(s,12,c.id
 assert(Math.abs(total.revenue-channelSum)<.0001,'Channel revenue reconciles with totals');
 assert.equal(D.sales(s,p,12,'brico').revenue,0,'Zero-revenue channel remains in article data');
 assert.equal(total.profit,total.revenue-total.cost-total.fee-total.shipping);
+// Every drilldown uses the same history and reconciles with its parent totals.
+for(const c of D.channels){
+ const months=D.channelMonths(s,c.id);assert.equal(months.length,12);
+ assert(months.every(m=>[m.current,m.previous].every(v=>Number.isInteger(v.qty)&&Number.isInteger(v.returned)&&v.returned<=v.qty)),'Sales and returns remain whole counts at each depth');
+ assert.equal(months[0].month,'Okt');assert.equal(months[0].year,2026);assert.equal(months[11].year,2025);
+ for(const old of [false,true])for(const key of ['revenue','profit','qty','returned']){
+  const sum=months.reduce((n,m)=>n+(old?m.previous:m.current)[key],0);
+  assert(Math.abs(sum-D.totals(s,12,c.id,old)[key])<1e-7,`${c.id} monthly ${key} reconciles, previous=${old}`);
+ }
+}
+const latest=D.channels.map(c=>D.channelMonths(s,c.id)[0]);
+for(let offset=0;offset<12;offset++)for(const old of [false,true])for(const key of ['revenue','profit','qty','returned']){
+ const sum=D.channels.reduce((n,c)=>n+D.totals(s,1,c.id,old,offset)[key],0);
+ assert(Math.abs(sum-D.totals(s,1,'all',old,offset)[key])<1e-7,`Channels reconcile with month ${offset}: ${key}, previous=${old}`);
+}
+assert(Math.abs(latest.reduce((n,m)=>n+m.current.share,0)-100)<1e-7);
+assert(latest.some(m=>m.current.revenue<m.previous.revenue),'A declining channel demonstrates red YoY');
+assert(latest.some(m=>m.current.revenue>m.previous.revenue),'A growing channel demonstrates green YoY');
+for(const id of ['mediamarkt','kaufland']){assert(D.totals(s,1,id).revenue>0);assert(s.orders.some(o=>o.channel===id));}
+const heatmap=D.dashboardHeatmap(s);
+assert.equal(heatmap.values.length,42);assert.equal(heatmap.values.reduce((a,b)=>a+b,0),heatmap.count);
+assert(heatmap.values.every(n=>Number.isInteger(n)&&n>=0));
+const forecasts=D.annualForecast(s);assert.deepEqual(forecasts.map(f=>f.year),[2026,2027]);
+assert(forecasts.every(f=>Number.isFinite(f.ebit)&&f.revenue>0));
+const scenario=D.createState();scenario.growth=20;assert(D.annualForecast(scenario)[1].revenue>forecasts[1].revenue);
 assert(D.sales(s,D.product(s,'DEMO-1004')).revenue<D.sales(s,D.product(s,'DEMO-1004'),12,'all',true).revenue,'Example includes a real YoY decliner');
 assert.equal(D.available(p),p.stock-p.reserved);
 assert.equal(D.coverage(D.product(s,'DEMO-1003')),null,'No recent sales is not zero-day coverage');

@@ -176,3 +176,8 @@ De WebApp-intro toont een prominente dashboardteaser die verticaal scrollt en de
 ## Prijsherziening 26 oktober 2026
 
 De actuele startpakket- en uitbreidingstarieven, prijsreferenties en bronnen staan in [pricing-2026-10-26.md](pricing-2026-10-26.md). Deze vervangen de eerdere prijs- en bundelberekening hierboven.
+
+
+## Dashboard channel drilldowns - 26 October 2026
+
+The public demo now includes seven channels, including MediaMarkt NL and Kaufland DE. Native details elements provide channel, month and metric depth with year-on-year comparisons, whole sales/return counts and distinct open surfaces in light and dark mode. Monthly values reconcile with annual totals. A fictitious order heatmap and explained 2026/2027 forecast scenarios complete the dashboard. See docs/visual-assets.md for capture provenance and browser validation.

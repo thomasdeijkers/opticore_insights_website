@@ -31,7 +31,7 @@ const records=[];
   }
   const app=(module,view='overzicht',screen='')=>new URL('demo/modulaire-webapp/?'+new URLSearchParams({module,view,theme:'dark',...(screen?{screen}:{})}),site).href;
   const teaserOnly=process.argv.includes('--teaser-only');
-  await capture(app('dashboard'),'demo/dashboard-portrait-dark-3x.png',390,844,{fullPage:true,scale:3});
+  await capture(app('dashboard'),'demo/dashboard-channel-depth-dark-3x.png',390,844,{fullPage:true,scale:3});
   if(!teaserOnly)for(const [device,width,height] of [['desktop',1280,900],['mobile',390,844]]){
    for(const module of Object.keys(catalogue))for(const view of ['overzicht','details']){
     const modal=view==='details'?(module==='omzet'?'[data-article]':module==='producten'?'[data-demo-row]':null):null;
