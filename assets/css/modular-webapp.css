@@ -10,7 +10,7 @@
 .webapp-module{display:flex;align-items:flex-start;gap:12px;padding:21px;background:#fff;border:1px solid #bdcad5;border-radius:7px;cursor:pointer;min-width:0}
 .webapp-module:hover{border-color:var(--link)}
 .webapp-module:has(input:checked){border-color:var(--link);background:#edf4fa;box-shadow:inset 0 0 0 1px var(--link)}
-.webapp-module:focus-within{outline:3px solid #db6a2a;outline-offset:3px}
+.webapp-module:has(input:focus-visible){outline:2px solid var(--link);outline-offset:-2px}
 .webapp-module input{width:20px;height:20px;margin:4px 0 0;flex-shrink:0;accent-color:#175a96}
 .webapp-module-title{display:flex;align-items:center;gap:9px;font-size:18px;line-height:1.4;font-weight:700;color:var(--ink);margin-bottom:10px}
 .webapp-module-title svg{width:23px;height:23px;flex-shrink:0;color:#175a96}
@@ -98,6 +98,11 @@
 .webapp-standard-monthly{font-size:13px;color:var(--muted)}
 .webapp-standard-monthly s{text-decoration-thickness:1px}
 .webapp-module-price .webapp-current-monthly{font-size:17px;color:#175a96}
+.webapp-module-price.webapp-module-monthly{margin-top:14px;padding-top:0;border-top:0}
+.webapp-module-monthly strong{font-size:18px;color:var(--ink)}
+.webapp-module-pricing-details{padding:0 0 17px}
+.webapp-module-pricing-details>.webapp-module-price{margin-top:0;padding-top:0;border-top:0}
+.webapp-module-card .webapp-module-pricing-details .webapp-module-choose{margin:15px 0 0}
 .webapp-monthly-saving{font-size:13px;font-weight:650;color:#246649}
 
 .webapp-module-card .webapp-module-choose{display:block;margin:0 21px 18px;font-size:14px;font-weight:650}

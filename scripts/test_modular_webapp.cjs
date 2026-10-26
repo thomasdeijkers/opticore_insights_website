@@ -31,10 +31,14 @@ for(let mask=0;mask<(1<<ids.length);mask++){
 assert.equal((html.match(/class="webapp-module-card"/g)||[]).length,10);
 for(const id of ids){
  const card=html.match(new RegExp('<label class="webapp-module"><input[^>]*value="'+id+'"[\\s\\S]*?</label>'))?.[0];assert(card,id);
- if(catalogue[id].included){assert(card.includes('checked disabled'));assert(card.includes('Inbegrepen in het startpakket'));}
- else{assert(card.includes(money(fees[id][0])+' inrichting'));assert(card.includes('<s>'+money(catalogue[id].monthly)+' per maand</s>'));assert(card.includes('Nu '+money(fees[id][1])+' per maand'));}
+ if(catalogue[id].included){assert(card.includes('checked disabled'));assert(card.includes('€ 0 extra per maand'));}
+ else assert(card.includes(money(fees[id][1])+' per maand'));
+ assert(!card.includes(' inrichting'));assert(!card.includes('<s>'));assert(!card.includes('webapp-module-requires'));
  const combined=[...html.matchAll(/<article class="webapp-module-card">[\s\S]*?<\/article>/g)].map(x=>x[0]).find(c=>c.includes('value="'+id+'"'));
  assert(combined.includes('id="gegevens-'+id+'"'));assert(combined.includes('<summary>Meer info</summary>'));
+ const details=combined.slice(combined.indexOf('<summary>Meer info</summary>'));
+ if(catalogue[id].included)assert(details.includes('Inbegrepen in het startpakket'));
+ else{assert(details.includes(money(fees[id][0])+' inrichting'));assert(details.includes('<s>'+money(catalogue[id].monthly)+' per maand</s>'));}
  for(const device of ['mobile','desktop'])assert.equal((combined.match(new RegExp('data-screen-device="'+device+'"','g'))||[]).length,2);
  for(const image of combined.matchAll(/<img[^>]*src="(\/assets\/img\/module-examples\/[^"]+)"/g))assert(fs.statSync(path.join(__dirname,'..',image[1])).size>1000);
 }
