@@ -100,6 +100,10 @@
 .webapp-module-price .webapp-current-monthly{font-size:17px;color:#175a96}
 .webapp-module-price.webapp-module-monthly{margin-top:14px;padding-top:0;border-top:0}
 .webapp-module-monthly strong{font-size:18px;color:var(--ink)}
+.webapp-monthly-compare{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px;line-height:1.4}
+.webapp-monthly-was{font-size:13px;color:var(--muted);white-space:nowrap}
+.webapp-monthly-compare strong{white-space:nowrap}
+.webapp-monthly-unit{font-size:13px;color:var(--muted);white-space:nowrap}
 .webapp-module-pricing-details{padding:0 0 17px}
 .webapp-module-pricing-details>.webapp-module-price{margin-top:0;padding-top:0;border-top:0}
 .webapp-module-card .webapp-module-pricing-details .webapp-module-choose{margin:15px 0 0}

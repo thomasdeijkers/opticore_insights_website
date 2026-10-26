@@ -7,7 +7,7 @@ html:has(.webapp-calculator){scroll-padding-top:calc(var(--calculator-header-hei
 .webapp-pricebar-amounts{display:flex;align-items:center;gap:46px;margin-left:auto}
 .webapp-pricebar-amount{display:flex;flex-direction:column;gap:3px;min-width:0}
 .webapp-pricebar-label{font-size:13px;color:var(--muted)}
-.webapp-pricebar-values{display:flex;align-items:baseline;gap:10px}
+.webapp-pricebar-values{display:flex;align-items:baseline;gap:6px}
 .webapp-pricebar-was{font-size:15px;color:var(--muted);white-space:nowrap}
 .webapp-pricebar-was[hidden]{display:none}
 .webapp-pricebar-was s{text-decoration-thickness:1px}
@@ -24,6 +24,10 @@ html:has(.webapp-calculator){scroll-padding-top:calc(var(--calculator-header-hei
 .webapp-price-panel h2{font-size:22px;margin:0 0 12px}.webapp-price-panel h3{font-size:16px;margin:20px 0 8px}
 .webapp-price-panel .webapp-selection-actions{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;margin-top:20px}
 .webapp-price-panel .webapp-totals{gap:14px 24px}.webapp-price-panel .webapp-totals dd{font-size:23px}
+.webapp-price-panel .webapp-total-prices{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px 8px;line-height:1.3}
+.webapp-total-prices>span{font-size:15px;font-weight:400;color:var(--muted);white-space:nowrap}
+.webapp-total-prices>strong{font-size:27px;white-space:nowrap}
+.webapp-price-panel .webapp-totals .webapp-total-saving{font-size:12px;font-weight:500;line-height:1.5;color:#246649;margin-top:6px}
 .webapp-calculator-intro{padding-block:32px}.webapp-calculator-intro h1{font-size:38px}.webapp-calculator-intro p{max-width:800px}
 .webapp-calculator #modules{padding-top:28px}
 .webapp-calculator-base{display:flex;align-items:center;justify-content:space-between;gap:28px;border:1px solid #a9becf;border-radius:7px;background:#fff;padding:22px;margin-bottom:20px}
@@ -34,11 +38,12 @@ html:has(.webapp-calculator){scroll-padding-top:calc(var(--calculator-header-hei
 @media(max-width:650px){
 .webapp-pricebar-inner{min-height:82px;gap:12px;padding-block:10px}
 .webapp-pricebar-amounts{gap:14px}
-.webapp-pricebar-values{align-items:flex-start;flex-direction:column;gap:1px}
+.webapp-pricebar-values{align-items:baseline;flex-direction:row;gap:5px}
 .webapp-pricebar-amounts strong{font-size:23px}.webapp-pricebar-label{font-size:11px}.webapp-pricebar-was{font-size:12px;line-height:1.2}
 .webapp-pricebar-hint{display:none}.webapp-pricebar-chevron{width:19px;height:19px}
 .webapp-price-panel{right:12px;width:calc(100% - 24px)}.webapp-price-panel .webapp-selection{padding:19px}
-.webapp-price-panel .webapp-totals{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.webapp-price-panel .webapp-totals dt{font-size:12px}
+.webapp-price-panel .webapp-totals{grid-template-columns:1fr;gap:14px}.webapp-price-panel .webapp-totals dt{font-size:12px}
+.webapp-total-prices>strong{font-size:23px}.webapp-total-prices>span{font-size:13px}
 .webapp-calculator-intro{padding-block:25px}.webapp-calculator-intro h1{font-size:30px}.webapp-calculator-intro p{font-size:16px}
 .webapp-calculator-base{align-items:flex-start;flex-direction:column;gap:15px;padding:18px}.webapp-calculator-base p{font-size:14px}
 .webapp-calculator-base-price{flex-direction:row;align-items:center;flex-wrap:wrap;gap:5px 20px;white-space:normal}
