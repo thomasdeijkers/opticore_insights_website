@@ -73,20 +73,24 @@
     },
     {
       "slug": "projectupdate-aanbod-inkoop-weekdossiers",
-      "repositories": [
-        "opticore-intern",
-        "olympus_bouw"
-      ],
       "commits": [
         "61c925d1",
         "4a5b57c1",
-        "863567bd",
+        "863567bd"
+      ],
+      "verification": "Afzonderlijk Smartlife Domotica-bericht op basis van dezelfde eerder gecontroleerde bronwijzigingen en geslaagde deployment; oorspronkelijke URL en publicatiedatum behouden.",
+      "repository": "opticore-intern"
+    },
+    {
+      "slug": "olympus-bouw-weekkosten-planning",
+      "repository": "olympus_bouw",
+      "commits": [
         "d50e124",
         "6ad18a7",
         "279d796",
         "d0f36e2"
       ],
-      "verification": "Broncode en bijbehorende controles read-only beoordeeld; beide nieuwste deploymentruns success. Geen productiegegevens of bronbestanden gewijzigd."
+      "verification": "Afzonderlijk Olympus Bouw-bericht afgesplitst uit de bestaande projectupdate; uitsluitend eerder gecontroleerde bronwijzigingen en geslaagde deployment. Geen nieuwe projectvoortgang toegevoegd."
     }
   ],
   "last_run_at": "2026-10-26T10:13:20+01:00",
@@ -178,6 +182,19 @@
         "01a17235-db3b-7f83-b639-ab48e93de48a: niet beschikbaar; geen claims op gebaseerd"
       ],
       "verification_note": "Canonieke pagina-audit sluit de afzonderlijke noindex moduledemo uit; die heeft bewust geen canonieke pagina-opbouw en valt onder de bestaande dedicated demo-controles."
+    }
+  ],
+  "editorial_corrections": [
+    {
+      "at": "2026-10-26T20:57:45+01:00",
+      "reason": "Gebruiker vraagt nooit gecombineerde projectberichten en geen publieke RSS-verwijzing.",
+      "original_slug": "projectupdate-aanbod-inkoop-weekdossiers",
+      "resulting_slugs": [
+        "projectupdate-aanbod-inkoop-weekdossiers",
+        "olympus-bouw-weekkosten-planning"
+      ],
+      "publication_dates": "Beide delen behouden de oorspronkelijke publicatiedatum van het reeds gepubliceerde materiaal; modified_at vermeldt de herziening.",
+      "standing_rule": "Eén klant/project per bericht; geen publieke RSS-oproep."
     }
   ]
 }

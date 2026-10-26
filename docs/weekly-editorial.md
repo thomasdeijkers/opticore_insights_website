@@ -12,12 +12,13 @@ doorziet processen snel, adviseert over verbeteringen en voert die ook uit met
 dashboards, automatisering, koppelingen, documentverwerking, websites en keuzehulpen.
 Leg uit wat een ontwikkeling voor het dagelijkse werk, grip en inzicht betekent.
 
-Streef per week naar één goed onderbouwd nieuws- of duidingsartikel en één
-projectupdate als er aantoonbaar relevant werk is gedaan. Publiceer minder als
+Streef per week naar één goed onderbouwd nieuws- of duidingsartikel en een
+afzonderlijke projectupdate per klant als er aantoonbaar relevant werk is gedaan. Publiceer minder als
 er geen betekenisvolle ontwikkeling is. Vul een week niet met herhalingen, losse
 zoekwoorden, kunstmatige wijzigingen of gewijzigde publicatiedatums.
-Een projectupdate kan meerdere projecten bundelen. Neem alle relevante, nieuwe
-projectontwikkelingen van de week mee; maak losse berichten als dat duidelijker is.
+Bundel nooit meerdere klanten of projecten in één bericht. Ieder project krijgt
+een eigen artikel, titel, samenvatting en eigen klantlogo. Neem relevante nieuwe
+ontwikkelingen mee in het bericht van het betreffende project.
 
 ## Nieuws en bronnen
 
@@ -33,6 +34,9 @@ projectontwikkelingen van de week mee; maak losse berichten als dat duidelijker 
 
 ## Projectupdates
 
+- Vul voor ieder projectbericht `project` in met de slug van de bijbehorende case.
+  Gebruik uitsluitend die klant in de inhoud, projectbronnen, gerelateerde cases
+  en klantlogo’s. De generator weigert verwijzingen naar andere projectcases.
 - Lees `docs/editorial-state.json` en vergelijk de opgegeven repositories alleen
   read-only met hun bewaarde commit. Bekijk relevante broncode, changelogs en
   voltooide taakuitkomsten. Een gebruikersvraag of plan is geen opgeleverde functie.
@@ -77,6 +81,7 @@ projectontwikkelingen van de week mee; maak losse berichten als dat duidelijker 
 4. Genereer met `python scripts/news.py --write`, gevolgd door
    `python scripts/sitemap.py --write`. Controleer beide met `--check` en voer
    `git diff --check` uit. De homepage, rubriek en RSS volgen uit dezelfde bron.
+   Toon op de publieke pagina’s geen RSS-link of oproep om RSS te volgen.
    Controleer nieuwe links, metadata, de relevante feitelijke claims en mobiel
    wanneer de vormgeving verandert. Voeg geen willekeurige tests of afhankelijkheden toe.
 5. Werk de inhoud van een projectcase alleen bij als er een werkelijk nieuwe

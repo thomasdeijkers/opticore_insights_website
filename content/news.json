@@ -96,12 +96,12 @@
     {
       "slug": "projectupdate-aanbod-inkoop-weekdossiers",
       "kind": "project",
-      "title": "Meer grip op aanbod, inkoop en weekdossiers",
-      "seo_title": "Projectupdate: aanbod, inkoop en weekdossiers",
-      "description": "Nieuwe verbeteringen bij Smartlife Domotica en Olympus Bouw: aanbodstatus per kanaal, controle op inkoopontvangsten en beter onderbouwde factuurvoorbereiding.",
-      "summary": "Bij Smartlife Domotica en Olympus Bouw werken we verder aan dezelfde vraag: wat is de status, welke informatie hoort erbij en welke vervolgstap mag je uitvoeren?",
+      "title": "Smartlife Domotica: meer overzicht in aanbod en inkoop",
+      "seo_title": "Smartlife Domotica: aanbod en inkoop",
+      "description": "Bij Smartlife Domotica blijven verkoopkanalen zonder omzet zichtbaar. Lees hoe aanbodstatus, inkooporders en deelontvangsten beter op elkaar aansluiten.",
+      "summary": "Bij Smartlife Domotica maken we de status van artikelen, verkoopkanalen en inkooporders beter zichtbaar. Dat helpt bij het beoordelen van aanbod en het verwerken van leveringen.",
       "published_at": "2026-10-26T10:13:20+01:00",
-      "modified_at": "2026-10-26T10:13:20+01:00",
+      "modified_at": "2026-10-26T20:57:45+01:00",
       "image": {
         "src": "/assets/img/examples/management-desktop.jpg",
         "width": 1280,
@@ -111,7 +111,7 @@
       },
       "sections": [
         {
-          "heading": "Smartlife Domotica: ook een kanaal zonder omzet blijft zichtbaar",
+          "heading": "Aanbodstatus per verkoopkanaal",
           "paragraphs": [
             "In de artikelweergave staan nu ook verkoopkanalen waarvoor geen omzet is gemeten. Daarbij wordt de waargenomen aanbodstatus apart getoond. Zo verdwijnt een kanaal zonder verkopen niet uit de beoordeling van een artikel.",
             "De ingestelde schakelaar en de bevestigde publicatiestatus blijven verschillende dingen. Een ingeschakeld aanbod bewijst niet dat het product daadwerkelijk zichtbaar is op de marketplace. Een fout, wachtrij of onbekende uitkomst blijft daarom herkenbaar.",
@@ -122,7 +122,7 @@
           ]
         },
         {
-          "heading": "Inkoop: afzonderlijke orders en controle op deelontvangsten",
+          "heading": "Inkooporders en deelontvangsten bij elkaar",
           "paragraphs": [
             "De inkoopwerkplek werkt met afzonderlijk genummerde orders, orderregels, bijlagen en ontvangsten. Hetzelfde artikel kan daardoor bij dezelfde leverancier in meerdere open orders voorkomen. Een deelontvangst vermindert de betreffende orderregel; afgeronde orders en ontvangsten blijven in het archief beschikbaar.",
             "Ook hier is een ontbrekende bevestiging een eigen situatie. Bij een onzekere voorraadbijwerking blijft de ontvangst ter beoordeling staan. Eerst wordt uitgezocht wat het aangesloten systeem heeft verwerkt, voordat een volgende ontvangst van hetzelfde artikel wordt geboekt."
@@ -132,21 +132,13 @@
           ]
         },
         {
-          "heading": "Olympus Bouw: de juiste weekstaat en kosten bij hetzelfde project",
+          "heading": "Controle op status en verwerking",
           "paragraphs": [
-            "Bij de factuurvoorbereiding kan de verwerking afzonderlijke projecten binnen dezelfde week uit elkaar houden. Kostenbewijs moet bij de geselecteerde weekstaat en het betreffende project passen. Een werkbon of onderaannemersbon wordt bovendien onderscheiden van een kostenbewijs; een genoemd totaal wordt niet vanzelf als extra kosten overgenomen.",
-            "Voor de arbeidsberekening ondersteunt de toepassing naast uren ook een gecontroleerde aanneemsom. Die vaste som moet aansluiten op de beoordeelde weekbron. Een wijziging van berekeningswijze mag zo geen omweg worden om een afwijkend arbeidsbedrag ongecontroleerd over te nemen.",
-            "De weekplanning kan daarnaast naar Excel worden geëxporteerd met de bijbehorende statussen. Zo blijft ook in het uitgegeven overzicht herkenbaar welke stukken aanwezig zijn en wat nog niet klaar is."
+            "De afgeronde wijzigingen zijn uitgerold. De bijbehorende geautomatiseerde controles behandelen onder meer onbekende publicatiestatus, gerichte kanaalwijzigingen en het verwerken van deelontvangsten.",
+            "De werkplek maakt onderscheid tussen wat je hebt ingesteld, welke status het verkoopkanaal bevestigt en welke vervolgstap nodig is. Zo zie je of je verder kunt of eerst een uitkomst moet controleren."
           ],
           "source_refs": [
-            1
-          ]
-        },
-        {
-          "heading": "Wat we hebben gecontroleerd en wat we niet als resultaat claimen",
-          "paragraphs": [
-            "De beschreven functies zijn terug te vinden in de afgeronde bronwijzigingen. De deployments van beide toepassingen zijn geslaagd. De aanwezige geautomatiseerde controles behandelen onder meer onbekende publicatiestatus, gerichte kanaalwijzigingen, deelontvangsten, projectgebonden kosten en het aansluiten van de aanneemsom op de gecontroleerde bron.",
-            "De praktische verbetering is een duidelijker onderscheid tussen instelling, waargenomen status en toegestane vervolgstap. Voor deze update publiceren we geen gemeten urenbesparing of omzetresultaat. De voorbeeldbeelden gebruiken fictieve gegevens en tonen geen klantadministratie."
+            0
           ]
         }
       ],
@@ -154,11 +146,6 @@
         {
           "title": "Het projectverhaal van Smartlife Domotica",
           "url": "/projecten/smartlife-domotica/#doorontwikkeling",
-          "checked": "2026-10-26"
-        },
-        {
-          "title": "Het projectverhaal van Olympus Bouw",
-          "url": "/projecten/olympus-bouw/#doorontwikkeling",
           "checked": "2026-10-26"
         }
       ],
@@ -168,8 +155,8 @@
           "title": "Modules voor voorraad, inkoop, orders en controles"
         },
         {
-          "url": "/ocr-documentverwerking/",
-          "title": "Documentgegevens herkennen en controleren"
+          "url": "/projecten/smartlife-domotica/",
+          "title": "Het volledige projectverhaal van Smartlife Domotica"
         }
       ],
       "brands": [
@@ -179,7 +166,84 @@
           "width": 300,
           "height": 59,
           "url": "/projecten/smartlife-domotica/"
+        }
+      ],
+      "project": "smartlife-domotica"
+    },
+    {
+      "slug": "olympus-bouw-weekkosten-planning",
+      "kind": "project",
+      "project": "olympus-bouw",
+      "title": "Olympus Bouw: weekkosten en planning per project",
+      "seo_title": "Olympus Bouw: weekkosten en planning",
+      "description": "Bij Olympus Bouw sluiten kosten en de aanneemsom aan op de juiste weekstaat. Lees hoe projectcontrole en een Excel-export de factuurvoorbereiding ondersteunen.",
+      "summary": "Bij Olympus Bouw verbeteren we de voorbereiding van weekdossiers. Kosten blijven bij het juiste project, de arbeidsberekening sluit aan op de gecontroleerde bron en de weekplanning kan mee naar Excel.",
+      "published_at": "2026-10-26T10:13:20+01:00",
+      "modified_at": "2026-10-26T20:57:45+01:00",
+      "image": {
+        "src": "/assets/img/examples/document-review-desktop.jpg",
+        "width": 1280,
+        "height": 900,
+        "alt": "Neutrale voorbeeldweergave van documentcontrole met fictieve gegevens.",
+        "caption": "Neutrale voorbeeldweergave met fictieve gegevens."
+      },
+      "sections": [
+        {
+          "heading": "Kosten bij de juiste weekstaat",
+          "paragraphs": [
+            "Bij de factuurvoorbereiding kan de verwerking afzonderlijke projecten binnen dezelfde week uit elkaar houden. Kostenbewijs moet bij de geselecteerde weekstaat en het betreffende project passen. Een werkbon of onderaannemersbon wordt bovendien onderscheiden van een kostenbewijs; een genoemd totaal wordt niet vanzelf als extra kosten overgenomen."
+          ],
+          "source_refs": [
+            0
+          ]
         },
+        {
+          "heading": "Uren of een afgesproken aanneemsom",
+          "paragraphs": [
+            "Voor de arbeidsberekening ondersteunt de toepassing naast uren ook een gecontroleerde aanneemsom. Die vaste som moet aansluiten op de beoordeelde weekbron. Een wijziging van berekeningswijze mag zo geen omweg worden om een afwijkend arbeidsbedrag ongecontroleerd over te nemen."
+          ],
+          "source_refs": [
+            0
+          ]
+        },
+        {
+          "heading": "Weekplanning naar Excel",
+          "paragraphs": [
+            "De weekplanning kan daarnaast naar Excel worden geëxporteerd met de bijbehorende statussen. Zo blijft ook in het uitgegeven overzicht herkenbaar welke stukken aanwezig zijn en wat nog niet klaar is."
+          ],
+          "source_refs": [
+            0
+          ]
+        },
+        {
+          "heading": "Controle op de factuurvoorbereiding",
+          "paragraphs": [
+            "De afgeronde wijzigingen zijn uitgerold. De bijbehorende geautomatiseerde controles behandelen onder meer projectgebonden kosten, het onderscheid tussen werkbonnen en kostenbewijs en het aansluiten van de aanneemsom op de gecontroleerde bron.",
+            "De voorbereiding maakt zichtbaar welke stukken bij de gekozen week en het project horen. Dat geeft een duidelijker vertrekpunt voor het beoordelen van kosten en het klaarzetten van de factuur."
+          ],
+          "source_refs": [
+            0
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Het projectverhaal van Olympus Bouw",
+          "url": "/projecten/olympus-bouw/#doorontwikkeling",
+          "checked": "2026-10-26"
+        }
+      ],
+      "related": [
+        {
+          "url": "/projecten/olympus-bouw/",
+          "title": "Het volledige projectverhaal van Olympus Bouw"
+        },
+        {
+          "url": "/ocr-documentverwerking/",
+          "title": "Documentgegevens herkennen en controleren"
+        }
+      ],
+      "brands": [
         {
           "src": "/assets/img/clients/olympus-bouw.png",
           "alt": "Olympus Bouw",

@@ -78,6 +78,19 @@ def render():
             raise ValueError(f'Article needs substantive content and sources: {slug}')
         for link in article['sources'] + article['related']:
             safe_link(link['url'])
+        if article['kind'] == 'project':
+            project = article.get('project', '')
+            if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', project):
+                raise ValueError(f'Project article needs one project slug: {slug}')
+            project_path = '/projecten/' + project + '/'
+            if not (ROOT / project_path.lstrip('/') / 'index.html').is_file():
+                raise ValueError(f'Project case missing: {slug}')
+            if not any(urlsplit(link['url']).path == project_path for link in article['sources']):
+                raise ValueError(f'Project article needs its own case as source: {slug}')
+            for link in article['sources'] + article['related'] + article.get('brands', []):
+                path = urlsplit(link['url']).path
+                if path.startswith('/projecten/') and path not in ('/projecten/', project_path):
+                    raise ValueError(f'Do not combine project cases in one article: {slug}')
         for brand in article.get('brands', []):
             if not brand['src'].startswith('/assets/img/') or not (ROOT / brand['src'].lstrip('/')).is_file():
                 raise ValueError(f'Missing brand image: {slug}')
@@ -168,7 +181,7 @@ def render():
 
     overview = '''<nav class="breadcrumbs" aria-label="Broodkruimelpad"><ol class="container"><li><a href="/">Home</a></li><li><span aria-current="page">Nieuws en praktijk</span></li></ol></nav>
 <section class="page-intro"><div class="container"><h1>Nieuws en praktijk.</h1><p class="lead">Wat ontwikkelingen in dashboards, automatisering en websites voor je bedrijf kunnen betekenen. En hoe we die inzichten toepassen in onze opdrachten.</p></div></section>
-<section class="section"><div class="container"><div class="cards news-grid">'''+''.join(cards)+'''</div><p class="news-overview-note">Nieuwsberichten bevatten bronverwijzingen en onze duiding. Projectupdates gaan over aantoonbare werkzaamheden. <a href="/projecten/">Bekijk ook de volledige projectverhalen →</a></p><p class="section-more"><a href="/nieuws/feed.xml">Volg de berichten via RSS →</a></p></div></section>'''
+<section class="section"><div class="container"><div class="cards news-grid">'''+''.join(cards)+'''</div><p class="news-overview-note">Nieuwsberichten bevatten bronverwijzingen en onze duiding. Projectupdates gaan over aantoonbare werkzaamheden. <a href="/projecten/">Bekijk ook de volledige projectverhalen →</a></p></div></section>'''
     outputs[ROOT/'nieuws/index.html'] = document('/nieuws/','Nieuws over data & bedrijfsprocessen','Lees nieuws en praktijkverhalen over data, automatisering en websites. ✓ Duiding voor ondernemers ✓ Updates over de oplossingen die we ontwikkelen.',overview)
 
     items = ''.join(f'<li>{byline(a)}<a href="{route(a)}">{escape(a["title"])} →</a><p>{escape(a["summary"])}</p></li>' for a in articles[:2])
