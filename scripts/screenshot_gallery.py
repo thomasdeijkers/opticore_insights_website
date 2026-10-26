@@ -7,11 +7,11 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = json.loads((ROOT / 'scripts/neutral_visuals_manifest.json').read_text(encoding='utf-8'))
 IMAGES = {item['file']: item for item in MANIFEST}
 GROUPS = {
-    'management': ['management-mobile.jpg', 'stock-mobile.jpg', 'management-desktop.jpg', 'stock-desktop.jpg', 'forecast-mobile.jpg', 'forecast-desktop.jpg'],
-    'timesheets': ['timesheets-mobile.png', 'timesheets-detail-mobile.png', 'timesheets-desktop.jpg'],
-    'document-review': ['document-review-mobile.png', 'document-review-detail-mobile.png', 'document-review-desktop.jpg'],
-    'document-intake': ['document-intake-mobile.png', 'document-intake-detail-mobile.png', 'document-intake-desktop.jpg'],
-    'login': ['login-mobile.png', 'login-verification-mobile.png', 'login-desktop.png'],
+    'management': ['management-mobile-dark.jpg', 'stock-mobile-dark.jpg', 'management-desktop-dark.jpg', 'stock-desktop-dark.jpg', 'forecast-mobile-dark.jpg', 'forecast-desktop-dark.jpg'],
+    'timesheets': ['timesheets-mobile-dark.png', 'timesheets-detail-mobile-dark.png', 'timesheets-desktop-dark.jpg'],
+    'document-review': ['document-review-mobile-dark.png', 'document-review-detail-mobile-dark.png', 'document-review-desktop-dark.jpg'],
+    'document-intake': ['document-intake-mobile-dark.png', 'document-intake-detail-mobile-dark.png', 'document-intake-desktop-dark.jpg'],
+    'login': ['login-mobile-dark.png', 'login-verification-mobile-dark.png', 'login-desktop-dark.png'],
 }
 
 

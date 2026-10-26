@@ -25,16 +25,16 @@ def bars(values,previous,labels):
     small=max(max(values),max(previous))<=1500
     maximum=1500 if small else 4000
     levels=[(24,'1.5k'),(80,'1k'),(136,'500'),(192,'0')] if small else [(24,'4k'),(66,'3k'),(108,'2k'),(150,'1k'),(192,'0')]
-    lines=''.join(f'<line x1="45" y1="{y}" x2="625" y2="{y}" stroke="#e8edea"/><text x="1" y="{y+5}" fill="#738077" font-size="13">{label}</text>' for y,label in levels)
+    lines=''.join(f'<line x1="45" y1="{y}" x2="625" y2="{y}" stroke="#304e74"/><text x="1" y="{y+5}" fill="#a9bdd6" font-size="13">{label}</text>' for y,label in levels)
     bars=''
     for i,(value,old,label) in enumerate(zip(values,previous,labels)):
         x=63+i*(550/len(values));height=value/maximum*168;prev=old/maximum*168
-        bars+=f'<rect x="{x:.1f}" y="{192-prev:.1f}" width="22" height="{prev:.1f}" rx="3" fill="#d2dfd7"/><rect x="{x+25:.1f}" y="{192-height:.1f}" width="22" height="{height:.1f}" rx="3" fill="#649888"/><text x="{x+23:.1f}" y="220" fill="#687b70" text-anchor="middle" font-size="14">{label}</text>'
+        bars+=f'<rect x="{x:.1f}" y="{192-prev:.1f}" width="22" height="{prev:.1f}" rx="3" fill="#30546f"/><rect x="{x+25:.1f}" y="{192-height:.1f}" width="22" height="{height:.1f}" rx="3" fill="#7dd5db"/><text x="{x+23:.1f}" y="220" fill="#a9bdd6" text-anchor="middle" font-size="14">{label}</text>'
     return '<div class="chart"><svg viewBox="0 0 650 235" role="img" aria-label="Vergelijking van fictieve omzet per periode">'+lines+bars+'</svg></div><div class="legend"><span><i class="dot"></i>Deze periode</span><span><i class="dot pale"></i>Vorig jaar</span></div>'
 
 
 def linechart():
-    return '<div class="chart"><svg viewBox="0 0 650 235" role="img" aria-label="Fictieve omzetverwachting"><path d="M45 30H625M45 85H625M45 140H625M45 195H625" stroke="#e6ece7" fill="none"/><path d="M45 165L95 140L145 157L195 119L245 95L295 111L345 83L395 100L445 61L495 76L545 39L610 27L610 195L45 195Z" fill="#edf4ef"/><path d="M45 184L95 159L145 167L195 143L245 129L295 144L345 110L395 125L445 92L495 100L545 68L610 62" stroke="#c1cec5" stroke-width="3" fill="none"/><path d="M45 165L95 140L145 157L195 119L245 95L295 111L345 83L395 100L445 61L495 76L545 39L610 27" stroke="#548a73" stroke-width="4" fill="none"/><g fill="#6f7d73" font-size="14"><text x="40" y="225">Jan</text><text x="190" y="225">Apr</text><text x="340" y="225">Jul</text><text x="490" y="225">Okt</text><text x="590" y="225">Dec</text></g></svg></div><div class="legend"><span><i class="dot"></i>Verwachting</span><span><i class="dot pale"></i>Vorig jaar</span></div>'
+    return '<div class="chart"><svg viewBox="0 0 650 235" role="img" aria-label="Fictieve omzetverwachting"><path d="M45 30H625M45 85H625M45 140H625M45 195H625" stroke="#304e74" fill="none"/><path d="M45 165L95 140L145 157L195 119L245 95L295 111L345 83L395 100L445 61L495 76L545 39L610 27L610 195L45 195Z" fill="#173858"/><path d="M45 184L95 159L145 167L195 143L245 129L295 144L345 110L395 125L445 92L495 100L545 68L610 62" stroke="#507b9a" stroke-width="3" fill="none"/><path d="M45 165L95 140L145 157L195 119L245 95L295 111L345 83L395 100L445 61L495 76L545 39L610 27" stroke="#7dd5db" stroke-width="4" fill="none"/><g fill="#a9bdd6" font-size="14"><text x="40" y="225">Jan</text><text x="190" y="225">Apr</text><text x="340" y="225">Jul</text><text x="490" y="225">Okt</text><text x="590" y="225">Dec</text></g></svg></div><div class="legend"><span><i class="dot"></i>Verwachting</span><span><i class="dot pale"></i>Vorig jaar</span></div>'
 
 
 def tasks(items):

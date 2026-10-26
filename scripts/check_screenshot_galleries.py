@@ -60,6 +60,7 @@ def main():
                 assert asset in source, f'{path}: stale/missing gallery component'
     for name in IMAGES:
         assert (ROOT/'assets/img/examples'/name).is_file(), f'Missing {name}'
+        assert IMAGES[name].get('theme') == 'dark' and '-dark.' in name, f'App screenshot must default to dark mode: {name}'
     print(f'Screenshot galleries OK: {count} neutral collections; two phone previews, desktop views and shared viewer present.')
 
 

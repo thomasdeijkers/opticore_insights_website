@@ -48,3 +48,76 @@ dialog{background:var(--surface);border:1px solid var(--line);border-radius:12px
 .demo-studio-review svg{display:block;width:100%;height:auto;background:#fff}
 @media(max-width:950px){.demo-studio{grid-template-columns:1fr}.demo-studio-preview>svg{max-height:500px}.demo-studio-controls{padding:20px}}
 @media(max-width:760px){.demo-studio-toolbar{align-items:stretch;flex-direction:column;gap:9px}.demo-studio-toolbar select{font-size:12px;width:100%}.demo-studio-preview>svg{max-height:420px}.demo-studio-thumbnails{gap:8px}.demo-studio-thumbnails button>span{font-size:9px}.demo-studio-review{gap:7px}.demo-studio-review figcaption{padding:7px 5px;font-size:10px}}
+
+/* Dark-first management dashboard, using the user's app layout with fictional data. */
+:root[data-theme=dark]{--ink:#e7effc;--muted:#a9bdd6;--blue:#7dd5db;--line:#304e74;--soft:#031a34;--surface:#102c4d;--surface-2:#173858;--selected:#244c6d;--chart:#3c8fbb;--good:#60dfb1;--good-bg:#164f4c;--warning:#ffd079;--warning-bg:#4a3e25;--bad:#ff9aaa;--bad-bg:#50263e;--shadow:0 12px 35px #0005}
+:root[data-theme=dark] body{background:radial-gradient(ellipse at 85% 0,#262a54 0,transparent 42%),var(--soft)}
+:root[data-theme=dark] .demo-sidebar{background:linear-gradient(160deg,#122c4c,#051d38)}
+:root[data-theme=dark] .demo-topbar{background:linear-gradient(120deg,#16294d,#103457)}
+:root[data-theme=dark] .demo-metrics article,:root[data-theme=dark] .demo-chart,:root[data-theme=dark] .demo-table-panel,:root[data-theme=dark] .demo-dashboard-tile{background:linear-gradient(145deg,#203a58,#102a4b)}
+.demo-topbar-brand{display:flex;align-items:center;justify-content:center;background:#fff!important;border-color:#fff;padding:8px 10px!important;border-radius:9px}
+.demo-topbar-brand img{display:block;width:108px;height:auto}
+.demo-environment{font-size:11px;color:var(--muted)}
+.demo-topbar .demo-menu-button{background:#ed672b;border-color:#ed672b;color:#fff}
+.demo-topbar .demo-menu-button span{color:#fff}
+.demo-search-routes{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.demo-search-routes button{display:grid;gap:5px;text-align:left;font-size:12px;padding:12px}
+.demo-search-routes small{font-weight:400;color:var(--muted)}
+.demo-shell[data-module=dashboard] .demo-heading{padding:21px 23px;border:1px solid var(--line);border-radius:10px;background:var(--surface);margin-bottom:24px}
+:root[data-theme=dark] .demo-shell[data-module=dashboard] .demo-heading{background:linear-gradient(110deg,#173253,#2a315f)}
+.demo-shell[data-module=dashboard] .demo-heading h1{font-size:30px}
+.demo-shell[data-module=dashboard] .demo-channel-strip{display:none}
+.demo-shell[data-module=dashboard] .demo-heading>p:last-child{font-size:12px;margin-top:8px}
+.demo-dashboard-section{margin-bottom:25px}
+.demo-dashboard-section>h2{font-size:17px;letter-spacing:.1px;margin-bottom:12px}
+.demo-dashboard-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.demo-dashboard-tile{display:flex;flex-direction:column;gap:7px;align-items:flex-start;min-width:0;padding:18px;border:1px solid var(--line);border-radius:9px;text-align:left;background:var(--surface)}
+.demo-dashboard-tile:hover{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
+.demo-dashboard-tile-top{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;min-height:25px;color:var(--muted);font-size:11px;font-weight:650}
+.demo-dashboard-tile-top>svg{width:22px;height:22px;flex:none;color:var(--blue)}
+.demo-dashboard-tile strong{font-size:27px;line-height:1.2;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.demo-dashboard-tile small{font-size:10px;line-height:1.45;color:var(--muted);font-weight:400}
+.demo-dashboard-delta{background:var(--good-bg);color:var(--good);border-radius:20px;padding:3px 6px;font-size:9px;white-space:nowrap}
+.demo-dashboard-delta.is-down{background:var(--bad-bg);color:var(--bad)}
+.demo-dashboard-products{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:11px;padding:12px;background:var(--surface);border:1px solid var(--line);border-radius:9px;margin-top:14px}
+.demo-dashboard-products button{padding:0;border:0;border-radius:7px;overflow:hidden;min-width:0;background:var(--surface-2);text-align:left}
+.demo-dashboard-products svg{display:block;width:100%;height:auto;background:#fff}
+.demo-dashboard-products span{display:block;padding:8px;font-size:10px;line-height:1.35;color:var(--ink)}
+.demo-dashboard-agent{display:flex;align-items:center;gap:12px;width:100%;padding:17px 20px;border-color:var(--blue);background:var(--surface);text-align:left;margin-bottom:14px}
+.demo-dashboard-agent>svg{width:25px;height:25px;color:var(--blue)}
+.demo-dashboard-agent strong{font-size:19px}
+.demo-dashboard-agent>span{margin-left:auto;display:grid;place-items:center;min-width:35px;height:35px;padding:0 8px;border-radius:50%;background:var(--selected);color:var(--ink);font-size:13px}
+.demo-dashboard-channels{display:grid;gap:1px;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--line)}
+.demo-dashboard-channels button{display:grid;grid-template-columns:120px minmax(0,1fr) 105px;align-items:center;gap:20px;border:0;border-radius:0;padding:14px 18px;text-align:left;background:var(--surface)}
+.demo-dashboard-channels button>strong{text-align:right;font-size:17px}
+.demo-dashboard-channel-track{height:7px;background:var(--surface-2);border-radius:6px;overflow:hidden}
+.demo-dashboard-channel-track i{display:block;height:100%;background:var(--blue);border-radius:6px}
+.demo-dashboard-shortcuts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:15px}
+.demo-dashboard-shortcuts button{font-size:12px;text-align:left;padding:15px}
+@media(max-width:1200px){.demo-dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+.demo-topbar{flex-wrap:nowrap;padding:10px 12px;gap:8px}
+.demo-topbar-heading{gap:8px}.demo-topbar-actions{gap:7px;flex-wrap:nowrap}
+.demo-topbar-brand img{width:88px}.demo-topbar-brand{padding:7px!important}.demo-environment{display:none}
+.demo-topbar .demo-menu-button{padding:10px 9px;font-size:18px}
+.demo-topbar-actions button{padding:9px 10px;font-size:11px}.demo-topbar [data-demo-reset]{display:none}
+.demo-shell[data-module=dashboard] main{padding:16px 12px 30px}
+.demo-shell[data-module=dashboard] .demo-heading{padding:17px 14px;margin-bottom:19px}
+.demo-shell[data-module=dashboard] .demo-heading h1{font-size:24px;letter-spacing:-.5px}
+.demo-shell[data-module=dashboard] .demo-heading .demo-eyebrow{display:none}
+.demo-shell[data-module=dashboard] .demo-heading>p:last-child{font-size:10px}
+.demo-dashboard-section{margin-bottom:21px}.demo-dashboard-section>h2{font-size:14px;margin-bottom:10px}
+.demo-dashboard-grid{gap:9px}.demo-dashboard-tile{padding:13px 11px;gap:6px;min-height:104px}
+.demo-dashboard-tile-top{font-size:10px;gap:5px;align-items:flex-start}.demo-dashboard-tile-top>svg{width:19px;height:19px}
+.demo-dashboard-tile strong{font-size:23px}.demo-dashboard-tile small{font-size:9px}.demo-dashboard-delta{font-size:8px;padding:3px 5px}
+.demo-dashboard-products{display:flex;overflow-x:auto;gap:9px;padding:9px;scrollbar-width:thin}.demo-dashboard-products button{flex:0 0 75px}.demo-dashboard-products span{padding:6px;font-size:8px}
+.demo-dashboard-agent{padding:14px}.demo-dashboard-agent strong{font-size:17px}
+.demo-dashboard-channels button{grid-template-columns:90px minmax(0,1fr) 75px;gap:11px;padding:12px}.demo-dashboard-channels .channel-brand img{width:50px;height:21px}.demo-dashboard-channels button>strong{font-size:13px}
+.demo-dashboard-shortcuts{grid-template-columns:1fr;gap:9px}.demo-dashboard-shortcuts button{font-size:12px;padding:13px}
+.demo-search-routes{grid-template-columns:1fr}
+}
+@media(max-width:380px){.demo-topbar-brand img{width:75px}.demo-topbar-actions button{font-size:10px;padding:8px}.demo-dashboard-tile strong{font-size:21px}.demo-dashboard-tile-top{font-size:9px;flex-wrap:wrap}.demo-dashboard-delta{font-size:7px}}
+
+.demo-dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.demo-dashboard-grid:has(>.demo-dashboard-tile:nth-child(6)){grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:1200px){.demo-dashboard-grid:has(>.demo-dashboard-tile:nth-child(6)){grid-template-columns:repeat(2,minmax(0,1fr))}}

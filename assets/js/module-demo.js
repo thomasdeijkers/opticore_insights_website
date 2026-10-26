@@ -43,8 +43,8 @@
   const pct=n=>n===null?'—':new Intl.NumberFormat('nl-NL',{maximumFractionDigits:1}).format(n)+'%';
   const safeRatio=(a,b)=>b?a/b*100:null;
   const storageKey='opticore-webapp-demo-theme';
-  let theme='light';
-  try{const saved=localStorage.getItem(storageKey);if(['light','dark'].includes(saved))theme=saved;else if(window.matchMedia?.('(prefers-color-scheme: dark)').matches)theme='dark';}catch{}
+  let theme='dark';
+  try{const saved=localStorage.getItem(storageKey);if(['light','dark'].includes(saved))theme=saved;}catch{}
   if(['light','dark'].includes(params.get('theme')))theme=params.get('theme');
   function applyTheme(value){
     theme=value==='dark'?'dark':'light';document.documentElement.dataset.theme=theme;
@@ -156,6 +156,47 @@
     const project=studioState(),p=D.product(state,studioSku);
     q('[data-demo-special]').innerHTML=`<div class="demo-studio-toolbar"><label>Artikel<select data-studio-product>${state.products.map(p=>`<option value="${esc(p.sku)}"${p.sku===studioSku?' selected':''}>${esc(p.name)} · ${esc(p.sku)}</option>`).join('')}</select></label><span>${project.approved?'Beeldset beoordeeld':'Concept · nog beoordelen'}</span></div><div class="demo-studio"><div><figure class="demo-studio-preview">${studioSVG(studioSku,studioImage)}<figcaption>${esc(studioLabels[studioImage])}${project.order[0]===studioImage?' · hoofdbeeld':''}</figcaption></figure><div class="demo-studio-thumbnails" aria-label="Kies een voorbeeldbeeld">${project.order.map((kind,i)=>`<button type="button" data-studio-image="${kind}" aria-pressed="${studioImage===kind}">${studioSVG(studioSku,kind)}<span>${i===0?'Hoofdbeeld':esc(studioLabels[kind])}</span></button>`).join('')}</div></div><article class="demo-studio-controls"><p class="demo-eyebrow">BEELDEN BIJ JE ARTIKEL</p><h2>${esc(p.name)}</h2><p>${esc(p.sku)} · ${esc(p.category)}</p><h3>Een samenhangende beeldset</h3><p>Kies uit drie vaste voorbeeldbeelden. Verander het hoofdbeeld, bekijk de hele set en beoordeel het resultaat.</p><p>In de echte Studio kun je bestaande beelden aanpassen met een opdracht, een serie maken op basis van een voorbeeldartikel en het resultaat controleren voordat je publiceert.</p><div class="demo-studio-actions"><button type="button" data-studio-main${project.order[0]===studioImage?' disabled':''}>Als hoofdbeeld instellen</button><button type="button" data-studio-review class="demo-primary">Beeldset beoordelen</button><button type="button" data-studio-download>Download dit voorbeeld (SVG)</button><button type="button" data-studio-reset>Originele volgorde herstellen</button></div><p class="demo-studio-disclaimer">Dit is een lokale demonstratie met fictieve illustraties. Er wordt geen AI-aanvraag uitgevoerd en niets naar bol of een ander platform verstuurd.</p></article></div>`;
   }
+  const dashboardIcons={cart:'M3 3h2l2.5 12h10l3-8H6M9 20h.01M18 20h.01',chart:'M4 20V4M4 20h16M8 16l4-5 4 2 5-8',returns:'M4 8h15v12H5V8M3 4h18v4H3ZM9 15l3-3 3 3M12 12v6',percent:'M5 19 19 5M8 6a2 2 0 1 1-4 0 2 2 0 0 1 4 0M20 18a2 2 0 1 1-4 0 2 2 0 0 1 4 0',stock:'M3 7l9-4 9 4-9 4-9-4M3 7v10l9 4 9-4V7M12 11v10',signal:'M12 3 2 21h20L12 3M12 9v5M12 17h.01',money:'M3 5h18v14H3ZM7 9h.01M17 15h.01M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0'};
+  const dashboardIcon=name=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${dashboardIcons[name]||dashboardIcons.chart}"/></svg>`;
+  function dashboardTile(label,value,note,route,icon='chart',delta=null){
+    return `<button type="button" class="demo-dashboard-tile" data-route="${route}"><span class="demo-dashboard-tile-top"><span>${esc(label)}</span>${delta!==null?`<span class="demo-dashboard-delta${delta<0?' is-down':''}">${delta>0?'+':''}${esc(pct(delta))} YoY</span>`:dashboardIcon(icon)}</span><strong>${esc(value)}</strong><small>${esc(note)}</small></button>`;
+  }
+  function renderDashboard(){
+    const all=D.totals(state),month=D.totals(state,1),previous=D.totals(state,1,'all',true),old=D.totals(state,12,'all',true);
+    const openOrders=state.orders.filter(o=>o.status!=='Verzonden'),returns=state.returns.filter(r=>!r.received),signals=D.signalRows(state).filter(s=>!s.done);
+    const adCost=state.campaigns.reduce((n,c)=>n+c.cost,0),adSales=state.campaigns.reduce((n,c)=>n+c.sales,0);
+    const tiles=items=>'<div class="demo-dashboard-grid">'+items.join('')+'</div>';
+    const section=(title,body)=>'<section class="demo-dashboard-section"><h2>'+title+'</h2>'+body+'</section>';
+    const orderAmount=orders=>orders.reduce((n,o)=>n+o.qty*(o.unitPrice??D.product(state,o.sku).price),0);
+    const stockQty=state.products.reduce((n,p)=>n+D.available(p),0),buyQty=state.products.reduce((n,p)=>n+D.need(state,p),0),buyValue=state.products.reduce((n,p)=>n+D.need(state,p)*p.cost,0);
+    return section('Orders &amp; omzet',tiles([
+      dashboardTile('Open orders',number(openOrders.length),money(orderAmount(openOrders))+' · voorbeeldorders','orders|overzicht|','cart'),
+      dashboardTile('Dagomzet YoY',money(month.revenue/30),'Fictief daggemiddelde · laatste maand','omzet|overzicht|','chart',safeRatio(month.revenue-previous.revenue,previous.revenue)),
+      dashboardTile('Open retouren',number(returns.length),money(returns.reduce((n,r)=>n+r.qty*D.product(state,r.sku).price,0))+' · te verwerken','orders|details|','returns'),
+      dashboardTile('Retourpercentage',pct(safeRatio(all.returned,all.qty)),'Verkochte stuks · laatste 12 maanden','orders|details|','percent'),
+      dashboardTile('Gem. orderwaarde',money(orderAmount(state.orders)/state.orders.length),'Van de fictieve voorbeeldorders','orders|overzicht|','money'),
+      dashboardTile('12 maanden',money(all.revenue),'Netto verkoop · exclusief btw','omzet|overzicht|','chart',safeRatio(all.revenue-old.revenue,old.revenue))
+    ])+'<div class="demo-dashboard-products" aria-label="Voorbeeldartikelen">'+state.products.map(p=>`<button type="button" data-open-article="${esc(p.sku)}">${studioSVG(p.sku,0)}<span>${esc(p.name)}</span></button>`).join('')+'</div>')+
+    section('Marketing',`<button class="demo-dashboard-agent" type="button" data-route="controles|overzicht|">${dashboardIcon('signal')}<strong>Signalenagent</strong><span>${signals.length}</span></button>`+tiles([
+      dashboardTile('Rankingstijgers',number(state.products.filter(p=>p.rank!==null&&p.previousRank!==null&&p.rank<p.previousRank).length),'Ten opzichte van de vorige voorbeeldmeting','marketing|details|','chart'),
+      dashboardTile('Rankingdalers',number(state.products.filter(p=>p.rank!==null&&p.previousRank!==null&&p.rank>p.previousRank).length),'Ten opzichte van de vorige voorbeeldmeting','marketing|details|','chart'),
+      dashboardTile('ACoS · 30 dagen',pct(safeRatio(adCost,adSales)),'Advertentiekosten / toegeschreven omzet','marketing|overzicht|','percent'),
+      dashboardTile('TACoS · 30 dagen',pct(safeRatio(adCost,month.revenue)),'Advertentiekosten / netto verkoop','marketing|overzicht|','percent'),
+      dashboardTile('Open voorstellen',number(D.adviceRows(state).filter(a=>a.decision==='open').length),'Listings, campagnes en voorraad','marketing|overzicht|agent','signal'),
+      dashboardTile('Campagnes',number(state.campaigns.length),'Fictieve campagnes · bol en Amazon','marketing|overzicht|','chart')
+    ]))+
+    section('Voorraad &amp; inkoop',tiles([
+      dashboardTile('Beschikbaar',number(stockQty)+' stuks','Magazijnvoorraad na reserveringen','voorraad|overzicht|','stock'),
+      dashboardTile('Besteladvies',money(buyValue),number(buyQty)+' stuks · inclusief open inkoop','inkoop|overzicht|','cart'),
+      dashboardTile('In bestelling',number(state.products.reduce((n,p)=>n+D.ordered(state,p),0))+' stuks','Nog te ontvangen bij je leveranciers','inkoop|details|','stock'),
+      dashboardTile('Extern opgeslagen',number(state.products.reduce((n,p)=>n+p.external,0))+' stuks','Apart van voorraad in je eigen magazijn','logistiek|details|','stock')
+    ]))+
+    section('Marketplace omzet · laatste 30 dagen','<div class="demo-dashboard-channels">'+D.channels.map(c=>{const t=D.totals(state,1,c.id),share=month.revenue?t.revenue/month.revenue*100:0;return `<button type="button" data-dashboard-channel="${c.id}">${channelBrand(c.id)}<span class="demo-dashboard-channel-track"><i style="width:${share}%"></i></span><strong>${money(t.revenue)}</strong></button>`;}).join('')+'</div>')+
+    section('Resultaat &amp; vooruitkijken',tiles([
+      dashboardTile('Marge · 12 maanden',pct(safeRatio(all.profit,all.revenue)),money(all.profit)+' vóór advertenties en vaste kosten','financieel|overzicht|','money'),
+      dashboardTile('Afzet komende 3 maanden',number(state.products.reduce((n,p)=>n+D.forecast(state,p),0))+' stuks','Illustratief scenario voor je volgende inkoop','forecasting|overzicht|','chart')
+    ])+'<div class="demo-dashboard-shortcuts"><button type="button" data-route="producten|details|">Listingoptimalisatie →</button><button type="button" data-route="producten|overzicht|studio">Product Image Studio →</button><button type="button" data-route="marketing|overzicht|agent">Marketingagent →</button></div>');
+  }
   function render() {
     if(special&&!specialScreens[current]?.includes(special))special='';
     if(special==='studio')work=false;
@@ -169,7 +210,8 @@
     q('[data-demo-country-field]').hidden=!(current==='marketing'&&work);q('[data-demo-country]').value=rankCountry;
     q('[data-demo-channel]').closest('label').hidden=current==='marketing'&&work;
     q('[data-demo-home]').hidden=current!=='dashboard';
-    q('[data-demo-home]').innerHTML=current==='dashboard'?'<div class="demo-quick-actions"><button type="button" data-route="producten|overzicht|catalogus"><strong>Artikelen beheren</strong><span>Open een artikelkaart of voeg een voorbeeld toe →</span></button><button type="button" data-route="inkoop|overzicht|"><strong>Inkoop voorbereiden</strong><span>Van besteladvies naar een bestelling →</span></button><button type="button" data-route="marketing|overzicht|agent"><strong>Voorstellen beoordelen</strong><span>Bekijk kansen voor listings en campagnes →</span></button></div>':'';
+    q('[data-demo-home]').innerHTML=current==='dashboard'?renderDashboard():'';
+    if(current==='dashboard'){q('[data-demo-title]').textContent='Management Dashboard';q('[data-demo-intro]').textContent='Fictieve gegevens · je orders, omzet, marketing en voorraad bij elkaar.';}
     const agent=current==='marketing'&&['agent','historie'].includes(special),settings=current==='systeem'&&work,studio=current==='producten'&&special==='studio';
     q('[data-demo-special]').hidden=!agent&&!settings&&!studio;
     if(studio){
@@ -185,16 +227,16 @@
     }else if(settings){
       q('[data-demo-special]').innerHTML='<article class="demo-settings"><h2>Maak de werkplek prettig voor jou</h2><p>Probeer de lichte en donkere weergave. Alleen je weergavevoorkeur wordt bewaard.</p><label>Weergave<select data-demo-settings-theme><option value="light"'+(theme==='light'?' selected':'')+'>Licht</option><option value="dark"'+(theme==='dark'?' selected':'')+'>Donker</option></select></label><h3>Opnieuw proberen</h3><p>Reset herstelt de fictieve artikelen, bestellingen en voorstellen. Je gekozen weergave blijft behouden.</p><button type="button" data-demo-settings-reset>Herstel de voorbeeldgegevens</button><a href="/webapp-samenstellen/" target="_top">Stel jouw eigen WebApp samen →</a></article>';
     }
-    q('.demo-filters').hidden=agent||studio||current==='systeem';
-    q('.demo-tabs').hidden=Boolean(special);
+    q('.demo-filters').hidden=agent||studio||current==='systeem'||current==='dashboard';
+    q('.demo-tabs').hidden=Boolean(special)||current==='dashboard';
     q('.demo-table-panel').hidden=agent||settings||studio;
-    q('[data-demo-metrics]').hidden=studio;
+    q('[data-demo-metrics]').hidden=studio||current==='dashboard';
     q('[data-demo-create]').hidden=current!=='producten'||special!=='catalogus';
     q('[data-demo-metrics]').innerHTML=fields().map(s=>`<article><span>${esc(s.label)}</span><strong>${esc(s.value)}</strong><small>${esc(s.note)}</small></article>`).join('');
     q('[data-demo-channel]').disabled=!['dashboard','omzet','producten','orders','marketing','financieel'].includes(current)||special==='leveranciers';
     q('[data-demo-period]').disabled=!['dashboard','omzet','financieel','orders'].includes(current);
     q('[data-demo-scenario]').hidden=current!=='forecasting';q('[data-demo-growth]').value=state.growth;
-    q('[data-demo-overview]').hidden=work||Boolean(special)||current==='systeem';chart();
+    q('[data-demo-overview]').hidden=work||Boolean(special)||current==='systeem'||current==='dashboard';chart();
     q('[data-demo-context]').hidden=current!=='financieel';
     if(current==='financieel'){const t=D.totals(state,period(),channel());q('[data-demo-context]').innerHTML='<h2>Exploitatie · kostenopbouw</h2>'+metricCards([['Inkoopwaarde',money(t.cost)],['Kanaalkosten',money(t.fee)],['Verzendkosten',money(t.shipping)],['Advertentiekosten',money(D.advertising(state,period(),channel()))],['Vaste kosten, toegerekend',money(420*period()*(channel()==='all'?1:t.revenue/D.totals(state,period()).revenue))],['Periode',period()+' maanden']]);}
     q('[data-demo-table-title]').textContent=special==='catalogus'?'Je artikelen':special==='leveranciers'?'Je leveranciers':current==='dashboard'?'Wat vraagt aandacht?':m.views[work?1:0];
@@ -258,6 +300,8 @@
   q('[data-demo-growth]').addEventListener('change',e=>{state.growth=Math.max(-20,Math.min(40,Number(e.target.value)||0));render();});
   q('tbody').addEventListener('click',e=>{const p=e.target.closest('[data-article]');if(p){article(p.dataset.article);return;}const b=e.target.closest('[data-demo-row]');if(b){const r=rows[Number(b.dataset.demoRow)];action(r.action,r.sku);}});
   q('[data-demo-close]').addEventListener('click',()=>dialog.close());
+  q('[data-demo-find]').addEventListener('click',()=>{open('Zoek een onderdeel','<label class="demo-action-field">Waar wil je naartoe?<input type="search" data-demo-nav-search placeholder="Bijvoorbeeld voorraad of Image Studio"></label><div class="demo-search-routes">'+groups.flatMap(([group,_,items])=>items.map(item=>`<button type="button" data-route="${routeValue(item)}" data-search-route="${esc((group+' '+item[0]).toLocaleLowerCase('nl'))}"><strong>${esc(item[0])}</strong><small>${esc(group)}</small></button>`)).join('')+'</div>',{});q('[data-demo-nav-search]').focus();});
+  root.addEventListener('input',event=>{if(event.target.matches('[data-demo-nav-search]')){const term=event.target.value.trim().toLocaleLowerCase('nl');root.querySelectorAll('[data-search-route]').forEach(b=>{b.hidden=!b.dataset.searchRoute.includes(term);});}});
   q('[data-demo-theme]').addEventListener('click',()=>{applyTheme(theme==='dark'?'light':'dark');if(current==='systeem')render();});
   q('[data-demo-menu]').addEventListener('click',()=>setMenu(!navOpen));
   q('[data-demo-menu-close]').addEventListener('click',()=>setMenu(false));
@@ -271,12 +315,13 @@
     message('Het overzicht met fictieve gegevens is geëxporteerd.');
   });
   root.addEventListener('click',event=>{
+    const dashboardChannel=event.target.closest('[data-dashboard-channel]');if(dashboardChannel){choose('omzet');q('[data-demo-channel]').value=dashboardChannel.dataset.dashboardChannel;q('[data-demo-period]').value='1';render();return;}
     const image=event.target.closest('[data-studio-image]');if(image){const value=Number(image.dataset.studioImage);if([0,1,2].includes(value)){studioImage=value;render();}return;}
     if(event.target.closest('[data-studio-main]')){const project=studioState();project.order=[studioImage,...project.order.filter(i=>i!==studioImage)];project.approved=false;render();message('Hoofdbeeld gewijzigd in het concept.');return;}
     if(event.target.closest('[data-studio-reset]')){const project=studioState();project.order=[0,1,2];project.approved=false;studioImage=0;render();message('De oorspronkelijke beeldvolgorde is hersteld.');return;}
     if(event.target.closest('[data-studio-review]')){const project=studioState();open('Beoordeel de voorbeeldbeelden','<p>Bekijk de volledige set. Je bevestigt alleen deze lokale demoversie; er wordt niets gepubliceerd.</p><div class="demo-studio-review">'+project.order.map((kind,i)=>'<figure>'+studioSVG(studioSku,kind)+'<figcaption>'+(i===0?'Hoofdbeeld':esc(studioLabels[kind]))+'</figcaption></figure>').join('')+'</div>'+button('Beeldset in demo goedkeuren'),{kind:'studio-review',sku:studioSku,signature:JSON.stringify(project.order)});return;}
     if(event.target.closest('[data-studio-download]')){const blob=new Blob([studioSVG(studioSku,studioImage)],{type:'image/svg+xml'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=studioSku+'-voorbeeld-'+(studioImage+1)+'.svg';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);message('Het schematische voorbeeld is gedownload.');return;}
-    const route=event.target.closest('[data-route]');if(route){choose(...route.dataset.route.split('|'));return;}
+    const route=event.target.closest('[data-route]');if(route){if(dialog.open)dialog.close();choose(...route.dataset.route.split('|'));return;}
     const openArticle=event.target.closest('[data-open-article]');if(openArticle&&!dialog.contains(openArticle)){article(openArticle.dataset.openArticle);return;}
     const review=event.target.closest('[data-advice-review]');if(review){D.reviewAdvice(state,review.dataset.adviceReview,review.dataset.decision);render();message('Je keuze bij het voorstel is bewaard.');return;}
     const proposal=event.target.closest('[data-advice-action]');if(proposal){const advice=D.adviceRows(state).find(a=>a.id===proposal.dataset.adviceAction);action({...advice.action,adviceId:advice.id},advice.sku);return;}

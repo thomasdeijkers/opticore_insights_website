@@ -1,206 +1,233 @@
 [
   {
     "old": "dashboard-management-demo.jpg",
-    "file": "management-desktop.jpg",
+    "file": "management-desktop-dark.jpg",
     "page": "management",
     "width": 1280,
     "height": 900,
-    "alt": "Neutrale voorbeeldweergave van een managementdashboard met fictieve omzet, marge en orders."
+    "alt": "Neutrale voorbeeldweergave van een managementdashboard met fictieve omzet, marge en orders.",
+    "theme": "dark"
   },
   {
     "old": "dashboard-management-mobile.png",
-    "file": "management-mobile.jpg",
+    "file": "management-mobile-dark.jpg",
     "page": "management",
     "width": 390,
     "height": 844,
-    "alt": "Neutrale mobiele voorbeeldweergave van een managementdashboard met fictieve gegevens."
+    "alt": "Neutrale mobiele voorbeeldweergave van een managementdashboard met fictieve gegevens.",
+    "theme": "dark"
   },
   {
     "old": "dashboard-forecast-demo.jpg",
-    "file": "forecast-desktop.jpg",
+    "file": "forecast-desktop-dark.jpg",
     "page": "forecast",
     "width": 1280,
     "height": 900,
-    "alt": "Neutrale voorbeeldweergave van omzetforecasting en inkoopplanning met fictieve gegevens."
+    "alt": "Neutrale voorbeeldweergave van omzetforecasting en inkoopplanning met fictieve gegevens.",
+    "theme": "dark"
   },
   {
     "old": "dashboard-forecast-mobile.png",
-    "file": "forecast-mobile.jpg",
+    "file": "forecast-mobile-dark.jpg",
     "page": "forecast",
     "width": 390,
     "height": 844,
-    "alt": "Neutrale mobiele voorbeeldweergave van omzetforecasting met fictieve gegevens."
+    "alt": "Neutrale mobiele voorbeeldweergave van omzetforecasting met fictieve gegevens.",
+    "theme": "dark"
   },
   {
     "old": "dashboard-voorraad-demo.jpg",
-    "file": "stock-desktop.jpg",
+    "file": "stock-desktop-dark.jpg",
     "page": "stock",
     "width": 1280,
     "height": 900,
-    "alt": "Neutrale voorbeeldweergave van voorraad en besteladvies met fictieve artikelen."
+    "alt": "Neutrale voorbeeldweergave van voorraad en besteladvies met fictieve artikelen.",
+    "theme": "dark"
   },
   {
     "old": "dashboard-voorraad-mobile.png",
-    "file": "stock-mobile.jpg",
+    "file": "stock-mobile-dark.jpg",
     "page": "stock",
     "width": 390,
     "height": 844,
-    "alt": "Neutrale mobiele voorbeeldweergave van voorraad en besteladvies met fictieve artikelen."
+    "alt": "Neutrale mobiele voorbeeldweergave van voorraad en besteladvies met fictieve artikelen.",
+    "theme": "dark"
   },
   {
     "old": "bol-ranking-demo.png",
-    "file": "ranking-desktop.jpg",
+    "file": "ranking-desktop-dark.jpg",
     "page": "ranking",
     "width": 1280,
     "height": 900,
-    "alt": "Neutrale voorbeeldweergave van ranking en zoekwoordposities met fictieve metingen."
+    "alt": "Neutrale voorbeeldweergave van ranking en zoekwoordposities met fictieve metingen.",
+    "theme": "dark"
   },
   {
     "old": "bol-ranking-mobile.png",
-    "file": "ranking-mobile.jpg",
+    "file": "ranking-mobile-dark.jpg",
     "page": "ranking-detail",
     "width": 390,
     "height": 844,
-    "alt": "Neutrale mobiele voorbeeldweergave van zoekwoorddetails met fictieve metingen."
+    "alt": "Neutrale mobiele voorbeeldweergave van zoekwoorddetails met fictieve metingen.",
+    "theme": "dark"
   },
   {
     "old": "bol-ranking-mobile-overview.png",
-    "file": "ranking-overview-mobile.jpg",
+    "file": "ranking-overview-mobile-dark.jpg",
     "page": "ranking",
     "width": 390,
     "height": 844,
-    "alt": "Neutrale mobiele voorbeeldweergave van ranking per artikel met fictieve gegevens."
+    "alt": "Neutrale mobiele voorbeeldweergave van ranking per artikel met fictieve gegevens.",
+    "theme": "dark"
   },
   {
     "old": "bol-marketing-agent-demo.png",
-    "file": "marketing-desktop.jpg",
+    "file": "marketing-desktop-dark.jpg",
     "page": "marketing",
     "width": 1280,
     "height": 900,
-    "alt": "Neutrale voorbeeldweergave van marketingvoorstellen en campagnebeoordeling met fictieve gegevens."
+    "alt": "Neutrale voorbeeldweergave van marketingvoorstellen en campagnebeoordeling met fictieve gegevens.",
+    "theme": "dark"
   },
   {
     "old": "bol-marketing-mobile.png",
-    "file": "marketing-mobile.jpg",
+    "file": "marketing-mobile-dark.jpg",
     "page": "marketing",
     "width": 390,
     "height": 844,
-    "alt": "Neutrale mobiele voorbeeldweergave van marketingvoorstellen met fictieve gegevens."
+    "alt": "Neutrale mobiele voorbeeldweergave van marketingvoorstellen met fictieve gegevens.",
+    "theme": "dark"
   },
   {
     "old": "bol-marketing-mobile-overview.png",
-    "file": "marketing-overview-mobile.jpg",
+    "file": "marketing-overview-mobile-dark.jpg",
     "page": "marketing-overview",
     "width": 390,
     "height": 844,
-    "alt": "Neutrale mobiele voorbeeldweergave van campagneprestaties met fictieve gegevens."
+    "alt": "Neutrale mobiele voorbeeldweergave van campagneprestaties met fictieve gegevens.",
+    "theme": "dark"
   },
   {
     "old": "project-top-groep-demo.jpg",
-    "file": "timesheets-desktop.jpg",
+    "file": "timesheets-desktop-dark.jpg",
     "page": "timesheets",
     "width": 1280,
     "height": 900,
-    "alt": "Neutrale voorbeeldweergave van uren en periodecontrole, met fictieve medewerkers en aantallen."
+    "alt": "Neutrale voorbeeldweergave van uren en periodecontrole, met fictieve medewerkers en aantallen.",
+    "theme": "dark"
   },
   {
     "old": "project-de-valk-demo.jpg",
-    "file": "document-review-desktop.jpg",
+    "file": "document-review-desktop-dark.jpg",
     "page": "documents",
     "width": 1280,
     "height": 900,
-    "alt": "Neutrale voorbeeldweergave van begrotingscontrole met fictieve regels en een controleverschil van 240 euro."
+    "alt": "Neutrale voorbeeldweergave van begrotingscontrole met fictieve regels en een controleverschil van 240 euro.",
+    "theme": "dark"
   },
   {
     "old": "project-olympus-demo.jpg",
-    "file": "document-intake-desktop.jpg",
+    "file": "document-intake-desktop-dark.jpg",
     "page": "intake",
     "width": 1280,
     "height": 900,
-    "alt": "Neutrale voorbeeldweergave van documentintake en dossieropvolging met fictieve personen en opdrachten."
+    "alt": "Neutrale voorbeeldweergave van documentintake en dossieropvolging met fictieve personen en opdrachten.",
+    "theme": "dark"
   },
   {
-    "file": "listing-mobile.jpg",
+    "file": "listing-mobile-dark.jpg",
     "page": "listing",
     "width": 390,
     "height": 844,
-    "alt": "Neutrale mobiele voorbeeldweergave van een listingcontrole met fictieve score en tekstacties."
+    "alt": "Neutrale mobiele voorbeeldweergave van een listingcontrole met fictieve score en tekstacties.",
+    "theme": "dark"
   },
   {
-    "file": "listing-editor-mobile.jpg",
+    "file": "listing-editor-mobile-dark.jpg",
     "page": "listing-editor",
     "width": 390,
     "height": 844,
-    "alt": "Neutrale mobiele voorbeeldweergave van een fictief producttekstvoorstel ter beoordeling."
+    "alt": "Neutrale mobiele voorbeeldweergave van een fictief producttekstvoorstel ter beoordeling.",
+    "theme": "dark"
   },
   {
-    "file": "listing-desktop.jpg",
+    "file": "listing-desktop-dark.jpg",
     "page": "listing",
     "width": 1280,
     "height": 900,
-    "alt": "Neutrale voorbeeldweergave van listingoptimalisatie met fictieve controlepunten en een tekstbrief."
+    "alt": "Neutrale voorbeeldweergave van listingoptimalisatie met fictieve controlepunten en een tekstbrief.",
+    "theme": "dark"
   },
   {
-    "file": "document-review-mobile.png",
+    "file": "document-review-mobile-dark.png",
     "page": "documents-phone",
     "width": 390,
     "height": 844,
-    "alt": "Neutraal mobiel voorbeeld van documentcontrole met fictieve bedragen."
+    "alt": "Neutraal mobiel voorbeeld van documentcontrole met fictieve bedragen.",
+    "theme": "dark"
   },
   {
-    "file": "document-review-detail-mobile.png",
+    "file": "document-review-detail-mobile-dark.png",
     "page": "documents-detail",
     "width": 390,
     "height": 844,
-    "alt": "Neutraal mobiel voorbeeld van de beoordeling van een fictieve begrotingsregel."
+    "alt": "Neutraal mobiel voorbeeld van de beoordeling van een fictieve begrotingsregel.",
+    "theme": "dark"
   },
   {
-    "file": "timesheets-mobile.png",
+    "file": "timesheets-mobile-dark.png",
     "page": "timesheets-phone",
     "width": 390,
     "height": 844,
-    "alt": "Neutraal mobiel voorbeeld van weekstaten met fictieve medewerkers en uren."
+    "alt": "Neutraal mobiel voorbeeld van weekstaten met fictieve medewerkers en uren.",
+    "theme": "dark"
   },
   {
-    "file": "timesheets-detail-mobile.png",
+    "file": "timesheets-detail-mobile-dark.png",
     "page": "timesheets-detail",
     "width": 390,
     "height": 844,
-    "alt": "Neutraal mobiel voorbeeld van een weekstaatcontrole met fictieve uren."
+    "alt": "Neutraal mobiel voorbeeld van een weekstaatcontrole met fictieve uren.",
+    "theme": "dark"
   },
   {
-    "file": "document-intake-mobile.png",
+    "file": "document-intake-mobile-dark.png",
     "page": "intake-phone",
     "width": 390,
     "height": 844,
-    "alt": "Neutraal mobiel voorbeeld van documentintake en taken met fictieve dossiers."
+    "alt": "Neutraal mobiel voorbeeld van documentintake en taken met fictieve dossiers.",
+    "theme": "dark"
   },
   {
-    "file": "document-intake-detail-mobile.png",
+    "file": "document-intake-detail-mobile-dark.png",
     "page": "intake-detail",
     "width": 390,
     "height": 844,
-    "alt": "Neutraal mobiel voorbeeld van dossiercontrole met fictieve gegevens."
+    "alt": "Neutraal mobiel voorbeeld van dossiercontrole met fictieve gegevens.",
+    "theme": "dark"
   },
   {
-    "file": "login-mobile.png",
+    "file": "login-mobile-dark.png",
     "page": "login",
     "width": 390,
     "height": 844,
-    "alt": "Neutraal mobiel voorbeeld van een leeg inlogvenster."
+    "alt": "Neutraal mobiel voorbeeld van een leeg inlogvenster.",
+    "theme": "dark"
   },
   {
-    "file": "login-verification-mobile.png",
+    "file": "login-verification-mobile-dark.png",
     "page": "login-verify",
     "width": 390,
     "height": 844,
-    "alt": "Neutraal mobiel voorbeeld van tweestapsverificatie zonder echte codes."
+    "alt": "Neutraal mobiel voorbeeld van tweestapsverificatie zonder echte codes.",
+    "theme": "dark"
   },
   {
-    "file": "login-desktop.png",
+    "file": "login-desktop-dark.png",
     "page": "login",
     "width": 1280,
     "height": 900,
-    "alt": "Neutraal desktopvoorbeeld van een leeg inlogvenster."
+    "alt": "Neutraal desktopvoorbeeld van een leeg inlogvenster.",
+    "theme": "dark"
   }
 ]

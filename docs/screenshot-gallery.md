@@ -32,3 +32,7 @@ JavaScript-syntax, HTML/SEO, gelijke URL-aliases, nieuwsrenderer en sitemap. Bro
 ## Voorbeelden bij dienstenteksten
 
 Negen pagina's tonen een concreet praktijkvoorbeeld met korte toelichting, dezelfde galerij en een projectlink: procesautomatisering, forecasting, voorraadanalyses, KPI-dashboard, data-analyse, e-commerceautomatisering, API-integraties, marketplace-synchronisatie en productdata. De teksten beschrijven de functionaliteit en welke vervolgstap die ondersteunt. Achterliggende koppelingen worden niet als zichtbare schermen voorgesteld; het productdata-voorbeeld benoemt expliciet de analysekant van productbeheer. Ook deze voorbeelden gebruiken de gedeelde neutrale beeldcollectie met fictieve gegevens.
+
+## Dark mode als standaard — 26 oktober 2026
+
+De 27 gedeelde appvoorbeelden en 40 modulebeelden zijn opnieuw gerenderd in dark mode, met nieuwe `-dark`-bestandsnamen. Manifest, galerijcollecties, nieuws en alle paginaverwijzingen gebruiken de nieuwe beelden. De galerijcontrole bewaakt de donkere standaard in het manifest. De nieuwe dashboardteaser is een afzonderlijke scrollbare link naar de volledige demo; de bestaande galerijen behouden hun twee telefoonpreviews en vergrootvenster. Zie [visual-assets.md](visual-assets.md) voor het captureproces en validatie.
