@@ -2,92 +2,106 @@
   const catalogue = {
   "omzet": {
     "label": "Omzetrapportage",
-    "setup": 750,
-    "monthly": 60,
+    "setup": 0,
+    "monthly": 0,
     "requires": [],
-    "monthlyDiscount": 10
+    "monthlyDiscount": 0,
+    "previousSetup": 750,
+    "included": true
   },
   "forecasting": {
     "label": "Forecasting",
-    "setup": 1250,
+    "setup": 200,
     "monthly": 100,
     "requires": [
       "omzet"
     ],
-    "monthlyDiscount": 20
+    "monthlyDiscount": 75,
+    "previousSetup": 1250
   },
   "voorraad": {
     "label": "Voorraad",
-    "setup": 750,
-    "monthly": 60,
+    "setup": 0,
+    "monthly": 0,
     "requires": [],
-    "monthlyDiscount": 10
+    "monthlyDiscount": 0,
+    "previousSetup": 750,
+    "included": true
   },
   "inkoop": {
     "label": "Inkoop en bestellen",
-    "setup": 1250,
+    "setup": 300,
     "monthly": 100,
     "requires": [
       "omzet",
       "voorraad"
     ],
-    "monthlyDiscount": 20
+    "monthlyDiscount": 65,
+    "previousSetup": 1250
   },
   "logistiek": {
     "label": "Magazijn en logistiek",
-    "setup": 1500,
+    "setup": 400,
     "monthly": 100,
     "requires": [
       "voorraad",
       "orders"
     ],
-    "monthlyDiscount": 20
+    "monthlyDiscount": 60,
+    "previousSetup": 1500
   },
   "producten": {
     "label": "Productbeheer en publicaties",
-    "setup": 1000,
+    "setup": 300,
     "monthly": 80,
     "requires": [],
-    "monthlyDiscount": 20
+    "monthlyDiscount": 35,
+    "previousSetup": 1000
   },
   "orders": {
     "label": "Orders en retouren",
-    "setup": 1000,
-    "monthly": 80,
+    "setup": 0,
+    "monthly": 0,
     "requires": [],
-    "monthlyDiscount": 20
+    "monthlyDiscount": 0,
+    "previousSetup": 1000,
+    "included": true
   },
   "marketing": {
     "label": "Marketing en ranking",
-    "setup": 1500,
+    "setup": 400,
     "monthly": 130,
     "requires": [
       "omzet",
       "producten"
     ],
-    "monthlyDiscount": 30
+    "monthlyDiscount": 75,
+    "previousSetup": 1500
   },
   "financieel": {
     "label": "Financieel overzicht",
-    "setup": 1000,
+    "setup": 250,
     "monthly": 80,
     "requires": [
       "omzet"
     ],
-    "monthlyDiscount": 20
+    "monthlyDiscount": 50,
+    "previousSetup": 1000
   },
   "controles": {
     "label": "Signalen en controles",
-    "setup": 500,
+    "setup": 150,
     "monthly": 40,
     "requires": [
       "omzet",
       "voorraad"
     ],
-    "monthlyDiscount": 10
+    "monthlyDiscount": 20,
+    "previousSetup": 500
   }
 };
-  const base = { label: 'Basisomgeving', setup: 1500, monthly: 79 };
+  const includedModules = ["omzet", "voorraad", "orders"];
+  const base = { label: 'Startpakket', setup: 995, previousSetup: 1500, monthly: 279, monthlyDiscount: 130 };
   const money = value => new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value);
   function resolve(ids) {
     const ordered = new Set();
@@ -96,25 +110,30 @@
       catalogue[id].requires.forEach(add);
       ordered.add(id);
     }
+    includedModules.forEach(add);
     [...new Set(ids)].forEach(add);
-    const modules = [...ordered];
-    const setupSubtotal = base.setup + modules.reduce((n, id) => n + catalogue[id].setup, 0);
-    const discountRate = modules.length >= 6 ? 30 : modules.length >= 4 ? 20 : modules.length >= 2 ? 10 : 0;
-    const discount = setupSubtotal * discountRate / 100;
-    const standardMonthly = base.monthly + modules.reduce((n, id) => n + catalogue[id].monthly, 0);
-    const monthlyDiscount = modules.reduce((n, id) => n + catalogue[id].monthlyDiscount, 0);
-    return { modules, setupSubtotal, discountRate, discount, setup: setupSubtotal - discount,
-      standardMonthly, monthlyDiscount, monthly: standardMonthly - monthlyDiscount, usage: false };
+    const modules = [...ordered], extraModules = modules.filter(id => !catalogue[id].included);
+    // Reference: the previously published calculator, including its setup bundle discount.
+    const previousGross = base.previousSetup + modules.reduce((n,id) => n + catalogue[id].previousSetup, 0);
+    const previousRate = modules.length >= 6 ? 30 : modules.length >= 4 ? 20 : 10;
+    const setupSubtotal = previousGross * (100 - previousRate) / 100;
+    const setup = base.setup + extraModules.reduce((n,id) => n + catalogue[id].setup, 0);
+    const discount = setupSubtotal - setup;
+    const standardMonthly = base.monthly + extraModules.reduce((n,id) => n + catalogue[id].monthly, 0);
+    const monthlyDiscount = base.monthlyDiscount + extraModules.reduce((n,id) => n + catalogue[id].monthlyDiscount, 0);
+    return { modules, extraModules, setupSubtotal, discountRate: discount / setupSubtotal * 100,
+      discount, setup, standardMonthly, monthlyDiscount, monthly: standardMonthly - monthlyDiscount, usage: false };
   }
+  const selectionLabels = selected => ['Startpakket: omzetrapportage, voorraad en orders/retouren', ...selected.extraModules.map(id => catalogue[id].label)];
   function contactDraft(selected) {
-    return 'Implementatievolgorde:\n' + [base.label, ...selected.modules.map(id => catalogue[id].label)].map((label, i) => `${i + 1}. ${label}`).join('\n')
-      + `\n\nInrichting vóór korting: ${money(selected.setupSubtotal)}\nBundelkorting (${selected.discountRate}%): − ${money(selected.discount)}\nEenmalige inrichting na korting: ${money(selected.setup)}\nStandaard per maand: ${money(selected.standardMonthly)}\nMaandkorting modules: − ${money(selected.monthlyDiscount)}\nPer maand na korting: ${money(selected.monthly)}${selected.usage ? ' + verbruik' : ''}\nPrijsindicatie exclusief btw; offerte volgt na afstemming.`;
+    return 'Jouw pakket:\n' + selectionLabels(selected).map((label,i) => `${i+1}. ${label}`).join('\n')
+      + `\n\nEerdere inrichtingsindicatie: ${money(selected.setupSubtotal)}\nPakketvoordeel inrichting: − ${money(selected.discount)}\nEenmalige inrichting: ${money(selected.setup)}\nStandaard per maand: ${money(selected.standardMonthly)}\nMaandkorting pakket: − ${money(selected.monthlyDiscount)}\nPer maand na korting: ${money(selected.monthly)}\nPrijsindicatie exclusief btw; offerte volgt na afstemming.`;
   }
   function calculatorURL(ids) {
-    const known = [...new Set(ids.filter(id => Object.hasOwn(catalogue, id)))];
+    const known = [...new Set(ids.filter(id => Object.hasOwn(catalogue, id) && !catalogue[id].included))];
     return '/webapp-samenstellen/' + (known.length ? '?' + new URLSearchParams({ modules: known.join(',') }) : '') + '#modules';
   }
-  if (typeof module !== 'undefined' && module.exports) module.exports = { catalogue, base, resolve, contactDraft, calculatorURL };
+  if (typeof module !== 'undefined' && module.exports) module.exports = { catalogue, base, includedModules, resolve, contactDraft, calculatorURL };
   if (typeof document === 'undefined') return;
   const legacyModules = new URLSearchParams(window.location.search);
   if (/^\/modulaire-webapp(?:\/|\.html)?$/.test(window.location.pathname) && legacyModules.has('modules')) {
@@ -129,26 +148,26 @@
     const contacts = [...root.querySelectorAll('[data-module-contact]')];
     const reset = root.querySelector('[data-module-reset]');
     const restored = new URLSearchParams(window.location.search).get('modules');
-    let requested = new Set(restored !== null ? restored.slice(0, 500).split(',').filter(id => Object.hasOwn(catalogue, id)) : choices.filter(input => input.checked).map(input => input.value));
+    let requested = new Set(restored !== null ? restored.slice(0, 500).split(',').filter(id => Object.hasOwn(catalogue, id) && !catalogue[id].included) : choices.filter(input => input.checked && !catalogue[input.value].included).map(input => input.value));
     const show = (selector, value) => root.querySelectorAll(selector).forEach(node => { node.textContent = value; });
     function update() {
       const selected = resolve(requested);
       choices.forEach(input => {
         const neededBy = selected.modules.filter(id => catalogue[id].requires.includes(input.value));
         input.checked = selected.modules.includes(input.value);
-        input.disabled = neededBy.length > 0;
+        input.disabled = Boolean(catalogue[input.value].included) || neededBy.length > 0;
         const note = root.querySelector(`[data-module-auto="${input.value}"]`);
-        note.hidden = neededBy.length === 0;
-        note.textContent = neededBy.length ? 'Nodig voor: ' + neededBy.map(id => catalogue[id].label).join(', ') + '. Verwijder die module eerst.' : '';
+        note.hidden = !catalogue[input.value].included && neededBy.length === 0;
+        note.textContent = catalogue[input.value].included ? 'Inbegrepen in het startpakket.' : neededBy.length ? 'Nodig voor: ' + neededBy.map(id => catalogue[id].label).join(', ') + '. Verwijder die module eerst.' : '';
       });
-      const items = [base.label, ...selected.modules.map(id => catalogue[id].label)];
+      const items = selectionLabels(selected);
       summary.replaceChildren(...items.map(label => {
         const item = document.createElement('li'); item.textContent = label; return item;
       }));
-      count.textContent = selected.modules.length ? `${selected.modules.length} ${selected.modules.length === 1 ? "module" : "modules"} naast de basisomgeving, inclusief benodigde voorgangers.` : 'De basisomgeving is inbegrepen. Kies je eerste module.';
-      show('[data-module-bar-count]', selected.modules.length ? `${selected.modules.length} ${selected.modules.length === 1 ? 'module' : 'modules'} + basis` : base.label);
+      count.textContent = selected.extraModules.length ? `Startpakket met ${selected.extraModules.length} extra ${selected.extraModules.length === 1 ? 'module' : 'modules'}, inclusief benodigde onderdelen.` : 'Omzetrapportage, voorraad en orders/retouren zijn inbegrepen in het startpakket.';
+      show('[data-module-bar-count]', selected.extraModules.length ? `Startpakket + ${selected.extraModules.length} uitbreidingen` : base.label);
       show('[data-module-subtotal]', money(selected.setupSubtotal));
-      show('[data-module-discount-label]', `Bundelkorting (${selected.discountRate}%)`);
+      show('[data-module-discount-label]', 'Pakketvoordeel inrichting');
       show('[data-module-discount]', selected.discount ? '− ' + money(selected.discount) : money(0));
       show('[data-module-setup]', money(selected.setup));
       show('[data-module-monthly-standard]', money(selected.standardMonthly));

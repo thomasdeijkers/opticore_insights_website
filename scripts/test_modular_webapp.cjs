@@ -1,113 +1,53 @@
-const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
-const { catalogue, base, resolve, contactDraft, calculatorURL } = require('../assets/js/modular-webapp.js');
-const html = fs.readFileSync(path.join(__dirname, '../webapp-samenstellen/index.html'), 'utf8');
-const overview = fs.readFileSync(path.join(__dirname, '../modulaire-webapp/index.html'), 'utf8');
-const money = n => '€ ' + n.toLocaleString('nl-NL');
-assert.deepEqual(resolve([]), { modules: [], setupSubtotal: 1500, discountRate: 0, discount: 0, setup: 1500, standardMonthly: 79, monthlyDiscount: 0, monthly: 79, usage: false });
-assert.deepEqual(resolve(['forecasting']).modules, ['omzet', 'forecasting']);
-assert.equal(resolve(['omzet', 'forecasting', 'voorraad']).setup, 3825);
-assert.equal(resolve(['omzet', 'forecasting', 'voorraad']).monthly, 259);
-const purchase = resolve(['inkoop']);
-assert.deepEqual(purchase.modules, ['omzet', 'voorraad', 'inkoop']);
-assert.equal(purchase.setup, 3825);
-assert.equal(purchase.monthly, 259);
-const combined = resolve(['forecasting', 'inkoop', 'logistiek', 'omzet', 'omzet']);
-assert.equal(combined.modules.filter(id => id === 'omzet').length, 1);
-assert.equal(combined.modules.filter(id => id === 'voorraad').length, 1);
-assert.equal(combined.setup, 5600);
-assert.equal(combined.monthly, 479);
-assert.deepEqual(resolve(['<script>', '__proto__', 'constructor', 'unknown']), resolve([]));
-assert.deepEqual(resolve(['documenten','planning']),resolve([]),'Removed construction/document modules are not offered');
-for (const id of Object.keys(catalogue)) {
-  const selected = resolve([id]);
-  for (const required of catalogue[id].requires) {
-    assert(selected.modules.indexOf(required) < selected.modules.indexOf(id), 'Predecessors precede ' + id);
-  }
-  const card = html.match(new RegExp('<label class="webapp-module"><input[^>]*value="'+id+'"[\\s\\S]*?</label>'))?.[0];
-  assert(card, 'Public card: ' + id);
-  assert(card.includes(money(catalogue[id].setup) + ' inrichting'), 'Visible setup price: ' + id);
-  assert(card.includes('<s>' + money(catalogue[id].monthly) + ' per maand</s>'), 'Visible standard monthly price: ' + id);
-  assert(card.includes('Nu ' + money(catalogue[id].monthly - catalogue[id].monthlyDiscount) + ' per maand'), 'Visible reduced monthly price: ' + id);
-  assert(card.includes(money(catalogue[id].monthlyDiscount) + ' korting per maand'), 'Visible monthly discount: ' + id);
-  for (const required of catalogue[id].requires) assert(card.includes(catalogue[required].label), 'Visible dependency: ' + id);
-}
-assert.equal(new Set(resolve(Object.keys(catalogue)).modules).size, 10);
-assert.equal((html.match(/class="webapp-module-card"/g)||[]).length,10);
-assert(!html.includes('<section class="section" id="gegevens-per-module"'),'No separate duplicate module explanation');
-for (const id of Object.keys(catalogue)) {
-  assert.equal(catalogue[id].monthly % 10, 0, 'Module fees are multiples of ten');
-  const combinedCard = [...html.matchAll(/<article class="webapp-module-card">[\s\S]*?<\/article>/g)].map(match=>match[0]).find(card=>card.includes('value="'+id+'"'));
-  assert(combinedCard?.includes('id="gegevens-'+id+'"'), 'Source explanation belongs to module '+id);
-  assert(combinedCard.includes('<summary>Meer info</summary>'));
-  assert.equal((combinedCard.match(/data-screen-device="mobile"/g)||[]).length,2);
-  assert.equal((combinedCard.match(/data-screen-device="desktop"/g)||[]).length,2);
-  for (const image of combinedCard.matchAll(/<img[^>]*src="(\/assets\/img\/module-examples\/[^"]+)"/g)) {
-    assert(fs.statSync(path.join(__dirname,'..',image[1])).size>1000,'Real screenshot asset '+image[1]);
-  }
-}
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+const {catalogue,base,includedModules,resolve,contactDraft,calculatorURL}=require('../assets/js/modular-webapp.js');
+const html=fs.readFileSync(path.join(__dirname,'../webapp-samenstellen/index.html'),'utf8');
+const overview=fs.readFileSync(path.join(__dirname,'../modulaire-webapp/index.html'),'utf8');
+const money=n=>'€ '+n.toLocaleString('nl-NL');
+assert.deepEqual(includedModules,['omzet','voorraad','orders']);
+const basic=resolve([]);assert.deepEqual(basic.modules,includedModules);assert.deepEqual(basic.extraModules,[]);
+assert.equal(basic.setup,995);assert.equal(basic.monthly,149);assert.equal(basic.setupSubtotal,3600);assert.equal(basic.standardMonthly,279);
+assert.deepEqual(resolve(['constructor','__proto__','<script>','documenten','planning']),basic,'Unknown IDs never add modules or fees');
+const fees={forecasting:[200,25],inkoop:[300,35],logistiek:[400,40],producten:[300,45],marketing:[400,55],financieel:[250,30],controles:[150,20]};
+for(const id of includedModules){assert(catalogue[id].included);assert.equal(catalogue[id].setup,0);assert.equal(catalogue[id].monthly,0);assert.equal(catalogue[id].monthlyDiscount,0);}
+for(const [id,[setup,monthly]] of Object.entries(fees)){assert.equal(catalogue[id].setup,setup);assert.equal(catalogue[id].monthly-catalogue[id].monthlyDiscount,monthly);}
+const growth=resolve(['inkoop','logistiek']);assert.equal(growth.setup,1695);assert.equal(growth.monthly,224);assert.equal(growth.setupSubtotal,5400);
+const marketing=resolve(['marketing']);assert.deepEqual(marketing.extraModules,['producten','marketing']);assert.equal(marketing.setup,1695);assert.equal(marketing.monthly,249);
+const complete=resolve(Object.keys(catalogue));assert.equal(complete.modules.length,10);assert.equal(complete.setup,2995);assert.equal(complete.monthly,399);assert.equal(complete.setupSubtotal,8400);assert.equal(complete.standardMonthly,909);assert.equal(complete.monthlyDiscount,510);
+const oldSetup={omzet:750,forecasting:1250,voorraad:750,inkoop:1250,logistiek:1500,producten:1000,orders:1000,marketing:1500,financieel:1000,controles:500};
 const ids=Object.keys(catalogue);
-for(let mask=0;mask<(1<<ids.length);mask++) {
-  const selection=resolve(ids.filter((_,i)=>mask&(1<<i)));
-  assert.equal(selection.monthly % 10,9,'Every selection total ends in nine');
-  assert.equal(selection.monthly,selection.standardMonthly-selection.monthlyDiscount);
-  assert(selection.monthlyDiscount>=selection.modules.length*10 && selection.monthlyDiscount<=selection.modules.length*30);
+for(let mask=0;mask<(1<<ids.length);mask++){
+ const chosen=ids.filter((_,i)=>mask&(1<<i)),total=resolve(chosen);
+ assert.equal(new Set(total.modules).size,total.modules.length);
+ assert.deepEqual(total.modules.slice(0,3),includedModules);
+ for(const id of total.modules)for(const required of catalogue[id].requires)assert(total.modules.indexOf(required)<total.modules.indexOf(id));
+ assert.equal(total.setup,995+total.extraModules.reduce((n,id)=>n+fees[id][0],0));
+ assert.equal(total.monthly,149+total.extraModules.reduce((n,id)=>n+fees[id][1],0));
+ assert.equal(total.monthly,total.standardMonthly-total.monthlyDiscount);
+ const previousRate=total.modules.length>=6?30:total.modules.length>=4?20:10;
+ assert.equal(total.setupSubtotal,(1500+total.modules.reduce((n,id)=>n+oldSetup[id],0))*(100-previousRate)/100,'Reference matches the previously published price for the same scope');
+ assert.equal(total.discount,total.setupSubtotal-total.setup);assert(total.discount>=0);
+ assert.deepEqual(resolve([...chosen,...chosen]),total,'No duplicate module fees');
 }
-assert.equal(resolve(['omzet']).discountRate,0);
-for(const [selected,rate] of [[['forecasting'],10],[['omzet','forecasting','voorraad'],10],[['forecasting','inkoop'],20],[['forecasting','inkoop','producten'],20],[['forecasting','inkoop','logistiek'],30]]) {
-  const total=resolve(selected);assert.equal(total.discountRate,rate);
-  assert.equal(total.discount,total.setupSubtotal*rate/100);
-  assert.equal(total.setup,total.setupSubtotal-total.discount);
+assert.equal((html.match(/class="webapp-module-card"/g)||[]).length,10);
+for(const id of ids){
+ const card=html.match(new RegExp('<label class="webapp-module"><input[^>]*value="'+id+'"[\\s\\S]*?</label>'))?.[0];assert(card,id);
+ if(catalogue[id].included){assert(card.includes('checked disabled'));assert(card.includes('Inbegrepen in het startpakket'));}
+ else{assert(card.includes(money(fees[id][0])+' inrichting'));assert(card.includes('<s>'+money(catalogue[id].monthly)+' per maand</s>'));assert(card.includes('Nu '+money(fees[id][1])+' per maand'));}
+ const combined=[...html.matchAll(/<article class="webapp-module-card">[\s\S]*?<\/article>/g)].map(x=>x[0]).find(c=>c.includes('value="'+id+'"'));
+ assert(combined.includes('id="gegevens-'+id+'"'));assert(combined.includes('<summary>Meer info</summary>'));
+ for(const device of ['mobile','desktop'])assert.equal((combined.match(new RegExp('data-screen-device="'+device+'"','g'))||[]).length,2);
+ for(const image of combined.matchAll(/<img[^>]*src="(\/assets\/img\/module-examples\/[^"]+)"/g))assert(fs.statSync(path.join(__dirname,'..',image[1])).size>1000);
 }
-assert(html.includes('data-module-subtotal'));assert(html.includes('data-module-discount'));
-assert(overview.includes('<iframe class="webapp-demo-frame"'));
-assert(overview.indexOf('id="demo"')>overview.indexOf('id="kosten"'));
-assert(fs.readFileSync(path.join(__dirname,'../contact/index.html'),'utf8').includes('<textarea id="webapp-modules"'),'Readable module draft field');
-assert(html.includes(money(base.setup) + ' inrichting'));
-assert(html.includes(money(base.monthly) + ' per maand'));
-for (const page of ['modulaire-webapp', 'webapp-samenstellen', 'prijzen', 'contact']) {
-  assert.equal(fs.readFileSync(path.join(__dirname, '..', page + '.html'), 'utf8'), fs.readFileSync(path.join(__dirname, '..', page, 'index.html'), 'utf8'), 'Canonical and HTML alias: ' + page);
-}
-console.log('Module pricing OK: public prices, prerequisites, order, deduplication, untrusted IDs and aliases.');
-
-// Price-change contract: preserve the original rates and discount each unique module once.
-const expectedFees={omzet:[60,10],forecasting:[100,20],voorraad:[60,10],inkoop:[100,20],logistiek:[100,20],producten:[80,20],orders:[80,20],marketing:[130,30],financieel:[80,20],controles:[40,10]};
-for(const [id,[standard,saving]] of Object.entries(expectedFees)) {
-  assert.equal(catalogue[id].monthly,standard,id+' standard price retained');
-  assert.equal(catalogue[id].monthlyDiscount,saving,id+' approved monthly reduction');
-}
-assert.equal(resolve(['omzet','orders']).standardMonthly,219);
-assert.equal(resolve(['omzet','orders']).monthlyDiscount,30);
-assert.equal(resolve(['omzet','orders']).monthly,189);
-assert.equal(resolve(['omzet','orders','omzet']).monthlyDiscount,30,'Duplicate selections never duplicate the discount');
-assert.equal(resolve(['inkoop']).monthlyDiscount,40,'Required predecessor modules get the same discount');
-assert.equal(resolve(ids).standardMonthly,909);
-assert.equal(resolve(ids).monthlyDiscount,180);
-assert.equal(resolve(ids).monthly,729);
-const draft=contactDraft(resolve(['omzet','orders'])).replace(/\u00a0/g,' ');
-for(const line of ['Standaard per maand: € 219','Maandkorting modules: − € 30','Per maand na korting: € 189','Bundelkorting (10%): − € 325','Eenmalige inrichting na korting: € 2.925']) assert(draft.includes(line),line);
-assert(contactDraft(resolve(ids)).length<=1000,'Full selection fits the editable contact field');
-assert(html.includes('data-module-monthly-standard')&&html.includes('data-module-monthly-discount'));
-console.log('Monthly discount OK: original rates retained, reduced fees, dependencies, all combinations and contact totals.');
-
-// The calculator has its own route; the overview stays useful without selection controls.
-assert(!overview.includes('data-webapp-picker'));
-assert(!overview.includes('type="checkbox"'));
-assert.equal((overview.match(/class="webapp-module-choose"/g)||[]).length,10);
-assert(html.indexOf('class="webapp-pricebar"')<html.indexOf('class="webapp-module-grid"'));
-assert(html.includes('data-price-details'));
-assert.equal(calculatorURL(['omzet','omzet','<script>','__proto__']),'/webapp-samenstellen/?modules=omzet#modules');
-assert.equal(calculatorURL([]),'/webapp-samenstellen/#modules');
-console.log('Dedicated calculator OK: separate overview, top price summary and safe selection routes.');
-
-// Advertised entry pricing includes both the mandatory base and an actual start module.
-const pricingPage=fs.readFileSync(path.join(__dirname,'../prijzen/index.html'),'utf8');
-const starter=resolve(['omzet']);
-const starterCard=pricingPage.match(/<article class="card pricing-card pricing-webapp-start">[\s\S]*?<\/article>/)?.[0];
-assert(starterCard);
-assert(starterCard.includes('Vanaf</span> '+money(starter.monthly)));
-assert(starterCard.includes('<strong>'+money(starter.setup)+'</strong>'));
-assert(starterCard.includes('/webapp-samenstellen/?modules=omzet'));
-assert(pricingPage.indexOf('pricing-webapp-start')<pricingPage.indexOf('id="html-websites"'));
-console.log('Pricing entry package OK: advertised amounts include the base and preselect the matching start module.');
+assert(html.includes('€ 995 inrichting'));assert(html.includes('€ 149 per maand'));
+assert(!overview.includes('data-webapp-picker'));assert(!overview.includes('type="checkbox"'));assert.equal((overview.match(/class="webapp-module-choose"/g)||[]).length,10);
+assert(overview.includes('webapp-demo-teaser-scroll'));assert(overview.includes('<iframe class="webapp-demo-frame"'));
+assert(html.indexOf('class="webapp-pricebar"')<html.indexOf('class="webapp-module-grid"'));assert(html.includes('data-price-details'));
+assert.equal(calculatorURL(['omzet','omzet','__proto__']),'/webapp-samenstellen/#modules');assert.equal(calculatorURL(['marketing','marketing','<script>']),'/webapp-samenstellen/?modules=marketing#modules');
+const contact=fs.readFileSync(path.join(__dirname,'../contact/index.html'),'utf8');assert(/<textarea id="webapp-modules"[^>]*\breadonly/.test(contact));
+const draft=contactDraft(complete).replace(/\u00a0/g,' ');assert(draft.includes('Eenmalige inrichting: € 2.995'));assert(draft.includes('Per maand na korting: € 399'));assert(draft.length<=1000);
+for(const page of ['modulaire-webapp','webapp-samenstellen','prijzen','contact'])assert.equal(fs.readFileSync(path.join(__dirname,'..',page+'.html'),'utf8'),fs.readFileSync(path.join(__dirname,'..',page,'index.html'),'utf8'),'Alias: '+page);
+const pricing=fs.readFileSync(path.join(__dirname,'../prijzen/index.html'),'utf8'),starter=pricing.slice(pricing.indexOf('<article class="card pricing-card pricing-webapp-start">'),pricing.indexOf('<details class="pricing-more"><summary>Meer info en voorbeeldpakketten'));
+assert(starter.includes('Vanaf</span> € 149'));assert(starter.includes('<strong>€ 995</strong>'));assert(starter.includes('href="/webapp-samenstellen/"'));
+assert(pricing.indexOf('pricing-webapp-start')<pricing.indexOf('id="html-websites"'));
+for(const vendor of ['MarktMentor','Channable','EffectConnect','Picqer','Logic4'])assert(pricing.includes(vendor));
+console.log('Market pricing OK: three included modules, seven expansion fees, all 1024 combinations, dependencies, exact earlier-price references, van/voor totals, read-only contact draft, aliases and advertised package examples.');

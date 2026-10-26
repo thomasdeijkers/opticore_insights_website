@@ -171,3 +171,8 @@ Listingoptimalisatie had al een eigen demoscherm; de modulekaarten linken er nu 
 ## Donker managementdashboard en scrollbare teaser — 26 oktober 2026
 
 De WebApp-intro toont een prominente dashboardteaser die verticaal scrollt en de volledige demo opent. Het managementdashboard volgt de tegelindeling en donkere stijl van de eigen app, met berekeningen op fictieve gegevens. Donker is de standaard; de moduswissel blijft beschikbaar. Alle 67 bestaande appvoorbeelden zijn opnieuw vastgelegd, plus twee volledige teaserbeelden. Zie [visual-assets.md](visual-assets.md) voor de bronnen, het lokale captureproces en de uitgevoerde browsercontroles.
+
+
+## Prijsherziening 26 oktober 2026
+
+De actuele startpakket- en uitbreidingstarieven, prijsreferenties en bronnen staan in [pricing-2026-10-26.md](pricing-2026-10-26.md). Deze vervangen de eerdere prijs- en bundelberekening hierboven.
