@@ -7,7 +7,7 @@ const base=new URL(process.env.DEMO_CAPTURE_BASE||'http://127.0.0.1:8768/');
 assert(['127.0.0.1','localhost'].includes(base.hostname));
 const pageURL=(canonical,lang)=>new URL(lang==='nl'?canonical:routes[canonical][lang],base).href;
 const languages=['nl','de','en','fr'],normalized=s=>s.replace(/\s+/g,' ').trim();
-async function choose(page,language){await page.locator('.language-picker>summary').click();await page.locator(`.language-picker [data-language="${language}"]`).click();}
+async function choose(page,language){if(!await page.locator('.language-picker>summary').isVisible())await page.locator('[data-menu-toggle]').click();await page.locator('.language-picker>summary').click();await page.locator(`.language-picker [data-language="${language}"]`).click();}
 (async()=>{
  const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})});
  try{
@@ -19,12 +19,20 @@ async function choose(page,language){await page.locator('.language-picker>summar
     const noOverflow=async()=>assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,lang+' '+width+' '+page.url());
     await page.goto(pageURL('/',lang),{waitUntil:'networkidle'});
     assert.equal(await page.locator('[data-site-language]').getAttribute('data-site-language'),lang);
-    assert((await page.locator('.language-picker>summary').boundingBox()).width<=64);
+    assert.equal(await page.locator('.language-picker>summary').isVisible(),false,'Language selector stays in the closed menu');
+    assert.equal(normalized(await page.locator('.brand-tagline').innerText()),'Insight at the core of every smart decision.');
+    assert.equal(normalized(await page.locator('.footer-tagline').innerText()),'Insight at the core of every smart decision.');
+    assert(await page.locator('.brand-tagline').isVisible());
     assert.equal(await page.locator('.language-picker>summary img').getAttribute('src'),`/assets/img/flags/${lang}.svg`);
     if(lang==='en')assert((await page.locator('.webapp-demo-teaser-footer small').innerText()).includes('fictional data.'));
     await noOverflow();console.log(lang+' '+width+': header checked');
     await page.locator('[data-menu-toggle]').click();
     assert.equal(await page.locator('[data-menu-toggle]').getAttribute('aria-expanded'),'true');
+    assert(await page.locator('[data-menu] .language-picker>summary').isVisible());
+    await page.locator('[data-menu] .language-picker>summary').click();
+    assert.equal(await page.locator('.language-picker [data-language]').count(),4);
+    assert((await page.locator('.language-picker>nav').boundingBox()).width<=(await page.locator('[data-menu]').boundingBox()).width);
+    await page.locator('[data-menu] .language-picker>summary').click();
     if(lang!=='nl')assert(!(await page.locator('[data-menu]').innerText()).includes('Diensten'));
     await page.keyboard.press('Escape');
     await page.goto(pageURL('/webapp-samenstellen/',lang),{waitUntil:'networkidle'});

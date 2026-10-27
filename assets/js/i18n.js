@@ -56,7 +56,7 @@
   window.SiteI18n={language,locale:{nl:'nl-NL',de:'de-DE',en:'en-GB',fr:'fr-FR'}[language],text,url};
 
   const attributes=['aria-label','aria-description','alt','title','placeholder','data-label'];
-  const skip='script,style,code,pre,textarea,input,[contenteditable=true],[data-i18n-ignore],.language-picker';
+  const skip='script,style,code,pre,textarea,input,[contenteditable=true],[data-i18n-ignore],.brand-tagline,.footer-tagline,.language-picker';
   const seen=new WeakMap();
   const seenAttributes=new WeakMap();
   function localize(root) {
@@ -68,7 +68,7 @@
       if(result!==current)root.nodeValue=result;
       return;
     }
-    if(root.nodeType!==Node.ELEMENT_NODE || root.matches('script,style,code,pre,[contenteditable=true],[data-i18n-ignore],.language-picker'))return;
+    if(root.nodeType!==Node.ELEMENT_NODE || root.matches('script,style,code,pre,[contenteditable=true],[data-i18n-ignore],.brand-tagline,.footer-tagline,.language-picker'))return;
     // An implicit option value is application state: preserve it before translating its label.
     if(root.tagName==='OPTION' && !root.hasAttribute('value'))root.setAttribute('value',root.textContent);
     for(const name of attributes)if(root.hasAttribute(name)){

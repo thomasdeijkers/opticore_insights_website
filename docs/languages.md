@@ -2,7 +2,7 @@
 
 De bestaande Nederlandse URL’s blijven de hoofdbron. `content/i18n/routes.json` legt voor iedere pagina de Duitse, Engelse en Franse URL vast. Elke editie krijgt een eigen canonical, `lang`, sociale metadata en vijf wederzijdse taalverwijzingen (`nl`, `de`, `en`, `fr`, `x-default`). Er is geen automatische taalomleiding.
 
-De taalkeuze staat als compacte vlagknop in de header en in de demo. Het uitklapmenu gebruikt lokale SVG-vlaggen en de eigen namen van de vier talen. De native disclosure werkt met toetsenbord en zonder JavaScript; Escape en buiten het menu klikken sluiten het menu. Bij wisselen blijven queryparameters en het fragment behouden, waaronder modules, zoekopdracht en demo-scherm. Taalwisselen vraagt geen demo-inlog; navigeren binnen de demo behoudt de bestaande inlogcontrole.
+De taalkeuze staat binnen het uitklapmenu van de website; in de demo blijft de bestaande vlagknop beschikbaar. De slogan bij het logo en in de footer blijft op iedere taalversie uitsluitend Engels: “Insight at the core of every smart decision.” Ook op mobiel staat de slogan naast het logo. Het uitklapmenu gebruikt lokale SVG-vlaggen en de eigen namen van de vier talen. De native disclosure werkt met toetsenbord en zonder JavaScript; Escape en buiten het menu klikken sluiten het menu. Bij wisselen blijven queryparameters en het fragment behouden, waaronder modules, zoekopdracht en demo-scherm. Taalwisselen vraagt geen demo-inlog; navigeren binnen de demo behoudt de bestaande inlogcontrole.
 
 ## Vertalingen onderhouden
 

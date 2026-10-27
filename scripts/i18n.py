@@ -21,7 +21,7 @@ VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'met
 DISPLAY_ATTRS = {'alt', 'title', 'placeholder', 'aria-label', 'aria-description', 'data-mail-label', 'data-screen-title', 'data-label'}
 META_TEXT = {'description', 'og:title', 'og:description', 'twitter:title', 'twitter:description'}
 SCHEMA_TEXT = {'name', 'description', 'headline', 'text', 'caption', 'articleSection', 'keywords'}
-VERSION = '20261027-flags-localised-screens-2'
+VERSION = '20261027-menu-language-slogan-3'
 
 
 def clean(value):
@@ -57,6 +57,8 @@ def catalogue(language):
     dictionary = json.loads((CONTENT/f'{language}.json').read_text(encoding='utf-8'))
     terminology = json.loads((CONTENT/'terminology.json').read_text(encoding='utf-8'))
     dictionary.update({source: values[language] for source, values in terminology.items()})
+    # The brand promise is always English, including on translated editions.
+    dictionary.update({line: line for line in ('Insight at the core of', 'every smart decision.')})
     return dictionary
 
 
@@ -325,7 +327,7 @@ def integration(source, canonical, language, mapping):
     flag = lambda lang: f'<img src="/assets/img/flags/{lang}.svg" alt="" width="27" height="18">'
     selector = f'<!-- i18n:selector --><details class="language-picker" data-site-language="{language}"><summary aria-label="{labels[language]}: {LANGUAGES[language]}" title="{labels[language]}">{flag(language)}<span class="language-sr">{LANGUAGES[language]}</span><span class="language-chevron" aria-hidden="true"></span></summary><nav aria-label="{labels[language]}">' + ''.join(f'<a href="{canonical if lang == "nl" else mapping[canonical][lang]}" data-language="{lang}" lang="{lang}" hreflang="{lang}"' + (' aria-current="page"' if lang == language else '') + f'>{flag(lang)}<span>{label}</span></a>' for lang, label in LANGUAGES.items()) + '</nav></details><!-- /i18n -->'
     if 'class="nav-wrap' in source or 'class="container nav-wrap' in source:
-        source = re.sub(r'(<button\b[^>]*data-menu-toggle)', lambda m: selector + m[1], source, count=1)
+        source = re.sub(r'(<nav\b(?=[^>]*\bdata-menu(?:[\s=>]))[^>]*>)', lambda m: m[1] + selector, source, count=1)
     elif 'class="demo-topbar-actions"' in source:
         source = source.replace('<div class="demo-topbar-actions">', '<div class="demo-topbar-actions">' + selector, 1)
     else:

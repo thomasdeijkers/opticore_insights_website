@@ -16,6 +16,9 @@ class Page(HTMLParser):
         self.canonical = []
         self.alternates = {}
         self.selectors = 0
+        self.menu_selectors = 0
+        self.nav_depth = 0
+        self.menu_depth = None
         self.in_head = False
         self.h1 = 0
         self.fields = []
@@ -26,7 +29,12 @@ class Page(HTMLParser):
         if tag == 'head': self.in_head = True
         if tag == 'html': self.lang = attrs['lang']
         if tag == 'h1': self.h1 += 1
-        if tag == 'details' and 'data-site-language' in attrs: self.selectors += 1
+        if tag == 'nav':
+            self.nav_depth += 1
+            if 'data-menu' in attrs: self.menu_depth = self.nav_depth
+        if tag == 'details' and 'data-site-language' in attrs:
+            self.selectors += 1
+            if self.menu_depth is not None: self.menu_selectors += 1
         if tag == 'link' and attrs.get('rel') == 'canonical': self.canonical.append(attrs['href'])
         if tag == 'link' and attrs.get('hreflang'):
             assert self.in_head, 'hreflang belongs in the HTML head'
@@ -39,6 +47,9 @@ class Page(HTMLParser):
 
     def handle_endtag(self, tag):
         if tag == 'head': self.in_head = False
+        if tag == 'nav':
+            if self.menu_depth == self.nav_depth: self.menu_depth = None
+            self.nav_depth -= 1
 
 
 mapping = routes()
@@ -49,7 +60,12 @@ for canonical, (source_path, _) in sources().items():
     for lang, route in editions.items():
         parser = Page()
         path = ROOT/route.lstrip('/')/'index.html'
-        parser.feed(path.read_text(encoding='utf-8'))
+        html = path.read_text(encoding='utf-8')
+        parser.feed(html)
+        if 'data-menu-toggle' in html:
+            assert parser.menu_selectors == 1, (route, 'language selector belongs inside the website menu')
+        for slogan in re.findall(r'class="(?:brand-tagline|footer-tagline)"[^>]*>(.*?)</(?:span|p)>',html,re.S):
+            assert re.sub(r'<[^>]+>', ' ', slogan).strip() == 'Insight at the core of every smart decision.', (route, 'brand slogan stays English')
         assert parser.lang == lang and parser.canonical == [BASE+route], (route, 'canonical/lang')
         assert parser.alternates == {**{code:BASE+target for code,target in editions.items()}, 'x-default':BASE+canonical}, route
         assert parser.selectors == 1, (route, 'language selector missing/duplicated')
