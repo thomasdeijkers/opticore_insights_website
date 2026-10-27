@@ -63,7 +63,7 @@ with tempfile.TemporaryDirectory(prefix='opticore-demo-access-') as folder:
         assert request(login)[0] == 403, 'The old CSRF token must be invalid after login'
         assert request(method='PUT')[0] == 405
         def manage(payload, key=management_key):
-            req = urllib.request.Request(origin + '/api/demo-management.php', data=json.dumps(payload).encode(), headers={'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key})
+            req = urllib.request.Request(origin + '/api/demo-management.php', data=json.dumps(payload).encode(), headers={'Content-Type': 'application/json', 'X-OptiCore-Demo-Key': key})
             try: response = client.open(req, timeout=5)
             except urllib.error.HTTPError as error: response = error
             with response: return response.status, json.loads(response.read())

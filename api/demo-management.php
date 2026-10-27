@@ -12,7 +12,7 @@ function management_reply(int $status, array $body): never {
 try { $seed = demo_seed(); } catch (Throwable $error) { management_reply(503, ['ok' => false]); }
 $key = $seed['management_key'] ?? '';
 $authorization = $_SERVER['HTTP_AUTHORIZATION'] ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ?? '';
-if (!is_string($key) || strlen($key) < 40 || !hash_equals('Bearer ' . $key, $authorization)) management_reply(403, ['ok' => false]);
+if (!is_string($key) || strlen($key) < 40 || (!hash_equals('Bearer ' . $key, $authorization) && !hash_equals($key, $_SERVER['HTTP_X_OPTICORE_DEMO_KEY'] ?? ''))) management_reply(403, ['ok' => false]);
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') management_reply(405, ['ok' => false]);
 if ((int) ($_SERVER['CONTENT_LENGTH'] ?? 0) > 4096) management_reply(400, ['ok' => false]);
 $input = json_decode(file_get_contents('php://input', false, null, 0, 4097), true);
