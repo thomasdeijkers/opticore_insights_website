@@ -19,3 +19,6 @@ backups/
 /assets/i18n/
 /content/i18n/source.json
 /assets/img/localized/
+
+# Actual Olympus capture output is restored from a pinned, checksummed media release.
+/assets/img/examples/client-olympus-*-dark.jpg

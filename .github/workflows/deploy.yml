@@ -20,6 +20,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Restore reviewed Olympus frontend captures
+        run: |
+          python3 scripts/test_olympus_media.py
+          python3 scripts/olympus_media.py
+
       - name: Render and validate news
         run: |
           python3 scripts/news.py --write
@@ -80,7 +85,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: assets/img/localized
-          key: localized-dark-v1-${{ runner.os }}-${{ hashFiles('scripts/capture_localized_screenshots.cjs', 'scripts/localized_screenshots.py', 'scripts/neutral_visuals.py', 'scripts/neutral_visuals.css', 'scripts/neutral_visuals_manifest.json', 'scripts/i18n.py', 'content/module-screenshots.json', 'demo/modulaire-webapp/index.html', 'content/i18n/*.json', 'assets/js/*.js', 'assets/css/module-demo.css', 'assets/css/demo-full-workspace.css', 'assets/css/demo-product-photos.css', 'assets/css/i18n.css', 'assets/img/flags/*.svg', 'package-lock.json') }}
+          key: localized-dark-v1-${{ runner.os }}-${{ hashFiles('content/olympus-captures.json', 'scripts/capture_localized_screenshots.cjs', 'scripts/localized_screenshots.py', 'scripts/neutral_visuals.py', 'scripts/neutral_visuals.css', 'scripts/neutral_visuals_manifest.json', 'scripts/i18n.py', 'content/module-screenshots.json', 'demo/modulaire-webapp/index.html', 'content/i18n/*.json', 'assets/js/*.js', 'assets/css/module-demo.css', 'assets/css/demo-full-workspace.css', 'assets/css/demo-product-photos.css', 'assets/css/i18n.css', 'assets/img/flags/*.svg', 'package-lock.json') }}
 
       - name: Build and validate all language editions
         run: |

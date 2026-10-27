@@ -20,12 +20,12 @@ def plan():
     referenced = set()
     for _,source in sources().values():
         referenced.update(re.findall(r'/assets/img/(?:demo|examples|module-examples)/[^\s"\x27<>?]+\.(?:jpg|png)',source))
-    def add(file, page, *, tab=None, fixture=False, modal=None, focus=None, click=None, expand=None, fullPage=False):
+    def add(file, page, *, tab=None, fixture=False, modal=None, focus=None, click=None, expand=None, fullPage=False, external=False):
         device = 'mobile' if '-mobile-' in file else 'tablet' if '-tablet-' in file else 'desktop'
         width,height,scale = DEVICES[device]
         if fullPage and device=='desktop': width,height = 1440,1000
         result.append({'file':file,'page':page,'device':device,'width':width,'height':height,'scale':scale,
-                       **{k:v for k,v in dict(tab=tab,fixture=fixture,modal=modal,focus=focus,click=click,expand=expand,fullPage=fullPage).items() if v}})
+                       **{k:v for k,v in dict(tab=tab,fixture=fixture,modal=modal,focus=focus,click=click,expand=expand,fullPage=fullPage,external=external).items() if v}})
     for module,views in modules.items():
         for view in views:
             for device in DEVICES:
@@ -38,7 +38,9 @@ def plan():
         for name in files:
             if '/assets/img/examples/'+item['file'] not in referenced: continue
             category=item['file'].removeprefix('client-').split('-')[0]
-            if category in app_views:
+            if item.get('source') == 'olympus':
+                add('examples/'+name,item['page'],external=True)
+            elif category in app_views:
                 page,tab=app_views[category]
                 if name=='client-marketing-overview-mobile-dark.jpg': page,tab='ads-engine','campaigns'
                 add('examples/'+name,page,tab=tab,

@@ -1,4 +1,4 @@
-"""One source of neutral screenshot collections for static pages and news."""
+"""One source of application screenshot collections for static pages and news."""
 from pathlib import Path
 from html import escape
 import json
@@ -7,6 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = json.loads((ROOT / 'scripts/neutral_visuals_manifest.json').read_text(encoding='utf-8'))
 IMAGES = {item['file']: item for item in MANIFEST}
 GROUPS = {
+    'olympus': ['client-olympus-dashboard-mobile-dark.jpg', 'client-olympus-planning-mobile-dark.jpg', 'client-olympus-dashboard-desktop-dark.jpg', 'client-olympus-planning-desktop-dark.jpg', 'client-olympus-opdrachten-mobile-dark.jpg', 'client-olympus-opdrachten-desktop-dark.jpg', 'client-olympus-menu-mobile-dark.jpg'],
     'management': ['client-management-mobile-dark.jpg', 'client-stock-mobile-dark.jpg', 'client-management-desktop-dark.jpg', 'client-stock-desktop-dark.jpg', 'client-forecast-mobile-dark.jpg', 'client-forecast-desktop-dark.jpg'],
     'timesheets': ['client-timesheets-mobile-dark.png', 'client-timesheets-detail-mobile-dark.png', 'client-timesheets-desktop-dark.jpg'],
     'document-review': ['client-document-review-mobile-dark.png', 'client-document-review-detail-mobile-dark.png', 'client-document-review-desktop-dark.jpg'],
@@ -46,4 +47,6 @@ def gallery_html(names, label):
 
 def gallery_for_image(src, label='Voorbeeldschermen met fictieve gegevens'):
     group = collection(src)
+    if group and group[0] == 'olympus':
+        label = 'Schermen van de Olympus WebApp met fictieve gegevens'
     return gallery_html(group[1], label) if group else None

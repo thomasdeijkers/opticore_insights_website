@@ -164,11 +164,11 @@
       "published_at": "2026-10-26T10:13:20+01:00",
       "modified_at": "2026-10-26T21:19:04+01:00",
       "image": {
-        "src": "/assets/img/examples/client-document-review-desktop-dark.jpg",
+        "src": "/assets/img/examples/client-olympus-dashboard-desktop-dark.jpg",
         "width": 1280,
         "height": 900,
-        "alt": "Neutrale voorbeeldweergave van documentcontrole met fictieve gegevens.",
-        "caption": "Neutrale voorbeeldweergave met fictieve gegevens."
+        "alt": "Het dashboard van de Olympus WebApp met fictieve taken en dossiers.",
+        "caption": "De Olympus WebApp in darkmode, met fictieve gegevens."
       },
       "sections": [
         {
@@ -293,11 +293,11 @@
       "published_at": "2026-10-20T01:40:00+02:00",
       "modified_at": "2026-10-26T21:19:04+01:00",
       "image": {
-        "src": "/assets/img/examples/client-document-intake-desktop-dark.jpg",
+        "src": "/assets/img/examples/client-olympus-dashboard-desktop-dark.jpg",
         "width": 1280,
         "height": 900,
-        "alt": "Neutrale voorbeeldweergave van documentintake en dossieropvolging met fictieve personen en opdrachten.",
-        "caption": "Neutrale voorbeeldweergave van documentintake en dossieropvolging met fictieve personen en opdrachten."
+        "alt": "Het dashboard van de Olympus WebApp met fictieve taken en dossiers.",
+        "caption": "De Olympus WebApp in darkmode, met fictieve gegevens."
       },
       "sections": [
         {

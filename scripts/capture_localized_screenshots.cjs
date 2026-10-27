@@ -30,7 +30,7 @@ async function serve(root){
   const plan=JSON.parse(fs.readFileSync(planPath,'utf8'));
   app=await serve(ROOT);fixtures=await serve(fixturePath);
   browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})});
-  let tasks=['de','en','fr'].filter(l=>!arg('language')||l===arg('language')).flatMap(language=>plan.filter(item=>(!arg('device')||item.device===arg('device'))&&(!arg('file')||new RegExp(arg('file')).test(item.file))).map(item=>({...item,language})));
+  let tasks=['de','en','fr'].filter(l=>!arg('language')||l===arg('language')).flatMap(language=>plan.filter(item=>!item.external&&(!arg('device')||item.device===arg('device'))&&(!arg('file')||new RegExp(arg('file')).test(item.file))).map(item=>({...item,language})));
   if(arg('limit'))tasks=tasks.slice(0,Number(arg('limit')));
   assert(tasks.length,'No captures selected');fs.mkdirSync(OUTPUT,{recursive:true});
   const previous=path.join(OUTPUT,'manifest.json'),images=fs.existsSync(previous)?JSON.parse(fs.readFileSync(previous,'utf8')).images:{};

@@ -1,0 +1,1202 @@
+{
+  "8 regels · Week 43, 2026": {
+    "de": "8 Zeilen · Woche 43, 2026",
+    "en": "8 lines · Week 43, 2026",
+    "fr": "8 lignes · Semaine 43, 2026"
+  },
+  "AVB tot": {
+    "de": "Haftpflicht bis",
+    "en": "Liability cover until",
+    "fr": "RC pro jusqu’au"
+  },
+  "Aannemers overeenkomst": {
+    "de": "Auftragnehmervertrag",
+    "en": "Contractor agreement",
+    "fr": "Contrat de prestation"
+  },
+  "Aannemers overeenkomst breder of smaller maken": {
+    "de": "Spaltenbreite ändern: Auftragnehmervertrag",
+    "en": "Resize column: Contractor agreement",
+    "fr": "Redimensionner la colonne : Contrat de prestation"
+  },
+  "Aannemers overeenkomst: aanwezig": {
+    "de": "Auftragnehmervertrag: vorhanden",
+    "en": "Contractor agreement: present",
+    "fr": "Contrat de prestation : présent"
+  },
+  "Aannemers overeenkomst: ontbreekt": {
+    "de": "Auftragnehmervertrag: fehlt",
+    "en": "Contractor agreement: missing",
+    "fr": "Contrat de prestation : manquant"
+  },
+  "Achternaam": {
+    "de": "Nachname",
+    "en": "Surname",
+    "fr": "Nom"
+  },
+  "Achternaam filteren": {
+    "de": "Nachnamen filtern",
+    "en": "Filter last name",
+    "fr": "Filtrer le nom de famille"
+  },
+  "Actiepunt": {
+    "de": "Aufgabe",
+    "en": "Action item",
+    "fr": "Point à traiter"
+  },
+  "Acties": {
+    "de": "Aktionen",
+    "en": "Actions",
+    "fr": "Actions"
+  },
+  "Afbakening vervalt na": {
+    "de": "Abgrenzung gültig bis",
+    "en": "Scope expires after",
+    "fr": "Délimitation valable jusqu’au"
+  },
+  "Alex": {
+    "de": "Alex",
+    "en": "Alex",
+    "fr": "Alex"
+  },
+  "Alex Demo": {
+    "de": "Alex Demo",
+    "en": "Alex Demo",
+    "fr": "Alex Demo"
+  },
+  "Alex Demo · Demo Bouwgroep Noord · Week 43, 2026": {
+    "de": "Alex Demo · Demo Bouwgroep Noord · Woche 43, 2026",
+    "en": "Alex Demo · Demo Bouwgroep Noord · Week 43, 2026",
+    "fr": "Alex Demo · Demo Bouwgroep Noord · Semaine 43, 2026"
+  },
+  "Alle inzet en weekstaten bij elkaar.": {
+    "de": "Alle Einsätze und Stundenzettel im Überblick.",
+    "en": "All scheduled work and timesheets in one place.",
+    "fr": "Toutes les interventions et les relevés d’heures au même endroit."
+  },
+  "Alle kleurstatussen": {
+    "de": "Alle Farbstatus",
+    "en": "All colour statuses",
+    "fr": "Tous les statuts de couleur"
+  },
+  "Alle planning": {
+    "de": "Gesamte Planung",
+    "en": "All planning",
+    "fr": "Tout le planning"
+  },
+  "Alle statussen": {
+    "de": "Alle Status",
+    "en": "All statuses",
+    "fr": "Tous les statuts"
+  },
+  "Alle weken": {
+    "de": "Alle Wochen",
+    "en": "All weeks",
+    "fr": "Toutes les semaines"
+  },
+  "Alles wat nog verwerkt, gekoppeld of gecontroleerd moet worden.": {
+    "de": "Alles, was noch verarbeitet, zugeordnet oder geprüft werden muss.",
+    "en": "Everything still to process, link or review.",
+    "fr": "Tout ce qui reste à traiter, à rattacher ou à vérifier."
+  },
+  "Bedrijfsnaam": {
+    "de": "Firmenname",
+    "en": "Company name",
+    "fr": "Nom de l'entreprise"
+  },
+  "Bedrijfsnaam filteren": {
+    "de": "Firmennamen filtern",
+    "en": "Filter company name",
+    "fr": "Filtrer le nom de l'entreprise"
+  },
+  "Beheerder": {
+    "de": "Administrator",
+    "en": "Administrator",
+    "fr": "Administrateur"
+  },
+  "Bekijk de open planning per week.": {
+    "de": "Offene Planungspositionen je Woche anzeigen.",
+    "en": "View outstanding planning items by week.",
+    "fr": "Consultez les éléments du planning restant à traiter par semaine."
+  },
+  "Betaling opdrachtgever": {
+    "de": "Kundenzahlung",
+    "en": "Client payment",
+    "fr": "Paiement client"
+  },
+  "Beveiligde omgeving": {
+    "de": "Sichere Umgebung",
+    "en": "Secure environment",
+    "fr": "Environnement sécurisé"
+  },
+  "Bijbehorende opdracht openen": {
+    "de": "Zugehörigen Auftrag öffnen",
+    "en": "Open linked assignment",
+    "fr": "Ouvrir la mission associée"
+  },
+  "Bijgewerkt vanuit documenten, opdrachten en planning": {
+    "de": "Aus Dokumenten, Aufträgen und Planung aktualisiert",
+    "en": "Updated from documents, assignments and planning",
+    "fr": "Mis à jour depuis les documents, les missions et le planning"
+  },
+  "Bijzonderheden": {
+    "de": "Einzelheiten",
+    "en": "Details",
+    "fr": "Détails"
+  },
+  "Bon": {
+    "de": "Arbeitsnachweis",
+    "en": "Work ticket",
+    "fr": "Bon de travail"
+  },
+  "Bon: geen stukken gekoppeld voor deze week": {
+    "de": "Arbeitsnachweis: für diese Woche keine Dokumente zugeordnet",
+    "en": "Work ticket: no documents linked for this week",
+    "fr": "Bon de travail : aucun document rattaché pour cette semaine"
+  },
+  "Bulk intake": {
+    "de": "Dokumentimport",
+    "en": "Bulk intake",
+    "fr": "Import de documents"
+  },
+  "Checkdatum": {
+    "de": "Prüfdatum",
+    "en": "Review date",
+    "fr": "Date de vérification"
+  },
+  "Chris": {
+    "de": "Chris",
+    "en": "Chris",
+    "fr": "Chris"
+  },
+  "Chris Demo": {
+    "de": "Chris Demo",
+    "en": "Chris Demo",
+    "fr": "Chris Demo"
+  },
+  "Concept": {
+    "de": "Entwurf",
+    "en": "Draft",
+    "fr": "Brouillon"
+  },
+  "Conceptfacturen definitief maken": {
+    "de": "Rechnungsentwürfe abschließen",
+    "en": "Finalize draft invoices",
+    "fr": "Valider les brouillons de factures"
+  },
+  "Controle": {
+    "de": "Prüfung",
+    "en": "Review",
+    "fr": "Contrôle"
+  },
+  "Controle breder of smaller maken": {
+    "de": "Spaltenbreite ändern: Prüfung",
+    "en": "Resize column: Review",
+    "fr": "Redimensionner la colonne : Contrôle"
+  },
+  "Controle openen": {
+    "de": "Prüfung öffnen",
+    "en": "Open review",
+    "fr": "Ouvrir le contrôle"
+  },
+  "Controleren": {
+    "de": "Prüfen",
+    "en": "Review",
+    "fr": "Vérifier"
+  },
+  "DEMO-2026-001": {
+    "de": "DEMO-2026-001",
+    "en": "DEMO-2026-001",
+    "fr": "DEMO-2026-001"
+  },
+  "DEMO-weekstaat-week-43.pdf": {
+    "de": "DEMO-weekstaat-week-43.pdf",
+    "en": "DEMO-weekstaat-week-43.pdf",
+    "fr": "DEMO-weekstaat-week-43.pdf"
+  },
+  "DG": {
+    "de": "DG",
+    "en": "DG",
+    "fr": "DG"
+  },
+  "Dani": {
+    "de": "Dani",
+    "en": "Dani",
+    "fr": "Dani"
+  },
+  "Dani Demo": {
+    "de": "Dani Demo",
+    "en": "Dani Demo",
+    "fr": "Dani Demo"
+  },
+  "Dani Demo · Demo Bouwbedrijf Oost": {
+    "de": "Dani Demo · Demo Bouwbedrijf Oost",
+    "en": "Dani Demo · Demo Bouwbedrijf Oost",
+    "fr": "Dani Demo · Demo Bouwbedrijf Oost"
+  },
+  "Dashboard": {
+    "de": "Dashboard",
+    "en": "Dashboard",
+    "fr": "Tableau de bord"
+  },
+  "Dashboard | Olympus Bouw": {
+    "de": "Dashboard | Olympus Bouw",
+    "en": "Dashboard | Olympus Bouw",
+    "fr": "Tableau de bord | Olympus Bouw"
+  },
+  "Declaraties": {
+    "de": "Auslagen",
+    "en": "Expense claims",
+    "fr": "Notes de frais"
+  },
+  "Declaraties: geen stukken gekoppeld voor deze week": {
+    "de": "Auslagen: für diese Woche keine Belege zugeordnet",
+    "en": "Expense claims: no documents linked for this week",
+    "fr": "Notes de frais : aucun justificatif rattaché pour cette semaine"
+  },
+  "Demo": {
+    "de": "Demo",
+    "en": "Demo",
+    "fr": "Demo"
+  },
+  "Demo Aannemer West": {
+    "de": "Demo Aannemer West",
+    "en": "Demo Aannemer West",
+    "fr": "Demo Aannemer West"
+  },
+  "Demo Bouwbedrijf Oost": {
+    "de": "Demo Bouwbedrijf Oost",
+    "en": "Demo Bouwbedrijf Oost",
+    "fr": "Demo Bouwbedrijf Oost"
+  },
+  "Demo Bouwgroep Noord": {
+    "de": "Demo Bouwgroep Noord",
+    "en": "Demo Bouwgroep Noord",
+    "fr": "Demo Bouwgroep Noord"
+  },
+  "Demo Bouwteam 1": {
+    "de": "Demo Bouwteam 1",
+    "en": "Demo Bouwteam 1",
+    "fr": "Demo Bouwteam 1"
+  },
+  "Demo Bouwteam 2": {
+    "de": "Demo Bouwteam 2",
+    "en": "Demo Bouwteam 2",
+    "fr": "Demo Bouwteam 2"
+  },
+  "Demo Bouwteam 3": {
+    "de": "Demo Bouwteam 3",
+    "en": "Demo Bouwteam 3",
+    "fr": "Demo Bouwteam 3"
+  },
+  "Demo Bouwteam 4": {
+    "de": "Demo Bouwteam 4",
+    "en": "Demo Bouwteam 4",
+    "fr": "Demo Bouwteam 4"
+  },
+  "Demo Bouwteam 5": {
+    "de": "Demo Bouwteam 5",
+    "en": "Demo Bouwteam 5",
+    "fr": "Demo Bouwteam 5"
+  },
+  "Demo Bouwteam 6": {
+    "de": "Demo Bouwteam 6",
+    "en": "Demo Bouwteam 6",
+    "fr": "Demo Bouwteam 6"
+  },
+  "Demo Bouwteam 7": {
+    "de": "Demo Bouwteam 7",
+    "en": "Demo Bouwteam 7",
+    "fr": "Demo Bouwteam 7"
+  },
+  "Demo Bouwteam 8": {
+    "de": "Demo Bouwteam 8",
+    "en": "Demo Bouwteam 8",
+    "fr": "Demo Bouwteam 8"
+  },
+  "Demo Projecten Zuid": {
+    "de": "Demo Projecten Zuid",
+    "en": "Demo Projecten Zuid",
+    "fr": "Demo Projecten Zuid"
+  },
+  "Demo gebruiker": {
+    "de": "Demo-Benutzer",
+    "en": "Demo user",
+    "fr": "Utilisateur démo"
+  },
+  "Details": {
+    "de": "Einzelheiten",
+    "en": "Details",
+    "fr": "Détails"
+  },
+  "Details uitklappen": {
+    "de": "Details erweitern",
+    "en": "Expand details",
+    "fr": "Développer les détails"
+  },
+  "Details uitklappen: Nieuwbouw Havenkwartier · Kim Demo": {
+    "de": "Details erweitern: Nieuwbouw Havenkwartier · Kim Demo",
+    "en": "Expand details: Nieuwbouw Havenkwartier · Kim Demo",
+    "fr": "Développer les détails : Nieuwbouw Havenkwartier · Kim Demo"
+  },
+  "Details uitklappen: Nieuwbouw Havenkwartier · Robin Demo": {
+    "de": "Details erweitern: Nieuwbouw Havenkwartier · Robin Demo",
+    "en": "Expand details: Nieuwbouw Havenkwartier · Robin Demo",
+    "fr": "Développer les détails : Nieuwbouw Havenkwartier · Robin Demo"
+  },
+  "Details uitklappen: Onderhoud Westpoort · Dani Demo": {
+    "de": "Details erweitern: Onderhoud Westpoort · Dani Demo",
+    "en": "Expand details: Onderhoud Westpoort · Dani Demo",
+    "fr": "Développer les détails : Onderhoud Westpoort · Dani Demo"
+  },
+  "Details uitklappen: Onderhoud Westpoort · Lou Demo": {
+    "de": "Details erweitern: Onderhoud Westpoort · Lou Demo",
+    "en": "Expand details: Onderhoud Westpoort · Lou Demo",
+    "fr": "Développer les détails : Onderhoud Westpoort · Lou Demo"
+  },
+  "Details uitklappen: Renovatie Parkzicht · Alex Demo": {
+    "de": "Details erweitern: Renovatie Parkzicht · Alex Demo",
+    "en": "Expand details: Renovatie Parkzicht · Alex Demo",
+    "fr": "Développer les détails : Renovatie Parkzicht · Alex Demo"
+  },
+  "Details uitklappen: Renovatie Parkzicht · Jamie Demo": {
+    "de": "Details erweitern: Renovatie Parkzicht · Jamie Demo",
+    "en": "Expand details: Renovatie Parkzicht · Jamie Demo",
+    "fr": "Développer les détails : Renovatie Parkzicht · Jamie Demo"
+  },
+  "Details uitklappen: Verbouwing Centrum · Chris Demo": {
+    "de": "Details erweitern: Verbouwing Centrum · Chris Demo",
+    "en": "Expand details: Verbouwing Centrum · Chris Demo",
+    "fr": "Développer les détails : Verbouwing Centrum · Chris Demo"
+  },
+  "Details uitklappen: Verbouwing Centrum · Sam Demo": {
+    "de": "Details erweitern: Verbouwing Centrum · Sam Demo",
+    "en": "Expand details: Verbouwing Centrum · Sam Demo",
+    "fr": "Développer les détails : Verbouwing Centrum · Sam Demo"
+  },
+  "Deze zzp'er op vakantie zetten": {
+    "de": "Urlaub für diesen Selbstständigen eintragen",
+    "en": "Mark this freelancer as on holiday",
+    "fr": "Marquer cet indépendant en vacances"
+  },
+  "Dienstverlening excl. btw": {
+    "de": "Dienstleistungen ohne MwSt.",
+    "en": "Services excluding VAT",
+    "fr": "Prestations hors TVA"
+  },
+  "Documenten te controleren": {
+    "de": "Dokumente prüfen",
+    "en": "Documents to review",
+    "fr": "Documents à vérifier"
+  },
+  "Documenten uploaden · Nieuwbouw Havenkwartier": {
+    "de": "Dokumente hochladen · Nieuwbouw Havenkwartier",
+    "en": "Upload documents · Nieuwbouw Havenkwartier",
+    "fr": "Importer des documents · Nieuwbouw Havenkwartier"
+  },
+  "Documenten uploaden · Onderhoud Westpoort": {
+    "de": "Dokumente hochladen · Onderhoud Westpoort",
+    "en": "Upload documents · Onderhoud Westpoort",
+    "fr": "Importer des documents · Onderhoud Westpoort"
+  },
+  "Documenten uploaden · Renovatie Parkzicht": {
+    "de": "Dokumente hochladen · Renovatie Parkzicht",
+    "en": "Upload documents · Renovatie Parkzicht",
+    "fr": "Importer des documents · Renovatie Parkzicht"
+  },
+  "Documenten uploaden · Verbouwing Centrum": {
+    "de": "Dokumente hochladen · Verbouwing Centrum",
+    "en": "Upload documents · Verbouwing Centrum",
+    "fr": "Importer des documents · Verbouwing Centrum"
+  },
+  "Eigen administratie": {
+    "de": "Eigene Verwaltung",
+    "en": "Your administration",
+    "fr": "Votre administration"
+  },
+  "Excel exporteren": {
+    "de": "Excel exportieren",
+    "en": "Export Excel",
+    "fr": "Exporter vers Excel"
+  },
+  "Extra bijzonderheden": {
+    "de": "Weitere Details",
+    "en": "Additional details",
+    "fr": "Détails supplémentaires"
+  },
+  "Extreem geval": {
+    "de": "Extremfall",
+    "en": "Extreme case",
+    "fr": "Cas extrême"
+  },
+  "Facturatie": {
+    "de": "Abrechnung",
+    "en": "Billing",
+    "fr": "Facturation"
+  },
+  "Facturatie openen": {
+    "de": "Abrechnung öffnen",
+    "en": "Open invoicing",
+    "fr": "Ouvrir la facturation"
+  },
+  "Facturen": {
+    "de": "Rechnungen",
+    "en": "Invoices",
+    "fr": "Factures"
+  },
+  "Facturen klaar om te maken": {
+    "de": "Bereit zur Rechnungserstellung",
+    "en": "Ready to create invoices",
+    "fr": "Factures prêtes à établir"
+  },
+  "Facturen openen": {
+    "de": "Rechnungen öffnen",
+    "en": "Open invoices",
+    "fr": "Ouvrir les factures"
+  },
+  "Factureren": {
+    "de": "Rechnung erstellen",
+    "en": "Create invoice",
+    "fr": "Établir la facture"
+  },
+  "Factuurcontrole": {
+    "de": "Rechnungsprüfung",
+    "en": "Invoice review",
+    "fr": "Contrôle de facture"
+  },
+  "Factuurcontrole openen": {
+    "de": "Rechnungsprüfung öffnen",
+    "en": "Open invoice review",
+    "fr": "Ouvrir le contrôle de facture"
+  },
+  "Fictieve gegevens": {
+    "de": "Fiktive Daten",
+    "en": "Fictional data",
+    "fr": "Données fictives"
+  },
+  "Filter...": {
+    "de": "Filtern...",
+    "en": "Filter...",
+    "fr": "Filtrer..."
+  },
+  "Gedoogd": {
+    "de": "Toleriert",
+    "en": "Tolerated",
+    "fr": "Toléré"
+  },
+  "Goed": {
+    "de": "Gut",
+    "en": "Good",
+    "fr": "Bien"
+  },
+  "Goed werk begint": {
+    "de": "Gute Arbeit beginnt",
+    "en": "Good work starts",
+    "fr": "Un travail de qualité commence"
+  },
+  "Handmatig te betalen": {
+    "de": "Manuell zu zahlen",
+    "en": "Manual payments due",
+    "fr": "Paiements manuels à effectuer"
+  },
+  "Hele opdracht verwijderen: Nieuwbouw Havenkwartier": {
+    "de": "Gesamten Auftrag löschen: Nieuwbouw Havenkwartier",
+    "en": "Delete entire assignment: Nieuwbouw Havenkwartier",
+    "fr": "Supprimer toute la mission : Nieuwbouw Havenkwartier"
+  },
+  "Hele opdracht verwijderen: Onderhoud Westpoort": {
+    "de": "Gesamten Auftrag löschen: Onderhoud Westpoort",
+    "en": "Delete entire assignment: Onderhoud Westpoort",
+    "fr": "Supprimer toute la mission : Onderhoud Westpoort"
+  },
+  "Hele opdracht verwijderen: Renovatie Parkzicht": {
+    "de": "Gesamten Auftrag löschen: Renovatie Parkzicht",
+    "en": "Delete entire assignment: Renovatie Parkzicht",
+    "fr": "Supprimer toute la mission : Renovatie Parkzicht"
+  },
+  "Hele opdracht verwijderen: Verbouwing Centrum": {
+    "de": "Gesamten Auftrag löschen: Verbouwing Centrum",
+    "en": "Delete entire assignment: Verbouwing Centrum",
+    "fr": "Supprimer toute la mission : Verbouwing Centrum"
+  },
+  "Hercontrole nodig": {
+    "de": "Erneute Prüfung nötig",
+    "en": "Review required again",
+    "fr": "Nouvelle vérification nécessaire"
+  },
+  "Hoofdnavigatie": {
+    "de": "Hauptnavigation",
+    "en": "Main navigation",
+    "fr": "Navigation principale"
+  },
+  "In afwachting": {
+    "de": "Ausstehend",
+    "en": "Pending",
+    "fr": "En attente"
+  },
+  "In opbouw": {
+    "de": "In Vorbereitung",
+    "en": "In preparation",
+    "fr": "En préparation"
+  },
+  "Incasso Olympus": {
+    "de": "Olympus-Lastschrift",
+    "en": "Olympus direct debit",
+    "fr": "Prélèvement Olympus"
+  },
+  "Ingekomen stukken te koppelen": {
+    "de": "Eingänge zuordnen",
+    "en": "Incoming documents to link",
+    "fr": "Documents reçus à rattacher"
+  },
+  "Ingepland": {
+    "de": "Geplant",
+    "en": "Scheduled",
+    "fr": "Programmé"
+  },
+  "Instellingen": {
+    "de": "Einstellungen",
+    "en": "Settings",
+    "fr": "Paramètres"
+  },
+  "Jamie": {
+    "de": "Jamie",
+    "en": "Jamie",
+    "fr": "Jamie"
+  },
+  "Jamie Demo": {
+    "de": "Jamie Demo",
+    "en": "Jamie Demo",
+    "fr": "Jamie Demo"
+  },
+  "Jamie Demo · Demo Bouwgroep Noord": {
+    "de": "Jamie Demo · Demo Bouwgroep Noord",
+    "en": "Jamie Demo · Demo Bouwgroep Noord",
+    "fr": "Jamie Demo · Demo Bouwgroep Noord"
+  },
+  "Kim": {
+    "de": "Kim",
+    "en": "Kim",
+    "fr": "Kim"
+  },
+  "Kim Demo": {
+    "de": "Kim Demo",
+    "en": "Kim Demo",
+    "fr": "Kim Demo"
+  },
+  "Klaar voor SEPA-incasso": {
+    "de": "Bereit für SEPA-Lastschrift",
+    "en": "Ready for SEPA direct debit",
+    "fr": "Prêt pour le prélèvement SEPA"
+  },
+  "Klaar voor facturatie": {
+    "de": "Bereit zur Rechnungsstellung",
+    "en": "Ready for invoicing",
+    "fr": "Prêt pour la facturation"
+  },
+  "Klant / project": {
+    "de": "Kunde / Projekt",
+    "en": "Customer / project",
+    "fr": "Client / projet"
+  },
+  "Klantnr.": {
+    "de": "Kunden-Nr.",
+    "en": "Customer no.",
+    "fr": "Numéro de client"
+  },
+  "Kleurstatus filteren": {
+    "de": "Nach Farbstatus filtern",
+    "en": "Filter by colour status",
+    "fr": "Filtrer par statut de couleur"
+  },
+  "Kolommen": {
+    "de": "Spalten",
+    "en": "Columns",
+    "fr": "Colonnes"
+  },
+  "Kolommen kiezen": {
+    "de": "Wählen Sie Spalten aus",
+    "en": "Choose columns",
+    "fr": "Choisir des colonnes"
+  },
+  "KvK tot": {
+    "de": "Handelsregister bis",
+    "en": "Registration valid until",
+    "fr": "Immatriculation jusqu’au"
+  },
+  "Lou": {
+    "de": "Lou",
+    "en": "Lou",
+    "fr": "Lou"
+  },
+  "Lou Demo": {
+    "de": "Lou Demo",
+    "en": "Lou Demo",
+    "fr": "Lou Demo"
+  },
+  "Meldingen": {
+    "de": "Benachrichtigungen",
+    "en": "Notifications",
+    "fr": "Notifications"
+  },
+  "Meldingencentrum openen": {
+    "de": "Benachrichtigungscenter öffnen",
+    "en": "Open notification center",
+    "fr": "Ouvrir le centre de notifications"
+  },
+  "Menu sluiten": {
+    "de": "Menü schließen",
+    "en": "Close menu",
+    "fr": "Fermer le menu"
+  },
+  "Met opdracht": {
+    "de": "Mit Auftrag",
+    "en": "With assignment",
+    "fr": "Avec mission"
+  },
+  "Naam A-Z": {
+    "de": "Name A–Z",
+    "en": "Name A–Z",
+    "fr": "Nom A–Z"
+  },
+  "Naam Z-A": {
+    "de": "Name Z–A",
+    "en": "Name Z–A",
+    "fr": "Nom Z–A"
+  },
+  "Naam, klant, project of bijzonderheid...": {
+    "de": "Name, Kunde, Projekt oder Hinweis...",
+    "en": "Name, client, project or note...",
+    "fr": "Nom, client, projet ou remarque..."
+  },
+  "Navigatie openen": {
+    "de": "Navigation öffnen",
+    "en": "Open navigation",
+    "fr": "Ouvrir la navigation"
+  },
+  "Nieuwbouw Havenkwartier": {
+    "de": "Nieuwbouw Havenkwartier",
+    "en": "Nieuwbouw Havenkwartier",
+    "fr": "Nieuwbouw Havenkwartier"
+  },
+  "Nieuwere planning": {
+    "de": "Neuere Planung",
+    "en": "Newer planning",
+    "fr": "Planification plus récente"
+  },
+  "Nieuwste binnenkomst eerst": {
+    "de": "Neueste Eingänge zuerst",
+    "en": "Newest received first",
+    "fr": "Les plus récents en premier"
+  },
+  "Nog niet klaar": {
+    "de": "Noch nicht bereit",
+    "en": "Not ready yet",
+    "fr": "Pas encore prêt"
+  },
+  "OLYMPUS BOUW": {
+    "de": "OLYMPUS BOUW",
+    "en": "OLYMPUS BOUW",
+    "fr": "OLYMPUS BOUW"
+  },
+  "Olympus Bouw": {
+    "de": "Olympus Bouw",
+    "en": "Olympus Bouw",
+    "fr": "Olympus Bouw"
+  },
+  "Olympus Bouw - weekverwerking en facturatie.": {
+    "de": "Olympus Bouw – wöchentliche Bearbeitung und Rechnungsstellung.",
+    "en": "Olympus Bouw - weekly processing and invoicing.",
+    "fr": "Olympus Bouw - traitement et facturation hebdomadaire."
+  },
+  "Olympus Bouwbemiddeling": {
+    "de": "Olympus Bouwbemiddeling",
+    "en": "Olympus Bouwbemiddeling",
+    "fr": "Olympus Bouwbemiddeling"
+  },
+  "Onderhoud Westpoort": {
+    "de": "Onderhoud Westpoort",
+    "en": "Onderhoud Westpoort",
+    "fr": "Onderhoud Westpoort"
+  },
+  "Ontvangen 20-10-2026 · Overeenkomst ter controle": {
+    "de": "Eingang 20.10.2026 · Vertrag zur Prüfung",
+    "en": "Received 20 October 2026 · Agreement to review",
+    "fr": "Reçu le 20 octobre 2026 · Contrat à vérifier"
+  },
+  "Opdracht aanmaken": {
+    "de": "Auftrag anlegen",
+    "en": "Create assignment",
+    "fr": "Créer une mission"
+  },
+  "Opdracht filteren": {
+    "de": "Auftrag filtern",
+    "en": "Filter assignment",
+    "fr": "Filtrer la mission"
+  },
+  "Opdracht openen": {
+    "de": "Auftrag öffnen",
+    "en": "Open assignment",
+    "fr": "Ouvrir la mission"
+  },
+  "Opdrachten": {
+    "de": "Aufträge",
+    "en": "Assignments",
+    "fr": "Missions"
+  },
+  "Opdrachten te controleren": {
+    "de": "Aufträge prüfen",
+    "en": "Assignments to review",
+    "fr": "Missions à vérifier"
+  },
+  "Opdrachten vernieuwen": {
+    "de": "Aufträge aktualisieren",
+    "en": "Refresh assignments",
+    "fr": "Actualiser les missions"
+  },
+  "Opdrachten zoeken": {
+    "de": "Aufträge suchen",
+    "en": "Search assignments",
+    "fr": "Rechercher des missions"
+  },
+  "Opdrachten | Olympus Bouw": {
+    "de": "Aufträge | Olympus Bouw",
+    "en": "Assignments | Olympus Bouw",
+    "fr": "Missions | Olympus Bouw"
+  },
+  "Opdrachtenweek filteren": {
+    "de": "Nach Auftragswoche filtern",
+    "en": "Filter by assignment week",
+    "fr": "Filtrer par semaine de mission"
+  },
+  "Opdrachtgever": {
+    "de": "Auftraggeber",
+    "en": "Client",
+    "fr": "Client"
+  },
+  "Opdrachtgever breder of smaller maken": {
+    "de": "Spaltenbreite ändern: Auftraggeber",
+    "en": "Resize column: Client",
+    "fr": "Redimensionner la colonne : Client"
+  },
+  "Opdrachtgevers": {
+    "de": "Auftraggeber",
+    "en": "Clients",
+    "fr": "Clients"
+  },
+  "Opdrachtstatus": {
+    "de": "Auftragsstatus",
+    "en": "Assignment status",
+    "fr": "Statut de mission"
+  },
+  "Opmerkingen": {
+    "de": "Bemerkungen",
+    "en": "Notes",
+    "fr": "Remarques"
+  },
+  "Oudere planning": {
+    "de": "Ältere Planung",
+    "en": "Older planning",
+    "fr": "Planification plus ancienne"
+  },
+  "Oudste binnenkomst eerst": {
+    "de": "Ältester Eintrag zuerst",
+    "en": "Oldest entry first",
+    "fr": "Entrée la plus ancienne en premier"
+  },
+  "Overeenkomsten, controle en vrijgave, en weekverwerking.": {
+    "de": "Verträge, Prüfung und Freigabe sowie Wochenverarbeitung.",
+    "en": "Agreements, review and approval, and weekly processing.",
+    "fr": "Contrats, contrôle et validation, et traitement hebdomadaire."
+  },
+  "Parkeerbon": {
+    "de": "Parkbeleg",
+    "en": "Parking receipt",
+    "fr": "Justificatif de stationnement"
+  },
+  "Parkeerbon: geen stukken gekoppeld voor deze week": {
+    "de": "Parkbeleg: für diese Woche keine Dokumente zugeordnet",
+    "en": "Parking receipt: no documents linked for this week",
+    "fr": "Justificatif de stationnement : aucun document rattaché pour cette semaine"
+  },
+  "Planning": {
+    "de": "Planung",
+    "en": "Planning",
+    "fr": "Planification"
+  },
+  "Planning breder of smaller maken": {
+    "de": "Spaltenbreite ändern: Planung",
+    "en": "Resize column: Planning",
+    "fr": "Redimensionner la colonne : Planification"
+  },
+  "Planning filteren": {
+    "de": "Planung filtern",
+    "en": "Filter planning",
+    "fr": "Filtrer le planning"
+  },
+  "Planning leegmaken": {
+    "de": "Planung leeren",
+    "en": "Clear planning",
+    "fr": "Vider le planning"
+  },
+  "Planning sorteren": {
+    "de": "Planung sortieren",
+    "en": "Sort planning",
+    "fr": "Trier le planning"
+  },
+  "Planning vernieuwen": {
+    "de": "Planung aktualisieren",
+    "en": "Refresh planning",
+    "fr": "Actualiser le planning"
+  },
+  "Planning zoeken": {
+    "de": "Planung durchsuchen",
+    "en": "Search planning",
+    "fr": "Rechercher dans le planning"
+  },
+  "Planning zonder opdracht": {
+    "de": "Planung ohne Auftrag",
+    "en": "Planning without assignment",
+    "fr": "Planning sans mission"
+  },
+  "Planningregel verwijderen": {
+    "de": "Planungszeile löschen",
+    "en": "Delete planning line",
+    "fr": "Supprimer la ligne planning"
+  },
+  "Planningweek": {
+    "de": "Planungswoche",
+    "en": "Planning week",
+    "fr": "Semaine de planification"
+  },
+  "Prijsbestand": {
+    "de": "Preisdatei",
+    "en": "Rate sheet",
+    "fr": "Grille tarifaire"
+  },
+  "Prijsbestand breder of smaller maken": {
+    "de": "Spaltenbreite ändern: Preisdatei",
+    "en": "Resize column: Rate sheet",
+    "fr": "Redimensionner la colonne : Grille tarifaire"
+  },
+  "Prijsbestand: aanwezig": {
+    "de": "Preisdatei: vorhanden",
+    "en": "Rate sheet: present",
+    "fr": "Grille tarifaire : présente"
+  },
+  "Prijsbestand: ontbreekt": {
+    "de": "Preisdatei: fehlt",
+    "en": "Rate sheet: missing",
+    "fr": "Grille tarifaire : manquante"
+  },
+  "Project": {
+    "de": "Projekt",
+    "en": "Project",
+    "fr": "Projet"
+  },
+  "Project / opdracht": {
+    "de": "Projekt / Auftrag",
+    "en": "Project / assignment",
+    "fr": "Projet / mission"
+  },
+  "Project / opdracht breder of smaller maken": {
+    "de": "Spaltenbreite ändern: Projekt / Auftrag",
+    "en": "Resize column: Project / assignment",
+    "fr": "Redimensionner la colonne : Projet / mission"
+  },
+  "Project filteren": {
+    "de": "Projekt filtern",
+    "en": "Filter project",
+    "fr": "Filtrer le projet"
+  },
+  "Project, zzp'er, opdrachtgever of week...": {
+    "de": "Projekt, Selbstständige, Auftraggeber oder Woche...",
+    "en": "Project, freelancer, client or week...",
+    "fr": "Projet, indépendant, client ou semaine..."
+  },
+  "Renovatie Parkzicht": {
+    "de": "Renovatie Parkzicht",
+    "en": "Renovatie Parkzicht",
+    "fr": "Renovatie Parkzicht"
+  },
+  "Robin": {
+    "de": "Robin",
+    "en": "Robin",
+    "fr": "Robin"
+  },
+  "Robin Demo": {
+    "de": "Robin Demo",
+    "en": "Robin Demo",
+    "fr": "Robin Demo"
+  },
+  "Robin Demo · Demo Projecten Zuid · Week 43, 2026": {
+    "de": "Robin Demo · Demo Projecten Zuid · Woche 43, 2026",
+    "en": "Robin Demo · Demo Projecten Zuid · Week 43, 2026",
+    "fr": "Robin Demo · Demo Projecten Zuid · Semaine 43, 2026"
+  },
+  "Sam": {
+    "de": "Sam",
+    "en": "Sam",
+    "fr": "Sam"
+  },
+  "Sam Demo": {
+    "de": "Sam Demo",
+    "en": "Sam Demo",
+    "fr": "Sam Demo"
+  },
+  "Sam Demo · Demo Aannemer West": {
+    "de": "Sam Demo · Demo Aannemer West",
+    "en": "Sam Demo · Demo Aannemer West",
+    "fr": "Sam Demo · Demo Aannemer West"
+  },
+  "Sorteren op": {
+    "de": "Sortieren nach",
+    "en": "Sort by",
+    "fr": "Trier par"
+  },
+  "TO DO": {
+    "de": "TO DO",
+    "en": "TO DO",
+    "fr": "TO DO"
+  },
+  "Taken filteren": {
+    "de": "Aufgaben filtern",
+    "en": "Filter tasks",
+    "fr": "Filtrer les tâches"
+  },
+  "Tarief": {
+    "de": "Tarif",
+    "en": "Rate",
+    "fr": "Tarif"
+  },
+  "Te controleren": {
+    "de": "Zu prüfen",
+    "en": "To be checked",
+    "fr": "A vérifier"
+  },
+  "Testverwerking resetten": {
+    "de": "Testverarbeitung zurücksetzen",
+    "en": "Reset test processing",
+    "fr": "Réinitialiser le traitement de test"
+  },
+  "Uitloggen": {
+    "de": "Abmelden",
+    "en": "Log out",
+    "fr": "Se déconnecter"
+  },
+  "VCA tot": {
+    "de": "VCA gültig bis",
+    "en": "VCA valid until",
+    "fr": "VCA valable jusqu’au"
+  },
+  "Vakantie": {
+    "de": "Urlaub",
+    "en": "Holiday",
+    "fr": "Vacances"
+  },
+  "Verbouwing Centrum": {
+    "de": "Verbouwing Centrum",
+    "en": "Verbouwing Centrum",
+    "fr": "Verbouwing Centrum"
+  },
+  "Verkoop excl. btw": {
+    "de": "Umsatz ohne MwSt.",
+    "en": "Sales excluding VAT",
+    "fr": "Ventes hors TVA"
+  },
+  "Verwijderen": {
+    "de": "Löschen",
+    "en": "Delete",
+    "fr": "Supprimer"
+  },
+  "Volgorde planning": {
+    "de": "Planungsreihenfolge",
+    "en": "Planning order",
+    "fr": "Ordre du planning"
+  },
+  "Volledige weekplanning en vakantie als Excel exporteren": {
+    "de": "Gesamte Wochenplanung und Urlaube als Excel exportieren",
+    "en": "Export full weekly planning and holidays to Excel",
+    "fr": "Exporter le planning hebdomadaire complet et les congés vers Excel"
+  },
+  "Voornaam": {
+    "de": "Vorname",
+    "en": "First name",
+    "fr": "Prénom"
+  },
+  "Voornaam filteren": {
+    "de": "Vornamen filtern",
+    "en": "Filter first name",
+    "fr": "Filtrer le prénom"
+  },
+  "Vrijgegeven": {
+    "de": "Freigegeben",
+    "en": "Approved",
+    "fr": "Validé"
+  },
+  "WERKOMGEVING": {
+    "de": "ARBEITSUMGEBUNG",
+    "en": "WORKSPACE",
+    "fr": "ESPACE DE TRAVAIL"
+  },
+  "Week 42, 2026": {
+    "de": "Woche 42, 2026",
+    "en": "Week 42, 2026",
+    "fr": "Semaine 42, 2026"
+  },
+  "Week 43, 2026": {
+    "de": "Woche 43, 2026",
+    "en": "Week 43, 2026",
+    "fr": "Semaine 43, 2026"
+  },
+  "Week 43, 2026 · Concept controleren en definitief maken": {
+    "de": "Woche 43, 2026 · Entwurf überprüfen und finalisieren",
+    "en": "Week 43, 2026 · Check draft and finalize it",
+    "fr": "Semaine 43, 2026 · Vérifier le brouillon et le finaliser"
+  },
+  "Week 43, 2026 · Ontvangen 26-10-2026": {
+    "de": "Woche 43, 2026 · Eingang 26.10.2026",
+    "en": "Week 43, 2026 · Received 26 October 2026",
+    "fr": "Semaine 43, 2026 · Reçu le 26 octobre 2026"
+  },
+  "Week 43, 2026 · Zzp-factuur en Olympus-factuur kunnen worden voorbereid": {
+    "de": "Woche 43, 2026 · Rechnungen des Selbstständigen und von Olympus können vorbereitet werden",
+    "en": "Week 43, 2026 · Freelancer and Olympus invoices can be prepared",
+    "fr": "Semaine 43, 2026 · Les factures de l’indépendant et d’Olympus peuvent être préparées"
+  },
+  "Week kopieren": {
+    "de": "Woche kopieren",
+    "en": "Copy week",
+    "fr": "Copier la semaine"
+  },
+  "Weekcijfers": {
+    "de": "Wochenzahlen",
+    "en": "Weekly figures",
+    "fr": "Chiffres de la semaine"
+  },
+  "Weekdossiers": {
+    "de": "Wochenakten",
+    "en": "Weekly dossiers",
+    "fr": "Dossiers hebdomadaires"
+  },
+  "Weekplanning": {
+    "de": "Wochenplanung",
+    "en": "Weekly planning",
+    "fr": "Planning hebdomadaire"
+  },
+  "Weekplanning openen: W43 · 2026": {
+    "de": "Wochenplanung öffnen: KW43 · 2026",
+    "en": "Open weekly planning: W43 · 2026",
+    "fr": "Ouvrir le planning hebdomadaire : S43 · 2026"
+  },
+  "Weekplanning | Olympus Bouw": {
+    "de": "Wochenplanung | Olympus Bouw",
+    "en": "Weekly planning | Olympus Bouw",
+    "fr": "Planning hebdomadaire | Olympus Bouw"
+  },
+  "Weekstaat": {
+    "de": "Stundenzettel",
+    "en": "Timesheet",
+    "fr": "Relevé d’heures"
+  },
+  "Weekstaat · Alex Demo · Renovatie Parkzicht": {
+    "de": "Stundenzettel · Alex Demo · Renovatie Parkzicht",
+    "en": "Timesheet · Alex Demo · Renovatie Parkzicht",
+    "fr": "Relevé d’heures · Alex Demo · Renovatie Parkzicht"
+  },
+  "Weekstaat: 0 van 1 gekoppelde stukken gecontroleerd": {
+    "de": "Stundenzettel: 0 von 1 zugeordneten Nachweisen geprüft",
+    "en": "Timesheet: 0 of 1 linked documents reviewed",
+    "fr": "Relevé d’heures : 0 document rattaché sur 1 vérifié"
+  },
+  "Weekstaat: 1 gekoppeld en gecontroleerd voor deze week": {
+    "de": "Stundenzettel: 1 für diese Woche zugeordnet und geprüft",
+    "en": "Timesheet: 1 linked and reviewed for this week",
+    "fr": "Relevé d’heures : 1 rattaché et vérifié pour cette semaine"
+  },
+  "Weekstaat: verplicht, nog geen stukken gekoppeld voor deze week": {
+    "de": "Stundenzettel: erforderlich, für diese Woche noch keine Nachweise zugeordnet",
+    "en": "Timesheet: required, no documents linked for this week yet",
+    "fr": "Relevé d’heures : obligatoire, aucun document rattaché pour cette semaine"
+  },
+  "Weekstaten ontvangen": {
+    "de": "Eingegangene Stundenzettel",
+    "en": "Timesheets received",
+    "fr": "Relevés d’heures reçus"
+  },
+  "Weekstukken openen: week 43, 2026": {
+    "de": "Wochennachweise öffnen: Woche 43, 2026",
+    "en": "Open weekly documents: week 43, 2026",
+    "fr": "Ouvrir les documents hebdomadaires : semaine 43, 2026"
+  },
+  "Weekstukken zijn nog niet klaar voor facturatie": {
+    "de": "Wochennachweise sind noch nicht abrechnungsbereit",
+    "en": "Weekly documents are not ready for invoicing yet",
+    "fr": "Les documents hebdomadaires ne sont pas encore prêts pour la facturation"
+  },
+  "Weekstukken zonder opdracht": {
+    "de": "Wochennachweise ohne Auftrag",
+    "en": "Weekly documents without assignment",
+    "fr": "Documents hebdomadaires sans mission"
+  },
+  "Weekverwerking": {
+    "de": "Wochenverarbeitung",
+    "en": "Weekly processing",
+    "fr": "Traitement hebdomadaire"
+  },
+  "Werkruimte": {
+    "de": "Arbeitsbereich",
+    "en": "Workspace",
+    "fr": "Espace de travail"
+  },
+  "WhatsApp": {
+    "de": "WhatsApp",
+    "en": "WhatsApp",
+    "fr": "WhatsApp"
+  },
+  "WhatsApp-documenten te koppelen": {
+    "de": "WhatsApp-Dokumente zuordnen",
+    "en": "WhatsApp documents to link",
+    "fr": "Documents WhatsApp à rattacher"
+  },
+  "Zonder opdracht": {
+    "de": "Ohne Auftrag",
+    "en": "Without assignment",
+    "fr": "Sans mission"
+  },
+  "Zzp'er": {
+    "de": "Selbstständige",
+    "en": "Freelancer",
+    "fr": "Indépendant"
+  },
+  "Zzp'er breder of smaller maken": {
+    "de": "Spaltenbreite ändern: Selbstständige",
+    "en": "Resize column: Freelancer",
+    "fr": "Redimensionner la colonne : Indépendant"
+  },
+  "Zzp'ers": {
+    "de": "Selbstständige",
+    "en": "Freelancers",
+    "fr": "Indépendants"
+  },
+  "Zzp-factuur naar opdrachtgever · Alex Demo · Demo Bouwgroep Noord": {
+    "de": "Rechnung für Selbstständige an den Kunden · Alex Demo · Demo Bouwgroep Noord",
+    "en": "Self-employed invoice to client · Alex Demo · Demo Bouwgroep Noord",
+    "fr": "Facture pour travailleur indépendant au client · Alex Demo · Demo Bouwgroep Noord"
+  },
+  "Zzp-nr.": {
+    "de": "Selbstständiger Nr.",
+    "en": "Self-employed person no.",
+    "fr": "N° de travailleur indépendant"
+  },
+  "met overzicht.": {
+    "de": "mit Überblick.",
+    "en": "with clarity.",
+    "fr": "par une vue claire."
+  },
+  "openstaande taken": {
+    "de": "offene Aufgaben",
+    "en": "open tasks",
+    "fr": "tâches en attente"
+  }
+}

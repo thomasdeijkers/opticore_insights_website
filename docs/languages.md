@@ -22,7 +22,7 @@ De build gebruikt uitsluitend lokale JSON-bestanden. Nieuwe, onvertaalde brontek
 
 De zoekfunctie gebruikt uitsluitend documenten in de geselecteerde taal. Iedere taal heeft ook een eigen nieuwsfeed. Het contactformulier stuurt de taalcode mee en geeft validatie-/bedankpagina’s in dezelfde taal terug. De bedrijfsscan krijgt alleen een gecontroleerde taalcode voor de samenvatting; beveiliging, limieten en verzendstappen blijven gelden. De demo-inlog is in alle talen verplicht bij doorklikken.
 
-App-screenshots worden opnieuw opgenomen uit de daadwerkelijk vertaalde demo. De 202 opnamen per taal bevatten alle modulegalerijen, het scrollbare dashboard en de neutrale praktijkvoorbeelden. Duits, Engels en Frans hebben elk eigen desktop-, tablet- en telefoonbeelden: samen 606 bestanden, standaard in darkmode en op hoge resolutie. De Nederlandse beelden behouden hun Nederlandse tekst. Productfoto’s, logo’s en bronvermeldingen blijven origineel. Externe ingesloten keuzehulpen en screenshots van zelfstandige klantwebsites worden niet door deze app-capture vervangen.
+App-screenshots worden opnieuw opgenomen uit de daadwerkelijk vertaalde demo. De 212 opnamen per taal bevatten alle modulegalerijen, het scrollbare dashboard, de neutrale praktijkvoorbeelden en de echte Olympus-schermen met fictieve gegevens. Duits, Engels en Frans hebben elk eigen desktop-, tablet- en telefoonbeelden: samen 636 bestanden, standaard in darkmode en op hoge resolutie. De Nederlandse beelden behouden hun Nederlandse tekst. Productfoto’s, logo’s en bronvermeldingen blijven origineel. Externe ingesloten keuzehulpen en screenshots van zelfstandige klantwebsites worden niet door deze app-capture vervangen.
 
 ## Screenshots maken
 
@@ -48,3 +48,7 @@ De bestaande GitHub Actions-workflow bouwt de taalversies na de Nederlandse inho
 `scripts/test_i18n_browser.cjs` controleert op localhost de menu’s, prijzen en afhankelijkheden, taalwisselen met modulekeuze, contactoverzicht, demo-inlog en zoekresultaten op telefoon, tablet en desktop. De controles versturen geen contactaanvragen en gebruiken geen betaalde AI-oproepen.
 
 Google adviseert eigen URL’s voor taalversies en wederzijdse `hreflang`-verwijzingen: [meertalige websites](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites) en [gelokaliseerde pagina’s](https://developers.google.com/search/docs/specialty/international/localized-versions).
+
+## Olympus-projectbeelden
+
+De Olympus-collectie gebruikt de echte frontend met uitsluitend fictieve API-gegevens, in darkmode met de Olympus-kleuren. De 40 opnamen in vier talen worden vóór de contentcontroles uit een gepinde media-release hersteld; de overige demobeelden blijven lokaal gegenereerd. Zie [herkomst en opnieuw vastleggen](olympus-screenshots.md). `python scripts/olympus_media.py` gaat daarom vooraf aan een volledige lokale taalbuild.

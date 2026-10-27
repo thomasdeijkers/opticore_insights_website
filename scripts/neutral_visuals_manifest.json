@@ -229,5 +229,68 @@
     "height": 900,
     "alt": "Neutraal desktopvoorbeeld van een leeg inlogvenster.",
     "theme": "dark"
+  },
+  {
+    "file": "client-olympus-dashboard-desktop-dark.jpg",
+    "page": "dashboard",
+    "source": "olympus",
+    "width": 1280,
+    "height": 900,
+    "alt": "Het dashboard van de Olympus WebApp met fictieve taken en dossiers.",
+    "theme": "dark"
+  },
+  {
+    "file": "client-olympus-dashboard-mobile-dark.jpg",
+    "page": "dashboard",
+    "source": "olympus",
+    "width": 390,
+    "height": 844,
+    "alt": "Het dashboard van de Olympus WebApp met fictieve taken en dossiers.",
+    "theme": "dark"
+  },
+  {
+    "file": "client-olympus-planning-desktop-dark.jpg",
+    "page": "planning",
+    "source": "olympus",
+    "width": 1280,
+    "height": 900,
+    "alt": "De weekplanning van de Olympus WebApp met fictieve inzet en documentstatussen.",
+    "theme": "dark"
+  },
+  {
+    "file": "client-olympus-planning-mobile-dark.jpg",
+    "page": "planning",
+    "source": "olympus",
+    "width": 390,
+    "height": 844,
+    "alt": "De weekplanning van de Olympus WebApp met fictieve inzet en documentstatussen.",
+    "theme": "dark"
+  },
+  {
+    "file": "client-olympus-opdrachten-desktop-dark.jpg",
+    "page": "opdrachten",
+    "source": "olympus",
+    "width": 1280,
+    "height": 900,
+    "alt": "Het opdrachtenoverzicht van de Olympus WebApp met fictieve afspraken en dossiers.",
+    "theme": "dark"
+  },
+  {
+    "file": "client-olympus-opdrachten-mobile-dark.jpg",
+    "page": "opdrachten",
+    "source": "olympus",
+    "width": 390,
+    "height": 844,
+    "alt": "Het opdrachtenoverzicht van de Olympus WebApp met fictieve afspraken en dossiers.",
+    "theme": "dark"
+  },
+  {
+    "file": "client-olympus-menu-mobile-dark.jpg",
+    "page": "menu",
+    "source": "olympus",
+    "width": 390,
+    "height": 844,
+    "alt": "Het mobiele menu van de Olympus WebApp.",
+    "theme": "dark"
   }
 ]
