@@ -11,3 +11,34 @@
 .contact-form textarea{min-height:130px}
 .contact-form select{padding-right:30px}
 @media(max-width:560px){.contact-form legend{font-size:19px}.contact-form select{font-size:16px}}
+.contact-module-selection{min-width:0;margin-bottom:12px}
+.contact-module-selection h3{font-size:17px;line-height:1.5;margin:0 0 14px}
+.contact-module-quote-table{width:100%;border-collapse:collapse;background:#fff;margin:0 0 24px;font-size:13px}
+.contact-module-quote-table caption{text-align:left;font-size:16px;font-weight:700;color:var(--ink);padding:4px 0 10px}
+.contact-module-quote-table th,.contact-module-quote-table td{padding:12px 8px;border-bottom:1px solid #d8e1e9;vertical-align:top;text-align:right;line-height:1.6}
+.contact-module-quote-table thead th{font-size:12px;color:#526477;font-weight:650;background:#eaf1f7}
+.contact-module-quote-table thead th:nth-child(3){color:#216b43}
+.contact-module-quote-table th:first-child{text-align:left;width:45%}
+.contact-module-quote-table tbody th{font-weight:600}
+.contact-module-quote-table th small{display:block;font-size:11px;font-weight:400;color:#526477;line-height:1.6;margin-top:4px}
+.contact-module-quote-table td{white-space:nowrap;font-variant-numeric:tabular-nums}
+.contact-module-quote-table .contact-module-quote-final strong{font-weight:750;color:#000;font-size:14px}
+.contact-module-quote-table .contact-module-quote-discount{color:#216b43;font-weight:650}
+.contact-module-quote-table .contact-module-quote-advice,.contact-module-quote-table .contact-module-quote-zero{color:#627587;font-size:12px}
+.contact-module-quote-table tfoot th,.contact-module-quote-table tfoot td{background:#edf3f7;border-top:2px solid #91a8bb;font-weight:700}
+.contact-module-quote-table tfoot .contact-module-quote-final strong{font-size:16px}
+@media(max-width:560px){
+ .contact-module-quote-table,.contact-module-quote-table thead,.contact-module-quote-table tbody,.contact-module-quote-table tfoot{display:block}
+ .contact-module-quote-table caption{display:block}
+ .contact-module-quote-table tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));position:relative;padding:0 8px;border-bottom:1px solid #d8e1e9}
+ .contact-module-quote-table th,.contact-module-quote-table td{padding:7px 3px;border:0;min-width:0;text-align:right}
+ .contact-module-quote-table thead tr{background:#eaf1f7}
+ .contact-module-quote-table thead th:first-child{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
+ .contact-module-quote-table tbody th,.contact-module-quote-table tfoot th{grid-column:1/-1;text-align:left;width:auto;padding:12px 3px 2px}
+ .contact-module-quote-table tbody th:first-child,.contact-module-quote-table tfoot th:first-child{width:auto}
+ .contact-module-quote-table tbody td,.contact-module-quote-table tfoot td{padding-bottom:12px}
+ .contact-module-quote-table tfoot tr{background:#edf3f7;border-top:2px solid #91a8bb}
+ .contact-module-quote-table tfoot th,.contact-module-quote-table tfoot td{border:0;background:transparent}
+ .contact-module-quote-table .contact-module-quote-final strong{font-size:14px}
+ .contact-module-quote-table tfoot .contact-module-quote-final strong{font-size:15px}
+}

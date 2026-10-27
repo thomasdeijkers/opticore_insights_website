@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
-const {catalogue,base,includedModules,resolve,contactDraft,calculatorURL}=require('../assets/js/modular-webapp.js');
+const {catalogue,base,includedModules,resolve,contactDraft,calculatorURL,quoteRows}=require('../assets/js/modular-webapp.js');
 const screens=require('../content/module-screenshots.json');
 const html=fs.readFileSync(path.join(__dirname,'../webapp-samenstellen/index.html'),'utf8');
 const overview=fs.readFileSync(path.join(__dirname,'../modulaire-webapp/index.html'),'utf8');
@@ -30,6 +30,12 @@ for(let mask=0;mask<(1<<ids.length);mask++){
  assert(Math.abs((total.standardMonthly/total.monthly-1)*100-20)<.2,'Monthly advice is about 20% above the payable price');
  assert.equal(total.discount,total.setupSubtotal-total.setup);assert(total.discount>=0);
  assert.deepEqual(resolve([...chosen,...chosen]),total,'No duplicate module fees');
+ const quote=quoteRows(total);assert.equal(quote.length,1+total.extraModules.length);
+ assert.equal(quote.reduce((n,row)=>n+row.currentMonthly,0),total.monthly);
+ assert.equal(quote.reduce((n,row)=>n+row.monthly,0),total.standardMonthly);
+ assert.equal(quote.reduce((n,row)=>n+row.monthlyDiscount,0),total.monthlyDiscount);
+ assert.equal(quote.reduce((n,row)=>n+row.setup,0),total.setup);
+ assert.equal(quote.reduce((n,row)=>n+row.standardSetup,0),total.setupSubtotal);
 }
 assert.equal((html.match(/class="webapp-module-card"/g)||[]).length,10);
 for(const id of ids){
@@ -51,6 +57,7 @@ assert(overview.includes('webapp-demo-teaser-scroll'));assert(overview.includes(
 assert(html.indexOf('class="webapp-pricebar"')<html.indexOf('class="webapp-module-grid"'));assert(html.includes('data-price-details'));
 assert.equal(calculatorURL(['omzet','omzet','__proto__']),'/webapp-samenstellen/#modules');assert.equal(calculatorURL(['marketing','marketing','<script>']),'/webapp-samenstellen/?modules=marketing#modules');
 const contact=fs.readFileSync(path.join(__dirname,'../contact/index.html'),'utf8');assert(/<textarea id="webapp-modules"[^>]*\breadonly/.test(contact));
+assert(/<textarea id="webapp-modules"[^>]*\bhidden/.test(contact));assert(contact.includes('data-module-quote'));
 const draft=contactDraft(complete).replace(/\u00a0/g,' ');assert(draft.includes('Eenmalige inrichting: € 2.995'));assert(draft.includes('Per maand na korting: € 379'));assert(draft.length<=1000);
 for(const page of ['modulaire-webapp','webapp-samenstellen','prijzen','contact'])assert.equal(fs.readFileSync(path.join(__dirname,'..',page+'.html'),'utf8'),fs.readFileSync(path.join(__dirname,'..',page,'index.html'),'utf8'),'Alias: '+page);
 const pricing=fs.readFileSync(path.join(__dirname,'../prijzen/index.html'),'utf8'),starter=pricing.slice(pricing.indexOf('<article class="card pricing-card pricing-webapp-start">'),pricing.indexOf('<details class="pricing-more"><summary>Meer info en voorbeeldpakketten'));

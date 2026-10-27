@@ -108,16 +108,19 @@
     return { modules, extraModules, setupSubtotal, discountRate: discount / setupSubtotal * 100,
       discount, setup, standardMonthly, monthlyDiscount, monthly: standardMonthly - monthlyDiscount, usage: true };
   }
-  const selectionLabels = selected => ['Startpakket: omzetrapportage, voorraad en orders/retouren', ...selected.extraModules.map(id => catalogue[id].label)];
+  function quoteRows(selected) {
+    return [{ id: 'basis', label: base.label, note: includedModules.map(id => catalogue[id].label).join(', '), ...base },
+      ...selected.extraModules.map(id => ({ id, ...catalogue[id] }))];
+  }
   function contactDraft(selected) {
-    return 'Jouw pakket:\n' + selectionLabels(selected).map((label,i) => `${i+1}. ${label}`).join('\n')
+    return 'Jouw pakket:\n' + quoteRows(selected).map((row,i) => `${i+1}. ${row.label}${row.note ? ' (' + row.note + ')' : ''}: ${money(row.setup)} inrichting / ${money(row.currentMonthly)} per maand`).join('\n')
       + `\n\nAdviesprijs inrichting: ${money(selected.setupSubtotal)}\nVoordeel inrichting: − ${money(selected.discount)}\nEenmalige inrichting: ${money(selected.setup)}\nAdviesprijs per maand: ${money(selected.standardMonthly)}\nVoordeel per maand: − ${money(selected.monthlyDiscount)}\nPer maand na korting: ${money(selected.monthly)}\nExclusief btw, AI- en databaseverbruik. Gebruikskosten: opticore-insights.nl/gebruikskosten/. Offerte volgt na afstemming.`;
   }
   function calculatorURL(ids) {
     const known = [...new Set(ids.filter(id => Object.hasOwn(catalogue, id) && !catalogue[id].included))];
     return '/webapp-samenstellen/' + (known.length ? '?' + new URLSearchParams({ modules: known.join(',') }) : '') + '#modules';
   }
-  if (typeof module !== 'undefined' && module.exports) module.exports = { catalogue, base, includedModules, resolve, contactDraft, calculatorURL };
+  if (typeof module !== 'undefined' && module.exports) module.exports = { catalogue, base, includedModules, resolve, contactDraft, calculatorURL, quoteRows };
   if (typeof window !== 'undefined') window.WebappPricing = { catalogue, base, includedModules, resolve, calculatorURL };
   if (typeof document === 'undefined') return;
   const legacyModules = new URLSearchParams(window.location.search);
@@ -213,15 +216,48 @@
     const inset = (header?.getBoundingClientRect().height || 0) + 16;
     window.scrollTo({ top: window.scrollY + frame.getBoundingClientRect().top - inset, behavior: 'instant' });
   });
-  // Carry only known module IDs, their prerequisites and the basis into an editable draft.
+  // Present an immutable quote table; retain its text equivalent for the existing form handler.
   const field = document.querySelector('#webapp-modules');
   const params = new URLSearchParams(window.location.search);
-  if (field && params.get('onderwerp') === 'webapp' && !field.value) {
+  function populateContactQuote() {
+    if (!field || params.get('onderwerp') !== 'webapp') return;
     const selected = resolve((params.get('modules') || '').slice(0, 500).split(','));
     if (selected.modules.length) {
       field.value = contactDraft(selected);
       const edit = document.querySelector('[data-module-edit]');
       if (edit) edit.href = calculatorURL(selected.modules);
+      const target = document.querySelector('[data-module-quote]');
+      if (!target) return;
+      target.replaceChildren();
+      const element = (tag, text, className) => { const node = document.createElement(tag); if (text) node.textContent = text; if (className) node.className = className; return node; };
+      const rows = quoteRows(selected);
+      for (const period of [
+        { caption: 'Per maand', current: 'currentMonthly', advice: 'monthly', discount: 'monthlyDiscount', total: selected.monthly, adviceTotal: selected.standardMonthly, discountTotal: selected.monthlyDiscount },
+        { caption: 'Eenmalige inrichting', current: 'setup', advice: 'standardSetup', discount: null, total: selected.setup, adviceTotal: selected.setupSubtotal, discountTotal: selected.discount }
+      ]) {
+        const table = element('table', null, 'contact-module-quote-table');
+        table.setAttribute('role', 'table');
+        table.append(element('caption', period.caption));
+        const head = element('thead'), headings = element('tr');
+        for (const label of ['Module', 'Eindprijs', 'Korting', 'Advies']) { const th = element('th', label); th.scope = 'col'; headings.append(th); }
+        head.append(headings); table.append(head);
+        const amountRow = (label, current, discount, advice, note = '', total = false) => {
+          const tr = element('tr', null, total ? 'contact-module-quote-total' : '');
+          const title = element('th', label); title.scope = 'row';
+          if (note) title.append(element('small', note));
+          const final = element('td', null, 'contact-module-quote-final'); final.append(element('strong', money(current)));
+          const saving = element('td', discount ? '− ' + money(discount) : '—', discount ? 'contact-module-quote-discount' : 'contact-module-quote-zero');
+          const reference = element('td', null, 'contact-module-quote-advice'); reference.append(element('s', money(advice)));
+          tr.append(title, final, saving, reference); return tr;
+        };
+        const body = element('tbody');
+        for (const row of rows) body.append(amountRow(row.label, row[period.current], period.discount ? row[period.discount] : row.standardSetup - row.setup, row[period.advice], row.note));
+        const foot = element('tfoot'); foot.append(amountRow('Totaal', period.total, period.discountTotal, period.adviceTotal, '', true));
+        table.append(body, foot); target.append(table);
+      }
+      target.append(element('p', 'Prijsindicatie exclusief btw, AI- en databaseverbruik. De getoonde kortingen gelden tot en met 31 december 2027. Je ontvangt een offerte na afstemming.', 'form-note'));
     }
   }
+  populateContactQuote();
+  field?.form?.addEventListener('reset', () => requestAnimationFrame(populateContactQuote));
 })();
