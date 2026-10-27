@@ -5,6 +5,7 @@
     {id:'amazon_de',logo:'/assets/img/platforms/amazon.svg',label:'Amazon DE',country:'DE'}, {id:'praxis',logo:'/assets/img/platforms/praxis.png',label:'Praxis NL',country:'NL'}, {id:'brico',logo:'/assets/img/platforms/brico.png',label:'Brico BE',country:'BE'},
     {id:'mediamarkt',logo:'/assets/img/platforms/mediamarkt.svg',label:'MediaMarkt NL',country:'NL'}, {id:'kaufland',logo:'/assets/img/platforms/kaufland.svg',label:'Kaufland DE',country:'DE'}
   ];
+  const exampleText = value => scope.SiteI18n?.text(value) ?? value;
   const months = ['Nov','Dec','Jan','Feb','Mrt','Apr','Mei','Jun','Jul','Aug','Sep','Okt'];
   const seed = {
     products: [
@@ -34,7 +35,9 @@
     const channelWeights=[[.5,.17,.1,.08,0,.04,.11],[.55,.18,.08,.04,0,.01,.14],[.65,.15,.1,0,0,.1,0],[.2,.08,.07,.1,.1,.4,.05],[.45,.13,.08,.15,.1,.02,.07],[.5,.17,.08,.1,0,.02,.13]];
     state.products.forEach((p,i)=>{
       p.weights=channelWeights[i%channelWeights.length];p.offers.push(i===2?'disabled':'published',i===2?'disabled':i===4?'queued':'published');
-      p.historyPrice=p.price;p.historyCost=p.cost;p.title=p.name;p.image='/assets/img/demo-products/'+p.sku.toLowerCase()+'.jpg';p.description=p.name+' uit ons fictieve assortiment '+p.category.toLowerCase()+'. Bekijk de productinformatie en controleer de uitvoering voor jouw toepassing.';
+      p.historyPrice=p.price;p.historyCost=p.cost;p.title=p.name;p.image='/assets/img/demo-products/'+p.sku.toLowerCase()+'.jpg';p.description=`${p.name} uit ons fictieve assortiment ${p.category}. Bekijk de productinformatie en controleer de uitvoering voor jouw toepassing.`;
+      // Localize fictional seed text once; later user edits remain untouched.
+      p.name=exampleText(p.name);p.title=p.name;p.description=exampleText(p.description);
       p.previousHistory=p.history.map(n=>Math.round(n*(i===3?1.3:i%2?.95:.8)));
       if(i===9)p.previousHistory=p.history.map(n=>Math.round(n*2.2));
       if(i===2)p.previousHistory=[20,18,16,15,14,12,11,9,8,6,4,3];

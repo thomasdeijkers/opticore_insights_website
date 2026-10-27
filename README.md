@@ -26,7 +26,7 @@ Statische HTML/CSS/JS website voor OptiCore Insights. De site is bedoeld als sne
 
 ## Lokaal testen
 
-De website is beschikbaar in Nederlands, Duits, Engels en Frans. Draai voor een meertalige preview eerst `python scripts/i18n.py --write`; de deployment doet dit automatisch. Vertaalbronnen, URL’s en controles staan in [docs/languages.md](docs/languages.md).
+De website is beschikbaar in Nederlands, Duits, Engels en Frans, met een vlagkeuze en eigen app-screenshots per taal. Draai voor een meertalige preview eerst de taalbuild en, bij ontbrekende of gewijzigde beelden, de capturestappen uit [docs/languages.md](docs/languages.md). De deployment bouwt en controleert dit automatisch.
 
 Start na de taalbuild een lokale webserver vanuit de projectmap, bijvoorbeeld `python -m http.server 8765`, en open `http://localhost:8765/`. Hierdoor werken ook de absolute assetpaden en taalroutes.
 

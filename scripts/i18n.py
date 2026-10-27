@@ -21,7 +21,7 @@ VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'met
 DISPLAY_ATTRS = {'alt', 'title', 'placeholder', 'aria-label', 'aria-description', 'data-mail-label', 'data-screen-title', 'data-label'}
 META_TEXT = {'description', 'og:title', 'og:description', 'twitter:title', 'twitter:description'}
 SCHEMA_TEXT = {'name', 'description', 'headline', 'text', 'caption', 'articleSection', 'keywords'}
-VERSION = '20261027-languages'
+VERSION = '20261027-flags-localised-screens'
 
 
 def clean(value):
@@ -265,6 +265,11 @@ def collect():
         doc = Document()
         doc.feed(source)
         strings.update(doc.strings)
+    from neutral_visuals import example_documents
+    for source in example_documents().values():
+        doc = Document()
+        doc.feed(source)
+        strings.update(doc.strings)
     for path in [*(ROOT/'assets/js').glob('*.js'), ROOT/'contact.php', ROOT/'api/demo-access.php', ROOT/'api/bedrijfsscan.php', ROOT/'api/scan-lib.php']:
         if path.name == 'i18n.js':
             continue
@@ -296,14 +301,17 @@ def collect():
 
 
 def integration(source, canonical, language, mapping):
-    source = re.sub(r'(/assets/js/(?:site-search|bedrijfsscan|modular-webapp|module-demo|usage-costs|demo-full-workspace)\.js)(?:\?v=[^"\s]*)?', lambda m: m[1] + '?v=' + VERSION, source)
+    source = re.sub(r'(/assets/js/(?:site-search|bedrijfsscan|modular-webapp|module-demo|usage-costs|demo-full-workspace|demo-access|screenshot-gallery|marketplace-demo-data)\.js)(?:\?v=[^"\s]*)?', lambda m: m[1] + '?v=' + VERSION, source)
     if language != 'nl':
         notes = {
-            'de':'Interaktive Demo auf Deutsch mit fiktiven Daten. Screenshots zeigen die niederländische Oberfläche.',
-            'en':'Interactive demo in English with fictional data. Screenshots show the Dutch interface.',
-            'fr':'Démo interactive en français avec des données fictives. Les captures présentent l’interface néerlandaise.'
+            'de':'Interaktive Demo und Screenshots auf Deutsch mit fiktiven Daten.',
+            'en':'Interactive demo and screenshots in English with fictional data.',
+            'fr':'Démo interactive et captures en français avec des données fictives.'
         }
         source = re.sub(r'(<div class="webapp-demo-teaser-footer">[\s\S]*?<small>)[^<]*(</small>)', lambda m:m[1]+notes[language]+m[2], source)
+        manifest = ROOT/'assets/img/localized/manifest.json'
+        revision = json.loads(manifest.read_text(encoding='utf-8'))['revision'] if manifest.is_file() else VERSION
+        source = re.sub(r'/assets/img/(demo|examples|module-examples)/([\w.-]+\.(?:jpg|png))(?:\?[^\s"<>]*)?', lambda m:f'/assets/img/localized/{language}/{m[1]}/{m[2]}?v={revision}', source)
     alternatives = ''.join(f'<link rel="alternate" hreflang="{lang}" href="{BASE}{canonical if lang == "nl" else mapping[canonical][lang]}">' for lang in LANGUAGES)
     alternatives += f'<link rel="alternate" hreflang="x-default" href="{BASE}{canonical}">'
     head = f'<!-- i18n:head -->{alternatives}<link rel="stylesheet" href="/assets/css/i18n.css?v={VERSION}"><script src="/assets/i18n/{language}.js?v={VERSION}" defer></script><script src="/assets/js/i18n.js?v={VERSION}" defer></script><!-- /i18n -->'
@@ -314,13 +322,11 @@ def integration(source, canonical, language, mapping):
     else:
         source = source.replace('</head>', head + '</head>', 1)
     labels = {'nl':'Taal kiezen', 'de':'Sprache wählen', 'en':'Choose language', 'fr':'Choisir la langue'}
-    options = ''.join(f'<option value="{lang}" lang="{lang}"' + (' selected' if lang == language else '') + f'>{label}</option>' for lang, label in LANGUAGES.items())
-    selector = f'<!-- i18n:selector --><div class="language-picker"><label for="site-language">{labels[language]}</label><select id="site-language" data-site-language aria-label="{labels[language]}">{options}</select><noscript><nav aria-label="{labels[language]}">' + ''.join(f'<a href="{canonical if lang == "nl" else mapping[canonical][lang]}" lang="{lang}" hreflang="{lang}">{label}</a>' for lang, label in LANGUAGES.items()) + '</nav></noscript></div><!-- /i18n -->'
+    flag = lambda lang: f'<img src="/assets/img/flags/{lang}.svg" alt="" width="27" height="18">'
+    selector = f'<!-- i18n:selector --><details class="language-picker" data-site-language="{language}"><summary aria-label="{labels[language]}: {LANGUAGES[language]}" title="{labels[language]}">{flag(language)}<span class="language-sr">{LANGUAGES[language]}</span><span class="language-chevron" aria-hidden="true"></span></summary><nav aria-label="{labels[language]}">' + ''.join(f'<a href="{canonical if lang == "nl" else mapping[canonical][lang]}" data-language="{lang}" lang="{lang}" hreflang="{lang}"' + (' aria-current="page"' if lang == language else '') + f'>{flag(lang)}<span>{label}</span></a>' for lang, label in LANGUAGES.items()) + '</nav></details><!-- /i18n -->'
     if 'class="nav-wrap' in source or 'class="container nav-wrap' in source:
         source = re.sub(r'(<button\b[^>]*data-menu-toggle)', lambda m: selector + m[1], source, count=1)
     elif 'class="demo-topbar-actions"' in source:
-        for code, label in LANGUAGES.items():
-            selector = selector.replace('>' + label + '</option>', '>' + code.upper() + '</option>')
         source = source.replace('<div class="demo-topbar-actions">', '<div class="demo-topbar-actions">' + selector, 1)
     else:
         wrapped = selector.replace('<!-- i18n:selector -->', '<!-- i18n:selector --><div class="standalone-language">', 1).replace('<!-- /i18n -->', '</div><!-- /i18n -->')

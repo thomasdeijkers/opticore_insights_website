@@ -42,7 +42,7 @@
     finally{submit.disabled=false;submit.textContent='Inloggen';}
   });
   root.addEventListener('click',event=>{
-    if(authorized()||event.target.closest('.demo-access-dialog,[data-demo-theme],.sidebar-note,.demo-photo-note')||!event.target.closest('button,a,summary'))return;
+    if(authorized()||event.target.closest('.demo-access-dialog,[data-demo-theme],.sidebar-note,.demo-photo-note,.language-picker')||!event.target.closest('button,a,summary'))return;
     const target=event.target.closest('button,a,summary');
     event.preventDefault();event.stopImmediatePropagation();request(()=>target.isConnected&&target.click());
   },true);

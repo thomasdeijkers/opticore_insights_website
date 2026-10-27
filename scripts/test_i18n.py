@@ -26,7 +26,7 @@ class Page(HTMLParser):
         if tag == 'head': self.in_head = True
         if tag == 'html': self.lang = attrs['lang']
         if tag == 'h1': self.h1 += 1
-        if tag == 'select' and 'data-site-language' in attrs: self.selectors += 1
+        if tag == 'details' and 'data-site-language' in attrs: self.selectors += 1
         if tag == 'link' and attrs.get('rel') == 'canonical': self.canonical.append(attrs['href'])
         if tag == 'link' and attrs.get('hreflang'):
             assert self.in_head, 'hreflang belongs in the HTML head'

@@ -154,10 +154,7 @@ def document(title,section,body):
     return f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)} · Neutraal voorbeeld</title><style>{style}</style></head><body><header class="topbar"><div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Werkruimte</div><div class="top-right"><span class="badge">Fictieve gegevens</span><span class="avatar">D</span></div></header><div class="layout"><aside class="sidebar"><p>JE OMGEVING</p>{nav}<div class="sidebar-note">Neutrale voorbeeldweergave<br>Geen bedrijfsgegevens</div></aside><main><div class="breadcrumb">Werkruimte / {section}</div><div class="page-head"><div><h1>{title}</h1><p>Overzicht, context en een concrete volgende stap.</p></div><span class="period desktop-only">Oktober 2026 ▾</span></div>{body}<p class="footer">Voorbeeldweergave · Alle namen, artikelen en cijfers zijn fictief</p></main></div><div class="mobile-bottom"><b>Overzicht</b><span>Cijfers</span><span>Acties</span><span>Meer</span></div></body></html>'''
 
 
-def main():
-    parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('output',type=Path)
-    args=parser.parse_args();args.output.mkdir(parents=True,exist_ok=True)
+def example_documents():
     pages={
         'management':('Bedrijfsoverzicht','Overzicht',management()),
         'forecast':('Forecasting','Vooruitkijken',forecast()),
@@ -177,14 +174,25 @@ def main():
         pages[kind+'-detail']=(title+' controleren','Werkvoorraad',mobile_work(kind,True))
     pages['login']=('Toegang tot je omgeving','Beveiliging',login())
     pages['login-verify']=('Tweestapsverificatie','Beveiliging',login(True))
+    rendered = {}
     for name,(title,section,body) in pages.items():
         html=document(title,section,body)
         if name.startswith('login'):
             html=html.replace('<div class="layout">','<div class="layout auth-layout">')
             html=html.replace('<aside class="sidebar">','<aside class="sidebar" hidden>')
             html=html.replace('<div class="mobile-bottom">','<div class="mobile-bottom" hidden>')
+        rendered[name] = html
+    return rendered
+
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('output',type=Path)
+    args=parser.parse_args();args.output.mkdir(parents=True,exist_ok=True)
+    documents = example_documents()
+    for name,html in documents.items():
         (args.output/(name+'.html')).write_text(html,encoding='utf-8')
-    print(f'{len(pages)} static, neutral examples written to {args.output}')
+    print(f'{len(documents)} static, neutral examples written to {args.output}')
 
 
 if __name__=='__main__':main()

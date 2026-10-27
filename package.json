@@ -1,0 +1,6 @@
+{
+  "name": "opticore-website-capture-tools",
+  "private": true,
+  "scripts": {"capture:localized": "node scripts/capture_localized_screenshots.cjs"},
+  "devDependencies": {"playwright": "1.62.1"}
+}

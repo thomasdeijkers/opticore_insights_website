@@ -116,7 +116,7 @@
     image.alt = item.alt;
     dialog.querySelector('#image-viewer-title').textContent = item.title;
     dialog.querySelector('.image-viewer-kind').textContent = `${item.device === 'mobile' ? 'Mobiel' : item.device === 'tablet' ? 'Tablet' : 'Desktop'}${item.demo ? ' · Voorbeeldgegevens' : ''}`;
-    dialog.querySelector('.image-viewer-credits').hidden = !/^\/assets\/img\/(?:module-examples\/client-|examples\/client-(?:management|forecast|stock|ranking|marketing|listing)-)/.test(item.src);
+    dialog.querySelector('.image-viewer-credits').hidden = !/^\/assets\/img\/(?:localized\/(?:de|en|fr)\/)?(?:module-examples\/client-|examples\/client-(?:management|forecast|stock|ranking|marketing|listing)-)/.test(item.src);
     dialog.querySelector('.image-viewer-count').textContent = `${active.index + 1} van ${active.items.length}`;
     prev.disabled = next.disabled = active.items.length < 2;
     // Only the current full image and its neighbour are downloaded eagerly.
@@ -147,7 +147,7 @@
     // These local captures are produced alongside every desktop demo image.
     root.querySelectorAll('[data-screen-device="desktop"][data-screen-demo="true"]').forEach(link => {
       const src=link.getAttribute('href');
-      if(!/^\/assets\/img\/(?:module-examples|examples)\/[^?]+-desktop-dark\.(?:jpg|png)(?:\?[^#]*)?$/.test(src||''))return;
+      if(!/^\/assets\/img\/(?:localized\/(?:de|en|fr)\/)?(?:module-examples|examples)\/[^?]+-desktop-dark\.(?:jpg|png)(?:\?[^#]*)?$/.test(src||''))return;
       const copy=link.cloneNode(true),tabletSrc=src.replace('-desktop-dark.','-tablet-dark.');
       copy.dataset.screenDevice='tablet';copy.dataset.screenPreview='tablet';copy.href=tabletSrc;
       const img=copy.querySelector('img');if(img){img.src=tabletSrc;img.width=834;img.height=1112;img.loading='lazy';}

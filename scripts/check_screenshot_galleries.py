@@ -3,6 +3,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
 from screenshot_gallery import ROOT, IMAGES, MANIFEST
+from i18n import VERSION
 
 
 class GalleryAudit(HTMLParser):
@@ -41,6 +42,9 @@ def main():
     for path in ROOT.rglob('*.html'):
         if any(p.startswith('.') or p in ('node_modules', 'backups') for p in path.relative_to(ROOT).parts):
             continue
+        # Generated foreign collections have their own complete manifest audit.
+        if path.relative_to(ROOT).parts[0] in ('de', 'en', 'fr'):
+            continue
         source = path.read_text(encoding='utf-8')
         audit = GalleryAudit(path.relative_to(ROOT))
         audit.feed(source)
@@ -61,7 +65,8 @@ def main():
                     assert tablet_path.is_file(), f'{path}: matching tablet capture missing: {tablet_path}'
             count += 1
         if audit.galleries:
-            assets = ('screenshot-gallery.css?v=20261027-desktop-review', 'screenshot-gallery.js?v=20261027-landscape')
+            script_version = VERSION if '<!-- i18n:head -->' in source else '20261027-landscape'
+            assets = ('screenshot-gallery.css?v=20261027-desktop-review', 'screenshot-gallery.js?v=' + script_version)
             for asset in assets:
                 assert asset in source, f'{path}: stale/missing gallery component'
     for name in IMAGES:

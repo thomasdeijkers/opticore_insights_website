@@ -105,10 +105,13 @@
   localize(document.body);
   observe();
   const picker=document.querySelector('[data-site-language]');
-  picker?.addEventListener('change',()=>{
-    if(!Object.hasOwn({nl:1,de:1,en:1,fr:1},picker.value))return;
-    location.assign(url(location.href,picker.value));
+  picker?.addEventListener('click',event=>{
+    const link=event.target.closest('[data-language]');
+    if(!link || !Object.hasOwn({nl:1,de:1,en:1,fr:1},link.dataset.language))return;
+    link.href=url(location.href,link.dataset.language);
   });
+  document.addEventListener('click',event=>{if(picker?.open&&!picker.contains(event.target))picker.open=false;});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&picker?.open){picker.open=false;picker.querySelector('summary').focus();}});
   // Keep locale on dynamically constructed links even when activated immediately.
   document.addEventListener('click',event=>{
     const link=event.target.closest('a[href]');

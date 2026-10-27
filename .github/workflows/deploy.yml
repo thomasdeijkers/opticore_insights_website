@@ -69,6 +69,19 @@ jobs:
           php scripts/test-business-scan.php
           node --check assets/js/bedrijfsscan.js
 
+      - name: Set up capture tools
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Restore localized app screenshots
+        id: localized-screens
+        uses: actions/cache@v4
+        with:
+          path: assets/img/localized
+          key: localized-dark-v1-${{ runner.os }}-${{ hashFiles('scripts/capture_localized_screenshots.cjs', 'scripts/localized_screenshots.py', 'scripts/neutral_visuals.py', 'scripts/neutral_visuals.css', 'scripts/neutral_visuals_manifest.json', 'scripts/i18n.py', 'content/module-screenshots.json', 'demo/modulaire-webapp/index.html', 'content/i18n/*.json', 'assets/js/*.js', 'assets/css/module-demo.css', 'assets/css/demo-full-workspace.css', 'assets/css/demo-product-photos.css', 'assets/css/i18n.css', 'assets/img/flags/*.svg', 'package-lock.json') }}
+
       - name: Build and validate all language editions
         run: |
           python3 scripts/i18n.py --write
@@ -76,10 +89,25 @@ jobs:
           python3 scripts/test_i18n.py
           python3 scripts/search_index.py --write
           node scripts/test_site_search.cjs
-          python3 scripts/sitemap.py --write
           python3 scripts/metadata.py --check
           php -l api/site-language.php
           node --check assets/js/i18n.js
+
+      - name: Capture translated demo screens
+        if: steps.localized-screens.outputs.cache-hit != 'true'
+        run: |
+          npm ci --ignore-scripts
+          npx playwright install --with-deps chromium
+          node scripts/capture_localized_screenshots.cjs
+
+      - name: Validate localized screenshots and publish references
+        run: |
+          python3 scripts/i18n.py --write
+          python3 scripts/i18n.py --check
+          python3 scripts/localized_screenshots.py --check
+          python3 scripts/test_i18n.py
+          python3 scripts/sitemap.py --write
+          python3 scripts/metadata.py --check
 
       - name: Prepare private site configuration
         env:
@@ -118,6 +146,8 @@ jobs:
             --exclude=.scan-deploy
             --exclude=.github
             --exclude=README.md
+            --exclude=package.json
+            --exclude=package-lock.json
             --exclude=.gitignore
             --exclude=.env
             --exclude=node_modules
