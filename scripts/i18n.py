@@ -21,7 +21,7 @@ VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'met
 DISPLAY_ATTRS = {'alt', 'title', 'placeholder', 'aria-label', 'aria-description', 'data-mail-label', 'data-screen-title', 'data-label'}
 META_TEXT = {'description', 'og:title', 'og:description', 'twitter:title', 'twitter:description'}
 SCHEMA_TEXT = {'name', 'description', 'headline', 'text', 'caption', 'articleSection', 'keywords'}
-VERSION = '20261027-menu-language-slogan-3'
+VERSION = '20261028-teaser-caption-4'
 
 
 def clean(value):
@@ -305,12 +305,6 @@ def collect():
 def integration(source, canonical, language, mapping):
     source = re.sub(r'(/assets/js/(?:site-search|bedrijfsscan|modular-webapp|module-demo|usage-costs|demo-full-workspace|demo-access|screenshot-gallery|marketplace-demo-data)\.js)(?:\?v=[^"\s]*)?', lambda m: m[1] + '?v=' + VERSION, source)
     if language != 'nl':
-        notes = {
-            'de':'Interaktive Demo und Screenshots auf Deutsch mit fiktiven Daten.',
-            'en':'Interactive demo and screenshots in English with fictional data.',
-            'fr':'Démo interactive et captures en français avec des données fictives.'
-        }
-        source = re.sub(r'(<div class="webapp-demo-teaser-footer">[\s\S]*?<small>)[^<]*(</small>)', lambda m:m[1]+notes[language]+m[2], source)
         manifest = ROOT/'assets/img/localized/manifest.json'
         revision = json.loads(manifest.read_text(encoding='utf-8'))['revision'] if manifest.is_file() else VERSION
         source = re.sub(r'/assets/img/(demo|examples|module-examples)/([\w.-]+\.(?:jpg|png))(?:\?[^\s"<>]*)?', lambda m:f'/assets/img/localized/{language}/{m[1]}/{m[2]}?v={revision}', source)

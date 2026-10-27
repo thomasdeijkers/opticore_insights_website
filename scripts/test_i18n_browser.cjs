@@ -24,7 +24,11 @@ async function choose(page,language){if(!await page.locator('.language-picker>su
     assert.equal(normalized(await page.locator('.footer-tagline').innerText()),'Insight at the core of every smart decision.');
     assert(await page.locator('.brand-tagline').isVisible());
     assert.equal(await page.locator('.language-picker>summary img').getAttribute('src'),`/assets/img/flags/${lang}.svg`);
-    if(lang==='en')assert((await page.locator('.webapp-demo-teaser-footer small').innerText()).includes('fictional data.'));
+    assert.equal(await page.locator('.webapp-demo-teaser-footer p').count(),1);
+    assert.equal(await page.locator('.webapp-demo-teaser-footer a,.webapp-demo-teaser-footer button,.webapp-demo-teaser-footer small').count(),0);
+    const preview=page.locator('.webapp-demo-teaser-scroll');
+    assert((await preview.getAttribute('href')).includes(pageURL('/demo/modulaire-webapp/',lang).replace(base.origin,'')));
+    assert.equal(await preview.getAttribute('target'),'_blank');
     await noOverflow();console.log(lang+' '+width+': header checked');
     await page.locator('[data-menu-toggle]').click();
     assert.equal(await page.locator('[data-menu-toggle]').getAttribute('aria-expanded'),'true');
