@@ -194,7 +194,7 @@
       dashboardTile('Gem. orderwaarde',money(orderAmount(state.orders)/state.orders.length),'Van de fictieve voorbeeldorders','orders|overzicht|','money'),
       dashboardTile('12 maanden',money(all.revenue),'Netto verkoop · exclusief btw','omzet|overzicht|','chart',safeRatio(all.revenue-old.revenue,old.revenue))
     ]))+
-    section('Openstaande artikelen','<div class="demo-dashboard-products" aria-label="Openstaande artikelen">'+state.products.map(p=>`<button type="button" data-open-article="${esc(p.sku)}" aria-label="Open artikel: ${esc(p.name)}">${productThumb(p.sku)}</button>`).join('')+'</div>')+
+    section('Openstaande artikelen','<div class="demo-dashboard-products" aria-label="Openstaande artikelen">'+D.openArticles(state).map(({sku,qty})=>`<button type="button" data-open-article="${esc(sku)}" aria-label="Open artikel: ${esc(D.product(state,sku).name)} · ${number(qty)} ${qty===1?'stuk':'stuks'} openstaand">${productThumb(sku)}${qty>1?`<span class="demo-dashboard-quantity" aria-hidden="true">${number(qty)}×</span>`:''}</button>`).join('')+'</div>')+
     section('Marketing',`<button class="demo-dashboard-agent" type="button" data-route="controles|overzicht|">${dashboardIcon('signal')}<strong>Signalenagent</strong><span>${signals.length}</span></button>`+tiles([
       dashboardTile('Rankingstijgers',number(state.products.filter(p=>p.rank!==null&&p.previousRank!==null&&p.rank<p.previousRank).length),'Ten opzichte van de vorige voorbeeldmeting','marketing|details|','chart'),
       dashboardTile('Rankingdalers',number(state.products.filter(p=>p.rank!==null&&p.previousRank!==null&&p.rank>p.previousRank).length),'Ten opzichte van de vorige voorbeeldmeting','marketing|details|','chart'),

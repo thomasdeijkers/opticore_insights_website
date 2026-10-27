@@ -6,6 +6,13 @@ const s=D.createState(),p=D.product(s,'DEMO-1001');
 const photos=require('../assets/js/demo-product-images.js');
 assert.equal(s.products.length,12);assert(new Set(s.products.map(p=>p.category)).size>=5);
 for(const product of s.products){assert.equal(product.image,photos[product.sku].path);assert(fs.statSync(path.join(__dirname,'..',product.image)).size>1000);assert(photos[product.sku].author);assert(photos[product.sku].licenseUrl.startsWith('https://creativecommons.org/'));}
+const pickFixture=D.createState();
+assert.deepEqual(D.openArticles(pickFixture).map(p=>[p.sku,p.qty]),[['DEMO-1001',1],['DEMO-1002',2],['DEMO-1004',1],['DEMO-1005',2],['DEMO-1006',1]]);
+pickFixture.orders.push({id:'DEMO-EXTRA',sku:'DEMO-1002',qty:3,status:'Te picken'});
+assert.equal(D.openArticles(pickFixture).find(p=>p.sku==='DEMO-1002').qty,5,'Quantities aggregate across open orders');
+D.advanceOrder(pickFixture,'DEMO-O-2042');assert.equal(D.openArticles(pickFixture).find(p=>p.sku==='DEMO-1002').qty,3,'Shipped orders leave the open quantity');
+D.advanceOrder(pickFixture,'DEMO-EXTRA');D.advanceOrder(pickFixture,'DEMO-EXTRA');assert(!D.openArticles(pickFixture).some(p=>p.sku==='DEMO-1002'));
+pickFixture.orders.forEach(o=>o.status='Verzonden');assert.deepEqual(D.openArticles(pickFixture),[]);
 const total=D.totals(s),channelSum=D.channels.reduce((n,c)=>n+D.totals(s,12,c.id).revenue,0);
 assert(Math.abs(total.revenue-channelSum)<.0001,'Channel revenue reconciles with totals');
 assert.equal(D.sales(s,p,12,'brico').revenue,0,'Zero-revenue channel remains in article data');

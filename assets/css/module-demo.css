@@ -80,7 +80,7 @@ dialog{background:var(--surface);border:1px solid var(--line);border-radius:12px
 .demo-dashboard-delta{background:var(--good-bg);color:var(--good);border-radius:20px;padding:3px 6px;font-size:9px;white-space:nowrap}
 .demo-dashboard-delta.is-down{background:var(--bad-bg);color:var(--bad)}
 .demo-dashboard-products{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:11px;padding:12px;background:var(--surface);border:1px solid var(--line);border-radius:9px;margin-top:14px}
-.demo-dashboard-products button{padding:0;border:0;border-radius:7px;overflow:hidden;min-width:0;background:var(--surface-2);text-align:left}
+.demo-dashboard-products button{position:relative;padding:0;border:0;border-radius:7px;overflow:hidden;min-width:0;background:var(--surface-2);text-align:left}
 .demo-dashboard-products svg{display:block;width:100%;height:auto;background:#fff}
 .demo-dashboard-products span{display:block;padding:8px;font-size:10px;line-height:1.35;color:var(--ink)}
 .demo-dashboard-agent{display:flex;align-items:center;gap:12px;width:100%;padding:17px 20px;border-color:var(--blue);background:var(--surface);text-align:left;margin-bottom:14px}
@@ -188,3 +188,5 @@ dialog{background:var(--surface);border:1px solid var(--line);border-radius:12px
  .demo-forecast-rate{font-size:13px}.demo-forecast-method{font-size:11px}
 }
 @media(max-width:380px){.demo-channel-detail>summary{grid-template-columns:70px 48px minmax(0,1fr) auto;gap:5px;padding:9px 7px}.demo-channel-detail .channel-brand img{width:40px;height:24px}.demo-channel-detail summary>strong{font-size:15px}.demo-channel-detail .demo-dashboard-delta{font-size:7px;padding:4px}.demo-channel-month>summary{grid-template-columns:32px 56px minmax(0,1fr) auto;gap:5px}.demo-channel-stats{font-size:8px}}
+
+.demo-dashboard-products .demo-dashboard-quantity{position:absolute;right:5px;bottom:5px;display:block;min-width:25px;padding:3px 7px;border:2px solid #fff;border-radius:999px;background:#e9511d;color:#fff;font-size:12px;line-height:1.2;font-weight:800;text-align:center;box-shadow:0 2px 5px #0003}

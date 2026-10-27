@@ -31,9 +31,15 @@ for(const id of ['bedrijfswaardering','keuzehulpen','sop','heating-hub']){
  assert.equal(await p.locator(`[data-full-page="${id}"]`).count(),0);
 }
 assert.equal(await p.locator('.workspace-root .demo-dashboard-products').locator('..').locator('h2').textContent(),'Openstaande artikelen');
-assert.equal(await p.locator('.workspace-root .demo-dashboard-products button span').count(),0);
+assert.equal(await p.locator('.workspace-root .demo-dashboard-products button span:not(.demo-dashboard-quantity)').count(),0);
+assert.equal(await p.locator('.workspace-root .demo-dashboard-products button').count(),5);
+assert.deepEqual(await p.locator('.workspace-root .demo-dashboard-quantity').allTextContents(),['2×','2×']);
+assert.equal(await p.locator('.workspace-root .demo-dashboard-products [data-open-article="DEMO-1001"] .demo-dashboard-quantity').count(),0);
 assert.equal(await p.locator('.workspace-root .demo-dashboard-products button').first().innerText(),'');
 await p.locator('.workspace-root .demo-dashboard-products button').first().click();assert.equal(await p.evaluate(()=>FullWorkspace.inspect().page),'artikelkaart');
+await nav('orders-pakken');await p.locator('.workspace-root [data-w-host="order"][data-id="DEMO-O-2042"]').click();await p.locator('[data-commit]').click();
+await nav('dashboard');assert.equal(await p.locator('.workspace-root .demo-dashboard-products [data-open-article="DEMO-1002"]').count(),0);
+assert.deepEqual(await p.locator('.workspace-root .demo-dashboard-quantity').allTextContents(),['2×']);
 await p.locator('[data-demo-find]').click();
 for(const text of ['Bedrijfswaardering','Keuzehulpen','Werkinstructies','Heating Hub'])assert(!(await p.locator('.workspace-search-results').innerText()).includes(text));
 await close();console.log('PASS removed screens, old links, search and image-only dashboard articles');

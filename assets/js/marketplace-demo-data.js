@@ -171,6 +171,11 @@
     const serial=1001+state.products.length,p={...clone(seed.products[0]),sku:'DEMO-'+serial,ean:'DEMO-EAN-'+serial,name,title:name,description:'Nieuw fictief demoartikel.',price,cost,stock,reserved:0,external:0,location:'N-01',category:'Nieuw assortiment',supplier:'Voorbeeldleverancier Noord',listing:40,returns:0,lastSale:0,rank:null,previousRank:null,history:Array(12).fill(0),previousHistory:Array(12).fill(0),offers:channels.map(()=> 'disabled')};
     p.weights=channels.map((_,i)=>i===0?1:0);state.products.push(p);return p;
   }
+  function openArticles(state){
+    const quantities=new Map();
+    for(const order of state.orders)if(order.status!=='Verzonden')quantities.set(order.sku,(quantities.get(order.sku)||0)+order.qty);
+    return state.products.filter(p=>quantities.get(p.sku)>0).map(p=>({sku:p.sku,qty:quantities.get(p.sku)}));
+  }
   function advanceOrder(state,id){
     const o=state.orders.find(o=>o.id===id);if(!o)throw new Error('Order niet gevonden.');
     if(o.status==='Verzonden')return false;
@@ -195,6 +200,6 @@
     const cell=value=>{let text=String(value??'');if(/^[\s]*[=+@-]/.test(text))text="'"+text;return '"'+text.replace(/"/g,'""')+'"';};
     return '\ufeff'+[headers,...rows].map(row=>row.map(cell).join(';')).join('\r\n');
   }
-  const api={channels,months,createState,product,available,ordered,forecast,coverage,need,sales,totals,channelMonths,dashboardHeatmap,annualForecast,signalRows,advertising,countStock,propose,receivePurchase,receiveReturn,setOffer,setBudget,completeSignal,createShipment,receiveShipment,updateProduct,addProduct,advanceOrder,adviceRows,reviewAdvice,csv};
+  const api={channels,months,createState,product,available,ordered,forecast,coverage,need,sales,totals,channelMonths,dashboardHeatmap,annualForecast,signalRows,advertising,countStock,propose,receivePurchase,receiveReturn,setOffer,setBudget,completeSignal,createShipment,receiveShipment,updateProduct,addProduct,openArticles,advanceOrder,adviceRows,reviewAdvice,csv};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;else scope.MarketplaceDemo=api;
 })(typeof window!=='undefined'?window:globalThis);

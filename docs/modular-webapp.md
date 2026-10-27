@@ -205,3 +205,7 @@ Additional device validation rendered all 53 client pages at 834 pixels. Native 
 Op verzoek zijn Bedrijfswaardering, Keuzehulpen, Werkinstructies en Heating Hub uit de klantdemo verwijderd: paginas, navigatie, zoekresultaten, dashboardlink en bijbehorende voorbeeldacties/data. Er zijn nu 49 paginas en 99 pagina-/tabweergaven. Oude directe links vallen terug op het dashboard. De financiele screenshotgalerij toont eigen verkoopfacturen in plaats van bedrijfswaardering. De afzonderlijke keuzehulpdienst op de website blijft bestaan. Het dashboard toont de kop Openstaande artikelen met alleen productafbeeldingen; de artikelnamen blijven toegankelijk via de knopnaam.
 
 De moduleprijsberekening liep vast doordat update() nog de verwijderde helper selectionLabels aanriep. De samenvatting gebruikt nu dezelfde quoteRows als de contacttabel. Browsercontroles verifiëren de zichtbare totaalprijzen, afhankelijkheden, URL-herstel, reset en overdracht naar het formulier. De tarieven blijven gelijk.
+
+### Aantallen bij openstaande artikelen - 27 oktober 2026
+
+De dashboardstrook toont alleen artikelen uit niet-verzonden orders. Aantallen worden per SKU over alle open orders opgeteld. Vanaf twee stuks verschijnt een oranje badge (bijvoorbeeld 2x); bij een stuk blijft de foto zonder badge. De toegankelijke knopnaam bevat het aantal. Verzenden in de demo verlaagt het aantal of verwijdert het artikel als er geen openstaande stuks meer zijn. De donkere dashboardbeelden zijn opnieuw vastgelegd voor mobiel, tablet en desktop.
