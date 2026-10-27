@@ -61,6 +61,8 @@ jobs:
           php -l api/bedrijfsscan.php
           php -l api/scan-lib.php
           php -l api/demo-access.php
+          php -l api/demo-config.php
+          php -l api/demo-management.php
           python3 scripts/test_demo_access.py
           php -l contact.php
           php scripts/test-business-scan.php

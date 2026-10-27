@@ -18,6 +18,8 @@
     authenticated=data.authenticated===true;expiresAt=Number(data.expiresAt)||0;csrf=data.csrf;
   }
   const ready=session().catch(()=>{});
+  setInterval(()=>{if(authenticated&&document.visibilityState==='visible')session().catch(()=>{authenticated=false;});},30000);
+  document.addEventListener('visibilitychange',()=>{if(authenticated&&document.visibilityState==='visible')session().catch(()=>{authenticated=false;});});
   function close(){form.elements.password.value='';dialog.close();pending=null;returnFocus?.focus();}
   function request(action=null){
     if(authorized()){action?.();return;}

@@ -16,16 +16,15 @@ if (!in_array($method, ['GET', 'POST'], true)) {
     header('Allow: GET, POST');
     demo_reply(405, ['error' => 'Deze aanvraag wordt niet ondersteund.']);
 }
-$configPath = getenv('OPTICORE_DEMO_CONFIG_PATH') ?: dirname(__DIR__, 2) . '/opticore-scan-private/demo-auth.json';
-$config = is_file($configPath) ? json_decode(file_get_contents($configPath), true) : null;
-if (!is_array($config) || !is_string($config['username'] ?? null) || !is_string($config['password_hash'] ?? null)) {
+require_once __DIR__ . '/demo-config.php';
+try { $config = demo_current(); } catch (Throwable $error) {
     demo_reply(503, ['error' => 'Inloggen is momenteel niet beschikbaar. Probeer het later opnieuw.']);
 }
 $secure = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
 session_name('opticore_demo_access');
 session_start(['use_strict_mode' => true, 'cookie_httponly' => true, 'cookie_secure' => $secure, 'cookie_samesite' => 'Lax', 'cookie_path' => '/', 'gc_maxlifetime' => 8 * 3600]);
 $_SESSION['csrf'] ??= bin2hex(random_bytes(32));
-$authenticated = ($_SESSION['expires'] ?? 0) > time();
+$authenticated = ($_SESSION['expires'] ?? 0) > time() && ($_SESSION['credential_version'] ?? '') === $config['version'];
 if ($method === 'GET') {
     demo_reply(200, ['authenticated' => $authenticated, 'expiresAt' => $authenticated ? $_SESSION['expires'] * 1000 : 0, 'csrf' => $_SESSION['csrf']]);
 }
@@ -70,5 +69,6 @@ if ($limited) {
 if (!$valid) demo_reply(401, ['error' => 'De gebruikersnaam of het wachtwoord klopt niet.']);
 session_regenerate_id(true);
 $_SESSION['expires'] = time() + 8 * 3600;
+$_SESSION['credential_version'] = $config['version'];
 $_SESSION['csrf'] = bin2hex(random_bytes(32));
 demo_reply(200, ['authenticated' => true, 'expiresAt' => $_SESSION['expires'] * 1000, 'csrf' => $_SESSION['csrf']]);
