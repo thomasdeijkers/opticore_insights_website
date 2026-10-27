@@ -49,9 +49,9 @@ class Page(HTMLParser):
             self.in_main = False
 
 
-def public_url(value, relative_to=BASE + '/'):
+def public_url(value, relative_to=BASE + '/', *, allow_query=False):
     parsed = urlsplit(urljoin(relative_to, value))
-    if parsed.scheme != 'https' or parsed.netloc != urlsplit(BASE).netloc or parsed.query:
+    if parsed.scheme != 'https' or parsed.netloc != urlsplit(BASE).netloc or (parsed.query and not allow_query):
         return None
     return urlunsplit((parsed.scheme, parsed.netloc, parsed.path or '/', '', ''))
 
@@ -110,7 +110,7 @@ def build():
             raise ValueError(f'robots.txt blocks an indexable page: {url}')
         images = []
         for source in sorted(page.images):
-            image_url = public_url(source, url)
+            image_url = public_url(source, url, allow_query=True)
             if not image_url:
                 continue
             image_path = ROOT / urlsplit(image_url).path.lstrip('/')

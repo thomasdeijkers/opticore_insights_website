@@ -26,6 +26,8 @@ main .case-screen>a,main .website-preview>a,main .news-image>a,main .bol-promo-s
 .image-viewer-header{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:14px 18px;background:#fff;border-bottom:1px solid #cbd5df;flex-shrink:0}
 .image-viewer-header strong{display:block;line-height:1.4;font-size:17px}
 .image-viewer-kind{display:block;color:#526477;font-size:12px;margin-top:4px}
+.image-viewer-credits{display:inline-block;color:#175c91;font-size:12px;line-height:1.5;margin-top:6px}
+.image-viewer-credits[hidden]{display:none}
 .image-viewer .image-viewer-close{flex-shrink:0;background:#152c42;color:#fff;border-color:#152c42;font-size:15px;min-height:45px;padding:9px 17px}
 .image-viewer .image-viewer-close:hover{background:#244b6e}
 .image-viewer-stage{flex:1;min-height:0;overflow:auto;display:flex;align-items:center;justify-content:center;padding:16px;touch-action:pan-y pinch-zoom;overscroll-behavior:contain}

@@ -3,10 +3,13 @@ const D=require('../assets/js/marketplace-demo-data.js');
 const {catalogue}=require('../assets/js/modular-webapp.js');
 const fs=require('node:fs'),path=require('node:path');
 const s=D.createState(),p=D.product(s,'DEMO-1001');
+const photos=require('../assets/js/demo-product-images.js');
+assert.equal(s.products.length,12);assert(new Set(s.products.map(p=>p.category)).size>=5);
+for(const product of s.products){assert.equal(product.image,photos[product.sku].path);assert(fs.statSync(path.join(__dirname,'..',product.image)).size>1000);assert(photos[product.sku].author);assert(photos[product.sku].licenseUrl.startsWith('https://creativecommons.org/'));}
 const total=D.totals(s),channelSum=D.channels.reduce((n,c)=>n+D.totals(s,12,c.id).revenue,0);
 assert(Math.abs(total.revenue-channelSum)<.0001,'Channel revenue reconciles with totals');
 assert.equal(D.sales(s,p,12,'brico').revenue,0,'Zero-revenue channel remains in article data');
-assert.equal(total.profit,total.revenue-total.cost-total.fee-total.shipping);
+assert(Math.abs(total.profit-(total.revenue-total.cost-total.fee-total.shipping))<1e-7,'Profit reconciles within floating-point precision');
 // Every drilldown uses the same history and reconciles with its parent totals.
 for(const c of D.channels){
  const months=D.channelMonths(s,c.id);assert.equal(months.length,12);
@@ -71,10 +74,10 @@ assert.equal(fp.external,externalBefore+10);assert.equal(D.receiveShipment(fulfi
 // Catalogue edits do not rewrite historical revenue, costs or order prices.
 const edit=D.createState(),ep=edit.products[0],salesBefore=D.sales(edit,ep),orderPrice=edit.orders[0].unitPrice;
 D.updateProduct(edit,ep.sku,{price:99,cost:35});assert.deepEqual(D.sales(edit,ep),salesBefore);assert.equal(edit.orders[0].unitPrice,orderPrice);
-assert.throws(()=>D.updateProduct(edit,ep.sku,{name:'Should not save',price:-1}));assert.equal(ep.name,'Thermostaat Luma','Failed edits are atomic');
-assert.throws(()=>D.addProduct(edit,{name:'Invalid',price:20,cost:5,stock:1.5}));assert.equal(edit.products.length,6);
+assert.throws(()=>D.updateProduct(edit,ep.sku,{name:'Should not save',price:-1}));assert.equal(ep.name,'Koffiezetapparaat Aroma','Failed edits are atomic');
+assert.throws(()=>D.addProduct(edit,{name:'Invalid',price:20,cost:5,stock:1.5}));assert.equal(edit.products.length,12);
 const added=D.addProduct(edit,{name:'Nieuw voorbeeldartikel',price:20,cost:5,stock:10});
-assert.equal(added.sku,'DEMO-1007');assert.equal(D.sales(edit,added).revenue,0);assert(added.offers.every(status=>status==='disabled'));
+assert.equal(added.sku,'DEMO-1013');assert.equal(D.sales(edit,added).revenue,0);assert(added.offers.every(status=>status==='disabled'));
 const openOrder=edit.orders[0];assert(D.advanceOrder(edit,openOrder.id));assert.equal(openOrder.status,'In verwerking');
 assert(D.advanceOrder(edit,openOrder.id));assert.equal(openOrder.status,'Verzonden');assert.equal(D.advanceOrder(edit,openOrder.id),false);
 const advice=D.adviceRows(edit).find(a=>a.type==='Listing');D.reviewAdvice(edit,advice.id,'approved');

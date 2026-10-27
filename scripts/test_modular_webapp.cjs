@@ -43,7 +43,7 @@ for(const id of ids){
  if(catalogue[id].included)assert(details.includes('Inbegrepen in het startpakket'));
  else{assert(details.includes(money(fees[id][0])+' inrichting'));assert(details.includes('<s>'+money(catalogue[id].monthly)+' per maand</s>'));}
  for(const device of ['mobile','desktop'])assert.equal((combined.match(new RegExp('data-screen-device="'+device+'"','g'))||[]).length,screens[id].length);
- for(const image of combined.matchAll(/<img[^>]*src="(\/assets\/img\/module-examples\/[^"]+)"/g))assert(fs.statSync(path.join(__dirname,'..',image[1])).size>1000);
+ for(const image of combined.matchAll(/<img[^>]*src="(\/assets\/img\/module-examples\/[^"]+)"/g))assert(fs.statSync(path.join(__dirname,'..',image[1].split('?')[0])).size>1000);
 }
 assert(html.includes('€ 995 inrichting'));assert(html.includes('€ 149 per maand'));
 assert(!overview.includes('data-webapp-picker'));assert(!overview.includes('type="checkbox"'));assert.equal((overview.match(/class="webapp-module-choose"/g)||[]).length,10);

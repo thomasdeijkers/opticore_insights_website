@@ -8,6 +8,8 @@ assert(['127.0.0.1','localhost'].includes(site.hostname),'Local captures only');
  const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})});
  try{
   for(const [device,width,height,scale] of [['desktop',1280,900,2],['tablet',834,1112,2],['mobile',390,844,3]]){
+   const requestedDevice=process.argv.find(arg=>arg.startsWith('--device='))?.split('=')[1];
+   if(requestedDevice&&device!==requestedDevice)continue;
    const ctx=await browser.newContext({viewport:{width,height},deviceScaleFactor:scale,colorScheme:'dark',reducedMotion:'reduce'});
    await ctx.route('**/*',route=>new URL(route.request().url()).origin===site.origin?route.continue():route.abort());
    for(const [module,views] of Object.entries(plan))for(const view of views){
@@ -17,9 +19,9 @@ assert(['127.0.0.1','localhost'].includes(site.hostname),'Local captures only');
     await p.evaluate(()=>document.fonts.ready);
     assert.equal(await p.locator('html').getAttribute('data-theme'),'dark');
     if(view.click)await p.locator(view.click).first().click();
-    if(view.modal){const target=p.locator(view.modal).first(),parent=target.locator('xpath=ancestor::details').first();if(await parent.count()&&await parent.getAttribute('open')===null)await parent.locator(':scope>summary').click();await target.click();await p.locator('dialog[open]').waitFor();}
+    if(view.modal){const target=p.locator(view.modal).first(),parent=target.locator('xpath=ancestor::details').first();if(await parent.count()&&await parent.getAttribute('open')===null){const summary=parent.locator(':scope>summary');await summary.focus();await summary.press('Enter');}await target.click();await p.locator('dialog[open]').waitFor();}
     if(view.focus)await p.locator(view.focus).first().scrollIntoViewIfNeeded();
-    await p.evaluate(async()=>{await Promise.all([...document.images].map(img=>img.complete?Promise.resolve():new Promise(r=>{img.onload=img.onerror=r;})));});
+    await p.evaluate(async()=>{const images=[...document.images];images.forEach(img=>img.loading='eager');await Promise.all(images.map(img=>img.complete?Promise.resolve():new Promise(r=>{img.onload=img.onerror=r;})));});
     assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,url.href);
     assert.deepEqual(errors,[],url.href);
     await p.screenshot({path:path.join(ROOT,`assets/img/module-examples/client-${module}-${view.id}-${device}-dark.jpg`),type:'jpeg',quality:94});

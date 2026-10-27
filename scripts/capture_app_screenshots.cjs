@@ -20,9 +20,9 @@ const records=[];
    const response=await page.goto(url,{waitUntil:'networkidle'});assert(response.ok(),url);
    await page.evaluate(()=>document.fonts.ready);
    if(url.startsWith(site.href+'demo/'))assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');
-   if(expand)await page.locator(expand).first().click();
-   if(modal){const target=page.locator(modal).first(),parent=target.locator('xpath=ancestor::details').first();if(await parent.count()&&await parent.getAttribute('open')===null)await parent.locator(':scope>summary').click();await target.click();await page.locator('dialog[open]').waitFor();}
-   await page.evaluate(async()=>{await Promise.all([...document.images].map(img=>img.complete?Promise.resolve():new Promise(resolve=>{img.onload=img.onerror=resolve;})));});
+   if(expand){const summary=page.locator(expand).first();await summary.focus();await summary.press('Enter');}
+   if(modal){assert.deepEqual(errors,[],url);assert(await page.locator(modal).count(),'Missing screenshot control: '+url);const target=page.locator(modal).first(),parent=target.locator('xpath=ancestor::details').first();if(await parent.count()&&await parent.getAttribute('open')===null){const summary=parent.locator(':scope>summary');await summary.focus();await summary.press('Enter');}await target.click();await page.locator('dialog[open]').waitFor();}
+   await page.evaluate(async()=>{const images=[...document.images];images.forEach(img=>img.loading='eager');await Promise.all(images.map(img=>img.complete?Promise.resolve():new Promise(resolve=>{img.onload=img.onerror=resolve;})));});
    assert.deepEqual(errors,[],url);
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'Horizontal page overflow: '+url);
    const target=path.join(ROOT,'assets/img',file);fs.mkdirSync(path.dirname(target),{recursive:true});
@@ -34,8 +34,9 @@ const records=[];
   const app=(module,view='overzicht',screen='')=>{let [page,tab]=routes[module][view==='details'?1:0];if(screen==='agent')page='marketing-agent';return new URL('demo/modulaire-webapp/?'+new URLSearchParams({page,theme:'dark',...(tab?{tab}:{})}),site).href;};
   const teaserOnly=process.argv.includes('--teaser-only');
   const dashboardOnly=process.argv.includes('--dashboard-only');
+  const productScreensOnly=process.argv.includes('--product-screens-only');
   for(const [device,width,height,scale] of [['desktop',1440,1000,2],['tablet',834,1112,2],['mobile',390,844,3]])await capture(app('dashboard'),`demo/dashboard-client-${device}-dark.png`,width,height,{fullPage:true,scale});
-  if(!teaserOnly&&!dashboardOnly)for(const [device,width,height] of [['desktop',1280,900],['tablet',834,1112],['mobile',390,844]]){
+  if(!teaserOnly&&!dashboardOnly&&!productScreensOnly)for(const [device,width,height] of [['desktop',1280,900],['tablet',834,1112],['mobile',390,844]]){
    for(const module of Object.keys(catalogue))for(const view of ['overzicht','details']){
     const modal=view==='details'&&module==='producten'?'[data-w-host="listing"]':null;
     await capture(app(module,view),`module-examples/client-${module}-${view}-${device}-dark.jpg`,width,height,{modal});
@@ -44,6 +45,7 @@ const records=[];
   }
   if(!teaserOnly)for(const item of manifest){
    if(dashboardOnly&&!item.file.startsWith('client-management-'))continue;
+   if(productScreensOnly&&!/^client-(management|forecast|stock|ranking|marketing|listing)-/.test(item.file))continue;
    const name=item.file.replace(/^client-/,'').replace(/-dark(?=\.[^.]+$)/,'');
    let url=new URL(item.page+'.html',fixtures).href,modal,expand;
    if(name.startsWith('management-'))url=app('dashboard');

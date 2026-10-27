@@ -26,7 +26,7 @@ def collection(src):
 def item_html(name, preview=False):
     item = IMAGES[name]
     device = 'mobile' if item['width'] < item['height'] else 'desktop'
-    src = '/assets/img/examples/' + name
+    src = '/assets/img/examples/' + name + ('?v=20261027-assortment' if name.startswith(('client-management-', 'client-forecast-', 'client-stock-', 'client-ranking-', 'client-marketing-', 'client-listing-')) else '')
     alt = escape(item['alt'], quote=True)
     attrs = f' data-screen-preview="{device}"' if preview else ''
     return (f'<a class="screen-slide" href="{src}" data-screen-device="{device}" '

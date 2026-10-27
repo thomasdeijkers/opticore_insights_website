@@ -1,6 +1,7 @@
 """Prevent regressions to desktop-only app images and obsolete screenshots."""
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urlsplit
 from screenshot_gallery import ROOT, IMAGES, MANIFEST
 
 
@@ -23,7 +24,7 @@ class GalleryAudit(HTMLParser):
         if tag == 'a' and self.active is not None and 'data-screen-device' in attrs:
             self.active['items'].append(attrs)
         if tag == 'img' and attrs.get('src', '').startswith('/assets/img/examples/'):
-            name = Path(attrs['src']).name
+            name = Path(urlsplit(attrs['src']).path).name
             assert name in IMAGES, f'{self.path}: unknown neutral image {name}'
             assert self.active is not None, f'{self.path}: app image outside shared gallery'
             self.active['neutral'] = True
@@ -56,11 +57,11 @@ def main():
             assert desktop, f'{path}: desktop collection missing'
             for item in desktop:
                 if item.get('data-screen-demo') == 'true' and '-desktop-dark.' in item['href'] and item['href'].startswith(('/assets/img/examples/', '/assets/img/module-examples/')):
-                    tablet_path = ROOT / item['href'].replace('-desktop-dark.', '-tablet-dark.').lstrip('/')
+                    tablet_path = ROOT / urlsplit(item['href'].replace('-desktop-dark.', '-tablet-dark.')).path.lstrip('/')
                     assert tablet_path.is_file(), f'{path}: matching tablet capture missing: {tablet_path}'
             count += 1
         if audit.galleries:
-            assets = ('screenshot-gallery.css?v=20261027-module-screens', 'screenshot-gallery.js?v=20261027-module-screens') if 'data-module-gallery=' in source else ('screenshot-gallery.css?v=20261022h', 'screenshot-gallery.js?v=20261027-client-devices')
+            assets = ('screenshot-gallery.css?v=20261027-assortment', 'screenshot-gallery.js?v=20261027-assortment')
             for asset in assets:
                 assert asset in source, f'{path}: stale/missing gallery component'
     for name in IMAGES:
