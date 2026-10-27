@@ -17,14 +17,17 @@ if (!in_array($method, ['GET', 'POST'], true)) {
     demo_reply(405, ['error' => 'Deze aanvraag wordt niet ondersteund.']);
 }
 require_once __DIR__ . '/demo-config.php';
-try { $config = demo_current(); } catch (Throwable $error) {
+try { $config = demo_current(); $accounts = demo_accounts(); } catch (Throwable $error) {
     demo_reply(503, ['error' => 'Inloggen is momenteel niet beschikbaar. Probeer het later opnieuw.']);
 }
 $secure = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
 session_name('opticore_demo_access');
 session_start(['use_strict_mode' => true, 'cookie_httponly' => true, 'cookie_secure' => $secure, 'cookie_samesite' => 'Lax', 'cookie_path' => '/', 'gc_maxlifetime' => 8 * 3600]);
 $_SESSION['csrf'] ??= bin2hex(random_bytes(32));
-$authenticated = ($_SESSION['expires'] ?? 0) > time() && ($_SESSION['credential_version'] ?? '') === $config['version'];
+$sessionAccount = isset($_SESSION['account_id']) ? ($accounts[$_SESSION['account_id']] ?? null) : $config;
+$authenticated = is_array($sessionAccount) && ($_SESSION['expires'] ?? 0) > time()
+    && ($_SESSION['credential_version'] ?? '') === $sessionAccount['version']
+    && (!isset($_SESSION['account_id']) || strtotime($sessionAccount['expires_at']) > time());
 if ($method === 'GET') {
     demo_reply(200, ['authenticated' => $authenticated, 'expiresAt' => $authenticated ? $_SESSION['expires'] * 1000 : 0, 'csrf' => $_SESSION['csrf']]);
 }
@@ -51,8 +54,14 @@ if (!$handle || !flock($handle, LOCK_EX)) demo_reply(503, ['error' => 'Inloggen 
 $attempts = json_decode(stream_get_contents($handle), true) ?: [];
 $attempts = array_filter($attempts, fn($row) => ($row['until'] ?? 0) > time());
 $limited = ($attempts[$key]['count'] ?? 0) >= 10;
-$validPassword = !$limited && password_verify($password, $config['password_hash']);
-$valid = $validPassword && hash_equals($config['username'], $username);
+$loginAccount = $config;
+$accountId = null;
+foreach ($accounts as $id => $account) {
+    if (hash_equals($account['username'], $username)) { $loginAccount = $account; $accountId = $id; break; }
+}
+$validPassword = !$limited && password_verify($password, $loginAccount['password_hash']);
+$valid = $validPassword && hash_equals($loginAccount['username'], $username)
+    && ($accountId === null || strtotime($loginAccount['expires_at']) > time());
 if (!$limited && !$valid) {
     $attempts[$key] = ['count' => ($attempts[$key]['count'] ?? 0) + 1, 'until' => $attempts[$key]['until'] ?? time() + 900];
 }
@@ -68,7 +77,9 @@ if ($limited) {
 }
 if (!$valid) demo_reply(401, ['error' => 'De gebruikersnaam of het wachtwoord klopt niet.']);
 session_regenerate_id(true);
-$_SESSION['expires'] = time() + 8 * 3600;
-$_SESSION['credential_version'] = $config['version'];
+$_SESSION['expires'] = $accountId === null ? time() + 8 * 3600 : min(time() + 8 * 3600, strtotime($loginAccount['expires_at']));
+$_SESSION['credential_version'] = $loginAccount['version'];
+unset($_SESSION['account_id']);
+if ($accountId !== null) $_SESSION['account_id'] = $accountId;
 $_SESSION['csrf'] = bin2hex(random_bytes(32));
 demo_reply(200, ['authenticated' => true, 'expiresAt' => $_SESSION['expires'] * 1000, 'csrf' => $_SESSION['csrf']]);

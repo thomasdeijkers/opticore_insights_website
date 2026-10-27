@@ -69,6 +69,41 @@ with tempfile.TemporaryDirectory(prefix='opticore-demo-access-') as folder:
             with response: return response.status, json.loads(response.read())
         assert manage({'action': 'status'}, 'incorrect')[0] == 403
         assert manage({'action': 'status'})[1]['version'] == 'initial-v1'
+        # Personal accounts have independent credentials and a fixed 30-day lifetime.
+        from datetime import datetime, timezone, timedelta
+        created = datetime.now(timezone.utc).replace(microsecond=0)
+        personal = {"action": "account", "id": str(uuid4()), "username": "Chosen-user", "password": secrets.token_urlsafe(16), "created_at": created.isoformat(), "expires_at": (created + timedelta(days=30)).isoformat()}
+        assert manage(personal)[0] == 200
+        assert manage(personal)[0] == 200, "Retry preserves account and expiry"
+        assert manage({**personal, "id": str(uuid4())})[0] == 409, "No duplicate usernames"
+        assert manage({**personal, "expires_at": (created + timedelta(days=31)).isoformat()})[0] == 400
+        token = request()[1]["csrf"]
+        status, personal_session, _ = request({"username": personal["username"], "password": personal["password"], "csrf": token})
+        assert status == 200 and personal_session["authenticated"]
+        assert personal_session["expiresAt"] <= (created + timedelta(days=30)).timestamp() * 1000
+        assert request()[1]["authenticated"]
+        extension = {"action": "account_extend", "id": personal["id"], "expected_expires_at": personal["expires_at"], "expires_at": (created + timedelta(days=60)).isoformat()}
+        assert manage(extension)[0] == 200
+        assert manage(extension)[0] == 200, "Extension retry never doubles the extension"
+        assert request()[1]["authenticated"], "Extending does not revoke a valid session"
+        accounts_path = Path(folder) / "demo-accounts.json"
+        stored = json.loads(accounts_path.read_text())
+        assert personal["password"] not in accounts_path.read_text(), "Website stores only password hashes"
+        stored[personal["id"]]["expires_at"] = (created - timedelta(seconds=1)).isoformat()
+        accounts_path.write_text(json.dumps(stored))
+        assert not request()[1]["authenticated"], "Existing sessions stop at account expiry"
+        assert request({"username": personal["username"], "password": personal["password"], "csrf": request()[1]["csrf"]})[0] == 401, "Expired accounts cannot log in again"
+        assert manage({"action": "account_delete", "id": personal["id"]})[0] == 200
+        assert manage({"action": "account_delete", "id": personal["id"]})[0] == 200
+        assert personal["id"] not in json.loads(accounts_path.read_text())
+        other = {**personal, "id": str(uuid4()), "username": "Other-user"}
+        assert manage(other)[0] == 200
+        assert request({"username": other["username"], "password": other["password"], "csrf": request()[1]["csrf"]})[1]["authenticated"]
+        assert manage({"action": "account_delete", "id": other["id"]})[0] == 200
+        assert not request()[1]["authenticated"], "Deleting an active user invalidates their session"
+        assert request({"username": other["username"], "password": other["password"], "csrf": request()[1]["csrf"]})[0] == 401
+        token = request()[1]["csrf"]
+        assert request({"username": "Test user", "password": password, "csrf": token})[0] == 200, "Personal expiry leaves other accounts working"
         new_password = secrets.token_urlsafe(24)
         update = {'action': 'update', 'username': 'Updated-user', 'password': new_password, 'version': str(uuid4()), 'expected_version': 'initial-v1'}
         status, result = manage(update)
@@ -77,7 +112,7 @@ with tempfile.TemporaryDirectory(prefix='opticore-demo-access-') as folder:
         assert manage(update)[0] == 200, 'A retry must be idempotent'
         assert manage({**update, 'version': str(uuid4())})[0] == 409
         assert not request()[1]['authenticated'], 'Changing credentials invalidates existing sessions'
-        assert request({**login, 'csrf': data['csrf']})[0] == 401
+        assert request({**login, 'csrf': request()[1]['csrf']})[0] == 401
         # A subsequent seed upload must not overwrite the mutable settings.
         config.write_text(json.dumps({'username': 'Test user', 'password_hash': password_hash, 'management_key': management_key}), encoding='utf-8')
         assert manage({'action': 'status'})[1]['version'] == update['version']
