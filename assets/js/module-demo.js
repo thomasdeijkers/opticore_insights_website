@@ -79,7 +79,7 @@
   const labels={published:'Offer gepubliceerd',failed:'Publicatiefout',disabled:'Niet gepubliceerd',queued:'In wachtrij'};
   const offer=status=>`<span class="offer-badge is-${status}" title="${labels[status]}"><b aria-hidden="true">${status==='published'?'✓':status==='failed'?'×':status==='queued'?'…':'−'}</b>${labels[status]}</span>`;
   const channelName=id=>D.channels.find(c=>c.id===id)?.label||id;
-  const channelBrand=id=>{const c=D.channels.find(c=>c.id===id);return c?`<span class="channel-brand"><img src="${esc(c.logo)}" alt="${esc(c.label.replace(/ (NL|DE|BE)$/,''))}" width="74" height="27"><span class="channel-country demo-flag demo-flag-${c.country}" role="img" aria-label="${esc(c.country)}">${c.country}</span></span>`:esc(id);};
+  const channelBrand=id=>{const c=D.channels.find(c=>c.id===id);return c?`<span class="channel-brand"><img src="${esc(c.logo)}" alt="${esc(c.label.replace(/ (NL|DE|BE)$/,''))}" width="74" height="27"><span class="channel-country demo-flag demo-flag-${c.country}" data-i18n-ignore role="img" aria-label="${esc(c.country)}">${c.country}</span></span>`:esc(id);};
   const strip=document.createElement('div');strip.className='demo-channel-strip';strip.setAttribute('aria-label','Voorbeeldkanalen');strip.innerHTML=D.channels.map(c=>channelBrand(c.id)).join('');q('[data-demo-intro]').after(strip);
   const period=()=>Number(q('[data-demo-period]').value);
   const channel=()=>q('[data-demo-channel]').value;

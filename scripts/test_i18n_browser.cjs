@@ -63,6 +63,8 @@ async function choose(page,language){await page.locator('.language-picker>summar
    await demoSession(context,base);
    await page.reload({waitUntil:'networkidle'});
    await page.locator('.workspace-root').waitFor();
+   assert((await page.locator('.demo-flag-BE').allTextContents()).every(text=>text==='BE'),'Country codes stay unchanged');
+   if(lang==='de')assert(!(await page.locator('.demo-channel-stats').allTextContents()).join(' ').includes('Aktie'));
    await page.locator('[data-demo-menu]').click();
    const articlePage=page.locator('[data-full-page=omzet-artikelen]');
    await page.locator('.demo-nav-group').filter({has:articlePage}).locator(':scope>summary').click();
