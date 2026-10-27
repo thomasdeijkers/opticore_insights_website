@@ -46,6 +46,8 @@ const records=[];
    console.log(device+' module screens captured.');
   }
   if(!teaserOnly)for(const item of manifest){
+   // Actual Olympus captures are restored from their pinned media release.
+   if(item.source==='olympus')continue;
    if(dashboardOnly&&!item.file.startsWith('client-management-'))continue;
    if(productScreensOnly&&!/^client-(management|forecast|stock|ranking|marketing|listing)-/.test(item.file))continue;
    const name=item.file.replace(/^client-/,'').replace(/-dark(?=\.[^.]+$)/,'');
