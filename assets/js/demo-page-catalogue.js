@@ -397,16 +397,6 @@ window.DemoPageCatalogue = {
         }
       ]
     },
-    "heating-hub": {
-      "title": "Heating Hub",
-      "description": "Thermostaten, devices, gatewaystatus en installaties.",
-      "tabs": []
-    },
-    "keuzehulpen": {
-      "title": "Keuzehulpen",
-      "description": "Keteladvies, thermostaten vergelijken en besliskenmerken beheren.",
-      "tabs": []
-    },
     "ai-assistant": {
       "title": "AI Assistant",
       "description": "AI Product Creator, checks, content en validatieflows.",
@@ -466,11 +456,6 @@ window.DemoPageCatalogue = {
         }
       ]
     },
-    "bedrijfswaardering": {
-      "title": "Bedrijfswaardering",
-      "description": "Indicatieve bedrijfswaarde op basis van genormaliseerde EBIT en voorraadwaarde.",
-      "tabs": []
-    },
     "rapportages": {
       "title": "Rapportages",
       "description": "Rapportages, snapshots en managementoverzichten.",
@@ -494,36 +479,6 @@ window.DemoPageCatalogue = {
         {
           "id": "exports",
           "label": "Exports"
-        }
-      ]
-    },
-    "sop": {
-      "title": "Werkinstructies",
-      "description": "Globale dashboarduitleg en werkwijze voor Productflow en marketplace artikelbeheer.",
-      "tabs": [
-        {
-          "id": "opticore-dashboard",
-          "label": "OptiCore Dashboard"
-        },
-        {
-          "id": "productflow",
-          "label": "Productflow"
-        },
-        {
-          "id": "bol",
-          "label": "Bol"
-        },
-        {
-          "id": "praxis",
-          "label": "Praxis"
-        },
-        {
-          "id": "brico",
-          "label": "Brico"
-        },
-        {
-          "id": "amazon",
-          "label": "Amazon"
         }
       ]
     },
@@ -618,8 +573,7 @@ window.DemoPageCatalogue = {
         "image-studio",
         "verbeteringen",
         "webshop-studio",
-        "handleidingen",
-        "keuzehulpen"
+        "handleidingen"
       ]
     },
     {
@@ -680,7 +634,6 @@ window.DemoPageCatalogue = {
         "signalen",
         "artikeltrends",
         "bol-ranking",
-        "bedrijfswaardering",
         "publicaties"
       ]
     },
@@ -711,7 +664,6 @@ window.DemoPageCatalogue = {
       "id": "system",
       "pages": [
         "feeds",
-        "sop",
         "server",
         "settings"
       ]
@@ -723,7 +675,6 @@ window.DemoPageCatalogue = {
         "orders-pakken",
         "media",
         "google-ads",
-        "heating-hub",
         "ai-assistant",
         "rapportages"
       ]

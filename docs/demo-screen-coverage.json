@@ -410,16 +410,6 @@
         }
       ]
     },
-    "heating-hub": {
-      "title": "Heating Hub",
-      "description": "Thermostaten, devices, gatewaystatus en installaties.",
-      "tabs": []
-    },
-    "keuzehulpen": {
-      "title": "Keuzehulpen",
-      "description": "Keteladvies, thermostaten vergelijken en besliskenmerken beheren.",
-      "tabs": []
-    },
     "ai-assistant": {
       "title": "AI Assistant",
       "description": "AI Product Creator, checks, content en validatieflows.",
@@ -479,11 +469,6 @@
         }
       ]
     },
-    "bedrijfswaardering": {
-      "title": "Bedrijfswaardering",
-      "description": "Indicatieve bedrijfswaarde op basis van genormaliseerde EBIT en voorraadwaarde.",
-      "tabs": []
-    },
     "rapportages": {
       "title": "Rapportages",
       "description": "Rapportages, snapshots en managementoverzichten.",
@@ -507,36 +492,6 @@
         {
           "id": "exports",
           "label": "Exports"
-        }
-      ]
-    },
-    "sop": {
-      "title": "Werkinstructies",
-      "description": "Globale dashboarduitleg en werkwijze voor Productflow en marketplace artikelbeheer.",
-      "tabs": [
-        {
-          "id": "opticore-dashboard",
-          "label": "OptiCore Dashboard"
-        },
-        {
-          "id": "productflow",
-          "label": "Productflow"
-        },
-        {
-          "id": "bol",
-          "label": "Bol"
-        },
-        {
-          "id": "praxis",
-          "label": "Praxis"
-        },
-        {
-          "id": "brico",
-          "label": "Brico"
-        },
-        {
-          "id": "amazon",
-          "label": "Amazon"
         }
       ]
     },
@@ -615,5 +570,23 @@
       "tabs": []
     }
   },
-  "clientViews": 108
+  "clientViews": 99,
+  "excludedDemoFeatures": [
+    {
+      "id": "bedrijfswaardering",
+      "title": "Bedrijfswaardering"
+    },
+    {
+      "id": "keuzehulpen",
+      "title": "Keuzehulpen"
+    },
+    {
+      "id": "sop",
+      "title": "Werkinstructies"
+    },
+    {
+      "id": "heating-hub",
+      "title": "Heating Hub"
+    }
+  ]
 }

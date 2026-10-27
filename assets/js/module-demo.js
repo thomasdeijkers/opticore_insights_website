@@ -193,7 +193,8 @@
       dashboardTile('Retourpercentage',pct(safeRatio(all.returned,all.qty)),'Verkochte stuks · laatste 12 maanden','orders|details|','percent'),
       dashboardTile('Gem. orderwaarde',money(orderAmount(state.orders)/state.orders.length),'Van de fictieve voorbeeldorders','orders|overzicht|','money'),
       dashboardTile('12 maanden',money(all.revenue),'Netto verkoop · exclusief btw','omzet|overzicht|','chart',safeRatio(all.revenue-old.revenue,old.revenue))
-    ])+'<div class="demo-dashboard-products" aria-label="Voorbeeldartikelen">'+state.products.map(p=>`<button type="button" data-open-article="${esc(p.sku)}">${productThumb(p.sku)}<span>${esc(p.name)}</span></button>`).join('')+'</div>')+
+    ]))+
+    section('Openstaande artikelen','<div class="demo-dashboard-products" aria-label="Openstaande artikelen">'+state.products.map(p=>`<button type="button" data-open-article="${esc(p.sku)}" aria-label="Open artikel: ${esc(p.name)}">${productThumb(p.sku)}</button>`).join('')+'</div>')+
     section('Marketing',`<button class="demo-dashboard-agent" type="button" data-route="controles|overzicht|">${dashboardIcon('signal')}<strong>Signalenagent</strong><span>${signals.length}</span></button>`+tiles([
       dashboardTile('Rankingstijgers',number(state.products.filter(p=>p.rank!==null&&p.previousRank!==null&&p.rank<p.previousRank).length),'Ten opzichte van de vorige voorbeeldmeting','marketing|details|','chart'),
       dashboardTile('Rankingdalers',number(state.products.filter(p=>p.rank!==null&&p.previousRank!==null&&p.rank>p.previousRank).length),'Ten opzichte van de vorige voorbeeldmeting','marketing|details|','chart'),

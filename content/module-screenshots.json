@@ -217,9 +217,10 @@
       "page": "prijs-berekenen"
     },
     {
-      "id": "waardering",
-      "title": "Indicatieve bedrijfswaardering",
-      "page": "bedrijfswaardering"
+      "id": "facturen",
+      "title": "Facturen van je verkooporders",
+      "page": "facturen",
+      "tab": "saved"
     }
   ],
   "forecasting": [

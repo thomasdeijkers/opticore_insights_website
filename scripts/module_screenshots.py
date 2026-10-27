@@ -15,7 +15,7 @@ def gallery(module):
     items = []
     for device, width, height in [('mobile', 390, 844), ('desktop', 1280, 900)]:
         for index, view in enumerate(views):
-            src = f'/assets/img/module-examples/client-{module}-{view["id"]}-{device}-dark.jpg?v=20261027-assortment'
+            src = f'/assets/img/module-examples/client-{module}-{view["id"]}-{device}-dark.jpg?v=20261027-demo-scope'
             title = escape(view['title'], quote=True)
             alt = escape(f'{view["title"]} — darkmode met fictieve gegevens.', quote=True)
             preview = f' data-screen-preview="{device}"' if index < (2 if device == 'mobile' else 1) else ''

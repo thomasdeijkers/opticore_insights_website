@@ -24,5 +24,18 @@ await nav('server');assert(!(await p.locator('.workspace-root').innerText()).inc
 await nav('rapportages');const downloadPromise=p.waitForEvent('download');await p.locator('[data-w-action=report-download]').first().click();const download=await downloadPromise;assert(download.suggestedFilename().endsWith('.csv'));await download.delete();console.log('PASS own environment views and CSV download');
 await p.locator('[data-demo-theme]').click();assert.equal(await p.locator('html').getAttribute('data-theme'),'light');await p.locator('[data-workspace-back]').click();assert.equal(await p.evaluate(()=>FullWorkspace.inspect().page),'server');
 await p.locator('[data-demo-menu]').click();await p.locator('[data-demo-nav] [data-w-action=reset-demo]').click();assert.equal(await p.evaluate(()=>FullWorkspace.inspect().client.company.name),'Voorbeeldhandel Noord B.V.');assert.equal(await p.evaluate(()=>FullWorkspace.inspect().client.documents[0].status),'Concept');assert.equal(await p.locator('html').getAttribute('data-theme'),'light');
+// Removed screens must be absent from navigation/search and old direct links.
+for(const id of ['bedrijfswaardering','keuzehulpen','sop','heating-hub']){
+ await p.goto(new URL('demo/modulaire-webapp/?page='+id,base).href,{waitUntil:'networkidle'});
+ assert.equal(await p.evaluate(()=>FullWorkspace.inspect().page),'dashboard');
+ assert.equal(await p.locator(`[data-full-page="${id}"]`).count(),0);
+}
+assert.equal(await p.locator('.workspace-root .demo-dashboard-products').locator('..').locator('h2').textContent(),'Openstaande artikelen');
+assert.equal(await p.locator('.workspace-root .demo-dashboard-products button span').count(),0);
+assert.equal(await p.locator('.workspace-root .demo-dashboard-products button').first().innerText(),'');
+await p.locator('.workspace-root .demo-dashboard-products button').first().click();assert.equal(await p.evaluate(()=>FullWorkspace.inspect().page),'artikelkaart');
+await p.locator('[data-demo-find]').click();
+for(const text of ['Bedrijfswaardering','Keuzehulpen','Werkinstructies','Heating Hub'])assert(!(await p.locator('.workspace-search-results').innerText()).includes(text));
+await close();console.log('PASS removed screens, old links, search and image-only dashboard articles');
 assert.deepEqual(errors,[]);assert.deepEqual(blocked,[]);console.log('PASS back navigation, theme preservation, reset isolation, no JS errors and no external requests');
 }finally{await b.close();}})().catch(e=>{console.error(e);process.exitCode=1});

@@ -692,6 +692,12 @@
       <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-financieel-details-mobile-dark.jpg</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-financieel-facturen-desktop-dark.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-financieel-facturen-mobile-dark.jpg</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-financieel-kostprijs-desktop-dark.jpg</image:loc>
     </image:image>
     <image:image>
@@ -702,12 +708,6 @@
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-financieel-overzicht-mobile-dark.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-financieel-waardering-desktop-dark.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-financieel-waardering-mobile-dark.jpg</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-forecasting-artikelen-desktop-dark.jpg</image:loc>
@@ -1666,6 +1666,12 @@
       <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-financieel-details-mobile-dark.jpg</image:loc>
     </image:image>
     <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-financieel-facturen-desktop-dark.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-financieel-facturen-mobile-dark.jpg</image:loc>
+    </image:image>
+    <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-financieel-kostprijs-desktop-dark.jpg</image:loc>
     </image:image>
     <image:image>
@@ -1676,12 +1682,6 @@
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-financieel-overzicht-mobile-dark.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-financieel-waardering-desktop-dark.jpg</image:loc>
-    </image:image>
-    <image:image>
-      <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-financieel-waardering-mobile-dark.jpg</image:loc>
     </image:image>
     <image:image>
       <image:loc>https://opticore-insights.nl/assets/img/module-examples/client-forecasting-artikelen-desktop-dark.jpg</image:loc>

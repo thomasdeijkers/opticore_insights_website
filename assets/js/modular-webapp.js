@@ -148,7 +148,7 @@
         note.hidden = !catalogue[input.value].included && neededBy.length === 0;
         note.textContent = catalogue[input.value].included ? 'Inbegrepen in het startpakket.' : neededBy.length ? 'Nodig voor: ' + neededBy.map(id => catalogue[id].label).join(', ') + '. Verwijder die module eerst.' : '';
       });
-      const items = selectionLabels(selected);
+      const items = quoteRows(selected).map(row => row.note ? `${row.label}: ${row.note}` : row.label);
       summary.replaceChildren(...items.map(label => {
         const item = document.createElement('li'); item.textContent = label; return item;
       }));
