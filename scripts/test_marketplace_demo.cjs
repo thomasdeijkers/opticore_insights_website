@@ -95,11 +95,14 @@ const exported=D.csv(['Artikel','Tekst'],[['="formula"','A;B'],['normal','a"b']]
 assert(exported.startsWith('\ufeff'));assert(exported.includes('"\'=""formula"""'));assert(exported.includes('"A;B"'));assert(exported.includes('"a""b"'));
 for(const c of D.channels)assert(fs.existsSync(path.join(__dirname,'..',c.logo)),'Local channel logo exists: '+c.label);
 const source=fs.readFileSync(path.join(__dirname,'../assets/js/module-demo.js'),'utf8');
-for(const key of Object.keys(catalogue))assert(source.includes(key+':{label:'),'Demo has priced marketplace module '+key);
+const fullSource=fs.readFileSync(path.join(__dirname,'../assets/js/demo-full-workspace.js'),'utf8');
+for(const key of Object.keys(catalogue))assert(source.includes(key+':{label:')||fullSource.includes(key+':['),'Demo has priced marketplace module '+key);
 assert(!source.includes('Planning en projecten'));assert(!source.includes('Documentverwerking'));
+const capturePlan=require('../content/module-screenshots.json');
 for(const key of Object.keys(catalogue)){
- for(const device of ['mobile','desktop'])for(const view of ['overzicht','details']){
-  assert(fs.statSync(path.join(__dirname,`../assets/img/module-examples/client-${key}-${view}-${device}-dark.jpg`)).size>1000);
+ assert(capturePlan[key]?.length>=4,'Every priced module has at least four actual demo scenes');
+ for(const device of ['mobile','tablet','desktop'])for(const view of capturePlan[key]){
+  assert(fs.statSync(path.join(__dirname,`../assets/img/module-examples/client-${key}-${view.id}-${device}-dark.jpg`)).size>1000);
  }
 }
 const demoHtml=fs.readFileSync(path.join(__dirname,'../demo/modulaire-webapp/index.html'),'utf8');
