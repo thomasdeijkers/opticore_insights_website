@@ -12,11 +12,11 @@
   "forecasting": {
     "label": "Forecasting",
     "setup": 200,
-    "monthly": 31,
+    "monthly": 25,
     "requires": [
       "omzet"
     ],
-    "monthlyDiscount": 6,
+    "monthlyDiscount": 5,
     "standardSetup": 250
   },
   "voorraad": {
@@ -31,12 +31,12 @@
   "inkoop": {
     "label": "Inkoop en bestellen",
     "setup": 300,
-    "monthly": 44,
+    "monthly": 38,
     "requires": [
       "omzet",
       "voorraad"
     ],
-    "monthlyDiscount": 9,
+    "monthlyDiscount": 8,
     "standardSetup": 375
   },
   "logistiek": {
@@ -53,9 +53,9 @@
   "producten": {
     "label": "Productbeheer en publicaties",
     "setup": 300,
-    "monthly": 56,
+    "monthly": 50,
     "requires": [],
-    "monthlyDiscount": 11,
+    "monthlyDiscount": 10,
     "standardSetup": 375
   },
   "orders": {
@@ -70,12 +70,12 @@
   "marketing": {
     "label": "Marketing en ranking",
     "setup": 400,
-    "monthly": 69,
+    "monthly": 63,
     "requires": [
       "omzet",
       "producten"
     ],
-    "monthlyDiscount": 14,
+    "monthlyDiscount": 13,
     "standardSetup": 500
   },
   "financieel": {

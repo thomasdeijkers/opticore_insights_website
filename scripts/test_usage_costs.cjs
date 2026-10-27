@@ -9,10 +9,10 @@ for(const key of ['database','text','images']){
 const small=estimate(config,{database:1,text:0,images:0},149);assert.equal(small.total,154);assert.equal(small.usage,5);
 const boundaries=[[2,100,10,15],[2.1,101,11,50],[10,500,50,50],[10.1,501,51,140],[50,2000,200,140]];
 for(const [database,text,images,expectedUsage] of boundaries)assert.equal(estimate(config,{database,text,images},149).usage,expectedUsage,'Single band per usage type, no cumulative tier charging');
-for(const values of [{database:51,text:0,images:0},{database:1,text:2001,images:0},{database:1,text:0,images:201}]){const r=estimate(config,values,399);assert(r.needsQuote);assert.equal(r.total,null);assert.equal(r.usage,null,'Never display unknown consumption as free');}
+for(const values of [{database:51,text:0,images:0},{database:1,text:2001,images:0},{database:1,text:0,images:201}]){const r=estimate(config,values,379);assert(r.needsQuote);assert.equal(r.total,null);assert.equal(r.usage,null,'Never display unknown consumption as free');}
 for(const values of [{database:-1,text:0,images:0},{database:1,text:.5,images:0},{database:NaN,text:0,images:0}])assert.throws(()=>estimate(config,values,149));
 assert.throws(()=>estimate(config,{database:0,text:0,images:0},NaN));
-const complete=P.resolve(Object.keys(P.catalogue));assert(complete.usage);assert.equal(estimate(config,{database:1,text:0,images:0},complete.monthly).total,404);
+const complete=P.resolve(Object.keys(P.catalogue));assert(complete.usage);assert.equal(estimate(config,{database:1,text:0,images:0},complete.monthly).total,384);
 assert.deepEqual(config.modules.map(m=>m.id),['omzet','voorraad','orders','producten','inkoop','marketing','logistiek','financieel','forecasting','controles']);
 assert.equal(new Set(config.modules.map(m=>m.id)).size,10);
 const page=fs.readFileSync(path.join(__dirname,'../gebruikskosten/index.html'),'utf8');
