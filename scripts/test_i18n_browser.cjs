@@ -21,6 +21,7 @@ async function choose(page,language){await page.locator('.language-picker>summar
     assert.equal(await page.locator('[data-site-language]').getAttribute('data-site-language'),lang);
     assert((await page.locator('.language-picker>summary').boundingBox()).width<=64);
     assert.equal(await page.locator('.language-picker>summary img').getAttribute('src'),`/assets/img/flags/${lang}.svg`);
+    if(lang==='en')assert((await page.locator('.webapp-demo-teaser-footer small').innerText()).includes('fictional data.'));
     await noOverflow();console.log(lang+' '+width+': header checked');
     await page.locator('[data-menu-toggle]').click();
     assert.equal(await page.locator('[data-menu-toggle]').getAttribute('aria-expanded'),'true');
