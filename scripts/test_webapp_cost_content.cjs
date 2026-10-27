@@ -24,4 +24,14 @@ const faq=html.match(/<div class="webapp-cost-faq">([\s\S]*?)<\/div><div class="
 assert.equal((faq.match(/<details>/g)||[]).length,8);
 assert.match(faq,/API-koppeling/);assert.match(faq,/maandelijkse kosten/);assert.match(faq,/volledig nieuwe applicatie op maat/);
 for(const name of ['index.html','modulaire-webapp.html','prijzen.html'])assert.match(fs.readFileSync(path.join(root,name),'utf8'),/href="\/webapp-samenstellen\/"[^>]*>Bereken/);
+// The dashboard offer is the same modular starter package, including its subscription.
+const pricing=fs.readFileSync(path.join(root,'prijzen.html'),'utf8');
+assert.equal(pricing,fs.readFileSync(path.join(root,'prijzen/index.html'),'utf8'));
+const dashboard=pricing.match(/<article class="card pricing-card" id="dashboard">([\s\S]*?)<\/article>/)[1];
+const euro=n=>'€ '+new Intl.NumberFormat('nl-NL').format(n);
+assert(dashboard.includes(euro(P.base.setup)), 'Dashboard setup must match the starter package');
+assert(dashboard.includes(euro(P.base.currentMonthly)), 'Dashboard subscription must match the starter package');
+assert.match(dashboard,/<span>per maand<\/span>/);
+assert.match(dashboard,/href="\/webapp-samenstellen\/"/);
+assert(!pricing.includes('€ 2.495'), 'Do not advertise the obsolete dashboard starting price');
 console.log('Cost content OK: static answers, four resolved price examples, dependencies, yearly totals, schema, aliases and internal links.');
