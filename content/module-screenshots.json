@@ -1,0 +1,276 @@
+{
+  "omzet": [
+    {
+      "id": "overzicht",
+      "title": "Omzet en marge",
+      "page": "omzet"
+    },
+    {
+      "id": "details",
+      "title": "Artikelkaart",
+      "page": "artikelkaart"
+    },
+    {
+      "id": "kalender",
+      "title": "Maand- en kwartaaloverzicht",
+      "page": "omzet-overzicht"
+    },
+    {
+      "id": "artikelen",
+      "title": "Omzet per artikel",
+      "page": "omzet-artikelen"
+    }
+  ],
+  "voorraad": [
+    {
+      "id": "overzicht",
+      "title": "Voorraad en dekking",
+      "page": "voorraad"
+    },
+    {
+      "id": "details",
+      "title": "Incourante voorraad",
+      "page": "voorraad-incourant"
+    },
+    {
+      "id": "overstock",
+      "title": "Overstock",
+      "page": "voorraad-overstock"
+    },
+    {
+      "id": "leveranciers",
+      "title": "Voorraad per leverancier",
+      "page": "voorraad",
+      "tab": "suppliers"
+    }
+  ],
+  "orders": [
+    {
+      "id": "overzicht",
+      "title": "Orders en statussen",
+      "page": "orders"
+    },
+    {
+      "id": "details",
+      "title": "Retouren verwerken",
+      "page": "retouren",
+      "tab": "processing"
+    },
+    {
+      "id": "retourartikelen",
+      "title": "Retouren per artikel",
+      "page": "retouren",
+      "tab": "articles"
+    },
+    {
+      "id": "klanten",
+      "title": "Klanten en bestellingen",
+      "page": "klanten"
+    }
+  ],
+  "producten": [
+    {
+      "id": "overzicht",
+      "title": "Publicatiestatus",
+      "page": "publicaties"
+    },
+    {
+      "id": "details",
+      "title": "Listingoptimalisatie",
+      "page": "verbeteringen",
+      "modal": "[data-w-host=\"listing\"]"
+    },
+    {
+      "id": "image-studio",
+      "title": "Product Image Studio",
+      "page": "image-studio"
+    },
+    {
+      "id": "media",
+      "title": "Productafbeeldingen beheren",
+      "page": "media"
+    },
+    {
+      "id": "verrijken",
+      "title": "Productgegevens verrijken",
+      "page": "webshop-studio",
+      "tab": "data-verrijken"
+    },
+    {
+      "id": "artikelbeelden",
+      "title": "Beelden in de artikelkaart",
+      "page": "artikelkaart",
+      "click": "[data-w-action=\"article-view\"][data-id=\"images\"]",
+      "focus": ".workspace-image-grid"
+    }
+  ],
+  "inkoop": [
+    {
+      "id": "overzicht",
+      "title": "Besteladvies",
+      "page": "inkoop",
+      "tab": "overview"
+    },
+    {
+      "id": "details",
+      "title": "In bestelling",
+      "page": "inkoop",
+      "tab": "ordered"
+    },
+    {
+      "id": "bestellen",
+      "title": "Te bestellen artikelen",
+      "page": "inkoop",
+      "tab": "purchase"
+    },
+    {
+      "id": "leveranciers",
+      "title": "Leveranciersoverzicht",
+      "page": "leveranciers"
+    }
+  ],
+  "marketing": [
+    {
+      "id": "overzicht",
+      "title": "Advertentiecampagnes",
+      "page": "ads-engine",
+      "tab": "campaigns"
+    },
+    {
+      "id": "details",
+      "title": "Productranking",
+      "page": "bol-ranking"
+    },
+    {
+      "id": "zoekwoorden",
+      "title": "Zoekwoorden en prestaties",
+      "page": "ads-engine",
+      "tab": "keywords"
+    },
+    {
+      "id": "voorstellen",
+      "title": "Campagnevoorstellen",
+      "page": "ads-engine",
+      "tab": "proposals"
+    },
+    {
+      "id": "agent",
+      "title": "Marketingkansen",
+      "page": "marketing-agent",
+      "tab": "opportunities"
+    },
+    {
+      "id": "stijgers-dalers",
+      "title": "Rankingstijgers en -dalers",
+      "page": "bol-ranking",
+      "tab": "movers"
+    }
+  ],
+  "logistiek": [
+    {
+      "id": "overzicht",
+      "title": "Magazijnlocaties",
+      "page": "locaties"
+    },
+    {
+      "id": "details",
+      "title": "Fulfilment onderweg",
+      "page": "fulfilment",
+      "tab": "transit"
+    },
+    {
+      "id": "tellen",
+      "title": "Voorraad tellen",
+      "page": "locatie-zoeken"
+    },
+    {
+      "id": "orders-pakken",
+      "title": "Orders pakken",
+      "page": "orders-pakken"
+    },
+    {
+      "id": "labels",
+      "title": "Productlabels",
+      "page": "productlabels"
+    },
+    {
+      "id": "externe-opslag",
+      "title": "Externe opslag",
+      "page": "externe-voorraad"
+    }
+  ],
+  "financieel": [
+    {
+      "id": "overzicht",
+      "title": "Exploitatieoverzicht",
+      "page": "exploitatie",
+      "tab": "stats"
+    },
+    {
+      "id": "details",
+      "title": "Marketplace-tegoeden",
+      "page": "bol-afrekening"
+    },
+    {
+      "id": "kostprijs",
+      "title": "Kostprijs en marge",
+      "page": "prijs-berekenen"
+    },
+    {
+      "id": "waardering",
+      "title": "Indicatieve bedrijfswaardering",
+      "page": "bedrijfswaardering"
+    }
+  ],
+  "forecasting": [
+    {
+      "id": "overzicht",
+      "title": "Verkoopverwachting",
+      "page": "forecasting",
+      "tab": "overview"
+    },
+    {
+      "id": "details",
+      "title": "Seizoentrends",
+      "page": "forecasting",
+      "tab": "seasonality"
+    },
+    {
+      "id": "kanalen",
+      "title": "Verwachting per verkoopkanaal",
+      "page": "forecasting",
+      "tab": "revenue-channel"
+    },
+    {
+      "id": "artikelen",
+      "title": "Forecast per artikel",
+      "page": "forecasting",
+      "tab": "articles"
+    }
+  ],
+  "controles": [
+    {
+      "id": "overzicht",
+      "title": "Open signalen",
+      "page": "signalen",
+      "tab": "open"
+    },
+    {
+      "id": "details",
+      "title": "Afgehandelde signalen",
+      "page": "signalen",
+      "tab": "handled"
+    },
+    {
+      "id": "omzetdalers",
+      "title": "Omzetdalers",
+      "page": "artikeltrends",
+      "tab": "fallers"
+    },
+    {
+      "id": "publicatiefouten",
+      "title": "Publicatiefouten",
+      "page": "publicaties"
+    }
+  ]
+}

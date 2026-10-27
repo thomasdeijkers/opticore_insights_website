@@ -36,3 +36,14 @@ Negen pagina's tonen een concreet praktijkvoorbeeld met korte toelichting, dezel
 ## Dark mode als standaard — 26 oktober 2026
 
 De 27 gedeelde appvoorbeelden en 40 modulebeelden zijn opnieuw gerenderd in dark mode, met nieuwe `-dark`-bestandsnamen. Manifest, galerijcollecties, nieuws en alle paginaverwijzingen gebruiken de nieuwe beelden. De galerijcontrole bewaakt de donkere standaard in het manifest. De nieuwe dashboardteaser is een afzonderlijke scrollbare link naar de volledige demo; de bestaande galerijen behouden hun twee telefoonpreviews en vergrootvenster. Zie [visual-assets.md](visual-assets.md) voor het captureproces en validatie.
+
+
+## Meer schermen per module — 27 oktober 2026
+
+Beide WebApp-modulepagina’s tonen nu vier tot zes verschillende schermen per module, vastgelegd uit de publieke klantdemo in darkmode met uitsluitend fictieve gegevens. `content/module-screenshots.json` legt de 46 scènes en hun routes, tabs en eventuele interacties vast. Productbeheer, Marketing en Logistiek hebben zes scènes; de andere zeven modules vier. Elke scène heeft een afzonderlijke desktop-, tablet- en mobiele browsercapture: 138 beelden in totaal. De bestaande 60 modulebeelden worden vernieuwd; 78 aanvullende opnamen worden toegevoegd.
+
+Achter Meer info staan vier previews in een raster, met korte schermtitels en een knop om alle vier of zes beelden te openen. De bestaande viewer ondersteunt vergroten, terug/vooruit, Escape en focusherstel. Alleen modulegalerijen krijgen dit uitgebreidere raster; andere galerijen behouden hun bestaande gedrag. Het passende apparaat wordt gekozen op dezelfde breedtegrenzen als de demo (760 en 1100 pixels). De componentversie op deze twee pagina’s is `20261027-module-screens`.
+
+Reproduceren: serveer de website lokaal op 127.0.0.1:8765 en voer `node scripts/capture_module_screenshots.cjs` uit met de bestaande Playwright-runtime (`PLAYWRIGHT_MODULE_PATH` en zo nodig `PLAYWRIGHT_CHROMIUM_EXECUTABLE`). Dit script staat alleen lokaal verkeer toe en laadt geen productieapp, database of API. Daarna `python scripts/module_screenshots.py --write` om de twee pagina’s en aliassen bij te werken. De generatorcontrole bewaakt minimaal vier verschillende captures per apparaat en module, JPEG-bestanden en gelijke pagina-aliassen. De workflow controleert de bron en afbeeldingen vóór deployment.
+
+`node scripts/test_module_galleries_browser.cjs` controleert op de lokale server alle schermen op beide pagina’s, op mobiel, tablet en desktop: vier previews, juiste beelden per apparaat, afbeeldingsdecodering, alle viewerpagina’s, sluiten/focusherstel en horizontale overloop. De bestaande moduleprijstest blijft de tarieven en alle 1.024 modulecombinaties bewaken.

@@ -166,7 +166,9 @@
         seen.add(item.src);
         return true;
       });
-      const previews = items.slice(0, items[0].device === 'mobile' ? 2 : 1);
+      const requestedPreviews = Number(root.dataset.screenPreviews);
+      const previewLimit = Number.isInteger(requestedPreviews) && requestedPreviews > 0 ? Math.min(requestedPreviews, 4) : items[0].device === 'mobile' ? 2 : 1;
+      const previews = items.slice(0, previewLimit);
       root.dataset.device = items[0].device;
       root.dataset.previewCount = String(previews.length);
       allItems.forEach(item => { item.link.hidden = !previews.includes(item); });
@@ -181,6 +183,11 @@
     mobile.addEventListener('change', adapt);
     tablet.addEventListener('change', adapt);
     adapt();
+    const openAll = root.querySelector('[data-screen-open-all]');
+    if (openAll) {
+      openAll.hidden = false;
+      openAll.addEventListener('click', () => openViewer(items, 0, openAll, root));
+    }
   });
 
   // Other project and source screenshots use the same accessible viewer.

@@ -1,5 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const {catalogue,base,includedModules,resolve,contactDraft,calculatorURL}=require('../assets/js/modular-webapp.js');
+const screens=require('../content/module-screenshots.json');
 const html=fs.readFileSync(path.join(__dirname,'../webapp-samenstellen/index.html'),'utf8');
 const overview=fs.readFileSync(path.join(__dirname,'../modulaire-webapp/index.html'),'utf8');
 const money=n=>'€ '+n.toLocaleString('nl-NL');
@@ -41,7 +42,7 @@ for(const id of ids){
  const details=combined.slice(combined.indexOf('<summary>Meer info</summary>'));
  if(catalogue[id].included)assert(details.includes('Inbegrepen in het startpakket'));
  else{assert(details.includes(money(fees[id][0])+' inrichting'));assert(details.includes('<s>'+money(catalogue[id].monthly)+' per maand</s>'));}
- for(const device of ['mobile','desktop'])assert.equal((combined.match(new RegExp('data-screen-device="'+device+'"','g'))||[]).length,2);
+ for(const device of ['mobile','desktop'])assert.equal((combined.match(new RegExp('data-screen-device="'+device+'"','g'))||[]).length,screens[id].length);
  for(const image of combined.matchAll(/<img[^>]*src="(\/assets\/img\/module-examples\/[^"]+)"/g))assert(fs.statSync(path.join(__dirname,'..',image[1])).size>1000);
 }
 assert(html.includes('€ 995 inrichting'));assert(html.includes('€ 149 per maand'));

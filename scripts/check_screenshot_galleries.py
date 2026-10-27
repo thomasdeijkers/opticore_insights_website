@@ -60,7 +60,8 @@ def main():
                     assert tablet_path.is_file(), f'{path}: matching tablet capture missing: {tablet_path}'
             count += 1
         if audit.galleries:
-            for asset in ('screenshot-gallery.css?v=20261022h', 'screenshot-gallery.js?v=20261027-client-devices'):
+            assets = ('screenshot-gallery.css?v=20261027-module-screens', 'screenshot-gallery.js?v=20261027-module-screens') if 'data-module-gallery=' in source else ('screenshot-gallery.css?v=20261022h', 'screenshot-gallery.js?v=20261027-client-devices')
+            for asset in assets:
                 assert asset in source, f'{path}: stale/missing gallery component'
     for name in IMAGES:
         assert (ROOT/'assets/img/examples'/name).is_file(), f'Missing {name}'
