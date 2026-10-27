@@ -33,13 +33,38 @@
 @media(min-width:561px){.client-grid li:last-child:nth-child(3n + 1){grid-column:1/-1}}
 @media(max-width:560px){.client-grid li:last-child:nth-child(2n + 1){grid-column:1/-1}}
 
-/* Keep the demo visible beside the introduction, then stacked on phones. */
-.home-intro-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,390px);gap:48px;align-items:center}
-.home-intro-copy{min-width:0}
-@media(max-width:900px){.home-intro-grid{grid-template-columns:1fr;gap:32px}.home-intro .webapp-demo-teaser{justify-self:center}}
-
-/* Keep the next step directly below the homepage demo on every device. */
-.home-intro-demo{display:grid;gap:20px;min-width:0;width:100%}
-.home-intro .home-intro-demo>.actions{margin-top:0;justify-self:center;width:100%;max-width:620px}
-@media(max-width:1100px){.home-intro .home-intro-demo>.actions{max-width:834px}}
-@media(max-width:760px){.home-intro .home-intro-demo>.actions{max-width:360px;flex-direction:column;align-items:flex-start}.home-intro-demo>.actions>.button{width:100%}}
+/* One reading direction: introduction, full-width dashboard, next step. */
+.home-page .home-intro{padding-block:48px}
+.home-page .home-intro::before{bottom:auto;height:480px;opacity:.2;background-position:center top}
+.home-page .home-intro::after{background:linear-gradient(180deg,#f8f9f7ba 0,#f5f6f4 480px)}
+.home-page .home-intro-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:32px;align-items:start}
+.home-intro-copy{min-width:0;max-width:960px}
+.home-page .home-intro h1{max-width:960px;font-size:clamp(34px,4vw,52px);line-height:1.14;margin-bottom:18px;text-wrap:balance}
+.home-page .home-intro .eyebrow{margin-bottom:14px}
+.home-page .home-intro .lead{max-width:860px;font-size:19px}
+.home-intro-demo{display:grid;gap:22px;min-width:0;width:100%}
+.home-page .home-intro .webapp-demo-teaser{max-width:none;width:100%;box-shadow:0 10px 28px #1732440c}
+.home-page .home-intro .webapp-demo-teaser-scroll{height:clamp(460px,62svh,700px)}
+.home-page .home-intro .webapp-demo-teaser-heading{padding:20px 24px}
+.home-page .home-intro .webapp-demo-teaser-footer{grid-template-columns:minmax(0,1fr) auto;gap:4px 24px;align-items:center;padding:18px 24px}
+.home-page .home-intro .webapp-demo-teaser-footer p{grid-column:1}
+.home-page .home-intro .webapp-demo-teaser-footer small{grid-column:1;text-align:left}
+.home-page .home-intro .webapp-demo-teaser-footer .button{grid-column:2;grid-row:1/span 2;width:auto}
+.home-page .home-intro .home-intro-demo>.actions{margin:0;width:100%;max-width:none;justify-self:stretch;justify-content:flex-start}
+@media(max-width:760px){
+ .home-page .home-intro{padding-block:30px}
+ .home-page .home-intro-grid{gap:26px}
+ .home-page .home-intro .lead{font-size:17px}
+ .home-page .home-intro .webapp-demo-teaser-heading{padding:16px}
+ .home-page .home-intro .webapp-demo-teaser-footer{grid-template-columns:1fr;padding:16px;gap:12px}
+ .home-page .home-intro .webapp-demo-teaser-footer .button{grid-column:1;grid-row:auto;width:100%}
+ .home-page .home-intro .home-intro-demo>.actions{flex-direction:column;align-items:flex-start;gap:16px}
+ .home-page .home-intro-demo>.actions>.button{width:100%}
+}
+@media(max-width:760px) and (orientation:portrait){
+ .home-page .home-intro .webapp-demo-teaser,.home-page .home-intro .home-intro-demo>.actions{max-width:360px;justify-self:center}
+ .home-page .home-intro .webapp-demo-teaser-scroll{height:560px}
+}
+@media(orientation:landscape) and (max-height:600px){
+ .home-page .home-intro .webapp-demo-teaser-scroll{height:clamp(240px,65svh,420px)}
+}
