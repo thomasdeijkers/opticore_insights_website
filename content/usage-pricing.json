@@ -1,0 +1,38 @@
+{
+  "status": "indicative_proposal",
+  "currency": "EUR",
+  "vatIncluded": false,
+  "updated": "2026-10-27",
+  "database": [
+    {"max": 2, "label": "Tot en met 2 GB", "price": 5},
+    {"max": 10, "label": "Meer dan 2 tot en met 10 GB", "price": 15},
+    {"max": 50, "label": "Meer dan 10 tot en met 50 GB", "price": 35},
+    {"max": null, "label": "Meer dan 50 GB of bijzondere belasting", "price": null}
+  ],
+  "text": [
+    {"max": 0, "label": "Geen tekstaanvragen", "price": 0},
+    {"max": 100, "label": "1 tot en met 100 tekstaanvragen", "price": 5},
+    {"max": 500, "label": "101 tot en met 500 tekstaanvragen", "price": 15},
+    {"max": 2000, "label": "501 tot en met 2.000 tekstaanvragen", "price": 40},
+    {"max": null, "label": "Meer dan 2.000 of zwaardere opdrachten", "price": null}
+  ],
+  "images": [
+    {"max": 0, "label": "Geen beeldopdrachten", "price": 0},
+    {"max": 10, "label": "1 tot en met 10 beeldopdrachten", "price": 5},
+    {"max": 50, "label": "11 tot en met 50 beeldopdrachten", "price": 20},
+    {"max": 200, "label": "51 tot en met 200 beeldopdrachten", "price": 65},
+    {"max": null, "label": "Meer dan 200 of uitgebreid beeldwerk", "price": null}
+  ],
+  "modules": [
+    {"id": "omzet", "label": "Omzetrapportage", "database": "Verkopen, retouren, kosten en historie.", "ai": "Geen AI nodig voor gewone omzet- en margeberekeningen."},
+    {"id": "voorraad", "label": "Voorraad", "database": "Voorraadstanden, reserveringen en artikelhistorie.", "ai": "Geen AI nodig voor voorraadstanden en dekking."},
+    {"id": "orders", "label": "Orders en retouren", "database": "Orders, orderregels, retouren en verwerkingsstatussen.", "ai": "Alleen bij afgesproken AI-antwoordconcepten voor klantvragen; gewone orderverwerking gebruikt geen AI."},
+    {"id": "producten", "label": "Productbeheer en publicaties", "database": "Artikelen, productvelden, kanaalstatussen en concepten.", "ai": "Tekstaanvragen bij listingoptimalisatie en tekstconcepten; beeldopdrachten in de Product Image Studio."},
+    {"id": "inkoop", "label": "Inkoop en bestellen", "database": "Leveranciers, bestellingen, ontvangsten en besteladviezen.", "ai": "Geen AI nodig voor het standaard besteladvies en de ontvangstverwerking."},
+    {"id": "marketing", "label": "Marketing en ranking", "database": "Campagnes, zoekwoordmetingen, prestaties en actiehistorie.", "ai": "Alleen AI-analyse of AI-voorstellen die je laat uitvoeren. Rankingmetingen en gewone advertentie-API-koppelingen zijn geen AI-aanvragen."},
+    {"id": "logistiek", "label": "Magazijn en logistiek", "database": "Locaties, tellingen, externe voorraad en fulfilmentzendingen.", "ai": "Geen AI nodig voor tellen, labels en zendingstatussen."},
+    {"id": "financieel", "label": "Financieel overzicht", "database": "Kanaalkosten, resultaatberekeningen en afrekeningen.", "ai": "Geen AI nodig voor de gewone financiële berekeningen."},
+    {"id": "forecasting", "label": "Forecasting", "database": "Verkoophistorie, seizoentrends en opgeslagen scenario’s.", "ai": "De standaard forecast is een berekening en veroorzaakt geen AI-aanvragen."},
+    {"id": "controles", "label": "Signalen en controles", "database": "Grenswaarden, signalen en opvolging.", "ai": "Regelcontroles gebruiken geen AI. Aanvullende AI-duiding alleen als je die afspreekt."}
+  ]
+}

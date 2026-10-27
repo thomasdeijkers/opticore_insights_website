@@ -120,18 +120,19 @@
     const standardMonthly = base.monthly + extraModules.reduce((n,id) => n + catalogue[id].monthly, 0);
     const monthlyDiscount = base.monthlyDiscount + extraModules.reduce((n,id) => n + catalogue[id].monthlyDiscount, 0);
     return { modules, extraModules, setupSubtotal, discountRate: discount / setupSubtotal * 100,
-      discount, setup, standardMonthly, monthlyDiscount, monthly: standardMonthly - monthlyDiscount, usage: false };
+      discount, setup, standardMonthly, monthlyDiscount, monthly: standardMonthly - monthlyDiscount, usage: true };
   }
   const selectionLabels = selected => ['Startpakket: omzetrapportage, voorraad en orders/retouren', ...selected.extraModules.map(id => catalogue[id].label)];
   function contactDraft(selected) {
     return 'Jouw pakket:\n' + selectionLabels(selected).map((label,i) => `${i+1}. ${label}`).join('\n')
-      + `\n\nStandaard inrichting: ${money(selected.setupSubtotal)}\nActiekorting inrichting: − ${money(selected.discount)}\nEenmalige inrichting: ${money(selected.setup)}\nStandaard per maand: ${money(selected.standardMonthly)}\nActiekorting per maand: − ${money(selected.monthlyDiscount)}\nPer maand na korting: ${money(selected.monthly)}\nPrijsindicatie exclusief btw; offerte volgt na afstemming.`;
+      + `\n\nStandaard inrichting: ${money(selected.setupSubtotal)}\nActiekorting inrichting: − ${money(selected.discount)}\nEenmalige inrichting: ${money(selected.setup)}\nStandaard per maand: ${money(selected.standardMonthly)}\nActiekorting per maand: − ${money(selected.monthlyDiscount)}\nPer maand na korting: ${money(selected.monthly)}\nExclusief btw, AI- en databaseverbruik. Gebruikskosten: opticore-insights.nl/gebruikskosten/. Offerte volgt na afstemming.`;
   }
   function calculatorURL(ids) {
     const known = [...new Set(ids.filter(id => Object.hasOwn(catalogue, id) && !catalogue[id].included))];
     return '/webapp-samenstellen/' + (known.length ? '?' + new URLSearchParams({ modules: known.join(',') }) : '') + '#modules';
   }
   if (typeof module !== 'undefined' && module.exports) module.exports = { catalogue, base, includedModules, resolve, contactDraft, calculatorURL };
+  if (typeof window !== 'undefined') window.WebappPricing = { catalogue, base, includedModules, resolve, calculatorURL };
   if (typeof document === 'undefined') return;
   const legacyModules = new URLSearchParams(window.location.search);
   if (/^\/modulaire-webapp(?:\/|\.html)?$/.test(window.location.pathname) && legacyModules.has('modules')) {
@@ -170,13 +171,14 @@
       show('[data-module-setup]', money(selected.setup));
       show('[data-module-monthly-standard]', money(selected.standardMonthly));
       show('[data-module-monthly-discount]', selected.monthlyDiscount ? '− ' + money(selected.monthlyDiscount) : money(0));
-      show('[data-module-monthly]', money(selected.monthly) + (selected.usage ? ' + verbruik' : ''));
+      show('[data-module-monthly]', money(selected.monthly));
       root.querySelector('[data-price-setup-was]').hidden = selected.discount === 0;
       root.querySelector('[data-price-monthly-was]').hidden = selected.monthlyDiscount === 0;
       root.querySelector('[data-module-usage]').hidden = !selected.usage;
       const params = new URLSearchParams({ onderwerp: 'webapp' });
       if (selected.modules.length) params.set('modules', selected.modules.join(','));
       contacts.forEach(contact => { contact.href = `/contact/?${params}#contact-form`; });
+      root.querySelectorAll('[data-module-usage-link]').forEach(link => { const hash = new URL(link.href, location.href).hash; const query = selected.extraModules.length ? '?' + new URLSearchParams({ modules: selected.extraModules.join(',') }) : ''; link.href = '/gebruikskosten/' + query + hash; });
       reset.hidden = requested.size === 0;
       const address = new URL(window.location.href);
       if (requested.size) address.searchParams.set('modules', [...requested].join(','));

@@ -17,7 +17,7 @@ VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param
 SERVICES = {'diensten','dashboard-ontwikkeling','procesautomatisering','modulaire-webapp','webapp-samenstellen',
             'website-ontwikkeling','keuzehulpen','bol-ondernemers','platform-koppelingen',
             'marketplace-koppelingen','webshop-koppelingen','verzendsoftware-koppelingen',
-            'prijzen','bedrijfsscan','beveiliging'}
+            'prijzen','gebruikskosten','bedrijfsscan','beveiliging'}
 
 
 def clean(value):

@@ -23,6 +23,7 @@ jobs:
       - name: Render and validate news
         run: |
           python3 scripts/news.py --write
+          python3 scripts/usage_costs.py --write
           python3 scripts/external_links.py --check
 
       - name: Build and validate site search
@@ -45,9 +46,11 @@ jobs:
           node --check assets/js/demo-page-catalogue.js
           node --check assets/js/demo-client-data.js
           node --check assets/js/demo-full-workspace.js
+          node --check assets/js/usage-costs.js
           node scripts/test_marketplace_demo.cjs
           node scripts/test_demo_client.cjs
           node scripts/test_modular_webapp.cjs
+          node scripts/test_usage_costs.cjs
 
       - name: Validate business scan
         run: |
