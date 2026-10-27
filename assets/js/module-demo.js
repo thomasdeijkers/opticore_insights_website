@@ -45,9 +45,9 @@
   let studioSku='DEMO-1001',studioImage=0;
   const rankFor=(p,previous=false)=>{const n=previous?p.previousRank:p.rank;return n===null?null:n+(rankCountry==='BE'?3:0);};
   const q=selector=>root.querySelector(selector), esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const money=n=>new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
-  const number=n=>new Intl.NumberFormat('nl-NL',{maximumFractionDigits:0}).format(n);
-  const pct=n=>n===null?'—':new Intl.NumberFormat('nl-NL',{maximumFractionDigits:1}).format(n)+'%';
+  const money=n=>new Intl.NumberFormat((typeof window !== 'undefined' && window.SiteI18n?.locale) || 'nl-NL',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+  const number=n=>new Intl.NumberFormat((typeof window !== 'undefined' && window.SiteI18n?.locale) || 'nl-NL',{maximumFractionDigits:0}).format(n);
+  const pct=n=>n===null?'—':new Intl.NumberFormat((typeof window !== 'undefined' && window.SiteI18n?.locale) || 'nl-NL',{maximumFractionDigits:1}).format(n)+'%';
   const safeRatio=(a,b)=>b?a/b*100:null;
   const storageKey='opticore-webapp-demo-theme';
   let theme='dark';
@@ -171,7 +171,7 @@
     return `<span class="demo-dashboard-delta${value===null?' is-neutral':value<0?' is-down':''}">${value===null?'Nieuw':(value>0?'+':'')+esc(pct(value))+' YoY'}</span>`;
   }
   function dashboardChannels(){
-    const exact=n=>new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(n);
+    const exact=n=>new Intl.NumberFormat((typeof window !== 'undefined' && window.SiteI18n?.locale) || 'nl-NL',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(n);
     const fields=[['Omzet','revenue',exact],['Winst','profit',exact],['Marge','margin',pct],['Omzetaandeel','share',pct],['Orders','orders',number],['Verkocht','qty',number],['Retouren','returned',number],['Retourpercentage','returnRate',pct]];
     return '<p class="demo-channel-hint">Open een kanaal en daarna een maand voor de onderliggende cijfers.</p><div class="demo-dashboard-channels">'+[...D.channels].sort((a,b)=>D.totals(state,1,b.id).revenue-D.totals(state,1,a.id).revenue).map(c=>{
       const months=D.channelMonths(state,c.id),latest=months[0];

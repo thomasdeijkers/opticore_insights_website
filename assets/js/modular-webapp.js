@@ -100,7 +100,7 @@
     item.monthlyDiscount = item.monthly - item.currentMonthly;
     item.standardSetup = Math.round(item.setup * 1.2);
   }
-  const money = value => new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value);
+  const money = value => new Intl.NumberFormat((typeof window !== 'undefined' && window.SiteI18n?.locale) || 'nl-NL', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value);
   function resolve(ids) {
     const ordered = new Set();
     function add(id) {

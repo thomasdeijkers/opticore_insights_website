@@ -83,6 +83,6 @@
   status.textContent = 'Zoekfunctie wordt geladen…';
   fetch('/assets/search-index.json?v=20261022a',{cache:'no-cache'})
     .then(response=>{if(!response.ok)throw new Error('Index unavailable');return response.json();})
-    .then(index=>{if(index.version!==1 || !Array.isArray(index.pages))throw new Error('Invalid index');pages=core.prepare(index.pages);render(false);})
+    .then(index=>{if(index.version!==1 || !Array.isArray(index.pages))throw new Error('Invalid index');pages=core.prepare(index.pages.filter(page=>(page.language||'nl')===document.documentElement.lang));render(false);})
     .catch(()=>{status.textContent='De zoekfunctie is tijdelijk niet beschikbaar.';error.hidden=false;});
 })();

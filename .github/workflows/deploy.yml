@@ -69,6 +69,18 @@ jobs:
           php scripts/test-business-scan.php
           node --check assets/js/bedrijfsscan.js
 
+      - name: Build and validate all language editions
+        run: |
+          python3 scripts/i18n.py --write
+          python3 scripts/i18n.py --check
+          python3 scripts/test_i18n.py
+          python3 scripts/search_index.py --write
+          node scripts/test_site_search.cjs
+          python3 scripts/sitemap.py --write
+          python3 scripts/metadata.py --check
+          php -l api/site-language.php
+          node --check assets/js/i18n.js
+
       - name: Prepare private site configuration
         env:
           OPTICORE_SCAN_API_KEY: ${{ secrets.OPTICORE_SCAN_OPENAI_API_KEY }}

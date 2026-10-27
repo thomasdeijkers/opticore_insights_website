@@ -73,6 +73,9 @@ Solution: stel een proportionele richting voor (bijvoorbeeld werkafspraak, koppe
 Benefits: kwalitatieve mogelijke verbeteringen; schat of beloof geen besparing. Als de gebruiker een tijdsbesteding opgeeft is dat de huidige tijdsbesteding, niet de te behalen tijdwinst. Neem een tijdsbesteding alleen letterlijk over met de opgegeven eenheid. Houd frequentie en tijdsbesteding apart: 'dagelijks' werk met '5–10 uur per week' kost samen 5–10 uur PER WEEK, nooit per dag. Bereken of extrapoleer geen nieuwe tijdsbedragen.
 Questions: de belangrijkste nog te controleren aannames voor een menselijk gesprek met Thomas. Dit is een bewerkbaar startpunt en geen afgerond advies of offerte.
 PROMPT;
+$requestedLanguage = $data['language'] ?? 'nl';
+$scanLanguage = is_string($requestedLanguage) ? (['nl' => 'Nederlands', 'de' => 'Duits', 'en' => 'Engels', 'fr' => 'Frans'][$requestedLanguage] ?? 'Nederlands') : 'Nederlands';
+$instructions .= "\nSchrijf alle waarden van de samenvatting en vervolgvragen in het " . $scanLanguage . ". De JSON-veldnamen blijven gelijk. Neem de taal van aangeleverde antwoorden niet over als die hiervan afwijkt.";
 $payload = [
     'model' => $model, 'store' => false, 'max_output_tokens' => 2100,
     'instructions' => $instructions,

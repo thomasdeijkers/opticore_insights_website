@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const core = require('../assets/js/search-core.js');
 const index = JSON.parse(fs.readFileSync(path.join(__dirname,'../assets/search-index.json'),'utf8'));
-const pages = core.prepare(index.pages);
+const pages = core.prepare(index.pages.filter(page=>(page.language||'nl')==='nl'));
 const results = (query, category='') => core.search(pages,query,category);
 assert.equal(results('marketingagent')[0].url, '/bol-ondernemers/#marketingagent');
 assert.equal(results('Shopify voorraad')[0].url, '/webshop-koppelingen/#shopify');

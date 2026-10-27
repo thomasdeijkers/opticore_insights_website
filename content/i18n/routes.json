@@ -1,0 +1,422 @@
+{
+  "/": {
+    "de": "/de/",
+    "en": "/en/",
+    "fr": "/fr/"
+  },
+  "/ai-assistenten/": {
+    "de": "/de/ki-assistenten/",
+    "en": "/en/ai-assistants/",
+    "fr": "/fr/assistants-ia/"
+  },
+  "/ai-workflow-aanvragen/": {
+    "de": "/de/ki-workflow-anfragen/",
+    "en": "/en/discuss-ai-workflow/",
+    "fr": "/fr/demander-workflow-ia/"
+  },
+  "/ai-workflows/": {
+    "de": "/de/ki-workflows/",
+    "en": "/en/ai-workflows/",
+    "fr": "/fr/processus-ia/"
+  },
+  "/api-integraties/": {
+    "de": "/de/api-integrationen/",
+    "en": "/en/api-integrations/",
+    "fr": "/fr/integrations-api/"
+  },
+  "/api-koppeling-aanvragen/": {
+    "de": "/de/api-anbindung-anfragen/",
+    "en": "/en/request-api-integration/",
+    "fr": "/fr/demander-integration-api/"
+  },
+  "/automatisering-aanvragen/": {
+    "de": "/de/automatisierung-anfragen/",
+    "en": "/en/discuss-automation/",
+    "fr": "/fr/demander-automatisation/"
+  },
+  "/bedrijfsscan/": {
+    "de": "/de/unternehmenscheck/",
+    "en": "/en/business-review/",
+    "fr": "/fr/diagnostic-entreprise/"
+  },
+  "/beveiliging/": {
+    "de": "/de/sicherheit/",
+    "en": "/en/security/",
+    "fr": "/fr/securite/"
+  },
+  "/bol-ondernemers/": {
+    "de": "/de/bol-haendler/",
+    "en": "/en/bol-sellers/",
+    "fr": "/fr/vendeurs-bol/"
+  },
+  "/contact/": {
+    "de": "/de/kontakt/",
+    "en": "/en/contact/",
+    "fr": "/fr/contact/"
+  },
+  "/dashboard-aanvragen/": {
+    "de": "/de/dashboard-anfragen/",
+    "en": "/en/request-dashboard/",
+    "fr": "/fr/demander-tableau-de-bord/"
+  },
+  "/dashboard-ontwikkeling/": {
+    "de": "/de/dashboard-entwicklung/",
+    "en": "/en/dashboard-development/",
+    "fr": "/fr/creation-tableau-de-bord/"
+  },
+  "/data-analyse-aanvragen/": {
+    "de": "/de/datenanalyse-anfragen/",
+    "en": "/en/request-data-analysis/",
+    "fr": "/fr/demander-analyse-de-donnees/"
+  },
+  "/data-analyse/": {
+    "de": "/de/datenanalyse/",
+    "en": "/en/data-analysis/",
+    "fr": "/fr/analyse-de-donnees/"
+  },
+  "/datakwaliteit/": {
+    "de": "/de/datenqualitaet/",
+    "en": "/en/data-quality/",
+    "fr": "/fr/qualite-des-donnees/"
+  },
+  "/datamodellen/": {
+    "de": "/de/datenmodelle/",
+    "en": "/en/data-models/",
+    "fr": "/fr/modeles-de-donnees/"
+  },
+  "/demo/beeldbronnen/": {
+    "de": "/de/demo/bildquellen/",
+    "en": "/en/demo/image-credits/",
+    "fr": "/fr/demo/credits-images/"
+  },
+  "/demo/keuzehulp/": {
+    "de": "/de/demo/produktberater/",
+    "en": "/en/demo/product-advisors/",
+    "fr": "/fr/demo/guide-de-choix/"
+  },
+  "/demo/modulaire-webapp/": {
+    "de": "/de/demo/modulare-webapp/",
+    "en": "/en/demo/modular-webapp/",
+    "fr": "/fr/demo/application-web-modulaire/"
+  },
+  "/diensten/": {
+    "de": "/de/leistungen/",
+    "en": "/en/services/",
+    "fr": "/fr/services/"
+  },
+  "/ecommerce-automatisering/": {
+    "de": "/de/e-commerce-automatisierung/",
+    "en": "/en/ecommerce-automation/",
+    "fr": "/fr/automatisation-ecommerce/"
+  },
+  "/ecommerce-support-aanvragen/": {
+    "de": "/de/e-commerce-anfragen/",
+    "en": "/en/discuss-ecommerce/",
+    "fr": "/fr/demander-assistance-ecommerce/"
+  },
+  "/excel-automatisering/": {
+    "de": "/de/excel-automatisierung/",
+    "en": "/en/excel-automation/",
+    "fr": "/fr/automatisation-excel/"
+  },
+  "/forecasting/": {
+    "de": "/de/prognosen/",
+    "en": "/en/forecasting/",
+    "fr": "/fr/previsions/"
+  },
+  "/gebruikskosten/": {
+    "de": "/de/nutzungskosten/",
+    "en": "/en/usage-costs/",
+    "fr": "/fr/couts-utilisation/"
+  },
+  "/informatie-extractie/": {
+    "de": "/de/informationsextraktion/",
+    "en": "/en/information-extraction/",
+    "fr": "/fr/extraction-informations/"
+  },
+  "/kennisbank/": {
+    "de": "/de/wissen/",
+    "en": "/en/knowledge/",
+    "fr": "/fr/ressources/"
+  },
+  "/keuzehulpen/": {
+    "de": "/de/produktberater/",
+    "en": "/en/product-advisors/",
+    "fr": "/fr/guides-de-choix/"
+  },
+  "/kpi-dashboard/": {
+    "de": "/de/kpi-dashboard/",
+    "en": "/en/kpi-dashboard/",
+    "fr": "/fr/tableau-de-bord-kpi/"
+  },
+  "/logging-monitoring/": {
+    "de": "/de/protokollierung-monitoring/",
+    "en": "/en/logging-monitoring/",
+    "fr": "/fr/journalisation-surveillance/"
+  },
+  "/marketplace-koppelingen/": {
+    "de": "/de/marktplatz-anbindungen/",
+    "en": "/en/marketplace-integrations/",
+    "fr": "/fr/integrations-marketplaces/"
+  },
+  "/marketplace-synchronisatie/": {
+    "de": "/de/marktplatz-synchronisierung/",
+    "en": "/en/marketplace-synchronisation/",
+    "fr": "/fr/synchronisation-marketplaces/"
+  },
+  "/modulaire-webapp/": {
+    "de": "/de/modulare-webapp/",
+    "en": "/en/modular-webapp/",
+    "fr": "/fr/application-web-modulaire/"
+  },
+  "/nieuws/": {
+    "de": "/de/neuigkeiten/",
+    "en": "/en/news/",
+    "fr": "/fr/actualites/"
+  },
+  "/nieuws/ai-softwareonderhoud-mkb/": {
+    "de": "/de/neuigkeiten/ai-softwareonderhoud-mkb/",
+    "en": "/en/news/ai-softwareonderhoud-mkb/",
+    "fr": "/fr/actualites/ai-softwareonderhoud-mkb/"
+  },
+  "/nieuws/olympus-bouw-documentintake-hervatten/": {
+    "de": "/de/neuigkeiten/olympus-bouw-documentintake-hervatten/",
+    "en": "/en/news/olympus-bouw-documentintake-hervatten/",
+    "fr": "/fr/actualites/olympus-bouw-documentintake-hervatten/"
+  },
+  "/nieuws/olympus-bouw-weekkosten-planning/": {
+    "de": "/de/neuigkeiten/olympus-bouw-weekkosten-planning/",
+    "en": "/en/news/olympus-bouw-weekkosten-planning/",
+    "fr": "/fr/actualites/olympus-bouw-weekkosten-planning/"
+  },
+  "/nieuws/projectupdate-aanbod-inkoop-weekdossiers/": {
+    "de": "/de/neuigkeiten/projectupdate-aanbod-inkoop-weekdossiers/",
+    "en": "/en/news/projectupdate-aanbod-inkoop-weekdossiers/",
+    "fr": "/fr/actualites/projectupdate-aanbod-inkoop-weekdossiers/"
+  },
+  "/nieuws/shopify-api-orders-volledig-bijwerken/": {
+    "de": "/de/neuigkeiten/shopify-api-orders-volledig-bijwerken/",
+    "en": "/en/news/shopify-api-orders-volledig-bijwerken/",
+    "fr": "/fr/actualites/shopify-api-orders-volledig-bijwerken/"
+  },
+  "/ocr-documentverwerking/": {
+    "de": "/de/ocr-dokumentenverarbeitung/",
+    "en": "/en/ocr-document-processing/",
+    "fr": "/fr/traitement-documents-ocr/"
+  },
+  "/over/": {
+    "de": "/de/ueber-uns/",
+    "en": "/en/about/",
+    "fr": "/fr/a-propos/"
+  },
+  "/platform-koppelingen/": {
+    "de": "/de/plattform-anbindungen/",
+    "en": "/en/platform-integrations/",
+    "fr": "/fr/integrations-plateformes/"
+  },
+  "/postgresql-database/": {
+    "de": "/de/postgresql-datenbank/",
+    "en": "/en/postgresql-database/",
+    "fr": "/fr/base-de-donnees-postgresql/"
+  },
+  "/power-bi-dashboard/": {
+    "de": "/de/power-bi-dashboard/",
+    "en": "/en/power-bi-dashboard/",
+    "fr": "/fr/tableau-de-bord-power-bi/"
+  },
+  "/prijzen/": {
+    "de": "/de/preise/",
+    "en": "/en/pricing/",
+    "fr": "/fr/tarifs/"
+  },
+  "/privacy/": {
+    "de": "/de/datenschutz/",
+    "en": "/en/privacy/",
+    "fr": "/fr/confidentialite/"
+  },
+  "/procesautomatisering/": {
+    "de": "/de/prozessautomatisierung/",
+    "en": "/en/process-automation/",
+    "fr": "/fr/automatisation-processus/"
+  },
+  "/productdata/": {
+    "de": "/de/produktdaten/",
+    "en": "/en/product-data/",
+    "fr": "/fr/donnees-produits/"
+  },
+  "/projecten/": {
+    "de": "/de/referenzen/",
+    "en": "/en/portfolio/",
+    "fr": "/fr/realisations/"
+  },
+  "/projecten/automatische-orderverwerking/": {
+    "de": "/de/referenzen/automatische-orderverwerking/",
+    "en": "/en/portfolio/automatische-orderverwerking/",
+    "fr": "/fr/realisations/automatische-orderverwerking/"
+  },
+  "/projecten/dashboards/": {
+    "de": "/de/referenzen/dashboards/",
+    "en": "/en/portfolio/dashboards/",
+    "fr": "/fr/realisations/tableaux-de-bord/"
+  },
+  "/projecten/datakwaliteit-alerts/": {
+    "de": "/de/referenzen/datakwaliteit-alerts/",
+    "en": "/en/portfolio/datakwaliteit-alerts/",
+    "fr": "/fr/realisations/datakwaliteit-alerts/"
+  },
+  "/projecten/de-valk-advies/": {
+    "de": "/de/referenzen/de-valk-advies/",
+    "en": "/en/portfolio/de-valk-advies/",
+    "fr": "/fr/realisations/de-valk-advies/"
+  },
+  "/projecten/documentverwerking/": {
+    "de": "/de/referenzen/dokumentenverarbeitung/",
+    "en": "/en/portfolio/document-processing/",
+    "fr": "/fr/realisations/traitement-documents/"
+  },
+  "/projecten/ecommerce-performance-dashboard/": {
+    "de": "/de/referenzen/ecommerce-performance-dashboard/",
+    "en": "/en/portfolio/ecommerce-performance-dashboard/",
+    "fr": "/fr/realisations/ecommerce-performance-dashboard/"
+  },
+  "/projecten/exploitatie-kosten-dashboard/": {
+    "de": "/de/referenzen/exploitatie-kosten-dashboard/",
+    "en": "/en/portfolio/exploitatie-kosten-dashboard/",
+    "fr": "/fr/realisations/exploitatie-kosten-dashboard/"
+  },
+  "/projecten/forecasting-bestelsuggesties/": {
+    "de": "/de/referenzen/forecasting-bestelsuggesties/",
+    "en": "/en/portfolio/forecasting-bestelsuggesties/",
+    "fr": "/fr/realisations/forecasting-bestelsuggesties/"
+  },
+  "/projecten/forecastlijn-scenariomodel/": {
+    "de": "/de/referenzen/forecastlijn-scenariomodel/",
+    "en": "/en/portfolio/forecastlijn-scenariomodel/",
+    "fr": "/fr/realisations/forecastlijn-scenariomodel/"
+  },
+  "/projecten/hellosmart/": {
+    "de": "/de/referenzen/hellosmart/",
+    "en": "/en/portfolio/hellosmart/",
+    "fr": "/fr/realisations/hellosmart/"
+  },
+  "/projecten/home-assistant-hub/": {
+    "de": "/de/referenzen/home-assistant-hub/",
+    "en": "/en/portfolio/home-assistant-hub/",
+    "fr": "/fr/realisations/home-assistant-hub/"
+  },
+  "/projecten/media-artikeldata-beheer/": {
+    "de": "/de/referenzen/media-artikeldata-beheer/",
+    "en": "/en/portfolio/media-artikeldata-beheer/",
+    "fr": "/fr/realisations/media-artikeldata-beheer/"
+  },
+  "/projecten/olympus-bouw/": {
+    "de": "/de/referenzen/olympus-bouw/",
+    "en": "/en/portfolio/olympus-bouw/",
+    "fr": "/fr/realisations/olympus-bouw/"
+  },
+  "/projecten/operations-dashboard-mkb-commerce/": {
+    "de": "/de/referenzen/operations-dashboard-mkb-commerce/",
+    "en": "/en/portfolio/operations-dashboard-mkb-commerce/",
+    "fr": "/fr/realisations/operations-dashboard-mkb-commerce/"
+  },
+  "/projecten/orderflow-statusmonitor/": {
+    "de": "/de/referenzen/orderflow-statusmonitor/",
+    "en": "/en/portfolio/orderflow-statusmonitor/",
+    "fr": "/fr/realisations/orderflow-statusmonitor/"
+  },
+  "/projecten/pdf-excel-regels/": {
+    "de": "/de/referenzen/pdf-excel-regels/",
+    "en": "/en/portfolio/pdf-excel-regels/",
+    "fr": "/fr/realisations/pdf-excel-regels/"
+  },
+  "/projecten/productdata-kanaalsynchronisatie/": {
+    "de": "/de/referenzen/productdata-kanaalsynchronisatie/",
+    "en": "/en/portfolio/productdata-kanaalsynchronisatie/",
+    "fr": "/fr/realisations/productdata-kanaalsynchronisatie/"
+  },
+  "/projecten/rust-werkt/": {
+    "de": "/de/referenzen/rust-werkt/",
+    "en": "/en/portfolio/rust-werkt/",
+    "fr": "/fr/realisations/rust-werkt/"
+  },
+  "/projecten/smartlife-domotica/": {
+    "de": "/de/referenzen/smartlife-domotica/",
+    "en": "/en/portfolio/smartlife-domotica/",
+    "fr": "/fr/realisations/smartlife-domotica/"
+  },
+  "/projecten/tijdlijn/": {
+    "de": "/de/referenzen/zeitachse/",
+    "en": "/en/portfolio/timeline/",
+    "fr": "/fr/realisations/chronologie/"
+  },
+  "/projecten/top-groep-nederland/": {
+    "de": "/de/referenzen/top-groep-nederland/",
+    "en": "/en/portfolio/top-groep-nederland/",
+    "fr": "/fr/realisations/top-groep-nederland/"
+  },
+  "/projecten/uren-workflowcontrole/": {
+    "de": "/de/referenzen/uren-workflowcontrole/",
+    "en": "/en/portfolio/uren-workflowcontrole/",
+    "fr": "/fr/realisations/uren-workflowcontrole/"
+  },
+  "/projecten/voorraad-inkoop-monitoring/": {
+    "de": "/de/referenzen/voorraad-inkoop-monitoring/",
+    "en": "/en/portfolio/voorraad-inkoop-monitoring/",
+    "fr": "/fr/realisations/voorraad-inkoop-monitoring/"
+  },
+  "/projecten/websites/": {
+    "de": "/de/referenzen/websites/",
+    "en": "/en/portfolio/websites/",
+    "fr": "/fr/realisations/sites-web/"
+  },
+  "/python-automatisering/": {
+    "de": "/de/python-automatisierung/",
+    "en": "/en/python-automation/",
+    "fr": "/fr/automatisation-python/"
+  },
+  "/rest-api-koppelingen/": {
+    "de": "/de/rest-api-anbindungen/",
+    "en": "/en/rest-api-integrations/",
+    "fr": "/fr/integrations-api-rest/"
+  },
+  "/verzendsoftware-koppelingen/": {
+    "de": "/de/versandsoftware-anbindungen/",
+    "en": "/en/shipping-integrations/",
+    "fr": "/fr/integrations-expedition/"
+  },
+  "/voorraadanalyses/": {
+    "de": "/de/bestandsanalyse/",
+    "en": "/en/inventory-analysis/",
+    "fr": "/fr/analyse-des-stocks/"
+  },
+  "/webapp-samenstellen/": {
+    "de": "/de/webapp-konfigurieren/",
+    "en": "/en/webapp-builder/",
+    "fr": "/fr/configurer-application-web/"
+  },
+  "/webdashboards/": {
+    "de": "/de/web-dashboards/",
+    "en": "/en/web-dashboards/",
+    "fr": "/fr/tableaux-de-bord-web/"
+  },
+  "/webhooks/": {
+    "de": "/de/webhooks/",
+    "en": "/en/webhooks/",
+    "fr": "/fr/webhooks/"
+  },
+  "/webshop-koppelingen/": {
+    "de": "/de/onlineshop-anbindungen/",
+    "en": "/en/webshop-integrations/",
+    "fr": "/fr/integrations-boutiques-en-ligne/"
+  },
+  "/website-ontwikkeling/": {
+    "de": "/de/website-entwicklung/",
+    "en": "/en/website-development/",
+    "fr": "/fr/creation-site-web/"
+  },
+  "/zoeken/": {
+    "de": "/de/suche/",
+    "en": "/en/search/",
+    "fr": "/fr/recherche/"
+  }
+}

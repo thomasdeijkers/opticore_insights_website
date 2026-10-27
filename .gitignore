@@ -11,3 +11,10 @@ backups/
 
 # Ephemeral deploy credentials; never commit or upload into the public webroot.
 .scan-deploy/
+
+# Multilingual editions are built from Dutch HTML and content/i18n during deployment.
+/de/
+/en/
+/fr/
+/assets/i18n/
+/content/i18n/source.json

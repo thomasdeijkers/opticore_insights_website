@@ -23,11 +23,14 @@ class Metadata(HTMLParser):
         self.titles = []
         self.title_parts = []
         self.in_title = False
+        self.language = 'nl'
         self.meta = {}
         self.canonical = []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == 'html':
+            self.language = attrs.get('lang', 'nl')
         if tag == 'title':
             self.in_title = True
             self.title_parts = []
@@ -61,7 +64,7 @@ class Metadata(HTMLParser):
             if self.meta.get(name) != [expected]:
                 raise ValueError(f'{source}: {name} does not match page metadata')
         robots = self.meta.get('robots', [''])[0]
-        return {'url': self.canonical[0], 'title': title, 'description': description,
+        return {'url': self.canonical[0], 'title': title, 'description': description, 'language': self.language,
                 'robots': robots, 'indexable': 'noindex' not in robots.lower(),
                 'title_length': len(title), 'description_length': len(description)}
 
@@ -84,7 +87,7 @@ def inventory():
         records[record['url']] = record
     result = sorted(records.values(), key=lambda item: (not item['indexable'], item['url']))
     for field in ('title', 'description'):
-        duplicates = [text for text, count in Counter(item[field] for item in result if item['indexable']).items() if count > 1]
+        duplicates = [text for text, count in Counter((item['language'], item[field]) for item in result if item['indexable']).items() if count > 1]
         if duplicates:
             raise ValueError(f'Duplicate indexable {field}: {duplicates}')
     return result

@@ -34,12 +34,15 @@ class Page(HTMLParser):
         self.title = ''
         self.seo_title = ''
         self.in_title = False
+        self.language = 'nl'
         self.sections = []
         self.current = {'heading':'', 'anchor':'', 'parts':[]}
         self.heading = None
 
     def handle_starttag(self, tag, pairs):
         attrs = dict(pairs)
+        if tag == 'html':
+            self.language = attrs.get('lang', 'nl')
         if tag == 'title':
             self.in_title = True
         if tag == 'link' and attrs.get('rel') == 'canonical':
@@ -96,6 +99,10 @@ class Page(HTMLParser):
 
 
 def category(path):
+    # Foreign route names are resolved to their original editorial category.
+    if path.startswith(('/de/', '/en/', '/fr/')):
+        from i18n import routes
+        path = next((original for original, editions in routes().items() if path in editions.values()), path)
     first = path.strip('/').split('/')[0]
     if first == 'projecten': return 'Projecten'
     if first == 'nieuws': return 'Nieuws'
@@ -119,7 +126,7 @@ def build():
         assert path == ROOT/url.lstrip('/')/'index.html', f'{path}: canonical source mismatch'
         assert page.title and page.sections, f'{path}: empty searchable page'
         title = clean(page.seo_title).removesuffix(' | OptiCore Insights') or page.title
-        records.append({'url':url, 'title':title, 'description':page.description,
+        records.append({'url':url, 'title':title, 'description':page.description, 'language':page.language,
                         'category':category(url), 'sections':page.sections})
     assert len({r['url'] for r in records}) == len(records), 'Duplicate search URLs'
     assert not any(r['url'].startswith('/zoeken/') for r in records), 'Search results must be unindexed'

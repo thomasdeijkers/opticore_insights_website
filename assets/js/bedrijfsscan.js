@@ -153,7 +153,7 @@
       const response = await fetch('/api/bedrijfsscan.php', {
         method: 'POST', credentials: 'same-origin', signal: controller.signal,
         headers: {'Content-Type': 'application/json', 'X-Scan-CSRF': bootstrap.csrf},
-        body: JSON.stringify({answers, website: questionnaire.querySelector('[name="website"]').value})
+        body: JSON.stringify({answers, language:document.documentElement.lang, website: questionnaire.querySelector('[name="website"]').value})
       });
       const result = await response.json();
       if (!response.ok) throw new Error(result.message || 'Het voorstel kon niet worden gemaakt. Je antwoorden zijn bewaard op deze pagina.');

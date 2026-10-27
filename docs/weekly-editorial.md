@@ -5,6 +5,8 @@ van opticore-insights.nl. De website mag standaard live worden bijgewerkt.
 Werk uitsluitend in `C:/Users/thoma/OneDrive/projects_github/opticore-insights_website`.
 De werkmap van de chat kan bij een ander project horen.
 
+Nieuwe of gewijzigde berichten verschijnen ook in Duits, Engels en Frans. Werk de vertaalcatalogi en eventuele nieuwe taalroutes bij volgens `docs/languages.md` voordat je publiceert. Publicatiedata en bronlinks blijven gelijk. De deployment weigert ontbrekende vertalingen; controleer daarom naast de Nederlandse renderer ook de meertalige build.
+
 ## Doel en doelgroep
 
 Schrijf voor ondernemers met €250.000 tot €25 miljoen jaaromzet. Thomas Deijkers

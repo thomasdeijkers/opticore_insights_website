@@ -14,7 +14,7 @@
   if(typeof document==='undefined')return;
   const form=document.querySelector('[data-usage-calculator]');if(!form)return;
   const config=JSON.parse(document.querySelector('#usage-pricing-data').textContent);
-  const money=n=>new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+  const money=n=>new Intl.NumberFormat((typeof window !== 'undefined' && window.SiteI18n?.locale) || 'nl-NL',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
   const requested=(new URLSearchParams(location.search).get('modules')||'').slice(0,500).split(',');
   const selected=scope.WebappPricing.resolve(requested);
   const show=(selector,text)=>document.querySelectorAll(selector).forEach(node=>node.textContent=text);

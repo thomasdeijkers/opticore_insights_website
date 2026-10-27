@@ -1,20 +1,28 @@
 <?php
+require_once __DIR__ . '/api/site-language.php';
 function clean_text($value) {
     $value = is_string($value) ? trim($value) : '';
     return str_replace(["\r", "\n"], ' ', $value);
 }
 
 function render_page($title, $message, $is_success = false) {
-    $safe_title = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
-    $safe_message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
-    $heading = $is_success ? 'Bedankt voor je bericht.' : 'Bericht niet verzonden.';
+    $lang = site_language();
+    header('Content-Language: ' . $lang);
+    header('X-Robots-Tag: noindex, nofollow');
+    $safe_title = htmlspecialchars(site_text($title), ENT_QUOTES, 'UTF-8');
+    $safe_message = htmlspecialchars(site_text($message), ENT_QUOTES, 'UTF-8');
+    $heading = htmlspecialchars(site_text($is_success ? 'Bedankt voor je bericht.' : 'Bericht niet verzonden.'), ENT_QUOTES, 'UTF-8');
     $status_class = $is_success ? 'success-panel' : 'error-panel';
-    echo "<!doctype html><html lang=\"nl\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>{$safe_title} | OptiCore Insights</title><link rel=\"stylesheet\" href=\"/assets/css/site.css?v=20261020f\"></head><body><main class=\"section\"><div class=\"container text-page info-panel {$status_class}\"><h1>{$heading}</h1><p>{$safe_message}</p><div class=\"actions\"><a class=\"button button-primary\" href=\"/contact/\">Terug naar contact</a><a class=\"button button-secondary\" href=\"/\">Naar home</a></div></div></main></body></html>";
+    $contact = htmlspecialchars(site_page_url('/contact/'), ENT_QUOTES, 'UTF-8');
+    $home = htmlspecialchars(site_page_url('/'), ENT_QUOTES, 'UTF-8');
+    $contact_label = htmlspecialchars(site_text('Terug naar contact'), ENT_QUOTES, 'UTF-8');
+    $home_label = htmlspecialchars(site_text('Naar home'), ENT_QUOTES, 'UTF-8');
+    echo "<!doctype html><html lang=\"{$lang}\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><meta name=\"robots\" content=\"noindex,nofollow\"><title>{$safe_title} | OptiCore Insights</title><link rel=\"stylesheet\" href=\"/assets/css/site.css?v=20261027-desktop-review\"></head><body><main class=\"section\"><div class=\"container text-page info-panel {$status_class}\"><h1>{$heading}</h1><p>{$safe_message}</p><div class=\"actions\"><a class=\"button button-primary\" href=\"{$contact}\">{$contact_label}</a><a class=\"button button-secondary\" href=\"{$home}\">{$home_label}</a></div></div></main></body></html>";
     exit;
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: /contact/');
+    header('Location: ' . site_page_url('/contact/'));
     exit;
 }
 
@@ -214,6 +222,7 @@ $question_label = $topic['question'] ?? 'Bericht';
 $to = 'info@opticore-insights.nl';
 $mail_subject = 'Contactaanvraag via OptiCore Insights: ' . $subject_input;
 $body = "Naam: {$name}\nBedrijf: {$company}\nE-mail: {$email}\nTelefoon: {$phone}\nOnderwerp: {$subject_input}\n\n{$question_label}\n{$message}\n\n{$details}\n---\nVerzonden via opticore-insights.nl/contact\n";
+$body .= "\nTaal van de aanvraag: " . site_language() . "\n";
 $headers = [
     'From: OptiCore Insights <info@opticore-insights.nl>',
     'Reply-To: ' . $email,
