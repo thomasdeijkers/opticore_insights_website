@@ -334,7 +334,7 @@
   q('[data-demo-theme]').addEventListener('click',()=>{applyTheme(theme==='dark'?'light':'dark');if(current==='systeem')render();});
   q('[data-demo-menu]').addEventListener('click',()=>setMenu(!navOpen));
   q('[data-demo-menu-close]').addEventListener('click',()=>setMenu(false));
-  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&navOpen){setMenu(false);q('[data-demo-menu]').focus();}});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&navOpen&&!dialog.open&&!q('.demo-access-dialog[open]')){setMenu(false);q('[data-demo-menu]').focus();}});
   window.addEventListener('resize',()=>setMenu(false));
   q('[data-demo-create]').addEventListener('click',()=>action({kind:'product-create'}));
   q('[data-demo-export]').addEventListener('click',()=>{

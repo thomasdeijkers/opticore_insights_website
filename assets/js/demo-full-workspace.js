@@ -220,7 +220,7 @@
   }
   function navigate(next,nextTab='',push=true){
     if(!C.pages[next]||!renderers[next])return;
-    if(window.DemoAccess&&!window.DemoAccess.authorized()){window.DemoAccess.request(()=>navigate(next,nextTab,push));return;}
+    if(next!=='dashboard'&&window.DemoAccess&&!window.DemoAccess.authorized()){window.DemoAccess.request(()=>navigate(next,nextTab,push));return;}
     if(push){trail.push({page,tab,selection});history.pushState({page:next,tab:nextTab},'','?'+new URLSearchParams({page:next,...(nextTab?{tab:nextTab}:{})}));}
     if(next==='image-studio')host.setStudio(selection);
     page=next;tab=nextTab&&C.pages[next].tabs.some(t=>t.id===nextTab)?nextTab:(C.pages[next].tabs[0]?.id||'');query='';classification='all';host.close();host.menu(false);refresh();window.scrollTo({top:0,behavior:'instant'});

@@ -66,7 +66,13 @@ async function choose(page,language){if(!await page.locator('.language-picker>su
    const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto(pageURL('/demo/modulaire-webapp/',lang),{waitUntil:'networkidle'});
    await page.locator('.language-picker>summary').click();assert.equal(await page.locator('.demo-access-dialog').isVisible(),false,'Language choice does not require demo login');await page.keyboard.press('Escape');
-   await page.locator('[data-demo-menu]').click();assert(await page.locator('.demo-access-dialog').isVisible());
+   await page.locator('.workspace-root .demo-dashboard-heatmap>summary').click();assert.equal(await page.locator('.demo-access-dialog').isVisible(),false,'Dashboard disclosures are public');
+   await page.locator('[data-demo-menu]').click();assert.equal(await page.locator('.demo-access-dialog').isVisible(),false,'Opening navigation is public');
+   const protectedPage=page.locator('[data-demo-nav] [data-full-page=omzet-artikelen]');
+   const protectedGroup=protectedPage.locator('xpath=ancestor::details');
+   if(await protectedGroup.getAttribute('open')===null)await protectedGroup.locator(':scope>summary').click();
+   assert.equal(await page.locator('.demo-access-dialog').isVisible(),false,'Expanding navigation groups is public');
+   await protectedPage.click();assert(await page.locator('.demo-access-dialog').isVisible());
    const request=await page.locator('.demo-access-request a').getAttribute('href');
    assert(new URL(request,base).pathname===(lang==='nl'?'/contact/':routes['/contact/'][lang]));
    if(lang!=='nl')assert(!(await page.locator('.demo-access-dialog').innerText()).includes('Wachtwoord'));

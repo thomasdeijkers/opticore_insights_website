@@ -21,7 +21,7 @@ VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'met
 DISPLAY_ATTRS = {'alt', 'title', 'placeholder', 'aria-label', 'aria-description', 'data-mail-label', 'data-screen-title', 'data-label'}
 META_TEXT = {'description', 'og:title', 'og:description', 'twitter:title', 'twitter:description'}
 SCHEMA_TEXT = {'name', 'description', 'headline', 'text', 'caption', 'articleSection', 'keywords'}
-VERSION = '20261028-teaser-caption-4'
+VERSION = '20261028-dashboard-disclosures-5'
 
 
 def clean(value):

@@ -212,7 +212,7 @@ De dashboardstrook toont alleen artikelen uit niet-verzonden orders. Aantallen w
 
 ### Toegang tot de volledige demo - 27 oktober 2026
 
-Het dashboard blijft een openbaar voorbeeld; menuklikken, artikelkaarten en andere doorkliks vragen om een gebruikersnaam en wachtwoord in een modal. Een directe link naar een module toont eerst het dashboard met het inlogvenster. Na een geslaagde inlog wordt de gekozen actie hervat. De themawissel en algemene informatielinks blijven beschikbaar.
+Het dashboard blijft een openbaar voorbeeld. Kanalen, maanden, heatmap en forecast-uitleg kun je zonder inlog uitklappen. Ook het app-menu, de menugroepen, zoeken, sluiten en teruggaan naar het dashboard zijn vrij toegankelijk. Pas bij het openen van een andere demopagina, artikelkaart of module wordt om een gebruikersnaam en wachtwoord gevraagd. Een directe link naar een module toont eerst het dashboard met het inlogvenster. Na een geslaagde inlog wordt de gekozen actie hervat. De themawissel en algemene informatielinks blijven beschikbaar.
 
 De PHP-endpoint api/demo-access.php controleert de gegevens op de server. Een HttpOnly/SameSite-sessie geeft maximaal acht uur toegang; het wachtwoord staat niet in openbare HTML, JavaScript of Git. De private configuratie bevat een password_hash en wordt vanuit het repositorysecret OPTICORE_DEMO_AUTH_CONFIG via de bestaande SFTP-route buiten de webroot geplaatst, naast de bestaande private scanconfiguratie. Aanvragen lopen via /contact/?onderwerp=demo-toegang#contact-form; gegevens worden na aanvraag handmatig verstrekt. Er is geen automatische verzending van inloggegevens.
 

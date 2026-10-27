@@ -1,4 +1,4 @@
-/* The dashboard is public; navigating the fictional demo requires a server session. */
+/* Dashboard disclosures and menu browsing are public; other demo pages require a session. */
 (() => {
   'use strict';
   const root=document.querySelector('[data-demo]');
@@ -41,9 +41,20 @@
     }catch(failure){error.textContent=failure.name==='TimeoutError'?'De verbinding duurt te lang. Probeer het opnieuw.':['TypeError','SyntaxError'].includes(failure.name)?'Inloggen lukt nu niet. Controleer je verbinding en probeer het opnieuw.':failure.message;}
     finally{submit.disabled=false;submit.textContent='Inloggen';}
   });
+  function publicControl(target){
+    const dashboard=root.dataset.fullDemo==='dashboard'||root.dataset.module==='dashboard';
+    // Opening a menu/search or closing a dialog never opens a protected page.
+    if(target.matches('[data-demo-menu],[data-demo-menu-close],[data-demo-theme],[data-demo-find],[data-demo-close],[data-workspace-back],[data-route="dashboard|overzicht|"],[data-full-page="dashboard"]'))return true;
+    if(dashboard&&target.matches('[data-demo-reset],[data-w-action="reset-demo"]'))return true;
+    if(target.matches('details>summary')){
+      if(target.closest('[data-demo-nav]'))return true;
+      if(dashboard&&target.closest('.workspace-root,[data-demo-home]'))return true;
+    }
+    return false;
+  }
   root.addEventListener('click',event=>{
-    if(authorized()||event.target.closest('.demo-access-dialog,[data-demo-theme],.sidebar-note,.demo-photo-note,.language-picker')||!event.target.closest('button,a,summary'))return;
     const target=event.target.closest('button,a,summary');
+    if(authorized()||event.target.closest('.demo-access-dialog,.sidebar-note,.demo-photo-note,.language-picker')||!target||publicControl(target))return;
     event.preventDefault();event.stopImmediatePropagation();request(()=>target.isConnected&&target.click());
   },true);
   root.addEventListener('submit',event=>{
