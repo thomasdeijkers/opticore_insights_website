@@ -3,6 +3,9 @@
 .screen-gallery-stage{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-items:start}
 .screen-slide{display:none;min-width:0;cursor:zoom-in;background:transparent;text-decoration:none}
 .screen-slide img{display:block;width:100%;height:auto;max-height:650px;object-fit:contain;border-radius:4px}
+@media(min-width:1001px){
+ :is(.service-example-grid,.topic-intro-grid,.topic-case-grid,.security-split,.bol-promo-grid,.home-work)>.screen-gallery .screen-slide img{max-height:none}
+}
 .screen-gallery.is-ready .screen-slide:not([hidden]){display:block}
 .screen-gallery[data-preview-count="2"] .screen-gallery-stage{grid-template-columns:repeat(2,minmax(0,1fr))}
 .module-screen-gallery[data-preview-count="4"] .screen-gallery-stage{grid-template-columns:repeat(2,minmax(0,1fr))}

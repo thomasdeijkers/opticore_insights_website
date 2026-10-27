@@ -25,6 +25,7 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
   }
   console.log('PASS phone rotation: both teasers select tablet captures and widen in landscape, then return to mobile.');
   const details=p.locator('#gegevens-producten'),gallery=details.locator('[data-module-gallery]');await details.locator(':scope>summary').click();
+  await p.waitForFunction(()=>document.querySelector('#gegevens-producten [data-module-gallery]')?.dataset.device==='mobile');
   assert.equal(await gallery.getAttribute('data-device'),'mobile');await gallery.locator('[data-screen-open-all]').click();
   const viewer=p.locator('dialog.image-viewer[open]');await viewer.getByRole('button',{name:'Volgende afbeelding',exact:true}).click();
   const title=await viewer.locator('#image-viewer-title').textContent();

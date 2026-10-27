@@ -16,7 +16,7 @@
 .home-support-list p{font-size:16px;margin:0}
 .home-service-links{display:grid;gap:10px;margin-top:auto;padding-top:8px}
 .home-service-links a{font-size:15px;font-weight:650}
-.home-work{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:36px;align-items:start}
+.home-work{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-items:start}
 .home-work-image{margin:0;background:#fff;border:1px solid var(--line);border-radius:7px;overflow:hidden}
 .home-work-image>a{display:block}
 .home-work-image img{width:100%;height:auto}

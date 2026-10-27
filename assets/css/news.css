@@ -6,6 +6,7 @@
 .news-overview-note{max-width:790px;margin-top:24px;font-size:14px}
 .news-article{max-width:none;margin:0}
 .news-article section+section{margin-top:34px}
+.news-article p,.news-article li{max-width:80ch}
 .news-article h2{font-size:27px}
 .news-article li{margin-top:11px}
 .news-article .news-image{margin:0 0 34px;border:0;border-radius:0;overflow:visible}

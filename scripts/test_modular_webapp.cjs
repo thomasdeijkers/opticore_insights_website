@@ -54,6 +54,8 @@ for(const id of ids){
 assert(html.includes('€ 995 inrichting'));assert(html.includes('€ 149 per maand'));
 assert(!overview.includes('data-webapp-picker'));assert(!overview.includes('type="checkbox"'));assert.equal((overview.match(/class="webapp-module-choose"/g)||[]).length,12);
 assert(overview.includes('webapp-demo-teaser-scroll'));assert(overview.includes('<iframe class="webapp-demo-frame"'));
+assert(overview.includes(`Met alle ${ids.length} modules samen betaal je ${money(complete.setup)} inrichting en ${money(complete.monthly)} per maand.`));
+assert(!overview.includes('€ 399 per maand'));assert(!overview.includes('alle tien modules'));
 assert(html.indexOf('class="webapp-pricebar"')<html.indexOf('class="webapp-module-grid"'));assert(html.includes('data-price-details'));
 assert.equal(calculatorURL(['omzet','omzet','__proto__']),'/webapp-samenstellen/#modules');assert.equal(calculatorURL(['marketing','marketing','<script>']),'/webapp-samenstellen/?modules=marketing#modules');
 const contact=fs.readFileSync(path.join(__dirname,'../contact/index.html'),'utf8');assert(/<textarea id="webapp-modules"[^>]*\breadonly/.test(contact));

@@ -14,6 +14,11 @@ def money(value):
 
 
 def render(source, catalogue, base, examples):
+    expansions = [item for item in catalogue.values() if not item.get('included')]
+    monthly = [item['currentMonthly'] for item in expansions]
+    complete = examples[-1]['price']
+    source = re.sub(r'Uitbreidingen · € [\d.]+–€ [\d.]+/mnd', lambda _: f'Uitbreidingen · {money(min(monthly))}–{money(max(monthly))}/mnd', source)
+    source = re.sub(r'Met alle (?:tien|twaalf|\d+) modules samen betaal je € [\d.]+ inrichting en € [\d.]+ per maand\.', lambda _: f'Met alle {len(catalogue)} modules samen betaal je {money(complete["setup"])} inrichting en {money(complete["monthly"])} per maand.', source)
     def card(match):
         block = match[0]
         module = re.search(r'(?:value|data-module-overview)="([a-z]+)"', block)[1]
