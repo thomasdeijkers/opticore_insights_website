@@ -25,6 +25,7 @@ jobs:
           python3 scripts/news.py --write
           python3 scripts/usage_costs.py --write
           python3 scripts/module_screenshots.py --check
+          python3 scripts/module_prices.py --check
           python3 scripts/demo_product_assets.py --check
           python3 scripts/external_links.py --check
 
