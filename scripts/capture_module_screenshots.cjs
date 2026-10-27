@@ -1,3 +1,4 @@
+const demoBrowserSession=require('./demo_browser_session.cjs');
 /* Capture only the public, fictional local demo. No production data or APIs. */
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE_PATH||'playwright');
@@ -13,6 +14,7 @@ assert(['127.0.0.1','localhost'].includes(site.hostname),'Local captures only');
    let captured=0;
    const ctx=await browser.newContext({viewport:{width,height},deviceScaleFactor:scale,colorScheme:'dark',reducedMotion:'reduce'});
    await ctx.route('**/*',route=>new URL(route.request().url()).origin===site.origin?route.continue():route.abort());
+   await demoBrowserSession(ctx,site);
    for(const [module,views] of Object.entries(plan))for(const view of views){
     const requestedModule=process.argv.find(arg=>arg.startsWith('--module='))?.split('=')[1];
     if(requestedModule&&module!==requestedModule)continue;

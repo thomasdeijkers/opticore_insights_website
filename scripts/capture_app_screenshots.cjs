@@ -1,3 +1,4 @@
+const demoBrowserSession=require('./demo_browser_session.cjs');
 /* Render only local, fictitious examples. Never connects to production apps. */
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE_PATH||'playwright');
@@ -16,6 +17,7 @@ const records=[];
   async function capture(url,file,width,height,{modal,expand,fullPage=false,scale=2}={}){
    const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:scale,colorScheme:'dark',reducedMotion:'reduce'}),errors=[];
    await page.route('**/*',route=>[site.origin,fixtures.origin].includes(new URL(route.request().url()).origin)?route.continue():route.abort());
+   await demoBrowserSession(page,site);
    page.on('pageerror',e=>errors.push(e.message));
    const response=await page.goto(url,{waitUntil:'networkidle'});assert(response.ok(),url);
    await page.evaluate(()=>document.fonts.ready);

@@ -1,4 +1,4 @@
-(() => {
+(async () => {
   'use strict';
   const D=window.MarketplaceDemo;
   const modules={
@@ -31,7 +31,14 @@
   const specialScreens={producten:['catalogus','studio'],inkoop:['leveranciers'],marketing:['agent','historie']};
   const root=document.querySelector('[data-demo]');if(!root||!D)return;
   let state=D.createState();
+  const requestedAddress=location.href;
+  if(!window.DemoAccess)return;
+  await window.DemoAccess.ready;
   const params=new URLSearchParams(location.search);
+  const needsLogin=Boolean(window.DemoAccess&&!window.DemoAccess.authorized()&&((params.get('page')&&params.get('page')!=='dashboard')||(params.get('module')&&params.get('module')!=='dashboard')||params.get('screen')||params.get('view')==='details'));
+  if(window.DemoAccess&&!window.DemoAccess.authorized()){
+    for(const key of ['page','module','view','screen','tab','sku'])params.delete(key);
+  }
   let current=Object.hasOwn(modules,params.get('module'))?params.get('module'):'dashboard';
   let work=params.get('view')==='details';let special=specialScreens[current]?.includes(params.get('screen'))?params.get('screen'):'';let rows=[];let active={};
   let navOpen=false,receiptSerial=0,rankCountry=params.get('country')==='BE'?'BE':'NL';
@@ -383,4 +390,5 @@
   setMenu(false);
   render();
   if(window.FullWorkspace)window.FullWorkspace.mount({root,params,reset:resetDemo,state:()=>state,render,choose,action,article,open,close:()=>{if(dialog.open)dialog.close();},menu:setMenu,theme:applyTheme,message,brand:channelBrand,dashboard:renderDashboard,svg:studioSVG,thumb:productThumb,studioSelection:()=>studioSku,studioMarkup:()=>{renderStudio();return q('[data-demo-special]').innerHTML;},setStudio:sku=>{studioSku=sku;studioImage=0;}});
+  if(needsLogin)window.DemoAccess.request(()=>location.assign(requestedAddress));
 })();

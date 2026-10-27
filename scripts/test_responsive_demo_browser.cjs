@@ -1,3 +1,4 @@
+const demoBrowserSession=require('./demo_browser_session.cjs');
 /* Orientation regression checks against the local public demo only. */
 const assert=require('node:assert/strict'),path=require('node:path'),fs=require('node:fs');
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE_PATH||'playwright');
@@ -8,6 +9,7 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
  try{
   const ctx=await browser.newContext({viewport:{width:390,height:844},hasTouch:true,isMobile:true,reducedMotion:'reduce'});
   await ctx.route('**/*',r=>new URL(r.request().url()).origin===base.origin?r.continue():r.abort());
+  await demoBrowserSession(ctx,base);
   const p=await ctx.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
   const rotate=async(width,height)=>{await p.setViewportSize({width,height});await p.waitForTimeout(120);};
   const imageDevice=async device=>{await p.waitForFunction(device=>document.querySelector('.webapp-demo-teaser-scroll img').currentSrc.includes(`dashboard-client-${device}-dark.png`),device);};
@@ -44,7 +46,7 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
    if(width===844&&process.env.DEMO_ROTATION_REPORT_DIR){fs.mkdirSync(process.env.DEMO_ROTATION_REPORT_DIR,{recursive:true});await p.screenshot({path:path.join(process.env.DEMO_ROTATION_REPORT_DIR,'demo-phone-landscape.png')});}
   }
   assert.deepEqual(errors,[]);await ctx.close();
-  const desktop=await browser.newContext({viewport:{width:1440,height:900}}),d=await desktop.newPage();
+  const desktop=await browser.newContext({viewport:{width:1440,height:900}});await demoBrowserSession(desktop,base);const d=await desktop.newPage();
   await d.goto(new URL('',base).href,{waitUntil:'networkidle'});assert((await d.locator('.webapp-demo-teaser img').evaluate(i=>i.currentSrc)).includes('-desktop-dark.png'));
   await d.setViewportSize({width:1280,height:500});await d.waitForTimeout(120);assert((await d.locator('.webapp-demo-teaser img').evaluate(i=>i.currentSrc)).includes('-desktop-dark.png'),'Short desktop windows stay desktop');
   await desktop.close();console.log('PASS demo rotation: compact tablet layout, working menu, unchanged data/theme, no overflow; desktop stays desktop.');

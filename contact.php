@@ -29,6 +29,11 @@ $email = filter_var($email_raw, FILTER_VALIDATE_EMAIL);
 $phone = clean_text($_POST['phone'] ?? '');
 $topics = json_decode(<<<'JSON'
 {
+  "demo-toegang": {
+    "label": "Gratis inloggegevens voor de WebApp-demo",
+    "question": "Aanvraag demo-inloggegevens",
+    "fields": {}
+  },
   "webapp": {
     "label": "Een modulaire webapp",
     "question": "Welk werk moet de webapp makkelijker maken?",

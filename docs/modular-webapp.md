@@ -209,3 +209,11 @@ De moduleprijsberekening liep vast doordat update() nog de verwijderde helper se
 ### Aantallen bij openstaande artikelen - 27 oktober 2026
 
 De dashboardstrook toont alleen artikelen uit niet-verzonden orders. Aantallen worden per SKU over alle open orders opgeteld. Vanaf twee stuks verschijnt een oranje badge (bijvoorbeeld 2x); bij een stuk blijft de foto zonder badge. De toegankelijke knopnaam bevat het aantal. Verzenden in de demo verlaagt het aantal of verwijdert het artikel als er geen openstaande stuks meer zijn. De donkere dashboardbeelden zijn opnieuw vastgelegd voor mobiel, tablet en desktop.
+
+### Toegang tot de volledige demo - 27 oktober 2026
+
+Het dashboard blijft een openbaar voorbeeld; menuklikken, artikelkaarten en andere doorkliks vragen om een gebruikersnaam en wachtwoord in een modal. Een directe link naar een module toont eerst het dashboard met het inlogvenster. Na een geslaagde inlog wordt de gekozen actie hervat. De themawissel en algemene informatielinks blijven beschikbaar.
+
+De PHP-endpoint api/demo-access.php controleert de gegevens op de server. Een HttpOnly/SameSite-sessie geeft maximaal acht uur toegang; het wachtwoord staat niet in openbare HTML, JavaScript of Git. De private configuratie bevat een password_hash en wordt vanuit het repositorysecret OPTICORE_DEMO_AUTH_CONFIG via de bestaande SFTP-route buiten de webroot geplaatst, naast de bestaande private scanconfiguratie. Aanvragen lopen via /contact/?onderwerp=demo-toegang#contact-form; gegevens worden na aanvraag handmatig verstrekt. Er is geen automatische verzending van inloggegevens.
+
+python scripts/test_demo_access.py controleert echte PHP-sessies met tijdelijke willekeurige testgegevens. scripts/test_demo_access_browser.cjs test de echte inlogflow met inloggegevens uit lokale omgevingsvariabelen. Lokale visuele/functionaliteitstests gebruiken scripts/demo_browser_session.cjs als expliciete sessiefixture; deze weigert productiehosts en voegt geen productie-bypass toe.
