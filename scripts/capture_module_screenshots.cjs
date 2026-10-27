@@ -21,6 +21,7 @@ assert(['127.0.0.1','localhost'].includes(site.hostname),'Local captures only');
     const p=await ctx.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
     const url=new URL('demo/modulaire-webapp/?'+new URLSearchParams({page:view.page,theme:'dark',...(view.tab?{tab:view.tab}:{})}),site);
     assert((await p.goto(url.href,{waitUntil:'networkidle'})).ok());
+    await p.locator('.workspace-complete .workspace-root').waitFor({state:'visible'});
     await p.evaluate(()=>document.fonts.ready);
     assert.equal(await p.locator('html').getAttribute('data-theme'),'dark');
     if(view.click)await p.locator(view.click).first().click();

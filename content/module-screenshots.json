@@ -273,5 +273,55 @@
       "title": "Publicatiefouten",
       "page": "publicaties"
     }
+  ],
+  "klantenservice": [
+    {
+      "id": "inbox",
+      "title": "Open klantvragen",
+      "page": "tickets"
+    },
+    {
+      "id": "uitgesteld",
+      "title": "Uitgestelde tickets",
+      "page": "tickets",
+      "tab": "snoozed"
+    },
+    {
+      "id": "archief",
+      "title": "Afgehandelde vragen",
+      "page": "tickets",
+      "tab": "archive"
+    },
+    {
+      "id": "klanten",
+      "title": "Eigen orderklanten",
+      "page": "klanten"
+    }
+  ],
+  "facturatie": [
+    {
+      "id": "orderfactuur",
+      "title": "Factuur uit een verkooporder",
+      "page": "facturen",
+      "tab": "order"
+    },
+    {
+      "id": "relaties",
+      "title": "Factuurrelaties",
+      "page": "facturen",
+      "tab": "relations"
+    },
+    {
+      "id": "offerte",
+      "title": "Productofferte samenstellen",
+      "page": "offertes",
+      "tab": "quote-products"
+    },
+    {
+      "id": "offertes",
+      "title": "Opgeslagen productoffertes",
+      "page": "offertes",
+      "tab": "quotes"
+    }
   ]
 }

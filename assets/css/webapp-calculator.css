@@ -49,3 +49,44 @@ html:has(.webapp-calculator){scroll-padding-top:calc(var(--calculator-header-hei
 .webapp-calculator-base-price{flex-direction:row;align-items:center;flex-wrap:wrap;gap:5px 20px;white-space:normal}
 }
 @media(max-width:360px){.webapp-pricebar-inner{gap:8px}.webapp-pricebar-amounts{gap:8px}.webapp-pricebar-amounts strong{font-size:21px}}
+
+/* Cost answers are normal HTML so the calculator is useful before JavaScript. */
+.webapp-calculator-demo{padding:0 0 28px}
+.webapp-calculator-demo-panel{border:1px solid var(--line);border-radius:var(--radius);background:#fff}
+.webapp-calculator-demo-panel>summary{display:flex;align-items:center;gap:14px;padding:18px 22px;cursor:pointer;color:var(--ink);list-style:none}
+.webapp-calculator-demo-panel>summary::-webkit-details-marker{display:none}
+.webapp-calculator-demo-panel>summary::after{content:'+';margin-left:auto;font-size:26px;color:var(--link)}
+.webapp-calculator-demo-panel[open]>summary::after{content:'−'}
+.webapp-calculator-demo-panel summary svg{width:27px;height:27px;flex:none;color:var(--link)}
+.webapp-calculator-demo-panel summary small{display:block;color:var(--muted);font-size:13px;font-weight:400}
+.webapp-calculator-demo-panel summary:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.webapp-calculator-demo-content{padding:0 22px 22px}.webapp-calculator-demo-content>p{font-size:14px}
+.webapp-calculator-demo-content>.webapp-demo-frame{height:650px;margin-top:18px}
+.webapp-cost-answer{font-size:20px;line-height:1.65}
+.webapp-cost-money{white-space:nowrap}
+.webapp-calculator .webapp-cost-small{font-size:14px;line-height:1.65;color:var(--muted)}
+.webapp-cost-nav{display:flex;align-items:center;flex-wrap:wrap;gap:16px 24px;margin-block:24px}
+.webapp-cost-guide h2{max-width:800px}.webapp-cost-guide> .container>p{max-width:880px}
+.webapp-cost-table-wrap{max-width:100%;margin-block:26px}
+.webapp-cost-table{width:100%;border-collapse:collapse;font-size:15px;background:#fff}
+.webapp-cost-table caption{text-align:left;font-weight:650;color:var(--ink);margin-bottom:12px}
+.webapp-cost-table th,.webapp-cost-table td{text-align:left;vertical-align:top;padding:18px 14px;border-bottom:1px solid var(--line)}
+.webapp-cost-table thead{background:var(--soft)}.webapp-cost-table thead th{font-size:13px}
+.webapp-cost-table tbody th{max-width:300px}.webapp-cost-table tbody th span{display:block;font-size:13px;font-weight:400;color:var(--muted);margin-top:5px}
+.webapp-cost-table td[data-label]{font-weight:700;color:#111;white-space:nowrap}
+.webapp-cost-factors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-block:28px}
+.webapp-cost-factors article{padding:24px;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
+.webapp-cost-factors h3{font-size:21px;margin:0 0 12px}.webapp-cost-factors p{margin:0;font-size:16px}
+.webapp-cost-proof{border-top:1px solid var(--line);padding-top:24px}.webapp-cost-proof h3{font-size:22px}
+.webapp-cost-faq{max-width:900px;margin-block:26px}.webapp-cost-faq details{border-bottom:1px solid var(--line)}
+.webapp-cost-faq summary{padding:20px 8px;cursor:pointer;font-weight:650;color:var(--ink)}
+.webapp-cost-faq details>div{padding:0 8px 16px}.webapp-cost-faq p{margin:0;font-size:16px}
+.webapp-cost-faq summary:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+@media(max-width:760px){
+ .webapp-cost-table,.webapp-cost-table tbody{display:block}.webapp-cost-table caption{display:block}
+ .webapp-cost-table thead{display:none}.webapp-cost-table tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:16px}
+ .webapp-cost-table th,.webapp-cost-table td{display:block;padding:0;border:0;min-width:0}
+ .webapp-cost-table tbody th,.webapp-cost-table td:last-child{grid-column:1/-1;max-width:none}
+ .webapp-cost-table td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:400;color:var(--muted);margin-bottom:4px}
+ .webapp-cost-factors{grid-template-columns:1fr}.webapp-cost-factors article{padding:20px}
+}

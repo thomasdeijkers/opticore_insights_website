@@ -33,6 +33,8 @@
     {"id": "logistiek", "label": "Magazijn en logistiek", "database": "Locaties, tellingen, externe voorraad en fulfilmentzendingen.", "ai": "Geen AI nodig voor tellen, labels en zendingstatussen."},
     {"id": "financieel", "label": "Financieel overzicht", "database": "Kanaalkosten, resultaatberekeningen en afrekeningen.", "ai": "Geen AI nodig voor de gewone financiële berekeningen."},
     {"id": "forecasting", "label": "Forecasting", "database": "Verkoophistorie, seizoentrends en opgeslagen scenario’s.", "ai": "De standaard forecast is een berekening en veroorzaakt geen AI-aanvragen."},
-    {"id": "controles", "label": "Signalen en controles", "database": "Grenswaarden, signalen en opvolging.", "ai": "Regelcontroles gebruiken geen AI. Aanvullende AI-duiding alleen als je die afspreekt."}
+    {"id": "controles", "label": "Signalen en controles", "database": "Grenswaarden, signalen en opvolging.", "ai": "Regelcontroles gebruiken geen AI. Aanvullende AI-duiding alleen als je die afspreekt."},
+    {"id": "klantenservice", "label": "Klantenservice en tickets", "database": "Eigen klantgegevens, orderrelaties, status en historie.", "ai": "Tekstaanvragen alleen bij ingeschakelde AI-antwoordconcepten; gewone ticketafhandeling gebruikt geen AI."},
+    {"id": "facturatie", "label": "Facturen en offertes", "database": "Eigen verkooporders, factuurregels, offertes en documentstatussen.", "ai": "Geen AI nodig voor gewone facturen, offertes en btw-berekeningen."}
   ]
 }

@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
+from webapp_cost_content import render as render_cost_content
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -12,7 +13,7 @@ def money(value):
     return '€ ' + f'{value:,}'.replace(',', '.')
 
 
-def render(source, catalogue, base):
+def render(source, catalogue, base, examples):
     def card(match):
         block = match[0]
         module = re.search(r'(?:value|data-module-overview)="([a-z]+)"', block)[1]
@@ -44,7 +45,7 @@ def render(source, catalogue, base):
             source = re.sub(r'(' + attr + r'(?:\s[^>]*)?>)[^<]*', lambda m: m[1] + money(value), source)
         for attr, value in [('data-module-discount', base['standardSetup']-base['setup']), ('data-module-monthly-discount', base['monthlyDiscount'])]:
             source = re.sub(r'(' + attr + r'>)[^<]*', lambda m: m[1] + '− ' + money(value), source)
-    return source
+    return render_cost_content(source, examples)
 
 
 def main():
@@ -52,7 +53,7 @@ def main():
     parser.add_argument('--write', action='store_true')
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
-    data = json.loads(subprocess.check_output(['node', '-e', "const p=require('./assets/js/modular-webapp.js');process.stdout.write(JSON.stringify({catalogue:p.catalogue,base:p.base}))"], cwd=ROOT))
+    data = json.loads(subprocess.check_output(['node', '-e', "const p=require('./assets/js/modular-webapp.js');const examples=[{id:'start',name:'Startpakket',description:'Omzetrapportage, voorraad en orders/retouren.',modules:[]},{id:'inkoop',name:'Inkoop en magazijn',description:'Startpakket + Inkoop en bestellen + Magazijn en logistiek.',modules:['inkoop','logistiek']},{id:'marketing',name:'Producten en marketing',description:'Startpakket + Productbeheer en publicaties + Marketing en ranking.',modules:['marketing']},{id:'compleet',name:'Alle modules',description:'Startpakket + alle negen betaalde uitbreidingen.',modules:Object.keys(p.catalogue).filter(id=>!p.catalogue[id].included)}].map(e=>({...e,price:p.resolve(e.modules)}));process.stdout.write(JSON.stringify({catalogue:p.catalogue,base:p.base,examples}))"], cwd=ROOT))
     for page in ['modulaire-webapp', 'webapp-samenstellen']:
         path = ROOT / f'{page}.html'
         expected = render(path.read_text(encoding='utf-8'), **data)

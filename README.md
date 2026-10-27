@@ -60,6 +60,8 @@ Maak eerst een volledige backup van de bestaande WordPress-bestanden en database
 
 ## Paginastructuur en SEO
 
+De calculator `/webapp-samenstellen/` richt zich op webappkosten en prijsberekening, met twaalf modules, statische prijsvoorbeelden en een rustige uitklapbare demo. Onderhoud en zoekintenties staan in [docs/webapp-cost-seo.md](docs/webapp-cost-seo.md). Render de prijsinhoud met `python scripts/module_prices.py --write`; de deployment controleert de overeenstemming met de daadwerkelijke calculator.
+
 ### Schrijfstijl
 
 Schrijf namens OptiCore Insights, in de wij-vorm of met de bedrijfsnaam. Gebruik bijvoorbeeld ‘onze marketingagent’, ‘we ontwikkelen’ en ‘onze aanpak’; gebruik geen ‘mijn’, ‘ik’ of ‘mij’ voor de onderneming of haar diensten. Pas dit ook toe in projectverhalen, nieuws, metadata en tekstsjablonen voor nieuwe pagina’s.

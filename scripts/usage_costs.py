@@ -47,7 +47,7 @@ def render():
 <section class="section soft"><div class="container"><div class="contact-strip"><div><h2>Welke staffel past bij jouw gebruik?</h2><p>We kijken naar je bronnen, bewaartermijn, synchronisaties en gewenste AI-toepassingen.</p></div><a class="button" href="/contact/?onderwerp=webapp">Bespreek je gebruik</a></div><p class="usage-bottom-note">Alle bedragen zijn indicatief en exclusief btw. Alleen het gebruik van jouw eigen klantomgeving telt mee; ontwikkelwerk, interne AI-tools en het beheer van andere klanten worden niet als jouw AI-verbruik gerekend.</p></div></section></main>'''
     body = body.replace('data-usage-package>€ 149', f'data-usage-package>{money(package["monthly"])}').replace('data-usage-database>€ 5', f'data-usage-database>{money(initial_db)}').replace('data-usage-text>€ 0', f'data-usage-text>{money(initial_text)}').replace('data-usage-images>€ 0', f'data-usage-images>{money(initial_images)}').replace('data-usage-total>€ 154', f'data-usage-total>{money(initial_total)}')
     data = json.dumps(config, ensure_ascii=False).replace('</', '<\\/')
-    scripts = f'<script type="application/json" id="usage-pricing-data">{data}</script><script src="/assets/js/modular-webapp.js?v=20261027-calculator-fix" defer></script><script src="/assets/js/usage-costs.js?v=20261027-staffels" defer></script>'
+    scripts = f'<script type="application/json" id="usage-pricing-data">{data}</script><script src="/assets/js/modular-webapp.js?v=20261027-twelve-modules" defer></script><script src="/assets/js/usage-costs.js?v=20261027-staffels" defer></script>'
     return meta + header + body + footer.replace('</body>', scripts + '</body>')
 
 
@@ -64,7 +64,7 @@ def main():
             path.write_text(expected, encoding='utf-8')
         elif not path.is_file() or path.read_text(encoding='utf-8') != expected:
             raise SystemExit('Usage-cost page out of date: run python scripts/usage_costs.py --write')
-    print('Usage-cost page OK: three indicative tariff tables, all ten modules, calculator and aliases.')
+    print('Usage-cost page OK: three indicative tariff tables, all twelve modules, calculator and aliases.')
 
 
 if __name__ == '__main__':

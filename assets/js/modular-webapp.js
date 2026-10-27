@@ -70,6 +70,18 @@
     ],
     "currentMonthly": 30
   },
+  "klantenservice": {
+    "label": "Klantenservice en tickets",
+    "setup": 200,
+    "requires": ["orders"],
+    "currentMonthly": 20
+  },
+  "facturatie": {
+    "label": "Facturen en offertes",
+    "setup": 200,
+    "requires": ["orders"],
+    "currentMonthly": 20
+  },
   "controles": {
     "label": "Signalen en controles",
     "setup": 150,

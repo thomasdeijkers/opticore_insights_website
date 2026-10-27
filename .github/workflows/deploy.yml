@@ -54,6 +54,7 @@ jobs:
           node scripts/test_marketplace_demo.cjs
           node scripts/test_demo_client.cjs
           node scripts/test_modular_webapp.cjs
+          node scripts/test_webapp_cost_content.cjs
           node scripts/test_usage_costs.cjs
 
       - name: Validate business scan

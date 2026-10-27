@@ -316,7 +316,7 @@
       refresh();host.message('De voorbeeldactie is verwerkt in je eigen fictieve werkplek.');
     }catch(error){host.open('Controleer je invoer','<p>'+esc(error.message)+'</p>',{});}
   }
-  const legacyMap={dashboard:['dashboard'],omzet:['omzet','omzet-artikelen'],forecasting:['forecasting','forecasting','seasonality'],voorraad:['magazijn-voorraad','voorraad-incourant'],inkoop:['inkoop','inkoop','ordered'],logistiek:['locaties','fulfilment','transit'],producten:['publicaties','verbeteringen'],orders:['orders','retouren','processing'],marketing:['ads-engine','bol-ranking'],financieel:['exploitatie','bol-afrekening'],controles:['signalen','signalen','handled'],systeem:['settings','settings','organisation']};
+  const legacyMap={klantenservice:['tickets','tickets','archive'],facturatie:['facturen','offertes','quote-products'],dashboard:['dashboard'],omzet:['omzet','omzet-artikelen'],forecasting:['forecasting','forecasting','seasonality'],voorraad:['magazijn-voorraad','voorraad-incourant'],inkoop:['inkoop','inkoop','ordered'],logistiek:['locaties','fulfilment','transit'],producten:['publicaties','verbeteringen'],orders:['orders','retouren','processing'],marketing:['ads-engine','bol-ranking'],financieel:['exploitatie','bol-afrekening'],controles:['signalen','signalen','handled'],systeem:['settings','settings','organisation']};
   function legacy(module,mode='overzicht',screen=''){
     const map=legacyMap[module]||['dashboard'],isDetails=mode==='details';page=map[isDetails?1:0]||map[0];tab=isDetails?(map[2]||''):'';
     if(screen==='studio')page='image-studio';if(screen==='catalogus')page='artikelkaart';if(screen==='leveranciers')page='leveranciers';if(screen==='agent')page='marketing-agent';if(screen==='historie'){page='ads-engine';tab='history';}

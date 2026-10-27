@@ -8,7 +8,7 @@ const normalized=text=>text.replace(/\u00a0/g,' '),money=n=>'€ '+n.toLocaleStr
 (async()=>{
  const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})});
  try{
-  for(const width of [390,844,1440]){
+  for(const width of [320,390,844,1440]){
    const ctx=await browser.newContext({viewport:{width,height:1000},reducedMotion:'reduce'});
    await ctx.route('**/*',r=>new URL(r.request().url()).origin===base.origin?r.continue():r.abort());
    const page=await ctx.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -32,6 +32,14 @@ const normalized=text=>text.replace(/\u00a0/g,' '),money=n=>'€ '+n.toLocaleStr
     }
     async function reset(){const details=picker.locator('[data-price-details]');if(await details.getAttribute('open')===null)await details.locator(':scope>summary').click();await picker.locator('[data-module-reset]').click();}
     await totals([]);
+    assert.equal(await picker.locator('.webapp-calculator-demo-panel').getAttribute('open'),null);
+    assert.equal(await picker.locator('.webapp-cost-faq details').count(),8);
+    await picker.locator('.webapp-cost-faq summary').first().click();assert(await picker.locator('.webapp-cost-faq details').first().getAttribute('open')!==null);
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+    if(width>560){
+     const lines=await picker.locator('.webapp-module-card').evaluateAll(cards=>cards.map(card=>({row:Math.round(card.getBoundingClientRect().top),price:card.querySelector('.webapp-module-monthly').getBoundingClientRect().top})));
+     for(const row of new Set(lines.map(line=>line.row))){const values=lines.filter(line=>line.row===row).map(line=>line.price);assert(Math.max(...values)-Math.min(...values)<1,'Monthly prices align within each grid row');}
+    }
     // The reported combination also adds Productbeheer as Marketing's prerequisite.
     await picker.locator('input[value=marketing]').check();await totals(['marketing']);
     await picker.locator('input[value=logistiek]').check();await totals(['marketing','logistiek']);
