@@ -89,7 +89,7 @@ for(const key of Object.keys(catalogue))assert(source.includes(key+':{label:'),'
 assert(!source.includes('Planning en projecten'));assert(!source.includes('Documentverwerking'));
 for(const key of Object.keys(catalogue)){
  for(const device of ['mobile','desktop'])for(const view of ['overzicht','details']){
-  assert(fs.statSync(path.join(__dirname,`../assets/img/module-examples/${key}-${view}-${device}-dark.jpg`)).size>1000);
+  assert(fs.statSync(path.join(__dirname,`../assets/img/module-examples/client-${key}-${view}-${device}-dark.jpg`)).size>1000);
  }
 }
 const demoHtml=fs.readFileSync(path.join(__dirname,'../demo/modulaire-webapp/index.html'),'utf8');

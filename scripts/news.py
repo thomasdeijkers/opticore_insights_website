@@ -140,7 +140,7 @@ def render():
 <script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':schema},ensure_ascii=False,separators=(',',':'))}</script>
 <link rel="stylesheet" href="/assets/css/site.css?v=20261026-search-wide"><link rel="stylesheet" href="/assets/css/news.css?v=20261026-wide"><link rel="alternate" type="application/rss+xml" title="OptiCore Insights — Nieuws en praktijk" href="{BASE}/nieuws/feed.xml">
 <link rel="stylesheet" href="/assets/css/screenshot-gallery.css?v=20261022h"></head><body><a class="skip-link" href="#inhoud">Direct naar inhoud</a>{nav_header}
-<main id="inhoud">{main}</main>{footer}<script src="/assets/js/main.js?v=20261026a" defer></script><script src="/assets/js/screenshot-gallery.js?v=20261022h" defer></script></body></html>
+<main id="inhoud">{main}</main>{footer}<script src="/assets/js/main.js?v=20261026a" defer></script><script src="/assets/js/screenshot-gallery.js?v=20261027-client-devices" defer></script></body></html>
 ''')
 
     outputs = {}

@@ -54,14 +54,18 @@ def main():
             assert len({item['href'] for item in mobile}) >= 2, f'{path}: requires two distinct phone views'
             assert len(previews) == 2, f'{path}: requires exactly two static phone previews'
             assert desktop, f'{path}: desktop collection missing'
+            for item in desktop:
+                if item.get('data-screen-demo') == 'true' and '-desktop-dark.' in item['href'] and item['href'].startswith(('/assets/img/examples/', '/assets/img/module-examples/')):
+                    tablet_path = ROOT / item['href'].replace('-desktop-dark.', '-tablet-dark.').lstrip('/')
+                    assert tablet_path.is_file(), f'{path}: matching tablet capture missing: {tablet_path}'
             count += 1
         if audit.galleries:
-            for asset in ('screenshot-gallery.css?v=20261022h', 'screenshot-gallery.js?v=20261022h'):
+            for asset in ('screenshot-gallery.css?v=20261022h', 'screenshot-gallery.js?v=20261027-client-devices'):
                 assert asset in source, f'{path}: stale/missing gallery component'
     for name in IMAGES:
         assert (ROOT/'assets/img/examples'/name).is_file(), f'Missing {name}'
         assert IMAGES[name].get('theme') == 'dark' and '-dark.' in name, f'App screenshot must default to dark mode: {name}'
-    print(f'Screenshot galleries OK: {count} neutral collections; two phone previews, desktop views and shared viewer present.')
+    print(f'Screenshot galleries OK: {count} neutral collections; phone previews, matching tablet captures, desktop views and shared viewer present.')
 
 
 if __name__ == '__main__':

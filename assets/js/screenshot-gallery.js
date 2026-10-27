@@ -1,6 +1,7 @@
 (() => {
-  // Only phone-sized portrait viewports use the mobile screenshot collection.
-  const mobile = window.matchMedia('(max-width: 599px) and (orientation: portrait)');
+  // Use the same phone/tablet/desktop breakpoints as the customer demo.
+  const mobile = window.matchMedia('(max-width: 760px)');
+  const tablet = window.matchMedia('(min-width: 761px) and (max-width: 1100px)');
   const imageLinks = 'a[href^="/assets/img/"]';
   let viewer;
   let active;
@@ -106,7 +107,7 @@
     image.src = item.src;
     image.alt = item.alt;
     dialog.querySelector('#image-viewer-title').textContent = item.title;
-    dialog.querySelector('.image-viewer-kind').textContent = `${item.device === 'mobile' ? 'Mobiel' : 'Desktop'}${item.demo ? ' · Voorbeeldgegevens' : ''}`;
+    dialog.querySelector('.image-viewer-kind').textContent = `${item.device === 'mobile' ? 'Mobiel' : item.device === 'tablet' ? 'Tablet' : 'Desktop'}${item.demo ? ' · Voorbeeldgegevens' : ''}`;
     dialog.querySelector('.image-viewer-count').textContent = `${active.index + 1} van ${active.items.length}`;
     prev.disabled = next.disabled = active.items.length < 2;
     // Only the current full image and its neighbour are downloaded eagerly.
@@ -134,6 +135,15 @@
   }
 
   document.querySelectorAll('[data-screen-gallery]').forEach(root => {
+    // These local captures are produced alongside every desktop demo image.
+    root.querySelectorAll('[data-screen-device="desktop"][data-screen-demo="true"]').forEach(link => {
+      const src=link.getAttribute('href');
+      if(!/^\/assets\/img\/(?:module-examples|examples)\/[^?]+-desktop-dark\.(?:jpg|png)$/.test(src||''))return;
+      const copy=link.cloneNode(true),tabletSrc=src.replace('-desktop-dark.','-tablet-dark.');
+      copy.dataset.screenDevice='tablet';copy.dataset.screenPreview='tablet';copy.href=tabletSrc;
+      const img=copy.querySelector('img');if(img){img.src=tabletSrc;img.width=834;img.height=1112;img.loading='lazy';}
+      copy.hidden=true;link.parentElement.append(copy);
+    });
     const allItems = Array.from(root.querySelectorAll('[data-screen-device]')).map(readItem);
     if (!allItems.length) return;
     let items = [];
@@ -147,7 +157,7 @@
     });
     const adapt = () => {
       const current = active?.owner === root ? active.items[active.index] : null;
-      const device = mobile.matches ? 'mobile' : 'desktop';
+      const device = mobile.matches ? 'mobile' : tablet.matches ? 'tablet' : 'desktop';
       const matching = allItems.filter(item => item.device === device);
       const candidates = matching.length ? matching : allItems;
       const seen = new Set();
@@ -169,6 +179,7 @@
       }
     };
     mobile.addEventListener('change', adapt);
+    tablet.addEventListener('change', adapt);
     adapt();
   });
 

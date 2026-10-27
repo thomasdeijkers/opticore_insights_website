@@ -13,42 +13,47 @@ const records=[];
 (async()=>{
  const browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})});
  try{
-  async function capture(url,file,width,height,{modal,fullPage=false,scale=1}={}){
+  async function capture(url,file,width,height,{modal,expand,fullPage=false,scale=2}={}){
    const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:scale,colorScheme:'dark',reducedMotion:'reduce'}),errors=[];
    await page.route('**/*',route=>[site.origin,fixtures.origin].includes(new URL(route.request().url()).origin)?route.continue():route.abort());
    page.on('pageerror',e=>errors.push(e.message));
    const response=await page.goto(url,{waitUntil:'networkidle'});assert(response.ok(),url);
    await page.evaluate(()=>document.fonts.ready);
    if(url.startsWith(site.href+'demo/'))assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');
-   if(modal){await page.locator(modal).first().click();await page.locator('dialog[open]').waitFor();}
+   if(expand)await page.locator(expand).first().click();
+   if(modal){const target=page.locator(modal).first(),parent=target.locator('xpath=ancestor::details').first();if(await parent.count()&&await parent.getAttribute('open')===null)await parent.locator(':scope>summary').click();await target.click();await page.locator('dialog[open]').waitFor();}
    await page.evaluate(async()=>{await Promise.all([...document.images].map(img=>img.complete?Promise.resolve():new Promise(resolve=>{img.onload=img.onerror=resolve;})));});
    assert.deepEqual(errors,[],url);
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,'Horizontal page overflow: '+url);
    const target=path.join(ROOT,'assets/img',file);fs.mkdirSync(path.dirname(target),{recursive:true});
-   await page.screenshot({path:target,fullPage,...(/\.jpg$/.test(file)?{type:'jpeg',quality:88}:{type:'png'})});
+   await page.screenshot({path:target,fullPage,...(/\.jpg$/.test(file)?{type:'jpeg',quality:94}:{type:'png'})});
    const actualHeight=fullPage?await page.evaluate(()=>document.documentElement.scrollHeight):height;
    records.push({file,width,height:actualHeight,scale,url,theme:'dark'});await page.close();
   }
-  const app=(module,view='overzicht',screen='')=>new URL('demo/modulaire-webapp/?'+new URLSearchParams({module,view,theme:'dark',...(screen?{screen}:{})}),site).href;
+  const routes={dashboard:[['dashboard'],['dashboard']],omzet:[['omzet'],['artikelkaart']],forecasting:[['forecasting','overview'],['forecasting','seasonality']],voorraad:[['voorraad'],['voorraad-incourant']],inkoop:[['inkoop','overview'],['inkoop','ordered']],logistiek:[['locaties'],['fulfilment','transit']],producten:[['publicaties'],['verbeteringen']],orders:[['orders'],['retouren','processing']],marketing:[['ads-engine','campaigns'],['bol-ranking']],financieel:[['exploitatie','stats'],['bol-afrekening']],controles:[['signalen','open'],['signalen','handled']]};
+  const app=(module,view='overzicht',screen='')=>{let [page,tab]=routes[module][view==='details'?1:0];if(screen==='agent')page='marketing-agent';return new URL('demo/modulaire-webapp/?'+new URLSearchParams({page,theme:'dark',...(tab?{tab}:{})}),site).href;};
   const teaserOnly=process.argv.includes('--teaser-only');
-  await capture(app('dashboard'),'demo/dashboard-channel-depth-dark-3x.png',390,844,{fullPage:true,scale:3});
-  if(!teaserOnly)for(const [device,width,height] of [['desktop',1280,900],['mobile',390,844]]){
+  const dashboardOnly=process.argv.includes('--dashboard-only');
+  for(const [device,width,height,scale] of [['desktop',1440,1000,2],['tablet',834,1112,2],['mobile',390,844,3]])await capture(app('dashboard'),`demo/dashboard-client-${device}-dark.png`,width,height,{fullPage:true,scale});
+  if(!teaserOnly&&!dashboardOnly)for(const [device,width,height] of [['desktop',1280,900],['tablet',834,1112],['mobile',390,844]]){
    for(const module of Object.keys(catalogue))for(const view of ['overzicht','details']){
-    const modal=view==='details'?(module==='omzet'?'[data-article]':module==='producten'?'[data-demo-row]':null):null;
-    await capture(app(module,view),`module-examples/${module}-${view}-${device}-dark.jpg`,width,height,{modal});
+    const modal=view==='details'&&module==='producten'?'[data-w-host="listing"]':null;
+    await capture(app(module,view),`module-examples/client-${module}-${view}-${device}-dark.jpg`,width,height,{modal});
    }
    console.log(device+' module screens captured.');
   }
   if(!teaserOnly)for(const item of manifest){
-   const name=item.file.replace(/-dark(?=\.[^.]+$)/,'');
-   let url=new URL(item.page+'.html',fixtures).href,modal;
+   if(dashboardOnly&&!item.file.startsWith('client-management-'))continue;
+   const name=item.file.replace(/^client-/,'').replace(/-dark(?=\.[^.]+$)/,'');
+   let url=new URL(item.page+'.html',fixtures).href,modal,expand;
    if(name.startsWith('management-'))url=app('dashboard');
    else if(name.startsWith('forecast-'))url=app('forecasting');
    else if(name.startsWith('stock-'))url=app('voorraad');
-   else if(name.startsWith('ranking-')){url=app('marketing','details');if(name==='ranking-mobile.jpg')modal='[data-demo-row]';}
+   else if(name.startsWith('ranking-')){url=app('marketing','details');if(name==='ranking-mobile.jpg')expand='.workspace-root .workspace-details>summary';}
    else if(name.startsWith('marketing-'))url=name==='marketing-overview-mobile.jpg'?app('marketing'):app('marketing','overzicht','agent');
-   else if(name.startsWith('listing-')){url=app('producten','details');if(name==='listing-editor-mobile.jpg')modal='[data-demo-row]';}
-   await capture(url,'examples/'+newPath(item.file),item.width,item.height,{modal});
+   else if(name.startsWith('listing-')){url=app('producten','details');if(name==='listing-editor-mobile.jpg')modal='[data-w-host="listing"]';}
+   await capture(url,'examples/'+newPath(item.file),item.width,item.height,{modal,expand});
+   if(item.file.includes('-desktop-'))await capture(url,'examples/'+newPath(item.file).replace('-desktop-','-tablet-'),834,1112,{modal,expand});
   }
   const report=process.env.DEMO_CAPTURE_REPORT;
   if(report)fs.writeFileSync(report,JSON.stringify(records,null,2));

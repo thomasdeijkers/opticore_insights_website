@@ -96,7 +96,7 @@
       "published_at": "2026-10-26T10:13:20+01:00",
       "modified_at": "2026-10-26T21:19:04+01:00",
       "image": {
-        "src": "/assets/img/examples/management-desktop-dark.jpg",
+        "src": "/assets/img/examples/client-management-desktop-dark.jpg",
         "width": 1280,
         "height": 900,
         "alt": "Neutrale voorbeeldweergave van een managementdashboard met volledig fictieve omzet, marge en orders.",
@@ -164,7 +164,7 @@
       "published_at": "2026-10-26T10:13:20+01:00",
       "modified_at": "2026-10-26T21:19:04+01:00",
       "image": {
-        "src": "/assets/img/examples/document-review-desktop-dark.jpg",
+        "src": "/assets/img/examples/client-document-review-desktop-dark.jpg",
         "width": 1280,
         "height": 900,
         "alt": "Neutrale voorbeeldweergave van documentcontrole met fictieve gegevens.",
@@ -293,7 +293,7 @@
       "published_at": "2026-10-20T01:40:00+02:00",
       "modified_at": "2026-10-26T21:19:04+01:00",
       "image": {
-        "src": "/assets/img/examples/document-intake-desktop-dark.jpg",
+        "src": "/assets/img/examples/client-document-intake-desktop-dark.jpg",
         "width": 1280,
         "height": 900,
         "alt": "Neutrale voorbeeldweergave van documentintake en dossieropvolging met fictieve personen en opdrachten.",

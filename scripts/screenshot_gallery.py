@@ -7,11 +7,11 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = json.loads((ROOT / 'scripts/neutral_visuals_manifest.json').read_text(encoding='utf-8'))
 IMAGES = {item['file']: item for item in MANIFEST}
 GROUPS = {
-    'management': ['management-mobile-dark.jpg', 'stock-mobile-dark.jpg', 'management-desktop-dark.jpg', 'stock-desktop-dark.jpg', 'forecast-mobile-dark.jpg', 'forecast-desktop-dark.jpg'],
-    'timesheets': ['timesheets-mobile-dark.png', 'timesheets-detail-mobile-dark.png', 'timesheets-desktop-dark.jpg'],
-    'document-review': ['document-review-mobile-dark.png', 'document-review-detail-mobile-dark.png', 'document-review-desktop-dark.jpg'],
-    'document-intake': ['document-intake-mobile-dark.png', 'document-intake-detail-mobile-dark.png', 'document-intake-desktop-dark.jpg'],
-    'login': ['login-mobile-dark.png', 'login-verification-mobile-dark.png', 'login-desktop-dark.png'],
+    'management': ['client-management-mobile-dark.jpg', 'client-stock-mobile-dark.jpg', 'client-management-desktop-dark.jpg', 'client-stock-desktop-dark.jpg', 'client-forecast-mobile-dark.jpg', 'client-forecast-desktop-dark.jpg'],
+    'timesheets': ['client-timesheets-mobile-dark.png', 'client-timesheets-detail-mobile-dark.png', 'client-timesheets-desktop-dark.jpg'],
+    'document-review': ['client-document-review-mobile-dark.png', 'client-document-review-detail-mobile-dark.png', 'client-document-review-desktop-dark.jpg'],
+    'document-intake': ['client-document-intake-mobile-dark.png', 'client-document-intake-detail-mobile-dark.png', 'client-document-intake-desktop-dark.jpg'],
+    'login': ['client-login-mobile-dark.png', 'client-login-verification-mobile-dark.png', 'client-login-desktop-dark.png'],
 }
 
 

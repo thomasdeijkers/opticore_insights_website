@@ -1,7 +1,7 @@
 [
   {
     "old": "dashboard-management-demo.jpg",
-    "file": "management-desktop-dark.jpg",
+    "file": "client-management-desktop-dark.jpg",
     "page": "management",
     "width": 1280,
     "height": 900,
@@ -10,7 +10,7 @@
   },
   {
     "old": "dashboard-management-mobile.png",
-    "file": "management-mobile-dark.jpg",
+    "file": "client-management-mobile-dark.jpg",
     "page": "management",
     "width": 390,
     "height": 844,
@@ -19,7 +19,7 @@
   },
   {
     "old": "dashboard-forecast-demo.jpg",
-    "file": "forecast-desktop-dark.jpg",
+    "file": "client-forecast-desktop-dark.jpg",
     "page": "forecast",
     "width": 1280,
     "height": 900,
@@ -28,7 +28,7 @@
   },
   {
     "old": "dashboard-forecast-mobile.png",
-    "file": "forecast-mobile-dark.jpg",
+    "file": "client-forecast-mobile-dark.jpg",
     "page": "forecast",
     "width": 390,
     "height": 844,
@@ -37,7 +37,7 @@
   },
   {
     "old": "dashboard-voorraad-demo.jpg",
-    "file": "stock-desktop-dark.jpg",
+    "file": "client-stock-desktop-dark.jpg",
     "page": "stock",
     "width": 1280,
     "height": 900,
@@ -46,7 +46,7 @@
   },
   {
     "old": "dashboard-voorraad-mobile.png",
-    "file": "stock-mobile-dark.jpg",
+    "file": "client-stock-mobile-dark.jpg",
     "page": "stock",
     "width": 390,
     "height": 844,
@@ -55,7 +55,7 @@
   },
   {
     "old": "bol-ranking-demo.png",
-    "file": "ranking-desktop-dark.jpg",
+    "file": "client-ranking-desktop-dark.jpg",
     "page": "ranking",
     "width": 1280,
     "height": 900,
@@ -64,7 +64,7 @@
   },
   {
     "old": "bol-ranking-mobile.png",
-    "file": "ranking-mobile-dark.jpg",
+    "file": "client-ranking-mobile-dark.jpg",
     "page": "ranking-detail",
     "width": 390,
     "height": 844,
@@ -73,7 +73,7 @@
   },
   {
     "old": "bol-ranking-mobile-overview.png",
-    "file": "ranking-overview-mobile-dark.jpg",
+    "file": "client-ranking-overview-mobile-dark.jpg",
     "page": "ranking",
     "width": 390,
     "height": 844,
@@ -82,7 +82,7 @@
   },
   {
     "old": "bol-marketing-agent-demo.png",
-    "file": "marketing-desktop-dark.jpg",
+    "file": "client-marketing-desktop-dark.jpg",
     "page": "marketing",
     "width": 1280,
     "height": 900,
@@ -91,7 +91,7 @@
   },
   {
     "old": "bol-marketing-mobile.png",
-    "file": "marketing-mobile-dark.jpg",
+    "file": "client-marketing-mobile-dark.jpg",
     "page": "marketing",
     "width": 390,
     "height": 844,
@@ -100,7 +100,7 @@
   },
   {
     "old": "bol-marketing-mobile-overview.png",
-    "file": "marketing-overview-mobile-dark.jpg",
+    "file": "client-marketing-overview-mobile-dark.jpg",
     "page": "marketing-overview",
     "width": 390,
     "height": 844,
@@ -109,7 +109,7 @@
   },
   {
     "old": "project-top-groep-demo.jpg",
-    "file": "timesheets-desktop-dark.jpg",
+    "file": "client-timesheets-desktop-dark.jpg",
     "page": "timesheets",
     "width": 1280,
     "height": 900,
@@ -118,7 +118,7 @@
   },
   {
     "old": "project-de-valk-demo.jpg",
-    "file": "document-review-desktop-dark.jpg",
+    "file": "client-document-review-desktop-dark.jpg",
     "page": "documents",
     "width": 1280,
     "height": 900,
@@ -127,7 +127,7 @@
   },
   {
     "old": "project-olympus-demo.jpg",
-    "file": "document-intake-desktop-dark.jpg",
+    "file": "client-document-intake-desktop-dark.jpg",
     "page": "intake",
     "width": 1280,
     "height": 900,
@@ -135,7 +135,7 @@
     "theme": "dark"
   },
   {
-    "file": "listing-mobile-dark.jpg",
+    "file": "client-listing-mobile-dark.jpg",
     "page": "listing",
     "width": 390,
     "height": 844,
@@ -143,7 +143,7 @@
     "theme": "dark"
   },
   {
-    "file": "listing-editor-mobile-dark.jpg",
+    "file": "client-listing-editor-mobile-dark.jpg",
     "page": "listing-editor",
     "width": 390,
     "height": 844,
@@ -151,7 +151,7 @@
     "theme": "dark"
   },
   {
-    "file": "listing-desktop-dark.jpg",
+    "file": "client-listing-desktop-dark.jpg",
     "page": "listing",
     "width": 1280,
     "height": 900,
@@ -159,7 +159,7 @@
     "theme": "dark"
   },
   {
-    "file": "document-review-mobile-dark.png",
+    "file": "client-document-review-mobile-dark.png",
     "page": "documents-phone",
     "width": 390,
     "height": 844,
@@ -167,7 +167,7 @@
     "theme": "dark"
   },
   {
-    "file": "document-review-detail-mobile-dark.png",
+    "file": "client-document-review-detail-mobile-dark.png",
     "page": "documents-detail",
     "width": 390,
     "height": 844,
@@ -175,7 +175,7 @@
     "theme": "dark"
   },
   {
-    "file": "timesheets-mobile-dark.png",
+    "file": "client-timesheets-mobile-dark.png",
     "page": "timesheets-phone",
     "width": 390,
     "height": 844,
@@ -183,7 +183,7 @@
     "theme": "dark"
   },
   {
-    "file": "timesheets-detail-mobile-dark.png",
+    "file": "client-timesheets-detail-mobile-dark.png",
     "page": "timesheets-detail",
     "width": 390,
     "height": 844,
@@ -191,7 +191,7 @@
     "theme": "dark"
   },
   {
-    "file": "document-intake-mobile-dark.png",
+    "file": "client-document-intake-mobile-dark.png",
     "page": "intake-phone",
     "width": 390,
     "height": 844,
@@ -199,7 +199,7 @@
     "theme": "dark"
   },
   {
-    "file": "document-intake-detail-mobile-dark.png",
+    "file": "client-document-intake-detail-mobile-dark.png",
     "page": "intake-detail",
     "width": 390,
     "height": 844,
@@ -207,7 +207,7 @@
     "theme": "dark"
   },
   {
-    "file": "login-mobile-dark.png",
+    "file": "client-login-mobile-dark.png",
     "page": "login",
     "width": 390,
     "height": 844,
@@ -215,7 +215,7 @@
     "theme": "dark"
   },
   {
-    "file": "login-verification-mobile-dark.png",
+    "file": "client-login-verification-mobile-dark.png",
     "page": "login-verify",
     "width": 390,
     "height": 844,
@@ -223,7 +223,7 @@
     "theme": "dark"
   },
   {
-    "file": "login-desktop-dark.png",
+    "file": "client-login-desktop-dark.png",
     "page": "login",
     "width": 1280,
     "height": 900,

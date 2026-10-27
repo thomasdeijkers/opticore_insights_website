@@ -15,3 +15,8 @@
 @media(max-width:560px){.webapp-demo-teaser-heading{padding:15px 16px;gap:10px}.webapp-demo-teaser-heading h2{font-size:21px}.webapp-demo-teaser-heading>span{font-size:10px;padding:5px 8px}.webapp-demo-teaser-scroll{height:560px}.webapp-demo-teaser-footer{padding:15px 16px 17px;gap:11px}.webapp-demo-teaser-footer .button{font-size:14px}.webapp-demo-teaser-footer p{font-size:12px}}
 
 @media(max-width:560px){.webapp-demo-teaser{max-width:360px}.webapp-demo-teaser-heading h2{font-size:20px}}
+
+/* Use the same device layout as the full demo, with a separate sharp capture. */
+@media(min-width:1101px){.home-intro-grid,.webapp-intro-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}.webapp-demo-teaser{max-width:620px}}
+@media(min-width:761px) and (max-width:1100px){.home-intro-grid,.webapp-intro-grid{grid-template-columns:1fr}.webapp-demo-teaser{max-width:834px}}
+@media(max-width:760px){.home-intro-grid,.webapp-intro-grid{grid-template-columns:1fr}.webapp-demo-teaser{max-width:360px}}
