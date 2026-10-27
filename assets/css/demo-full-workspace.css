@@ -75,8 +75,8 @@
 .workspace-timeline{list-style:none;padding:0}.workspace-timeline li{padding:15px;border-left:3px solid var(--blue);margin-bottom:12px;background:var(--surface-2);border-radius:5px}.workspace-timeline li.is-warning{border-color:var(--workspace-orange)}.workspace-timeline li>span{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--muted)}.workspace-timeline p{margin-bottom:0}
 .workspace-search-results{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}.workspace-search-results>button{display:flex;align-items:center;gap:12px;text-align:left;padding:13px;background:var(--surface-2);border:1px solid var(--line);border-radius:7px;color:var(--ink)}.workspace-search-results small{display:block;color:var(--muted);font-weight:400;font-size:10px;margin-top:4px}
 .workspace-note{font-size:11px;color:var(--muted);line-height:1.6;margin:16px 0}
-@media(max-width:1100px){.workspace-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.workspace-filter-form{grid-template-columns:1fr 1fr}.workspace-complete .demo-environment{display:none}}
-@media(min-width:761px) and (max-width:1100px){
+@media(max-width:1100px), (orientation:landscape) and (pointer:coarse){.workspace-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.workspace-filter-form{grid-template-columns:1fr 1fr}.workspace-complete .demo-environment{display:none}}
+@media(min-width:761px) and (max-width:1100px), (max-width:760px) and (orientation:landscape), (orientation:landscape) and (pointer:coarse){
  .workspace-complete.demo-shell{display:block}
  .workspace-complete .demo-sidebar{position:fixed;inset:0 auto 0 0;width:min(310px,86vw);height:100dvh;transform:translateX(-100%);transition:transform .18s ease;z-index:65;box-shadow:var(--shadow)}
  .workspace-complete.demo-nav-open .demo-sidebar{transform:translateX(0)}
@@ -84,7 +84,7 @@
  .workspace-complete .demo-topbar .demo-menu-button{display:flex;align-items:center;gap:7px}
  .workspace-complete main{padding:20px}
 }
-@media(max-width:760px){
+@media(max-width:760px) and (orientation:portrait){
  .workspace-complete main{padding:14px 12px 30px}.workspace-complete .demo-topbar{margin:10px 12px;padding:10px;gap:8px;top:6px}.workspace-complete .demo-topbar-heading{gap:7px}
  .workspace-complete .demo-topbar-brand{padding:7px!important}.workspace-complete .demo-topbar-brand img{width:77px}.workspace-complete .demo-topbar .demo-menu-button{font-size:21px;padding:8px;min-height:41px}
  .workspace-complete .demo-topbar-actions{gap:6px}.workspace-complete .demo-topbar-actions button{min-height:39px;min-width:34px;padding:8px;font-size:10px}.workspace-complete .demo-topbar-actions [data-demo-find]>span,.workspace-complete .workspace-topbar-back>span,.workspace-complete [data-demo-theme-label]{display:none}
@@ -102,3 +102,16 @@
 @media(max-width:360px){.workspace-complete .demo-topbar{padding:8px;gap:6px}.workspace-complete .demo-topbar-brand img{width:61px}.workspace-complete .demo-topbar-actions button{min-width:31px;padding:6px}.workspace-complete .demo-topbar-actions{gap:4px}.workspace-metric strong{font-size:20px}.workspace-article-table th:first-child,.workspace-article-table td:first-child{width:270px;min-width:270px;max-width:270px}}
 @media(prefers-reduced-motion:reduce){.workspace-complete .demo-sidebar{transition:none}}
 @media print{body.workspace-printing{background:#fff;color:#183244}body.workspace-printing .demo-sidebar,body.workspace-printing .demo-workspace,body.workspace-printing .demo-menu-backdrop,body.workspace-printing .demo-dialog-header,body.workspace-printing dialog>.workspace-actions,body.workspace-printing [data-w-action]{display:none!important}body.workspace-printing dialog{display:block;position:absolute;inset:0;width:100%;max-width:100%;max-height:none;height:auto;padding:0;border:0;box-shadow:none;overflow:visible;background:#fff;color:#183244}body.workspace-printing dialog::backdrop{display:none}body.workspace-printing .workspace-table-scroll{overflow:visible}body.workspace-printing .workspace-table{min-width:0}body.workspace-printing .workspace-document{padding:0}}
+
+/* Keep the tablet toolbar compact when a phone is held sideways. */
+@media(orientation:landscape) and (max-height:600px) and (pointer:coarse), (max-width:760px) and (orientation:landscape){
+ .workspace-complete .demo-topbar{margin:8px 12px;padding:8px 12px;top:4px;gap:10px}
+ .workspace-complete .demo-topbar-heading{gap:8px}
+ .workspace-complete .demo-topbar-brand img{width:96px}
+ .workspace-complete .demo-topbar-actions{gap:7px}
+ .workspace-complete .demo-topbar-actions button,.workspace-complete .demo-topbar .demo-menu-button{min-height:38px;padding:8px 10px;font-size:12px}
+ .workspace-complete .demo-topbar [data-demo-reset]{display:none}
+ .workspace-complete main{padding:14px 16px 30px}
+ .workspace-complete .demo-heading{padding:14px 18px}
+ .workspace-complete .demo-heading h1{font-size:26px}
+}

@@ -38,10 +38,10 @@ main .case-screen>a,main .website-preview>a,main .news-image>a,main .bol-promo-s
 .image-viewer-arrows{display:flex;gap:8px}
 .image-viewer-count{font-size:13px;color:#41566a;white-space:nowrap}
 .image-viewer button:disabled{opacity:.45;cursor:default}
-@media(max-width:760px){.image-viewer{width:100vw;height:100dvh;max-height:100dvh;margin:0;border:0;border-radius:0}.image-viewer-header{padding:12px max(12px,env(safe-area-inset-right)) 12px max(12px,env(safe-area-inset-left));align-items:flex-start}.image-viewer-header strong{font-size:15px}.image-viewer .image-viewer-close{padding:9px 13px;font-size:14px}.image-viewer-stage{padding:10px}.image-viewer-footer{padding:10px 12px max(10px,env(safe-area-inset-bottom));gap:9px;flex-wrap:wrap}.image-viewer button{min-height:44px;padding:9px 11px;font-size:12px}.image-viewer-zoom{margin-left:auto}.image-viewer-arrows{gap:7px}.image-viewer-count{font-size:12px}}
+@media(max-width:760px) and (orientation:portrait){.image-viewer{width:100vw;height:100dvh;max-height:100dvh;margin:0;border:0;border-radius:0}.image-viewer-header{padding:12px max(12px,env(safe-area-inset-right)) 12px max(12px,env(safe-area-inset-left));align-items:flex-start}.image-viewer-header strong{font-size:15px}.image-viewer .image-viewer-close{padding:9px 13px;font-size:14px}.image-viewer-stage{padding:10px}.image-viewer-footer{padding:10px 12px max(10px,env(safe-area-inset-bottom));gap:9px;flex-wrap:wrap}.image-viewer button{min-height:44px;padding:9px 11px;font-size:12px}.image-viewer-zoom{margin-left:auto}.image-viewer-arrows{gap:7px}.image-viewer-count{font-size:12px}}
 .image-viewer-header>div{min-width:0}
 .image-viewer-arrows button{font-size:20px;line-height:1;min-width:44px;padding:8px}
-@media(max-width:599px) and (orientation:portrait){
+@media(max-width:760px) and (orientation:portrait){
 .screen-gallery-stage{gap:12px}
 .screen-gallery:not(.is-ready):not([data-screen-mobile-count="0"]) .screen-slide[data-screen-preview="desktop"]{display:none}
 .screen-gallery:not(.is-ready) .screen-slide[data-screen-preview="mobile"]{display:block}

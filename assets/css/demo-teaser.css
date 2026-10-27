@@ -1,4 +1,4 @@
-/* Shared portrait dashboard preview. The source is rendered at 3x density. */
+/* Responsive dashboard preview with phone/tablet/desktop captures. */
 .webapp-demo-teaser{width:100%;max-width:390px;justify-self:center;min-width:0;border:1px solid #aac0d0;border-radius:11px;overflow:hidden;background:#fff;box-shadow:0 16px 40px #17324415}
 .webapp-demo-teaser-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;background:#fff}
 .webapp-demo-teaser-heading p{font-size:11px;font-weight:650;color:var(--muted);margin:0 0 4px}
@@ -12,11 +12,20 @@
 .webapp-demo-teaser-footer .button{width:100%;font-size:15px}
 .webapp-demo-teaser-footer small{font-size:11px;color:var(--muted);text-align:center}
 
-@media(max-width:560px){.webapp-demo-teaser-heading{padding:15px 16px;gap:10px}.webapp-demo-teaser-heading h2{font-size:21px}.webapp-demo-teaser-heading>span{font-size:10px;padding:5px 8px}.webapp-demo-teaser-scroll{height:560px}.webapp-demo-teaser-footer{padding:15px 16px 17px;gap:11px}.webapp-demo-teaser-footer .button{font-size:14px}.webapp-demo-teaser-footer p{font-size:12px}}
+@media(max-width:560px) and (orientation:portrait){.webapp-demo-teaser-heading{padding:15px 16px;gap:10px}.webapp-demo-teaser-heading h2{font-size:21px}.webapp-demo-teaser-heading>span{font-size:10px;padding:5px 8px}.webapp-demo-teaser-scroll{height:560px}.webapp-demo-teaser-footer{padding:15px 16px 17px;gap:11px}.webapp-demo-teaser-footer .button{font-size:14px}.webapp-demo-teaser-footer p{font-size:12px}}
 
-@media(max-width:560px){.webapp-demo-teaser{max-width:360px}.webapp-demo-teaser-heading h2{font-size:20px}}
+@media(max-width:560px) and (orientation:portrait){.webapp-demo-teaser{max-width:360px}.webapp-demo-teaser-heading h2{font-size:20px}}
 
 /* Use the same device layout as the full demo, with a separate sharp capture. */
 @media(min-width:1101px){.home-intro-grid,.webapp-intro-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}.webapp-demo-teaser{max-width:620px}}
 @media(min-width:761px) and (max-width:1100px){.home-intro-grid,.webapp-intro-grid{grid-template-columns:1fr}.webapp-demo-teaser{max-width:834px}}
-@media(max-width:760px){.home-intro-grid,.webapp-intro-grid{grid-template-columns:1fr}.webapp-demo-teaser{max-width:360px}}
+@media(max-width:760px) and (orientation:portrait){.home-intro-grid,.webapp-intro-grid{grid-template-columns:1fr}.webapp-demo-teaser{max-width:360px}}
+
+/* Landscape phones use a wide tablet preview, including small and large phones. */
+@media(max-width:760px) and (orientation:landscape), (orientation:landscape) and (pointer:coarse){
+ .home-intro-grid,.webapp-intro-grid{grid-template-columns:minmax(0,1fr)}
+ .webapp-demo-teaser{max-width:834px;width:100%}
+ .home-intro .home-intro-demo>.actions{max-width:834px;flex-direction:row;align-items:center}
+ .home-intro-demo>.actions>.button{width:auto}
+}
+@media(orientation:landscape) and (max-height:600px){.webapp-demo-teaser-scroll{height:clamp(240px,65svh,420px)}}

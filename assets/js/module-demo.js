@@ -61,7 +61,7 @@
     q('[data-demo-menu]').setAttribute('aria-expanded',String(navOpen));
     q('[data-demo-menu]').setAttribute('aria-label',navOpen?'App-menu sluiten':'App-menu openen');
     q('[data-demo-menu-close]').hidden=!navOpen;
-    const mobile=window.matchMedia?.(window.FullWorkspace?.mounted?'(max-width: 1100px)':'(max-width: 760px)').matches;
+    const mobile=window.matchMedia?.(window.FullWorkspace?'(max-width: 1100px), (orientation: landscape) and (pointer: coarse)':'(max-width: 760px)').matches;
     q('.demo-sidebar').inert=Boolean(mobile&&!navOpen);
     q('.demo-sidebar').setAttribute('aria-hidden',String(Boolean(mobile&&!navOpen)));
     q('.demo-workspace').inert=Boolean(mobile&&navOpen);

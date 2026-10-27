@@ -1,7 +1,7 @@
 (() => {
-  // Use the same phone/tablet/desktop breakpoints as the customer demo.
-  const mobile = window.matchMedia('(max-width: 760px)');
-  const tablet = window.matchMedia('(min-width: 761px) and (max-width: 1100px)');
+  // Portrait phones use phone captures; landscape phones use the tablet captures.
+  const mobile = window.matchMedia('(max-width: 760px) and (orientation: portrait)');
+  const tablet = window.matchMedia('(min-width: 761px) and (max-width: 1100px), (max-width: 760px) and (orientation: landscape), (orientation: landscape) and (pointer: coarse)');
   const imageLinks = 'a[href^="/assets/img/"]';
   let viewer;
   let active;
