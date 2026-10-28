@@ -44,6 +44,7 @@ jobs:
         run: |
           node --check assets/js/modular-webapp.js
           node --check assets/js/demo-access.js
+          node --check assets/js/demo-preview.js
           node --check assets/js/module-demo.js
           node --check assets/js/marketplace-demo-data.js
           node --check assets/js/demo-page-catalogue.js

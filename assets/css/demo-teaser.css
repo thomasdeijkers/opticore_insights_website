@@ -58,3 +58,22 @@
  .webapp-demo-device{max-width:calc((100svh - 150px)*4/3 + 44px)}
 }
 @media(min-width:1101px){.webapp-demo-teaser{max-width:none}}
+.webapp-demo-preview-controls:not([hidden]){display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:12px 20px;border-top:1px solid #e2e9ef;background:#fff}
+.webapp-demo-preview-controls>span{margin-right:6px;font-size:13px;color:var(--muted)}
+.webapp-demo-preview-controls button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:8px 13px;border:1px solid #bdcad5;border-radius:6px;background:#fff;color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+.webapp-demo-preview-controls button:hover{border-color:#175a96;background:#f1f6fa}
+.webapp-demo-preview-controls button[aria-pressed=true]{border-color:#175a96;background:#175a96;color:#fff}
+.webapp-demo-preview-controls button:focus-visible{outline:3px solid #175a96;outline-offset:3px}
+.webapp-demo-preview-controls svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+@media(min-width:1101px) and (hover:hover) and (pointer:fine){
+ .webapp-demo-teaser[data-demo-preview=tablet] .webapp-demo-device{--device-type:tablet;--screen-ratio:3/4;--screen-corners:14px;max-width:560px;padding:18px;border-radius:28px;background:linear-gradient(130deg,#46515e,#111924 35%,#1b2531)}
+ .webapp-demo-teaser[data-demo-preview=tablet] .webapp-demo-device::before{top:7px;width:5px;height:5px}
+ .webapp-demo-teaser[data-demo-preview=mobile] .webapp-demo-device{--device-type:phone;--screen-ratio:390/844;--screen-corners:27px;max-width:350px;padding:18px 9px 20px;border-color:#485461;border-radius:39px;background:linear-gradient(135deg,#333f4b,#101722 38%,#1e2935)}
+ .webapp-demo-teaser[data-demo-preview=mobile] .webapp-demo-device::before{top:7px;left:50%;width:37px;height:3px;border:0;border-radius:5px;background:#61707e;box-shadow:inset 0 1px 1px #0008}
+ .webapp-demo-teaser[data-demo-preview=mobile] .webapp-demo-device::after{content:'';position:absolute;bottom:8px;left:50%;width:58px;height:3px;border-radius:4px;background:#adbac6;transform:translateX(-50%)}
+ .webapp-demo-teaser[data-demo-preview=mobile] .webapp-demo-device-buttons{display:block;position:absolute;inset:0;z-index:0}
+ .webapp-demo-teaser[data-demo-preview=mobile] .webapp-demo-device-buttons::before,.webapp-demo-teaser[data-demo-preview=mobile] .webapp-demo-device-buttons::after{content:'';position:absolute;width:3px;border-radius:2px;background:#52606c}
+ .webapp-demo-teaser[data-demo-preview=mobile] .webapp-demo-device-buttons::before{top:85px;left:-3px;height:45px;box-shadow:0 52px #52606c}
+ .webapp-demo-teaser[data-demo-preview=mobile] .webapp-demo-device-buttons::after{top:128px;right:-3px;height:61px}
+ .webapp-demo-teaser:is([data-demo-preview=tablet],[data-demo-preview=mobile]) .webapp-demo-device-base{display:none}
+}
