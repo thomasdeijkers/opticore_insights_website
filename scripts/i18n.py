@@ -21,7 +21,7 @@ VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'met
 DISPLAY_ATTRS = {'alt', 'title', 'placeholder', 'aria-label', 'aria-description', 'data-mail-label', 'data-screen-title', 'data-label'}
 META_TEXT = {'description', 'og:title', 'og:description', 'twitter:title', 'twitter:description'}
 SCHEMA_TEXT = {'name', 'description', 'headline', 'text', 'caption', 'articleSection', 'keywords'}
-VERSION = '20261028-image-studio'
+VERSION = '20261028-native-app'
 
 
 def clean(value):
@@ -306,10 +306,10 @@ def collect():
 
 
 def integration(source, canonical, language, mapping):
-    source = re.sub(r'(/assets/js/(?:site-search|bedrijfsscan|modular-webapp|module-demo|usage-costs|demo-full-workspace|demo-page-catalogue|demo-access|screenshot-gallery|marketplace-demo-data)\.js)(?:\?v=[^"\s]*)?', lambda m: m[1] + '?v=' + VERSION, source)
+    source = re.sub(r'(/assets/js/(?:site-search|bedrijfsscan|modular-webapp|module-demo|usage-costs|demo-picklist|demo-marketing-reference|demo-full-workspace|demo-page-catalogue|demo-access|screenshot-gallery|marketplace-demo-data)\.js)(?:\?v=[^"\s]*)?', lambda m: m[1] + '?v=' + VERSION, source)
     source = re.sub(r'(/assets/css/demo-full-workspace\.css)(?:\?v=[^"\s]*)?', lambda m: m[1] + '?v=' + VERSION, source)
     if language == 'nl':
-        source = re.sub(r'(/assets/img/(?:examples/client-ranking-[\w.-]+|module-examples/client-(?:marketing-(?:details|stijgers-dalers)|beeldstudio|producten)-[\w.-]+)\.jpg)(?:\?[^\s"<>]*)?', lambda m: m[1] + '?v=' + VERSION, source)
+        source = re.sub(r'(/assets/img/(?:examples/client-(?:management|stock|forecast|ranking|marketing|listing)-[\w.-]+\.jpg|module-examples/client-[\w.-]+\.jpg|demo/dashboard-client-[\w.-]+\.png))(?:\?[^\s"<>]*)?', lambda m: m[1] + '?v=' + VERSION, source)
     if language != 'nl':
         manifest = ROOT/'assets/img/localized/manifest.json'
         revision = json.loads(manifest.read_text(encoding='utf-8'))['revision'] if manifest.is_file() else VERSION

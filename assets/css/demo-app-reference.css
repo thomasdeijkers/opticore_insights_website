@@ -1,0 +1,108 @@
+/* Shared client-demo skin adapted from operations_dashboard/static/style.css.
+   Native marketing styles load immediately before this file. */
+:root{--text:var(--ink);--panel:var(--surface);--panel-soft:var(--surface-2)}
+:root{--line-strong:#4a789e;--oc-orange:#ff531f}
+:root[data-theme=dark]{--ink:#f7fafc;--muted:#b7c3d4;--soft:#031d45;--surface:#0b2447;--surface-2:#102b50;--line:rgba(237,168,144,.18);--selected:#193760;--good:#20df7f;--warning:#ffb020;--bad:#ff4d62;--workspace-orange:#ff531f}
+body:has(.workspace-complete){font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:0}
+:root[data-theme=dark] body:has(.workspace-complete){background:radial-gradient(circle at 20% -10%,#8b5cf638,transparent 26rem),radial-gradient(circle at 85% 0%,#f64c1921,transparent 22rem),linear-gradient(135deg,#031d45,#021533)}
+:root[data-theme=dark] .workspace-complete{background:transparent}
+:root[data-theme=dark] .workspace-complete .demo-sidebar{background:#041b3a}
+.workspace-complete .demo-topbar{border:1px solid #5289ca57;box-shadow:0 12px 34px #0005}
+:root[data-theme=dark] .workspace-complete .demo-topbar{background:linear-gradient(135deg,#08234f,#102f66)}
+.workspace-complete .demo-topbar .demo-menu-button,.workspace-button.is-orange{background:linear-gradient(135deg,#ff531f,#f06a3c);border-color:#ff9b70}
+:root[data-theme=dark] .workspace-complete .demo-heading{background:linear-gradient(90deg,#8b5cf61f,#ffffff05),var(--surface)}
+.workspace-complete .demo-heading h1{letter-spacing:0}
+:root[data-theme=dark] .workspace-panel,:root[data-theme=dark] .workspace-metric{background:linear-gradient(180deg,#ffffff0f,#ffffff07),var(--surface);box-shadow:0 16px 42px #0003}
+.workspace-metric{position:relative;min-height:96px;padding:15px;border-top-width:1px}
+.workspace-metric>span{padding-right:30px;min-height:25px}
+.workspace-metric .workspace-icon{position:absolute;top:15px;right:14px;width:23px;height:23px;padding:0;border:0;background:none;border-radius:0}
+.workspace-tabs button,.workspace-subtabs button{border:0;border-radius:0;background:transparent;padding:13px 17px;border-bottom:1px solid var(--line)}
+.workspace-tabs button[aria-current=page],.workspace-subtabs button[aria-pressed=true]{border-color:#ff531f;background:#ffffff08;box-shadow:inset 0 -3px #ff531f;color:var(--ink)}
+:root[data-theme=dark] .workspace-table thead{background:#193760}
+.workspace-table th{color:var(--muted);font-size:11px}.workspace-table th,.workspace-table td{border-color:var(--line)}
+.workspace-details{border-radius:6px}.workspace-details>summary{font-weight:700}
+.reference-marketing{color:var(--text);font-size:13px;line-height:1.55}
+.reference-marketing h1{font-size:28px;letter-spacing:0;line-height:1.2}
+.reference-marketing h2{font-size:20px;line-height:1.3}
+.reference-marketing .eyebrow{color:#ff9b70;font-size:11px;font-weight:800;margin:0 0 3px}
+.reference-marketing .ads-icon{display:inline-block;width:20px;height:20px;flex:0 0 20px;vertical-align:middle;color:#ff9b70;filter:none}
+.reference-demo-note{font-size:11px;color:var(--muted);margin:9px 0}
+.reference-marketing .workspace-form{padding:12px;min-width:0}
+.reference-marketing .workspace-form-error:empty{display:none}
+.marketing-agent-mode{max-width:120px;text-align:center}
+.marketing-agent-hero{gap:8px;padding:16px}
+.marketing-agent-hero h1{font-size:26px}
+.marketing-agent-filter-buttons{scrollbar-width:thin}
+.marketing-advice-channel-logo>img{display:block;width:100%;height:100%;object-fit:contain}
+.reference-country{display:inline-block;width:19px;height:13px;border-radius:3px;border:1px solid #ffffff55;background:linear-gradient(#ad1d30 33%,#fff 33% 66%,#21468b 66%)}
+.reference-country[data-country=de]{background:linear-gradient(#111 33%,#d00 33% 66%,#ffce00 66%)}
+.reference-country[data-country=be]{background:linear-gradient(90deg,#111 33%,#ffdf00 33% 66%,#ef3340 66%)}
+.marketing-agent-recommendation .workspace-article-link{font-size:14px;color:var(--ink);text-align:left;max-width:100%;padding:0;border:0;background:none}
+.marketing-agent-recommendation .workspace-thumb{width:48px;height:48px;flex:0 0 48px;background:#fff;border-radius:5px}
+.marketing-agent-recommendation .workspace-article-link b{color:var(--muted)}
+.reference-marketing .marketing-recommendation-actions .workspace-button{padding:7px;font:inherit;font-size:12px}
+.reference-marketing .ads-campaign-logo img{max-width:100%;max-height:100%;object-fit:contain}
+.reference-marketing .ads-heading{margin:14px 0}
+.reference-marketing .ads-campaign-toolbar{display:flex;align-items:center;gap:14px;padding:12px 0;border-block:1px solid var(--line)}
+.reference-periods{display:flex;flex-wrap:wrap;gap:6px}
+.reference-periods button{min-height:35px;border-radius:4px;font-size:12px;padding:6px 12px}
+.reference-periods button[aria-pressed=true]{border-color:#ff531f;background:#87391f;color:#fff}
+.reference-channel-overview>summary,.ads-campaign-more-info>summary{padding:12px 0;cursor:pointer;color:var(--muted);font-weight:700}
+.reference-channel-toggle{border:0;background:none;color:var(--ink);text-align:left;padding:0;font-size:12px;width:100%}
+.reference-channel-toggle[aria-pressed=true]{outline:2px solid #ff531f;outline-offset:5px}
+.reference-marketing .ads-total-channel>.ads-campaign-logo{width:74px;height:36px}
+.reference-channel-overview[open]>.ads-channel-summary-grid{margin-top:10px}
+.reference-product-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+.reference-marketing .ads-campaign>summary>.reference-chevron{color:var(--muted);font-size:22px;line-height:1}
+.reference-marketing .ads-campaign[open]>summary>.reference-chevron{transform:rotate(180deg)}
+.reference-marketing .ads-campaign{border-bottom:1px solid var(--line);padding:8px 0}
+.reference-marketing .workspace-table{min-width:550px}
+.reference-marketing .ads-tabs>a{color:var(--ink)}
+:root:not([data-theme=dark]) .reference-marketing .marketing-agent-mode{color:#176449!important;border-color:#37936f}
+:root:not([data-theme=dark]) .reference-marketing :is(.marketing-agent-refresh-panel,.marketing-agent-tools,.marketing-agent-typebar,.marketing-advice-channel-bar,.marketing-recommendation-rationale,.ads-channel-summary,.ads-campaign-badges>span){background:#edf3f8}
+:root:not([data-theme=dark]) .reference-marketing .marketing-agent-filter-buttons button,:root:not([data-theme=dark]) .reference-marketing .marketing-advice-channel-filter{background:#edf3f8;color:#183244}
+:root:not([data-theme=dark]) .reference-marketing [aria-pressed=true]{background:#ffe8da;color:#8a3b20}
+:root:not([data-theme=dark]) #ads-engine .ads-acos.is-green{color:#146143}
+:root:not([data-theme=dark]) #ads-engine .ads-acos.is-orange{color:#885000}
+:root:not([data-theme=dark]) .reference-marketing .ads-campaign-detail-heading{background:#dbeaf5}
+:root:not([data-theme=dark]) .reference-marketing .ads-campaign-detail-heading strong,:root:not([data-theme=dark]) .reference-marketing .ads-campaign-settings h3{color:#183244}
+:root:not([data-theme=dark]) .reference-marketing .ads-campaign-detail-heading span{color:#176449}
+@media(max-width:760px){.reference-marketing h1{font-size:24px}.marketing-agent-hero{padding:14px 12px}.marketing-agent-mode{padding:6px;font-size:9px}.reference-marketing .ads-tabs{margin-bottom:10px}.reference-marketing .ads-channel-summary-grid{grid-template-columns:1fr}.reference-marketing .ads-campaign-detail-overview{grid-template-columns:1fr}.reference-product-row{flex-wrap:wrap}.reference-marketing .ads-campaign-badges>span{padding:7px 4px}.reference-marketing .ads-campaign-badges strong{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.reference-marketing *{transition:none!important}}
+
+.reference-marketing .ads-campaign-logo[data-channel=bol]{background:#0000a4;padding:2px 4px!important}
+.marketing-advice-channel-logo>.ads-campaign-logo{width:100%!important;height:100%!important;min-width:0!important}
+.reference-picklist-hero{display:flex;justify-content:space-between;gap:20px;padding:18px 20px;border:1px solid var(--line);background:linear-gradient(90deg,#8b5cf61f,#ffffff05),var(--surface)}
+.reference-picklist-hero h1{font-size:28px;margin:4px 0 7px;letter-spacing:0}
+.reference-picklist-hero .eyebrow{color:#ff9b70;font-size:11px;font-weight:800}
+.reference-picklist-hero span{font-size:13px;color:var(--muted)}
+.picklist-actions button{white-space:nowrap;background:linear-gradient(120deg,#f45124,#ff7041);color:#fff;border-color:#ff8353;min-height:42px}
+.picklist-panel{background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.picklist-panel [data-picklist-items]{padding:0 12px 12px}
+.picklist-confirm .picklist-confirm-image{max-width:none}
+.picklist-mark,.picklist-unmark,.picklist-revert{max-width:112px;white-space:normal;word-break:normal}
+:root:not([data-theme=dark]) .picklist-item-location{color:#8a3b20}
+:root:not([data-theme=dark]) .picklist-sku,:root:not([data-theme=dark]) .picklist-tabs b{color:#183244}
+:root:not([data-theme=dark]) .picklist-item-description summary{color:#1c638c}
+@media(max-width:760px){.reference-picklist-hero{padding:14px}.reference-picklist-hero h1{font-size:24px}.picklist-panel [data-picklist-items]{padding:0 8px 8px}}
+@media(max-width:360px){.picklist-item-main{grid-template-columns:max-content 50px minmax(0,1fr)}.picklist-item-info{grid-column:2/4;grid-row:2}.picklist-row-actions{grid-column:1;grid-row:1/3}}
+@media print{
+ body:has([data-full-demo=orders-pakken]){background:#fff;color:#111}
+ [data-full-demo=orders-pakken] :is(.demo-sidebar,.demo-topbar,.demo-photo-note,.demo-status,.sidebar-note,.demo-heading,.picklist-tabs,.picklist-actions,.picklist-mark,.picklist-unmark,.picklist-row-actions,dialog){display:none!important}
+ [data-full-demo=orders-pakken], [data-full-demo=orders-pakken] .demo-workspace{display:block!important;min-height:0}
+ [data-full-demo=orders-pakken] main{padding:0!important;max-width:none!important}
+ [data-full-demo=orders-pakken] .picklist-panel,[data-full-demo=orders-pakken] .reference-picklist-hero{background:#fff;color:#111;border-color:#999;box-shadow:none}
+ [data-full-demo=orders-pakken] .picklist-item{display:block;break-inside:avoid;color:#111;border-color:#999}
+ [data-full-demo=orders-pakken] .picklist-item-main{grid-template-columns:78px 58px minmax(0,1fr)}
+ [data-full-demo=orders-pakken] .picklist-item-location{grid-column:1;grid-row:1;text-align:left}
+ [data-full-demo=orders-pakken] .picklist-image-wrap{grid-column:2;grid-row:1}
+ [data-full-demo=orders-pakken] .picklist-item-info{grid-column:3;grid-row:1}
+ [data-full-demo=orders-pakken] .picklist-item :is(strong,p,summary){color:#111}
+ [data-full-demo=orders-pakken] .picklist-item-description{display:none}
+ [data-full-demo=orders-pakken] .picklist-item-info::after{content:attr(data-print-title);color:#333;font-size:11px}
+}
+
+.workspace-complete .demo-brand{flex-direction:column;align-items:flex-start;gap:10px}
+.demo-brand-logo{display:block;width:172px;padding:8px;background:#fff;border-radius:8px}
+.demo-brand-logo img{display:block;width:100%;height:auto}
+.workspace-complete .demo-brand strong{font-size:15px}.workspace-complete .demo-brand small{font-size:11px}

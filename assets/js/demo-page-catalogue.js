@@ -18,27 +18,19 @@ window.DemoPageCatalogue = {
     },
     "ads-engine": {
       "title": "Advertentie Campagnes",
-      "description": "Bol Sponsored Products: campagnebeheer in voorbereiding.",
+      "description": "Campagnes, advertentieprestaties en kanaaloverzichten bij elkaar.",
       "tabs": [
         {
           "id": "campaigns",
           "label": "Campagnes"
         },
         {
-          "id": "articles",
-          "label": "Artikelen"
+          "id": "boosts",
+          "label": "Boostcampagne"
         },
         {
-          "id": "keywords",
-          "label": "Zoekwoorden"
-        },
-        {
-          "id": "proposals",
-          "label": "Voorstellen"
-        },
-        {
-          "id": "history",
-          "label": "Actiehistorie"
+          "id": "archive",
+          "label": "Archief"
         }
       ]
     },
@@ -50,7 +42,24 @@ window.DemoPageCatalogue = {
     "image-studio": {
       "title": "Product Image Studio",
       "description": "Van productfoto naar zes beelden in je eigen huisstijl.",
-      "tabs": [{"id":"overview","label":"Artikelen"},{"id":"editor","label":"Beeldset"},{"id":"style","label":"Huisstijl"},{"id":"channels","label":"Kanalen"}]
+      "tabs": [
+        {
+          "id": "overview",
+          "label": "Artikelen"
+        },
+        {
+          "id": "editor",
+          "label": "Beeldset"
+        },
+        {
+          "id": "style",
+          "label": "Huisstijl"
+        },
+        {
+          "id": "channels",
+          "label": "Kanalen"
+        }
+      ]
     },
     "webshop-studio": {
       "title": "Webshop Studio",
@@ -125,12 +134,20 @@ window.DemoPageCatalogue = {
       ]
     },
     "orders-pakken": {
-      "title": "Orders pakken",
-      "description": "Pick, pack en verzendflow voor open orders.",
+      "title": "Picklijst",
+      "description": "Artikelen per locatie picken, deelpicks bijhouden en sets uitsplitsen.",
       "tabs": [
         {
-          "id": "overview",
-          "label": "Overzicht"
+          "id": "to_pick",
+          "label": "Te picken"
+        },
+        {
+          "id": "picked",
+          "label": "Gepickt"
+        },
+        {
+          "id": "not_picked",
+          "label": "Niet gepickt"
         }
       ]
     },
@@ -619,6 +636,7 @@ window.DemoPageCatalogue = {
       "label": "Magazijn",
       "id": "warehouse",
       "pages": [
+        "orders-pakken",
         "locaties",
         "locatie-zoeken",
         "externe-voorraad",
@@ -672,7 +690,6 @@ window.DemoPageCatalogue = {
       "label": "Meer mogelijkheden",
       "id": "extra",
       "pages": [
-        "orders-pakken",
         "media",
         "google-ads",
         "ai-assistant",

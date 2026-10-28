@@ -25,3 +25,7 @@ backups/
 
 # Dutch Studio captures are rendered from the fictional demo during deployment.
 /assets/img/module-examples/client-beeldstudio-*-dark.jpg
+
+# New native picklist captures are generated and cached during deployment.
+/assets/img/module-examples/client-orders-pickrestanten-*-dark.jpg
+/assets/img/module-examples/client-orders-pickbevestiging-*-dark.jpg

@@ -48,8 +48,11 @@ jobs:
           node --check assets/js/marketplace-demo-data.js
           node --check assets/js/demo-page-catalogue.js
           node --check assets/js/demo-client-data.js
+          node --check assets/js/demo-picklist.js
+          node --check assets/js/demo-marketing-reference.js
           node --check assets/js/demo-full-workspace.js
           node --check assets/js/usage-costs.js
+          node scripts/test_picklist_demo.cjs
           node scripts/test_demo_client.cjs
           node scripts/test_webapp_cost_content.cjs
           node scripts/test_usage_costs.cjs
@@ -78,12 +81,15 @@ jobs:
         with:
           path: |
             assets/img/localized
+            assets/img/examples/client-management-*-dark.jpg
+            assets/img/examples/client-stock-*-dark.jpg
+            assets/img/examples/client-forecast-*-dark.jpg
             assets/img/examples/client-ranking-*-dark.jpg
-            assets/img/module-examples/client-beeldstudio-*-dark.jpg
-            assets/img/module-examples/client-producten-*-dark.jpg
-            assets/img/module-examples/client-marketing-details-*-dark.jpg
-            assets/img/module-examples/client-marketing-stijgers-dalers-*-dark.jpg
-          key: localized-dark-v1-${{ runner.os }}-${{ hashFiles('content/olympus-captures.json', 'scripts/capture_localized_screenshots.cjs', 'scripts/localized_screenshots.py', 'scripts/neutral_visuals.py', 'scripts/neutral_visuals.css', 'scripts/neutral_visuals_manifest.json', 'scripts/i18n.py', 'content/module-screenshots.json', 'demo/modulaire-webapp/index.html', 'content/i18n/*.json', 'assets/js/*.js', 'assets/css/module-demo.css', 'assets/css/demo-full-workspace.css', 'assets/css/demo-product-photos.css', 'assets/css/i18n.css', 'assets/img/flags/*.svg', 'package-lock.json') }}
+            assets/img/examples/client-marketing-*-dark.jpg
+            assets/img/examples/client-listing-*-dark.jpg
+            assets/img/module-examples/client-*-dark.jpg
+            assets/img/demo/dashboard-client-*-dark.png
+          key: localized-dark-v1-${{ runner.os }}-${{ hashFiles('content/olympus-captures.json', 'scripts/capture_localized_screenshots.cjs', 'scripts/localized_screenshots.py', 'scripts/neutral_visuals.py', 'scripts/neutral_visuals.css', 'scripts/neutral_visuals_manifest.json', 'scripts/i18n.py', 'content/module-screenshots.json', 'demo/modulaire-webapp/index.html', 'content/i18n/*.json', 'assets/js/*.js', 'assets/css/module-demo.css', 'assets/css/demo-full-workspace.css', 'assets/css/demo-*reference*.css', 'assets/css/demo-product-photos.css', 'assets/css/i18n.css', 'assets/img/flags/*.svg', 'package-lock.json') }}
 
       - name: Build and validate all language editions
         run: |

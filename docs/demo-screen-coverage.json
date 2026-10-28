@@ -4,7 +4,8 @@
   "aliases": {
     "instellingen": "settings",
     "listing-afbeeldingen": "image-studio",
-    "ranking-movers": "bol-ranking"
+    "ranking-movers": "bol-ranking",
+    "magazijn-picklijst": "orders-pakken"
   },
   "data": "All application data is fictional; no production connections.",
   "excludedOwnerFeatures": [
@@ -31,27 +32,19 @@
     },
     "ads-engine": {
       "title": "Advertentie Campagnes",
-      "description": "Bol Sponsored Products: campagnebeheer in voorbereiding.",
+      "description": "Campagnes, advertentieprestaties en kanaaloverzichten bij elkaar.",
       "tabs": [
         {
           "id": "campaigns",
           "label": "Campagnes"
         },
         {
-          "id": "articles",
-          "label": "Artikelen"
+          "id": "boosts",
+          "label": "Boostcampagne"
         },
         {
-          "id": "keywords",
-          "label": "Zoekwoorden"
-        },
-        {
-          "id": "proposals",
-          "label": "Voorstellen"
-        },
-        {
-          "id": "history",
-          "label": "Actiehistorie"
+          "id": "archive",
+          "label": "Archief"
         }
       ]
     },
@@ -62,8 +55,25 @@
     },
     "image-studio": {
       "title": "Product Image Studio",
-      "description": "Beeldplan, bewerkbare composities en marketplace-export per SKU.",
-      "tabs": []
+      "description": "Van productfoto naar zes beelden in je eigen huisstijl.",
+      "tabs": [
+        {
+          "id": "overview",
+          "label": "Artikelen"
+        },
+        {
+          "id": "editor",
+          "label": "Beeldset"
+        },
+        {
+          "id": "style",
+          "label": "Huisstijl"
+        },
+        {
+          "id": "channels",
+          "label": "Kanalen"
+        }
+      ]
     },
     "webshop-studio": {
       "title": "Webshop Studio",
@@ -138,12 +148,20 @@
       ]
     },
     "orders-pakken": {
-      "title": "Orders pakken",
-      "description": "Pick, pack en verzendflow voor open orders.",
+      "title": "Picklijst",
+      "description": "Artikelen per locatie picken, deelpicks bijhouden en sets uitsplitsen.",
       "tabs": [
         {
-          "id": "overview",
-          "label": "Overzicht"
+          "id": "to_pick",
+          "label": "Te picken"
+        },
+        {
+          "id": "picked",
+          "label": "Gepickt"
+        },
+        {
+          "id": "not_picked",
+          "label": "Niet gepickt"
         }
       ]
     },
@@ -588,5 +606,7 @@
       "id": "heating-hub",
       "title": "Heating Hub"
     }
-  ]
+  ],
+  "nativeMarketingReference": "opticore-intern@f4ab0d72",
+  "nativePicklistReference": "opticore-intern@253e6357"
 }

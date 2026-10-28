@@ -66,6 +66,19 @@
       "id": "klanten",
       "title": "Klanten en bestellingen",
       "page": "klanten"
+    },
+    {
+      "id": "pickrestanten",
+      "title": "Deelpicks en openstaande restanten",
+      "page": "orders-pakken",
+      "tab": "not_picked"
+    },
+    {
+      "id": "pickbevestiging",
+      "title": "Pickaantal per artikel bevestigen",
+      "page": "orders-pakken",
+      "tab": "to_pick",
+      "click": ".picklist-item:nth-child(2) .picklist-mark"
     }
   ],
   "producten": [
@@ -182,13 +195,20 @@
       "id": "zoekwoorden",
       "title": "Zoekwoorden en prestaties",
       "page": "ads-engine",
-      "tab": "keywords"
+      "tab": "campaigns",
+      "click": ".ads-campaign>summary",
+      "expand": ".ads-campaign[open] .reference-keywords>summary",
+      "focus": ".ads-campaign[open] .reference-keywords",
+      "align": "start"
     },
     {
       "id": "voorstellen",
       "title": "Campagnevoorstellen",
-      "page": "ads-engine",
-      "tab": "proposals"
+      "page": "marketing-agent",
+      "tab": "opportunities",
+      "focus": ".marketing-agent-list",
+      "click": ".marketing-recommendation-details>summary",
+      "align": "start"
     },
     {
       "id": "agent",
@@ -222,8 +242,9 @@
     },
     {
       "id": "orders-pakken",
-      "title": "Orders pakken",
-      "page": "orders-pakken"
+      "title": "Picklijst per magazijnlocatie",
+      "page": "orders-pakken",
+      "tab": "to_pick"
     },
     {
       "id": "labels",

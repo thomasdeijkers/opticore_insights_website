@@ -30,7 +30,7 @@ async function serve(root){
   const plan=JSON.parse(fs.readFileSync(planPath,'utf8'));
   app=await serve(ROOT);fixtures=await serve(fixturePath);
   browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})});
-  const nativeFile=file=>/client-ranking-|client-marketing-(details|stijgers-dalers)-|client-(beeldstudio|producten)-/.test(file);
+  const nativeFile=file=>/^module-examples\/client-|^demo\/dashboard-client-|^examples\/client-(management|stock|forecast|ranking|marketing|listing)-/.test(file);
   let tasks=['nl','de','en','fr'].filter(l=>!arg('language')||l===arg('language')).flatMap(language=>plan.filter(item=>!item.external&&(language!=='nl'||nativeFile(item.file))&&(!arg('device')||item.device===arg('device'))&&(!arg('file')||new RegExp(arg('file')).test(item.file))).map(item=>({...item,language})));
   if(arg('limit'))tasks=tasks.slice(0,Number(arg('limit')));
   assert(tasks.length,'No captures selected');fs.mkdirSync(OUTPUT,{recursive:true});
@@ -48,8 +48,8 @@ async function serve(root){
     if(!task.fixture){await page.locator('.workspace-complete .workspace-root').waitFor();assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');assert.equal(await page.evaluate(()=>FullWorkspace.inspect().page),task.page,'Capture must show the requested app page');}
     assert.equal(await page.locator('html').getAttribute('lang'),task.language);
     await page.evaluate(()=>document.fonts.ready);
-    if(task.expand){const target=page.locator(task.expand).first();if(await target.locator('xpath=..').getAttribute('open')===null){await target.focus();await target.press('Enter');}}
     if(task.click)await page.locator(task.click).first().click();
+    if(task.expand){const target=page.locator(task.expand).first();if(await target.locator('xpath=..').getAttribute('open')===null){await target.focus();await target.press('Enter');}}
     if(task.modal){const target=page.locator(task.modal).first(),parent=target.locator('xpath=ancestor::details').first();if(await parent.count()&&await parent.getAttribute('open')===null){await parent.locator(':scope>summary').focus();await parent.locator(':scope>summary').press('Enter');}await target.click();await page.locator('dialog[open]').waitFor();}
     if(task.focus){const target=page.locator(task.focus).first();await target.scrollIntoViewIfNeeded();if(task.align)await target.evaluate((el,align)=>el.scrollIntoView({block:align}),task.align);}
     if(!task.fixture)assert.equal(await page.locator('.demo-access-dialog').isVisible(),false,'Never capture a blocked demo login instead of the module');

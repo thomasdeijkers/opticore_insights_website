@@ -29,7 +29,7 @@ def plan():
     for module,views in modules.items():
         for view in views:
             for device in DEVICES:
-                add(f'module-examples/client-{module}-{view["id"]}-{device}-dark.jpg',view['page'],tab=view.get('tab'),modal=view.get('modal'),focus=view.get('focus'),click=view.get('click'),align=view.get('align'))
+                add(f'module-examples/client-{module}-{view["id"]}-{device}-dark.jpg',view['page'],tab=view.get('tab'),modal=view.get('modal'),focus=view.get('focus'),click=view.get('click'),align=view.get('align'),expand=view.get('expand'))
     app_views={'management':('dashboard',None),'forecast':('forecasting','overview'),'stock':('voorraad',None),
                'ranking':('bol-ranking',None),'marketing':('marketing-agent',None),'listing':('verbeteringen',None)}
     for item in manifest:
@@ -45,6 +45,7 @@ def plan():
                 if name=='client-ranking-overview-mobile-dark.jpg': tab='movers'
                 if name=='client-marketing-overview-mobile-dark.jpg': page,tab='ads-engine','campaigns'
                 add('examples/'+name,page,tab=tab,
+                    focus='.marketing-agent-heading' if name=='client-marketing-mobile-dark.jpg' else None, align='start' if name=='client-marketing-mobile-dark.jpg' else None,
                     modal='[data-w-host="listing"]' if name=='client-listing-editor-mobile-dark.jpg' else None,
                     expand=None)
             else:
