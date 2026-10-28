@@ -42,3 +42,11 @@ Bronnen, geraadpleegd 27 oktober 2026:
 Twaalf modules: de drie inbegrepen modules plus negen uitbreidingen. Klantenservice en tickets en Facturen en offertes kosten ieder € 200 inrichting en € 20 per maand, met adviesprijzen 20% hoger. Beide vereisen Orders en retouren uit het startpakket. Het zijn functies voor de eigen onderneming; geen dienstfacturen of beheer van andere klanten. Beide hebben vier echte demoschermen met fictieve data, voor mobiel, tablet en desktop. De modulelinks openen respectievelijk Mailtickets en Orderfacturen in de demo. Alle modules samen: € 3.395 inrichting en € 419 per maand, exclusief btw en verbruik.
 
 De rustige demo op de calculator is standaard dichtgeklapt en laadt het darkmode-dashboard in een lazy iframe bij openen. De moduletegels gebruiken rekbare tekstkolommen zodat de maandprijzen op dezelfde hoogte staan; er wordt geen beschrijving afgekapt.
+
+## Keuze en werkwijze op 28 oktober 2026
+
+De bestaande `/modulaire-webapp/` beantwoordt nu ook de vraag wanneer een webapplicatie zinvol is. Drie praktijksituaties (verspreide cijfers, herhaalwerk en groei) leiden naar een uitklapbare keuze tussen bestaande software benutten, onze modules inzetten en een specifieke uitbreiding ontwikkelen. De calculator en prijzenpagina verwijzen naar deze uitleg; er is geen tweede landingspagina voor dezelfde zoekintentie toegevoegd.
+
+Aanleiding: de gebruiker verwees naar https://schmeits.com/webapplicatie-laten-maken#kosten. Alleen de onderwerpen keuze, kostenopbouw, aanpak en nazorg zijn als inspiratie gebruikt. De teksten zijn oorspronkelijk en toegespitst op onze bestaande modules en marketplacepraktijk. Geen concurrentprijzen, tijdsplanning, reviews, eigendomsbeloften of ontwikkeltechniek overgenomen.
+
+De start blijft € 995 inrichting plus € 149 per maand, exclusief btw en verbruik. Aanvullend maatwerk wordt apart begroot; een ingerichte omgeving betekent niet automatisch overdracht van de broncode. De aanpak beschrijft selectie, API- en gegevenscontrole, testen en ondersteuning zonder een vaste doorlooptijd te beloven. Alle nieuwe zichtbare tekst en metadata staan ook in Duits, Engels en Frans in `content/i18n/terminology.json`.
