@@ -20,16 +20,16 @@ def plan():
     referenced = set()
     for _,source in sources().values():
         referenced.update(re.findall(r'/assets/img/(?:demo|examples|module-examples)/[^\s"\x27<>?]+\.(?:jpg|png)',source))
-    def add(file, page, *, tab=None, fixture=False, modal=None, focus=None, click=None, expand=None, fullPage=False, external=False):
+    def add(file, page, *, tab=None, fixture=False, modal=None, focus=None, click=None, align=None, expand=None, fullPage=False, external=False):
         device = 'mobile' if '-mobile-' in file else 'tablet' if '-tablet-' in file else 'desktop'
         width,height,scale = DEVICES[device]
         if fullPage and device=='desktop': width,height = 1440,1000
         result.append({'file':file,'page':page,'device':device,'width':width,'height':height,'scale':scale,
-                       **{k:v for k,v in dict(tab=tab,fixture=fixture,modal=modal,focus=focus,click=click,expand=expand,fullPage=fullPage,external=external).items() if v}})
+                       **{k:v for k,v in dict(tab=tab,fixture=fixture,modal=modal,focus=focus,click=click,align=align,expand=expand,fullPage=fullPage,external=external).items() if v}})
     for module,views in modules.items():
         for view in views:
             for device in DEVICES:
-                add(f'module-examples/client-{module}-{view["id"]}-{device}-dark.jpg',view['page'],tab=view.get('tab'),modal=view.get('modal'),focus=view.get('focus'),click=view.get('click'))
+                add(f'module-examples/client-{module}-{view["id"]}-{device}-dark.jpg',view['page'],tab=view.get('tab'),modal=view.get('modal'),focus=view.get('focus'),click=view.get('click'),align=view.get('align'))
     app_views={'management':('dashboard',None),'forecast':('forecasting','overview'),'stock':('voorraad',None),
                'ranking':('bol-ranking',None),'marketing':('marketing-agent',None),'listing':('verbeteringen',None)}
     for item in manifest:

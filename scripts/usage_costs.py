@@ -64,7 +64,7 @@ def main():
             path.write_text(expected, encoding='utf-8')
         elif not path.is_file() or path.read_text(encoding='utf-8') != expected:
             raise SystemExit('Usage-cost page out of date: run python scripts/usage_costs.py --write')
-    print('Usage-cost page OK: three indicative tariff tables, all twelve modules, calculator and aliases.')
+    print('Usage-cost page OK: three indicative tariff tables, all priced modules, calculator and aliases.')
 
 
 if __name__ == '__main__':

@@ -49,8 +49,8 @@ window.DemoPageCatalogue = {
     },
     "image-studio": {
       "title": "Product Image Studio",
-      "description": "Beeldplan, bewerkbare composities en marketplace-export per SKU.",
-      "tabs": []
+      "description": "Van productfoto naar zes beelden in je eigen huisstijl.",
+      "tabs": [{"id":"overview","label":"Artikelen"},{"id":"editor","label":"Beeldset"},{"id":"style","label":"Huisstijl"},{"id":"channels","label":"Kanalen"}]
     },
     "webshop-studio": {
       "title": "Webshop Studio",

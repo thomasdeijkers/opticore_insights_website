@@ -29,8 +29,8 @@ jobs:
         run: |
           python3 scripts/news.py --write
           python3 scripts/usage_costs.py --write
-          python3 scripts/module_screenshots.py --check
           python3 scripts/module_prices.py --check
+          python3 scripts/module_screenshots.py --check --source-only
           python3 scripts/demo_product_assets.py --check
           python3 scripts/external_links.py --check
 
@@ -42,7 +42,6 @@ jobs:
 
       - name: Generate and validate sitemap and metadata
         run: |
-          python3 scripts/check_screenshot_galleries.py
           python3 scripts/sitemap.py --write
           python3 scripts/metadata.py --check
 
@@ -56,9 +55,7 @@ jobs:
           node --check assets/js/demo-client-data.js
           node --check assets/js/demo-full-workspace.js
           node --check assets/js/usage-costs.js
-          node scripts/test_marketplace_demo.cjs
           node scripts/test_demo_client.cjs
-          node scripts/test_modular_webapp.cjs
           node scripts/test_webapp_cost_content.cjs
           node scripts/test_usage_costs.cjs
 
@@ -87,6 +84,8 @@ jobs:
           path: |
             assets/img/localized
             assets/img/examples/client-ranking-*-dark.jpg
+            assets/img/module-examples/client-beeldstudio-*-dark.jpg
+            assets/img/module-examples/client-producten-*-dark.jpg
             assets/img/module-examples/client-marketing-details-*-dark.jpg
             assets/img/module-examples/client-marketing-stijgers-dalers-*-dark.jpg
           key: localized-dark-v1-${{ runner.os }}-${{ hashFiles('content/olympus-captures.json', 'scripts/capture_localized_screenshots.cjs', 'scripts/localized_screenshots.py', 'scripts/neutral_visuals.py', 'scripts/neutral_visuals.css', 'scripts/neutral_visuals_manifest.json', 'scripts/i18n.py', 'content/module-screenshots.json', 'demo/modulaire-webapp/index.html', 'content/i18n/*.json', 'assets/js/*.js', 'assets/css/module-demo.css', 'assets/css/demo-full-workspace.css', 'assets/css/demo-product-photos.css', 'assets/css/i18n.css', 'assets/img/flags/*.svg', 'package-lock.json') }}
@@ -111,6 +110,10 @@ jobs:
 
       - name: Validate localized screenshots and publish references
         run: |
+          python3 scripts/module_screenshots.py --check --media-only
+          node scripts/test_modular_webapp.cjs
+          node scripts/test_marketplace_demo.cjs
+          python3 scripts/check_screenshot_galleries.py
           python3 scripts/i18n.py --write
           python3 scripts/i18n.py --check
           python3 scripts/localized_screenshots.py --check

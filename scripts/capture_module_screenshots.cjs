@@ -26,7 +26,7 @@ assert(['127.0.0.1','localhost'].includes(site.hostname),'Local captures only');
     assert.equal(await p.locator('html').getAttribute('data-theme'),'dark');
     if(view.click)await p.locator(view.click).first().click();
     if(view.modal){const target=p.locator(view.modal).first(),parent=target.locator('xpath=ancestor::details').first();if(await parent.count()&&await parent.getAttribute('open')===null){const summary=parent.locator(':scope>summary');await summary.focus();await summary.press('Enter');}await target.click();await p.locator('dialog[open]').waitFor();}
-    if(view.focus)await p.locator(view.focus).first().scrollIntoViewIfNeeded();
+    if(view.focus){const target=p.locator(view.focus).first();await target.scrollIntoViewIfNeeded();if(view.align)await target.evaluate((el,align)=>el.scrollIntoView({block:align}),view.align);}
     await p.evaluate(async()=>{const images=[...document.images];images.forEach(img=>img.loading='eager');await Promise.all(images.map(img=>img.complete?Promise.resolve():new Promise(r=>{img.onload=img.onerror=r;})));});
     assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,url.href);
     assert.deepEqual(errors,[],url.href);

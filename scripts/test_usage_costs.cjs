@@ -13,8 +13,8 @@ for(const values of [{database:51,text:0,images:0},{database:1,text:2001,images:
 for(const values of [{database:-1,text:0,images:0},{database:1,text:.5,images:0},{database:NaN,text:0,images:0}])assert.throws(()=>estimate(config,values,149));
 assert.throws(()=>estimate(config,{database:0,text:0,images:0},NaN));
 const complete=P.resolve(Object.keys(P.catalogue));assert(complete.usage);assert.equal(estimate(config,{database:1,text:0,images:0},complete.monthly).total,424);
-assert.deepEqual(config.modules.map(m=>m.id),['omzet','voorraad','orders','producten','inkoop','marketing','logistiek','financieel','forecasting','controles','klantenservice','facturatie']);
-assert.equal(new Set(config.modules.map(m=>m.id)).size,12);
+assert.deepEqual(config.modules.map(m=>m.id),['omzet','voorraad','orders','producten','beeldstudio','inkoop','marketing','logistiek','financieel','forecasting','controles','klantenservice','facturatie']);
+assert.equal(new Set(config.modules.map(m=>m.id)).size,13);
 const page=fs.readFileSync(path.join(__dirname,'../gebruikskosten/index.html'),'utf8');
 for(const key of ['database','text','images'])for(const t of config[key])assert(page.includes(t.label));
 assert(page.includes('Voorstelstaffels'));assert(page.includes('5.000 tekens'));assert(page.includes('1.024 × 1.024'));assert(page.includes('niet bij elkaar op'));

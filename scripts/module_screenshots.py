@@ -41,8 +41,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--write', action='store_true')
     parser.add_argument('--check', action='store_true')
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument('--source-only', action='store_true')
+    modes.add_argument('--media-only', action='store_true')
     args = parser.parse_args()
-    if args.check:
+    if args.check and not args.source_only:
         for module, views in PLAN.items():
             assert 4 <= len(views) <= 6, f'Expected four to six views: {module}'
             for device in ['mobile', 'tablet', 'desktop']:
@@ -53,7 +56,7 @@ def main():
                     assert data.startswith(b'\xff\xd8') and len(data) > 1000, f'Missing/empty capture: {image}'
                     hashes.add(hashlib.sha256(data).hexdigest())
                 assert len(hashes) == len(views), f'Duplicate scenes: {module}/{device}'
-    for page in ['modulaire-webapp', 'webapp-samenstellen']:
+    for page in ([] if args.media_only else ['modulaire-webapp', 'webapp-samenstellen']):
         path = ROOT / f'{page}.html'
         expected = render(path.read_text(encoding='utf-8'))
         for target in [path, ROOT / page / 'index.html']:

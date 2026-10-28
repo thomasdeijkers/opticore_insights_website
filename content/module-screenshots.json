@@ -81,16 +81,6 @@
       "modal": "[data-w-host=\"listing\"]"
     },
     {
-      "id": "image-studio",
-      "title": "Product Image Studio",
-      "page": "image-studio"
-    },
-    {
-      "id": "media",
-      "title": "Productafbeeldingen beheren",
-      "page": "media"
-    },
-    {
       "id": "verrijken",
       "title": "Productgegevens verrijken",
       "page": "webshop-studio",
@@ -102,6 +92,53 @@
       "page": "artikelkaart",
       "click": "[data-w-action=\"article-view\"][data-id=\"images\"]",
       "focus": ".workspace-image-grid"
+    }
+  ],
+  "beeldstudio": [
+    {
+      "id": "overzicht",
+      "title": "Beeldstudio · artikeloverzicht",
+      "page": "image-studio",
+      "tab": "overview"
+    },
+    {
+      "id": "beeldset",
+      "title": "Zes beelden in je huisstijl",
+      "page": "image-studio",
+      "tab": "editor",
+      "focus": ".studio-section-title",
+      "align": "start"
+    },
+    {
+      "id": "huisstijl",
+      "title": "Huisstijl openen en bewerken",
+      "page": "image-studio",
+      "tab": "style"
+    },
+    {
+      "id": "voordelen",
+      "title": "Productvoordelen in beeld",
+      "page": "image-studio",
+      "tab": "editor",
+      "click": "[data-studio-image=\"3\"]",
+      "focus": ".studio-editor-layout .demo-studio-preview",
+      "align": "start"
+    },
+    {
+      "id": "bediening",
+      "title": "Gebruik en bediening in beeld",
+      "page": "image-studio",
+      "tab": "editor",
+      "click": "[data-studio-image=\"2\"]",
+      "focus": ".studio-editor-layout .demo-studio-preview",
+      "align": "start"
+    },
+    {
+      "id": "kanalen",
+      "title": "Beeldset per kanaal beoordelen",
+      "page": "image-studio",
+      "tab": "channels",
+      "click": ".workspace-root>.workspace-panel .workspace-details>summary"
     }
   ],
   "inkoop": [

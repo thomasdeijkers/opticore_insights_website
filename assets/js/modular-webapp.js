@@ -42,9 +42,15 @@
   },
   "producten": {
     "label": "Productbeheer en publicaties",
-    "setup": 300,
+    "setup": 200,
     "requires": [],
-    "currentMonthly": 40
+    "currentMonthly": 20
+  },
+  "beeldstudio": {
+    "label": "Product Image Studio",
+    "setup": 100,
+    "requires": [],
+    "currentMonthly": 20
   },
   "orders": {
     "label": "Orders en retouren",

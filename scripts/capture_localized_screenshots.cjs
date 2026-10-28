@@ -30,11 +30,13 @@ async function serve(root){
   const plan=JSON.parse(fs.readFileSync(planPath,'utf8'));
   app=await serve(ROOT);fixtures=await serve(fixturePath);
   browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})});
-  const rankingFile=file=>/client-ranking-|client-marketing-(details|stijgers-dalers)-/.test(file);
-  let tasks=['nl','de','en','fr'].filter(l=>!arg('language')||l===arg('language')).flatMap(language=>plan.filter(item=>!item.external&&(language!=='nl'||rankingFile(item.file))&&(!arg('device')||item.device===arg('device'))&&(!arg('file')||new RegExp(arg('file')).test(item.file))).map(item=>({...item,language})));
+  const nativeFile=file=>/client-ranking-|client-marketing-(details|stijgers-dalers)-|client-(beeldstudio|producten)-/.test(file);
+  let tasks=['nl','de','en','fr'].filter(l=>!arg('language')||l===arg('language')).flatMap(language=>plan.filter(item=>!item.external&&(language!=='nl'||nativeFile(item.file))&&(!arg('device')||item.device===arg('device'))&&(!arg('file')||new RegExp(arg('file')).test(item.file))).map(item=>({...item,language})));
   if(arg('limit'))tasks=tasks.slice(0,Number(arg('limit')));
   assert(tasks.length,'No captures selected');fs.mkdirSync(OUTPUT,{recursive:true});
   const previous=path.join(OUTPUT,'manifest.json'),images=fs.existsSync(previous)?JSON.parse(fs.readFileSync(previous,'utf8')).images:{};
+  const valid=new Set(['de','en','fr'].flatMap(language=>plan.map(item=>language+'/'+item.file)));
+  for(const file of Object.keys(images))if(!valid.has(file))delete images[file];
   const report=[];let next=0,completed=0;
   async function worker(){while(next<tasks.length){
    const task=tasks[next++],context=await browser.newContext({viewport:{width:task.width,height:task.height},deviceScaleFactor:task.scale,colorScheme:'dark',reducedMotion:'reduce',locale:{nl:'nl-NL',de:'de-DE',en:'en-GB',fr:'fr-FR'}[task.language],timezoneId:'Europe/Amsterdam'});
@@ -49,7 +51,7 @@ async function serve(root){
     if(task.expand){const target=page.locator(task.expand).first();if(await target.locator('xpath=..').getAttribute('open')===null){await target.focus();await target.press('Enter');}}
     if(task.click)await page.locator(task.click).first().click();
     if(task.modal){const target=page.locator(task.modal).first(),parent=target.locator('xpath=ancestor::details').first();if(await parent.count()&&await parent.getAttribute('open')===null){await parent.locator(':scope>summary').focus();await parent.locator(':scope>summary').press('Enter');}await target.click();await page.locator('dialog[open]').waitFor();}
-    if(task.focus)await page.locator(task.focus).first().scrollIntoViewIfNeeded();
+    if(task.focus){const target=page.locator(task.focus).first();await target.scrollIntoViewIfNeeded();if(task.align)await target.evaluate((el,align)=>el.scrollIntoView({block:align}),task.align);}
     if(!task.fixture)assert.equal(await page.locator('.demo-access-dialog').isVisible(),false,'Never capture a blocked demo login instead of the module');
     await page.evaluate(async()=>{await Promise.all([...document.images].filter(i=>i.getAttribute('src')).map(async i=>{i.loading='eager';await i.decode();}));});
     assert.deepEqual(errors,[],url.href);

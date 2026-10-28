@@ -2,7 +2,7 @@
   "status": "indicative_proposal",
   "currency": "EUR",
   "vatIncluded": false,
-  "updated": "2026-10-27",
+  "updated": "2026-10-28",
   "database": [
     {"max": 2, "label": "Tot en met 2 GB", "price": 5},
     {"max": 10, "label": "Meer dan 2 tot en met 10 GB", "price": 15},
@@ -27,7 +27,8 @@
     {"id": "omzet", "label": "Omzetrapportage", "database": "Verkopen, retouren, kosten en historie.", "ai": "Geen AI nodig voor gewone omzet- en margeberekeningen."},
     {"id": "voorraad", "label": "Voorraad", "database": "Voorraadstanden, reserveringen en artikelhistorie.", "ai": "Geen AI nodig voor voorraadstanden en dekking."},
     {"id": "orders", "label": "Orders en retouren", "database": "Orders, orderregels, retouren en verwerkingsstatussen.", "ai": "Alleen bij afgesproken AI-antwoordconcepten voor klantvragen; gewone orderverwerking gebruikt geen AI."},
-    {"id": "producten", "label": "Productbeheer en publicaties", "database": "Artikelen, productvelden, kanaalstatussen en concepten.", "ai": "Tekstaanvragen bij listingoptimalisatie en tekstconcepten; beeldopdrachten in de Product Image Studio."},
+    {"id": "producten", "label": "Productbeheer en publicaties", "database": "Artikelen, productvelden, kanaalstatussen en concepten.", "ai": "Tekstaanvragen bij listingoptimalisatie en tekstconcepten. Beeldgeneratie valt onder de aparte Product Image Studio."},
+    {"id": "beeldstudio", "label": "Product Image Studio", "database": "Beeldsetmetadata, huisstijl, volgorde en publicatiestatussen. Productfoto’s zijn bestandsopslag, geen databasevolume.", "ai": "Beeldopdrachten bij genereren en bewerken. Een standaardreeks van zes beelden telt als zes beeldopdrachten; elke volgende AI-bewerking telt apart. Gewoon bekijken, ordenen en downloaden gebruikt geen AI."},
     {"id": "inkoop", "label": "Inkoop en bestellen", "database": "Leveranciers, bestellingen, ontvangsten en besteladviezen.", "ai": "Geen AI nodig voor het standaard besteladvies en de ontvangstverwerking."},
     {"id": "marketing", "label": "Marketing en ranking", "database": "Campagnes, zoekwoordmetingen, prestaties en actiehistorie.", "ai": "Alleen AI-analyse of AI-voorstellen die je laat uitvoeren. Rankingmetingen en gewone advertentie-API-koppelingen zijn geen AI-aanvragen."},
     {"id": "logistiek", "label": "Magazijn en logistiek", "database": "Locaties, tellingen, externe voorraad en fulfilmentzendingen.", "ai": "Geen AI nodig voor tellen, labels en zendingstatussen."},

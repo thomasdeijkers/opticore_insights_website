@@ -22,3 +22,6 @@ backups/
 
 # Actual Olympus capture output is restored from a pinned, checksummed media release.
 /assets/img/examples/client-olympus-*-dark.jpg
+
+# Dutch Studio captures are rendered from the fictional demo during deployment.
+/assets/img/module-examples/client-beeldstudio-*-dark.jpg
