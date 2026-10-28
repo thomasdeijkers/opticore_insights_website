@@ -9,9 +9,9 @@
 .webapp-module-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .webapp-module{display:flex;align-items:flex-start;gap:12px;padding:21px;background:#fff;border:1px solid #bdcad5;border-radius:7px;cursor:pointer;min-width:0}
 .webapp-module:hover{border-color:var(--link)}
-.webapp-module:has(input:checked){border-color:var(--link);background:#edf4fa;box-shadow:inset 0 0 0 1px var(--link)}
+.webapp-module:has(input:checked){border-color:var(--accent);background:#fff1e8;box-shadow:inset 0 0 0 1px var(--accent)}
 .webapp-module:has(input:focus-visible){outline:2px solid var(--link);outline-offset:-2px}
-.webapp-module input{width:20px;height:20px;margin:4px 0 0;flex-shrink:0;accent-color:#175a96}
+.webapp-module input{width:20px;height:20px;margin:4px 0 0;flex-shrink:0;accent-color:var(--accent)}
 .webapp-module-title{display:flex;align-items:center;gap:9px;font-size:18px;line-height:1.4;font-weight:700;color:var(--ink);margin-bottom:10px}
 .webapp-module-title svg{width:23px;height:23px;flex-shrink:0;color:#175a96}
 .webapp-module-copy{display:block;font-size:15px;line-height:1.65}
@@ -94,7 +94,7 @@
 
 /* Prices, selection and source explanation live in the same module card. */
 .webapp-module-card{display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid #bdcad5;border-radius:7px}
-.webapp-module-card:has(input:checked){border-color:var(--link);background:#edf4fa;box-shadow:inset 0 0 0 1px var(--link)}
+.webapp-module-card:has(input:checked){border-color:var(--accent);background:#fff1e8;box-shadow:inset 0 0 0 1px var(--accent)}
 .webapp-module-card .webapp-module{border:0;border-radius:7px 7px 0 0;background:transparent;box-shadow:none}
 .webapp-module-card .webapp-module:has(input:checked){background:transparent;box-shadow:none}
 .webapp-module-card .webapp-module-details{border:0;border-top:1px solid var(--line);margin:0 21px;padding:0;margin-top:auto}
