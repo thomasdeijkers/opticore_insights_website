@@ -55,6 +55,8 @@ jobs:
           node --check assets/js/demo-marketing-reference.js
           node --check assets/js/demo-full-workspace.js
           node --check assets/js/usage-costs.js
+          node --check assets/js/implementation-roadmap.js
+          node scripts/test_implementation_roadmap.cjs
           node scripts/test_picklist_demo.cjs
           node scripts/test_demo_client.cjs
           node scripts/test_webapp_cost_content.cjs

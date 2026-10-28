@@ -207,6 +207,7 @@
       if (selected.modules.length) params.set('modules', selected.modules.join(','));
       contacts.forEach(contact => { contact.href = `/contact/?${params}#contact-form`; });
       root.querySelectorAll('[data-module-usage-link]').forEach(link => { const hash = new URL(link.href, location.href).hash; const query = selected.extraModules.length ? '?' + new URLSearchParams({ modules: selected.extraModules.join(',') }) : ''; link.href = '/gebruikskosten/' + query + hash; });
+      root.querySelectorAll('[data-module-roadmap-link]').forEach(link => { const query = selected.extraModules.length ? '?' + new URLSearchParams({ modules: selected.extraModules.join(',') }) : ''; const path = '/implementatie/' + query; link.href = window.SiteI18n?.url(path) || path; });
       reset.hidden = requested.size === 0;
       const address = new URL(window.location.href);
       if (requested.size) address.searchParams.set('modules', [...requested].join(','));

@@ -1,4 +1,9 @@
 {
+  "/implementatie/": {
+    "de": "/de/implementierung/",
+    "en": "/en/implementation/",
+    "fr": "/fr/mise-en-place/"
+  },
   "/werken-bij/": {
     "de": "/de/zusammenarbeiten/",
     "en": "/en/work-with-us/",

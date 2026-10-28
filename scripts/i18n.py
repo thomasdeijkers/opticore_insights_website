@@ -21,7 +21,7 @@ VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'met
 DISPLAY_ATTRS = {'alt', 'title', 'placeholder', 'aria-label', 'aria-description', 'data-mail-label', 'data-screen-title', 'data-label'}
 META_TEXT = {'description', 'og:title', 'og:description', 'twitter:title', 'twitter:description'}
 SCHEMA_TEXT = {'name', 'description', 'headline', 'text', 'caption', 'articleSection', 'keywords'}
-VERSION = '20261028-careers'
+VERSION = '20261028-implementation'
 
 
 def clean(value):
@@ -36,21 +36,25 @@ def strip_integration(source):
     return re.sub(r'<!-- i18n:(?:head|selector|form) -->.*?<!-- /i18n -->', '', source, flags=re.S)
 
 
-def collaboration_navigation(source, canonical):
-    """Keep the recruitment page discoverable in the shared public navigation."""
+def public_navigation(source, canonical):
+    """Keep supporting public pages discoverable without editing every template."""
+    entries = [('/prijzen/', '/implementatie/', 'Implementatie'),
+               ('/over/', '/werken-bij/', 'Samenwerken')]
     def menu(match):
         block = match[0]
-        if 'href="/werken-bij/"' in block:
-            return block
-        current = ' aria-current="page"' if canonical == '/werken-bij/' else ''
-        return re.sub(r'(<a\b[^>]*href="/over/"[^>]*>.*?</a>)',
-                      lambda m: m[1] + f'<a href="/werken-bij/"{current}>Samenwerken</a>', block, count=1, flags=re.S)
+        for after, path, label in entries:
+            if f'href="{path}"' not in block:
+                current = ' aria-current="page"' if canonical == path else ''
+                block = re.sub(r'(<a\b[^>]*href="' + re.escape(after) + r'"[^>]*>.*?</a>)',
+                               lambda m: m[1] + f'<a href="{path}"{current}>{label}</a>', block, count=1, flags=re.S)
+        return block
     def footer(match):
         block = match[0]
-        if 'href="/werken-bij/"' in block:
-            return block
-        return re.sub(r'(<li><a\b[^>]*href="/over/"[^>]*>.*?</a></li>)',
-                      lambda m: m[1] + '<li><a href="/werken-bij/">Samenwerken</a></li>', block, count=1, flags=re.S)
+        for after, path, label in entries:
+            if f'href="{path}"' not in block:
+                block = re.sub(r'(<li><a\b[^>]*href="' + re.escape(after) + r'"[^>]*>.*?</a></li>)',
+                               lambda m: m[1] + f'<li><a href="{path}">{label}</a></li>', block, count=1, flags=re.S)
+        return block
     source = re.sub(r'<nav\b(?=[^>]*\bdata-menu(?:[ >]))[^>]*>.*?</nav>', menu, source, flags=re.S)
     return re.sub(r'<nav\b(?=[^>]*aria-label="Verder kijken in de footer")[^>]*>.*?</nav>', footer, source, flags=re.S)
 
@@ -64,7 +68,7 @@ def sources():
         source = strip_integration(path.read_text(encoding='utf-8'))
         match = re.search(r'rel="canonical" href="' + re.escape(BASE) + r'([^"]+)"', source)
         if match:
-            result[match[1]] = (path, collaboration_navigation(source, match[1]))
+            result[match[1]] = (path, public_navigation(source, match[1]))
     return dict(sorted(result.items()))
 
 
@@ -325,7 +329,7 @@ def collect():
 
 
 def integration(source, canonical, language, mapping):
-    source = re.sub(r'(/assets/js/(?:site-search|bedrijfsscan|modular-webapp|module-demo|usage-costs|demo-picklist|demo-marketing-reference|demo-full-workspace|demo-page-catalogue|demo-access|screenshot-gallery|marketplace-demo-data)\.js)(?:\?v=[^"\s]*)?', lambda m: m[1] + '?v=' + VERSION, source)
+    source = re.sub(r'(/assets/js/(?:site-search|bedrijfsscan|modular-webapp|module-demo|usage-costs|implementation-roadmap|demo-picklist|demo-marketing-reference|demo-full-workspace|demo-page-catalogue|demo-access|screenshot-gallery|marketplace-demo-data)\.js)(?:\?v=[^"\s]*)?', lambda m: m[1] + '?v=' + VERSION, source)
     source = re.sub(r'(/assets/css/demo-full-workspace\.css)(?:\?v=[^"\s]*)?', lambda m: m[1] + '?v=' + VERSION, source)
     if language == 'nl':
         source = re.sub(r'(/assets/img/(?:examples/client-(?:management|stock|forecast|ranking|marketing|listing)-[\w.-]+\.jpg|module-examples/client-[\w.-]+\.jpg|demo/dashboard-client-[\w.-]+\.png))(?:\?[^\s"<>]*)?', lambda m: m[1] + '?v=' + VERSION, source)
