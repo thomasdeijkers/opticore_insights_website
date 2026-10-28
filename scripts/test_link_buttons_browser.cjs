@@ -16,15 +16,28 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
    while(next<tasks.length){const task=tasks[next++];
     await page.setViewportSize({width:task.width,height:1000});
     const response=await page.goto(new URL(task.url,base).href,{waitUntil:'load'});assert(response.ok(),task.url);
-    await page.waitForFunction(()=>[...document.styleSheets].some(s=>s.href?.includes('/link-buttons.css')));
+    await page.waitForFunction(()=>document.querySelector('.demo-shell')||[...document.styleSheets].some(s=>s.href?.includes('/link-buttons.css')));
     if(task.url.includes('?q='))await page.locator('[data-search-results] a, .search-results a').first().waitFor();
     const result=await page.evaluate(()=>{
      const bare=[];let count=0;
-     for(const a of document.querySelectorAll('a[href],button')){
-      if(a.tagName==='BUTTON'&&!document.querySelector('.site-header'))continue;
-      if(!a.getClientRects().length||!a.textContent.trim()||a.matches('.brand,.footer-brand,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll')||a.querySelector('img'))continue;
-      const c=getComputedStyle(a);count++;
-      if(c.textDecorationLine.includes('underline')||parseFloat(c.borderTopWidth)<1||parseFloat(c.borderTopLeftRadius)<4||!['rgb(23, 90, 150)','rgb(16, 72, 119)'].includes(c.backgroundColor)||c.color!=='rgb(255, 255, 255)')bare.push({text:a.textContent.trim().slice(0,100),href:a.getAttribute('href'),border:c.borderTopWidth,radius:c.borderTopLeftRadius,background:c.backgroundColor,color:c.color});
+     const marketing=[...document.styleSheets].some(s=>s.href?.includes('/link-buttons.css'));
+     if(document.querySelector('.demo-shell')){
+      if(marketing)bare.push({reason:'Website button stylesheet leaked into native demo'});
+      if(document.querySelector('.demo-topbar .demo-package-link'))bare.push({reason:'Sales CTA in native app header'});
+     }else{
+      for(const a of document.querySelectorAll('a[href]')){
+       if(!a.getClientRects().length||!a.textContent.trim()||a.matches('.brand,.footer-brand,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll')||a.querySelector('img'))continue;
+       const c=getComputedStyle(a);count++;
+       const transparent=c.backgroundColor==='rgba(0, 0, 0, 0)';
+       const breadcrumb=!!a.closest('.breadcrumbs');
+       const inline=a.parentElement.matches('p,dd,figcaption,small,td,th')&&!a.matches('.button,.text-link,.footer-social');
+       const primary=a.matches('.button:not(.button-secondary),.footer-contact-link,.nav-contact');
+       const quietNavigation=!!a.closest('.site-nav')&&!primary;
+       const expected=breadcrumb||inline||quietNavigation?'transparent':primary?'blue':'orange';
+       const good=expected==='transparent'?transparent:expected==='blue'?c.backgroundColor==='rgb(23, 90, 150)'&&c.color==='rgb(255, 255, 255)':c.backgroundColor==='rgb(255, 243, 233)'&&c.color==='rgb(146, 59, 22)';
+       if(!good||(breadcrumb&&(c.paddingTop!=='0px'||c.borderTopWidth!=='0px'))||(!inline&&c.textDecorationLine.includes('underline')))
+        bare.push({text:a.textContent.trim().slice(0,100),href:a.getAttribute('href'),expected,background:c.backgroundColor,color:c.color});
+      }
      }
      return {count,bare,overflow:document.documentElement.scrollWidth>innerWidth+1};
     });links+=result.count;
@@ -34,6 +47,6 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
   }
   await Promise.all(Array.from({length:4},worker));
   assert.deepEqual(failures,[],JSON.stringify(failures,null,2));
-  console.log(`Button audit OK: ${tasks.length} page views across all four languages, NL mobile pages and dynamic search; ${links} text actions have filled OptiCore blue backgrounds, white labels and no underline; no horizontal overflow.`);
+  console.log(`Button audit OK: ${tasks.length} page views across all four languages, NL mobile pages and dynamic search; ${links} text actions respect primary blue, secondary orange and quiet breadcrumb/prose navigation; native demo stays independent; no horizontal overflow.`);
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

@@ -21,7 +21,7 @@ VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'met
 DISPLAY_ATTRS = {'alt', 'title', 'placeholder', 'aria-label', 'aria-description', 'data-mail-label', 'data-screen-title', 'data-label'}
 META_TEXT = {'description', 'og:title', 'og:description', 'twitter:title', 'twitter:description'}
 SCHEMA_TEXT = {'name', 'description', 'headline', 'text', 'caption', 'articleSection', 'keywords'}
-VERSION = '20261028-package-499'
+VERSION = '20261028-action-hierarchy'
 
 
 def clean(value):
@@ -316,7 +316,9 @@ def integration(source, canonical, language, mapping):
         source = re.sub(r'/assets/img/(demo|examples|module-examples)/([\w.-]+\.(?:jpg|png))(?:\?[^\s"<>]*)?', lambda m:f'/assets/img/localized/{language}/{m[1]}/{m[2]}?v={revision}', source)
     alternatives = ''.join(f'<link rel="alternate" hreflang="{lang}" href="{BASE}{canonical if lang == "nl" else mapping[canonical][lang]}">' for lang in LANGUAGES)
     alternatives += f'<link rel="alternate" hreflang="x-default" href="{BASE}{canonical}">'
-    head = f'<!-- i18n:head -->{alternatives}<link rel="stylesheet" href="/assets/css/i18n.css?v={VERSION}"><link rel="stylesheet" href="/assets/css/link-buttons.css?v=20261028-filled-blue"><script src="/assets/i18n/{language}.js?v={VERSION}" defer></script><script src="/assets/js/i18n.js?v={VERSION}" defer></script><!-- /i18n -->'
+    # Marketing styles must never change native app navigation or captures.
+    actions_css = '' if 'class="demo-shell"' in source else '<link rel="stylesheet" href="/assets/css/link-buttons.css?v=20261028-action-hierarchy">'
+    head = f'<!-- i18n:head -->{alternatives}<link rel="stylesheet" href="/assets/css/i18n.css?v={VERSION}">{actions_css}<script src="/assets/i18n/{language}.js?v={VERSION}" defer></script><script src="/assets/js/i18n.js?v={VERSION}" defer></script><!-- /i18n -->'
     # These deferred scripts must precede existing deferred application scripts.
     position = re.search(r'<script\b[^>]*\bsrc=', source)
     if position and position.start() < source.index('</head>'):
