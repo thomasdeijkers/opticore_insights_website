@@ -29,3 +29,6 @@ backups/
 # New native picklist captures are generated and cached during deployment.
 /assets/img/module-examples/client-orders-pickrestanten-*-dark.jpg
 /assets/img/module-examples/client-orders-pickbevestiging-*-dark.jpg
+
+# Reviewed generated product artwork is restored from a pinned media release.
+/assets/img/demo-products/studio-v1/

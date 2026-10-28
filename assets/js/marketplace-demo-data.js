@@ -35,7 +35,7 @@
     const channelWeights=[[.5,.17,.1,.08,0,.04,.11],[.55,.18,.08,.04,0,.01,.14],[.65,.15,.1,0,0,.1,0],[.2,.08,.07,.1,.1,.4,.05],[.45,.13,.08,.15,.1,.02,.07],[.5,.17,.08,.1,0,.02,.13]];
     state.products.forEach((p,i)=>{
       p.weights=channelWeights[i%channelWeights.length];p.offers.push(i===2?'disabled':'published',i===2?'disabled':i===4?'queued':'published');
-      p.historyPrice=p.price;p.historyCost=p.cost;p.title=p.name;p.image='/assets/img/demo-products/'+p.sku.toLowerCase()+'.jpg';p.description=`${p.name} uit ons fictieve assortiment ${p.category}. Bekijk de productinformatie en controleer de uitvoering voor jouw toepassing.`;
+      p.historyPrice=p.price;p.historyCost=p.cost;p.title=p.name;p.image=scope.DemoProductImages?.[p.sku]?.path||'/assets/img/demo-products/studio-v1/'+p.sku.toLowerCase()+'.jpg';p.description=`${p.name} uit ons fictieve assortiment ${p.category}. Bekijk de productinformatie en controleer de uitvoering voor jouw toepassing.`;
       // Localize fictional seed text once; later user edits remain untouched.
       p.name=exampleText(p.name);p.title=p.name;p.description=exampleText(p.description);
       p.previousHistory=p.history.map(n=>Math.round(n*(i===3?1.3:i%2?.95:.8)));

@@ -1,0 +1,119 @@
+{
+  "tag": "demo-studio-products-20261028-v1",
+  "asset": "demo-studio-products.zip",
+  "sha256": "3a02c9f2b5df4077f5c08f60b0419d4b8c6f7347ce8502331f4734d21c300b54",
+  "created": "2026-10-28",
+  "generationTool": "built-in imagegen",
+  "style": "Square studio catalogue images on white, a slightly elevated front-left three-quarter view, fronts pointing toward the lower-right, faint soft contact shadows.",
+  "images": [
+    {
+      "sku": "DEMO-1001",
+      "title": "Koffiezetapparaat Aroma",
+      "path": "/assets/img/demo-products/studio-v1/demo-1001.jpg",
+      "sha256": "13e181df503182d754217ff2d9750f02af2c796f3665863dce154fc52dd94cc9",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Use case: product-mockup. Generate ONE square 1:1 premium e-commerce catalogue photograph of a fictional compact espresso coffee machine. Unbranded matte charcoal-black housing with subtle brushed stainless steel drip tray and a single portafilter, no cup. This is the first product in a matching set of 12 electronics/home appliances. Exact shared art direction for the whole set: pure seamless white background (#FFFFFF), neutral white studio ground with ONLY a very faint soft short contact shadow under the object, no horizon line or gradients. Camera at a slightly elevated front-left three-quarter view, about 20 degrees above the product and 30 degrees to its left; the front and left side are visible, the front points slightly toward the lower-right of the picture. Entire product centered, occupying about 75% of the square canvas, generous white margins, no clipping. Clean straight geometry, realistic crisp materials, sharp edges and fine details, soft large studio lighting from upper left, neutral colour balance. Looks like a high-end manufacturer's studio product photograph, not a casual snapshot. No kitchen, table, room, packaging, hands, props, cables across the background, text, brand, logo, watermark, labels, collage, borders or infographic. Create the individual photo only, not a screenshot or contact sheet. High-resolution clean raster image."
+    },
+    {
+      "sku": "DEMO-1002",
+      "title": "USB-C telefoonlader Volt",
+      "path": "/assets/img/demo-products/studio-v1/demo-1002.jpg",
+      "sha256": "93677a59e2bc20bd8b334326656150ee2dd0777bd79fee864927a5a93b522798",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Use case: product-mockup. Asset: ONE square 1:1 premium e-commerce studio product photograph, individual product only. Shared art direction for a consistent catalogue: pure seamless white (#FFFFFF) background and white ground, only a very faint small soft contact shadow under the object. Camera slightly elevated, 20 degrees above and 30 degrees to the product's front-left: front and left side visible, front points toward lower-right. Center the whole product, occupying 75–80% of canvas, generous white margins, no clipping. Crisp photorealistic materials, soft large studio light from upper-left, neutral white balance, uniformly sharp. Unbranded fictional product. No room, kitchen, table, clutter, hands, packaging, text, logos, watermark, decorative props, borders, collage or infographic. No harsh shadow, gradient background or glossy ground reflection. High-resolution catalogue raster photo. Subject: A compact charcoal-black 30W USB-C phone wall charger, unpackaged. A single USB-C socket on the front face, two clean round EU mains prongs extending at the rear, elegant rounded rectangular body. No cable, no retail box, no written markings."
+    },
+    {
+      "sku": "DEMO-1003",
+      "title": "Computermuis Click",
+      "path": "/assets/img/demo-products/studio-v1/demo-1003.jpg",
+      "sha256": "e52bc080492ea79c42ea5b05a03e2448feb599c068f012ac66b62dd55a9a920a",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Use case: product-mockup. Asset: ONE square 1:1 premium e-commerce studio product photograph, individual product only. Shared art direction for a consistent catalogue: pure seamless white (#FFFFFF) background and white ground, only a very faint small soft contact shadow under the object. Camera slightly elevated, 20 degrees above and 30 degrees to the product's front-left: front and left side visible, front points toward lower-right. Center the whole product, occupying 75–80% of canvas, generous white margins, no clipping. Crisp photorealistic materials, soft large studio light from upper-left, neutral white balance, uniformly sharp. Unbranded fictional product. No room, kitchen, table, clutter, hands, packaging, text, logos, watermark, decorative props, borders, collage or infographic. No harsh shadow, gradient background or glossy ground reflection. High-resolution catalogue raster photo. Subject: A modern wireless computer mouse, matte charcoal-black, simple symmetrical ergonomic shape with two buttons and a dark metal scroll wheel. Front button/nose end points toward lower-right, rear toward upper-left. No wire, no USB dongle, no desk."
+    },
+    {
+      "sku": "DEMO-1004",
+      "title": "Tosti-ijzer Crisp",
+      "path": "/assets/img/demo-products/studio-v1/demo-1004.jpg",
+      "sha256": "8f3ab25c5b309933fa5f1fea882664ed559809f2f1cb74f98048cef1495ddc5f",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Use case: product-mockup. Asset: ONE square 1:1 premium e-commerce studio product photograph, individual product only. Shared art direction for a consistent catalogue: pure seamless white (#FFFFFF) background and white ground, only a very faint small soft contact shadow under the object. Camera slightly elevated, 20 degrees above and 30 degrees to the product's front-left: front and left side visible, front points toward lower-right. Center the whole product, occupying 75–80% of canvas, generous white margins, no clipping. Crisp photorealistic materials, soft large studio light from upper-left, neutral white balance, uniformly sharp. Unbranded fictional product. No room, kitchen, table, clutter, hands, packaging, text, logos, watermark, decorative props, borders, collage or infographic. No harsh shadow, gradient background or glossy ground reflection. High-resolution catalogue raster photo. Subject: A compact closed sandwich toaster / panini press, charcoal-black housing, brushed stainless-steel top panel, horizontal front handle and tiny unlabelled indicator lights. The front handle faces lower-right. Closed lid, no food, no cooking scene, no dangling cable."
+    },
+    {
+      "sku": "DEMO-1005",
+      "title": "Koptelefoon Wave",
+      "path": "/assets/img/demo-products/studio-v1/demo-1005.jpg",
+      "sha256": "07630f4796e77e7f0b7f8018785dc61dadc7bc56d0bdfe45a5397f2270142b1d",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Use case: product-mockup. Asset: ONE square 1:1 premium e-commerce studio product photograph, individual product only. Shared art direction for a consistent catalogue: pure seamless white (#FFFFFF) background and white ground, only a very faint small soft contact shadow under the object. Camera slightly elevated, 20 degrees above and 30 degrees to the product's front-left: front and left side visible, front points toward lower-right. Center the whole product, occupying 75–80% of canvas, generous white margins, no clipping. Crisp photorealistic materials, soft large studio light from upper-left, neutral white balance, uniformly sharp. Unbranded fictional product. No room, kitchen, table, clutter, hands, packaging, text, logos, watermark, decorative props, borders, collage or infographic. No harsh shadow, gradient background or glossy ground reflection. High-resolution catalogue raster photo. Subject: A premium wireless over-ear headphone in matte charcoal black, standing upright naturally on the bottom edges of both earcups. Thick soft ear cushions and a clean padded headband. Three-quarter front-left angle, earcup fronts face slightly lower-right. No microphone boom, cable, stand or branding."
+    },
+    {
+      "sku": "DEMO-1006",
+      "title": "Powerbank Go",
+      "path": "/assets/img/demo-products/studio-v1/demo-1006.jpg",
+      "sha256": "28c0b5e8b12c94e27be3d43385663040af9577ab4fba83ad807d072a422b382e",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Use case: product-mockup. Asset: ONE square 1:1 premium e-commerce studio product photograph, individual product only. Shared art direction for a consistent catalogue: pure seamless white (#FFFFFF) background and white ground, only a very faint small soft contact shadow under the object. Camera slightly elevated, 20 degrees above and 30 degrees to the product's front-left: front and left side visible, front points toward lower-right. Center the whole product, occupying 75–80% of canvas, generous white margins, no clipping. Crisp photorealistic materials, soft large studio light from upper-left, neutral white balance, uniformly sharp. Unbranded fictional product. No room, kitchen, table, clutter, hands, packaging, text, logos, watermark, decorative props, borders, collage or infographic. No harsh shadow, gradient background or glossy ground reflection. High-resolution catalogue raster photo. Subject: A compact slim charcoal-black powerbank, softly rounded rectangular body lying flat in the shared diagonal three-quarter orientation, its USB-C port face pointing toward lower-right. Four tiny unlabelled status LEDs. Show the whole device. No cable, phone, hand, markings or packaging."
+    },
+    {
+      "sku": "DEMO-1007",
+      "title": "Bluetoothspeaker Beat",
+      "path": "/assets/img/demo-products/studio-v1/demo-1007.jpg",
+      "sha256": "c8e501ff13c246848b4001a99d1994dd171f4a5f1497b536497056b569fe601c",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Use case: product-mockup. Asset: ONE square 1:1 premium e-commerce studio product photograph, individual product only. Shared art direction for a consistent catalogue: pure seamless white (#FFFFFF) background and white ground, only a very faint small soft contact shadow under the object. Camera slightly elevated, 20 degrees above and 30 degrees to the product's front-left: front and left side visible, front points toward lower-right. Center the whole product, occupying 75–80% of canvas, generous white margins, no clipping. Crisp photorealistic materials, soft large studio light from upper-left, neutral white balance, uniformly sharp. Unbranded fictional product. No room, kitchen, table, clutter, hands, packaging, text, logos, watermark, decorative props, borders, collage or infographic. No harsh shadow, gradient background or glossy ground reflection. High-resolution catalogue raster photo. Subject: A compact portable Bluetooth speaker, charcoal-black woven acoustic fabric and clean dark rubber ends, a modern slightly rounded rectangular body resting horizontally, front grille facing lower-right, viewed from elevated front-left. Subtle unlabelled top buttons only. No strap, cables, logos or props."
+    },
+    {
+      "sku": "DEMO-1008",
+      "title": "Waterkoker Pure",
+      "path": "/assets/img/demo-products/studio-v1/demo-1008.jpg",
+      "sha256": "2873ee2be8832835e4be6e8a5299fc03b934a8ec0580056826ce5b08a778c4e9",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Use case: product-mockup. Asset: ONE square 1:1 premium e-commerce studio product photograph, individual product only. Shared art direction for a consistent catalogue: pure seamless white (#FFFFFF) background and white ground, only a very faint small soft contact shadow under the object. Camera slightly elevated, 20 degrees above and 30 degrees to the product's front-left: front and left side visible, front points toward lower-right. Center the whole product, occupying 75–80% of canvas, generous white margins, no clipping. Crisp photorealistic materials, soft large studio light from upper-left, neutral white balance, uniformly sharp. Unbranded fictional product. No room, kitchen, table, clutter, hands, packaging, text, logos, watermark, decorative props, borders, collage or infographic. No harsh shadow, gradient background or glossy ground reflection. High-resolution catalogue raster photo. Subject: An elegant compact electric kettle, brushed stainless steel body with a matte charcoal-black handle, lid and circular base. Spout points toward lower-right, handle toward upper-left, viewed from the shared slightly elevated three-quarter angle. No cord visible, no cup, no steam."
+    },
+    {
+      "sku": "DEMO-1009",
+      "title": "USB-hub Connect",
+      "path": "/assets/img/demo-products/studio-v1/demo-1009.jpg",
+      "sha256": "a6d97ec9c0d00befabb4f7a1d54f11994575868e6c1adfdba129305953c6856b",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Use case: product-mockup. Asset: ONE square 1:1 premium e-commerce studio product photograph, individual product only. Shared art direction for a consistent catalogue: pure seamless white (#FFFFFF) background and white ground, only a very faint small soft contact shadow under the object. Camera slightly elevated, 20 degrees above and 30 degrees to the product's front-left: front and left side visible, front points toward lower-right. Center the whole product, occupying 75–80% of canvas, generous white margins, no clipping. Crisp photorealistic materials, soft large studio light from upper-left, neutral white balance, uniformly sharp. Unbranded fictional product. No room, kitchen, table, clutter, hands, packaging, text, logos, watermark, decorative props, borders, collage or infographic. No harsh shadow, gradient background or glossy ground reflection. High-resolution catalogue raster photo. Subject: A compact premium four-port USB-C hub / adapter, dark graphite anodized aluminium rectangular body. The long side with four evenly spaced rectangular USB ports faces toward lower-right. A short neat integral USB-C lead curls gently behind the unit toward upper-left. No other device, no desk, no labels."
+    },
+    {
+      "sku": "DEMO-1010",
+      "title": "Webcam Focus",
+      "path": "/assets/img/demo-products/studio-v1/demo-1010.jpg",
+      "sha256": "8e6fbd16cb202723b3ac7eefc4b467a7f8981585e5cd7d1bef44546f33d951bb",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Use case: product-mockup. Asset: ONE square 1:1 premium e-commerce studio product photograph, individual product only. Shared art direction for a consistent catalogue: pure seamless white (#FFFFFF) background and white ground, only a very faint small soft contact shadow under the object. Camera slightly elevated, 20 degrees above and 30 degrees to the product's front-left: front and left side visible, front points toward lower-right. Center the whole product, occupying 75–80% of canvas, generous white margins, no clipping. Crisp photorealistic materials, soft large studio light from upper-left, neutral white balance, uniformly sharp. Unbranded fictional product. No room, kitchen, table, clutter, hands, packaging, text, logos, watermark, decorative props, borders, collage or infographic. No harsh shadow, gradient background or glossy ground reflection. High-resolution catalogue raster photo. Subject: A modern compact charcoal-black USB webcam on a simple integrated monitor clip, large centered glass lens in a rounded rectangular front housing. The front lens face points slightly toward lower-right, front and left side visible. Whole webcam and clip shown; no monitor, wire or stand accessory."
+    },
+    {
+      "sku": "DEMO-1011",
+      "title": "Toetsenbord Type",
+      "path": "/assets/img/demo-products/studio-v1/demo-1011.jpg",
+      "sha256": "fd362e8acb94d3a7140a9a0f88bf9ca1a41224422fcc5bb7fc1f5a00d0d69e3d",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Use case: precise-object-edit. Image 1 is the keyboard product photograph to adjust. Image 2 (coffee machine) is an ORIENTATION AND CAMERA REFERENCE ONLY; do not add the coffee machine. Keep the exact keyboard product, clean dark materials and square white-background catalogue treatment. Change the keyboard's camera view so it matches the reference: slightly elevated FRONT-LEFT three-quarter perspective, not a top-down flat lay. The front of the keyboard (spacebar / near long edge) faces toward the LOWER RIGHT; its left end/side is visible on the left, just like the reference product's left side. Make the keyboard feel angled toward the right in the same coherent catalogue direction as the reference. Keep the complete keyboard centered with generous white margins, sharp edges, no cropping, no logo. Pure white background and only a faint soft short contact shadow. No table, props or added text. Return only the adjusted keyboard image.",
+      "orientationReference": "DEMO-1001"
+    },
+    {
+      "sku": "DEMO-1012",
+      "title": "Slimme stekker Pico",
+      "path": "/assets/img/demo-products/studio-v1/demo-1012.jpg",
+      "sha256": "3046da217329d2305fa333396077c77c7d303dde035b30606c17ae092f5ad579",
+      "width": 1254,
+      "height": 1254,
+      "prompt": "Use case: product-mockup. Asset: ONE square 1:1 premium e-commerce studio product photograph, individual product only. Shared art direction for a consistent catalogue: pure seamless white (#FFFFFF) background and white ground, only a very faint small soft contact shadow under the object. Camera slightly elevated, 20 degrees above and 30 degrees to the product's front-left: front and left side visible, front points toward lower-right. Center the whole product, occupying 75–80% of canvas, generous white margins, no clipping. Crisp photorealistic materials, soft large studio light from upper-left, neutral white balance, uniformly sharp. Unbranded fictional product. No room, kitchen, table, clutter, hands, packaging, text, logos, watermark, decorative props, borders, collage or infographic. No harsh shadow, gradient background or glossy ground reflection. High-resolution catalogue raster photo. Subject: A compact modern white smart plug for a European wall socket, rounded square white housing, recessed circular EU female socket facing toward lower-right, two metal EU mains pins at rear toward upper-left, a tiny understated unlabelled button on the visible left side. All parts intact, clean realistic proportions. No wall, wire, other device, packaging or brand."
+    }
+  ]
+}

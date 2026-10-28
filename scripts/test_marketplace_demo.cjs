@@ -5,7 +5,7 @@ const fs=require('node:fs'),path=require('node:path');
 const s=D.createState(),p=D.product(s,'DEMO-1001');
 const photos=require('../assets/js/demo-product-images.js');
 assert.equal(s.products.length,12);assert(new Set(s.products.map(p=>p.category)).size>=5);
-for(const product of s.products){assert.equal(product.image,photos[product.sku].path);assert(fs.statSync(path.join(__dirname,'..',product.image)).size>1000);assert(photos[product.sku].author);assert(photos[product.sku].licenseUrl.startsWith('https://creativecommons.org/'));}
+for(const product of s.products){assert.equal(product.image,photos[product.sku].path);assert(fs.statSync(path.join(__dirname,'..',product.image)).size>1000);assert(photos[product.sku].author);assert.equal(photos[product.sku].kind,'ai-generated');assert.equal(photos[product.sku].source,'/demo/beeldbronnen/');assert(product.image.startsWith('/assets/img/demo-products/studio-v1/'));}
 const pickFixture=D.createState();
 assert.deepEqual(D.openArticles(pickFixture).map(p=>[p.sku,p.qty]),[['DEMO-1001',1],['DEMO-1002',2],['DEMO-1004',1],['DEMO-1005',2],['DEMO-1006',1]]);
 pickFixture.orders.push({id:'DEMO-EXTRA',sku:'DEMO-1002',qty:3,status:'Te picken'});
