@@ -33,6 +33,10 @@
   if (panels.some(panel => panel.dataset.contactTopic === requestedTopic)) {
     choice.value = requestedTopic;
   }
+  const requestedCollaboration = new URLSearchParams(window.location.search).get('samenwerking');
+  if (choice.value === 'team' && teamType && [...teamType.options].some(option => option.value && option.value === requestedCollaboration)) {
+    teamType.value = requestedCollaboration;
+  }
 
   choice.addEventListener('change', () => update(true));
   teamType?.addEventListener('change', updateTeam);

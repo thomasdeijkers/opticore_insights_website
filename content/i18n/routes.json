@@ -1,4 +1,9 @@
 {
+  "/werken-bij/": {
+    "de": "/de/zusammenarbeiten/",
+    "en": "/en/work-with-us/",
+    "fr": "/fr/collaborer/"
+  },
   "/": {
     "de": "/de/",
     "en": "/en/",

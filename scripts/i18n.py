@@ -21,7 +21,7 @@ VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'met
 DISPLAY_ATTRS = {'alt', 'title', 'placeholder', 'aria-label', 'aria-description', 'data-mail-label', 'data-screen-title', 'data-label'}
 META_TEXT = {'description', 'og:title', 'og:description', 'twitter:title', 'twitter:description'}
 SCHEMA_TEXT = {'name', 'description', 'headline', 'text', 'caption', 'articleSection', 'keywords'}
-VERSION = '20261028-action-hierarchy'
+VERSION = '20261028-careers'
 
 
 def clean(value):
@@ -36,6 +36,25 @@ def strip_integration(source):
     return re.sub(r'<!-- i18n:(?:head|selector|form) -->.*?<!-- /i18n -->', '', source, flags=re.S)
 
 
+def collaboration_navigation(source, canonical):
+    """Keep the recruitment page discoverable in the shared public navigation."""
+    def menu(match):
+        block = match[0]
+        if 'href="/werken-bij/"' in block:
+            return block
+        current = ' aria-current="page"' if canonical == '/werken-bij/' else ''
+        return re.sub(r'(<a\b[^>]*href="/over/"[^>]*>.*?</a>)',
+                      lambda m: m[1] + f'<a href="/werken-bij/"{current}>Samenwerken</a>', block, count=1, flags=re.S)
+    def footer(match):
+        block = match[0]
+        if 'href="/werken-bij/"' in block:
+            return block
+        return re.sub(r'(<li><a\b[^>]*href="/over/"[^>]*>.*?</a></li>)',
+                      lambda m: m[1] + '<li><a href="/werken-bij/">Samenwerken</a></li>', block, count=1, flags=re.S)
+    source = re.sub(r'<nav\b(?=[^>]*\bdata-menu(?:[ >]))[^>]*>.*?</nav>', menu, source, flags=re.S)
+    return re.sub(r'<nav\b(?=[^>]*aria-label="Verder kijken in de footer")[^>]*>.*?</nav>', footer, source, flags=re.S)
+
+
 def sources():
     result = {}
     for path in ROOT.rglob('index.html'):
@@ -45,7 +64,7 @@ def sources():
         source = strip_integration(path.read_text(encoding='utf-8'))
         match = re.search(r'rel="canonical" href="' + re.escape(BASE) + r'([^"]+)"', source)
         if match:
-            result[match[1]] = (path, source)
+            result[match[1]] = (path, collaboration_navigation(source, match[1]))
     return dict(sorted(result.items()))
 
 
