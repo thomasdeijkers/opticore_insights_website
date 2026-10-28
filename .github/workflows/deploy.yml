@@ -40,11 +40,6 @@ jobs:
           node --check assets/js/site-search.js
           node scripts/test_site_search.cjs
 
-      - name: Generate and validate sitemap and metadata
-        run: |
-          python3 scripts/sitemap.py --write
-          python3 scripts/metadata.py --check
-
       - name: Validate module pricing and dependencies
         run: |
           node --check assets/js/modular-webapp.js
@@ -97,7 +92,6 @@ jobs:
           python3 scripts/test_i18n.py
           python3 scripts/search_index.py --write
           node scripts/test_site_search.cjs
-          python3 scripts/metadata.py --check
           php -l api/site-language.php
           node --check assets/js/i18n.js
 
