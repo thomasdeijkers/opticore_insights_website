@@ -50,3 +50,10 @@ De bestaande `/modulaire-webapp/` beantwoordt nu ook de vraag wanneer een webapp
 Aanleiding: de gebruiker verwees naar https://schmeits.com/webapplicatie-laten-maken#kosten. Alleen de onderwerpen keuze, kostenopbouw, aanpak en nazorg zijn als inspiratie gebruikt. De teksten zijn oorspronkelijk en toegespitst op onze bestaande modules en marketplacepraktijk. Geen concurrentprijzen, tijdsplanning, reviews, eigendomsbeloften of ontwikkeltechniek overgenomen.
 
 De start blijft € 995 inrichting plus € 149 per maand, exclusief btw en verbruik. Aanvullend maatwerk wordt apart begroot; een ingerichte omgeving betekent niet automatisch overdracht van de broncode. De aanpak beschrijft selectie, API- en gegevenscontrole, testen en ondersteuning zonder een vaste doorlooptijd te beloven. Alle nieuwe zichtbare tekst en metadata staan ook in Duits, Engels en Frans in `content/i18n/terminology.json`.
+
+
+## Twee gerichte modules, 28 oktober 2026
+
+De catalogus telt 15 modules: drie inbegrepen en twaalf betaalde uitbreidingen. Listingoptimalisatie kost € 100 inrichting en € 10 per maand en vereist Productbeheer (€ 100 / € 10). Picklijsten en verzending kost € 200 inrichting en € 20 per maand en vereist Magazijn en logistiek (€ 200 / € 20) plus de inbegrepen orders. De bedragen zijn afgesplitst van de bestaande product- en magazijnmodules. Het complete pakket blijft daardoor € 3.395 inrichting en € 419 per maand; het startpakket blijft € 995 en € 149. Adviesprijzen blijven 20% hoger. Btw, databaseverbruik en eventuele AI-aanvragen blijven apart.
+
+Elke nieuwe module heeft vier echte demoschermen in darkmode, voor drie schermformaten en vier talen. De nieuwe modulelinks openen de bestaande listingoptimalisatie en de definitieve picklijst. De calculator telt voorgangers één keer mee; contactoverzicht, gebruikskosten, FAQ en prijsvoorbeelden volgen de nieuwe indeling. De complete pakketlink bevat ook de Product Image Studio. De laatste desktoprij telt nu drie tegels.

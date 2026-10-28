@@ -27,7 +27,7 @@
     {"id": "omzet", "label": "Omzetrapportage", "database": "Verkopen, retouren, kosten en historie.", "ai": "Geen AI nodig voor gewone omzet- en margeberekeningen."},
     {"id": "voorraad", "label": "Voorraad", "database": "Voorraadstanden, reserveringen en artikelhistorie.", "ai": "Geen AI nodig voor voorraadstanden en dekking."},
     {"id": "orders", "label": "Orders en retouren", "database": "Orders, orderregels, retouren en verwerkingsstatussen.", "ai": "Alleen bij afgesproken AI-antwoordconcepten voor klantvragen; gewone orderverwerking gebruikt geen AI."},
-    {"id": "producten", "label": "Productbeheer en publicaties", "database": "Artikelen, productvelden, kanaalstatussen en concepten.", "ai": "Tekstaanvragen bij listingoptimalisatie en tekstconcepten. Beeldgeneratie valt onder de aparte Product Image Studio."},
+    {"id": "producten", "label": "Productbeheer en publicaties", "database": "Artikelen, productvelden, kanaalstatussen en concepten.", "ai": "Geen AI nodig voor gewone artikelvelden en publicatiestatussen."},
     {"id": "beeldstudio", "label": "Product Image Studio", "database": "Beeldsetmetadata, huisstijl, volgorde en publicatiestatussen. Productfoto’s zijn bestandsopslag, geen databasevolume.", "ai": "Beeldopdrachten bij genereren en bewerken. Een standaardreeks van zes beelden telt als zes beeldopdrachten; elke volgende AI-bewerking telt apart. Gewoon bekijken, ordenen en downloaden gebruikt geen AI."},
     {"id": "inkoop", "label": "Inkoop en bestellen", "database": "Leveranciers, bestellingen, ontvangsten en besteladviezen.", "ai": "Geen AI nodig voor het standaard besteladvies en de ontvangstverwerking."},
     {"id": "marketing", "label": "Marketing en ranking", "database": "Campagnes, zoekwoordmetingen, prestaties en actiehistorie.", "ai": "Alleen AI-analyse of AI-voorstellen die je laat uitvoeren. Rankingmetingen en gewone advertentie-API-koppelingen zijn geen AI-aanvragen."},
@@ -36,6 +36,8 @@
     {"id": "forecasting", "label": "Forecasting", "database": "Verkoophistorie, seizoentrends en opgeslagen scenario’s.", "ai": "De standaard forecast is een berekening en veroorzaakt geen AI-aanvragen."},
     {"id": "controles", "label": "Signalen en controles", "database": "Grenswaarden, signalen en opvolging.", "ai": "Regelcontroles gebruiken geen AI. Aanvullende AI-duiding alleen als je die afspreekt."},
     {"id": "klantenservice", "label": "Klantenservice en tickets", "database": "Eigen klantgegevens, orderrelaties, status en historie.", "ai": "Tekstaanvragen alleen bij ingeschakelde AI-antwoordconcepten; gewone ticketafhandeling gebruikt geen AI."},
-    {"id": "facturatie", "label": "Facturen en offertes", "database": "Eigen verkooporders, factuurregels, offertes en documentstatussen.", "ai": "Geen AI nodig voor gewone facturen, offertes en btw-berekeningen."}
+    {"id": "facturatie", "label": "Facturen en offertes", "database": "Eigen verkooporders, factuurregels, offertes en documentstatussen.", "ai": "Geen AI nodig voor gewone facturen, offertes en btw-berekeningen."},
+    {"id": "listing", "label": "Listingoptimalisatie", "database": "Productvelden, zoektermen en beoordeelde tekstvoorstellen.", "ai": "AI-tekstaanvragen worden apart berekend."},
+    {"id": "picken", "label": "Picklijsten en verzending", "database": "Orderregels, pickaantallen, restanten en verzendstatussen.", "ai": "Geen AI nodig voor picklijsten en orderstatussen."}
   ]
 }

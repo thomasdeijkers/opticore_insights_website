@@ -68,17 +68,10 @@
       "page": "klanten"
     },
     {
-      "id": "pickrestanten",
-      "title": "Deelpicks en openstaande restanten",
-      "page": "orders-pakken",
-      "tab": "not_picked"
-    },
-    {
-      "id": "pickbevestiging",
-      "title": "Pickaantal per artikel bevestigen",
-      "page": "orders-pakken",
-      "tab": "to_pick",
-      "click": ".picklist-item:nth-child(2) .picklist-mark"
+      "id": "orderdetail",
+      "title": "Orderdetails en vervolgstap",
+      "page": "orders",
+      "click": ".workspace-root [data-w-action=\"order\"]"
     }
   ],
   "producten": [
@@ -89,9 +82,9 @@
     },
     {
       "id": "details",
-      "title": "Listingoptimalisatie",
-      "page": "verbeteringen",
-      "modal": "[data-w-host=\"listing\"]"
+      "title": "Productvelden per artikel",
+      "page": "artikelkaart",
+      "click": "[data-w-action=\"article-view\"][data-id=\"content\"]"
     },
     {
       "id": "verrijken",
@@ -241,12 +234,6 @@
       "page": "locatie-zoeken"
     },
     {
-      "id": "orders-pakken",
-      "title": "Picklijst per magazijnlocatie",
-      "page": "orders-pakken",
-      "tab": "to_pick"
-    },
-    {
       "id": "labels",
       "title": "Productlabels",
       "page": "productlabels"
@@ -380,6 +367,59 @@
       "title": "Opgeslagen productoffertes",
       "page": "offertes",
       "tab": "quotes"
+    }
+  ],
+  "listing": [
+    {
+      "id": "overzicht",
+      "title": "Listingkwaliteit per artikel",
+      "page": "verbeteringen"
+    },
+    {
+      "id": "analyse",
+      "title": "Listingcontroles en verbeterpunten",
+      "page": "verbeteringen",
+      "focus": ".workspace-root>.workspace-panel .workspace-details[open]",
+      "align": "start",
+      "expand": ".workspace-root>.workspace-panel .workspace-details>summary"
+    },
+    {
+      "id": "tekst",
+      "title": "Tekstvoorstel controleren",
+      "page": "verbeteringen",
+      "modal": "[data-w-host=\"listing\"]"
+    },
+    {
+      "id": "velden",
+      "title": "Bestaande productvelden",
+      "page": "artikelkaart",
+      "click": "[data-w-action=\"article-view\"][data-id=\"content\"]"
+    }
+  ],
+  "picken": [
+    {
+      "id": "overzicht",
+      "title": "Picklijst per magazijnlocatie",
+      "page": "orders-pakken",
+      "tab": "to_pick"
+    },
+    {
+      "id": "restanten",
+      "title": "Deelpicks en openstaande restanten",
+      "page": "orders-pakken",
+      "tab": "not_picked"
+    },
+    {
+      "id": "bevestigen",
+      "title": "Pickaantal per artikel bevestigen",
+      "page": "orders-pakken",
+      "tab": "to_pick",
+      "click": ".picklist-item:nth-child(2) .picklist-mark"
+    },
+    {
+      "id": "verzending",
+      "title": "Orderstatus en verzending",
+      "page": "orders"
     }
   ]
 }

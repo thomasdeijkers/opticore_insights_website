@@ -44,11 +44,11 @@ assert.deepEqual(await p.locator('.workspace-root .demo-dashboard-quantity').all
 await p.locator('[data-demo-find]').click();
 for(const text of ['Bedrijfswaardering','Keuzehulpen','Werkinstructies','Heating Hub'])assert(!(await p.locator('.workspace-search-results').innerText()).includes(text));
 await close();console.log('PASS removed screens, old links, search and image-only dashboard articles');
-for(const [module,title] of [['klantenservice','Mailtickets'],['facturatie','Facturen']]){
+for(const [module,title] of [['klantenservice','Mailtickets'],['facturatie','Facturen'],['listing','Listing optimalisatie'],['picken','Picklijst']]){
  await p.goto(new URL('demo/modulaire-webapp/?module='+module,base).href,{waitUntil:'networkidle'});
  await p.locator('.workspace-complete .workspace-root').waitFor();
  assert.equal(await p.locator('[data-demo-title]').textContent(),title);
 }
-console.log('PASS Klantenservice and Facturatie module entry links');
+console.log('PASS customer service, invoicing, listing optimisation and picking module entry links');
 assert.deepEqual(errors,[]);assert.deepEqual(blocked,[]);console.log('PASS back navigation, theme preservation, reset isolation, no JS errors and no external requests');
 }finally{await b.close();}})().catch(e=>{console.error(e);process.exitCode=1});

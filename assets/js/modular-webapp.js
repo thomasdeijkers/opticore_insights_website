@@ -33,18 +33,18 @@
   },
   "logistiek": {
     "label": "Magazijn en logistiek",
-    "setup": 400,
+    "setup": 200,
     "requires": [
       "voorraad",
       "orders"
     ],
-    "currentMonthly": 40
+    "currentMonthly": 20
   },
   "producten": {
     "label": "Productbeheer en publicaties",
-    "setup": 200,
+    "setup": 100,
     "requires": [],
-    "currentMonthly": 20
+    "currentMonthly": 10
   },
   "beeldstudio": {
     "label": "Product Image Studio",
@@ -79,13 +79,17 @@
   "klantenservice": {
     "label": "Klantenservice en tickets",
     "setup": 200,
-    "requires": ["orders"],
+    "requires": [
+      "orders"
+    ],
     "currentMonthly": 20
   },
   "facturatie": {
     "label": "Facturen en offertes",
     "setup": 200,
-    "requires": ["orders"],
+    "requires": [
+      "orders"
+    ],
     "currentMonthly": 20
   },
   "controles": {
@@ -94,6 +98,23 @@
     "requires": [
       "omzet",
       "voorraad"
+    ],
+    "currentMonthly": 20
+  },
+  "listing": {
+    "label": "Listingoptimalisatie",
+    "setup": 100,
+    "requires": [
+      "producten"
+    ],
+    "currentMonthly": 10
+  },
+  "picken": {
+    "label": "Picklijsten en verzending",
+    "setup": 200,
+    "requires": [
+      "logistiek",
+      "orders"
     ],
     "currentMonthly": 20
   }

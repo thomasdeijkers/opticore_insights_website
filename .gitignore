@@ -32,3 +32,8 @@ backups/
 
 # Reviewed generated product artwork is restored from a pinned media release.
 /assets/img/demo-products/studio-v1/
+
+# Split-module captures are generated during deployment.
+/assets/img/module-examples/client-listing-*-dark.jpg
+/assets/img/module-examples/client-picken-*-dark.jpg
+/assets/img/module-examples/client-orders-orderdetail-*-dark.jpg
