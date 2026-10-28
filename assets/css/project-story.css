@@ -8,6 +8,7 @@
 .case-meta dd{font-size:15px;margin:5px 0 0;color:var(--ink)}
 .case-screen{margin:30px 0 38px;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:var(--soft)}
 .case-screen-hero{margin-top:10px;margin-bottom:0}
+.screen-gallery-stage+[data-screen-open-all]{margin-top:24px}
 .case-screen>a{display:block}
 .case-screen img{width:100%;height:auto}
 .case-screen-hero img{max-height:650px;object-fit:contain;background:#e8eef3}
