@@ -1,0 +1,36 @@
+/* Buyer guidance stays compact until the visitor asks for more detail. */
+.webapp-topic-nav{margin-top:24px;max-width:100%}
+.webapp-topic-nav>p{margin:0 0 10px;font-size:13px;font-weight:650;color:var(--muted)}
+.webapp-topic-nav ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;list-style:none;margin:0;padding:0}
+.webapp-topic-nav li{margin:0;min-width:0}
+body .webapp-topic-nav a.webapp-topic-link[href]{display:flex;justify-content:flex-start;gap:9px;width:100%;height:100%;min-height:44px;margin:0;padding:9px 12px;text-align:left;font-size:13px;line-height:1.4;background:#fff3e9;border:1px solid #f0cfb7;color:#923b16;border-radius:6px}
+body .webapp-topic-nav a.webapp-topic-link[href]:hover{background:#ffe4ce;border-color:#dca67e;color:#733011}
+.webapp-guide-icon{width:24px;height:24px;flex:none;display:block}
+.webapp-topic-nav .webapp-guide-icon{width:19px;height:19px}
+.webapp-knowledge .section-heading{max-width:830px}
+.webapp-knowledge-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.webapp-knowledge-card{min-width:0;display:flex;flex-direction:column;align-self:stretch;background:#fff;border:1px solid var(--line);border-radius:10px;padding:24px}
+.webapp-knowledge-grid:has(.webapp-more[open])>.webapp-knowledge-card{align-self:start}
+.webapp-knowledge-title{display:flex;align-items:center;gap:13px;margin-bottom:14px}
+.webapp-knowledge-title>.webapp-guide-icon{box-sizing:content-box;padding:10px;background:#fff3e9;color:#aa4417;border-radius:10px}
+.webapp-knowledge-title h3{font-size:20px;margin:0;text-wrap:pretty}
+.webapp-knowledge-card>p{font-size:16px;line-height:1.65;margin:0;flex:1}
+.webapp-more{border-top:1px solid var(--line);margin-top:20px}
+.webapp-more>summary{display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none;cursor:pointer;padding-top:14px;color:#923b16;font-size:14px;font-weight:650;min-height:40px}
+.webapp-more>summary::-webkit-details-marker{display:none}
+.webapp-more>summary::after{content:'+';font-size:22px;line-height:1;font-weight:400}
+.webapp-more[open]>summary::after{content:'−'}
+.webapp-more>summary:hover{color:#733011}
+.webapp-more>div{padding-top:16px}
+.webapp-more>div>p{font-size:16px;line-height:1.7;margin:0 0 16px}
+.webapp-more>div>p:last-child{margin-bottom:0}
+.webapp-project-proof .webapp-knowledge-card>img{object-fit:contain;object-position:left center;width:180px;height:60px;max-width:100%;margin-bottom:22px}
+.webapp-project-proof h3{font-size:21px;max-width:440px}
+.webapp-project-proof .text-link{margin-top:22px!important;align-self:flex-start}
+@media(max-width:760px){
+ .webapp-topic-nav ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .webapp-knowledge-grid{grid-template-columns:minmax(0,1fr);gap:14px}
+ .webapp-knowledge-card{padding:20px}
+ .webapp-knowledge-title h3{font-size:19px}
+ .webapp-knowledge-title>.webapp-guide-icon{padding:8px}
+}
