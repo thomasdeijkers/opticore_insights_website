@@ -276,6 +276,9 @@ def collect():
         if path.name == 'i18n.js':
             continue
         for value in js_strings(path.read_text(encoding='utf-8')):
+            # PHP session/storage keys are identifiers, never displayed copy.
+            if path.suffix == '.php' and re.fullmatch(r'[a-z]+(?:_[a-z]+)+', value):
+                continue
             if '<' in value and '>' in value:
                 doc = Document()
                 try:
