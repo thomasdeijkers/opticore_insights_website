@@ -1,29 +1,60 @@
-/* Responsive dashboard preview with phone/tablet/desktop captures. */
-.webapp-demo-teaser{width:100%;max-width:390px;justify-self:center;min-width:0;border:1px solid #aac0d0;border-radius:11px;overflow:hidden;background:#fff;box-shadow:0 16px 40px #17324415}
+/* The preview keeps the app image sharp and scrollable inside a responsive device. */
+.webapp-demo-teaser{width:100%;max-width:390px;justify-self:center;min-width:0;border:1px solid #aac0d0;border-radius:13px;overflow:hidden;background:#fff;box-shadow:0 16px 40px #17324415}
 .webapp-demo-teaser-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;background:#fff}
 .webapp-demo-teaser-heading p{font-size:11px;font-weight:650;color:var(--muted);margin:0 0 4px}
 .webapp-demo-teaser-heading h2{font-size:22px;line-height:1.25;margin:0;color:var(--ink)}
 .webapp-demo-teaser-heading>span{flex:none;font-size:11px;line-height:1.4;color:#1c526c;background:#e8f2f7;border:1px solid #c5dce7;border-radius:20px;padding:5px 9px}
-.webapp-demo-teaser-scroll{display:block;height:560px;overflow-y:auto;overflow-x:hidden;background:#031a34;scrollbar-width:thin;scrollbar-color:#5c83a9 #102c4d;touch-action:pan-y;cursor:pointer;border-block:1px solid #304e74}
-.webapp-demo-teaser-scroll picture,.webapp-demo-teaser-scroll img{display:block;width:100%;height:auto}
-.webapp-demo-teaser-scroll:focus-visible{outline:3px solid var(--link);outline-offset:-3px}
 .webapp-demo-teaser-footer{padding:14px 20px}
 .webapp-demo-teaser-footer p{font-size:13px;line-height:1.6;margin:0;color:var(--muted)}
-
-@media(max-width:560px) and (orientation:portrait){.webapp-demo-teaser-heading{padding:15px 16px;gap:10px}.webapp-demo-teaser-heading h2{font-size:21px}.webapp-demo-teaser-heading>span{font-size:10px;padding:5px 8px}.webapp-demo-teaser-scroll{height:560px}.webapp-demo-teaser-footer{padding:13px 16px}.webapp-demo-teaser-footer p{font-size:12px}}
-
-@media(max-width:560px) and (orientation:portrait){.webapp-demo-teaser{max-width:360px}.webapp-demo-teaser-heading h2{font-size:20px}}
-
-/* Use the same device layout as the full demo, with a separate sharp capture. */
-@media(min-width:1101px){.webapp-demo-teaser{max-width:none}}
-@media(min-width:761px) and (max-width:1100px){.home-intro-grid,.webapp-intro-grid{grid-template-columns:1fr}.webapp-demo-teaser{max-width:834px}}
-@media(max-width:760px) and (orientation:portrait){.home-intro-grid,.webapp-intro-grid{grid-template-columns:1fr}.webapp-demo-teaser{max-width:360px}}
-
-/* Landscape phones use a wide tablet preview, including small and large phones. */
-@media(max-width:760px) and (orientation:landscape), (orientation:landscape) and (pointer:coarse){
+.webapp-demo-device-stage{display:grid;justify-items:center;min-width:0;padding:26px 42px 38px;border-block:1px solid #e2e9ef;background:radial-gradient(ellipse at 50% 65%,#dce6ef 0,#f4f7fa 65%,#fafbfd 100%)}
+.webapp-demo-device{--device-type:laptop;--screen-ratio:16/10;--screen-corners:5px;position:relative;box-sizing:border-box;width:100%;max-width:1120px;padding:17px 11px 12px;border:1px solid #64707e;border-radius:14px 14px 9px 9px;background:linear-gradient(135deg,#35414f,#101722 50%,#273240);box-shadow:inset 0 0 0 1px #ffffff22,0 20px 36px #142b4240}
+.webapp-demo-device::before{content:'';position:absolute;top:6px;left:50%;width:5px;height:5px;border:1px solid #53616c;border-radius:50%;background:#080f18;box-shadow:inset 1px 1px 1px #9bc1d633;transform:translateX(-50%)}
+.webapp-demo-device-stage .webapp-demo-device>.webapp-demo-teaser-scroll{display:block;box-sizing:border-box;width:100%;height:auto;aspect-ratio:var(--screen-ratio);overflow-y:auto;overflow-x:hidden;border:0;border-radius:var(--screen-corners);background:#031a34;scrollbar-width:none;touch-action:pan-y;cursor:pointer}
+.webapp-demo-teaser-scroll::-webkit-scrollbar{display:none}
+.webapp-demo-teaser-scroll picture,.webapp-demo-teaser-scroll img{display:block;width:100%;height:auto}
+.webapp-demo-teaser-scroll:focus-visible{outline:3px solid #78c7e0;outline-offset:-3px}
+.webapp-demo-device-buttons{display:none;pointer-events:none}
+.webapp-demo-device-base{position:absolute;z-index:1;left:-30px;right:-30px;bottom:-14px;height:18px;border:1px solid #718192;border-radius:2px 2px 45% 45%/2px 2px 12px 12px;background:linear-gradient(#d7e0e9 0,#aebdcc 38%,#708194 84%,#536375 100%);box-shadow:0 10px 15px #142b4226;pointer-events:none}
+.webapp-demo-device-base::before{content:'';position:absolute;left:43%;right:43%;top:-1px;height:5px;border-radius:0 0 7px 7px;background:#7f91a3;box-shadow:inset 0 1px 2px #30455c66}
+/* Portrait tablets retain their 3:4 screen and use the existing tablet capture. */
+@media(min-width:761px) and (max-width:1100px){
+ .home-intro-grid,.webapp-intro-grid{grid-template-columns:1fr}
+ .webapp-demo-teaser{max-width:834px}
+ .webapp-demo-device{--device-type:tablet;--screen-ratio:3/4;--screen-corners:14px;max-width:700px;padding:18px;border-radius:28px;background:linear-gradient(130deg,#46515e,#111924 35%,#1b2531);box-shadow:inset 0 0 0 1px #ffffff22,0 20px 36px #142b4233}
+ .webapp-demo-device::before{top:7px;width:5px;height:5px}
+ .webapp-demo-device-base{display:none}
+}
+/* Phones held sideways become a landscape tablet, including wide coarse-pointer phones. */
+@media(max-width:760px) and (orientation:landscape), (min-width:761px) and (max-width:1100px) and (orientation:landscape), (orientation:landscape) and (pointer:coarse){
  .home-intro-grid,.webapp-intro-grid{grid-template-columns:minmax(0,1fr)}
- .webapp-demo-teaser{max-width:834px;width:100%}
- .home-intro .home-intro-demo>.actions{max-width:834px;flex-direction:row;align-items:center}
+ .webapp-demo-teaser{max-width:1050px;width:100%}
+ .webapp-demo-device{--device-type:tablet;--screen-ratio:4/3;--screen-corners:13px;max-width:960px;padding:17px 21px;border-radius:27px;background:linear-gradient(130deg,#46515e,#111924 35%,#1b2531);box-shadow:inset 0 0 0 1px #ffffff22,0 20px 36px #142b4233}
+ .webapp-demo-device::before{top:50%;left:10px;width:5px;height:5px;transform:translate(-50%,-50%)}
+ .webapp-demo-device-base{display:none}
+ .home-intro .home-intro-demo>.actions{max-width:1050px;flex-direction:row;align-items:center}
  .home-intro-demo>.actions>.button{width:auto}
 }
-@media(orientation:landscape) and (max-height:600px){.webapp-demo-teaser-scroll{height:clamp(240px,65svh,420px)}}
+@media(max-width:760px) and (orientation:portrait){
+ .home-intro-grid,.webapp-intro-grid{grid-template-columns:1fr}
+ .webapp-demo-teaser{max-width:390px}
+ .webapp-demo-device-stage{padding:22px 14px 24px}
+ .webapp-demo-device{--device-type:phone;--screen-ratio:390/844;--screen-corners:27px;max-width:350px;padding:18px 9px 20px;border-color:#485461;border-radius:39px;background:linear-gradient(135deg,#333f4b,#101722 38%,#1e2935);box-shadow:inset 0 0 0 1px #ffffff22,0 18px 28px #142b423d}
+ .webapp-demo-device::before{top:7px;left:50%;width:37px;height:3px;border:0;border-radius:5px;background:#61707e;box-shadow:inset 0 1px 1px #0008}
+ .webapp-demo-device::after{content:'';position:absolute;bottom:8px;left:50%;width:58px;height:3px;border-radius:4px;background:#adbac6;transform:translateX(-50%)}
+ .webapp-demo-device-buttons{display:block;position:absolute;inset:0;z-index:0}
+ .webapp-demo-device-buttons::before,.webapp-demo-device-buttons::after{content:'';position:absolute;width:3px;border-radius:2px;background:#52606c}
+ .webapp-demo-device-buttons::before{top:85px;left:-3px;height:45px;box-shadow:0 52px #52606c}
+ .webapp-demo-device-buttons::after{top:128px;right:-3px;height:61px}
+ .webapp-demo-device-base{display:none}
+ .webapp-demo-teaser-heading{padding:15px 16px;gap:10px}
+ .webapp-demo-teaser-heading h2{font-size:20px}
+ .webapp-demo-teaser-heading>span{font-size:10px;padding:5px 8px}
+ .webapp-demo-teaser-footer{padding:13px 16px}
+ .webapp-demo-teaser-footer p{font-size:12px}
+}
+/* A short landscape viewport shrinks the whole tablet instead of distorting its screen. */
+@media(max-width:760px) and (orientation:landscape) and (max-height:600px), (orientation:landscape) and (pointer:coarse) and (max-height:600px){
+ .webapp-demo-device-stage{padding:18px 24px 24px}
+ .webapp-demo-device{max-width:calc((100svh - 150px)*4/3 + 44px)}
+}
+@media(min-width:1101px){.webapp-demo-teaser{max-width:none}}

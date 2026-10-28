@@ -13,17 +13,20 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
   const p=await ctx.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
   const rotate=async(width,height)=>{await p.setViewportSize({width,height});await p.waitForTimeout(120);};
   const imageDevice=async device=>{await p.waitForFunction(device=>document.querySelector('.webapp-demo-teaser-scroll img').currentSrc.includes(`dashboard-client-${device}-dark.png`),device);};
+  const checkFrame=async(type,ratio)=>{const frame=p.locator('.webapp-demo-device'),screen=await p.locator('.webapp-demo-teaser-scroll').boundingBox();assert.equal(await frame.evaluate(el=>getComputedStyle(el).getPropertyValue('--device-type').trim()),type);assert(Math.abs(screen.width/screen.height-ratio)<.005,'Correct physical screen proportions: '+type);assert(await p.locator('.webapp-demo-teaser-scroll').evaluate(el=>el.scrollHeight>el.clientHeight),'The framed dashboard remains scrollable');};
   const noOverflow=async()=>assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
   for(const route of ['', 'modulaire-webapp/']){
-   await rotate(390,844);await p.goto(new URL(route,base).href,{waitUntil:'networkidle'});await imageDevice('mobile');
+   await rotate(390,844);await p.goto(new URL(route,base).href,{waitUntil:'networkidle'});await imageDevice('mobile');await checkFrame('phone',390/844);
    for(const [width,height] of [[844,390],[667,375],[568,320],[1194,430]]){
-    await rotate(width,height);await imageDevice('tablet');
+    await rotate(width,height);await imageDevice('tablet');await checkFrame('tablet',4/3);
     const card=await p.locator('.webapp-demo-teaser').boundingBox();assert(card.width>Math.min(500,width-100),'Landscape preview uses the available width');
     assert((await p.locator('.webapp-demo-teaser-scroll').boundingBox()).height<=420);await noOverflow();
    }
-   await rotate(390,844);await imageDevice('mobile');await noOverflow();
+   await rotate(834,1112);await imageDevice('tablet');await checkFrame('tablet',3/4);await noOverflow();
+   await rotate(390,844);await imageDevice('mobile');await checkFrame('phone',390/844);await noOverflow();
   }
-  console.log('PASS phone rotation: both teasers select tablet captures and widen in landscape, then return to mobile.');
+  console.log('PASS phone/tablet frames: correct 390:844 portrait, 4:3 landscape and 3:4 tablet screens; sharp responsive captures, scrollable content and no overflow.');
+  const preview=p.locator('.webapp-demo-teaser-scroll');await preview.scrollIntoViewIfNeeded();await preview.evaluate(el=>el.scrollTop=180);assert(await preview.evaluate(el=>el.scrollTop>0));await preview.evaluate(el=>el.scrollTop=0);const opened=p.waitForEvent('popup');await preview.click();const live=await opened;await live.waitForLoadState('domcontentloaded');assert(new URL(live.url()).pathname.includes('/demo/modulaire-webapp/'));await live.close();console.log('PASS framed preview scrolling and direct click to full demo.');
   const details=p.locator('#gegevens-producten'),gallery=details.locator('[data-module-gallery]');await details.locator(':scope>summary').click();
   await p.waitForFunction(()=>document.querySelector('#gegevens-producten [data-module-gallery]')?.dataset.device==='mobile');
   assert.equal(await gallery.getAttribute('data-device'),'mobile');await gallery.locator('[data-screen-open-all]').click();
@@ -34,7 +37,7 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
    assert.equal(await viewer.locator('#image-viewer-title').textContent(),title,'Keep the selected scene while rotating');
    assert(new URL(await viewer.locator('.image-viewer-stage img').getAttribute('src'),base).pathname.endsWith(`-${device}-dark.jpg`));
   }
-  await p.keyboard.press('Escape');assert.equal(await p.evaluate(()=>document.documentElement.style.overflow),'');await noOverflow();
+  await p.keyboard.press('Escape');await viewer.waitFor({state:'hidden'});await p.waitForFunction(()=>document.documentElement.style.overflow==='');assert.equal(await p.evaluate(()=>document.documentElement.style.overflow),'');await noOverflow();
   console.log('PASS open viewer rotation: tablet images, retained scene, portrait recovery and scrolling.');
   await p.goto(new URL('demo/modulaire-webapp/?page=dashboard&theme=dark',base).href,{waitUntil:'networkidle'});
   await p.locator('.workspace-root [data-channel-detail=bol]>summary').click();
@@ -48,7 +51,7 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
   }
   assert.deepEqual(errors,[]);await ctx.close();
   const desktop=await browser.newContext({viewport:{width:1440,height:900}});await demoBrowserSession(desktop,base);const d=await desktop.newPage();
-  await d.goto(new URL('',base).href,{waitUntil:'networkidle'});assert((await d.locator('.webapp-demo-teaser img').evaluate(i=>i.currentSrc)).includes('-desktop-dark.png'));
+  await d.goto(new URL('',base).href,{waitUntil:'networkidle'});const laptop=await d.locator('.webapp-demo-teaser-scroll').boundingBox();assert(Math.abs(laptop.width/laptop.height-16/10)<.005);assert.equal(await d.locator('.webapp-demo-device').evaluate(el=>getComputedStyle(el).getPropertyValue('--device-type').trim()),'laptop');assert.notEqual(await d.locator('.webapp-demo-device-base').evaluate(el=>getComputedStyle(el).display),'none');assert((await d.locator('.webapp-demo-teaser img').evaluate(i=>i.currentSrc)).includes('-desktop-dark.png'));
   await d.setViewportSize({width:1280,height:500});await d.waitForTimeout(120);assert((await d.locator('.webapp-demo-teaser img').evaluate(i=>i.currentSrc)).includes('-desktop-dark.png'),'Short desktop windows stay desktop');
   await desktop.close();console.log('PASS demo rotation: compact tablet layout, working menu, unchanged data/theme, no overflow; desktop stays desktop.');
  }finally{await browser.close();}
