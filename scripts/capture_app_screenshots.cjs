@@ -55,7 +55,7 @@ const records=[];
    if(name.startsWith('management-'))url=app('dashboard');
    else if(name.startsWith('forecast-'))url=app('forecasting');
    else if(name.startsWith('stock-'))url=app('voorraad');
-   else if(name.startsWith('ranking-')){url=app('marketing','details');if(name==='ranking-mobile.jpg')expand='.workspace-root .workspace-details>summary';}
+   else if(name.startsWith('ranking-')){url=name==='ranking-overview-mobile.jpg'?new URL('demo/modulaire-webapp/?page=bol-ranking&tab=movers&theme=dark',site).href:app('marketing','details');}
    else if(name.startsWith('marketing-'))url=name==='marketing-overview-mobile.jpg'?app('marketing'):app('marketing','overzicht','agent');
    else if(name.startsWith('listing-')){url=app('producten','details');if(name==='listing-editor-mobile.jpg')modal='[data-w-host="listing"]';}
    await capture(url,'examples/'+newPath(item.file),item.width,item.height,{modal,expand});

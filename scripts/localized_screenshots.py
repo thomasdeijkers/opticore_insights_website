@@ -42,10 +42,11 @@ def plan():
                 add('examples/'+name,item['page'],external=True)
             elif category in app_views:
                 page,tab=app_views[category]
+                if name=='client-ranking-overview-mobile-dark.jpg': tab='movers'
                 if name=='client-marketing-overview-mobile-dark.jpg': page,tab='ads-engine','campaigns'
                 add('examples/'+name,page,tab=tab,
                     modal='[data-w-host="listing"]' if name=='client-listing-editor-mobile-dark.jpg' else None,
-                    expand='.workspace-root .workspace-details>summary' if name=='client-ranking-mobile-dark.jpg' else None)
+                    expand=None)
             else:
                 add('examples/'+name,item['page'],fixture=True)
     for device in DEVICES:

@@ -30,17 +30,18 @@ async function serve(root){
   const plan=JSON.parse(fs.readFileSync(planPath,'utf8'));
   app=await serve(ROOT);fixtures=await serve(fixturePath);
   browser=await chromium.launch({headless:true,...(process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE?{executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE}:{})});
-  let tasks=['de','en','fr'].filter(l=>!arg('language')||l===arg('language')).flatMap(language=>plan.filter(item=>!item.external&&(!arg('device')||item.device===arg('device'))&&(!arg('file')||new RegExp(arg('file')).test(item.file))).map(item=>({...item,language})));
+  const rankingFile=file=>/client-ranking-|client-marketing-(details|stijgers-dalers)-/.test(file);
+  let tasks=['nl','de','en','fr'].filter(l=>!arg('language')||l===arg('language')).flatMap(language=>plan.filter(item=>!item.external&&(language!=='nl'||rankingFile(item.file))&&(!arg('device')||item.device===arg('device'))&&(!arg('file')||new RegExp(arg('file')).test(item.file))).map(item=>({...item,language})));
   if(arg('limit'))tasks=tasks.slice(0,Number(arg('limit')));
   assert(tasks.length,'No captures selected');fs.mkdirSync(OUTPUT,{recursive:true});
   const previous=path.join(OUTPUT,'manifest.json'),images=fs.existsSync(previous)?JSON.parse(fs.readFileSync(previous,'utf8')).images:{};
   const report=[];let next=0,completed=0;
   async function worker(){while(next<tasks.length){
-   const task=tasks[next++],context=await browser.newContext({viewport:{width:task.width,height:task.height},deviceScaleFactor:task.scale,colorScheme:'dark',reducedMotion:'reduce',locale:{de:'de-DE',en:'en-GB',fr:'fr-FR'}[task.language],timezoneId:'Europe/Amsterdam'});
+   const task=tasks[next++],context=await browser.newContext({viewport:{width:task.width,height:task.height},deviceScaleFactor:task.scale,colorScheme:'dark',reducedMotion:'reduce',locale:{nl:'nl-NL',de:'de-DE',en:'en-GB',fr:'fr-FR'}[task.language],timezoneId:'Europe/Amsterdam'});
    try{
     await context.route('**/*',route=>[app.base.origin,fixtures.base.origin].includes(new URL(route.request().url()).origin)?route.continue():route.abort());
     await demoSession(context,app.base);const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
-    const url=task.fixture?new URL(task.language+'/'+task.page+'.html',fixtures.base):new URL(routes['/demo/modulaire-webapp/'][task.language]+'?'+new URLSearchParams({page:task.page,theme:'dark',...(task.tab?{tab:task.tab}:{})}),app.base);
+    const url=task.fixture?new URL(task.language+'/'+task.page+'.html',fixtures.base):new URL((task.language==='nl'?'/demo/modulaire-webapp/':routes['/demo/modulaire-webapp/'][task.language])+'?'+new URLSearchParams({page:task.page,theme:'dark',...(task.tab?{tab:task.tab}:{})}),app.base);
     assert((await page.goto(url.href,{waitUntil:'networkidle'})).ok(),url.href);
     if(!task.fixture){await page.locator('.workspace-complete .workspace-root').waitFor();assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');assert.equal(await page.evaluate(()=>FullWorkspace.inspect().page),task.page,'Capture must show the requested app page');}
     assert.equal(await page.locator('html').getAttribute('lang'),task.language);
@@ -53,10 +54,10 @@ async function serve(root){
     await page.evaluate(async()=>{await Promise.all([...document.images].filter(i=>i.getAttribute('src')).map(async i=>{i.loading='eager';await i.decode();}));});
     assert.deepEqual(errors,[],url.href);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,'Horizontal overflow: '+url.href);
-    const file=task.language+'/'+task.file,target=path.join(OUTPUT,file);fs.mkdirSync(path.dirname(target),{recursive:true});
+    const file=task.language+'/'+task.file,target=task.language==='nl'?path.join(ROOT,'assets/img',task.file):path.join(OUTPUT,file);fs.mkdirSync(path.dirname(target),{recursive:true});
     await page.screenshot({path:target,fullPage:Boolean(task.fullPage),...(file.endsWith('.jpg')?{type:'jpeg',quality:94}:{type:'png'})});
     const data=fs.readFileSync(target);
-    images[file]={language:task.language,device:task.device,theme:'dark',width:task.width,height:task.fullPage?await page.evaluate(()=>document.documentElement.scrollHeight):task.height,scale:task.scale,sha256:crypto.createHash('sha256').update(data).digest('hex')};
+    if(task.language!=='nl')images[file]={language:task.language,device:task.device,theme:'dark',width:task.width,height:task.fullPage?await page.evaluate(()=>document.documentElement.scrollHeight):task.height,scale:task.scale,sha256:crypto.createHash('sha256').update(data).digest('hex')};
     const leftovers=await page.evaluate(()=>[...document.querySelectorAll('h1,h2,h3,th,button,label,summary')].filter(e=>e.getBoundingClientRect().width&&!e.closest('.language-picker')).map(e=>e.textContent.trim().replace(/\s+/g,' ')).filter(t=>/\b(?:jouw|een|gegevens|koppelingen|worden|bijbestellen|bekijken|voorraadbeheer)\b/i.test(t)).slice(0,20));
     if(leftovers.length)report.push({file,leftovers});
     completed++;if(completed%30===0||completed===tasks.length)console.log(completed+'/'+tasks.length+' localized dark screenshots captured.');

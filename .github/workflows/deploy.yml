@@ -84,7 +84,11 @@ jobs:
         id: localized-screens
         uses: actions/cache@v4
         with:
-          path: assets/img/localized
+          path: |
+            assets/img/localized
+            assets/img/examples/client-ranking-*-dark.jpg
+            assets/img/module-examples/client-marketing-details-*-dark.jpg
+            assets/img/module-examples/client-marketing-stijgers-dalers-*-dark.jpg
           key: localized-dark-v1-${{ runner.os }}-${{ hashFiles('content/olympus-captures.json', 'scripts/capture_localized_screenshots.cjs', 'scripts/localized_screenshots.py', 'scripts/neutral_visuals.py', 'scripts/neutral_visuals.css', 'scripts/neutral_visuals_manifest.json', 'scripts/i18n.py', 'content/module-screenshots.json', 'demo/modulaire-webapp/index.html', 'content/i18n/*.json', 'assets/js/*.js', 'assets/css/module-demo.css', 'assets/css/demo-full-workspace.css', 'assets/css/demo-product-photos.css', 'assets/css/i18n.css', 'assets/img/flags/*.svg', 'package-lock.json') }}
 
       - name: Build and validate all language editions
