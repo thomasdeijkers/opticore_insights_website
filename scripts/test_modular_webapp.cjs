@@ -77,3 +77,5 @@ for(const match of pricing.matchAll(/<article><h3>(?:Verkoop en logistiek|Comple
  assert.equal(selection.setup,Number(match[1].replaceAll('.','')));assert.equal(selection.monthly,Number(match[2].replaceAll('.','')));
  if(match[0].includes('<h3>Compleet</h3>'))assert.equal(selection.modules.length,15);
 }
+
+assert(!pricing.includes('Listingoptimalisatie valt onder Productbeheer'));assert(pricing.includes('Extra modules kosten € 10–€ 50 per maand'));
