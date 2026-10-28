@@ -106,3 +106,9 @@ body:has(.workspace-complete){font-family:Inter,ui-sans-serif,system-ui,-apple-s
 .demo-brand-logo{display:block;width:172px;padding:8px;background:#fff;border-radius:8px}
 .demo-brand-logo img{display:block;width:100%;height:auto}
 .workspace-complete .demo-brand strong{font-size:15px}.workspace-complete .demo-brand small{font-size:11px}
+
+/* Longer translated proposal labels must fit with their counters across system fonts. */
+.marketing-agent-typebar .marketing-agent-filter-buttons button{white-space:normal}
+.marketing-agent-typebar .reference-filter-label{min-width:0;flex:1;overflow-wrap:anywhere;hyphens:auto;line-height:1.35}
+.marketing-agent-typebar .marketing-agent-filter-buttons button>span:last-child{gap:6px}
+.marketing-agent-typebar .marketing-agent-filter-buttons button b{flex:0 0 auto}

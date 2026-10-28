@@ -14,6 +14,7 @@ assert(['localhost','127.0.0.1'].includes(base.hostname));
     const path=language==='nl'?'/demo/modulaire-webapp/':routes['/demo/modulaire-webapp/'][language];
     await p.goto(new URL(path+'?page=marketing-agent&theme=dark',base).href,{waitUntil:'networkidle'});
     const cards=p.locator('[data-reference-advice]');await cards.first().waitFor();const initial=await cards.count();assert(initial>3);
+    if(width===390){await p.addStyleTag({content:'body,button{font-family:Verdana,sans-serif!important}'});assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false,'Translated proposal counters must fit wider system fonts');assert(await p.locator('.marketing-agent-typebar button').evaluateAll(buttons=>buttons.every(b=>b.scrollWidth<=b.clientWidth+1)));}
     assert.equal(await p.locator('.marketing-agent-filter-buttons [data-w-action=marketing-type]').count(),6);
     assert.equal(await p.locator('.marketing-advice-channel-filter').count(),6);
     await p.locator('[data-w-action=marketing-type][data-id=bids]').click();assert.equal(await cards.count(),1);
