@@ -23,7 +23,7 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
      for(const a of document.querySelectorAll('a[href]')){
       if(!a.getClientRects().length||!a.textContent.trim()||a.matches('.brand,.footer-brand,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll')||a.querySelector('img'))continue;
       const c=getComputedStyle(a);count++;
-      if(c.textDecorationLine.includes('underline')||parseFloat(c.borderTopWidth)<1||parseFloat(c.borderTopLeftRadius)<4)bare.push({text:a.textContent.trim().slice(0,100),href:a.getAttribute('href'),border:c.borderTopWidth,radius:c.borderTopLeftRadius});
+      if(c.textDecorationLine.includes('underline')||parseFloat(c.borderTopWidth)<1||parseFloat(c.borderTopLeftRadius)<4||!['rgb(23, 90, 150)','rgb(16, 72, 119)'].includes(c.backgroundColor)||c.color!=='rgb(255, 255, 255)')bare.push({text:a.textContent.trim().slice(0,100),href:a.getAttribute('href'),border:c.borderTopWidth,radius:c.borderTopLeftRadius,background:c.backgroundColor,color:c.color});
      }
      return {count,bare,overflow:document.documentElement.scrollWidth>innerWidth+1};
     });links+=result.count;
@@ -33,6 +33,6 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
   }
   await Promise.all(Array.from({length:4},worker));
   assert.deepEqual(failures,[],JSON.stringify(failures,null,2));
-  console.log(`Button audit OK: ${tasks.length} page views across all four languages, NL mobile pages and dynamic search; ${links} text actions have button borders and no underline; no horizontal overflow.`);
+  console.log(`Button audit OK: ${tasks.length} page views across all four languages, NL mobile pages and dynamic search; ${links} text actions have filled OptiCore blue backgrounds, white labels and no underline; no horizontal overflow.`);
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
