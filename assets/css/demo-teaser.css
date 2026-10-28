@@ -77,3 +77,15 @@
  .webapp-demo-teaser[data-demo-preview=mobile] .webapp-demo-device-buttons::after{top:128px;right:-3px;height:61px}
  .webapp-demo-teaser:is([data-demo-preview=tablet],[data-demo-preview=mobile]) .webapp-demo-device-base{display:none}
 }
+
+/* Keep the example title, scope and next step together inside the frame. */
+.webapp-demo-teaser .webapp-demo-teaser-heading h1,
+.webapp-demo-teaser .webapp-demo-teaser-heading h2{font-size:22px;line-height:1.25;letter-spacing:normal;text-wrap:initial;margin:0;color:var(--ink)}
+.webapp-demo-teaser-heading>div{min-width:0}
+.webapp-demo-teaser-heading .webapp-demo-teaser-description{margin:6px 0 0;font-size:13px;line-height:1.5;font-weight:400;color:var(--muted)}
+.webapp-demo-teaser-heading .webapp-demo-info{flex:none;margin:0;white-space:nowrap}
+@media(max-width:1100px){
+ .webapp-demo-teaser-heading{flex-wrap:wrap}
+ .webapp-demo-teaser-heading>div{flex:1 1 100%}
+ .webapp-demo-teaser-heading .webapp-demo-info{font-size:13px;padding:10px 16px}
+}
