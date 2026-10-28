@@ -389,8 +389,8 @@ window.DemoPageCatalogue = {
       ]
     },
     "retouren": {
-      "title": "Retouren",
-      "description": "Retouraanvragen, inspecties en terugbetalingen.",
+      "title": "Retouren · maatwerk",
+      "description": "Voorbeeld van retourverwerking als maatwerk. Inrichting en koppelingen spreken we per klant af.",
       "tabs": [
         {
           "id": "overview",

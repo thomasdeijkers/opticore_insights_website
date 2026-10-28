@@ -57,3 +57,8 @@ De start blijft € 995 inrichting plus € 149 per maand, exclusief btw en verb
 De catalogus telt 15 modules: drie inbegrepen en twaalf betaalde uitbreidingen. Listingoptimalisatie kost € 100 inrichting en € 10 per maand en vereist Productbeheer (€ 100 / € 10). Picklijsten en verzending kost € 200 inrichting en € 20 per maand en vereist Magazijn en logistiek (€ 200 / € 20) plus de inbegrepen orders. De bedragen zijn afgesplitst van de bestaande product- en magazijnmodules. Het complete pakket blijft daardoor € 3.395 inrichting en € 419 per maand; het startpakket blijft € 995 en € 149. Adviesprijzen blijven 20% hoger. Btw, databaseverbruik en eventuele AI-aanvragen blijven apart.
 
 Elke nieuwe module heeft vier echte demoschermen in darkmode, voor drie schermformaten en vier talen. De nieuwe modulelinks openen de bestaande listingoptimalisatie en de definitieve picklijst. De calculator telt voorgangers één keer mee; contactoverzicht, gebruikskosten, FAQ en prijsvoorbeelden volgen de nieuwe indeling. De complete pakketlink bevat ook de Product Image Studio. De laatste desktoprij telt nu drie tegels.
+
+
+## Actuele pakketprijzen en orderscope, 28 oktober 2026
+
+Het complete pakket met 15 modules kost € 4.995 inrichting en € 499 per maand. Het startpakket blijft € 995 / € 149 en bevat Omzetrapportage, Voorraad en Orders. De twaalf uitbreidingen samen kosten € 4.000 / € 350; maandprijzen zijn ronde tientallen en adviesprijzen liggen 20% hoger. De prijsbronnen en calculator bepalen de offerteopbouw en voorbeeldpakketten. Retourverwerking en retourkoppelingen vallen buiten alle vaste pakketprijzen en worden als maatwerk afgestemd. De retourpagina in de demo is expliciet als maatwerkvoorbeeld gemarkeerd; de galerie van Orders bevat alleen orderfuncties.

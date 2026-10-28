@@ -9,7 +9,7 @@
   },
   "forecasting": {
     "label": "Forecasting",
-    "setup": 200,
+    "setup": 300,
     "requires": [
       "omzet"
     ],
@@ -24,36 +24,36 @@
   },
   "inkoop": {
     "label": "Inkoop en bestellen",
-    "setup": 300,
+    "setup": 500,
     "requires": [
       "omzet",
       "voorraad"
     ],
-    "currentMonthly": 30
+    "currentMonthly": 40
   },
   "logistiek": {
     "label": "Magazijn en logistiek",
-    "setup": 200,
+    "setup": 400,
     "requires": [
       "voorraad",
       "orders"
     ],
-    "currentMonthly": 20
+    "currentMonthly": 30
   },
   "producten": {
     "label": "Productbeheer en publicaties",
-    "setup": 100,
-    "requires": [],
-    "currentMonthly": 10
-  },
-  "beeldstudio": {
-    "label": "Product Image Studio",
-    "setup": 100,
+    "setup": 300,
     "requires": [],
     "currentMonthly": 20
   },
+  "beeldstudio": {
+    "label": "Product Image Studio",
+    "setup": 300,
+    "requires": [],
+    "currentMonthly": 30
+  },
   "orders": {
-    "label": "Orders en retouren",
+    "label": "Orders",
     "setup": 0,
     "requires": [],
     "included": true,
@@ -61,24 +61,24 @@
   },
   "marketing": {
     "label": "Marketing en ranking",
-    "setup": 400,
+    "setup": 600,
     "requires": [
       "omzet",
       "producten"
     ],
-    "currentMonthly": 50
+    "currentMonthly": 60
   },
   "financieel": {
     "label": "Financieel overzicht",
-    "setup": 250,
+    "setup": 400,
     "requires": [
       "omzet"
     ],
-    "currentMonthly": 30
+    "currentMonthly": 40
   },
   "klantenservice": {
     "label": "Klantenservice en tickets",
-    "setup": 200,
+    "setup": 250,
     "requires": [
       "orders"
     ],
@@ -86,7 +86,7 @@
   },
   "facturatie": {
     "label": "Facturen en offertes",
-    "setup": 200,
+    "setup": 250,
     "requires": [
       "orders"
     ],
@@ -94,7 +94,7 @@
   },
   "controles": {
     "label": "Signalen en controles",
-    "setup": 150,
+    "setup": 200,
     "requires": [
       "omzet",
       "voorraad"
@@ -103,20 +103,20 @@
   },
   "listing": {
     "label": "Listingoptimalisatie",
-    "setup": 100,
+    "setup": 200,
     "requires": [
       "producten"
     ],
-    "currentMonthly": 10
+    "currentMonthly": 20
   },
   "picken": {
     "label": "Picklijsten en verzending",
-    "setup": 200,
+    "setup": 300,
     "requires": [
       "logistiek",
       "orders"
     ],
-    "currentMonthly": 20
+    "currentMonthly": 30
   }
 };
   const includedModules = ["omzet", "voorraad", "orders"];
@@ -153,7 +153,7 @@
   }
   function contactDraft(selected) {
     return 'Jouw pakket:\n' + quoteRows(selected).map((row,i) => `${i+1}. ${row.label}${row.note ? ' (' + row.note + ')' : ''}: ${money(row.setup)} inrichting / ${money(row.currentMonthly)} per maand`).join('\n')
-      + `\n\nAdviesprijs inrichting: ${money(selected.setupSubtotal)}\nVoordeel inrichting: − ${money(selected.discount)}\nEenmalige inrichting: ${money(selected.setup)}\nAdviesprijs per maand: ${money(selected.standardMonthly)}\nVoordeel per maand: − ${money(selected.monthlyDiscount)}\nPer maand na korting: ${money(selected.monthly)}\nExclusief btw, AI- en databaseverbruik. Gebruikskosten: opticore-insights.nl/gebruikskosten/. Offerte volgt na afstemming.`;
+      + `\n\nAdviesprijs inrichting: ${money(selected.setupSubtotal)}\nVoordeel inrichting: − ${money(selected.discount)}\nEenmalige inrichting: ${money(selected.setup)}\nAdviesprijs per maand: ${money(selected.standardMonthly)}\nVoordeel per maand: − ${money(selected.monthlyDiscount)}\nPer maand na korting: ${money(selected.monthly)}\nExclusief btw, AI- en databaseverbruik. Gebruikskosten: opticore-insights.nl/gebruikskosten/. Offerte volgt na afstemming.` + '\nRetourverwerking is maatwerk.';
   }
   function calculatorURL(ids) {
     const known = [...new Set(ids.filter(id => Object.hasOwn(catalogue, id) && !catalogue[id].included))];
@@ -191,7 +191,7 @@
       summary.replaceChildren(...items.map(label => {
         const item = document.createElement('li'); item.textContent = label; return item;
       }));
-      count.textContent = selected.extraModules.length ? `Startpakket met ${selected.extraModules.length} extra ${selected.extraModules.length === 1 ? 'module' : 'modules'}, inclusief benodigde onderdelen.` : 'Omzetrapportage, voorraad en orders/retouren zijn inbegrepen in het startpakket.';
+      count.textContent = selected.extraModules.length ? `Startpakket met ${selected.extraModules.length} extra ${selected.extraModules.length === 1 ? 'module' : 'modules'}, inclusief benodigde onderdelen.` : 'Omzetrapportage, voorraad en orders zijn inbegrepen in het startpakket.';
       show('[data-module-bar-count]', selected.extraModules.length ? `Startpakket + ${selected.extraModules.length} uitbreidingen` : base.label);
       show('[data-module-subtotal]', money(selected.setupSubtotal));
       show('[data-module-discount-label]', 'Voordeel inrichting');
@@ -294,6 +294,7 @@
         const foot = element('tfoot'); foot.append(amountRow('Totaal', period.total, period.discountTotal, period.adviceTotal, '', true));
         table.append(body, foot); target.append(table);
       }
+      target.append(element('p', 'Retourverwerking is maatwerk.', 'form-note'));
       target.append(element('p', 'Prijsindicatie exclusief btw, AI- en databaseverbruik. De getoonde kortingen gelden tot en met 31 december 2027. Je ontvangt een offerte na afstemming.', 'form-note'));
     }
   }

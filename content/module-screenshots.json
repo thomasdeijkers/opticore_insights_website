@@ -51,27 +51,22 @@
       "page": "orders"
     },
     {
-      "id": "details",
-      "title": "Retouren verwerken",
-      "page": "retouren",
-      "tab": "processing"
-    },
-    {
-      "id": "retourartikelen",
-      "title": "Retouren per artikel",
-      "page": "retouren",
-      "tab": "articles"
-    },
-    {
-      "id": "klanten",
-      "title": "Klanten en bestellingen",
-      "page": "klanten"
-    },
-    {
       "id": "orderdetail",
       "title": "Orderdetails en vervolgstap",
       "page": "orders",
       "click": ".workspace-root [data-w-action=\"order\"]"
+    },
+    {
+      "id": "verwerken",
+      "title": "Orderstatus bijwerken",
+      "page": "orders",
+      "click": ".workspace-root [data-w-action=\"order\"]",
+      "modal": "[data-demo-dialog-content] [data-w-host=\"order\"]"
+    },
+    {
+      "id": "klanten",
+      "title": "Klantgegevens bij orders",
+      "page": "klanten"
     }
   ],
   "producten": [

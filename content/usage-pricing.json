@@ -26,7 +26,7 @@
   "modules": [
     {"id": "omzet", "label": "Omzetrapportage", "database": "Verkopen, retouren, kosten en historie.", "ai": "Geen AI nodig voor gewone omzet- en margeberekeningen."},
     {"id": "voorraad", "label": "Voorraad", "database": "Voorraadstanden, reserveringen en artikelhistorie.", "ai": "Geen AI nodig voor voorraadstanden en dekking."},
-    {"id": "orders", "label": "Orders en retouren", "database": "Orders, orderregels, retouren en verwerkingsstatussen.", "ai": "Alleen bij afgesproken AI-antwoordconcepten voor klantvragen; gewone orderverwerking gebruikt geen AI."},
+    {"id": "orders", "label": "Orders", "database": "Orders, orderregels en verwerkingsstatussen.", "ai": "Geen AI nodig voor gewone orderverwerking."},
     {"id": "producten", "label": "Productbeheer en publicaties", "database": "Artikelen, productvelden, kanaalstatussen en concepten.", "ai": "Geen AI nodig voor gewone artikelvelden en publicatiestatussen."},
     {"id": "beeldstudio", "label": "Product Image Studio", "database": "Beeldsetmetadata, huisstijl, volgorde en publicatiestatussen. Productfoto’s zijn bestandsopslag, geen databasevolume.", "ai": "Beeldopdrachten bij genereren en bewerken. Een standaardreeks van zes beelden telt als zes beeldopdrachten; elke volgende AI-bewerking telt apart. Gewoon bekijken, ordenen en downloaden gebruikt geen AI."},
     {"id": "inkoop", "label": "Inkoop en bestellen", "database": "Leveranciers, bestellingen, ontvangsten en besteladviezen.", "ai": "Geen AI nodig voor het standaard besteladvies en de ontvangstverwerking."},
