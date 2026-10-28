@@ -1,6 +1,6 @@
 body a[href]{text-decoration:none!important}
 /* Shared action language for every public page, locale and dynamically added link. */
-body a[href]:not(.button):not(:where(.brand,.footer-brand,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll,.footer-contact-link,:has(>img:only-child))){
+body a[href]:not(.button):not(:where(.brand,.footer-brand,.client-grid a,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll,.footer-contact-link,:has(>img:only-child))){
  display:inline-flex;align-items:center;justify-content:center;gap:8px;vertical-align:baseline;
  min-height:44px;min-width:0;max-width:100%;padding:9px 14px;margin:3px 5px 3px 0;
  border:1px solid #afc2d2;border-radius:6px;background:#fff;color:#175a96;
@@ -8,7 +8,7 @@ body a[href]:not(.button):not(:where(.brand,.footer-brand,.skip-link,.screen-sli
  text-decoration:none!important;box-shadow:0 1px 2px #152c4208;
  transition:background-color .15s,border-color .15s,color .15s;
 }
-body a[href]:not(.button):not(:where(.brand,.footer-brand,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll,.footer-contact-link,:has(>img:only-child))):hover{background:#fff1e8;border-color:#c44b16;color:#79320f}
+body a[href]:not(.button):not(:where(.brand,.footer-brand,.client-grid a,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll,.footer-contact-link,:has(>img:only-child))):hover{background:#fff1e8;border-color:#c44b16;color:#79320f}
 body a[href]:not(.button):focus-visible{outline:3px solid #c44b16;outline-offset:3px}
 body :is(.actions,.section-more,.webapp-cost-nav,.on-this-page,.portfolio-nav,.footer-legal-links,.news-source-shortcuts){gap:10px;align-items:center}
 body :is(.actions,.section-more,.webapp-cost-nav,.on-this-page,.portfolio-nav,.footer-legal-links,.news-source-shortcuts)>a[href]{margin:0}
@@ -30,8 +30,8 @@ body .webapp-module-card .webapp-module-choose{margin:4px 21px 18px;padding:9px 
 body .technology-resource img{flex:none}
 body .language-picker nav a[href]{margin:3px 0;box-shadow:none}
 body .demo-topbar .demo-package-link{min-height:34px;padding:6px 9px;margin:0;font-size:11px}
-html[data-theme=dark] body a[href]:not(.button):not(:where(.brand,.footer-brand,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll,.footer-contact-link,:has(>img:only-child))){background:#14344e;border-color:#486d87;color:#c8edf4}
-html[data-theme=dark] body a[href]:not(.button):not(:where(.brand,.footer-brand,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll,.footer-contact-link,:has(>img:only-child))):hover{background:#284761;border-color:#ff9a61;color:#fff}
+html[data-theme=dark] body a[href]:not(.button):not(:where(.brand,.footer-brand,.client-grid a,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll,.footer-contact-link,:has(>img:only-child))){background:#14344e;border-color:#486d87;color:#c8edf4}
+html[data-theme=dark] body a[href]:not(.button):not(:where(.brand,.footer-brand,.client-grid a,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll,.footer-contact-link,:has(>img:only-child))):hover{background:#284761;border-color:#ff9a61;color:#fff}
 @media(max-width:650px){
  body :is(.actions,.webapp-cost-nav){align-items:stretch;gap:10px}
  body :is(.actions,.webapp-cost-nav)>a[href]{flex:0 1 auto;width:100%;white-space:normal;text-align:center}

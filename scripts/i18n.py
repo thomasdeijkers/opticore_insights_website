@@ -316,7 +316,7 @@ def integration(source, canonical, language, mapping):
         source = re.sub(r'/assets/img/(demo|examples|module-examples)/([\w.-]+\.(?:jpg|png))(?:\?[^\s"<>]*)?', lambda m:f'/assets/img/localized/{language}/{m[1]}/{m[2]}?v={revision}', source)
     alternatives = ''.join(f'<link rel="alternate" hreflang="{lang}" href="{BASE}{canonical if lang == "nl" else mapping[canonical][lang]}">' for lang in LANGUAGES)
     alternatives += f'<link rel="alternate" hreflang="x-default" href="{BASE}{canonical}">'
-    head = f'<!-- i18n:head -->{alternatives}<link rel="stylesheet" href="/assets/css/i18n.css?v={VERSION}"><link rel="stylesheet" href="/assets/css/link-buttons.css?v=20261028-button-links"><script src="/assets/i18n/{language}.js?v={VERSION}" defer></script><script src="/assets/js/i18n.js?v={VERSION}" defer></script><!-- /i18n -->'
+    head = f'<!-- i18n:head -->{alternatives}<link rel="stylesheet" href="/assets/css/i18n.css?v={VERSION}"><link rel="stylesheet" href="/assets/css/link-buttons.css?v=20261028-home-logos"><script src="/assets/i18n/{language}.js?v={VERSION}" defer></script><script src="/assets/js/i18n.js?v={VERSION}" defer></script><!-- /i18n -->'
     # These deferred scripts must precede existing deferred application scripts.
     position = re.search(r'<script\b[^>]*\bsrc=', source)
     if position and position.start() < source.index('</head>'):

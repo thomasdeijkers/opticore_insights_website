@@ -68,3 +68,6 @@
 @media(orientation:landscape) and (max-height:600px){
  .home-page .home-intro .webapp-demo-teaser-scroll{height:clamp(240px,65svh,420px)}
 }
+
+/* The project logos are the complete, compact proof block. */
+.home-page #opdrachten .client-grid{margin-bottom:0}
