@@ -20,7 +20,8 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
     if(task.url.includes('?q='))await page.locator('[data-search-results] a, .search-results a').first().waitFor();
     const result=await page.evaluate(()=>{
      const bare=[];let count=0;
-     for(const a of document.querySelectorAll('a[href]')){
+     for(const a of document.querySelectorAll('a[href],button')){
+      if(a.tagName==='BUTTON'&&!document.querySelector('.site-header'))continue;
       if(!a.getClientRects().length||!a.textContent.trim()||a.matches('.brand,.footer-brand,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll')||a.querySelector('img'))continue;
       const c=getComputedStyle(a);count++;
       if(c.textDecorationLine.includes('underline')||parseFloat(c.borderTopWidth)<1||parseFloat(c.borderTopLeftRadius)<4||!['rgb(23, 90, 150)','rgb(16, 72, 119)'].includes(c.backgroundColor)||c.color!=='rgb(255, 255, 255)')bare.push({text:a.textContent.trim().slice(0,100),href:a.getAttribute('href'),border:c.borderTopWidth,radius:c.borderTopLeftRadius,background:c.backgroundColor,color:c.color});
