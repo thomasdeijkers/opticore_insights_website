@@ -361,6 +361,26 @@ def collect():
 
 
 def integration(source, canonical, language, mapping):
+    # Order the visible labels after translation, so each language has the
+    # same long-to-short presentation without changing destinations or state.
+    def order_menu(match):
+        block = match[0]
+        pattern = r'<details class="menu-group"(?: open)?><summary>.*?</summary><div class="menu-group-links">.*?</div></details>'
+        groups = list(re.finditer(pattern, block, flags=re.S))
+        if not groups:
+            return block
+        ordered = []
+        for group in groups:
+            value = group[0]
+            label = re.search(r'<summary>(.*?)</summary>', value, flags=re.S)[1]
+            links = re.search(r'(<div class="menu-group-links">)(.*?)(</div>)', value, flags=re.S)
+            anchors = re.findall(r'<a\b[^>]*>.*?</a>', links[2], flags=re.S)
+            anchors.sort(key=lambda item: -len(clean(re.sub(r'<[^>]+>', '', item))))
+            value = value[:links.start(2)] + ''.join(anchors) + value[links.end(2):]
+            ordered.append((len(clean(re.sub(r'<[^>]+>', '', label))), value))
+        ordered.sort(key=lambda item: -item[0])
+        return block[:groups[0].start()] + ''.join(value for _, value in ordered) + block[groups[-1].end():]
+    source = re.sub(r'<nav\b(?=[^>]*\bdata-menu(?:[\s=>]))[^>]*>.*?</nav>', order_menu, source, flags=re.S)
     # Run after translation so Dutch and translated editions keep direction icons
     # with their preceding word. Native applications keep their own markup.
     if 'class="demo-shell"' not in source:
