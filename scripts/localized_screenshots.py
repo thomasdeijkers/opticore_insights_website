@@ -24,6 +24,7 @@ def plan():
         device = 'mobile' if '-mobile-' in file else 'tablet' if '-tablet-' in file else 'desktop'
         width,height,scale = DEVICES[device]
         if fullPage and device=='desktop': width,height = 1440,1000
+        if fullPage and file=='demo/dashboard-client-tablet-dark.png': width,height = 1112,834
         result.append({'file':file,'page':page,'device':device,'width':width,'height':height,'scale':scale,
                        **{k:v for k,v in dict(tab=tab,fixture=fixture,modal=modal,focus=focus,click=click,align=align,expand=expand,fullPage=fullPage,external=external).items() if v}})
     for module,views in modules.items():

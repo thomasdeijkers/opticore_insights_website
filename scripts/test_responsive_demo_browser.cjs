@@ -22,10 +22,10 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
     const card=await p.locator('.webapp-demo-teaser').boundingBox();assert(card.width>Math.min(500,width-100),'Landscape preview uses the available width');
     assert((await p.locator('.webapp-demo-teaser-scroll').boundingBox()).height<=420);await noOverflow();
    }
-   await rotate(834,1112);await imageDevice('tablet');await checkFrame('tablet',3/4);await noOverflow();
+   await rotate(834,1112);await imageDevice('tablet');await checkFrame('tablet',4/3);await noOverflow();
    await rotate(390,844);await imageDevice('mobile');await checkFrame('phone',390/844);await noOverflow();
   }
-  console.log('PASS phone/tablet frames: correct 390:844 portrait, 4:3 landscape and 3:4 tablet screens; sharp responsive captures, scrollable content and no overflow.');
+  console.log('PASS phone/tablet frames: correct 390:844 phone and 4:3 landscape tablet screens; sharp responsive captures, scrollable content and no overflow.');
   const preview=p.locator('.webapp-demo-teaser-scroll');await preview.scrollIntoViewIfNeeded();await preview.evaluate(el=>el.scrollTop=180);assert(await preview.evaluate(el=>el.scrollTop>0));await preview.evaluate(el=>el.scrollTop=0);const opened=p.waitForEvent('popup');await preview.click();const live=await opened;await live.waitForLoadState('domcontentloaded');assert(new URL(live.url()).pathname.includes('/demo/modulaire-webapp/'));await live.close();console.log('PASS framed preview scrolling and direct click to full demo.');
   const details=p.locator('#gegevens-producten'),gallery=details.locator('[data-module-gallery]');await details.locator(':scope>summary').click();
   await p.waitForFunction(()=>document.querySelector('#gegevens-producten [data-module-gallery]')?.dataset.device==='mobile');

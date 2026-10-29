@@ -1,6 +1,6 @@
 # Apparaten vergelijken op desktop
 
-De dashboardteaser op de homepage en `/modulaire-webapp/` heeft op brede schermen met een muis drie knoppen: Desktop, Tablet en Mobiel. `assets/js/demo-preview.js` kiest de bestaande gelokaliseerde screenshot via de mediaregels van het picture-element. De apparaatkaders wisselen mee: laptop 16:10, tablet 3:4 en telefoon 390:844. De afbeelding blijft scherp en verticaal scrollbaar; aanklikken opent de volledige demo zoals voorheen.
+De dashboardteaser op de homepage en `/modulaire-webapp/` heeft op brede schermen met een muis drie knoppen: Desktop, Tablet en Mobiel. `assets/js/demo-preview.js` kiest de gelokaliseerde screenshot via de mediaregels van het picture-element. De apparaatkaders wisselen mee: laptop 16:10, tablet altijd liggend 4:3 en telefoon 390:844. De tablet-dashboardopname wordt op 1112 × 834 gemaakt, ook wanneer een bezoeker een tablet rechtop houdt. De afbeelding blijft scherp en verticaal scrollbaar; aanklikken opent de volledige demo zoals voorheen.
 
 Onder de desktopgrens of bij een primair aanraakscherm verdwijnen de knoppen en gelden weer de oorspronkelijke automatische regels voor telefoon, tablet en landscape. Bij terugkeer naar desktop blijft de laatst gekozen vergelijking beschikbaar. Zonder JavaScript blijft de automatische screenshotweergave werken. De knoppen hebben een zichtbare focus en een `aria-pressed`-status. Tekst en schermafbeeldingen volgen de taal van de pagina.
 

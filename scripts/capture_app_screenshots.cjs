@@ -37,7 +37,7 @@ const records=[];
   const teaserOnly=process.argv.includes('--teaser-only');
   const dashboardOnly=process.argv.includes('--dashboard-only');
   const productScreensOnly=process.argv.includes('--product-screens-only');
-  for(const [device,width,height,scale] of [['desktop',1440,1000,2],['tablet',834,1112,2],['mobile',390,844,3]])await capture(app('dashboard'),`demo/dashboard-client-${device}-dark.png`,width,height,{fullPage:true,scale});
+  for(const [device,width,height,scale] of [['desktop',1440,1000,2],['tablet',1112,834,2],['mobile',390,844,3]])await capture(app('dashboard'),`demo/dashboard-client-${device}-dark.png`,width,height,{fullPage:true,scale});
   if(!teaserOnly&&!dashboardOnly&&!productScreensOnly)for(const [device,width,height] of [['desktop',1280,900],['tablet',834,1112],['mobile',390,844]]){
    for(const module of Object.keys(catalogue))for(const view of ['overzicht','details']){
     const modal=view==='details'&&module==='producten'?'[data-w-host="listing"]':null;

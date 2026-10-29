@@ -24,7 +24,7 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
     if(language!=='nl')assert(src.includes(`/localized/${language}/`),'Use the current language’s screenshot');
    };
    await verify('desktop','laptop',16/10);
-   for(const [device,type,ratio] of [['tablet','tablet',3/4],['mobile','phone',390/844],['desktop','laptop',16/10]]){
+   for(const [device,type,ratio] of [['tablet','tablet',4/3],['mobile','phone',390/844],['desktop','laptop',16/10]]){
     const button=controls.locator(`[data-demo-preview-device=${device}]`);
     await button.click();await verify(device,type,ratio);
     assert.equal(await button.getAttribute('aria-pressed'),'true');
@@ -35,7 +35,7 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
    // Native button keyboard activation must not navigate to the app.
    const mobileButton=controls.locator('[data-demo-preview-device=mobile]');
    await mobileButton.focus();await page.keyboard.press('Enter');await verify('mobile','phone',390/844);
-   await page.setViewportSize({width:834,height:1112});assert(!(await controls.isVisible()));await verify('tablet','tablet',3/4);
+   await page.setViewportSize({width:834,height:1112});assert(!(await controls.isVisible()));await verify('tablet','tablet',4/3);
    await page.setViewportSize({width:390,height:844});await verify('mobile','phone',390/844);
    await page.setViewportSize({width:844,height:390});await verify('tablet','tablet',4/3);
    await page.setViewportSize({width:1440,height:1000});await controls.waitFor({state:'visible'});await verify('mobile','phone',390/844);
