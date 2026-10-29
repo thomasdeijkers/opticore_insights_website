@@ -42,14 +42,11 @@
   const roles = {
     "marketing": "Marketing",
     "fullstack_frontend": "Fullstack developer · frontend",
-    "fullstack_backend": "Fullstack developer · API’s",
     "fullstack_platform": "Fullstack developer · platform",
     "ux": "UX designer",
     "consultant": "Projectconsultant",
-    "seo": "SEO specialist",
-    "sea": "SEA specialist",
-    "buitendienst": "Buitendienst"
-};
+    "seo_sea": "SEO & SEA specialist"
+  };
   const requestedRole = new URLSearchParams(window.location.search).get('rol');
   const expertise = form.querySelector('#team-expertise');
   if (choice.value === 'team' && expertise && !expertise.value && Object.hasOwn(roles, requestedRole)) {
