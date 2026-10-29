@@ -2,15 +2,15 @@
 import re
 
 SCENES = [
-    ('communicatie', 'Duidelijke communicatie', 'We maken afspraken begrijpelijk en houden je op de hoogte van voortgang, keuzes en vervolgstappen.', 'AI-sfeerbeeld: samen een project bespreken.'),
-    ('inzicht', 'Inzicht waar je iets mee kunt', 'We brengen relevante cijfers samen en leggen uit wat ze betekenen, zodat je beter kunt bepalen waar actie nodig is.', 'AI-sfeerbeeld: cijfers en inzichten bekijken.'),
-    ('automatisering', 'Minder handwerk', 'We kijken welke terugkerende stappen slimmer kunnen, met aandacht voor controle, uitzonderingen en de mensen die ermee werken.', 'AI-sfeerbeeld: werken aan een slimme workflow.'),
-    ('samenwerken', 'Samenwerking die meegroeit', 'We beginnen met een afgebakende stap. Daarna breiden we gericht uit op basis van wat jouw bedrijf en werkwijze nodig hebben.', 'AI-sfeerbeeld: op afstand samen aan een project werken.'),
+    ('communicatie', 'Duidelijke communicatie', 'We maken afspraken begrijpelijk en houden je op de hoogte van voortgang, keuzes en vervolgstappen.', 'Twee mensen bespreken een project aan tafel.'),
+    ('inzicht', 'Inzicht waar je iets mee kunt', 'We brengen relevante cijfers samen en leggen uit wat ze betekenen, zodat je beter kunt bepalen waar actie nodig is.', 'Persoon bekijkt grafieken op een laptop.'),
+    ('automatisering', 'Minder handwerk', 'We kijken welke terugkerende stappen slimmer kunnen, met aandacht voor controle, uitzonderingen en de mensen die ermee werken.', 'Twee mensen bespreken een digitaal werkproces.'),
+    ('samenwerken', 'Samenwerking die meegroeit', 'We beginnen met een afgebakende stap. Daarna breiden we gericht uit op basis van wat jouw bedrijf en werkwijze nodig hebben.', 'Persoon neemt vanuit huis deel aan een videogesprek.'),
 ]
 
 
 def expectations():
-    slides = ''.join(f'<article class="expectation-slide" role="group" aria-label="{i} / 4"><figure><img src="/assets/img/collaboration-v1/{key}.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="{alt}"><figcaption>AI-sfeerbeeld</figcaption></figure><div class="expectation-copy"><span class="expectation-number" aria-hidden="true">0{i}</span><h3>{title}</h3><p>{copy}</p></div></article>' for i, (key, title, copy, alt) in enumerate(SCENES, 1))
+    slides = ''.join(f'<article class="expectation-slide" role="group" aria-label="{i} / 4"><figure><img src="/assets/img/collaboration-v1/{key}.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="{alt}"></figure><div class="expectation-copy"><span class="expectation-number" aria-hidden="true">0{i}</span><h3>{title}</h3><p>{copy}</p></div></article>' for i, (key, title, copy, alt) in enumerate(SCENES, 1))
     return ('<!-- expectations:start --><section class="expectations-section" data-expectations aria-labelledby="expectations-heading"><div class="container">'
             '<div class="expectations-heading"><p class="eyebrow">Onze werkwijze</p><h2 id="expectations-heading">Wat je van OptiCore kunt verwachten.</h2></div>'
             '<div class="expectations-carousel" role="region" aria-label="Onze werkwijze in vier punten">'
