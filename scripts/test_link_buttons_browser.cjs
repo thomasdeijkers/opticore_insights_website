@@ -32,16 +32,17 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
        const breadcrumb=!!a.closest('.breadcrumbs');
        const footerNavigation=!!a.closest('.footer-nav');
        const inline=a.parentElement.matches('p,dd,figcaption,small,td,th')&&!a.matches('.button,.text-link,.footer-social');
+       const editorial=!!a.closest('.news-grid .news-card h2,.home-updates .resource-list h3,.news-page-intro .news-source-shortcuts,.news-article');
        const primary=a.matches('.button:not(.button-secondary),.footer-contact-link,.nav-contact');
        const quietNavigation=!!a.closest('.site-nav')&&!primary;
-       const expected=breadcrumb||footerNavigation||inline||quietNavigation?'transparent':primary?'orange':'blue';
+       const expected=breadcrumb||footerNavigation||inline||editorial||quietNavigation?'transparent':primary?'orange':'blue';
        const good=expected==='transparent'?transparent:expected==='blue'?c.backgroundColor==='rgba(23, 58, 101, 0.86)'&&c.color==='rgb(255, 255, 255)':c.backgroundColor==='rgba(255, 111, 48, 0.7)'&&c.color==='rgb(5, 29, 64)';
-       if(!good||((breadcrumb||footerNavigation)&&c.borderTopWidth!=='0px')||(!inline&&!footerNavigation&&c.textDecorationLine.includes('underline')))
+       if(!good||((breadcrumb||footerNavigation||editorial)&&c.borderTopWidth!=='0px')||(!inline&&!footerNavigation&&!editorial&&c.textDecorationLine.includes('underline')))
         bare.push({text:a.textContent.trim().slice(0,100),href:a.getAttribute('href'),expected,background:c.backgroundColor,color:c.color});
       }
      }
      if(marketing){
-      for(const group of document.querySelectorAll('.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts')){
+      for(const group of document.querySelectorAll('.actions,.section-more,.webapp-cost-nav')){
        const children=[...group.children].filter(e=>e.getClientRects().length);
        if(!group.getClientRects().length||!children.length||!children.every(e=>e.matches('a[href],button')))continue;
        const bounds=group.getBoundingClientRect(),rows=new Map();

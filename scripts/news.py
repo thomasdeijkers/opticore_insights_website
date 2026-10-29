@@ -138,7 +138,7 @@ def render():
 <meta property="og:title" content="{escape(full_title,quote=True)}"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{url}"><meta property="og:type" content="{'article' if article else 'website'}"><meta property="og:site_name" content="OptiCore Insights"><meta property="og:locale" content="nl_NL"><meta property="og:image" content="{image}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(full_title,quote=True)}"><meta name="twitter:description" content="{escape(description,quote=True)}"><meta name="twitter:image" content="{image}">
 <script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':schema},ensure_ascii=False,separators=(',',':'))}</script>
-<link rel="stylesheet" href="/assets/css/site.css?v=20261027-desktop-review"><link rel="stylesheet" href="/assets/css/news.css?v=20261027-desktop-review"><link rel="alternate" type="application/rss+xml" title="OptiCore Insights — Nieuws en praktijk" href="{BASE}/nieuws/feed.xml">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261027-desktop-review"><link rel="stylesheet" href="/assets/css/news.css?v=20261029-editorial-headlines"><link rel="alternate" type="application/rss+xml" title="OptiCore Insights — Nieuws en praktijk" href="{BASE}/nieuws/feed.xml">
 <link rel="stylesheet" href="/assets/css/screenshot-gallery.css?v=20261027-desktop-review"></head><body><a class="skip-link" href="#inhoud">Direct naar inhoud</a>{nav_header}
 <main id="inhoud">{main}</main>{footer}<script src="/assets/js/main.js?v=20261026a" defer></script><script src="/assets/js/screenshot-gallery.js?v=20261027-landscape" defer></script></body></html>
 ''')
@@ -151,7 +151,7 @@ def render():
         first_source = article['sources'][0]
         source_label = 'Projectverhaal →' if article['kind']=='project' else 'Originele bron ↗'
         source_link = f'<a class="news-original-source" href="{safe_link(first_source["url"])}">{source_label}</a>'
-        cards.append(f'<article class="card news-card{" news-card-with-brands" if logos else ""}">{logos}<div class="news-card-content">{byline(article)}<h2><a href="{url}">{escape(article["title"])}</a></h2><p>{escape(article["summary"])}</p><div class="news-card-links"><a class="text-link" href="{url}">Lees het bericht →</a>{source_link}</div></div></article>')
+        cards.append(f'<article class="card news-card{" news-card-with-brands" if logos else ""}">{logos}<div class="news-card-content">{byline(article)}<h2><a href="{url}">{escape(article["title"])}</a></h2><p>{escape(article["summary"])}</p></div></article>')
         body = []
         if image := article.get('image'):
             body.append(gallery_for_image(image['src']) or f'<figure class="news-image"><a href="{image["src"]}" target="_blank" rel="noopener" aria-label="Vergroot de applicatiescreenshot"><img src="{image["src"]}" width="{image["width"]}" height="{image["height"]}" alt="{escape(image["alt"],quote=True)}"></a></figure>')
@@ -184,8 +184,8 @@ def render():
 <section class="section"><div class="container"><div class="cards news-grid">'''+''.join(cards)+'''</div><p class="news-overview-note"><a href="/projecten/">Bekijk ook onze projecten →</a></p></div></section>'''
     outputs[ROOT/'nieuws/index.html'] = document('/nieuws/','Nieuws over data & bedrijfsprocessen','Lees nieuws en praktijkverhalen over data, automatisering en websites. ✓ Duiding voor ondernemers ✓ Updates over de oplossingen die we ontwikkelen.',overview)
 
-    items = ''.join(f'<li>{byline(a)}<a href="{route(a)}">{escape(a["title"])} →</a><p>{escape(a["summary"])}</p></li>' for a in articles[:2])
-    latest = f'{START}\n<section class="section home-updates"><div class="container"><div class="section-heading"><h2>Nieuws en praktijk</h2><p>Ontwikkelingen in ons vakgebied en verbeteringen uit onze projecten.</p></div><ul class="resource-list">{items}</ul><p class="section-more"><a href="/nieuws/">Alle berichten →</a></p></div></section>\n{END}'
+    items = ''.join(f'<li>{brand_logos(a)}{byline(a)}<h3><a href="{route(a)}">{escape(a["title"])}</a></h3><p>{escape(a["summary"])}</p></li>' for a in articles[:2])
+    latest = f'{START}\n<section class="section home-updates"><div class="container"><div class="section-heading"><h2>Nieuws en praktijk</h2><p>Ontwikkelingen in ons vakgebied en verbeteringen uit onze projecten.</p></div><ul class="resource-list">{items}</ul><p class="news-overview-note"><a href="/nieuws/">Alle berichten →</a></p></div></section>\n{END}'
     if home.count(START)!=1 or home.count(END)!=1:
         raise ValueError('Homepage needs one NEWS-LATEST marker pair')
     home = re.sub(re.escape(START)+r'.*?'+re.escape(END),lambda _:latest,home,flags=re.S)
