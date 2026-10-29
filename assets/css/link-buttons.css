@@ -2,7 +2,7 @@
    Public website only: native demos retain their own application controls. */
 :root{--brand-blue:#051d40;--brand-blue-hover:#173a65;--brand-blue-soft:#eaf0f8;--brand-orange:#ff4900;--brand-orange-hover:#ff631f;--brand-orange-soft:#fff0e9;--brand-orange-soft-strong:#ffe0d4;--ink:var(--brand-blue);--link:var(--brand-blue);--accent:var(--brand-orange)}
 /* Translucent fills soften actions; text and brand artwork stay fully opaque. */
-:root{--action-blue:rgba(23,58,101,.86);--action-blue-hover:rgba(23,58,101,.96);--action-blue-border:rgba(23,58,101,.78);--action-blue-border-hover:rgba(23,58,101,.96);--action-orange:rgba(255,111,48,.70);--action-orange-hover:rgba(255,111,48,.84);--action-orange-border:rgba(255,93,28,.78);--action-orange-border-hover:rgba(255,93,28,.90)}
+:root{--action-blue:rgba(23,58,101,.86);--action-blue-hover:rgba(23,58,101,.96);--action-blue-border:rgba(23,58,101,.78);--action-blue-border-hover:rgba(23,58,101,.96);--action-orange:rgba(255,99,31,.90);--action-orange-hover:rgba(255,79,12,.96);--action-orange-border:rgba(255,85,16,.94);--action-orange-border-hover:rgba(255,73,0,1)}
 body a[href]{text-decoration:none}
 body a[href]:not(.button):not(:where(.brand,.footer-brand,.client-grid a,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll,.footer-contact-link,:has(>img:only-child))){
  display:inline-flex;align-items:center;justify-content:center;gap:7px;vertical-align:baseline;

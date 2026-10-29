@@ -45,7 +45,7 @@
     "fullstack_backend": "Fullstack developer · API’s",
     "fullstack_platform": "Fullstack developer · platform",
     "ux": "UX designer",
-    "consultant": "Consultant",
+    "consultant": "Projectconsultant",
     "seo": "SEO specialist",
     "sea": "SEA specialist",
     "buitendienst": "Buitendienst"

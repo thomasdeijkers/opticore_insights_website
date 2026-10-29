@@ -24,8 +24,8 @@ META_TEXT = {'description', 'og:title', 'og:description', 'twitter:title', 'twit
 SCHEMA_TEXT = {'name', 'description', 'headline', 'text', 'caption', 'articleSection', 'keywords'}
 VERSION = '20261029-team-footer'
 PUBLIC_STYLE_VERSION = '20261029-topic-links'
-LINK_BUTTONS_STYLE_VERSION = '20261029-contact-privacy'
-TEAM_STYLE_VERSION = '20261029-vacancy-profiles'
+LINK_BUTTONS_STYLE_VERSION = '20261029-vivid-orange'
+TEAM_STYLE_VERSION = '20261029-nine-roles'
 IMPLEMENTATION_STYLE_VERSION = '20261029-trello-screens'
 MODULAR_STYLE_VERSION = '20261029-fullwidth-nav'
 
