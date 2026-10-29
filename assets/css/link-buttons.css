@@ -29,6 +29,9 @@ body :is(p,dd,figcaption,small,td,th)>a[href]:not(.button):not(:where(.text-link
 body :is(h1,h2,h3,h4)>a[href]:not(.button){font-size:inherit;line-height:inherit}
 body .breadcrumbs a[href]{display:inline;min-height:0;padding:0;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;color:#41566a;font-size:inherit;font-weight:400;line-height:inherit;text-align:left}
 body .breadcrumbs a[href]:hover{background:transparent;color:var(--brand-blue);text-decoration:underline}
+/* Topic titles are editorial links, not another row of filled actions. */
+body .bol-promo-links li>a[href]{display:inline;min-height:0;max-width:100%;padding:0;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;color:var(--brand-blue);font-size:16px;font-weight:700;line-height:1.45;text-align:left;text-decoration:underline;text-decoration-color:var(--brand-orange);text-underline-offset:3px;overflow-wrap:anywhere}
+body .bol-promo-links li>a[href]:hover{background:transparent;border:0;color:var(--brand-blue-hover);text-decoration:underline;text-decoration-color:var(--brand-orange)}
 body .site-nav{gap:5px}
 body .site-nav>a[href]{width:100%;justify-content:flex-start;text-align:left;min-height:42px;padding:9px 12px;margin:0;border-color:transparent;background:transparent;color:var(--brand-blue)}
 body .site-nav>a[href]:hover,body .site-nav>a[aria-current=page]{background:var(--brand-orange-soft);color:var(--brand-blue);border-color:var(--brand-orange)}
