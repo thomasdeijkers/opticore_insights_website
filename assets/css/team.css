@@ -1,0 +1,23 @@
+.team-hero{padding:56px 0;background:linear-gradient(120deg,#f4f8fb,#fff4eb);border-bottom:1px solid #e0e7ed}
+.team-hero h1{max-width:22ch;font-size:clamp(36px,4.5vw,54px);margin:14px 0 22px}
+.team-hero .lead{max-width:69ch}
+.team-facts{display:flex;flex-wrap:wrap;gap:14px 32px;margin-top:28px;color:#485b6a;font-size:14px}
+.team-facts strong{color:#152c42;font-size:22px;margin-right:6px}
+.team-founder{display:grid;grid-template-columns:170px 1fr;gap:40px;max-width:920px;align-items:center}
+.team-founder-avatar{display:grid;place-items:center;width:170px;height:170px;border-radius:24px;background:#183d59;color:#fff;font-size:76px;font-weight:700;box-shadow:10px 10px 0 #ffede0}
+.team-founder h2{margin:8px 0 16px}
+.team-founder p{max-width:62ch}
+.team-roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.team-role{min-width:0;display:flex;flex-direction:column;padding:26px;background:#fff;border:1px solid #d5e0e8;border-radius:12px}
+.team-role-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+.team-role-icon{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:10px;color:#175a96;background:#edf5fb}
+.team-role-icon svg{width:24px;height:24px}
+.team-role-status{font-size:11px;line-height:1.5;border:1px solid #f0cfb7;background:#fff3e9;color:#923b16;border-radius:20px;padding:5px 9px}
+.team-role h3{font-size:21px;line-height:1.3;min-height:2.6em;margin:0 0 14px}
+.team-role p{font-size:16px;color:#485b6a;line-height:1.7;margin:0 0 24px}
+body .team-role>a[href]{align-self:flex-start;margin:auto 0 0}
+.team-collaboration{display:flex;align-items:center;justify-content:space-between;gap:32px}
+.team-collaboration>div{max-width:66ch}
+.team-collaboration>a{flex-shrink:0}
+@media(max-width:950px){.team-roles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.team-hero{padding:36px 0}.team-facts{gap:12px 20px}.team-founder{grid-template-columns:1fr;gap:24px}.team-founder-avatar{width:104px;height:104px;border-radius:18px;font-size:50px}.team-roles{grid-template-columns:1fr;gap:18px}.team-role{padding:24px}.team-role h3{min-height:0}.team-role-top{margin-bottom:18px}.team-collaboration{flex-direction:column;align-items:flex-start;gap:16px}}

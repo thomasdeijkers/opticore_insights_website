@@ -54,7 +54,7 @@ class Page(HTMLParser):
                 self.indexable &= 'noindex' not in attrs.get('content', '').lower()
         parent_main = any(item['tag'] == 'main' for item in self.stack)
         skip = (any(item['skip'] for item in self.stack) or tag in ('script','style','nav','form','dialog')
-                or 'data-screen-gallery' in attrs)
+                or 'data-screen-gallery' in attrs or 'data-expectations' in attrs)
         if parent_main and not skip and tag in ('h1','h2','h3'):
             self.finish_section()
             anchor = attrs.get('id') or next((item['id'] for item in reversed(self.stack)

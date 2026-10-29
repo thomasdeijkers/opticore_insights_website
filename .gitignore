@@ -40,3 +40,6 @@ backups/
 
 /assets/img/module-examples/client-orders-verwerken-*-dark.jpg
 /assets/img/module-examples/client-orders-klanten-*-dark.jpg
+
+# Authored AI atmosphere images are restored from a pinned media release.
+/assets/img/collaboration-v1/

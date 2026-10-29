@@ -30,12 +30,13 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
        const c=getComputedStyle(a);count++;
        const transparent=c.backgroundColor==='rgba(0, 0, 0, 0)';
        const breadcrumb=!!a.closest('.breadcrumbs');
+       const footerNavigation=!!a.closest('.footer-nav');
        const inline=a.parentElement.matches('p,dd,figcaption,small,td,th')&&!a.matches('.button,.text-link,.footer-social');
        const primary=a.matches('.button:not(.button-secondary),.footer-contact-link,.nav-contact');
        const quietNavigation=!!a.closest('.site-nav')&&!primary;
-       const expected=breadcrumb||inline||quietNavigation?'transparent':primary?'blue':'orange';
+       const expected=breadcrumb||footerNavigation||inline||quietNavigation?'transparent':primary?'blue':'orange';
        const good=expected==='transparent'?transparent:expected==='blue'?c.backgroundColor==='rgb(23, 90, 150)'&&c.color==='rgb(255, 255, 255)':c.backgroundColor==='rgb(255, 243, 233)'&&c.color==='rgb(146, 59, 22)';
-       if(!good||(breadcrumb&&(c.paddingTop!=='0px'||c.borderTopWidth!=='0px'))||(!inline&&c.textDecorationLine.includes('underline')))
+       if(!good||((breadcrumb||footerNavigation)&&c.borderTopWidth!=='0px')||(!inline&&!footerNavigation&&c.textDecorationLine.includes('underline')))
         bare.push({text:a.textContent.trim().slice(0,100),href:a.getAttribute('href'),expected,background:c.backgroundColor,color:c.color});
       }
      }

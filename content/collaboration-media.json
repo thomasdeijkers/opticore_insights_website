@@ -1,0 +1,46 @@
+{
+  "tag": "collaboration-scenes-20261029-v1",
+  "asset": "collaboration-scenes.zip",
+  "kind": "ai-generated-illustrations",
+  "tool": "built-in image_gen",
+  "notice": "Illustrative scenes, not photographs of employees or customers.",
+  "images": [
+    {
+      "id": "communicatie",
+      "path": "/assets/img/collaboration-v1/communicatie.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "f3367f053daa2dc0449962d50310766453c388fca699270fe8230cdcf77f608b",
+      "prompt": "Use case: photorealistic-natural. Asset type: illustrative atmosphere photograph for an explicitly AI-labelled company website carousel, not a customer testimonial or staff portrait. Landscape 1536x1024 composition, high-resolution natural editorial business photography, coherent understated navy blue, warm orange and light neutral palette, soft daylight, clean uncluttered workspace, authentic textures. Fictional generic adults only, no real person identities, no recognizable company office or branding. No readable text, no logos, no watermarks, no testimonial ratings. Show people in contextual candid side/back views, not facing the camera for a portrait. Physically plausible hands, computers and furniture. Scene: a thoughtful collaborative discussion at a small modern desk, one adult explaining a simple paper sketch to another adult. Focus on a useful exchange, hands and a notebook, with calm attentive body language, faces only indistinct in side profile. A navy notebook and subtle orange pen are the only accent props. Wider framing and plenty of breathing room.",
+      "source_sha256": "15ee45cca66b0eba399758f501aa9f66ca3478ef2c4fc64bbc3fe14bf051fcc3"
+    },
+    {
+      "id": "inzicht",
+      "path": "/assets/img/collaboration-v1/inzicht.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "8c5fd10df8baa53efd8209260a33a2ea6ea7e418fd1b97deea696d5d6d442cfa",
+      "prompt": "Use case: photorealistic-natural. Asset type: illustrative atmosphere photograph for an explicitly AI-labelled company website carousel, not a customer testimonial or staff portrait. Landscape 1536x1024 composition, high-resolution natural editorial business photography, coherent understated navy blue, warm orange and light neutral palette, soft daylight, clean uncluttered workspace, authentic textures. Fictional generic adults only, no real person identities, no recognizable company office or branding. No readable text, no logos, no watermarks, no testimonial ratings. Show people in contextual candid side/back views, not facing the camera for a portrait. Physically plausible hands, computers and furniture. Scene: a generic adult business professional seen from behind and slightly to the side studying a laptop with simple abstract dashboard charts. No readable data or numbers on the screen. A bright tidy desk, realistic keyboard, one orange pencil, afternoon window light. Focus on making information understandable, no direct eye contact with camera.",
+      "source_sha256": "5897619216288f833aa3b84e611466fa4d67cac51c23baa7bd1c54e0a0b733a9"
+    },
+    {
+      "id": "automatisering",
+      "path": "/assets/img/collaboration-v1/automatisering.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "49566334c6f25205bb8dffb0f948e5c63b421fe87d5b3bd811f0937000af018f",
+      "prompt": "Use case: photorealistic-natural. Asset type: illustrative atmosphere photograph for an explicitly AI-labelled company website carousel, not a customer testimonial or staff portrait. Landscape 1536x1024 composition, high-resolution natural editorial business photography, coherent understated navy blue, warm orange and light neutral palette, soft daylight, clean uncluttered workspace, authentic textures. Fictional generic adults only, no real person identities, no recognizable company office or branding. No readable text, no logos, no watermarks, no testimonial ratings. Show people in contextual candid side/back views, not facing the camera for a portrait. Physically plausible hands, computers and furniture. Scene: close candid workplace view of two generic adults collaborating on a laptop and a small process sketch on paper. Show shoulders, hands and the desk, with faces mostly outside the crop. Screen has only abstract neat blocks and lines, no legible code or text. Navy sleeve, warm orange desk accessory, light wood and subtle reflections. Smart practical work, no posed portrait.",
+      "source_sha256": "a843d293f936473d42184442b0c9f1939dfb391ec4bc50ced2e58541e34ea0ac"
+    },
+    {
+      "id": "samenwerken",
+      "path": "/assets/img/collaboration-v1/samenwerken.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "7578bebb05f1cf77f8467dc54f9997a1fd7e86e15d355161029ce02733f5df21",
+      "prompt": "Use case: photorealistic-natural. Asset type: illustrative atmosphere photograph for an explicitly AI-labelled company website carousel, not a customer testimonial or staff portrait. Landscape 1536x1024 composition, high-resolution natural editorial business photography, coherent understated navy blue, warm orange and light neutral palette, soft daylight, clean uncluttered workspace, authentic textures. Fictional generic adults only, no real person identities, no recognizable company office or branding. No readable text, no logos, no watermarks, no testimonial ratings. Show people in contextual candid side/back views, not facing the camera for a portrait. Physically plausible hands, computers and furniture. Scene: remote collaboration from a bright simple home-office desk. A generic professional in a navy sweater is seen from the back in a wide frame with headphones, working at a laptop; an indistinct video-call grid is visible with no readable content or recognizable faces. Soft orange ceramic mug, small houseplant, balanced natural daylight. Emphasize calm flexible professional collaboration.",
+      "source_sha256": "ddeb3529d3f6934c10959d9404dae406cbccfec75c00748e5ab496c6133e1e10"
+    }
+  ],
+  "sha256": "b9ee18b0b241eb74cf6a81d00c625a721bbb1bc86f93a87ae31c91a2d24a76cd"
+}

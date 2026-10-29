@@ -23,7 +23,8 @@ body .site-nav>a[href]{width:100%;justify-content:flex-start;text-align:left;min
 body .site-nav>a[href]:hover,body .site-nav>a[aria-current=page]{background:#fff3e9;color:#923b16;border-color:#f0cfb7}
 body .site-nav>a.nav-contact{background:#175a96;border-color:#175a96;color:#fff}
 body .footer-nav li+li{margin-top:5px}
-body .footer-nav a[href]{width:100%;justify-content:flex-start;text-align:left;min-height:38px;padding:7px 10px;margin:0;font-size:13px}
+body .footer-nav a[href]{display:block;width:auto;min-height:32px;padding:4px 0;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;color:#175a96;font-size:14px;font-weight:400;text-align:left;text-decoration:underline;text-underline-offset:3px}
+body .footer-nav a[href]:hover{background:transparent;border:0;color:#104877;text-decoration:underline}
 body .site-footer .footer-social{padding:7px 11px;min-height:38px}
 body .footer-legal-links a[href]{min-height:34px;padding:5px 9px;font-size:12px}
 body .case-chapters nav a[href]{justify-content:flex-start;width:100%;margin:0}

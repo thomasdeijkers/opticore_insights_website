@@ -22,6 +22,7 @@ jobs:
 
       - name: Restore reviewed Olympus frontend captures
         run: |
+          python3 scripts/collaboration_media.py --restore
           python3 scripts/test_olympus_media.py
           python3 scripts/olympus_media.py
           python3 scripts/test_demo_product_media.py
@@ -55,6 +56,7 @@ jobs:
           node --check assets/js/demo-marketing-reference.js
           node --check assets/js/demo-full-workspace.js
           node --check assets/js/usage-costs.js
+          node --check assets/js/expectations-carousel.js
           node --check assets/js/implementation-roadmap.js
           node scripts/test_implementation_roadmap.cjs
           node scripts/test_picklist_demo.cjs

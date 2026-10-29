@@ -38,6 +38,25 @@
     teamType.value = requestedCollaboration;
   }
 
+  // Only authored role IDs may prefill the editable expertise field.
+  const roles = {
+    "marketing": "Marketing",
+    "fullstack_frontend": "Fullstack developer · frontend",
+    "fullstack_backend": "Fullstack developer · API’s",
+    "fullstack_platform": "Fullstack developer · platform",
+    "ux": "UX designer",
+    "consultant": "Consultant",
+    "seo": "SEO specialist",
+    "sea": "SEA specialist",
+    "buitendienst": "Buitendienst"
+};
+  const requestedRole = new URLSearchParams(window.location.search).get('rol');
+  const expertise = form.querySelector('#team-expertise');
+  if (choice.value === 'team' && expertise && !expertise.value && Object.hasOwn(roles, requestedRole)) {
+    const label = roles[requestedRole];
+    expertise.value = window.SiteI18n?.text(label) || label;
+  }
+
   choice.addEventListener('change', () => update(true));
   teamType?.addEventListener('change', updateTeam);
   // Restore the selected form when returning through browser history.

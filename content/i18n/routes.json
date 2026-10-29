@@ -428,5 +428,10 @@
     "de": "/de/suche/",
     "en": "/en/search/",
     "fr": "/fr/recherche/"
+  },
+  "/team/": {
+    "de": "/de/team/",
+    "en": "/en/team/",
+    "fr": "/fr/equipe/"
   }
 }
