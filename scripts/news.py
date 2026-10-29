@@ -139,7 +139,7 @@ def render():
 <meta property="og:title" content="{escape(full_title,quote=True)}"><meta property="og:description" content="{escape(description,quote=True)}"><meta property="og:url" content="{url}"><meta property="og:type" content="{'article' if article else 'website'}"><meta property="og:site_name" content="OptiCore Insights"><meta property="og:locale" content="nl_NL"><meta property="og:image" content="{image}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(full_title,quote=True)}"><meta name="twitter:description" content="{escape(description,quote=True)}"><meta name="twitter:image" content="{image}">
 <script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@graph':schema},ensure_ascii=False,separators=(',',':'))}</script>
-<link rel="stylesheet" href="/assets/css/site.css?v=20261027-desktop-review"><link rel="stylesheet" href="/assets/css/news.css?v=20261029-editorial-headlines"><link rel="alternate" type="application/rss+xml" title="OptiCore Insights — Nieuws en praktijk" href="{BASE}/nieuws/feed.xml">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261027-desktop-review"><link rel="stylesheet" href="/assets/css/news.css?v=20261029-logo-left"><link rel="alternate" type="application/rss+xml" title="OptiCore Insights — Nieuws en praktijk" href="{BASE}/nieuws/feed.xml">
 <link rel="stylesheet" href="/assets/css/screenshot-gallery.css?v=20261027-desktop-review"></head><body><a class="skip-link" href="#inhoud">Direct naar inhoud</a>{nav_header}
 <main id="inhoud">{main}</main>{footer}<script src="/assets/js/main.js?v=20261026a" defer></script><script src="/assets/js/screenshot-gallery.js?v=20261027-landscape" defer></script></body></html>
 ''')
@@ -185,7 +185,7 @@ def render():
 <section class="section"><div class="container"><div class="cards news-grid">'''+''.join(cards)+'''</div><p class="news-overview-note"><a href="/projecten/">Bekijk ook onze projecten →</a></p></div></section>'''
     outputs[ROOT/'nieuws/index.html'] = document('/nieuws/','Nieuws over data & bedrijfsprocessen','Lees nieuws en praktijkverhalen over data, automatisering en websites. ✓ Duiding voor ondernemers ✓ Updates over de oplossingen die we ontwikkelen.',overview)
 
-    items = ''.join(f'<li>{brand_logos(a)}{byline(a)}<h3><a href="{route(a)}">{escape(a["title"])}</a></h3><p>{escape(a["summary"])}</p></li>' for a in articles[:2])
+    items = ''.join(f'<li class="news-entry-with-brands">{brand_logos(a)}<div class="news-entry-content">{byline(a)}<h3><a href="{route(a)}">{escape(a["title"])}</a></h3><p>{escape(a["summary"])}</p></div></li>' for a in articles[:2])
     latest = f'{START}\n<section class="section home-updates"><div class="container"><div class="section-heading"><h2>Nieuws en praktijk</h2><p>Ontwikkelingen in ons vakgebied en verbeteringen uit onze projecten.</p></div><ul class="resource-list">{items}</ul><p class="news-overview-note"><a href="/nieuws/">Alle berichten →</a></p></div></section>\n{END}'
     if home.count(START)!=1 or home.count(END)!=1:
         raise ValueError('Homepage needs one NEWS-LATEST marker pair')
