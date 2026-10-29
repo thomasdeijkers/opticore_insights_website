@@ -1,15 +1,17 @@
 /* Logo colours: source assets/img/opticore-insights-logo.svg.
    Public website only: native demos retain their own application controls. */
 :root{--brand-blue:#051d40;--brand-blue-hover:#173a65;--brand-blue-soft:#eaf0f8;--brand-orange:#ff4900;--brand-orange-hover:#ff631f;--brand-orange-soft:#fff0e9;--brand-orange-soft-strong:#ffe0d4;--ink:var(--brand-blue);--link:var(--brand-blue);--accent:var(--brand-orange)}
+/* Translucent fills soften actions; text and brand artwork stay fully opaque. */
+:root{--action-blue:rgba(23,58,101,.86);--action-blue-hover:rgba(23,58,101,.96);--action-blue-border:rgba(23,58,101,.78);--action-blue-border-hover:rgba(23,58,101,.96);--action-orange:rgba(255,99,31,.82);--action-orange-hover:rgba(255,99,31,.95);--action-orange-border:rgba(255,73,0,.94);--action-orange-border-hover:rgba(255,73,0,.98)}
 body a[href]{text-decoration:none}
 body a[href]:not(.button):not(:where(.brand,.footer-brand,.client-grid a,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll,.footer-contact-link,:has(>img:only-child))){
  display:inline-flex;align-items:center;justify-content:center;gap:7px;vertical-align:baseline;
  min-height:40px;min-width:0;max-width:100%;padding:8px 13px;margin:3px 5px 3px 0;
- border:1px solid var(--brand-orange);border-radius:6px;background:var(--brand-orange);color:var(--brand-blue);
+ border:1px solid var(--action-orange-border);border-radius:6px;background:var(--action-orange);color:var(--brand-blue);
  font-size:14px;font-weight:650;line-height:1.45;text-align:center;white-space:normal;overflow-wrap:break-word;text-wrap:pretty;
  text-decoration:none;transition:background-color .15s,border-color .15s,color .15s;
 }
-body a[href]:not(.button):not(:where(.brand,.footer-brand,.client-grid a,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll,.footer-contact-link,:has(>img:only-child))):hover{background:var(--brand-orange-hover);border-color:var(--brand-orange-hover);color:var(--brand-blue)}
+body a[href]:not(.button):not(:where(.brand,.footer-brand,.client-grid a,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll,.footer-contact-link,:has(>img:only-child))):hover{background:var(--action-orange-hover);border-color:var(--action-orange-border-hover);color:var(--brand-blue)}
 body a[href]:focus-visible,body button:focus-visible{outline:3px solid var(--brand-blue);outline-offset:3px}
 /* Equal tracks fill each row; the last one or two actions also fill their row. */
 body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts){display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;align-items:stretch;width:100%}
@@ -30,7 +32,7 @@ body .breadcrumbs a[href]:hover{background:transparent;color:var(--brand-blue);t
 body .site-nav{gap:5px}
 body .site-nav>a[href]{width:100%;justify-content:flex-start;text-align:left;min-height:42px;padding:9px 12px;margin:0;border-color:transparent;background:transparent;color:var(--brand-blue)}
 body .site-nav>a[href]:hover,body .site-nav>a[aria-current=page]{background:var(--brand-orange-soft);color:var(--brand-blue);border-color:var(--brand-orange)}
-body .site-nav>a.nav-contact{background:var(--brand-blue);border-color:var(--brand-blue);color:#fff}
+body .site-nav>a.nav-contact{background:var(--action-blue);border-color:var(--action-blue-border);color:#fff}
 body .footer-nav li+li{margin-top:5px}
 body .footer-nav a[href]{display:block;width:auto;min-height:32px;padding:4px 0;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;color:var(--brand-blue);font-size:14px;font-weight:400;text-align:left;text-decoration:underline;text-underline-offset:3px}
 body .footer-nav a[href]:hover{background:transparent;border:0;color:var(--brand-blue-hover);text-decoration:underline}
@@ -41,18 +43,18 @@ body .resource-list a[href]{margin:3px 0 8px;padding:8px 12px}
 body .webapp-module-card .webapp-module-choose{margin:4px 21px 18px;padding:8px 12px}
 body .technology-resource img{flex:none;background:#fff;padding:3px;border-radius:3px}
 body .language-picker nav a[href]{margin:3px 0;box-shadow:none}
-body .language-picker nav a[aria-current=page]{background:var(--brand-orange);color:var(--brand-blue);border-color:var(--brand-orange)}
+body .language-picker nav a[aria-current=page]{background:var(--action-orange);color:var(--brand-blue);border-color:var(--brand-orange)}
 body .card>.text-link[href],body .news-card>.text-link[href]{align-self:flex-start;margin:auto 0 0}
 body a.case-back[href]{margin:24px 0 0}
-body :is(button.scan-back,button.webapp-selection-reset,button.text-link,button.button-link,button.module-screen-gallery-all,.expectations-controls button){display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;max-width:100%;padding:8px 13px;border:1px solid var(--brand-orange);border-radius:6px;background:var(--brand-orange);color:var(--brand-blue);font-size:14px;font-weight:650;line-height:1.45;text-decoration:none;white-space:normal;text-align:center}
-body :is(button.scan-back,button.webapp-selection-reset,button.text-link,button.button-link,button.module-screen-gallery-all,.expectations-controls button):hover{background:var(--brand-orange-hover);border-color:var(--brand-orange-hover);color:var(--brand-blue)}
+body :is(button.scan-back,button.webapp-selection-reset,button.text-link,button.button-link,button.module-screen-gallery-all,.expectations-controls button){display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;max-width:100%;padding:8px 13px;border:1px solid var(--action-orange-border);border-radius:6px;background:var(--action-orange);color:var(--brand-blue);font-size:14px;font-weight:650;line-height:1.45;text-decoration:none;white-space:normal;text-align:center}
+body :is(button.scan-back,button.webapp-selection-reset,button.text-link,button.button-link,button.module-screen-gallery-all,.expectations-controls button):hover{background:var(--action-orange-hover);border-color:var(--action-orange-border-hover);color:var(--brand-blue)}
 /* Navy conversions are larger; orange information actions remain compact. */
-body :is(a.button[href],button.button,a.footer-contact-link[href],button.menu-button){min-height:46px;padding:11px 18px;background:var(--brand-blue);border:1px solid var(--brand-blue);border-radius:6px;color:#fff;font-size:15px;font-weight:700;line-height:1.45;text-decoration:none;text-wrap:pretty;white-space:normal}
-body :is(a.button[href],button.button,a.footer-contact-link[href],button.menu-button):hover{background:var(--brand-blue-hover);border-color:var(--brand-blue-hover);color:#fff}
-body :is(a.button-secondary[href],button.button-secondary){min-height:40px;padding:8px 13px;background:var(--brand-orange);border-color:var(--brand-orange);color:var(--brand-blue);font-size:14px;font-weight:650}
-body :is(a.button-secondary[href],button.button-secondary):hover{background:var(--brand-orange-hover);border-color:var(--brand-orange-hover);color:var(--brand-blue)}
-body :is(.header-search-form,.menu-search,.search-form) button{background:var(--brand-blue);border-color:var(--brand-blue);color:#fff}
-body :is(.header-search-form,.menu-search,.search-form) button:hover{background:var(--brand-blue-hover);border-color:var(--brand-blue-hover)}
+body :is(a.button[href],button.button,a.footer-contact-link[href],button.menu-button){min-height:46px;padding:11px 18px;background:var(--action-blue);border:1px solid var(--action-blue-border);border-radius:6px;color:#fff;font-size:15px;font-weight:700;line-height:1.45;text-decoration:none;text-wrap:pretty;white-space:normal}
+body :is(a.button[href],button.button,a.footer-contact-link[href],button.menu-button):hover{background:var(--action-blue-hover);border-color:var(--action-blue-border-hover);color:#fff}
+body :is(a.button-secondary[href],button.button-secondary){min-height:40px;padding:8px 13px;background:var(--action-orange);border-color:var(--action-orange-border);color:var(--brand-blue);font-size:14px;font-weight:650}
+body :is(a.button-secondary[href],button.button-secondary):hover{background:var(--action-orange-hover);border-color:var(--action-orange-border-hover);color:var(--brand-blue)}
+body :is(.header-search-form,.menu-search,.search-form) button{background:var(--action-blue);border-color:var(--action-blue-border);color:#fff}
+body :is(.header-search-form,.menu-search,.search-form) button:hover{background:var(--action-blue-hover);border-color:var(--brand-blue-hover)}
 @media(max-width:760px){
  body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts){grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
  body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts)>:is(a[href],button){grid-column:auto;width:100%;padding:10px;font-size:13px;min-height:44px}

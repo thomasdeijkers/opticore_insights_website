@@ -35,7 +35,7 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
        const primary=a.matches('.button:not(.button-secondary),.footer-contact-link,.nav-contact');
        const quietNavigation=!!a.closest('.site-nav')&&!primary;
        const expected=breadcrumb||footerNavigation||inline||quietNavigation?'transparent':primary?'blue':'orange';
-       const good=expected==='transparent'?transparent:expected==='blue'?c.backgroundColor==='rgb(5, 29, 64)'&&c.color==='rgb(255, 255, 255)':c.backgroundColor==='rgb(255, 73, 0)'&&c.color==='rgb(5, 29, 64)';
+       const good=expected==='transparent'?transparent:expected==='blue'?c.backgroundColor==='rgba(23, 58, 101, 0.86)'&&c.color==='rgb(255, 255, 255)':c.backgroundColor==='rgba(255, 99, 31, 0.82)'&&c.color==='rgb(5, 29, 64)';
        if(!good||((breadcrumb||footerNavigation)&&c.borderTopWidth!=='0px')||(!inline&&!footerNavigation&&c.textDecorationLine.includes('underline')))
         bare.push({text:a.textContent.trim().slice(0,100),href:a.getAttribute('href'),expected,background:c.backgroundColor,color:c.color});
       }

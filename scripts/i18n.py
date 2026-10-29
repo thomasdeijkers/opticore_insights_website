@@ -23,7 +23,7 @@ DISPLAY_ATTRS = {'alt', 'title', 'placeholder', 'aria-label', 'aria-description'
 META_TEXT = {'description', 'og:title', 'og:description', 'twitter:title', 'twitter:description'}
 SCHEMA_TEXT = {'name', 'description', 'headline', 'text', 'caption', 'articleSection', 'keywords'}
 VERSION = '20261029-team-footer'
-PUBLIC_STYLE_VERSION = '20261029-logo-palette'
+PUBLIC_STYLE_VERSION = '20261029-translucent-actions'
 
 
 def clean(value):
