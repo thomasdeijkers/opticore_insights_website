@@ -3,7 +3,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
 from screenshot_gallery import ROOT, IMAGES, MANIFEST
-from i18n import VERSION
+from i18n import VERSION, PUBLIC_STYLE_VERSION
 
 
 class GalleryAudit(HTMLParser):
@@ -66,7 +66,8 @@ def main():
             count += 1
         if audit.galleries:
             script_version = VERSION if '<!-- i18n:head -->' in source else '20261027-landscape'
-            assets = ('screenshot-gallery.css?v=20261027-desktop-review', 'screenshot-gallery.js?v=' + script_version)
+            css_version = PUBLIC_STYLE_VERSION if '<!-- i18n:head -->' in source else '20261027-desktop-review'
+            assets = ('screenshot-gallery.css?v=' + css_version, 'screenshot-gallery.js?v=' + script_version)
             for asset in assets:
                 assert asset in source, f'{path}: stale/missing gallery component'
     for name in IMAGES:

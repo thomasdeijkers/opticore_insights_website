@@ -23,6 +23,7 @@ DISPLAY_ATTRS = {'alt', 'title', 'placeholder', 'aria-label', 'aria-description'
 META_TEXT = {'description', 'og:title', 'og:description', 'twitter:title', 'twitter:description'}
 SCHEMA_TEXT = {'name', 'description', 'headline', 'text', 'caption', 'articleSection', 'keywords'}
 VERSION = '20261029-team-footer'
+PUBLIC_STYLE_VERSION = '20261029-logo-palette'
 
 
 def clean(value):
@@ -338,7 +339,7 @@ def integration(source, canonical, language, mapping):
             content = re.sub(r'[ \u00a0]+(?=[→↗]\s*$)', '&#160;', match[2])
             return match[1] + content + match[3]
         source = re.sub(r'(<a\b[^>]*>)(.*?)(</a>)', action_arrow, source, flags=re.S)
-    source = re.sub(r'(/assets/css/(?:careers|expectations\-carousel|implementation|modular\-webapp|screenshot\-gallery|site|site\-search|team|usage\-costs|webapp\-guide)\.css)(?:\?v=[^\"\s]*)?', lambda m: m[1] + '?v=20261029-logo-palette', source)
+    source = re.sub(r'(/assets/css/(?:careers|expectations\-carousel|implementation|modular\-webapp|screenshot\-gallery|site|site\-search|team|usage\-costs|webapp\-guide)\.css)(?:\?v=[^\"\s]*)?', lambda m: m[1] + '?v=' + PUBLIC_STYLE_VERSION, source)
     source = re.sub(r'(/assets/js/(?:site-search|bedrijfsscan|modular-webapp|module-demo|usage-costs|implementation-roadmap|demo-picklist|demo-marketing-reference|demo-full-workspace|demo-page-catalogue|demo-access|screenshot-gallery|marketplace-demo-data)\.js)(?:\?v=[^"\s]*)?', lambda m: m[1] + '?v=' + VERSION, source)
     source = re.sub(r'(/assets/css/demo-full-workspace\.css)(?:\?v=[^"\s]*)?', lambda m: m[1] + '?v=' + VERSION, source)
     if language == 'nl':
@@ -350,7 +351,7 @@ def integration(source, canonical, language, mapping):
     alternatives = ''.join(f'<link rel="alternate" hreflang="{lang}" href="{BASE}{canonical if lang == "nl" else mapping[canonical][lang]}">' for lang in LANGUAGES)
     alternatives += f'<link rel="alternate" hreflang="x-default" href="{BASE}{canonical}">'
     # Marketing styles must never change native app navigation or captures.
-    actions_css = '' if 'class="demo-shell"' in source else '<link rel="stylesheet" href="/assets/css/link-buttons.css?v=20261029-logo-palette">'
+    actions_css = '' if 'class="demo-shell"' in source else f'<link rel="stylesheet" href="/assets/css/link-buttons.css?v={PUBLIC_STYLE_VERSION}">'
     head = f'<!-- i18n:head -->{alternatives}<link rel="stylesheet" href="/assets/css/i18n.css?v={VERSION}">{actions_css}<script src="/assets/i18n/{language}.js?v={VERSION}" defer></script><script src="/assets/js/i18n.js?v={VERSION}" defer></script><!-- /i18n -->'
     # These deferred scripts must precede existing deferred application scripts.
     position = re.search(r'<script\b[^>]*\bsrc=', source)
