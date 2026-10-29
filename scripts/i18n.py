@@ -78,8 +78,17 @@ def public_navigation(source, canonical):
                 block = re.sub(r'(<li><a\b[^>]*href="' + re.escape(after) + r'"[^>]*>.*?</a></li>)',
                                lambda m: m[1] + f'<li><a href="{path}">{label}</a></li>', block, count=1, flags=re.S)
         return block
+    def services_footer(match):
+        block = match[0]
+        for path, label in [('/api-integraties/', 'API-koppelingen'),
+                            ('/data-analyse/', 'Data-analyse'),
+                            ('/ai-workflows/', 'AI-workflows')]:
+            if f'href="{path}"' not in block:
+                block = block.replace('</ul>', f'<li><a href="{path}">{label}</a></li></ul>', 1)
+        return block
     source = re.sub(r'<nav\b(?=[^>]*\bdata-menu(?:[ >]))[^>]*>.*?</nav>', menu, source, flags=re.S)
-    return re.sub(r'<nav\b(?=[^>]*aria-label="Verder kijken in de footer")[^>]*>.*?</nav>', footer, source, flags=re.S)
+    source = re.sub(r'<nav\b(?=[^>]*aria-label="Verder kijken in de footer")[^>]*>.*?</nav>', footer, source, flags=re.S)
+    return re.sub(r'<nav\b(?=[^>]*aria-label="Diensten in de footer")[^>]*>.*?</nav>', services_footer, source, flags=re.S)
 
 
 def sources():
