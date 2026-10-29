@@ -24,6 +24,7 @@ META_TEXT = {'description', 'og:title', 'og:description', 'twitter:title', 'twit
 SCHEMA_TEXT = {'name', 'description', 'headline', 'text', 'caption', 'articleSection', 'keywords'}
 VERSION = '20261029-team-footer'
 PUBLIC_STYLE_VERSION = '20261029-topic-links'
+LINK_BUTTONS_STYLE_VERSION = '20261029-contact-privacy'
 IMPLEMENTATION_STYLE_VERSION = '20261029-trello-screens'
 MODULAR_STYLE_VERSION = '20261029-fullwidth-nav'
 
@@ -353,7 +354,7 @@ def integration(source, canonical, language, mapping):
     alternatives = ''.join(f'<link rel="alternate" hreflang="{lang}" href="{BASE}{canonical if lang == "nl" else mapping[canonical][lang]}">' for lang in LANGUAGES)
     alternatives += f'<link rel="alternate" hreflang="x-default" href="{BASE}{canonical}">'
     # Marketing styles must never change native app navigation or captures.
-    actions_css = '' if 'class="demo-shell"' in source else f'<link rel="stylesheet" href="/assets/css/link-buttons.css?v={PUBLIC_STYLE_VERSION}">'
+    actions_css = '' if 'class="demo-shell"' in source else f'<link rel="stylesheet" href="/assets/css/link-buttons.css?v={LINK_BUTTONS_STYLE_VERSION}">'
     head = f'<!-- i18n:head -->{alternatives}<link rel="stylesheet" href="/assets/css/i18n.css?v={VERSION}">{actions_css}<script src="/assets/i18n/{language}.js?v={VERSION}" defer></script><script src="/assets/js/i18n.js?v={VERSION}" defer></script><!-- /i18n -->'
     # These deferred scripts must precede existing deferred application scripts.
     position = re.search(r'<script\b[^>]*\bsrc=', source)

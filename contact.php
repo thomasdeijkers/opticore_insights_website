@@ -184,8 +184,8 @@ $subject_input = $topic ? $topic['label'] : clean_text($_POST['subject'] ?? '');
 $message = is_string($_POST['message'] ?? null) ? trim($_POST['message']) : '';
 $privacy = $_POST['privacy'] ?? '';
 
-if ($name === '' || !$email || $subject_input === '' || $message === '' || $privacy !== 'accepted') {
-    render_page('Controleer je gegevens', 'Niet alle verplichte velden zijn correct ingevuld. Controleer je naam, e-mail, onderwerp, bericht en privacybevestiging.');
+if ($name === '' || $company === '' || !$email || $phone === '' || $subject_input === '' || $message === '' || $privacy !== 'accepted') {
+    render_page('Controleer je gegevens', 'Niet alle verplichte velden zijn correct ingevuld. Controleer je naam, bedrijfsnaam, e-mail, telefoonnummer, onderwerp, bericht en privacybevestiging.');
 }
 
 if (strlen($name) > 480 || strlen($company) > 720 || strlen($email_raw) > 254 || strlen($phone) > 320 || strlen($subject_input) > 600 || strlen($message) > ($topic_key === 'business-scan' ? 72000 : 20000)) {
