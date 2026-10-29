@@ -1,55 +1,65 @@
-/* Website actions: blue for conversion, soft orange for information.
-   Native demo applications keep their own controls and never load this file. */
+/* Logo colours: source assets/img/opticore-insights-logo.svg.
+   Public website only: native demos retain their own application controls. */
+:root{--brand-blue:#051d40;--brand-blue-hover:#173a65;--brand-blue-soft:#eaf0f8;--brand-orange:#ff4900;--brand-orange-hover:#ff631f;--brand-orange-soft:#fff0e9;--brand-orange-soft-strong:#ffe0d4;--ink:var(--brand-blue);--link:var(--brand-blue);--accent:var(--brand-orange)}
 body a[href]{text-decoration:none}
 body a[href]:not(.button):not(:where(.brand,.footer-brand,.client-grid a,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll,.footer-contact-link,:has(>img:only-child))){
  display:inline-flex;align-items:center;justify-content:center;gap:7px;vertical-align:baseline;
- min-height:38px;min-width:0;max-width:100%;padding:7px 12px;margin:3px 5px 3px 0;
- border:1px solid #f0cfb7;border-radius:6px;background:#fff3e9;color:#923b16;
- font-size:14px;font-weight:600;line-height:1.5;text-align:center;white-space:normal;overflow-wrap:anywhere;
+ min-height:40px;min-width:0;max-width:100%;padding:8px 13px;margin:3px 5px 3px 0;
+ border:1px solid var(--brand-orange);border-radius:6px;background:var(--brand-orange);color:var(--brand-blue);
+ font-size:14px;font-weight:650;line-height:1.45;text-align:center;white-space:normal;overflow-wrap:break-word;text-wrap:pretty;
  text-decoration:none;transition:background-color .15s,border-color .15s,color .15s;
 }
-body a[href]:not(.button):not(:where(.brand,.footer-brand,.client-grid a,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll,.footer-contact-link,:has(>img:only-child))):hover{background:#ffe4ce;border-color:#dca67e;color:#733011}
-body a[href]:focus-visible,body button:focus-visible{outline:3px solid #c44b16;outline-offset:3px}
-body :is(.actions,.section-more,.webapp-cost-nav,.on-this-page,.portfolio-nav,.footer-legal-links,.news-source-shortcuts){gap:12px;align-items:center}
-body :is(.actions,.section-more,.webapp-cost-nav,.on-this-page,.portfolio-nav,.footer-legal-links,.news-source-shortcuts)>a[href]{margin:0}
-/* Inline references remain part of the sentence, never oversized buttons. */
-body :is(p,dd,figcaption,small,td,th)>a[href]:not(.button):not(:where(.text-link,.footer-social,.screen-slide,.webapp-demo-teaser-scroll,:has(>img:only-child))){display:inline;min-height:0;padding:0;margin:0;border:0;border-radius:0;background:transparent;color:#923b16;font-size:inherit;font-weight:600;line-height:inherit;box-shadow:none;text-decoration:underline;text-underline-offset:3px}
+body a[href]:not(.button):not(:where(.brand,.footer-brand,.client-grid a,.skip-link,.screen-slide,.portfolio-cover,.webapp-demo-teaser-scroll,.footer-contact-link,:has(>img:only-child))):hover{background:var(--brand-orange-hover);border-color:var(--brand-orange-hover);color:var(--brand-blue)}
+body a[href]:focus-visible,body button:focus-visible{outline:3px solid var(--brand-blue);outline-offset:3px}
+/* Equal tracks fill each row; the last one or two actions also fill their row. */
+body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts){display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;align-items:stretch;width:100%}
+body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts)>:is(a[href],button){grid-column:span 2;min-width:0;max-width:100%;width:100%;height:100%;margin:0;padding:10px 14px;white-space:normal;text-wrap:pretty;overflow-wrap:break-word;align-self:stretch}
+@media(min-width:761px){
+body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts)>:last-child:nth-child(3n+1){grid-column:1/-1}
+body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts)>:nth-last-child(2):nth-child(3n+1),body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts)>:last-child:nth-child(3n+2){grid-column:span 3}
+}
+body :is(.on-this-page,.portfolio-nav>.container){gap:8px;align-items:center;flex-wrap:wrap}
+body :is(.on-this-page,.portfolio-nav) a[href]{margin:0;font-size:13px;padding:7px 11px;min-height:36px}
+body .on-this-page>span{flex-basis:100%}
+/* References within sentences, breadcrumbs and footer navigation stay quiet. */
+body :is(p,dd,figcaption,small,td,th)>a[href]:not(.button):not(:where(.text-link,.footer-social,.screen-slide,.webapp-demo-teaser-scroll,:has(>img:only-child))){display:inline;min-height:0;padding:0;margin:0;border:0;border-radius:0;background:transparent;color:var(--brand-blue);font-size:inherit;font-weight:600;line-height:inherit;box-shadow:none;text-decoration:underline;text-decoration-color:var(--brand-orange);text-underline-offset:3px}
+body :is(p,dd,figcaption,small,td,th)>a[href]:not(.button):not(:where(.text-link,.footer-social,.screen-slide,.webapp-demo-teaser-scroll,:has(>img:only-child))):hover{background:transparent;border:0;color:var(--brand-blue);text-decoration:underline;text-decoration-color:var(--brand-orange)}
 body :is(h1,h2,h3,h4)>a[href]:not(.button){font-size:inherit;line-height:inherit}
-/* Breadcrumbs and structural navigation are deliberately quieter than actions. */
 body .breadcrumbs a[href]{display:inline;min-height:0;padding:0;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;color:#41566a;font-size:inherit;font-weight:400;line-height:inherit;text-align:left}
-body .breadcrumbs a[href]:hover{background:transparent;color:#175a96;text-decoration:underline}
+body .breadcrumbs a[href]:hover{background:transparent;color:var(--brand-blue);text-decoration:underline}
 body .site-nav{gap:5px}
-body .site-nav>a[href]{width:100%;justify-content:flex-start;text-align:left;min-height:42px;padding:9px 12px;margin:0;border-color:transparent;background:transparent;color:#152c42}
-body .site-nav>a[href]:hover,body .site-nav>a[aria-current=page]{background:#fff3e9;color:#923b16;border-color:#f0cfb7}
-body .site-nav>a.nav-contact{background:#175a96;border-color:#175a96;color:#fff}
+body .site-nav>a[href]{width:100%;justify-content:flex-start;text-align:left;min-height:42px;padding:9px 12px;margin:0;border-color:transparent;background:transparent;color:var(--brand-blue)}
+body .site-nav>a[href]:hover,body .site-nav>a[aria-current=page]{background:var(--brand-orange-soft);color:var(--brand-blue);border-color:var(--brand-orange)}
+body .site-nav>a.nav-contact{background:var(--brand-blue);border-color:var(--brand-blue);color:#fff}
 body .footer-nav li+li{margin-top:5px}
-body .footer-nav a[href]{display:block;width:auto;min-height:32px;padding:4px 0;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;color:#175a96;font-size:14px;font-weight:400;text-align:left;text-decoration:underline;text-underline-offset:3px}
-body .footer-nav a[href]:hover{background:transparent;border:0;color:#104877;text-decoration:underline}
-body .site-footer .footer-social{padding:7px 11px;min-height:38px}
+body .footer-nav a[href]{display:block;width:auto;min-height:32px;padding:4px 0;margin:0;border:0;border-radius:0;background:transparent;box-shadow:none;color:var(--brand-blue);font-size:14px;font-weight:400;text-align:left;text-decoration:underline;text-underline-offset:3px}
+body .footer-nav a[href]:hover{background:transparent;border:0;color:var(--brand-blue-hover);text-decoration:underline}
+body .site-footer .footer-social{padding:8px 12px;min-height:40px}
 body .footer-legal-links a[href]{min-height:34px;padding:5px 9px;font-size:12px}
 body .case-chapters nav a[href]{justify-content:flex-start;width:100%;margin:0}
 body .resource-list a[href]{margin:3px 0 8px;padding:8px 12px}
 body .webapp-module-card .webapp-module-choose{margin:4px 21px 18px;padding:8px 12px}
 body .technology-resource img{flex:none;background:#fff;padding:3px;border-radius:3px}
 body .language-picker nav a[href]{margin:3px 0;box-shadow:none}
-body .language-picker nav a[aria-current=page]{background:#ffe4ce;color:#733011;border-color:#dca67e}
+body .language-picker nav a[aria-current=page]{background:var(--brand-orange);color:var(--brand-blue);border-color:var(--brand-orange)}
 body .card>.text-link[href],body .news-card>.text-link[href]{align-self:flex-start;margin:auto 0 0}
 body a.case-back[href]{margin:24px 0 0}
-body :is(button.scan-back,button.webapp-selection-reset,button.text-link,button.button-link,button.module-screen-gallery-all){display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;max-width:100%;padding:7px 12px;border:1px solid #f0cfb7;border-radius:6px;background:#fff3e9;color:#923b16;font-size:14px;font-weight:600;line-height:1.5;text-decoration:none;white-space:normal;text-align:center}
-body :is(button.scan-back,button.webapp-selection-reset,button.text-link,button.button-link,button.module-screen-gallery-all):hover{background:#ffe4ce;border-color:#dca67e;color:#733011}
-/* Primary CTAs are larger and filled OptiCore blue. Secondary actions stay soft. */
-body :is(a.button[href],button.button,a.footer-contact-link[href],button.menu-button){min-height:47px;padding:10px 20px;background:#175a96;border:1px solid #175a96;border-radius:6px;color:#fff;font-size:16px;font-weight:650;line-height:1.5;text-decoration:none}
-body :is(a.button[href],button.button,a.footer-contact-link[href],button.menu-button):hover{background:#104877;border-color:#104877;color:#fff}
-body :is(a.button-secondary[href],button.button-secondary){min-height:40px;padding:8px 14px;background:#fff3e9;border-color:#f0cfb7;color:#923b16;font-size:14px;font-weight:600}
-body :is(a.button-secondary[href],button.button-secondary):hover{background:#ffe4ce;border-color:#dca67e;color:#733011}
-body :is(.on-this-page,.portfolio-nav){gap:8px}
-body :is(.on-this-page,.portfolio-nav) a[href]{font-size:13px;padding:6px 10px;min-height:34px}
-@media(max-width:650px){
- body .actions{align-items:stretch;gap:12px}
- body .actions>a.button[href]{flex:0 1 auto;width:100%;white-space:normal;text-align:center}
- body .actions>a[href]:not(.button){align-self:flex-start}
- body :is(.on-this-page,.portfolio-nav,.webapp-cost-nav) a[href]{max-width:100%;white-space:normal}
+body :is(button.scan-back,button.webapp-selection-reset,button.text-link,button.button-link,button.module-screen-gallery-all,.expectations-controls button){display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;max-width:100%;padding:8px 13px;border:1px solid var(--brand-orange);border-radius:6px;background:var(--brand-orange);color:var(--brand-blue);font-size:14px;font-weight:650;line-height:1.45;text-decoration:none;white-space:normal;text-align:center}
+body :is(button.scan-back,button.webapp-selection-reset,button.text-link,button.button-link,button.module-screen-gallery-all,.expectations-controls button):hover{background:var(--brand-orange-hover);border-color:var(--brand-orange-hover);color:var(--brand-blue)}
+/* Navy conversions are larger; orange information actions remain compact. */
+body :is(a.button[href],button.button,a.footer-contact-link[href],button.menu-button){min-height:46px;padding:11px 18px;background:var(--brand-blue);border:1px solid var(--brand-blue);border-radius:6px;color:#fff;font-size:15px;font-weight:700;line-height:1.45;text-decoration:none;text-wrap:pretty;white-space:normal}
+body :is(a.button[href],button.button,a.footer-contact-link[href],button.menu-button):hover{background:var(--brand-blue-hover);border-color:var(--brand-blue-hover);color:#fff}
+body :is(a.button-secondary[href],button.button-secondary){min-height:40px;padding:8px 13px;background:var(--brand-orange);border-color:var(--brand-orange);color:var(--brand-blue);font-size:14px;font-weight:650}
+body :is(a.button-secondary[href],button.button-secondary):hover{background:var(--brand-orange-hover);border-color:var(--brand-orange-hover);color:var(--brand-blue)}
+body :is(.header-search-form,.menu-search,.search-form) button{background:var(--brand-blue);border-color:var(--brand-blue);color:#fff}
+body :is(.header-search-form,.menu-search,.search-form) button:hover{background:var(--brand-blue-hover);border-color:var(--brand-blue-hover)}
+@media(max-width:760px){
+ body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts){grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts)>:is(a[href],button){grid-column:auto;width:100%;padding:10px;font-size:13px;min-height:44px}
+ body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts)>:last-child:nth-child(odd){grid-column:1/-1}
+ body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts):has(>:nth-child(3)):has(>:last-child:nth-child(odd)):has(>:first-child.button:not(.button-secondary))>:is(a[href],button):not(:first-child){grid-column:auto}
+ body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts):has(>:nth-child(3)):has(>:last-child:nth-child(odd))>:first-child.button:not(.button-secondary){grid-column:1/-1}
  body .resource-list a[href]{max-width:100%;text-align:left}
- body .footer-contact{flex-wrap:wrap}
 }
+@media(max-width:359px){body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts){grid-template-columns:1fr}body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts)>:is(a[href],button){grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){body a[href]{transition:none!important}}

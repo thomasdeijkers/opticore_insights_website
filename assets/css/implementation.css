@@ -1,10 +1,10 @@
-.implementation-hero{padding:45px 0;background:linear-gradient(125deg,#f3f6f9 50%,#fff3e9);border-bottom:1px solid var(--line)}
+.implementation-hero{padding:45px 0;background:linear-gradient(125deg,#f3f6f9 50%,var(--brand-orange-soft,#fff0e9));border-bottom:1px solid var(--line)}
 .implementation-hero-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:48px;align-items:center}
 .implementation-hero h1{font-size:clamp(35px,4vw,50px);line-height:1.15}
 .implementation-hero .lead{font-size:19px;margin-bottom:0}
-.implementation-estimate{padding:28px;background:linear-gradient(145deg,#123452,#15263f);border:1px solid #355573;border-radius:14px;color:#dce8f3}
+.implementation-estimate{padding:28px;background:linear-gradient(145deg,var(--brand-blue-hover,#173a65),var(--brand-blue,#051d40));border:1px solid var(--brand-blue-hover,#173a65);border-radius:14px;color:#dce8f3}
 .implementation-estimate>p{font-size:15px;line-height:1.65}
-.implementation-estimate>p:first-child{font-weight:650;color:#a3dbe2}
+.implementation-estimate>p:first-child{font-weight:650;color:var(--brand-blue-soft,#eaf0f8)}
 .implementation-duration{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:22px 0}
 .implementation-duration strong{color:#fff;font-size:58px;font-weight:750;line-height:1;letter-spacing:-1px}
 .implementation-duration span{font-size:20px;color:#fff}
@@ -28,17 +28,17 @@
 .implementation-phases{list-style:none;padding:0;margin:30px 0 0;display:grid;gap:18px}
 .implementation-phases>li{position:relative;display:grid;grid-template-columns:52px minmax(0,1fr);gap:18px;margin:0;min-width:0}
 .implementation-phases>li:not(:last-child)::after{content:'';position:absolute;top:52px;bottom:-18px;left:25px;border-left:2px solid #c8d6e2}
-.implementation-phase-number{display:grid;place-items:center;width:52px;height:52px;border:2px solid #175a96;border-radius:50%;background:#fff;color:#175a96;font-size:17px;font-weight:700;z-index:1}
+.implementation-phase-number{display:grid;place-items:center;width:52px;height:52px;border:2px solid var(--brand-blue,#051d40);border-radius:50%;background:#fff;color:var(--brand-blue,#051d40);font-size:17px;font-weight:700;z-index:1}
 .implementation-phases article{min-width:0;border:1px solid var(--line);border-radius:9px;background:#fff;padding:22px 24px}
 .implementation-phase-heading{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.implementation-page svg{width:25px;height:25px;flex:none;color:#aa4417}
+.implementation-page svg{width:25px;height:25px;flex:none;color:var(--brand-blue,#051d40)}
 .implementation-phase-heading h3{margin:0;font-size:21px;text-wrap:pretty}
 .implementation-phases article>p{font-size:16px;line-height:1.65;margin:0}
 .implementation-phases details{border-top:1px solid var(--line);margin-top:18px}
-.implementation-phases summary{padding-top:13px;min-height:36px;color:#923b16;font-size:14px}
+.implementation-phases summary{padding-top:13px;min-height:36px;color:var(--brand-blue,#051d40);font-size:14px}
 .implementation-phases details>div{padding-top:15px}
 .implementation-phases details p{font-size:16px;line-height:1.7;margin-bottom:16px}
-.implementation-phases details .implementation-outcome{font-size:15px;background:#f3f6f9;border-left:3px solid #175a96;padding:12px 15px;margin:0}
+.implementation-phases details .implementation-outcome{font-size:15px;background:#f3f6f9;border-left:3px solid var(--brand-blue,#051d40);padding:12px 15px;margin:0}
 .implementation-outcome strong{color:var(--ink)}
 .implementation-board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:24px}
 .implementation-board-column{min-width:0;background:#f0f4f7;border:1px solid var(--line);border-radius:8px;padding:16px}

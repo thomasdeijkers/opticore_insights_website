@@ -33,8 +33,8 @@ def public_components(source):
     position = source.rfind('</main>')
     if position != -1:
         source = source[:position] + expectations() + source[position:]
-        for tag in ('<link rel="stylesheet" href="/assets/css/expectations-carousel.css?v=20261029">', '<script src="/assets/js/expectations-carousel.js?v=20261029" defer></script>'):
-            source = source.replace(tag, '')
+        source = re.sub(r'<link rel="stylesheet" href="/assets/css/expectations-carousel\.css(?:\?v=[^"]*)?">', '', source)
+        source = re.sub(r'<script src="/assets/js/expectations-carousel\.js(?:\?v=[^"]*)?" defer></script>', '', source)
         source = source.replace('</head>', '<link rel="stylesheet" href="/assets/css/expectations-carousel.css?v=20261029"></head>')
         source = source.replace('</body>', '<script src="/assets/js/expectations-carousel.js?v=20261029" defer></script></body>')
     return source

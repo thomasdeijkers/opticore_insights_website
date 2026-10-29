@@ -9,11 +9,11 @@
 .webapp-module-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .webapp-module{display:flex;align-items:flex-start;gap:12px;padding:21px;background:#fff;border:1px solid #bdcad5;border-radius:7px;cursor:pointer;min-width:0}
 .webapp-module:hover{border-color:var(--link)}
-.webapp-module:has(input:checked){border-color:var(--accent);background:#fff1e8;box-shadow:inset 0 0 0 1px var(--accent)}
+.webapp-module:has(input:checked){border-color:var(--accent);background:var(--brand-orange-soft,#fff0e9);box-shadow:inset 0 0 0 1px var(--accent)}
 .webapp-module:has(input:focus-visible){outline:2px solid var(--link);outline-offset:-2px}
 .webapp-module input{width:20px;height:20px;margin:4px 0 0;flex-shrink:0;accent-color:var(--accent)}
 .webapp-module-title{display:flex;align-items:center;gap:9px;font-size:18px;line-height:1.4;font-weight:700;color:var(--ink);margin-bottom:10px}
-.webapp-module-title svg{width:23px;height:23px;flex-shrink:0;color:#175a96}
+.webapp-module-title svg{width:23px;height:23px;flex-shrink:0;color:var(--brand-blue,#051d40)}
 .webapp-module-copy{display:block;font-size:15px;line-height:1.65}
 .webapp-module-included{display:grid;gap:11px;margin:14px 0;padding-top:13px;border-top:1px solid var(--line)}
 .webapp-module-included>span{display:block}
@@ -35,7 +35,7 @@
 .webapp-fit .section-heading{max-width:820px}
 .webapp-fit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:28px}
 .webapp-fit-grid article{min-width:0;padding:24px;border:1px solid var(--line);border-radius:8px;background:#fff}
-.webapp-fit-icon{display:grid;place-items:center;width:42px;height:42px;margin-bottom:18px;border-radius:10px;background:#e8f3f5;color:#175a96;font-size:27px;line-height:1}
+.webapp-fit-icon{display:grid;place-items:center;width:42px;height:42px;margin-bottom:18px;border-radius:10px;background:var(--brand-blue-soft,#eaf0f8);color:var(--brand-blue,#051d40);font-size:27px;line-height:1}
 .webapp-fit-grid h3{font-size:20px;margin-bottom:10px}
 .webapp-fit-grid p{margin:0;font-size:16px}
 .webapp-fit-soft{background:var(--soft);border-block:1px solid var(--line)}
@@ -80,13 +80,13 @@
 @media(max-width:800px){.webapp-source dl{grid-template-columns:1fr;gap:19px}.webapp-source-title{font-size:16px}}
 
 /* Module pricing and prerequisite-aware selection. */
-.webapp-base{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;border:2px solid #175a96;background:#fff;padding:24px;border-radius:7px;margin-bottom:18px}
+.webapp-base{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;border:2px solid var(--brand-blue,#051d40);background:#fff;padding:24px;border-radius:7px;margin-bottom:18px}
 .webapp-base h3{margin:0 0 8px}.webapp-base p:last-child{margin-bottom:0}.webapp-base-price{display:flex;flex-direction:column;gap:7px;justify-content:center}
-.webapp-base-price strong{font-size:22px;color:var(--ink)}.webapp-required{font-size:13px;color:#175a96;font-weight:700}
+.webapp-base-price strong{font-size:22px;color:var(--ink)}.webapp-required{font-size:13px;color:var(--brand-blue,#051d40);font-weight:700}
 .webapp-module-help{font-size:15px;max-width:900px;margin-bottom:22px}
 .webapp-module-price{display:flex;flex-direction:column;gap:3px;margin-top:16px;padding-top:12px;border-top:1px solid var(--line);color:var(--ink);font-size:15px}
 .webapp-module-price strong{font-size:17px}.webapp-module-requires{display:block;margin-top:12px;font-size:13px;line-height:1.6;color:var(--muted)}
-.webapp-module-auto{display:block;margin-top:10px;font-size:13px;line-height:1.5;color:#175a96;font-weight:600}.webapp-module-auto[hidden]{display:none}
+.webapp-module-auto{display:block;margin-top:10px;font-size:13px;line-height:1.5;color:var(--brand-blue,#051d40);font-weight:600}.webapp-module-auto[hidden]{display:none}
 .webapp-module:has(input:disabled){cursor:default}.webapp-module input:disabled{opacity:1}
 .webapp-selection h4{font-size:16px;margin:18px 0 10px}.webapp-selection ol{margin:10px 0 20px;padding-left:24px}.webapp-selection ol li{background:none;border:0;border-radius:0;padding:2px 0;font-size:15px}
 .webapp-totals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:20px 0}.webapp-totals dt{font-size:14px}.webapp-totals dd{font-size:27px;font-weight:700;color:var(--ink);margin:3px 0 0}
@@ -94,7 +94,7 @@
 
 /* Prices, selection and source explanation live in the same module card. */
 .webapp-module-card{display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid #bdcad5;border-radius:7px}
-.webapp-module-card:has(input:checked){border-color:var(--accent);background:#fff1e8;box-shadow:inset 0 0 0 1px var(--accent)}
+.webapp-module-card:has(input:checked){border-color:var(--accent);background:var(--brand-orange-soft,#fff0e9);box-shadow:inset 0 0 0 1px var(--accent)}
 .webapp-module-card .webapp-module{border:0;border-radius:7px 7px 0 0;background:transparent;box-shadow:none}
 .webapp-module-card .webapp-module:has(input:checked){background:transparent;box-shadow:none}
 .webapp-module-card .webapp-module-details{border:0;border-top:1px solid var(--line);margin:0 21px;padding:0;margin-top:auto}
@@ -112,7 +112,7 @@
 
 .webapp-standard-monthly{font-size:13px;color:var(--muted)}
 .webapp-standard-monthly s{text-decoration-thickness:1px}
-.webapp-module-price .webapp-current-monthly{font-size:17px;color:#175a96}
+.webapp-module-price .webapp-current-monthly{font-size:17px;color:var(--brand-blue,#051d40)}
 .webapp-module-price.webapp-module-monthly{margin-top:14px;padding-top:0;border-top:0}
 .webapp-module-card .webapp-module{flex:1;align-items:stretch}
 .webapp-module-card .webapp-module>input{align-self:flex-start}

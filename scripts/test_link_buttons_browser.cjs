@@ -35,9 +35,22 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
        const primary=a.matches('.button:not(.button-secondary),.footer-contact-link,.nav-contact');
        const quietNavigation=!!a.closest('.site-nav')&&!primary;
        const expected=breadcrumb||footerNavigation||inline||quietNavigation?'transparent':primary?'blue':'orange';
-       const good=expected==='transparent'?transparent:expected==='blue'?c.backgroundColor==='rgb(23, 90, 150)'&&c.color==='rgb(255, 255, 255)':c.backgroundColor==='rgb(255, 243, 233)'&&c.color==='rgb(146, 59, 22)';
+       const good=expected==='transparent'?transparent:expected==='blue'?c.backgroundColor==='rgb(5, 29, 64)'&&c.color==='rgb(255, 255, 255)':c.backgroundColor==='rgb(255, 73, 0)'&&c.color==='rgb(5, 29, 64)';
        if(!good||((breadcrumb||footerNavigation)&&c.borderTopWidth!=='0px')||(!inline&&!footerNavigation&&c.textDecorationLine.includes('underline')))
         bare.push({text:a.textContent.trim().slice(0,100),href:a.getAttribute('href'),expected,background:c.backgroundColor,color:c.color});
+      }
+     }
+     if(marketing){
+      for(const group of document.querySelectorAll('.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts')){
+       const children=[...group.children].filter(e=>e.getClientRects().length);
+       if(!group.getClientRects().length||!children.length||!children.every(e=>e.matches('a[href],button')))continue;
+       const bounds=group.getBoundingClientRect(),rows=new Map();
+       for(const child of children){const box=child.getBoundingClientRect(),row=Math.round(box.top);if(!rows.has(row))rows.set(row,[]);rows.get(row).push(box);}
+       for(const row of rows.values()){
+        row.sort((a,b)=>a.left-b.left);
+        if(Math.abs(row[0].left-bounds.left)>1||Math.abs(row.at(-1).right-bounds.right)>1||row.length>(innerWidth<=760?2:3))bare.push({reason:'Action row does not fill its container',group:group.className,columns:row.length});
+        for(let i=1;i<row.length;i++)if(row[i].left<row[i-1].right+7)bare.push({reason:'Action buttons overlap or have no spacing',group:group.className});
+       }
       }
      }
      return {count,bare,overflow:document.documentElement.scrollWidth>innerWidth+1};
@@ -48,6 +61,6 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
   }
   await Promise.all(Array.from({length:4},worker));
   assert.deepEqual(failures,[],JSON.stringify(failures,null,2));
-  console.log(`Button audit OK: ${tasks.length} page views across all four languages, NL mobile pages and dynamic search; ${links} text actions respect primary blue, secondary orange and quiet breadcrumb/prose navigation; native demo stays independent; no horizontal overflow.`);
+  console.log(`Button audit OK: ${tasks.length} page views across all four languages, NL mobile pages and dynamic search; ${links} text actions respect logo navy, logo orange and quiet breadcrumb/prose navigation; native demo stays independent; no horizontal overflow.`);
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

@@ -25,8 +25,8 @@ def render(source, examples):
 <h1>Wat kost een webapp voor jouw bedrijf?</h1>
 <p class="webapp-cost-answer">Een modulaire webapp van OptiCore Insights begint bij <strong><span class="webapp-cost-money">{setup}</span> eenmalige inrichting en <span class="webapp-cost-money">{monthly}</span> per maand</strong>. Daarmee werk je met omzetrapportage, voorraad en orders in één omgeving. Retourverwerking is maatwerk en valt buiten het startpakket. Extra modules kies je zelf; de prijsbalk bovenaan rekent direct mee.</p>
 <p class="webapp-cost-small">Dit zijn onze tarieven voor een bestaande modulaire bedrijfsapp, geen richtprijzen voor iedere maatwerkapp. Exclusief btw, AI- en databaseverbruik. <a href="/gebruikskosten/">Bekijk de aparte gebruikskosten</a>. Nieuwe koppelingen en aanvullend maatwerk worden apart afgestemd.</p>
-<nav class="webapp-cost-nav" aria-label="Kosten en prijsberekening"><a class="button" href="#modules">Bereken je webapp prijs</a><a href="#prijsvoorbeelden">Bekijk prijsvoorbeelden →</a><a href="#veelgestelde-vragen">Veelgestelde vragen →</a></nav>
-<div class="actions"><a href="/modulaire-webapp/#webapp-keuze">Kies tussen je huidige software, modules en aanvullend maatwerk →</a><a href="/demo/modulaire-webapp/" target="_blank" rel="noopener noreferrer">Bekijk de app-demo →</a></div>
+<nav class="webapp-cost-nav" aria-label="Kosten en prijsberekening"><a class="button" href="#modules">Bereken je webapp prijs</a><a href="#prijsvoorbeelden">Bekijk prijsvoorbeelden →</a><a href="#veelgestelde-vragen">Veelgestelde vragen →</a><a href="/modulaire-webapp/#webapp-keuze">Software, modules of maatwerk →</a><a href="/demo/modulaire-webapp/" target="_blank" rel="noopener noreferrer">Bekijk de app-demo →</a></nav>
+
 </div></section>'''
     rows = []
     for item in examples:
