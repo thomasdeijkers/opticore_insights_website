@@ -1,7 +1,7 @@
 /* Platform identities stay legible and link directly to practical explanations. */
 .platform-logos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));align-items:stretch;gap:12px;list-style:none;padding:0;margin:24px 0}
 .platform-logos li{margin:0;min-width:0}
-.platform-logos a{display:flex;align-items:center;justify-content:center;width:100%;height:84px;padding:15px 12px;background:#fff;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--ink)}
+.platform-logos a,.platform-logos .platform-logo-tile{display:flex;align-items:center;justify-content:center;width:100%;height:84px;padding:15px 12px;background:#fff;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--ink)}
 .platform-logos a:hover{border-color:var(--link);color:var(--link);background:#f9fbfd}
 .platform-logos img{width:100%;max-width:120px;height:44px;object-fit:contain}
 .platform-logos .platform-logo-bol{background:#0000a4;padding:5px 8px;border-radius:3px}
@@ -26,6 +26,6 @@
 .platform-flow strong{font-size:18px;color:var(--ink)}
 .platform-flow span{font-size:14px;margin-top:4px}
 @media(max-width:850px){.platform-groups{grid-template-columns:1fr;gap:30px}.platform-groups .platform-logos{grid-template-columns:repeat(6,minmax(0,1fr))}.platform-groups article{display:block}.platform-flow li{padding:20px 17px}.platform-flow strong{font-size:16px}}
-@media(max-width:599px){.platform-logos,.platform-groups .platform-logos{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.platform-logos-pair{grid-template-columns:repeat(2,minmax(0,1fr))}.platform-logos a,.platform-groups .platform-logos a{height:76px;padding:12px 9px}.platform-logos img{height:38px}.platform-flow{grid-template-columns:1fr}.platform-flow li{padding:18px 22px}.platform-flow li+li{border-left:0;border-top:1px solid var(--line)}.platform-flow li+li:before{content:'↓';top:-12px;left:calc(50% - 12px)}.platform-overview .section-heading h2{font-size:27px}}
+@media(max-width:599px){.platform-logos,.platform-groups .platform-logos{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.platform-logos-pair{grid-template-columns:repeat(2,minmax(0,1fr))}.platform-logos a,.platform-logos .platform-logo-tile,.platform-groups .platform-logos a{height:76px;padding:12px 9px}.platform-logos img{height:38px}.platform-flow{grid-template-columns:1fr}.platform-flow li{padding:18px 22px}.platform-flow li+li{border-left:0;border-top:1px solid var(--line)}.platform-flow li+li:before{content:'↓';top:-12px;left:calc(50% - 12px)}.platform-overview .section-heading h2{font-size:27px}}
 
 .platform-detail-grid-three{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:850px){.platform-detail-grid,.platform-detail-grid-three{grid-template-columns:1fr}}
