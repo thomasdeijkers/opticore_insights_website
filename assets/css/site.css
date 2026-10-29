@@ -295,6 +295,18 @@ nav a,nav a:hover,.topic-index a,.topic-index a:hover,.site-footer a,.site-foote
 .site-nav a:hover,.site-nav a[aria-current=page]{background:#edf4fa}
 }
 
+/* Group public navigation by visitor intent, using native keyboard disclosures. */
+.site-nav .menu-group{margin:0;border:0;border-bottom:1px solid var(--line)}
+.menu-group>summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;padding:11px 12px;color:var(--ink);font-size:15px;font-weight:700;line-height:1.6;cursor:pointer;list-style:none}
+.menu-group>summary::-webkit-details-marker{display:none}
+.menu-group>summary::after{content:"";width:7px;height:7px;flex:none;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-right:3px;margin-top:-4px}
+.menu-group[open]>summary::after{transform:rotate(225deg);margin-top:4px}
+.menu-group>summary:hover{background:#edf4fa;border-radius:5px}
+.menu-group>summary:focus-visible{outline:3px solid var(--link);outline-offset:-3px;border-radius:5px}
+.menu-group-links{display:flex;flex-direction:column;padding:0 0 8px 12px}
+.site-nav .menu-group-links a{display:flex;align-items:center;min-height:44px;padding:8px 12px;font-weight:500;white-space:normal}
+.site-nav>.nav-contact{margin-top:10px}
+
 /* A wide search form is centered between the brand and the desktop menu. */
 .header-search-form{display:none}
 @media(min-width:1121px){

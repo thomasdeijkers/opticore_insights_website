@@ -23,7 +23,7 @@ DISPLAY_ATTRS = {'alt', 'title', 'placeholder', 'aria-label', 'aria-description'
 META_TEXT = {'description', 'og:title', 'og:description', 'twitter:title', 'twitter:description'}
 SCHEMA_TEXT = {'name', 'description', 'headline', 'text', 'caption', 'articleSection', 'keywords'}
 VERSION = '20261029-team-footer'
-PUBLIC_STYLE_VERSION = '20261029-topic-links'
+PUBLIC_STYLE_VERSION = '20261029-menu-groups'
 LINK_BUTTONS_STYLE_VERSION = '20261029-vivid-orange'
 TEAM_STYLE_VERSION = '20261029-nine-roles'
 IMPLEMENTATION_STYLE_VERSION = '20261029-trello-screens'
@@ -49,12 +49,28 @@ def public_navigation(source, canonical):
                ('/team/', '/werken-bij/', 'Samenwerken')]
     def menu(match):
         block = match[0]
-        for after, path, label in entries:
-            if f'href="{path}"' not in block:
-                current = ' aria-current="page"' if canonical == path else ''
-                block = re.sub(r'(<a\b[^>]*href="' + re.escape(after) + r'"[^>]*>.*?</a>)',
-                               lambda m: m[1] + f'<a href="{path}"{current}>{label}</a>', block, count=1, flags=re.S)
-        return block
+        groups = [
+            ('Jouw WebApp', [('/modulaire-webapp/', 'Ontdek de WebApp'),
+                             ('/prijzen/', 'Prijzen'), ('/implementatie/', 'Implementatie')]),
+            ('In de praktijk', [('/projecten/', 'Portfolio'), ('/nieuws/', 'Nieuws')]),
+            ('Over OptiCore', [('/over/', 'Over OptiCore'), ('/team/', 'Team'),
+                              ('/werken-bij/', 'Samenwerken')]),
+        ]
+        sections = []
+        for label, links in groups:
+            active = any(canonical == path or canonical.startswith(path) for path, _ in links)
+            # Open the visitor's current section; keep the initial menu compact.
+            opened = ' open' if active else ''
+            items = ''.join(f'<a href="{path}"' + (' aria-current="page"' if canonical == path else '')
+                            + f'>{title}</a>' for path, title in links)
+            sections.append(f'<details class="menu-group"{opened}><summary>{label}</summary>'
+                            f'<div class="menu-group-links">{items}</div></details>')
+        # Preserve the search form and injected language selector across repeated builds.
+        start = re.search(r'<(?:a\b|details\b[^>]*class="menu-group")', block)
+        if not start:
+            raise ValueError(f'Missing public menu links: {canonical}')
+        return block[:start.start()] + ''.join(sections) + '<a href="/contact/" class="nav-contact"' \
+            + (' aria-current="page"' if canonical == '/contact/' else '') + '>Contact</a></nav>'
     def footer(match):
         block = match[0]
         for after, path, label in entries:
