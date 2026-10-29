@@ -25,7 +25,7 @@ SCHEMA_TEXT = {'name', 'description', 'headline', 'text', 'caption', 'articleSec
 VERSION = '20261029-team-footer'
 PUBLIC_STYLE_VERSION = '20261029-topic-links'
 LINK_BUTTONS_STYLE_VERSION = '20261029-contact-privacy'
-TEAM_STYLE_VERSION = '20261029-ivanne'
+TEAM_STYLE_VERSION = '20261029-vacancy-profiles'
 IMPLEMENTATION_STYLE_VERSION = '20261029-trello-screens'
 MODULAR_STYLE_VERSION = '20261029-fullwidth-nav'
 

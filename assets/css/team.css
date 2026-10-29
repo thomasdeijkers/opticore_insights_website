@@ -17,6 +17,8 @@
 .team-role p{font-size:16px;color:#485b6a;line-height:1.7;margin:0 0 24px}
 body .team-role>a[href]{align-self:flex-start;margin:auto 0 0}
 .team-role--filled{display:block;border-color:#91b2cc;background:linear-gradient(160deg,#fff 65%,#f3f8fc)}
+.team-role--vacancy{display:block}
+.team-role--vacancy[open]{border-color:var(--brand-orange,#ff4900)}
 .team-role-summary{display:block;cursor:pointer;list-style:none}
 .team-role-summary::-webkit-details-marker{display:none}
 .team-role-summary:focus-visible{outline:3px solid var(--brand-blue,#051d40);outline-offset:5px;border-radius:4px}
@@ -26,8 +28,10 @@ body .team-role>a[href]{align-self:flex-start;margin:auto 0 0}
 .team-role-summary p{margin-bottom:16px}
 .team-role-expand{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid #d5e0e8;padding-top:15px;color:var(--brand-blue,#051d40);font-size:14px;font-weight:700}
 .team-role-expand span{font-size:22px;line-height:1;transition:transform .2s}
-.team-role--filled[open] .team-role-expand span{transform:rotate(180deg)}
+.team-role[open] .team-role-expand span{transform:rotate(180deg)}
 .team-role-details{margin-top:18px;border-top:1px solid #d5e0e8;padding-top:18px}
+.team-role-details h4{margin:0 0 10px;color:var(--brand-blue,#051d40);font-size:16px}
+.team-role-details ul+h4{margin-top:18px}
 .team-role-details p{margin-bottom:12px}
 .team-role-details ul{margin:0 0 20px;padding-left:21px;color:#485b6a;line-height:1.65}
 .team-role-details li+li{margin-top:8px}
