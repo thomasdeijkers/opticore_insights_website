@@ -34,8 +34,8 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
        const inline=a.parentElement.matches('p,dd,figcaption,small,td,th')&&!a.matches('.button,.text-link,.footer-social');
        const primary=a.matches('.button:not(.button-secondary),.footer-contact-link,.nav-contact');
        const quietNavigation=!!a.closest('.site-nav')&&!primary;
-       const expected=breadcrumb||footerNavigation||inline||quietNavigation?'transparent':primary?'blue':'orange';
-       const good=expected==='transparent'?transparent:expected==='blue'?c.backgroundColor==='rgba(23, 58, 101, 0.86)'&&c.color==='rgb(255, 255, 255)':c.backgroundColor==='rgba(255, 99, 31, 0.82)'&&c.color==='rgb(5, 29, 64)';
+       const expected=breadcrumb||footerNavigation||inline||quietNavigation?'transparent':primary?'orange':'blue';
+       const good=expected==='transparent'?transparent:expected==='blue'?c.backgroundColor==='rgba(23, 58, 101, 0.86)'&&c.color==='rgb(255, 255, 255)':c.backgroundColor==='rgba(255, 111, 48, 0.7)'&&c.color==='rgb(5, 29, 64)';
        if(!good||((breadcrumb||footerNavigation)&&c.borderTopWidth!=='0px')||(!inline&&!footerNavigation&&c.textDecorationLine.includes('underline')))
         bare.push({text:a.textContent.trim().slice(0,100),href:a.getAttribute('href'),expected,background:c.backgroundColor,color:c.color});
       }
@@ -61,6 +61,6 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
   }
   await Promise.all(Array.from({length:4},worker));
   assert.deepEqual(failures,[],JSON.stringify(failures,null,2));
-  console.log(`Button audit OK: ${tasks.length} page views across all four languages, NL mobile pages and dynamic search; ${links} text actions respect logo navy, logo orange and quiet breadcrumb/prose navigation; native demo stays independent; no horizontal overflow.`);
+  console.log(`Button audit OK: ${tasks.length} page views across all four languages, NL mobile pages and dynamic search; ${links} text actions use orange CTA, blue information and quiet breadcrumb/prose navigation; native demo stays independent; no horizontal overflow.`);
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});
