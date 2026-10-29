@@ -16,6 +16,23 @@
 .team-role h3{font-size:21px;line-height:1.3;min-height:2.6em;margin:0 0 14px}
 .team-role p{font-size:16px;color:#485b6a;line-height:1.7;margin:0 0 24px}
 body .team-role>a[href]{align-self:flex-start;margin:auto 0 0}
+.team-role--filled{display:block;border-color:#91b2cc;background:linear-gradient(160deg,#fff 65%,#f3f8fc)}
+.team-role-summary{display:block;cursor:pointer;list-style:none}
+.team-role-summary::-webkit-details-marker{display:none}
+.team-role-summary:focus-visible{outline:3px solid var(--brand-blue,#051d40);outline-offset:5px;border-radius:4px}
+.team-role-status--filled{border-color:#8fb2cb;background:var(--brand-blue-soft,#eaf0f8);color:var(--brand-blue,#051d40)}
+.team-role-title{display:block;margin-top:3px;font-size:14px;font-weight:600;color:#485b6a}
+.team-role--filled h3{min-height:0}
+.team-role-summary p{margin-bottom:16px}
+.team-role-expand{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid #d5e0e8;padding-top:15px;color:var(--brand-blue,#051d40);font-size:14px;font-weight:700}
+.team-role-expand span{font-size:22px;line-height:1;transition:transform .2s}
+.team-role--filled[open] .team-role-expand span{transform:rotate(180deg)}
+.team-role-details{margin-top:18px;border-top:1px solid #d5e0e8;padding-top:18px}
+.team-role-details p{margin-bottom:12px}
+.team-role-details ul{margin:0 0 20px;padding-left:21px;color:#485b6a;line-height:1.65}
+.team-role-details li+li{margin-top:8px}
+body .team-role-details .button{margin:0;width:100%}
+body .team-role-details .button span{margin-left:8px}
 .team-collaboration{display:flex;align-items:center;justify-content:space-between;gap:32px}
 .team-collaboration>div{max-width:66ch}
 .team-collaboration>a{flex-shrink:0}

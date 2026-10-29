@@ -25,6 +25,7 @@ SCHEMA_TEXT = {'name', 'description', 'headline', 'text', 'caption', 'articleSec
 VERSION = '20261029-team-footer'
 PUBLIC_STYLE_VERSION = '20261029-topic-links'
 LINK_BUTTONS_STYLE_VERSION = '20261029-contact-privacy'
+TEAM_STYLE_VERSION = '20261029-ivanne'
 IMPLEMENTATION_STYLE_VERSION = '20261029-trello-screens'
 MODULAR_STYLE_VERSION = '20261029-fullwidth-nav'
 
@@ -342,7 +343,7 @@ def integration(source, canonical, language, mapping):
             content = re.sub(r'[ \u00a0]+(?=[→↗]\s*$)', '&#160;', match[2])
             return match[1] + content + match[3]
         source = re.sub(r'(<a\b[^>]*>)(.*?)(</a>)', action_arrow, source, flags=re.S)
-    source = re.sub(r'(/assets/css/(?:careers|expectations\-carousel|implementation|modular\-webapp|screenshot\-gallery|site|site\-search|team|usage\-costs|webapp\-guide)\.css)(?:\?v=[^\"\s]*)?', lambda m: m[1] + '?v=' + (IMPLEMENTATION_STYLE_VERSION if m[1].endswith('/implementation.css') else MODULAR_STYLE_VERSION if m[1].endswith('/modular-webapp.css') else PUBLIC_STYLE_VERSION), source)
+    source = re.sub(r'(/assets/css/(?:careers|expectations\-carousel|implementation|modular\-webapp|screenshot\-gallery|site|site\-search|team|usage\-costs|webapp\-guide)\.css)(?:\?v=[^\"\s]*)?', lambda m: m[1] + '?v=' + (IMPLEMENTATION_STYLE_VERSION if m[1].endswith('/implementation.css') else MODULAR_STYLE_VERSION if m[1].endswith('/modular-webapp.css') else TEAM_STYLE_VERSION if m[1].endswith('/team.css') else PUBLIC_STYLE_VERSION), source)
     source = re.sub(r'(/assets/js/(?:site-search|bedrijfsscan|modular-webapp|module-demo|usage-costs|implementation-roadmap|demo-picklist|demo-marketing-reference|demo-full-workspace|demo-page-catalogue|demo-access|screenshot-gallery|marketplace-demo-data)\.js)(?:\?v=[^"\s]*)?', lambda m: m[1] + '?v=' + VERSION, source)
     source = re.sub(r'(/assets/css/demo-full-workspace\.css)(?:\?v=[^"\s]*)?', lambda m: m[1] + '?v=' + VERSION, source)
     if language == 'nl':
