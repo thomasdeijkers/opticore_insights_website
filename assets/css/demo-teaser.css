@@ -1,12 +1,12 @@
 /* The preview keeps the app image sharp and scrollable inside a responsive device. */
-.webapp-demo-teaser{width:100%;max-width:390px;justify-self:center;min-width:0;border:1px solid #aac0d0;border-radius:13px;overflow:hidden;background:#fff;box-shadow:0 16px 40px #17324415}
+.webapp-demo-teaser{display:grid;grid-template-columns:minmax(0,1fr) auto;width:100%;max-width:390px;justify-self:center;min-width:0;border:1px solid #aac0d0;border-radius:13px;overflow:hidden;background:#fff;box-shadow:0 16px 40px #17324415}
 .webapp-demo-teaser-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;background:#fff}
 .webapp-demo-teaser-heading p{font-size:11px;font-weight:650;color:var(--muted);margin:0 0 4px}
 .webapp-demo-teaser-heading h2{font-size:22px;line-height:1.25;margin:0;color:var(--ink)}
 .webapp-demo-teaser-heading>span{flex:none;font-size:11px;line-height:1.4;color:#1c526c;background:#e8f2f7;border:1px solid #c5dce7;border-radius:20px;padding:5px 9px}
-.webapp-demo-teaser-footer{padding:14px 20px}
+.webapp-demo-teaser-footer{grid-column:1/-1;padding:14px 20px}
 .webapp-demo-teaser-footer p{font-size:13px;line-height:1.6;margin:0;color:var(--muted)}
-.webapp-demo-device-stage{display:grid;justify-items:center;min-width:0;padding:26px 42px 38px;border-block:1px solid #e2e9ef;background:radial-gradient(ellipse at 50% 65%,#dce6ef 0,#f4f7fa 65%,#fafbfd 100%)}
+.webapp-demo-device-stage{grid-column:1/-1;display:grid;justify-items:center;min-width:0;padding:26px 42px 38px;border-block:1px solid #e2e9ef;background:radial-gradient(ellipse at 50% 65%,#dce6ef 0,#f4f7fa 65%,#fafbfd 100%)}
 .webapp-demo-device{--device-type:laptop;--screen-ratio:16/10;--screen-corners:5px;position:relative;box-sizing:border-box;width:100%;max-width:1120px;padding:17px 11px 12px;border:1px solid #64707e;border-radius:14px 14px 9px 9px;background:linear-gradient(135deg,#35414f,#101722 50%,#273240);box-shadow:inset 0 0 0 1px #ffffff22,0 20px 36px #142b4240}
 .webapp-demo-device::before{content:'';position:absolute;top:6px;left:50%;width:5px;height:5px;border:1px solid #53616c;border-radius:50%;background:#080f18;box-shadow:inset 1px 1px 1px #9bc1d633;transform:translateX(-50%)}
 .webapp-demo-device-stage .webapp-demo-device>.webapp-demo-teaser-scroll{display:block;box-sizing:border-box;width:100%;height:auto;aspect-ratio:var(--screen-ratio);overflow-y:auto;overflow-x:hidden;border:0;border-radius:var(--screen-corners);background:#031a34;scrollbar-width:none;touch-action:pan-y;cursor:pointer}
@@ -58,7 +58,7 @@
  .webapp-demo-device{max-width:calc((100svh - 150px)*4/3 + 44px)}
 }
 @media(min-width:1101px){.webapp-demo-teaser{max-width:none}}
-.webapp-demo-preview-controls:not([hidden]){display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:12px 20px;border-top:1px solid #e2e9ef;background:#fff}
+.webapp-demo-preview-controls:not([hidden]){display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:12px 20px;background:#fff}
 .webapp-demo-preview-controls>span{margin-right:6px;font-size:13px;color:var(--muted)}
 .webapp-demo-preview-controls button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:8px 13px;border:1px solid #bdcad5;border-radius:6px;background:#fff;color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
 .webapp-demo-preview-controls button:hover{border-color:#175a96;background:#f1f6fa}
