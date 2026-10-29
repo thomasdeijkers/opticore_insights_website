@@ -48,7 +48,8 @@ def byline(article):
 def brand_logos(article):
     logos = []
     for brand in article.get('brands', []):
-        logos.append(f'<a href="{safe_link(brand["url"])}" aria-label="{escape(brand["alt"],quote=True)}: bron of project bekijken"><img src="{escape(brand["src"],quote=True)}" alt="{escape(brand["alt"],quote=True)}" width="{brand["width"]}" height="{brand["height"]}" loading="lazy"></a>')
+        external = ' target="_blank" rel="noopener noreferrer"' if brand['url'].startswith('https://') else ''
+        logos.append(f'<a href="{safe_link(brand["url"])}" aria-label="{escape(brand["alt"],quote=True)}: bron of project bekijken"{external}><img src="{escape(brand["src"],quote=True)}" alt="{escape(brand["alt"],quote=True)}" width="{brand["width"]}" height="{brand["height"]}" loading="lazy"></a>')
     return '<div class="news-brands">'+''.join(logos)+'</div>' if logos else ''
 
 
