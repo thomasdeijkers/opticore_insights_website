@@ -111,3 +111,39 @@
  .implementation-topics{gap:8px;padding-block:16px}
 }
 @media(max-width:480px){.implementation-screen-shell{padding:10px}.implementation-screen-heading{padding:11px 13px}.implementation-detail-shell{padding:15px}.implementation-trello-join{padding:17px}.implementation-trello-join a[href]{width:100%}}
+
+/* Fictional examples follow Trello's dark board and card presentation. */
+.implementation-screen-shell{padding:0 0 14px;background:radial-gradient(ellipse at 86% 105%,#f97735 0%,transparent 43%),radial-gradient(ellipse at 15% 0%,#276498 0%,transparent 55%),linear-gradient(145deg,#102f54 5%,#12395f 56%,#833b32 100%);color:#b6c2cf}
+.implementation-trello-topbar{display:flex;align-items:center;gap:7px;min-width:650px;height:39px;padding:0 13px;background:#1d2125;color:#b6c2cf;font-size:13px}
+.implementation-trello-logo{display:flex;align-items:flex-start;gap:3px;width:19px;height:19px;padding:4px;border-radius:4px;background:#b6c2cf}
+.implementation-trello-logo i{display:block;width:4px;height:11px;border-radius:1px;background:#1d2125}
+.implementation-trello-logo i:last-child{height:7px}
+.implementation-trello-topbar-icons{margin-left:auto;font-size:18px;letter-spacing:1px}
+.implementation-screen-bar{min-width:650px;margin:0 0 12px;padding:10px 15px;border:0;border-radius:0;background:#10182099;color:#f1f2f4}
+.implementation-screen-bar strong{font-size:15px}
+.implementation-screen-bar small{color:#b6c2cf}
+.implementation-screen-badge{border:0;color:#dce1e7;font-size:16px}
+.implementation-board{padding:0 12px;gap:9px;align-items:start}
+.implementation-board-column{padding:9px;background:#101204;border-radius:10px;color:#b6c2cf}
+.implementation-board-column h3{justify-content:flex-start;color:#c7d1db;font-size:12px;line-height:1.4;margin:3px 3px 10px}
+.implementation-board-column h3 span{display:inline;margin-left:auto;width:auto;height:auto;background:none;border-radius:0;color:#a5adba;font-size:11px}
+.implementation-board-column h3::after{content:'···';color:#a5adba;font-size:15px;letter-spacing:1px}
+.implementation-board-card{min-height:96px;padding:9px;background:#22272b;border:1px solid #22272b;border-radius:7px;box-shadow:0 1px 2px #0007;color:#dce1e7}
+.implementation-board-card+.implementation-board-card{margin-top:7px}
+.implementation-board-card p{margin:7px 0 10px;color:#dce1e7;font-size:12px;font-weight:500;line-height:1.45}
+.implementation-board-card small{font-size:10px;color:#b6c2cf}
+.implementation-board-tag{padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;line-height:1.3}
+.implementation-board-tag--orange{background:#fea362;color:#3d230b}
+.implementation-board-tag--blue{background:#85b8ff;color:#102a43}
+.implementation-board-tag--green{background:#7ee2b8;color:#164b35}
+.implementation-board-tag--purple{background:#cd9de4;color:#352145}
+.implementation-detail-shell{padding:20px;background:#292a2e;color:#b6c2cf}
+.implementation-detail-top{color:#b6c2cf}
+.implementation-detail-shell h3{color:#f1f2f4}
+.implementation-detail-shell>p{color:#d3dae1}
+.implementation-detail-meta,.implementation-detail-checklist{background:#22272b;border-color:#454f59;color:#d3dae1}
+.implementation-detail-meta strong{color:#e4e9ef}
+.implementation-detail-checklist>div span{color:#b6c2cf}
+.implementation-detail-checklist li::before{border-color:#9fadbc}
+.implementation-detail-checklist li.is-done::before{background:#4bce97;border-color:#4bce97;color:#123524}
+.implementation-detail-feedback{background:#22272b;border-color:#579dff;color:#d3dae1}
