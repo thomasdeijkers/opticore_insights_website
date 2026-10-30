@@ -9,7 +9,7 @@
 .team-founder p{max-width:62ch}
 .team-founder-quote{margin:0;color:var(--brand-blue,#051d40);font-size:16px;line-height:1.5;font-style:italic;font-weight:400}
 .team-founder .team-founder-role{margin:12px 0 0;color:#485b6a;font-size:14px;font-weight:700}
-.team-roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.team-roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:22px}
 .team-role{min-width:0;display:flex;flex-direction:column;padding:26px;background:#fff;border:1px solid #d5e0e8;border-radius:12px}
 .team-role-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
 .team-role-icon{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:10px;color:var(--brand-blue,#051d40);background:var(--brand-blue-soft,#eaf0f8)}
@@ -20,11 +20,11 @@
 body .team-role>a[href]{align-self:flex-start;margin:auto 0 0}
 .team-role--vacancy{display:block}
 .team-role--vacancy[open]{border-color:var(--brand-orange,#ff4900)}
-.team-role-summary{display:block;cursor:pointer;list-style:none}
+.team-role-summary{display:flex;flex-direction:column;min-height:260px;cursor:pointer;list-style:none}
 .team-role-summary::-webkit-details-marker{display:none}
 .team-role-summary:focus-visible{outline:3px solid var(--brand-blue,#051d40);outline-offset:5px;border-radius:4px}
 .team-role-summary p{margin-bottom:16px}
-.team-role-expand{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid #d5e0e8;padding-top:15px;color:var(--brand-blue,#051d40);font-size:14px;font-weight:700}
+.team-role-expand{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;border-top:1px solid #d5e0e8;padding-top:15px;color:var(--brand-blue,#051d40);font-size:14px;font-weight:700}
 .team-role-expand span{font-size:22px;line-height:1;transition:transform .2s}
 .team-role[open] .team-role-expand span{transform:rotate(180deg)}
 .team-role-details{margin-top:18px;border-top:1px solid #d5e0e8;padding-top:18px}
