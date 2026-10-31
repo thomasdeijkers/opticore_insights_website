@@ -21,8 +21,8 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
      const opener=gallery.locator('[data-screen-open-all]');await opener.click();
      for(let i=0;i<views.length;i++){
       const dialog=p.locator('dialog.image-viewer[open]');
-      assert(await dialog.locator('a.image-viewer-credits').isVisible());
-      assert.equal(await dialog.locator('a.image-viewer-credits').getAttribute('href'),'/demo/beeldbronnen/');
+      if(module==='wms')assert(await dialog.locator('a.image-viewer-credits').isHidden());
+      else {assert(await dialog.locator('a.image-viewer-credits').isVisible());assert.equal(await dialog.locator('a.image-viewer-credits').getAttribute('href'),'/demo/beeldbronnen/');}
       assert.equal(await dialog.locator('.image-viewer-count').textContent(),`${i+1} van ${views.length}`);
       assert.equal(await dialog.locator('#image-viewer-title').textContent(),views[i].title);
       const img=dialog.locator('.image-viewer-stage img');
