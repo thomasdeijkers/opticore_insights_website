@@ -108,15 +108,6 @@
       "producten"
     ],
     "currentMonthly": 20
-  },
-  "picken": {
-    "label": "Picklijsten en verzending",
-    "setup": 300,
-    "requires": [
-      "logistiek",
-      "orders"
-    ],
-    "currentMonthly": 30
   }
 };
   const includedModules = ["omzet", "voorraad", "orders"];

@@ -367,32 +367,6 @@
       "click": "[data-w-action=\"article-view\"][data-id=\"content\"]"
     }
   ],
-  "picken": [
-    {
-      "id": "overzicht",
-      "title": "Picklijst per magazijnlocatie",
-      "page": "orders-pakken",
-      "tab": "to_pick"
-    },
-    {
-      "id": "restanten",
-      "title": "Deelpicks en openstaande restanten",
-      "page": "orders-pakken",
-      "tab": "not_picked"
-    },
-    {
-      "id": "bevestigen",
-      "title": "Pickaantal per artikel bevestigen",
-      "page": "orders-pakken",
-      "tab": "to_pick",
-      "click": ".picklist-item:nth-child(2) .picklist-mark"
-    },
-    {
-      "id": "verzending",
-      "title": "Orderstatus en verzending",
-      "page": "orders"
-    }
-  ],
   "wms": [
     {
       "id": "overzicht",

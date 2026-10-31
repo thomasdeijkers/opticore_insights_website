@@ -8,21 +8,21 @@ assert.deepEqual(includedModules,['omzet','voorraad','orders']);
 const basic=resolve([]);assert.deepEqual(basic.modules,includedModules);assert.deepEqual(basic.extraModules,[]);
 assert.equal(basic.setup,995);assert.equal(basic.monthly,149);assert.equal(basic.setupSubtotal,1194);assert.equal(basic.standardMonthly,179);
 assert.deepEqual(resolve(['constructor','__proto__','<script>','documenten','planning']),basic,'Unknown IDs never add modules or fees');
-const fees={"forecasting":[300,20],"inkoop":[500,40],"logistiek":[400,30],"producten":[300,20],"beeldstudio":[300,30],"marketing":[600,60],"financieel":[400,40],"wms":[800,100],"facturatie":[250,20],"controles":[200,20],"listing":[200,20],"picken":[300,30]};
+const fees={"forecasting":[300,20],"inkoop":[500,40],"logistiek":[400,30],"producten":[300,20],"beeldstudio":[300,30],"marketing":[600,60],"financieel":[400,40],"wms":[800,100],"facturatie":[250,20],"controles":[200,20],"listing":[200,20]};
 for(const id of includedModules){assert(catalogue[id].included);assert.equal(catalogue[id].setup,0);assert.equal(catalogue[id].monthly,0);assert.equal(catalogue[id].monthlyDiscount,0);}
 for(const [id,[setup,monthly]] of Object.entries(fees)){assert.equal(monthly%10,0,'Expansion monthly fees are multiples of ten');assert.equal(catalogue[id].currentMonthly,monthly);assert.equal(catalogue[id].monthly,Math.round(monthly*1.2));assert.equal(catalogue[id].setup,setup);assert.equal(catalogue[id].monthly-catalogue[id].monthlyDiscount,monthly);}
 assert.deepEqual(resolve(['beeldstudio']).extraModules,['beeldstudio'],'Studio can be chosen without Productbeheer');
 assert.equal(resolve(['producten','listing','beeldstudio']).monthly,219,'Product management, listing and Studio sum to the advertised bundle');
-assert(!catalogue.klantenservice,'WMS replaces the customer service offer');
+assert(!catalogue.klantenservice&&!catalogue.picken,'WMS replaces the earlier offers');
 const wms=resolve(['wms']);assert.equal(wms.setup,1795);assert.equal(wms.monthly,249);assert.deepEqual(wms.extraModules,['wms']);
 assert.equal(catalogue.wms.setup,800);assert.equal(catalogue.wms.currentMonthly,100);
 assert(html.includes('tijdelijke medewerkers'));assert(html.includes('Nederlands, Engels, Duits, Pools, Arabisch en Turks'));
 for(const view of screens.wms)for(const device of ['mobile','desktop'])assert(fs.statSync(path.join(__dirname,'../assets/img/wms-examples',`${view.id}-${device}.png`)).size>1000);
-const growth=resolve(['inkoop','logistiek','picken']);assert.equal(growth.setup,2195);assert.equal(growth.monthly,249);assert.equal(growth.setupSubtotal,2634);
+const growth=resolve(['inkoop','logistiek','wms']);assert.equal(growth.setup,2695);assert.equal(growth.monthly,319);assert.equal(growth.setupSubtotal,3234);
 const marketing=resolve(['marketing','listing']);assert.deepEqual(marketing.extraModules,['producten','marketing','listing']);assert.equal(marketing.setup,2095);assert.equal(marketing.monthly,249);
-assert.deepEqual(resolve(['listing']).extraModules,['producten','listing']);assert.equal(resolve(['listing']).monthly,189);assert.deepEqual(resolve(['picken']).extraModules,['logistiek','picken']);assert.equal(resolve(['picken']).monthly,209);
-const complete=resolve(Object.keys(catalogue));assert.equal(complete.modules.length,15);assert.equal(complete.setup,5545);assert.equal(complete.monthly,579);assert.equal(complete.setupSubtotal,6654);assert.equal(complete.standardMonthly,695);assert.equal(complete.monthlyDiscount,116);
-const standardSetup={"forecasting":360,"inkoop":600,"logistiek":480,"producten":360,"beeldstudio":360,"marketing":720,"financieel":480,"wms":960,"facturatie":300,"controles":240,"listing":240,"picken":360};
+assert.deepEqual(resolve(['listing']).extraModules,['producten','listing']);assert.equal(resolve(['listing']).monthly,189);assert.deepEqual(resolve(['picken']).extraModules,[]);
+const complete=resolve(Object.keys(catalogue));assert.equal(complete.modules.length,14);assert.equal(complete.setup,5245);assert.equal(complete.monthly,549);assert.equal(complete.setupSubtotal,6294);assert.equal(complete.standardMonthly,659);assert.equal(complete.monthlyDiscount,110);
+const standardSetup={"forecasting":360,"inkoop":600,"logistiek":480,"producten":360,"beeldstudio":360,"marketing":720,"financieel":480,"wms":960,"facturatie":300,"controles":240,"listing":240};
 const ids=Object.keys(catalogue);
 for(let mask=0;mask<(1<<ids.length);mask++){
  const chosen=ids.filter((_,i)=>mask&(1<<i)),total=resolve(chosen);
@@ -45,7 +45,7 @@ for(let mask=0;mask<(1<<ids.length);mask++){
  assert.equal(quote.reduce((n,row)=>n+row.setup,0),total.setup);
  assert.equal(quote.reduce((n,row)=>n+row.standardSetup,0),total.setupSubtotal);
 }
-assert.equal((html.match(/class="webapp-module-card"/g)||[]).length,15);
+assert.equal((html.match(/class="webapp-module-card"/g)||[]).length,14);
 for(const id of ids){
  const card=html.match(new RegExp('<label class="webapp-module"><input[^>]*value="'+id+'"[\\s\\S]*?</label>'))?.[0];assert(card,id);
  if(catalogue[id].included){assert(card.includes('checked disabled'));assert(card.includes('€ 0 extra per maand'));}
@@ -60,7 +60,7 @@ for(const id of ids){
  for(const image of combined.matchAll(/<img[^>]*src="(\/assets\/img\/module-examples\/[^"]+)"/g))assert(fs.statSync(path.join(__dirname,'..',image[1].split('?')[0])).size>1000);
 }
 assert(html.includes('€ 995 inrichting'));assert(html.includes('€ 149 per maand'));
-assert(!overview.includes('data-webapp-picker'));assert(!overview.includes('type="checkbox"'));assert.equal((overview.match(/class="webapp-module-choose"/g)||[]).length,15);
+assert(!overview.includes('data-webapp-picker'));assert(!overview.includes('type="checkbox"'));assert.equal((overview.match(/class="webapp-module-choose"/g)||[]).length,14);
 assert(overview.includes('webapp-demo-teaser-scroll'));assert(overview.includes('<iframe class="webapp-demo-frame"'));
 assert(overview.includes(`Met alle ${ids.length} modules samen betaal je ${money(complete.setup)} inrichting en ${money(complete.monthly)} per maand.`));
 assert(!overview.includes('€ 399 per maand'));assert(!overview.includes('alle tien modules'));
@@ -68,19 +68,19 @@ assert(html.indexOf('class="webapp-pricebar"')<html.indexOf('class="webapp-modul
 assert.equal(calculatorURL(['omzet','omzet','__proto__']),'/webapp-samenstellen/#modules');assert.equal(calculatorURL(['marketing','marketing','<script>']),'/webapp-samenstellen/?modules=marketing#modules');
 const contact=fs.readFileSync(path.join(__dirname,'../contact/index.html'),'utf8');assert(/<textarea id="webapp-modules"[^>]*\breadonly/.test(contact));
 assert(/<textarea id="webapp-modules"[^>]*\bhidden/.test(contact));assert(contact.includes('data-module-quote'));
-const draft=contactDraft(complete).replace(/\u00a0/g,' ');assert(draft.includes('Eenmalige inrichting: € 5.545'));assert(draft.includes('Per maand na korting: € 579'));assert(draft.length<=2000);
+const draft=contactDraft(complete).replace(/\u00a0/g,' ');assert(draft.includes('Eenmalige inrichting: € 5.245'));assert(draft.includes('Per maand na korting: € 549'));assert(draft.length<=2000);
 for(const page of ['modulaire-webapp','webapp-samenstellen','prijzen','contact'])assert.equal(fs.readFileSync(path.join(__dirname,'..',page+'.html'),'utf8'),fs.readFileSync(path.join(__dirname,'..',page,'index.html'),'utf8'),'Alias: '+page);
 const pricing=fs.readFileSync(path.join(__dirname,'../prijzen/index.html'),'utf8'),starter=pricing.slice(pricing.indexOf('<article class="card pricing-card pricing-webapp-start">'),pricing.indexOf('<details class="pricing-more"><summary>Meer info en voorbeeldpakketten'));
 assert(starter.includes('Vanaf</span> € 149'));assert(starter.includes('<strong>€ 995</strong>'));assert(starter.includes('href="/webapp-samenstellen/"'));
 assert(pricing.indexOf('pricing-webapp-start')<pricing.indexOf('id="html-websites"'));
-assert(pricing.includes('€ 249/mnd'));assert(pricing.includes('€ 579/mnd'));assert(pricing.includes('Alle modules € 579'));assert(!pricing.includes('Alle modules € 379'));
+assert(pricing.includes('€ 319/mnd'));assert(pricing.includes('€ 549/mnd'));assert(pricing.includes('Alle modules € 549'));assert(!pricing.includes('Alle modules € 379'));
 for(const vendor of ['MarktMentor','Channable','EffectConnect','Picqer','Logic4'])assert(pricing.includes(vendor));
-console.log('Market pricing OK: three included modules, twelve expansion fees, all 32768 combinations, dependencies, advice derived at +20%, van/voor totals, read-only contact draft, aliases and advertised package examples.');
+console.log('Market pricing OK: three included modules, eleven expansion fees, all 16384 combinations, dependencies, advice derived at +20%, van/voor totals, read-only contact draft, aliases and advertised package examples.');
 
 for(const match of pricing.matchAll(/<article><h3>(?:Verkoop en logistiek|Compleet)<\/h3>[\s\S]*?<strong>€ ([\d.]+) inrichting · € ([\d.]+)\/mnd<\/strong><a href="([^"]+)"/g)){
  const url=new URL(match[3],'https://opticore-insights.nl');const selection=resolve(url.searchParams.get('modules').split(','));
  assert.equal(selection.setup,Number(match[1].replaceAll('.','')));assert.equal(selection.monthly,Number(match[2].replaceAll('.','')));
- if(match[0].includes('<h3>Compleet</h3>'))assert.equal(selection.modules.length,15);
+ if(match[0].includes('<h3>Compleet</h3>'))assert.equal(selection.modules.length,14);
 }
 
 assert(!pricing.includes('Listingoptimalisatie valt onder Productbeheer'));assert(pricing.includes('Extra modules kosten € 20–€ 100 per maand'));

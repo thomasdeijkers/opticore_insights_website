@@ -17,10 +17,10 @@ for(let mask=0;mask<2**extras.length;mask++){
  assert.equal(link.pathname,'/implementatie/');
  assert.deepEqual(P.resolve((link.searchParams.get('modules')||'').split(',')).modules,result.selection.modules);
 }
-const requested=['picken','listing','beeldstudio'],copy=requested.slice(),selected=R.plan(requested);
+const requested=['wms','listing','beeldstudio'],copy=requested.slice(),selected=R.plan(requested);
 assert.deepEqual(requested,copy);
-assert(selected.selection.modules.includes('logistiek')&&selected.selection.modules.includes('producten'));
+assert(selected.selection.modules.includes('wms')&&selected.selection.modules.includes('producten'));
 assert.deepEqual(R.plan(['__proto__','constructor','<img src=x onerror=alert(1)>']),base);
 assert.deepEqual(R.plan(null),base);
 const full=R.plan(extras);assert(full.minWeeks>base.minWeeks&&full.maxWeeks>base.maxWeeks);
-console.log('Implementation roadmap OK: all 4096 packages retain actual module dependencies, preparation and safe round-trip links; indicative ranges remain ordered; unknown input is ignored.');
+console.log('Implementation roadmap OK: all 2048 packages retain actual module dependencies, preparation and safe round-trip links; indicative ranges remain ordered; unknown input is ignored.');

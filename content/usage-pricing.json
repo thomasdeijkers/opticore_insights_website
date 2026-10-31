@@ -37,7 +37,6 @@
     {"id": "controles", "label": "Signalen en controles", "database": "Grenswaarden, signalen en opvolging.", "ai": "Regelcontroles gebruiken geen AI. Aanvullende AI-duiding alleen als je die afspreekt."},
     {"id": "wms", "label": "WMS magazijnbeheer", "database": "Orders, pickrondes, magazijnlocaties en statussen.", "ai": "Geen AI nodig voor de dagelijkse magazijnverwerking."},
     {"id": "facturatie", "label": "Facturen en offertes", "database": "Eigen verkooporders, factuurregels, offertes en documentstatussen.", "ai": "Geen AI nodig voor gewone facturen, offertes en btw-berekeningen."},
-    {"id": "listing", "label": "Listingoptimalisatie", "database": "Productvelden, zoektermen en beoordeelde tekstvoorstellen.", "ai": "AI-tekstaanvragen worden apart berekend."},
-    {"id": "picken", "label": "Picklijsten en verzending", "database": "Orderregels, pickaantallen, restanten en verzendstatussen.", "ai": "Geen AI nodig voor picklijsten en orderstatussen."}
+    {"id": "listing", "label": "Listingoptimalisatie", "database": "Productvelden, zoektermen en beoordeelde tekstvoorstellen.", "ai": "AI-tekstaanvragen worden apart berekend."}
   ]
 }
