@@ -28,6 +28,10 @@ def plan():
         result.append({'file':file,'page':page,'device':device,'width':width,'height':height,'scale':scale,
                        **{k:v for k,v in dict(tab=tab,fixture=fixture,modal=modal,focus=focus,click=click,align=align,expand=expand,fullPage=fullPage,external=external).items() if v}})
     for module,views in modules.items():
+        # WMS uses checked-in captures from its real warehouse interface,
+        # including one explicitly labelled English example.
+        if module == 'wms':
+            continue
         for view in views:
             for device in DEVICES:
                 add(f'module-examples/client-{module}-{view["id"]}-{device}-dark.jpg',view['page'],tab=view.get('tab'),modal=view.get('modal'),focus=view.get('focus'),click=view.get('click'),align=view.get('align'),expand=view.get('expand'))

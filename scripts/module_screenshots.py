@@ -15,7 +15,9 @@ def gallery(module):
     items = []
     for device, width, height in [('mobile', 390, 844), ('desktop', 1280, 900)]:
         for index, view in enumerate(views):
-            src = f'/assets/img/module-examples/client-{module}-{view["id"]}-{device}-dark.jpg?v=20261028-native-app'
+            src = (f'/assets/img/wms-examples/{view["id"]}-{device}.png?v=20261031'
+                   if module == 'wms' else
+                   f'/assets/img/module-examples/client-{module}-{view["id"]}-{device}-dark.jpg?v=20261028-native-app')
             title = escape(view['title'], quote=True)
             alt = escape(f'{view["title"]} — darkmode met fictieve gegevens.', quote=True)
             preview = f' data-screen-preview="{device}"' if index < (2 if device == 'mobile' else 1) else ''
@@ -48,6 +50,13 @@ def main():
     if args.check and not args.source_only:
         for module, views in PLAN.items():
             assert 4 <= len(views) <= 6, f'Expected four to six views: {module}'
+            if module == 'wms':
+                for device in ['mobile', 'desktop']:
+                    for view in views:
+                        image = ROOT / f'assets/img/wms-examples/{view["id"]}-{device}.png'
+                        data = image.read_bytes()
+                        assert data.startswith(b'\x89PNG') and len(data) > 1000, f'Missing WMS capture: {image}'
+                continue
             for device in ['mobile', 'tablet', 'desktop']:
                 hashes = set()
                 for view in views:

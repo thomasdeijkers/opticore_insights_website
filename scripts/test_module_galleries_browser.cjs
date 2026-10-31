@@ -26,8 +26,9 @@ assert(['127.0.0.1','localhost'].includes(base.hostname));
       assert.equal(await dialog.locator('.image-viewer-count').textContent(),`${i+1} van ${views.length}`);
       assert.equal(await dialog.locator('#image-viewer-title').textContent(),views[i].title);
       const img=dialog.locator('.image-viewer-stage img');
-      assert(new URL(await img.getAttribute('src'),base).pathname.endsWith(`client-${module}-${views[i].id}-${device}-dark.jpg`));
-      await img.evaluate(el=>el.decode());assert(await img.evaluate(el=>el.naturalWidth>700));
+      const expected=module==='wms'?`/assets/img/wms-examples/${views[i].id}-${device==='mobile'?'mobile':'desktop'}.png`:`client-${module}-${views[i].id}-${device}-dark.jpg`;
+      assert(new URL(await img.getAttribute('src'),base).pathname.endsWith(expected));
+      await img.evaluate(el=>el.decode());assert(await img.evaluate((el,min)=>el.naturalWidth>min,module==='wms'?300:700));
       if(i<views.length-1)await dialog.getByRole('button',{name:'Volgende afbeelding',exact:true}).click();
      }
      await p.keyboard.press('Escape');assert(await opener.evaluate(el=>document.activeElement===el));

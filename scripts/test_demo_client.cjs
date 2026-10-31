@@ -11,7 +11,8 @@ assert.deepEqual(Array.from(C.pages.offertes.tabs,t=>t.id),['quote-products','qu
 for(const id of ['cronjobs','logs','productflow','instellingen'])assert(!C.pages[id],'No owner administration route: '+id);
 assert(!/dienstenfactuur|dienstenofferte|multi.?tenant|systemctl|hosting.billing/i.test(JSON.stringify(C)));
 for(const id of ['bedrijfswaardering','keuzehulpen','sop','heating-hub']){assert(!C.pages[id],'Removed demo page: '+id);assert(!W.renderers[id]);assert(!C.groups.some(g=>g.pages.includes(id)));}
-const plan=require('../content/module-screenshots.json');for(const views of Object.values(plan))for(const scene of views)assert(C.pages[scene.page],'Screenshot targets an available page: '+scene.page);
+const plan=require('../content/module-screenshots.json');for(const [module,views] of Object.entries(plan))if(module!=='wms')for(const scene of views)assert(C.pages[scene.page],'Screenshot targets an available page: '+scene.page);
+assert.equal(plan.wms.length,4,'WMS uses four real warehouse screenshots with fictional fixture data');
 const s=D.createState(),c=CD.ensure(s);assert.equal(CD.ensure(s),c,'Initialization is idempotent');
 assert.equal(c.customers.length,6);assert.equal(c.documents.length,1);assert.equal(c.quotes.length,1);
 assert.equal(CD.orderInvoice(s,s.orders[0].id),c.documents[0]);assert.equal(c.documents.length,1,'Order invoices cannot be duplicated');

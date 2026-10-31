@@ -314,30 +314,6 @@
       "page": "publicaties"
     }
   ],
-  "klantenservice": [
-    {
-      "id": "inbox",
-      "title": "Open klantvragen",
-      "page": "tickets"
-    },
-    {
-      "id": "uitgesteld",
-      "title": "Uitgestelde tickets",
-      "page": "tickets",
-      "tab": "snoozed"
-    },
-    {
-      "id": "archief",
-      "title": "Afgehandelde vragen",
-      "page": "tickets",
-      "tab": "archive"
-    },
-    {
-      "id": "klanten",
-      "title": "Eigen orderklanten",
-      "page": "klanten"
-    }
-  ],
   "facturatie": [
     {
       "id": "orderfactuur",
@@ -415,6 +391,28 @@
       "id": "verzending",
       "title": "Orderstatus en verzending",
       "page": "orders"
+    }
+  ],
+  "wms": [
+    {
+      "id": "overzicht",
+      "title": "WMS overzicht",
+      "page": "wms"
+    },
+    {
+      "id": "start",
+      "title": "Nieuwe pickronde",
+      "page": "wms"
+    },
+    {
+      "id": "pickronde",
+      "title": "Picken en voortgang",
+      "page": "wms"
+    },
+    {
+      "id": "english",
+      "title": "WMS in het Engels",
+      "page": "wms"
     }
   ]
 }

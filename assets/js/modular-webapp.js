@@ -76,13 +76,13 @@
     ],
     "currentMonthly": 40
   },
-  "klantenservice": {
-    "label": "Klantenservice en tickets",
-    "setup": 250,
+  "wms": {
+    "label": "WMS magazijnbeheer",
+    "setup": 800,
     "requires": [
       "orders"
     ],
-    "currentMonthly": 20
+    "currentMonthly": 100
   },
   "facturatie": {
     "label": "Facturen en offertes",

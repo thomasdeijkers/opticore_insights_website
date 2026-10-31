@@ -61,4 +61,8 @@ Elke nieuwe module heeft vier echte demoschermen in darkmode, voor drie schermfo
 
 ## Actuele pakketprijzen en orderscope, 28 oktober 2026
 
-Het complete pakket met 15 modules kost € 4.995 inrichting en € 499 per maand. Het startpakket blijft € 995 / € 149 en bevat Omzetrapportage, Voorraad en Orders. De twaalf uitbreidingen samen kosten € 4.000 / € 350; maandprijzen zijn ronde tientallen en adviesprijzen liggen 20% hoger. De prijsbronnen en calculator bepalen de offerteopbouw en voorbeeldpakketten. Retourverwerking en retourkoppelingen vallen buiten alle vaste pakketprijzen en worden als maatwerk afgestemd. De retourpagina in de demo is expliciet als maatwerkvoorbeeld gemarkeerd; de galerie van Orders bevat alleen orderfuncties.
+Het complete pakket met 15 modules kost € 5.545 inrichting en € 579 per maand. Het startpakket blijft € 995 / € 149 en bevat Omzetrapportage, Voorraad en Orders. De twaalf uitbreidingen samen kosten € 4.000 / € 350; maandprijzen zijn ronde tientallen en adviesprijzen liggen 20% hoger. De prijsbronnen en calculator bepalen de offerteopbouw en voorbeeldpakketten. Retourverwerking en retourkoppelingen vallen buiten alle vaste pakketprijzen en worden als maatwerk afgestemd. De retourpagina in de demo is expliciet als maatwerkvoorbeeld gemarkeerd; de galerie van Orders bevat alleen orderfuncties.
+
+## WMS magazijnbeheer
+
+WMS vervangt de module Klantenservice en tickets in het aanbod. De uitbreiding kost € 800 eenmalige inrichting en € 100 per maand, exclusief btw en eventueel databaseverbruik. Het startpakket is nodig. De pagina beschrijft de zes ondersteunde talen en het gebruik door tijdelijke medewerkers. De vier WMS-voorbeeldschermen zijn vastgelegd uit de bestaande magazijninterface met uitsluitend fictieve fixturegegevens; het Engelstalige scherm is duidelijk aangeduid. Ze staan als bronbeelden in `assets/img/wms-examples/` en worden niet opnieuw gegenereerd uit de andere webappdemo.

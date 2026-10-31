@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   // Illustrative planning bands for configuring existing modules, not an SLA.
-  const effort = {forecasting:1, inkoop:2, logistiek:2, producten:1, beeldstudio:2, marketing:3, financieel:2, controles:1, klantenservice:1, facturatie:1, listing:1, picken:2};
+  const effort = {forecasting:1, inkoop:2, logistiek:2, producten:1, beeldstudio:2, marketing:3, financieel:2, controles:1, wms:2, facturatie:1, listing:1, picken:2};
   const preparation = {
     omzet:'Verkoopkanalen, omzet, btw, inkoopkosten en marge afstemmen en vergelijken met de bron.',
     voorraad:'SKU’s, EAN’s, locaties en beschikbare voorraad controleren; verschillen tussen bronnen verklaren.',
@@ -14,7 +14,7 @@
     marketing:'Advertentieaccounts, zoekposities, budgetten, ACoS/TACoS en akkoordstappen controleren.',
     financieel:'Kanaalkosten, tegoeden en uitbetalingen onderscheiden en aansluiten op de bronbedragen.',
     controles:'Signalen, grenswaarden, eigenaren en vervolgstappen afspreken en meldingen praktisch testen.',
-    klantenservice:'Klantvragen, ordercontext, ticketstatussen en toegangsrechten inrichten.',
+    wms:'Magazijnprocessen, ordergegevens, gebruikers en taalinstellingen afstemmen.',
     facturatie:'Factuurnummers, klantgegevens, btw en offerte- en factuurstatussen controleren.',
     listing:'Productgegevens, teksten en zoekwoorden inrichten; voorstellen beoordelen vóór publicatie.',
     picken:'Scannen, deelpicks, correcties en de overdracht van order naar verzending samen doorlopen.'
