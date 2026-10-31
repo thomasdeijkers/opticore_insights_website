@@ -12,8 +12,13 @@ for(const [,id,body] of rows){
  const href=body.match(/href="([^"]+)"/)[1],url=new URL(href,'https://opticore-insights.nl');
  assert.equal(url.pathname,'/webapp-samenstellen/');assert.equal(url.hash,'#modules');
  const result=P.resolve((url.searchParams.get('modules')||'').split(','));
- const amounts=[...body.matchAll(/<td data-label="[^"]+">€ ([\d.]+)<\/td>/g)].map(m=>Number(m[1].replaceAll('.','')));
- assert.deepEqual(amounts,[result.setup,result.monthly,result.setup+12*result.monthly],id+' prices and first-year total');
+ const euroValue=label=>Number(body.match(new RegExp('<td data-label="'+label+'">€ ([\\d.,]+)'))[1].replaceAll('.','').replace(',','.'));
+ const total=result.setup+12*result.monthly;
+ assert.equal(euroValue('Inrichting'),result.setup);
+ assert.equal(euroValue('Per maand'),result.monthly);
+ assert.equal(euroValue('Totaal eerste 12 maanden'),total);
+ assert.equal(euroValue('Gemiddeld per maand in jaar 1'),Math.round(total*100/12)/100);
+ assert.match(body,/eenmalig \+ 12 ×/);
  if(id==='marketing')assert(result.modules.includes('producten'),'Required Productbeheer is counted');
 }
 const data=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);

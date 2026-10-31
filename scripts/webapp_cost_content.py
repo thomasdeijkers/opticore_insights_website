@@ -14,6 +14,11 @@ def money(value):
     return '€ ' + f'{value:,}'.replace(',', '.')
 
 
+def monthly_average(total):
+    cents = (total * 100 + 6) // 12
+    return f'€ {cents // 100:,}'.replace(',', '.') + f',{cents % 100:02d}'
+
+
 def render(source, examples):
     if '<!-- webapp-cost-intro:start -->' not in source:
         return source
@@ -32,7 +37,8 @@ def render(source, examples):
     for item in examples:
         price = item['price']
         href = '/webapp-samenstellen/' + ('?modules=' + ','.join(item['modules']) if item['modules'] else '') + '#modules'
-        rows.append(f'''<tr data-cost-example="{escape(item['id'])}"><th scope="row">{escape(item['name'])}<span>{escape(item['description'])}</span></th><td data-label="Inrichting">{money(price['setup'])}</td><td data-label="Per maand">{money(price['monthly'])}</td><td data-label="Eerste 12 maanden">{money(price['setup'] + 12 * price['monthly'])}</td><td><a href="{href}">Bereken dit pakket →</a></td></tr>''')
+        total = price['setup'] + 12 * price['monthly']
+        rows.append(f'''<tr data-cost-example="{escape(item['id'])}"><th scope="row">{escape(item['name'])}<span>{escape(item['description'])}</span></th><td data-label="Inrichting">{money(price['setup'])}</td><td data-label="Per maand">{money(price['monthly'])}</td><td data-label="Totaal eerste 12 maanden">{money(total)}<span class="webapp-cost-breakdown">{money(price['setup'])} eenmalig + 12 × {money(price['monthly'])}</span></td><td data-label="Gemiddeld per maand in jaar 1">{monthly_average(total)}</td><td><a href="{href}">Bereken dit pakket →</a></td></tr>''')
     faqs = [
         ('Wat kost een webapp laten maken?', f'Bij OptiCore Insights begint een modulaire webapp bij {setup} eenmalig en {monthly} per maand. Het startpakket bevat omzetrapportage, voorraad en orders. Extra modules komen daarbij. Retourverwerking en retourkoppelingen zijn maatwerk en vallen buiten deze pakketprijzen. Alle bedragen zijn exclusief btw en AI- en databaseverbruik. Voor een volledig nieuwe applicatie op maat maken we een afzonderlijke offerte; de moduleprijzen zijn daarvoor geen vaste bouwprijs.'),
         ('Wat zijn de maandelijkse kosten van een webapp?', f'Het startpakket kost vast {monthly} per maand. Daarin zitten het gebruik van de drie basismodules, hosting, back-ups, monitoring en regulier platformonderhoud. Betaalde uitbreidingen verhogen het maandbedrag. Databaseverbruik, optionele AI-aanvragen en kosten van externe leveranciers staan daar los van. <a href="/gebruikskosten/">Bekijk de staffels en de kosten per module</a>.'),
@@ -46,8 +52,8 @@ def render(source, examples):
     faq_html = ''.join(f'<details><summary>{escape(question)}</summary><div><p>{answer}</p></div></details>' for question, answer in faqs)
     content = f'''<section class="section webapp-cost-guide" id="prijsvoorbeelden"><div class="container">
 <p class="eyebrow">Eenmalig én per maand inzichtelijk</p><h2>Webapp kosten: vier concrete prijsvoorbeelden</h2>
-<p>Wat je betaalt hangt af van je modules en de benodigde koppelingen. Dit zijn vier samenstellingen uit onze eigen calculator. Het bedrag voor de eerste 12 maanden is de inrichting plus twaalf maandbedragen, <strong>exclusief btw, AI- en databaseverbruik, externe abonnementen en aanvullend maatwerk</strong>.</p>
-<div class="webapp-cost-table-wrap"><table class="webapp-cost-table"><caption>Vaste kosten van een modulaire webapp bij OptiCore Insights</caption><thead><tr><th scope="col">Samenstelling</th><th scope="col">Eenmalige inrichting</th><th scope="col">Vast per maand</th><th scope="col">Eerste 12 maanden</th><th scope="col">Jouw prijs</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>
+<p>Wat je betaalt hangt af van je modules en de benodigde koppelingen. Dit zijn vier samenstellingen uit onze eigen calculator. Het totaal voor de eerste 12 maanden bestaat uit de eenmalige inrichting plus 12 maanden abonnement. Het gemiddelde per maand is dit totaal gedeeld door 12; de inrichting blijft een eenmalige betaling. Alle bedragen zijn <strong>exclusief btw, AI- en databaseverbruik, externe abonnementen en aanvullend maatwerk</strong>.</p>
+<div class="webapp-cost-table-wrap"><table class="webapp-cost-table"><caption>Vaste kosten van een modulaire webapp bij OptiCore Insights</caption><thead><tr><th scope="col">Samenstelling</th><th scope="col">Eenmalige inrichting</th><th scope="col">Vast per maand</th><th scope="col">Totaal eerste 12 maanden</th><th scope="col">Gemiddeld per maand in jaar 1</th><th scope="col">Jouw prijs</th></tr></thead><tbody>{''.join(rows)}</tbody></table></div>
 <p class="webapp-cost-small">Voorbeeldbedragen bij twaalf maanden gebruik met deze vaste tarieven; dit is geen uitspraak over een minimale contractduur. De getoonde pakketvoordelen gelden tot en met 31 december 2027. Bekijk de <a href="/prijzen/">prijzen en andere diensten</a> of <a href="#modules">bereken je eigen combinatie</a>.</p>
 </div></section>
 <section class="section soft webapp-cost-guide" id="prijs-bepalen"><div class="container"><h2>Wat bepaalt de kosten van een webapplicatie?</h2><div class="webapp-cost-factors">
