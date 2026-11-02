@@ -91,6 +91,17 @@
         "d0f36e2"
       ],
       "verification": "Afzonderlijk Olympus Bouw-bericht afgesplitst uit de bestaande projectupdate; uitsluitend eerder gecontroleerde bronwijzigingen en geslaagde deployment. Geen nieuwe projectvoortgang toegevoegd."
+    },
+    {
+      "slug": "webapp-magazijn-omzet-inzicht",
+      "repository": "opticore-intern",
+      "commits": [
+        "377e1af6ef24b9030df75205896a946ca76aef9d"
+      ],
+      "website_commit": "59841b914dc9e407515774068547dff427f44388",
+      "deployment_run": 41418581319,
+      "checked": "2026-11-02",
+      "verification": "WMS model and 12 browser combinations passed, including direct/batch picks, partial picks, scanning, distribution, shipping, cancellation and backorder restoration. Native marketing and all 50 client pages passed mobile/desktop regressions. 708 localized captures validated; deployment succeeded. Sixteen live checks verified four-language demo/news routes, WMS media and exact deployed source contents."
     }
   ],
   "last_run_at": "2026-10-26T10:13:20+01:00",
@@ -214,7 +225,7 @@
     "source_commit": "377e1af6ef24b9030df75205896a946ca76aef9d",
     "website_base_commit": "0bd8c7edad3462f889e6ffb87de40d9eef48b916",
     "news_slug": "webapp-magazijn-omzet-inzicht",
-    "status": "prepared_pending_deployment",
+    "status": "published_and_verified",
     "scope": [
       "Delivery-country revenue with channel drilldowns and reconciled fictional amounts",
       "Current-demo-month revenue and net result",
@@ -222,6 +233,19 @@
       "Interactive WMS picking modes, rounds, bins, distribution, backorders and packing",
       "Four-language phone/tablet/desktop demo captures"
     ],
-    "verification": "WMS model tests and 12 browser combinations passed; native marketing and all 50 pages passed mobile/desktop regressions. Final screenshots and deployment verification pending."
+    "verification": "WMS model and 12 browser combinations passed, including direct/batch picks, partial picks, scanning, distribution, shipping, cancellation and backorder restoration. Native marketing and all 50 client pages passed mobile/desktop regressions. 708 localized captures validated; deployment succeeded. Sixteen live checks verified four-language demo/news routes, WMS media and exact deployed source contents.",
+    "verified_at": "2026-11-02T10:31:32+01:00",
+    "website_commit": "59841b914dc9e407515774068547dff427f44388",
+    "deployment": {
+      "workflow": "Deploy static site to TransIP",
+      "run": 41418581319,
+      "conclusion": "success"
+    },
+    "news_urls": [
+      "https://opticore-insights.nl/nieuws/webapp-magazijn-omzet-inzicht/",
+      "https://opticore-insights.nl/en/news/webapp-warehouse-revenue-insight/",
+      "https://opticore-insights.nl/de/neuigkeiten/webapp-lager-umsatz-einblick/",
+      "https://opticore-insights.nl/fr/actualites/webapp-entrepot-chiffre-affaires/"
+    ]
   }
 }
