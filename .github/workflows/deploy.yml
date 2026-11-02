@@ -78,6 +78,13 @@ jobs:
           php scripts/test-business-scan.php
           node --check assets/js/bedrijfsscan.js
 
+      - name: Validate website maintenance page
+        run: |
+          php -l onderhoud.php
+          node --check maintenance/game.js
+          python3 scripts/test_site_maintenance.py
+          python3 -m pip install 'paramiko>=3.5,<5'
+
       - name: Set up capture tools
         uses: actions/setup-node@v4
         with:
@@ -151,6 +158,15 @@ jobs:
           sftpArgs: '-p'
           delete_remote_files: false
 
+      - name: Show website update page
+        env:
+          TRANSIP_SFTP_HOST: ${{ secrets.TRANSIP_SFTP_HOST }}
+          TRANSIP_SFTP_USERNAME: ${{ secrets.TRANSIP_SFTP_USERNAME }}
+          TRANSIP_SFTP_PASSWORD: ${{ secrets.TRANSIP_SFTP_PASSWORD }}
+          TRANSIP_SFTP_PORT: ${{ secrets.TRANSIP_SFTP_PORT }}
+          TRANSIP_SFTP_TARGET: ${{ secrets.TRANSIP_SFTP_TARGET }}
+        run: python3 scripts/site_maintenance.py begin
+
       - name: Deploy website files
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
@@ -161,7 +177,7 @@ jobs:
           local_path: ./
           remote_path: ${{ secrets.TRANSIP_SFTP_TARGET }}
           sftp_only: false
-          delete_remote_files: true
+          delete_remote_files: false
           rsyncArgs: >-
             --exclude=.git
             --exclude=.scan-deploy
@@ -179,6 +195,17 @@ jobs:
             --exclude=scripts
             --exclude=docs
             --exclude=content
+            --exclude=maintenance
+            --exclude=onderhoud.php
+
+      - name: Verify website and close update page
+        env:
+          TRANSIP_SFTP_HOST: ${{ secrets.TRANSIP_SFTP_HOST }}
+          TRANSIP_SFTP_USERNAME: ${{ secrets.TRANSIP_SFTP_USERNAME }}
+          TRANSIP_SFTP_PASSWORD: ${{ secrets.TRANSIP_SFTP_PASSWORD }}
+          TRANSIP_SFTP_PORT: ${{ secrets.TRANSIP_SFTP_PORT }}
+          TRANSIP_SFTP_TARGET: ${{ secrets.TRANSIP_SFTP_TARGET }}
+        run: python3 scripts/site_maintenance.py finish
 
       - name: Remove temporary site configuration
         if: always()

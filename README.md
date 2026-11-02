@@ -54,7 +54,7 @@ Voorbeeldwaarden:
 
 De workflow draait automatisch bij een push naar `main`.
 
-De workflow uploadt de statische site via SFTP/SSH en maakt de doelmap eerst leeg, omdat `delete_remote_files` op `true` staat. Bestanden zoals `.git`, `.github`, `README.md`, backups en zipbestanden worden uitgesloten.
+De workflow uploadt de statische site via SFTP/SSH. Voor de upload wordt een zelfstandig onderhoudsscherm geactiveerd; na een bevestigde upload gaat de website weer open. De webroot wordt niet meer vooraf verwijderd, zodat het onderhoudsscherm bereikbaar blijft. Bestanden zoals `.git`, `.github`, `README.md`, backups en zipbestanden worden uitgesloten. Zie [websiteonderhoud](docs/website-maintenance.md).
 
 ## Belangrijk voor livegang
 
