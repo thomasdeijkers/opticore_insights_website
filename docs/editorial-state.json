@@ -228,7 +228,25 @@
       ],
       "changes": "WMS-bericht behoudt URL en oorspronkelijke publicatiedatum, krijgt OptiCore-logo en twee responsive galerijen met vier afzonderlijke WMS-scènes. Omzet per bezorgland en jaarverwachtingen zijn uit het gepubliceerde bericht gehaald en als concept bewaard voor volgende weken. Lege beeldkolommen vallen terug op volledige tekstbreedte.",
       "queue": "content/news-queue.json",
-      "standing_rule": "Vaste nieuwsopmaak met beeld links en tekst rechts; meerdere relevante screenshots; maximaal één zelfstandig WebApp-onderwerp per week, zonder bestaande functies als nieuw te presenteren."
+      "standing_rule": "Vaste nieuwsopmaak met beeld links en tekst rechts; meerdere relevante screenshots; maximaal één zelfstandig WebApp-onderwerp per week, zonder bestaande functies als nieuw te presenteren.",
+      "publication_verification": {
+        "status": "published_and_verified",
+        "verified_at": "2026-11-02T11:58:15+01:00",
+        "website_commit": "3a336a49a9d8a0b09d96ec737e8d7316741ca2f3",
+        "upload_run": 41428822215,
+        "upload_result": "All validation, capture and SFTP upload steps succeeded; maintenance finalization timed out with HTTP 503.",
+        "recovery_run": 41432701192,
+        "recovery_result": "success; verified completed upload and exact reviewed homepage checksum before resuming maintenance finalization",
+        "live_checks": "Four-language home/article markup and exact deployed news CSS verified. All 48 WMS JPEGs for four scenes, four languages and three devices returned valid images. Future drafts absent from sitemap.",
+        "local_browser_checks": "12 combinations: NL/EN/DE/FR at mobile, tablet and desktop; image decoding, layout, viewer, Escape, overflow and missing-image fallback passed.",
+        "news_urls": [
+          "https://opticore-insights.nl/nieuws/webapp-magazijn-omzet-inzicht/",
+          "https://opticore-insights.nl/en/news/webapp-warehouse-revenue-insight/",
+          "https://opticore-insights.nl/de/neuigkeiten/webapp-lager-umsatz-einblick/",
+          "https://opticore-insights.nl/fr/actualites/webapp-entrepot-chiffre-affaires/"
+        ],
+        "automation_updated": true
+      }
     }
   ],
   "webapp_sync": {
