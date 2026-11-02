@@ -572,6 +572,32 @@ window.DemoPageCatalogue = {
       "title": "Overstock",
       "description": "Voorraadouderdom, omloopsnelheid en vervolgstappen per artikel.",
       "tabs": []
+    },
+    "wms": {
+      "title": "WMS",
+      "description": "Van pickronde en orderbakken naar gecontroleerd inpakken.",
+      "tabs": [
+        {
+          "id": "overzicht",
+          "label": "Overzicht"
+        },
+        {
+          "id": "picken",
+          "label": "Picken"
+        },
+        {
+          "id": "verdelen",
+          "label": "Verdelen"
+        },
+        {
+          "id": "verzenden",
+          "label": "Verzenden"
+        },
+        {
+          "id": "backorders",
+          "label": "Backorders"
+        }
+      ]
     }
   },
   "groups": [
@@ -636,7 +662,7 @@ window.DemoPageCatalogue = {
       "label": "Magazijn",
       "id": "warehouse",
       "pages": [
-        "orders-pakken",
+        "wms",
         "locaties",
         "locatie-zoeken",
         "externe-voorraad",

@@ -209,5 +209,19 @@
       "changes": "Titels, samenvattingen, metadata en hoofdteksten van vijf bestaande artikelen herschreven vanuit dagelijks gebruik. Oorspronkelijke URL’s, publicatiedatums, onderliggende bronnen en projectafbakening behouden; geen nieuwe projectclaims toegevoegd.",
       "standing_rule": "Toegankelijke taal voor ondernemers; technische bewijslast blijft intern."
     }
-  ]
+  ],
+  "webapp_sync": {
+    "source_commit": "377e1af6ef24b9030df75205896a946ca76aef9d",
+    "website_base_commit": "0bd8c7edad3462f889e6ffb87de40d9eef48b916",
+    "news_slug": "webapp-magazijn-omzet-inzicht",
+    "status": "prepared_pending_deployment",
+    "scope": [
+      "Delivery-country revenue with channel drilldowns and reconciled fictional amounts",
+      "Current-demo-month revenue and net result",
+      "Combined annual revenue and EBIT cards",
+      "Interactive WMS picking modes, rounds, bins, distribution, backorders and packing",
+      "Four-language phone/tablet/desktop demo captures"
+    ],
+    "verification": "WMS model tests and 12 browser combinations passed; native marketing and all 50 pages passed mobile/desktop regressions. Final screenshots and deployment verification pending."
+  }
 }

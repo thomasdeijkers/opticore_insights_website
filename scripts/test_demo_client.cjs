@@ -3,7 +3,7 @@ const D=require('../assets/js/marketplace-demo-data.js'),root=path.resolve(__dir
 const context={window:{MarketplaceDemo:D}};
 for(const file of ['demo-page-catalogue.js','demo-client-data.js','demo-full-workspace.js'])vm.runInNewContext(fs.readFileSync(path.join(root,'assets/js',file),'utf8'),context);
 const C=context.window.DemoPageCatalogue,CD=context.window.DemoClientData,W=context.window.FullWorkspace;
-assert.equal(Object.keys(C.pages).length,49);
+assert.equal(Object.keys(C.pages).length,50);
 for(const id of Object.keys(C.pages))assert.equal(typeof W.renderers[id],'function','Dedicated customer screen renderer: '+id);
 for(const group of C.groups)for(const id of group.pages)assert(C.pages[id]);
 assert.deepEqual(Array.from(C.pages.facturen.tabs,t=>t.id),['order','relations','saved']);
@@ -12,7 +12,7 @@ for(const id of ['cronjobs','logs','productflow','instellingen'])assert(!C.pages
 assert(!/dienstenfactuur|dienstenofferte|multi.?tenant|systemctl|hosting.billing/i.test(JSON.stringify(C)));
 for(const id of ['bedrijfswaardering','keuzehulpen','sop','heating-hub']){assert(!C.pages[id],'Removed demo page: '+id);assert(!W.renderers[id]);assert(!C.groups.some(g=>g.pages.includes(id)));}
 const plan=require('../content/module-screenshots.json');for(const [module,views] of Object.entries(plan))if(module!=='wms')for(const scene of views)assert(C.pages[scene.page],'Screenshot targets an available page: '+scene.page);
-assert.equal(plan.wms.length,4,'WMS uses four real warehouse screenshots with fictional fixture data');
+assert.equal(plan.wms.length,5,'WMS capture plan covers overview, picking, distribution and shipping');
 const s=D.createState(),c=CD.ensure(s);assert.equal(CD.ensure(s),c,'Initialization is idempotent');
 assert.equal(c.customers.length,6);assert.equal(c.documents.length,1);assert.equal(c.quotes.length,1);
 assert.equal(CD.orderInvoice(s,s.orders[0].id),c.documents[0]);assert.equal(c.documents.length,1,'Order invoices cannot be duplicated');
@@ -28,4 +28,4 @@ for(const page of c.websitePages)assert.equal(page.queries.length,10);
 const initialEbit=D.annualForecast(s)[0].ebit;c.fixedMonthly=520;assert(Math.abs(D.annualForecast(s)[0].ebit-(initialEbit-1200))<1e-7,'Own fixed costs flow into the dashboard forecast');
 const fresh=CD.ensure(D.createState());assert.equal(fresh.company.name,'Voorbeeldhandel Noord B.V.');assert.equal(fresh.documents[0].status,'Concept');
 for(const file of ['demo-client-data.js','demo-full-workspace.js'])assert(!/\b(?:fetch|XMLHttpRequest|WebSocket)\s*\(/.test(fs.readFileSync(path.join(root,'assets/js',file),'utf8')),'Demo uses no live network actions');
-console.log('Client demo OK: all 49 customer pages, customer-only invoices/environment, idempotent documents, immutable sale prices, VAT/discount arithmetic, calculators, ten keywords per page/article, forecast cost propagation and reset isolation.');
+console.log('Client demo OK: all 50 customer pages, customer-only invoices/environment, idempotent documents, immutable sale prices, VAT/discount arithmetic, calculators, ten keywords per page/article, forecast cost propagation and reset isolation.');

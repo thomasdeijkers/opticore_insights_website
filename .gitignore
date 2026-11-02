@@ -43,3 +43,6 @@ backups/
 
 # Authored AI atmosphere images are restored from a pinned media release.
 /assets/img/collaboration-v1/
+
+# WMS demo captures are generated in four languages by the shared pipeline.
+/assets/img/module-examples/client-wms-*-dark.jpg

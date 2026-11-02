@@ -1,5 +1,16 @@
 # Screenshotgalerij
 
+## WebApp-update — 2 november 2026
+
+Het dashboard toont omzet naar bezorgland over de laatste dertig dagen, met kanaalverdeling, omzet en netto resultaat van de vaste demomaand en gecombineerde omzet/EBIT-kaarten per jaar. Bron: gepubliceerde app `377e1af6` (Deploy VPS geslaagd). Landbedragen zijn expliciete fictieve verdelingen en sluiten per kanaal en totaal aan; geen productiegegevens zijn overgenomen.
+
+De interactieve demo heeft nu een WMS-werkplek met overzicht, pickrondes, direct/batch picken, aparte artikelverdeling naar gekleurde orderbakken, overslaan, deelpicks, scannen, backorders, annuleren, pakbonvoorbeeld en gesimuleerd inpakken/verzenden. De indeling gebruikt de eigen `warehouse_wms.css` als vastgelegde stijlbasis en een lokale adapter. Verschuiven van dozen of bevestigen in de demo veroorzaakt geen voorraadmutaties of externe verzendingen. De eerdere globale picklijst blijft via oude directe URL’s beschikbaar.
+
+Vijf WMS-scènes worden voortaan net als de andere modules uit de vertaalde interactieve demo opgenomen voor alle vier talen en drie apparaatformaten. Losse Nederlands/Engelse WMS-beelden worden niet langer als meertalige modulegalerij gebruikt. De build valideert de gezamenlijke opnameplanning; gegenereerde JPG’s en taalversies blijven buiten Git.
+
+Modeltests controleren deelpicks, dubbele verzendingen, revisies, bakken, backorders en reconciliatie van landomzet. De WMS-browsertest loopt de werkstappen in vier talen op 390, 834 en 1440 pixels door; bestaande marketing- en alle klantpagina’s krijgen ook regressiecontrole.
+
+
 ## Aansluiten op de eigen WebApp — 28 oktober 2026
 
 De gedeelde demo gebruikt nu de kleuren, typografie, werkbalk, panelen, tabbladen en KPI-opmaak uit `opticore-intern@f4ab0d72`, `apps/operations_dashboard/static/style.css`. Alle 49 klantgerichte pagina’s behouden hun eigen fictieve gegevens en lokale interacties. Beheergegevens van andere klanten worden niet overgenomen.

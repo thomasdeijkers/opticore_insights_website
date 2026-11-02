@@ -17,7 +17,7 @@ assert(!catalogue.klantenservice&&!catalogue.picken,'WMS replaces the earlier of
 const wms=resolve(['wms']);assert.equal(wms.setup,1795);assert.equal(wms.monthly,249);assert.deepEqual(wms.extraModules,['wms']);
 assert.equal(catalogue.wms.setup,800);assert.equal(catalogue.wms.currentMonthly,100);
 assert(html.includes('tijdelijke medewerkers'));assert(html.includes('Nederlands, Engels, Duits, Pools, Arabisch en Turks'));
-for(const view of screens.wms)for(const device of ['mobile','desktop'])assert(fs.statSync(path.join(__dirname,'../assets/img/wms-examples',`${view.id}-${device}.png`)).size>1000);
+for(const view of screens.wms)for(const device of ['mobile','tablet','desktop'])assert(fs.statSync(path.join(__dirname,'../assets/img/module-examples',`client-wms-${view.id}-${device}-dark.jpg`)).size>1000);
 const growth=resolve(['inkoop','logistiek','wms']);assert.equal(growth.setup,2695);assert.equal(growth.monthly,319);assert.equal(growth.setupSubtotal,3234);
 const marketing=resolve(['marketing','listing']);assert.deepEqual(marketing.extraModules,['producten','marketing','listing']);assert.equal(marketing.setup,2095);assert.equal(marketing.monthly,249);
 assert.deepEqual(resolve(['listing']).extraModules,['producten','listing']);assert.equal(resolve(['listing']).monthly,189);assert.deepEqual(resolve(['picken']).extraModules,[]);

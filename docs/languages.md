@@ -24,6 +24,10 @@ De zoekfunctie gebruikt uitsluitend documenten in de geselecteerde taal. Iedere 
 
 App-screenshots worden opnieuw opgenomen uit de daadwerkelijk vertaalde demo. De 212 opnamen per taal bevatten alle modulegalerijen, het scrollbare dashboard, de neutrale praktijkvoorbeelden en de echte Olympus-schermen met fictieve gegevens. Duits, Engels en Frans hebben elk eigen desktop-, tablet- en telefoonbeelden: samen 636 bestanden, standaard in darkmode en op hoge resolutie. De Nederlandse beelden behouden hun Nederlandse tekst. Productfoto’s, logo’s en bronvermeldingen blijven origineel. Externe ingesloten keuzehulpen en screenshots van zelfstandige klantwebsites worden niet door deze app-capture vervangen.
 
+## WMS-captures — 2 november 2026
+
+De WMS-galerij gebruikt vijf scènes uit de interactieve demo, per taal op telefoon, tablet en desktop. De opnamefixture start alleen een lokale fictieve ronde en brengt de demonstratie naar picken, verdelen of inpakken. `scripts/test_demo_wms_browser.cjs` controleert de interacties in alle vier talen.
+
 ## Screenshots maken
 
 De browserafhankelijkheid staat vast in `package-lock.json`. Een volledige lokale vernieuwing werkt als volgt:

@@ -52,6 +52,7 @@ jobs:
           node --check assets/js/marketplace-demo-data.js
           node --check assets/js/demo-page-catalogue.js
           node --check assets/js/demo-client-data.js
+          node --check assets/js/demo-wms.js
           node --check assets/js/demo-picklist.js
           node --check assets/js/demo-marketing-reference.js
           node --check assets/js/demo-full-workspace.js
@@ -59,6 +60,7 @@ jobs:
           node --check assets/js/expectations-carousel.js
           node --check assets/js/implementation-roadmap.js
           node scripts/test_implementation_roadmap.cjs
+          node scripts/test_demo_wms.cjs
           node scripts/test_picklist_demo.cjs
           node scripts/test_demo_client.cjs
           node scripts/test_webapp_cost_content.cjs
@@ -96,7 +98,7 @@ jobs:
             assets/img/examples/client-listing-*-dark.jpg
             assets/img/module-examples/client-*-dark.jpg
             assets/img/demo/dashboard-client-*-dark.png
-          key: localized-dark-v1-${{ runner.os }}-${{ hashFiles('content/olympus-captures.json', 'content/demo-studio-products.json', 'scripts/capture_localized_screenshots.cjs', 'scripts/localized_screenshots.py', 'scripts/neutral_visuals.py', 'scripts/neutral_visuals.css', 'scripts/neutral_visuals_manifest.json', 'scripts/i18n.py', 'content/module-screenshots.json', 'demo/modulaire-webapp/index.html', 'content/i18n/*.json', 'assets/js/*.js', 'assets/css/module-demo.css', 'assets/css/demo-full-workspace.css', 'assets/css/demo-*reference*.css', 'assets/css/demo-product-photos.css', 'assets/css/i18n.css', 'assets/css/link-buttons.css', 'assets/img/flags/*.svg', 'package-lock.json') }}
+          key: localized-dark-v1-${{ runner.os }}-${{ hashFiles('content/olympus-captures.json', 'content/demo-studio-products.json', 'scripts/capture_localized_screenshots.cjs', 'scripts/localized_screenshots.py', 'scripts/neutral_visuals.py', 'scripts/neutral_visuals.css', 'scripts/neutral_visuals_manifest.json', 'scripts/i18n.py', 'content/module-screenshots.json', 'demo/modulaire-webapp/index.html', 'content/i18n/*.json', 'assets/js/*.js', 'assets/css/module-demo.css', 'assets/css/demo-full-workspace.css', 'assets/css/demo-wms.css', 'assets/css/demo-*reference*.css', 'assets/css/demo-product-photos.css', 'assets/css/i18n.css', 'assets/css/link-buttons.css', 'assets/img/flags/*.svg', 'package-lock.json') }}
 
       - name: Build and validate all language editions
         run: |

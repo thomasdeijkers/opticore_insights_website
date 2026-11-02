@@ -48,6 +48,17 @@ async function serve(root){
     if(!task.fixture){await page.locator('.workspace-complete .workspace-root').waitFor();assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');assert.equal(await page.evaluate(()=>FullWorkspace.inspect().page),task.page,'Capture must show the requested app page');}
     assert.equal(await page.locator('html').getAttribute('lang'),task.language);
     await page.evaluate(()=>document.fonts.ready);
+    if(task.wmsScene){
+      await page.evaluate(scene=>{
+        const state=FullWorkspace.inspect().client;
+        // The model owns fictional data; fixture initialization never calls a server.
+        const model=window.DemoWmsFixture();
+        const round=model.start('DEMO-P1','batch',5);
+        if(scene!=='picking')for(const [sku,q] of Object.entries(model.snapshot().rounds[0].demand))model.pick(round.id,sku,q,model.snapshot().rounds[0].revision);
+        if(scene==='shipping')for(const sku of Object.keys(model.snapshot().rounds[0].demand))model.distribute(round.id,sku,model.snapshot().rounds[0].revision,true);
+        FullWorkspace.refresh();
+      },task.wmsScene);
+    }
     if(task.click)await page.locator(task.click).first().click();
     if(task.expand){const target=page.locator(task.expand).first();if(await target.locator('xpath=..').getAttribute('open')===null){await target.focus();await target.press('Enter');}}
     if(task.modal){const target=page.locator(task.modal).first(),parent=target.locator('xpath=ancestor::details').first();if(await parent.count()&&await parent.getAttribute('open')===null){await parent.locator(':scope>summary').focus();await parent.locator(':scope>summary').press('Enter');}await target.click();await page.locator('dialog[open]').waitFor();}

@@ -101,10 +101,6 @@ assert(!source.includes('Planning en projecten'));assert(!source.includes('Docum
 const capturePlan=require('../content/module-screenshots.json');
 for(const key of Object.keys(catalogue)){
  assert(capturePlan[key]?.length>=4,'Every priced module has at least four actual demo scenes');
- if(key==='wms'){
-  for(const device of ['mobile','desktop'])for(const view of capturePlan[key])assert(fs.statSync(path.join(__dirname,`../assets/img/wms-examples/${view.id}-${device}.png`)).size>1000);
-  continue;
- }
  for(const device of ['mobile','tablet','desktop'])for(const view of capturePlan[key]){
   assert(fs.statSync(path.join(__dirname,`../assets/img/module-examples/client-${key}-${view.id}-${device}-dark.jpg`)).size>1000);
  }

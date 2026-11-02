@@ -433,5 +433,10 @@
     "de": "/de/team/",
     "en": "/en/team/",
     "fr": "/fr/equipe/"
+  },
+  "/nieuws/webapp-magazijn-omzet-inzicht/": {
+    "de": "/de/neuigkeiten/webapp-lager-umsatz-einblick/",
+    "en": "/en/news/webapp-warehouse-revenue-insight/",
+    "fr": "/fr/actualites/webapp-entrepot-chiffre-affaires/"
   }
 }

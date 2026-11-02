@@ -20,21 +20,17 @@ def plan():
     referenced = set()
     for _,source in sources().values():
         referenced.update(re.findall(r'/assets/img/(?:demo|examples|module-examples)/[^\s"\x27<>?]+\.(?:jpg|png)',source))
-    def add(file, page, *, tab=None, fixture=False, modal=None, focus=None, click=None, align=None, expand=None, fullPage=False, external=False):
+    def add(file, page, *, tab=None, fixture=False, modal=None, focus=None, click=None, align=None, expand=None, fullPage=False, external=False, wmsScene=None):
         device = 'mobile' if '-mobile-' in file else 'tablet' if '-tablet-' in file else 'desktop'
         width,height,scale = DEVICES[device]
         if fullPage and device=='desktop': width,height = 1440,1000
         if fullPage and file=='demo/dashboard-client-tablet-dark.png': width,height = 1112,834
         result.append({'file':file,'page':page,'device':device,'width':width,'height':height,'scale':scale,
-                       **{k:v for k,v in dict(tab=tab,fixture=fixture,modal=modal,focus=focus,click=click,align=align,expand=expand,fullPage=fullPage,external=external).items() if v}})
+                       **{k:v for k,v in dict(tab=tab,fixture=fixture,modal=modal,focus=focus,click=click,align=align,expand=expand,fullPage=fullPage,external=external,wmsScene=wmsScene).items() if v}})
     for module,views in modules.items():
-        # WMS uses checked-in captures from its real warehouse interface,
-        # including one explicitly labelled English example.
-        if module == 'wms':
-            continue
         for view in views:
             for device in DEVICES:
-                add(f'module-examples/client-{module}-{view["id"]}-{device}-dark.jpg',view['page'],tab=view.get('tab'),modal=view.get('modal'),focus=view.get('focus'),click=view.get('click'),align=view.get('align'),expand=view.get('expand'))
+                add(f'module-examples/client-{module}-{view["id"]}-{device}-dark.jpg',view['page'],tab=view.get('tab'),modal=view.get('modal'),focus=view.get('focus'),click=view.get('click'),align=view.get('align'),expand=view.get('expand'),wmsScene=view.get('wmsScene'))
     app_views={'management':('dashboard',None),'forecast':('forecasting','overview'),'stock':('voorraad',None),
                'ranking':('bol-ranking',None),'marketing':('marketing-agent',None),'listing':('verbeteringen',None)}
     for item in manifest:

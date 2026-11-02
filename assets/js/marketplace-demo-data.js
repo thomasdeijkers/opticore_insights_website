@@ -199,10 +199,17 @@
     state.adviceHistory[id]=clone(row);
     state.adviceReviews[id]=decision;
   }
+  // Fictional delivery-country allocation, independent of channel registration country.
+  function deliveryCountries(state){
+    const weights={bol:[.72,.24,.03,.01],amazon_nl:[.83,.12,.04,.01],amazon_de:[.06,.03,.87,.04],praxis:[.94,.05,.01,0],brico:[.1,.86,.02,.02],mediamarkt:[.89,.08,.02,.01],kaufland:[.08,.04,.84,.04]},codes=['NL','BE','DE','FR'];
+    const rows=codes.map(code=>({code,revenue:0,channels:[]}));
+    channels.forEach(c=>{const total=Math.round(totals(state,1,c.id).revenue*100);let used=0;codes.forEach((code,i)=>{const cents=i===codes.length-1?total-used:Math.round(total*weights[c.id][i]);used+=cents;if(cents){rows[i].revenue+=cents;rows[i].channels.push({id:c.id,label:c.label,revenue:cents/100});}});});
+    const total=rows.reduce((n,r)=>n+r.revenue,0);return rows.filter(r=>r.revenue).map(r=>({...r,share:total?r.revenue/total*100:0,revenue:r.revenue/100})).sort((a,b)=>b.revenue-a.revenue);
+  }
   function csv(headers,rows){
     const cell=value=>{let text=String(value??'');if(/^[\s]*[=+@-]/.test(text))text="'"+text;return '"'+text.replace(/"/g,'""')+'"';};
     return '\ufeff'+[headers,...rows].map(row=>row.map(cell).join(';')).join('\r\n');
   }
-  const api={channels,months,createState,product,available,ordered,forecast,coverage,need,sales,totals,channelMonths,dashboardHeatmap,annualForecast,signalRows,advertising,countStock,propose,receivePurchase,receiveReturn,setOffer,setBudget,completeSignal,createShipment,receiveShipment,updateProduct,addProduct,openArticles,advanceOrder,adviceRows,reviewAdvice,csv};
+  const api={channels,months,createState,product,available,ordered,forecast,coverage,need,sales,totals,channelMonths,dashboardHeatmap,annualForecast,deliveryCountries,signalRows,advertising,countStock,propose,receivePurchase,receiveReturn,setOffer,setBudget,completeSignal,createShipment,receiveShipment,updateProduct,addProduct,openArticles,advanceOrder,adviceRows,reviewAdvice,csv};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;else scope.MarketplaceDemo=api;
 })(typeof window!=='undefined'?window:globalThis);

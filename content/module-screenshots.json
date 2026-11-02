@@ -371,22 +371,42 @@
     {
       "id": "overzicht",
       "title": "WMS overzicht",
-      "page": "wms"
+      "page": "wms",
+      "tab": "overzicht"
     },
     {
       "id": "start",
       "title": "Nieuwe pickronde",
-      "page": "wms"
+      "page": "wms",
+      "tab": "picken",
+      "expand": "[data-wms-start-fold]>summary"
     },
     {
       "id": "pickronde",
       "title": "Picken en voortgang",
-      "page": "wms"
+      "page": "wms",
+      "tab": "picken",
+      "wmsScene": "picking",
+      "focus": ".wms-pick-grid",
+      "align": "start"
     },
     {
-      "id": "english",
-      "title": "WMS in het Engels",
-      "page": "wms"
+      "id": "verdelen",
+      "title": "Artikelen verdelen over orderbakken",
+      "page": "wms",
+      "tab": "verdelen",
+      "wmsScene": "distribution",
+      "focus": ".wms-distribution-articles",
+      "align": "start"
+    },
+    {
+      "id": "verzenden",
+      "title": "Orders inpakken en verzenden",
+      "page": "wms",
+      "tab": "verzenden",
+      "wmsScene": "shipping",
+      "focus": ".wms-workbench>.wms-bin-card",
+      "align": "start"
     }
   ]
 }
