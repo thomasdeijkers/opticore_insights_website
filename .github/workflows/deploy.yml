@@ -1,12 +1,7 @@
 ﻿name: Deploy static site to TransIP
 
 on:
-  workflow_dispatch:
-    inputs:
-      maintenance_recovery:
-        description: 'Only verify the completed upload and close its maintenance screen'
-        type: boolean
-        default: false
+  workflow_dispatch: {}
   push:
     branches:
       - main
@@ -152,7 +147,6 @@ jobs:
           python3 scripts/write_demo_auth_config.py
 
       - name: Upload private configuration outside the webroot
-        if: ${{ !inputs.maintenance_recovery }}
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
           server: ${{ secrets.TRANSIP_SFTP_HOST }}
@@ -166,7 +160,6 @@ jobs:
           delete_remote_files: false
 
       - name: Show website update page
-        if: ${{ !inputs.maintenance_recovery }}
         env:
           TRANSIP_SFTP_HOST: ${{ secrets.TRANSIP_SFTP_HOST }}
           TRANSIP_SFTP_USERNAME: ${{ secrets.TRANSIP_SFTP_USERNAME }}
@@ -176,7 +169,6 @@ jobs:
         run: python3 scripts/site_maintenance.py begin
 
       - name: Deploy website files
-        if: ${{ !inputs.maintenance_recovery }}
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
           server: ${{ secrets.TRANSIP_SFTP_HOST }}
