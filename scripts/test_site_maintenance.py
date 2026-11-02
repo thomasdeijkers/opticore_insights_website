@@ -74,6 +74,7 @@ class SiteMaintenanceTests(unittest.TestCase):
             maintenance.finish(sftp, '/www')
         self.assertNotIn('/www/' + maintenance.MARKER, sftp.files)
         self.assertIn('/www/.htaccess', sftp.files)
+        self.assertEqual(sftp.files['/www/.htaccess'], b'Options -Indexes\n')
 
     def test_failed_activation_restores_previous_rules(self):
         sftp = MemorySFTP()
@@ -95,10 +96,13 @@ class SiteMaintenanceTests(unittest.TestCase):
     def test_failed_public_verification_restores_maintenance_marker(self):
         sftp = MemorySFTP()
         sftp.files['/www/' + maintenance.MARKER] = b'on'
+        active_rules = maintenance.merge_rules('Options -Indexes\n').encode()
+        sftp.files['/www/.htaccess'] = active_rules
         with patch.object(maintenance, 'probe', side_effect=RuntimeError('Not confirmed')):
             with self.assertRaises(RuntimeError):
                 maintenance.finish(sftp, '/www')
         self.assertIn('/www/' + maintenance.MARKER, sftp.files)
+        self.assertEqual(sftp.files['/www/.htaccess'], active_rules)
 
     def php(self, values):
         code = "$_SERVER=json_decode($argv[1],true); register_shutdown_function(function(){fwrite(STDERR,(string)http_response_code());}); include $argv[2];"

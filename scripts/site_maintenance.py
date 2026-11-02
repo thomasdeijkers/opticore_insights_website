@@ -31,14 +31,18 @@ RewriteRule ^ - [R=503,L]
 BOOTSTRAP = ('onderhoud.php', 'maintenance/page.tpl', 'maintenance/game.js', 'maintenance/logo.png')
 
 
-def merge_rules(existing: str) -> str:
+def without_rules(existing: str) -> str:
     if START in existing or END in existing:
         if existing.count(START) != 1 or existing.count(END) != 1 or existing.index(END) < existing.index(START):
             raise ValueError('Onverwachte onderhoudsconfiguratie; niets overschreven.')
         before, rest = existing.split(START, 1)
         _, after = rest.split(END, 1)
         existing = before + after.lstrip('\n')
-    return RULES + existing
+    return existing
+
+
+def merge_rules(existing: str) -> str:
+    return RULES + without_rules(existing)
 
 
 def remote_root(value: str) -> str:
@@ -71,7 +75,8 @@ def write(sftp, path: str, data: bytes) -> None:
 
 
 def probe(path: str, status: int, text: str, *, absent: bool = False) -> None:
-    for attempt in range(3):
+    actual = 'geen HTTP-antwoord'
+    for attempt in range(12):
         try:
             request = Request(SITE + path, headers={'Accept': 'text/html', 'User-Agent': 'OptiCore release check'})
             try:
@@ -80,13 +85,14 @@ def probe(path: str, status: int, text: str, *, absent: bool = False) -> None:
                 response = error
             with response:
                 body = response.read().decode('utf-8')
+                actual = f'HTTP {response.status}'
                 if response.status == status and ((text not in body) if absent else (text in body)):
                     return
         except OSError:
             pass
-        if attempt < 2:
-            time.sleep(2)
-    raise RuntimeError(f'Websitecontrole niet bevestigd: {path}, verwachte HTTP-status {status}.')
+        if attempt < 11:
+            time.sleep(3)
+    raise RuntimeError(f'Websitecontrole niet bevestigd: {path}, verwacht HTTP {status}, ontvangen {actual}.')
 
 
 def begin(sftp, target: str) -> None:
@@ -117,11 +123,22 @@ def finish(sftp, target: str) -> None:
     remote_index = read(sftp, target + '/index.html')
     if remote_index is None or hashlib.sha256(remote_index).digest() != hashlib.sha256((ROOT / 'index.html').read_bytes()).digest():
         raise RuntimeError('Homepage-upload niet bevestigd; onderhoud blijft actief.')
-    sftp.remove(target + '/' + MARKER)
+    config_path = target + '/.htaccess'
+    active_rules = read(sftp, config_path)
+    # Remove the gate itself as well: shared hosting can retain file-existence
+    # results briefly after the marker is removed.
+    if active_rules is not None:
+        write(sftp, config_path, without_rules(active_rules.decode('utf-8')).encode('utf-8'))
+    try:
+        sftp.remove(target + '/' + MARKER)
+    except FileNotFoundError:
+        pass
     try:
         probe('/?maintenance-check=' + uuid4().hex, 200, '<title>De website wordt verbeterd', absent=True)
     except Exception:
         write(sftp, target + '/' + MARKER, b'verification-pending')
+        if active_rules is not None:
+            write(sftp, config_path, active_rules)
         raise
     print('Website maintenance disabled; the published homepage is available with HTTP 200.')
 
