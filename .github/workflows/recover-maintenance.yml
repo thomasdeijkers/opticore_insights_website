@@ -1,0 +1,33 @@
+name: Recover completed website publication
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m pip install 'paramiko>=3.5,<5'
+      - name: Confirm completed upload and no active replacement upload
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run view 41424613374 --json jobs > /tmp/completed-upload.json
+          gh run view 41424849457 --json jobs > /tmp/replacement-upload.json
+          python3 - <<'PY'
+          import json
+          old = json.load(open('/tmp/completed-upload.json'))
+          assert any(s['name'] == 'Deploy website files' and s['conclusion'] == 'success' for j in old['jobs'] for s in j['steps'])
+          current = json.load(open('/tmp/replacement-upload.json'))
+          assert all(s['status'] == 'pending' for j in current['jobs'] for s in j['steps'] if s['name'] == 'Show website update page'), 'Replacement upload has started; keep maintenance active.'
+          PY
+      - name: Restore verified website
+        env:
+          TRANSIP_SFTP_HOST: ${{ secrets.TRANSIP_SFTP_HOST }}
+          TRANSIP_SFTP_USERNAME: ${{ secrets.TRANSIP_SFTP_USERNAME }}
+          TRANSIP_SFTP_PASSWORD: ${{ secrets.TRANSIP_SFTP_PASSWORD }}
+          TRANSIP_SFTP_PORT: ${{ secrets.TRANSIP_SFTP_PORT }}
+          TRANSIP_SFTP_TARGET: ${{ secrets.TRANSIP_SFTP_TARGET }}
+        run: python3 scripts/site_maintenance.py finish
