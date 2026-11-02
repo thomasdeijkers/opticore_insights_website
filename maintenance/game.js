@@ -7,7 +7,7 @@
       const supportSubmit = document.getElementById('supportSubmit');
       const supportClose = document.getElementById('supportClose');
       const draftKey = 'opticore-maintenance-support-draft';
-      let csrf = '', pending = false, submissionId = '';
+      let csrf = '', csrfRequest = null, pending = false, submissionId = '';
       try {
         const draft = JSON.parse(sessionStorage.getItem(draftKey) || '{}');
         for (const [key, max] of [['name',100],['email',254],['question',2000]]) {
@@ -44,9 +44,18 @@
         supportToggle.setAttribute('aria-expanded', String(open));
         (open ? supportForm.elements.name : supportToggle).focus({preventScroll:!open});
         if (open) {
-          try { csrf = (await requestSupport()).csrf; }
+          try { await prepareSupport(); }
           catch (error) { supportStatus.textContent = error.message; }
         }
+      }
+      function prepareSupport() {
+        if (csrf) return Promise.resolve(csrf);
+        csrfRequest ||= requestSupport().then(data => {
+          if (typeof data.csrf !== 'string') throw new Error('Het formulier kan nu niet worden geladen. Probeer het opnieuw.');
+          csrf = data.csrf;
+          return csrf;
+        }).finally(() => { csrfRequest = null; });
+        return csrfRequest;
       }
       supportToggle.addEventListener('click', () => showSupport(supportForm.hidden));
       supportClose.addEventListener('click', () => showSupport(false));
@@ -62,7 +71,7 @@
         supportStatus.textContent = '';
         supportForm.setAttribute('aria-busy','true');
         try {
-          if (!csrf) csrf = (await requestSupport()).csrf;
+          await prepareSupport();
           submissionId ||= crypto.randomUUID();
           saveDraft();
           const data = await requestSupport({csrf,submissionId,name:supportForm.elements.name.value,email:supportForm.elements.email.value,question:supportForm.elements.question.value,website:supportForm.elements.website.value});
