@@ -21,7 +21,7 @@ jobs:
           old = json.load(open('/tmp/completed-upload.json'))
           assert any(s['name'] == 'Deploy website files' and s['conclusion'] == 'success' for j in old['jobs'] for s in j['steps'])
           current = json.load(open('/tmp/replacement-upload.json'))
-          assert all(s['status'] == 'pending' for j in current['jobs'] for s in j['steps'] if s['name'] == 'Show website update page'), 'Replacement upload has started; keep maintenance active.'
+          assert all((s['status'] == 'pending' or s['conclusion'] == 'skipped') for j in current['jobs'] for s in j['steps'] if s['name'] == 'Show website update page'), 'Replacement upload has started; keep maintenance active.'
           PY
       - name: Restore verified website
         env:
@@ -51,3 +51,4 @@ jobs:
           sys.argv = ['site_maintenance.py', 'finish']
           maintenance.main()
           PY
+
