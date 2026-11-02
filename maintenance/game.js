@@ -10,13 +10,13 @@
       let csrf = '', csrfRequest = null, pending = false, submissionId = '';
       try {
         const draft = JSON.parse(sessionStorage.getItem(draftKey) || '{}');
-        for (const [key, max] of [['name',100],['email',254],['question',2000]]) {
+        for (const [key, max] of [['name',100],['company',100],['email',254],['question',2000]]) {
           if (typeof draft[key] === 'string') supportForm.elements[key].value = draft[key].slice(0,max);
         }
         if (typeof draft.submissionId === 'string') submissionId = draft.submissionId;
       } catch (_) {}
       function saveDraft() {
-        try { sessionStorage.setItem(draftKey, JSON.stringify({name:supportForm.elements.name.value, email:supportForm.elements.email.value, question:supportForm.elements.question.value, submissionId})); } catch (_) {}
+        try { sessionStorage.setItem(draftKey, JSON.stringify({name:supportForm.elements.name.value, company:supportForm.elements.company.value,email:supportForm.elements.email.value, question:supportForm.elements.question.value, submissionId})); } catch (_) {}
       }
       supportForm.addEventListener('input', () => { submissionId = ''; saveDraft(); });
       async function requestSupport(body) {
@@ -74,7 +74,7 @@
           await prepareSupport();
           submissionId ||= crypto.randomUUID();
           saveDraft();
-          const data = await requestSupport({csrf,submissionId,name:supportForm.elements.name.value,email:supportForm.elements.email.value,question:supportForm.elements.question.value,website:supportForm.elements.website.value});
+          const data = await requestSupport({csrf,submissionId,name:supportForm.elements.name.value,company:supportForm.elements.company.value,email:supportForm.elements.email.value,question:supportForm.elements.question.value,website:supportForm.elements.website.value});
           if (data.ok !== true) throw new Error('Versturen is niet bevestigd. Je vraag blijft staan.');
           supportStatus.textContent = data.message;
           supportForm.reset();

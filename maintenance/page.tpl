@@ -29,7 +29,8 @@
       <h2 id="supportTitle">Stel je vraag</h2>
       <p><span id="supportIntro">Stuur je vraag rechtstreeks naar ons supportteam. We gebruiken je e-mailadres om te antwoorden.</span><a class="support-address" href="mailto:support@opticore-insights.nl">support@opticore-insights.nl</a></p>
       <label for="supportName"><span id="supportNameLabel">Naam</span><input id="supportName" name="name" autocomplete="name" maxlength="100" required></label>
-      <label for="supportEmail"><span>E-mailadres</span><input id="supportEmail" name="email" type="email" autocomplete="email" maxlength="254" required></label>
+      <label for="supportCompany"><span id="supportCompanyLabel">Bedrijf</span><input id="supportCompany" name="company" autocomplete="organization" maxlength="100" required></label>
+      <label for="supportEmail"><span id="supportEmailLabel">E-mailadres</span><input id="supportEmail" name="email" type="email" autocomplete="email" maxlength="254" required></label>
       <input type="hidden" name="website" value="">
       <label for="supportQuestion"><span id="supportQuestionLabel">Je vraag</span><textarea id="supportQuestion" name="question" maxlength="2000" required></textarea></label>
       <div class="actions"><button class="button" id="supportSubmit" type="submit">Vraag versturen</button><button class="button button-secondary" id="supportClose" type="button">Sluiten</button></div>
@@ -45,6 +46,6 @@
     </section>
     <div class="footer">OptiCore Insights · Insights for smarter decisions</div>
   </main>
-  <script src="/maintenance/game.js?v=20261102-direct-support" defer></script>
+  <script src="/maintenance/game.js?v=20261102-company-support" defer></script>
 </body>
 </html>

@@ -13,6 +13,24 @@ function support_reply(int $status, array $body): never {
     exit;
 }
 
+// Only the public website and its dashboard may use this mail form.
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+$ownOrigin = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' ? 'https' : 'http') . '://' . ($_SERVER['HTTP_HOST'] ?? '');
+if ($origin !== '' && !in_array($origin, [$ownOrigin, 'https://vps.opticore-insights.nl'], true)) {
+    support_reply(403, ['message' => 'Dit formulier is niet beschikbaar vanaf deze website.']);
+}
+if ($origin === 'https://vps.opticore-insights.nl') {
+    header('Access-Control-Allow-Origin: https://vps.opticore-insights.nl');
+    header('Access-Control-Allow-Credentials: true');
+    header('Vary: Origin');
+}
+if (($_SERVER['REQUEST_METHOD'] ?? '') === 'OPTIONS') {
+    header('Access-Control-Allow-Methods: GET, POST');
+    header('Access-Control-Allow-Headers: Content-Type');
+    http_response_code(204);
+    exit;
+}
+
 session_name('opticore_maintenance_support');
 session_start(['cookie_httponly' => true, 'cookie_samesite' => 'Strict',
     'cookie_secure' => !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off', 'use_strict_mode' => true]);
@@ -32,13 +50,15 @@ if (!is_array($input) || !is_string($input['csrf'] ?? null)
 $text = static fn(string $key): string => is_string($input[$key] ?? null) ? trim($input[$key]) : '';
 $name = $text('name');
 $email = $text('email');
+$company = $text('company');
 $question = $text('question');
 $id = $text('submissionId');
-if ($name === '' || strlen($name) > 400 || preg_match('/[\r\n]/', $name)
+if ($company === '' || strlen($company) > 400 || preg_match('/[\r\n]/', $company)
+    || $name === '' || strlen($name) > 400 || preg_match('/[\r\n]/', $name)
     || strlen($email) > 254 || !filter_var($email, FILTER_VALIDATE_EMAIL)
     || preg_match('/[\r\n]/', $email) || $question === '' || strlen($question) > 8000
     || !preg_match('/^[a-zA-Z0-9-]{16,64}$/D', $id) || $text('website') !== '') {
-    support_reply(422, ['message' => 'Controleer je naam, e-mailadres en vraag.']);
+    support_reply(422, ['message' => 'Controleer je naam, bedrijf, e-mailadres en vraag.']);
 }
 $success = ['ok' => true, 'message' => 'Je vraag is verstuurd naar support@opticore-insights.nl. We reageren via je e-mailadres.'];
 // Retrying a request after a lost response must not send the same email twice.
@@ -66,7 +86,7 @@ fclose($limit);
 
 $headers = ['From: OptiCore Insights <info@opticore-insights.nl>', 'Reply-To: ' . $email,
     'MIME-Version: 1.0', 'Content-Type: text/plain; charset=UTF-8'];
-$body = "Vraag via het onderhoudsscherm van opticore-insights.nl\n\nNaam: {$name}\nE-mail: {$email}\n\n{$question}\n";
+$body = "Vraag via het onderhoudsscherm van opticore-insights.nl\n\nNaam: {$name}\nBedrijf: {$company}\nE-mail: {$email}\n\n{$question}\n";
 $sent = @mail('support@opticore-insights.nl', 'Supportvraag via OptiCore Insights', $body, implode("\r\n", $headers), '-finfo@opticore-insights.nl');
 if (!$sent) support_reply(503, ['message' => 'De mailserver kon je vraag niet versturen. Je tekst blijft staan. Probeer het later opnieuw of mail support@opticore-insights.nl.']);
 $_SESSION['support_receipts'][$id] = true;
