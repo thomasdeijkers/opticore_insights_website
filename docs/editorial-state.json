@@ -219,6 +219,16 @@
       ],
       "changes": "Titels, samenvattingen, metadata en hoofdteksten van vijf bestaande artikelen herschreven vanuit dagelijks gebruik. Oorspronkelijke URL’s, publicatiedatums, onderliggende bronnen en projectafbakening behouden; geen nieuwe projectclaims toegevoegd.",
       "standing_rule": "Toegankelijke taal voor ondernemers; technische bewijslast blijft intern."
+    },
+    {
+      "at": "2026-11-02T10:54:07+01:00",
+      "reason": "Gebruiker wil dezelfde presentatie als eerdere nieuwsberichten, een passend logo of kleine screenshot en meer relevante screenshots in artikelen. Brede updates mogen over verschillende weken worden verdeeld.",
+      "slugs": [
+        "webapp-magazijn-omzet-inzicht"
+      ],
+      "changes": "WMS-bericht behoudt URL en oorspronkelijke publicatiedatum, krijgt OptiCore-logo en twee responsive galerijen met vier afzonderlijke WMS-scènes. Omzet per bezorgland en jaarverwachtingen zijn uit het gepubliceerde bericht gehaald en als concept bewaard voor volgende weken. Lege beeldkolommen vallen terug op volledige tekstbreedte.",
+      "queue": "content/news-queue.json",
+      "standing_rule": "Vaste nieuwsopmaak met beeld links en tekst rechts; meerdere relevante screenshots; maximaal één zelfstandig WebApp-onderwerp per week, zonder bestaande functies als nieuw te presenteren."
     }
   ],
   "webapp_sync": {

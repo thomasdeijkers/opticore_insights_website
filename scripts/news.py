@@ -13,6 +13,7 @@ from pathlib import Path
 import re
 from urllib.parse import urlsplit
 from screenshot_gallery import gallery_for_image
+from module_screenshots import gallery as module_gallery
 from external_links import external_links_in_new_tabs
 import xml.etree.ElementTree as ET
 
@@ -47,7 +48,8 @@ def byline(article):
 
 def brand_logos(article):
     logos = []
-    for brand in article.get('brands', []):
+    brands = article.get('brands') or [{'src': '/assets/img/opticore-insights-logo.png', 'alt': 'OptiCore Insights', 'width': 407, 'height': 154, 'url': '/'}]
+    for brand in brands:
         external = ' target="_blank" rel="noopener noreferrer"' if brand['url'].startswith('https://') else ''
         logos.append(f'<a href="{safe_link(brand["url"])}" aria-label="{escape(brand["alt"],quote=True)}: bron of project bekijken"{external}><img src="{escape(brand["src"],quote=True)}" alt="{escape(brand["alt"],quote=True)}" width="{brand["width"]}" height="{brand["height"]}" loading="lazy"></a>')
     return '<div class="news-brands">'+''.join(logos)+'</div>' if logos else ''
@@ -99,6 +101,8 @@ def render():
                 raise ValueError(f'Brand identity missing: {slug}')
             safe_link(brand['url'])
         for section in article['sections']:
+            if screenshots := section.get('screenshots'):
+                module_gallery(screenshots['module'], screenshots['views'], section['heading'])
             for ref in section.get('source_refs', []):
                 if type(ref) is not int or not 0 <= ref < len(article['sources']):
                     raise ValueError(f'Invalid section source reference: {slug}')
@@ -163,6 +167,8 @@ def render():
             if refs := section.get('source_refs', []):
                 links = [f'<a href="{safe_link(article["sources"][ref]["url"])}">{escape(article["sources"][ref]["title"])}</a>' for ref in refs]
                 text += '<p class="news-section-sources">Bron: '+' · '.join(links)+'</p>'
+            if screenshots := section.get('screenshots'):
+                text += module_gallery(screenshots['module'], screenshots['views'], section['heading'])
             body.append('<section><h2>'+escape(section['heading'])+'</h2>'+text+'</section>')
         sources = []
         for source in article['sources']:

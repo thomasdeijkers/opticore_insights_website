@@ -1,0 +1,51 @@
+{
+  "cadence": "At most one substantive WebApp article per week; skip a week without a useful, distinct topic. Existing features are practical explanations, not newly delivered features.",
+  "drafts": [
+    {
+      "slug": "webapp-omzet-per-bezorgland",
+      "status": "draft",
+      "earliest_publication": "2026-11-09",
+      "title": "Omzet per bezorgland: waar komen je bestellingen terecht?",
+      "sections": [
+        {
+          "heading": "Omzet bekijken vanuit het bezorgland",
+          "paragraphs": [
+            "Een verkoopkanaal en een bezorgland zijn verschillende dingen. Het dashboard toont daarom nu een apart overzicht van omzet per land over de laatste dertig dagen. Door een land te openen zie je hoe de voorbeeldomzet over de verkoopkanalen is verdeeld.",
+            "In de demo gebruiken we een fictieve verdeling. Het gaat om de manier waarop je informatie kunt bekijken, niet om cijfers van een bestaande klant."
+          ]
+        }
+      ],
+      "source_commit": "377e1af6ef24b9030df75205896a946ca76aef9d",
+      "source_release": "Already released by 2 November 2026; present as practical explanation, not a new feature.",
+      "remaining_work": [
+        "Write a self-contained practical article with an example and useful takeaway.",
+        "Add at least two relevant responsive screenshots, including a focused capture of the subject.",
+        "Translate fully into en/de/fr and validate layout, dates, media and links.",
+        "Check editorial history and public news before publishing; publish at most one queued topic per week."
+      ]
+    },
+    {
+      "slug": "webapp-jaarverwachting-omzet-resultaat",
+      "status": "draft",
+      "earliest_publication": "2026-11-16",
+      "title": "Omzet en bedrijfsresultaat samen bekijken in je jaarverwachting",
+      "sections": [
+        {
+          "heading": "Jaarverwachtingen naast elkaar",
+          "paragraphs": [
+            "De omzetverwachting en het verwachte bedrijfsresultaat vóór rente en belasting staan nu samen op één kaart per jaar. Op een breed scherm staan de jaren naast elkaar; op een telefoon onder elkaar. Ook de omzet en het netto resultaat van de demomaand zijn direct op het dashboard zichtbaar.",
+            "De vernieuwde demo en bijbehorende schermbeelden zijn beschikbaar in Nederlands, Engels, Duits en Frans. Zo kun je de werkwijze bekijken in de taal en op het apparaat dat bij je past."
+          ]
+        }
+      ],
+      "source_commit": "377e1af6ef24b9030df75205896a946ca76aef9d",
+      "source_release": "Already released by 2 November 2026; present as practical explanation, not a new feature.",
+      "remaining_work": [
+        "Write a self-contained practical article with an example and useful takeaway.",
+        "Add at least two relevant responsive screenshots, including a focused capture of the subject.",
+        "Translate fully into en/de/fr and validate layout, dates, media and links.",
+        "Check editorial history and public news before publishing; publish at most one queued topic per week."
+      ]
+    }
+  ]
+}

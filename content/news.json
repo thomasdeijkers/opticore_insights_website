@@ -4,9 +4,9 @@
       "slug": "webapp-magazijn-omzet-inzicht",
       "kind": "inzicht",
       "title": "Bekijk hoe jouw orders door het magazijn gaan",
-      "seo_title": "WebApp-demo: magazijn, omzet per land en forecasts",
-      "description": "Probeer pickrondes, orderbakken en inpakken in de vernieuwde WebApp-demo. Het dashboard toont nu ook omzet per bezorgland en overzichtelijke jaarprognoses.",
-      "summary": "Waar staat een bestelling, wat moet er nog worden gepickt en welke bak hoort erbij? In onze vernieuwde WebApp-demo kun je die stappen zelf doorlopen. Ook het inzicht in omzet en jaarverwachtingen is uitgebreid.",
+      "seo_title": "WebApp-demo: van pickronde naar gecontroleerd inpakken",
+      "description": "Probeer pickrondes, orderbakken, verdelen en inpakken in de vernieuwde WebApp-demo. Bekijk de werkwijze met screenshots op telefoon, tablet en desktop.",
+      "summary": "Waar staat een bestelling, wat moet er nog worden gepickt en welke bak hoort erbij? In onze WebApp-demo kun je die stappen zelf doorlopen, van verzamelen tot gecontroleerd inpakken.",
       "published_at": "2026-11-02T10:10:19+01:00",
       "sections": [
         {
@@ -14,28 +14,28 @@
           "paragraphs": [
             "Wanneer meerdere bestellingen tegelijk binnenkomen, wil je overzicht houden over de artikelen én de afzonderlijke orders. De demo laat nu zien hoe je een pickronde start, een medewerker kiest en bestellingen aan gekleurde bakken koppelt.",
             "Je kunt artikelen direct in de juiste orderbak leggen, of eerst alles verzamelen en daarna verdelen. Het bevestigen van een pickaantal en het verdelen over bakken zijn herkenbare, afzonderlijke stappen. Zo zie je wat al gedaan is en wat nog moet gebeuren."
-          ]
+          ],
+          "screenshots": {
+            "module": "wms",
+            "views": [
+              "start",
+              "pickronde"
+            ]
+          }
         },
         {
           "heading": "Ook proberen: deelpicks, backorders en inpakken",
           "paragraphs": [
             "Niet ieder artikel ligt altijd klaar. Je kunt een deel van het benodigde aantal bevestigen, een artikel overslaan en een nog niet gepickte orderregel op backorder zetten. Een openstaande backorder kun je later weer terugzetten naar het pickwerk.",
             "Een complete order verschijnt bij het inpakken. Daar kun je de inhoud en pakbon bekijken, een verzendwijze kiezen en de voorbeeldorder afronden. Alle gegevens en handelingen zijn fictief: de demo koopt geen verzendlabels, stuurt geen printers aan en verstuurt geen echte bestellingen."
-          ]
-        },
-        {
-          "heading": "Omzet bekijken vanuit het bezorgland",
-          "paragraphs": [
-            "Een verkoopkanaal en een bezorgland zijn verschillende dingen. Het dashboard toont daarom nu een apart overzicht van omzet per land over de laatste dertig dagen. Door een land te openen zie je hoe de voorbeeldomzet over de verkoopkanalen is verdeeld.",
-            "In de demo gebruiken we een fictieve verdeling. Het gaat om de manier waarop je informatie kunt bekijken, niet om cijfers van een bestaande klant."
-          ]
-        },
-        {
-          "heading": "Jaarverwachtingen naast elkaar",
-          "paragraphs": [
-            "De omzetverwachting en het verwachte bedrijfsresultaat vóór rente en belasting staan nu samen op één kaart per jaar. Op een breed scherm staan de jaren naast elkaar; op een telefoon onder elkaar. Ook de omzet en het netto resultaat van de demomaand zijn direct op het dashboard zichtbaar.",
-            "De vernieuwde demo en bijbehorende schermbeelden zijn beschikbaar in Nederlands, Engels, Duits en Frans. Zo kun je de werkwijze bekijken in de taal en op het apparaat dat bij je past."
-          ]
+          ],
+          "screenshots": {
+            "module": "wms",
+            "views": [
+              "verdelen",
+              "verzenden"
+            ]
+          }
         }
       ],
       "sources": [
@@ -55,7 +55,7 @@
           "url": "/modulaire-webapp/"
         }
       ],
-      "modified_at": "2026-11-02T10:10:19+01:00"
+      "modified_at": "2026-11-02T10:47:57+01:00"
     },
     {
       "slug": "shopify-api-orders-volledig-bijwerken",

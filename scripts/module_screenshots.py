@@ -10,8 +10,13 @@ ROOT = Path(__file__).resolve().parents[1]
 PLAN = json.loads((ROOT / 'content/module-screenshots.json').read_text(encoding='utf-8'))
 
 
-def gallery(module):
+def gallery(module, view_ids=None, label=None):
     views = PLAN[module]
+    if view_ids is not None:
+        assert len(set(view_ids)) == len(view_ids) and len(view_ids) >= 2, 'A news gallery needs distinct views'
+        selected = {view['id']: view for view in views}
+        assert set(view_ids) <= selected.keys(), f'Unknown scenes for {module}'
+        views = [selected[key] for key in view_ids]
     items = []
     for device, width, height in [('mobile', 390, 844), ('desktop', 1280, 900)]:
         for index, view in enumerate(views):
@@ -20,7 +25,8 @@ def gallery(module):
             alt = escape(f'{view["title"]} — darkmode met fictieve gegevens.', quote=True)
             preview = f' data-screen-preview="{device}"' if index < (2 if device == 'mobile' else 1) else ''
             items.append(f'<a class="screen-slide" href="{src}" data-screen-title="{title}" data-screen-device="{device}" data-screen-demo="true" aria-label="Vergroot: {title}"{preview}><img src="{src}" alt="{alt}" width="{width}" height="{height}" loading="lazy"><span class="module-screen-title">{title}</span></a>')
-    return (f'<div class="screen-gallery module-screen-gallery" data-screen-gallery data-module-gallery="{module}" data-screen-previews="4" role="region" aria-labelledby="module-{module}-title" data-screen-mobile-count="{len(views)}" data-screen-desktop-count="{len(views)}">'
+    accessible = f'aria-label="{escape(label, quote=True)}"' if label else f'aria-labelledby="module-{module}-title"'
+    return (f'<div class="screen-gallery module-screen-gallery" data-screen-gallery data-module-gallery="{module}" data-screen-previews="4" role="region" {accessible} data-screen-mobile-count="{len(views)}" data-screen-desktop-count="{len(views)}">'
             '<div class="screen-gallery-stage">' + ''.join(items) + '</div>'
             f'<p class="module-screen-gallery-caption">{len(views)} schermen uit deze module · fictieve gegevens</p>'
             '<button type="button" class="module-screen-gallery-all" data-screen-open-all hidden>Bekijk alle schermen →</button></div>')

@@ -56,6 +56,8 @@ body .news-grid .news-card h2 a[href]:hover,body .home-updates .resource-list h3
 /* Brand marks sit beside the message; headlines remain the direct links. */
 .news-grid .news-card-with-brands,.home-updates .news-entry-with-brands{display:grid;grid-template-columns:clamp(100px,16vw,160px) minmax(0,1fr);gap:20px 24px;align-items:start}
 .home-updates .news-entry-content{min-width:0}
+.home-updates .news-entry-with-brands>.news-entry-content:only-child{grid-column:1/-1}
+.news-article .module-screen-gallery{margin:24px 0 34px}
 .home-updates .news-brands{margin-bottom:0}
 .home-updates .resource-list .news-byline{margin:0 0 5px}
 body .news-card .news-brands a[href],body .home-updates .news-brands a[href]{display:block;width:100%;min-height:0;padding:0;margin:0;border:0;background:transparent}

@@ -123,3 +123,10 @@ ontwikkelingen mee in het bericht van het betreffende project.
 
 Interne redactiegegevens en scripts zijn uitgesloten van de webpublicatie.
 Wijzig geen andere automations, schema's, budgetten of toegangsrechten.
+
+
+## Vaste presentatie en spreiding — 2 november 2026
+
+Behoud de bestaande nieuwsopmaak: links een passend klant-/bronlogo of een kleine relevante screenshot, rechts de categorie, datum, titel en samenvatting. Zonder eigen logo gebruikt de renderer het OptiCore-logo. De tekst mag nooit in de gereserveerde beeldkolom terechtkomen. Geef nieuwsartikelen waar zinvol meerdere inhoudelijk passende screenshots, gegroepeerd per onderwerp in de gedeelde responsive galerij met vergroten en taal-/apparaatvarianten. Gebruik fictieve gegevens en toon geen vertrouwelijke productieschermen.
+
+Verdeel brede WebApp-updates over zelfstandige, inhoudelijk sterke berichten. Publiceer maximaal één WebApp-bericht per week. `content/news-queue.json` bewaart concepten en de vroegste publicatieweek. Controleer de wachtrij elke week, ook wanneer geen nieuwe appwijzigingen zijn gevonden. Maak een concept eerst volledig, voeg relevante screenshots en alle vertalingen toe en verifieer de feitelijke inhoud en live links. Een eerdere releasedatum blijft herkenbaar: presenteer uitleg over een bestaande functie niet als een nieuwe oplevering. Geen nieuwe datum op een oud bericht om activiteit te suggereren en geen bericht zonder noemenswaardige inhoud.
