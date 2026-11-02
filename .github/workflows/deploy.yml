@@ -30,4 +30,24 @@ jobs:
           TRANSIP_SFTP_PASSWORD: ${{ secrets.TRANSIP_SFTP_PASSWORD }}
           TRANSIP_SFTP_PORT: ${{ secrets.TRANSIP_SFTP_PORT }}
           TRANSIP_SFTP_TARGET: ${{ secrets.TRANSIP_SFTP_TARGET }}
-        run: python3 scripts/site_maintenance.py finish
+        run: |
+          python3 - <<'PY'
+          import sys
+          import tempfile
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          import site_maintenance as maintenance
+          finish = maintenance.finish
+          def recover(sftp, target):
+              # The guard above confirms this entire upload already succeeded.
+              # Use its rendered homepage rather than a later source revision.
+              homepage = maintenance.read(sftp, target + '/index.html')
+              assert homepage and b'OptiCore' in homepage and b'</html>' in homepage
+              with tempfile.TemporaryDirectory() as directory:
+                  maintenance.ROOT = Path(directory)
+                  (maintenance.ROOT / 'index.html').write_bytes(homepage)
+                  finish(sftp, target)
+          maintenance.finish = recover
+          sys.argv = ['site_maintenance.py', 'finish']
+          maintenance.main()
+          PY
