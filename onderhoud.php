@@ -13,7 +13,7 @@ header('Cache-Control: no-store');
 header('Retry-After: 30');
 header('X-Robots-Tag: noindex, nofollow');
 header('X-Content-Type-Options: nosniff');
-header("Content-Security-Policy: default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'");
+header("Content-Security-Policy: default-src 'none'; img-src data:; style-src 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'");
 if (!$html) {
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode(['ok' => false, 'message' => 'De website wordt verbeterd, kom zo bij ons terug voor meer informatie.', 'retry_after' => 30], JSON_UNESCAPED_UNICODE);

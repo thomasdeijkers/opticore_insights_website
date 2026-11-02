@@ -28,7 +28,7 @@ RewriteCond %{{REQUEST_URI}} !^/maintenance/
 RewriteRule ^ - [R=503,L]
 {END}
 '''
-BOOTSTRAP = ('onderhoud.php', 'maintenance/page.tpl', 'maintenance/game.js', 'maintenance/logo.png')
+BOOTSTRAP = ('onderhoud.php', 'maintenance/page.tpl', 'maintenance/game.js', 'maintenance/logo.png', 'maintenance/support.php')
 
 
 def without_rules(existing: str) -> str:
@@ -96,12 +96,7 @@ def probe(path: str, status: int, text: str, *, absent: bool = False) -> None:
 
 
 def begin(sftp, target: str) -> None:
-    try:
-        sftp.mkdir(target + '/maintenance')
-    except OSError:
-        sftp.stat(target + '/maintenance')
-    for relative in BOOTSTRAP:
-        write(sftp, target + '/' + relative, (ROOT / relative).read_bytes())
+    refresh(sftp, target)
     path = target + '/.htaccess'
     previous = read(sftp, path)
     write(sftp, path, merge_rules((previous or b'').decode('utf-8')).encode('utf-8'))
@@ -117,6 +112,15 @@ def begin(sftp, target: str) -> None:
         sftp.remove(target + '/' + MARKER)
         raise
     print('Website maintenance enabled; visitors receive the update page with HTTP 503.')
+
+
+def refresh(sftp, target: str) -> None:
+    try:
+        sftp.mkdir(target + '/maintenance')
+    except OSError:
+        sftp.stat(target + '/maintenance')
+    for relative in BOOTSTRAP:
+        write(sftp, target + '/' + relative, (ROOT / relative).read_bytes())
 
 
 def finish(sftp, target: str) -> None:
@@ -145,7 +149,7 @@ def finish(sftp, target: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=('begin', 'finish'))
+    parser.add_argument('action', choices=('begin', 'finish', 'refresh'))
     args = parser.parse_args()
     import paramiko
     requested_target = os.environ['TRANSIP_SFTP_TARGET'].strip()
@@ -159,7 +163,12 @@ def main() -> None:
                        look_for_keys=False, allow_agent=False, timeout=20)
         with client.open_sftp() as sftp:
             target = remote_root(sftp.normalize(requested_target))
-            (begin if args.action == 'begin' else finish)(sftp, target)
+            {'begin': begin, 'finish': finish, 'refresh': refresh}[args.action](sftp, target)
+            if args.action == 'refresh':
+                status = 503 if read(sftp, target + '/' + MARKER) is not None else 200
+                probe('/onderhoud.php?release=' + uuid4().hex, status, 'Vraag versturen')
+                probe('/maintenance/support.php', 200, '"csrf"')
+                print('Maintenance screen and direct support endpoint published and verified.')
 
 
 if __name__ == '__main__':

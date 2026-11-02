@@ -1,55 +1,85 @@
 (() => {
       const language = 'nl';
       const selected = {gameStart:'Start spel',gameAgain:'Nog een keer',gameReady:'Tik op start om te spelen.',gameOver:'Game over · score {score}'};
-      const supportCopy = {
-        nl: ['Vraag stellen','Stel je vraag','Vul je naam en vraag in. Je verstuurt de e-mail daarna vanuit je eigen mailprogramma.','Naam','Je vraag','E-mail opstellen','Sluiten','Automatisch verversen staat stil zolang dit formulier open is.','Je e-mailprogramma wordt geopend. Verstuur je bericht daar.','Open de e-mail opnieuw'],
-        en: ['Ask a question','Ask your question','Enter your name and question. You then send the email from your own email app.','Name','Your question','Compose email','Close','Automatic refresh is paused while this form is open.','Your email app will open. Send your message there.','Open the email again'],
-        de: ['Frage stellen','Ihre Frage','Geben Sie Ihren Namen und Ihre Frage ein. Senden Sie die E-Mail anschließend in Ihrem E-Mail-Programm.','Name','Ihre Frage','E-Mail verfassen','Schließen','Solange das Formular geöffnet ist, wird die Seite nicht automatisch aktualisiert.','Ihr E-Mail-Programm wird geöffnet. Senden Sie dort Ihre Nachricht.','E-Mail erneut öffnen'],
-        pl: ['Zadaj pytanie','Twoje pytanie','Podaj imię i pytanie. Następnie wyślij wiadomość ze swojej aplikacji pocztowej.','Imię','Pytanie','Utwórz e-mail','Zamknij','Automatyczne odświeżanie jest wstrzymane, gdy formularz jest otwarty.','Otworzy się aplikacja pocztowa. Wyślij w niej wiadomość.','Otwórz e-mail ponownie'],
-        ar: ['اطرح سؤالاً','سؤالك','أدخل اسمك وسؤالك، ثم أرسل الرسالة من تطبيق البريد الإلكتروني الخاص بك.','الاسم','سؤالك','كتابة رسالة','إغلاق','يتوقف التحديث التلقائي ما دام هذا النموذج مفتوحاً.','سيفتح تطبيق البريد الإلكتروني. أرسل رسالتك من هناك.','فتح الرسالة مجدداً'],
-        tr: ['Soru sor','Sorunuz','Adınızı ve sorunuzu yazın. Ardından e-postayı kendi e-posta uygulamanızdan gönderin.','Adınız','Sorunuz','E-posta oluştur','Kapat','Bu form açıkken otomatik yenileme duraklatılır.','E-posta uygulamanız açılacak. Mesajınızı oradan gönderin.','E-postayı yeniden aç']
-      };
-      const supportText = supportCopy[language] || supportCopy.nl;
-      ['supportToggle','supportTitle','supportIntro','supportNameLabel','supportQuestionLabel','supportSubmit','supportClose','supportHelp'].forEach((id,i) => {
-        document.getElementById(id).textContent = supportText[i];
-      });
       const supportForm = document.getElementById('supportForm');
       const supportToggle = document.getElementById('supportToggle');
       const supportStatus = document.getElementById('supportStatus');
+      const supportSubmit = document.getElementById('supportSubmit');
+      const supportClose = document.getElementById('supportClose');
       const draftKey = 'opticore-maintenance-support-draft';
+      let csrf = '', pending = false, submissionId = '';
       try {
         const draft = JSON.parse(sessionStorage.getItem(draftKey) || '{}');
-        if (typeof draft.name === 'string') supportForm.elements.name.value = draft.name.slice(0,100);
-        if (typeof draft.question === 'string') supportForm.elements.question.value = draft.question.slice(0,2000);
+        for (const [key, max] of [['name',100],['email',254],['question',2000]]) {
+          if (typeof draft[key] === 'string') supportForm.elements[key].value = draft[key].slice(0,max);
+        }
+        if (typeof draft.submissionId === 'string') submissionId = draft.submissionId;
       } catch (_) {}
-      supportForm.addEventListener('input', () => {
-        try { sessionStorage.setItem(draftKey, JSON.stringify({name:supportForm.elements.name.value, question:supportForm.elements.question.value})); } catch (_) {}
-      });
-      function showSupport(open) {
+      function saveDraft() {
+        try { sessionStorage.setItem(draftKey, JSON.stringify({name:supportForm.elements.name.value, email:supportForm.elements.email.value, question:supportForm.elements.question.value, submissionId})); } catch (_) {}
+      }
+      supportForm.addEventListener('input', () => { submissionId = ''; saveDraft(); });
+      async function requestSupport(body) {
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(), 15000);
+        try {
+          const response = await fetch('/maintenance/support.php', {
+            method: body ? 'POST' : 'GET', credentials:'same-origin', cache:'no-store', signal:controller.signal,
+            headers: body ? {'Accept':'application/json','Content-Type':'application/json'} : {'Accept':'application/json'},
+            ...(body ? {body:JSON.stringify(body)} : {})
+          });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.message || 'Versturen lukt nu niet. Je vraag blijft staan.');
+          return data;
+        } catch (error) {
+          if (error instanceof TypeError || error.name === 'AbortError' || error instanceof SyntaxError) {
+            throw new Error('Versturen is niet bevestigd. Je vraag blijft staan. Controleer je verbinding en probeer het opnieuw.');
+          }
+          throw error;
+        } finally { window.clearTimeout(timeout); }
+      }
+      async function showSupport(open) {
+        if (pending) return;
         supportForm.hidden = !open;
         supportToggle.setAttribute('aria-expanded', String(open));
         (open ? supportForm.elements.name : supportToggle).focus({preventScroll:!open});
+        if (open) {
+          try { csrf = (await requestSupport()).csrf; }
+          catch (error) { supportStatus.textContent = error.message; }
+        }
       }
       supportToggle.addEventListener('click', () => showSupport(supportForm.hidden));
-      document.getElementById('supportClose').addEventListener('click', () => showSupport(false));
+      supportClose.addEventListener('click', () => showSupport(false));
       supportForm.addEventListener('keydown', event => {
         if (event.key === 'Escape') { event.preventDefault(); showSupport(false); }
       });
-      function supportMailto() {
-        const body = 'Naam: '+supportForm.elements.name.value.trim()+'\n\nVraag:\n'+supportForm.elements.question.value.trim();
-        return 'mailto:support@opticore-insights.nl?subject='+encodeURIComponent('Vraag over OptiCore')+'&body='+encodeURIComponent(body);
-      }
-      function updateSupportDraftLink() {
-        supportStatus.textContent = supportText[8]+' ';
-        const link = document.createElement('a');
-        link.id = 'supportDraftLink'; link.href = supportMailto(); link.textContent = supportText[9];
-        supportStatus.appendChild(link);
-        return link.href;
-      }
-      supportForm.addEventListener('submit', event => {
+      supportForm.addEventListener('submit', async event => {
         event.preventDefault();
-        if (!supportForm.reportValidity()) return;
-        window.location.href = updateSupportDraftLink();
+        if (pending || !supportForm.reportValidity()) return;
+        pending = true;
+        supportSubmit.disabled = supportClose.disabled = supportToggle.disabled = true;
+        supportSubmit.textContent = 'Bezig met versturen…';
+        supportStatus.textContent = '';
+        supportForm.setAttribute('aria-busy','true');
+        try {
+          if (!csrf) csrf = (await requestSupport()).csrf;
+          submissionId ||= crypto.randomUUID();
+          saveDraft();
+          const data = await requestSupport({csrf,submissionId,name:supportForm.elements.name.value,email:supportForm.elements.email.value,question:supportForm.elements.question.value,website:supportForm.elements.website.value});
+          if (data.ok !== true) throw new Error('Versturen is niet bevestigd. Je vraag blijft staan.');
+          supportStatus.textContent = data.message;
+          supportForm.reset();
+          submissionId = '';
+          try { sessionStorage.removeItem(draftKey); } catch (_) {}
+        } catch (error) {
+          supportStatus.textContent = error.message;
+          csrf = '';
+        } finally {
+          pending = false;
+          supportSubmit.disabled = supportClose.disabled = supportToggle.disabled = false;
+          supportSubmit.textContent = 'Vraag versturen';
+          supportForm.removeAttribute('aria-busy');
+        }
       });
       // Continue retrying the original GET page, but never erase a question being typed.
       window.setInterval(() => { if (supportForm.hidden) window.location.reload(); }, 30000);
