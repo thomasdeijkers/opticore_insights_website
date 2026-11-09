@@ -408,5 +408,42 @@
       "focus": ".wms-workbench>.wms-bin-card",
       "align": "start"
     }
+  ],
+  "bezorglanden": [
+    {
+      "id": "overzicht",
+      "title": "Omzet per bezorgland",
+      "page": "dashboard",
+      "focus": ".demo-country-breakdown",
+      "align": "start",
+      "focusOffset": 100
+    },
+    {
+      "id": "nederland",
+      "title": "Verkoopkanalen voor Nederland",
+      "page": "dashboard",
+      "focus": ".demo-country-breakdown",
+      "align": "start",
+      "expand": ".demo-country-row:nth-of-type(1) > summary",
+      "focusOffset": 100
+    },
+    {
+      "id": "belgie",
+      "title": "Verkoopkanalen voor België",
+      "page": "dashboard",
+      "focus": ".demo-country-breakdown",
+      "align": "start",
+      "expand": ".demo-country-row:nth-of-type(2) > summary",
+      "focusOffset": 100
+    },
+    {
+      "id": "duitsland",
+      "title": "Verkoopkanalen voor Duitsland",
+      "page": "dashboard",
+      "focus": ".demo-country-breakdown",
+      "align": "start",
+      "expand": ".demo-country-row:nth-of-type(3) > summary",
+      "focusOffset": 100
+    }
   ]
 }

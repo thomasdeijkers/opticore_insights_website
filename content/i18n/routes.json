@@ -438,5 +438,10 @@
     "de": "/de/neuigkeiten/webapp-lager-umsatz-einblick/",
     "en": "/en/news/webapp-warehouse-revenue-insight/",
     "fr": "/fr/actualites/webapp-entrepot-chiffre-affaires/"
+  },
+  "/nieuws/webapp-omzet-per-bezorgland/": {
+    "en": "/en/news/revenue-by-delivery-country/",
+    "de": "/de/neuigkeiten/umsatz-nach-lieferland/",
+    "fr": "/fr/actualites/chiffre-affaires-par-pays-livraison/"
   }
 }

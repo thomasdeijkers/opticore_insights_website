@@ -63,6 +63,7 @@ async function serve(root){
     if(task.expand){const target=page.locator(task.expand).first();if(await target.locator('xpath=..').getAttribute('open')===null){await target.focus();await target.press('Enter');}}
     if(task.modal){const target=page.locator(task.modal).first(),parent=target.locator('xpath=ancestor::details').first();if(await parent.count()&&await parent.getAttribute('open')===null){await parent.locator(':scope>summary').focus();await parent.locator(':scope>summary').press('Enter');}await target.click();await page.locator('dialog[open]').waitFor();}
     if(task.focus){const target=page.locator(task.focus).first();await target.scrollIntoViewIfNeeded();if(task.align)await target.evaluate((el,align)=>el.scrollIntoView({block:align}),task.align);}
+    if(task.focusOffset)await page.evaluate(offset=>window.scrollBy(0,-offset),task.focusOffset);
     if(!task.fixture)assert.equal(await page.locator('.demo-access-dialog').isVisible(),false,'Never capture a blocked demo login instead of the module');
     await page.evaluate(async()=>{await Promise.all([...document.images].filter(i=>i.getAttribute('src')).map(async i=>{i.loading='eager';await i.decode();}));});
     assert.deepEqual(errors,[],url.href);

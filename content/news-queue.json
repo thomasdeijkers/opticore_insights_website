@@ -3,7 +3,7 @@
   "drafts": [
     {
       "slug": "webapp-omzet-per-bezorgland",
-      "status": "draft",
+      "status": "awaiting_dashboard_approval",
       "earliest_publication": "2026-11-09",
       "title": "Omzet per bezorgland: waar komen je bestellingen terecht?",
       "sections": [
@@ -18,11 +18,10 @@
       "source_commit": "377e1af6ef24b9030df75205896a946ca76aef9d",
       "source_release": "Already released by 2 November 2026; present as practical explanation, not a new feature.",
       "remaining_work": [
-        "Write a self-contained practical article with an example and useful takeaway.",
-        "Add at least two relevant responsive screenshots, including a focused capture of the subject.",
-        "Translate fully into en/de/fr and validate layout, dates, media and links.",
-        "Check editorial history and public news before publishing; publish at most one queued topic per week."
-      ]
+        "Wait for explicit dashboard approval of the exact candidate and review images.",
+        "Publish only in the approved nightly window, record the actual release date using the included metadata-only helper, then verify deployment and live language routes before marking published."
+      ],
+      "dashboard_id": "webapp-omzet-per-bezorgland"
     },
     {
       "slug": "webapp-jaarverwachting-omzet-resultaat",

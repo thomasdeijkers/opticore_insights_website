@@ -1,6 +1,70 @@
 {
   "articles": [
     {
+      "slug": "webapp-omzet-per-bezorgland",
+      "kind": "inzicht",
+      "title": "Omzet per bezorgland: waar komen je bestellingen terecht?",
+      "seo_title": "Omzet per bezorgland: waar komen je bestellingen terecht?",
+      "description": "Bekijk in de WebApp-demo omzet per bezorgland en de verkoopkanalen daarachter. Een praktische uitleg met fictieve gegevens en screenshots voor elk apparaat.",
+      "summary": "Je verkoopt via meerdere kanalen, maar in welke landen komen je bestellingen terecht? In onze WebApp-demo bekijk je omzet per bezorgland en open je per land de verdeling over de verkoopkanalen.",
+      "published_at": "2026-11-09T03:00:00+01:00",
+      "modified_at": "2026-11-09T03:00:00+01:00",
+      "sections": [
+        {
+          "heading": "Een verkoopkanaal is geen bezorgland",
+          "paragraphs": [
+            "Een bestelling via een Nederlandse webshop kan bijvoorbeeld naar België gaan. Alleen naar het verkoopkanaal kijken vertelt daarom niet het hele verhaal. Het bezorgland laat zien waar de bestelling daadwerkelijk naartoe gaat.",
+            "Dit onderscheid kun je al uitproberen in onze bestaande WebApp-demo. Onder het kanaaloverzicht staat ‘Omzet per land · laatste 30 dagen’. Daar zie je per bezorgland het bedrag en het aandeel in het fictieve totaal."
+          ],
+          "screenshots": {
+            "module": "bezorglanden",
+            "views": [
+              "overzicht",
+              "nederland"
+            ]
+          }
+        },
+        {
+          "heading": "Van een land naar de verkoopkanalen",
+          "paragraphs": [
+            "Open een land om te zien welke verkoopkanalen aan het bedrag bijdragen. Per kanaal zie je het bedrag en het aandeel binnen dat land, met de grootste bijdrage bovenaan. De onderliggende voorbeeldbedragen sluiten op elkaar aan. Door afronding op hele euro’s kunnen zichtbare bedragen een klein verschil geven.",
+            "Het overzicht beschrijft omzet, geen winst of verzendkosten. Voor een beslissing over een markt heb je ook andere informatie nodig. Deze demo laat vooral zien hoe je de verdeling zichtbaar maakt en verder kunt bekijken."
+          ],
+          "screenshots": {
+            "module": "bezorglanden",
+            "views": [
+              "belgie",
+              "duitsland"
+            ]
+          }
+        },
+        {
+          "heading": "Zelf proberen, met voorbeeldgegevens",
+          "paragraphs": [
+            "Open de interactieve demo en kies het Management Dashboard. Scrol naar het overzicht per land en open een landregel. Op een telefoon werkt dit met dezelfde uitklapbare regels als op tablet en desktop.",
+            "Alle bedragen, verdelingen en bestellingen in de demo zijn fictief. De beelden tonen geen klantgegevens en het openen van een land voert geen echte bestelling of betaling uit. Dit bericht verdiept een bestaande functie; het kondigt geen nieuwe oplevering aan."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Bekijk de interactieve WebApp-demo",
+          "url": "/demo/modulaire-webapp/",
+          "checked": "2026-11-09"
+        }
+      ],
+      "related": [
+        {
+          "title": "Bekijk de interactieve WebApp-demo",
+          "url": "/demo/modulaire-webapp/"
+        },
+        {
+          "title": "Ontdek welke modules bij jouw bedrijf passen",
+          "url": "/modulaire-webapp/"
+        }
+      ]
+    },
+    {
       "slug": "webapp-magazijn-omzet-inzicht",
       "kind": "inzicht",
       "title": "Bekijk hoe jouw orders door het magazijn gaan",
