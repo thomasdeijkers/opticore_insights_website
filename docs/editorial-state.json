@@ -275,5 +275,26 @@
       "https://opticore-insights.nl/de/neuigkeiten/webapp-lager-umsatz-einblick/",
       "https://opticore-insights.nl/fr/actualites/webapp-entrepot-chiffre-affaires/"
     ]
-  }
+  },
+  "website_concept_publications": [
+    {
+      "slug": "webapp-omzet-per-bezorgland",
+      "approved_candidate": "ebc5a593fc19ec580078801d14f1b4cbab4c3120",
+      "approved_fingerprint": "ded9d09560d47b586af0247223b52b47f160582dad5ee8bdc57ad1da7352b836",
+      "source_app_commit": "d9f6a1f1db50388f84264ede6b3becc23f316f90",
+      "website_commit": "deafe824c16295cd8cf8554b92f7e006e2538e4f",
+      "upload_run": 42947172417,
+      "verified_deployment_run": 42947172417,
+      "verified_at": "2026-11-11T04:05:22.554586+01:00",
+      "news_urls": [
+        "https://opticore-insights.nl/nieuws/webapp-omzet-per-bezorgland/",
+        "https://opticore-insights.nl/en/news/revenue-by-delivery-country/",
+        "https://opticore-insights.nl/de/neuigkeiten/umsatz-nach-lieferland/",
+        "https://opticore-insights.nl/fr/actualites/chiffre-affaires-par-pays-livraison/"
+      ],
+      "demo_url": "https://opticore-insights.nl/demo/modulaire-webapp/",
+      "verified_images": 48,
+      "scope": "Existing delivery-country feature explained in four languages; demo now sorts sales channels by revenue and shows their share within each country. No other app screens were changed."
+    }
+  ]
 }

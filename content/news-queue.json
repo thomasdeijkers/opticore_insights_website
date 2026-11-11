@@ -3,7 +3,7 @@
   "drafts": [
     {
       "slug": "webapp-omzet-per-bezorgland",
-      "status": "awaiting_dashboard_approval",
+      "status": "published",
       "earliest_publication": "2026-11-09",
       "title": "Omzet per bezorgland: waar komen je bestellingen terecht?",
       "sections": [
@@ -17,11 +17,15 @@
       ],
       "source_commit": "377e1af6ef24b9030df75205896a946ca76aef9d",
       "source_release": "Already released by 2 November 2026; present as practical explanation, not a new feature.",
-      "remaining_work": [
-        "Wait for explicit dashboard approval of the exact candidate and review images.",
-        "Publish only in the approved nightly window, record the actual release date using the included metadata-only helper, then verify deployment and live language routes before marking published."
+      "remaining_work": [],
+      "dashboard_id": "webapp-omzet-per-bezorgland",
+      "published_urls": [
+        "https://opticore-insights.nl/nieuws/webapp-omzet-per-bezorgland/",
+        "https://opticore-insights.nl/en/news/revenue-by-delivery-country/",
+        "https://opticore-insights.nl/de/neuigkeiten/umsatz-nach-lieferland/",
+        "https://opticore-insights.nl/fr/actualites/chiffre-affaires-par-pays-livraison/"
       ],
-      "dashboard_id": "webapp-omzet-per-bezorgland"
+      "verified_at": "2026-11-11T04:05:22.554586+01:00"
     },
     {
       "slug": "webapp-jaarverwachting-omzet-resultaat",
