@@ -1,6 +1,51 @@
 {
   "articles": [
     {
+      "slug": "webapp-jaarverwachting-omzet-resultaat",
+      "kind": "inzicht",
+      "title": "Omzet en bedrijfsresultaat samen bekijken in je jaarverwachting",
+      "seo_title": "Omzet en bedrijfsresultaat samen bekijken in je jaarverwachting",
+      "description": "De jaarverwachting in de WebApp-demo toont omzet en EBIT per jaar. Bekijk met een fictief voorbeeld wat het verschil betekent.",
+      "summary": "Meer omzet zegt op zichzelf weinig over wat er na bedrijfskosten overblijft. Op het Management Dashboard zie je per prognosejaar de verwachte omzet en het verwachte bedrijfsresultaat vóór rente en belasting (EBIT) naast elkaar.",
+      "published_at": "2026-11-14T10:00:00+01:00",
+      "modified_at": "2026-11-14T10:00:00+01:00",
+      "sections": [
+        {
+          "heading": "Van omzet naar resultaat",
+          "paragraphs": [
+            "Stel dat de jaaromzet in een fictief scenario stijgt van € 100.000 naar € 115.000, terwijl het EBIT daalt van € 12.000 naar € 10.000. De omzet groeit dan met 15%, terwijl de EBIT-marge daalt van 12% naar ongeveer 8,7%. Dat is een aanleiding om bijvoorbeeld de inkoop-, verzend- en advertentiekosten te bekijken."
+          ],
+          "screenshots": {
+            "module": "jaarverwachting",
+            "views": [
+              "jaarkaarten",
+              "demomaand"
+            ]
+          }
+        },
+        {
+          "heading": "Vergelijken in de demo",
+          "paragraphs": [
+            "Open het Management Dashboard in de demo en scrol naar de jaarverwachtingen. Op een breed scherm staan de jaren naast elkaar, op een telefoon onder elkaar. Hoger op het dashboard staan de omzet en het netto resultaat van de fictieve demomaand.",
+            "Klik op een jaarkaart om Forecasting te openen en vergelijk daar een ander groeiscenario. Kijk vervolgens wat er verandert aan omzet én EBIT. De getallen op het scherm zijn fictief, net als het rekenvoorbeeld hierboven."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Bekijk de interactieve WebApp-demo",
+          "url": "/demo/modulaire-webapp/",
+          "checked": "2026-11-14"
+        }
+      ],
+      "related": [
+        {
+          "title": "Bekijk de interactieve WebApp-demo",
+          "url": "/demo/modulaire-webapp/"
+        }
+      ]
+    },
+    {
       "slug": "webapp-omzet-per-bezorgland",
       "kind": "inzicht",
       "title": "Omzet per bezorgland: waar komen je bestellingen terecht?",
