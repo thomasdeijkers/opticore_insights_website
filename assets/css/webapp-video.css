@@ -7,3 +7,5 @@
 .webapp-promo-video .webapp-video-preview .webapp-video-loop{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;opacity:0;border-radius:0;box-shadow:none}.webapp-video-preview .webapp-video-loop.preview-loop-active{opacity:1}@media(prefers-reduced-motion:reduce){.webapp-promo-video .webapp-video-preview .webapp-video-loop{display:none}}
 
 @media(max-width:700px){.home-page .webapp-promo-video-copy h2{width:100%;max-width:none;font-size:clamp(30px,8.72vw,34px);line-height:1.14;letter-spacing:-.6px;text-wrap:balance}}
+
+body .webapp-promo-video-grid a.webapp-video-preview[href],body .webapp-promo-video-grid a.webapp-video-preview[href]:hover{display:block;padding:0;margin:0;border:0;background:#071e3d}
