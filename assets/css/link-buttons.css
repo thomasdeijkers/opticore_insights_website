@@ -88,3 +88,6 @@ body .webapp-topic-nav ul{grid-template-columns:repeat(12,minmax(0,1fr))}
 body .webapp-topic-nav li{grid-column:span 3}
 @media(min-width:761px){body .webapp-topic-nav li:last-child:nth-child(4n+1){grid-column:1/-1}body .webapp-topic-nav li:nth-last-child(-n+2):nth-child(4n+1),body .webapp-topic-nav li:last-child:nth-child(4n+2){grid-column:span 6}body .webapp-topic-nav li:nth-last-child(3):nth-child(4n+1),body .webapp-topic-nav li:nth-last-child(2):nth-child(4n+2),body .webapp-topic-nav li:last-child:nth-child(4n+3){grid-column:span 4}}
 @media(max-width:760px){body .webapp-topic-nav li{grid-column:span 6}body .webapp-topic-nav li:last-child:nth-child(odd){grid-column:1/-1}}
+
+/* Keep text consistently left-aligned inside the filled button grids. */
+body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts,.on-this-page,.portfolio-nav>.container,.usage-nav,.implementation-topics,.career-links)>:is(a[href],button){justify-content:flex-start;text-align:left}
