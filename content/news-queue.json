@@ -29,7 +29,7 @@
     },
     {
       "slug": "webapp-jaarverwachting-omzet-resultaat",
-      "status": "draft",
+      "status": "published",
       "earliest_publication": "2026-11-16",
       "title": "Omzet en bedrijfsresultaat samen bekijken in je jaarverwachting",
       "sections": [
@@ -43,12 +43,14 @@
       ],
       "source_commit": "377e1af6ef24b9030df75205896a946ca76aef9d",
       "source_release": "Already released by 2 November 2026; present as practical explanation, not a new feature.",
-      "remaining_work": [
-        "Write a self-contained practical article with an example and useful takeaway.",
-        "Add at least two relevant responsive screenshots, including a focused capture of the subject.",
-        "Translate fully into en/de/fr and validate layout, dates, media and links.",
-        "Check editorial history and public news before publishing; publish at most one queued topic per week."
-      ]
+      "remaining_work": [],
+      "published_urls": [
+        "https://opticore-insights.nl/nieuws/webapp-jaarverwachting-omzet-resultaat/",
+        "https://opticore-insights.nl/en/news/annual-forecast-revenue-and-operating-profit/",
+        "https://opticore-insights.nl/de/neuigkeiten/jahresprognose-umsatz-und-betriebsergebnis/",
+        "https://opticore-insights.nl/fr/actualites/previsions-annuelles-chiffre-affaires-et-resultat/"
+      ],
+      "verified_at": "2026-11-16T03:38:59.878406+01:00"
     }
   ]
 }

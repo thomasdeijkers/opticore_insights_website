@@ -295,6 +295,25 @@
       "demo_url": "https://opticore-insights.nl/demo/modulaire-webapp/",
       "verified_images": 48,
       "scope": "Existing delivery-country feature explained in four languages; demo now sorts sales channels by revenue and shows their share within each country. No other app screens were changed."
+    },
+    {
+      "slug": "webapp-jaarverwachting-omzet-resultaat",
+      "approved_candidate": "b5b9fec75e21951467ec2ffffdb74451e4daefe3",
+      "approved_fingerprint": "f34a5480da50c90f0adc327b1f509f05a55a25af16ac43dbbb76c099eb0d609d",
+      "source_app_commit": "377e1af6ef24b9030df75205896a946ca76aef9d",
+      "website_commit": "556a9f5268d30f046072cb15f2e1352e4ebbf1f4",
+      "upload_run": 43790104285,
+      "verified_deployment_run": 43793313148,
+      "verified_at": "2026-11-16T03:38:59.878406+01:00",
+      "news_urls": [
+        "https://opticore-insights.nl/nieuws/webapp-jaarverwachting-omzet-resultaat/",
+        "https://opticore-insights.nl/en/news/annual-forecast-revenue-and-operating-profit/",
+        "https://opticore-insights.nl/de/neuigkeiten/jahresprognose-umsatz-und-betriebsergebnis/",
+        "https://opticore-insights.nl/fr/actualites/previsions-annuelles-chiffre-affaires-et-resultat/"
+      ],
+      "demo_url": "https://opticore-insights.nl/demo/modulaire-webapp/",
+      "verified_images": 48,
+      "scope": "Practical article about existing annual revenue and EBIT cards, with responsive demo screenshots. Demo application code unchanged."
     }
   ]
 }
