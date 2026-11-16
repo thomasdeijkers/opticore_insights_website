@@ -77,3 +77,14 @@ body :is(.header-search-form,.menu-search,.search-form) button:hover{background:
 }
 @media(max-width:359px){body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts){grid-template-columns:1fr}body :is(.actions,.section-more,.webapp-cost-nav,.news-source-shortcuts)>:is(a[href],button){grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){body a[href]{transition:none!important}}
+
+/* Navigation and action groups use equal, full-width tracks on every public page. */
+body :is(.on-this-page,.portfolio-nav>.container,.usage-nav,.implementation-topics,.career-links){display:grid;grid-template-columns:repeat(6,minmax(0,1fr));align-items:stretch;gap:8px}
+body :is(.on-this-page,.portfolio-nav>.container,.usage-nav,.implementation-topics,.career-links)>span{grid-column:1/-1}
+body :is(.on-this-page,.portfolio-nav>.container,.usage-nav,.implementation-topics,.career-links)>a[href]{grid-column:span 2;display:flex;width:100%;height:100%;min-width:0;max-width:none;margin:0;align-items:center;justify-content:center}
+@media(min-width:761px){body :is(.on-this-page,.portfolio-nav>.container,.usage-nav,.implementation-topics,.career-links)>a[href]:last-of-type:nth-of-type(3n+1){grid-column:1/-1}body :is(.on-this-page,.portfolio-nav>.container,.usage-nav,.implementation-topics,.career-links)>a[href]:nth-last-of-type(2):nth-of-type(3n+1),body :is(.on-this-page,.portfolio-nav>.container,.usage-nav,.implementation-topics,.career-links)>a[href]:last-of-type:nth-of-type(3n+2){grid-column:span 3}}
+@media(max-width:760px){body :is(.on-this-page,.portfolio-nav>.container,.usage-nav,.implementation-topics,.career-links)>a[href]{grid-column:span 3}body :is(.on-this-page,.portfolio-nav>.container,.usage-nav,.implementation-topics,.career-links)>a[href]:last-of-type:nth-of-type(odd){grid-column:1/-1}}
+body .webapp-topic-nav ul{grid-template-columns:repeat(12,minmax(0,1fr))}
+body .webapp-topic-nav li{grid-column:span 3}
+@media(min-width:761px){body .webapp-topic-nav li:last-child:nth-child(4n+1){grid-column:1/-1}body .webapp-topic-nav li:nth-last-child(-n+2):nth-child(4n+1),body .webapp-topic-nav li:last-child:nth-child(4n+2){grid-column:span 6}body .webapp-topic-nav li:nth-last-child(3):nth-child(4n+1),body .webapp-topic-nav li:nth-last-child(2):nth-child(4n+2),body .webapp-topic-nav li:last-child:nth-child(4n+3){grid-column:span 4}}
+@media(max-width:760px){body .webapp-topic-nav li{grid-column:span 6}body .webapp-topic-nav li:last-child:nth-child(odd){grid-column:1/-1}}

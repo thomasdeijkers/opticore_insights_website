@@ -130,6 +130,13 @@ $topics = json_decode(<<<'JSON'
       }
     }
   },
+  "afdeling": {
+    "label": "Contact met een afdeling",
+    "question": "Wat wil je bespreken?",
+    "fields": {
+      "department": {"label": "Afdeling", "required": true, "options": {"marketing": "Marketing", "ux": "Developing UX", "frontend": "Developing Frontend", "backend": "Developing Backend", "project": "Project consultant/coördinator", "seo-sea": "SEA / SEO Specialist"}}
+    }
+  },
   "other": {
     "label": "Iets anders / ik weet het nog niet",
     "question": "Wat wil je bespreken?",
@@ -217,6 +224,10 @@ foreach (($topic['fields'] ?? []) as $key => $field) {
         $details .= $field['label'] . ': ' . $answer . "\n";
     }
 }
+if ($topic_key === 'afdeling') {
+    $subject_input .= ': ' . $topic['fields']['department']['options'][$submitted_details['department']];
+}
+
 $question_label = $topic['question'] ?? 'Bericht';
 
 $to = 'info@opticore-insights.nl';

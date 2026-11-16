@@ -33,6 +33,12 @@
   if (panels.some(panel => panel.dataset.contactTopic === requestedTopic)) {
     choice.value = requestedTopic;
   }
+  const requestedDepartment = new URLSearchParams(window.location.search).get('afdeling');
+  const department = form.querySelector('#contact-department');
+  if (choice.value === 'afdeling' && department && [...department.options].some(option => option.value && option.value === requestedDepartment)) {
+    department.value = requestedDepartment;
+  }
+
   const requestedCollaboration = new URLSearchParams(window.location.search).get('samenwerking');
   if (choice.value === 'team' && teamType && [...teamType.options].some(option => option.value && option.value === requestedCollaboration)) {
     teamType.value = requestedCollaboration;
