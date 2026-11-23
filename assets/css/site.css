@@ -323,3 +323,6 @@ nav a,nav a:hover,.topic-index a,.topic-index a:hover,.site-footer a,.site-foote
 
 /* Editorial copy uses its available column; layouts, not character limits, set the width. */
 main :is(h1,p,.section-heading,.prose,.text-page,.about-summary,.resource-list,.home-intro-copy,.bol-section-heading,.bol-workflow,.career-faq,.implementation-faq){max-width:none!important}
+
+/* Let wide screens use more space while retaining a comfortable outer margin. */
+@media(min-width:1440px){.container{width:min(2560px,calc(100% - clamp(96px,7vw,240px)))}}

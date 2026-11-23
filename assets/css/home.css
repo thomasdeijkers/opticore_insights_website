@@ -73,3 +73,6 @@
 .home-page #opdrachten .client-grid{margin-bottom:0}
 
 @media(max-width:700px){.home-page .home-intro h1{font-size:clamp(25px,7.2vw,28px);line-height:1.18}}
+
+/* Keep the introduction and dashboard together on wide screens. */
+@media(min-width:1440px){.home-page .home-intro-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(40px,4vw,96px);align-items:start}.home-page .home-intro-copy{max-width:70ch;padding-top:clamp(16px,2vw,48px)}.home-page .home-intro .lead{max-width:65ch}.home-page .home-intro .webapp-demo-teaser-scroll{height:clamp(460px,55svh,700px)}}
