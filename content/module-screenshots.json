@@ -1,5 +1,5 @@
 {
-  "jaarverwachting": [{"id": "jaarkaarten", "title": "Jaaromzet en EBIT per prognosejaar", "page": "dashboard", "focus": ".demo-forecast-years", "align": "start", "focusOffset": 100}, {"id": "demomaand", "title": "Omzet en resultaat van de demomaand", "page": "dashboard", "focus": ".demo-dashboard-section", "align": "start", "focusOffset": 100}, {"id": "scenario", "title": "Groeiscenario in Forecasting", "page": "forecasting", "tab": "overview"}, {"id": "kanalen", "title": "Vergelijking per verkoopkanaal", "page": "forecasting", "tab": "revenue-channel"}],
+  "jaarverwachting": [{"id": "jaarkaarten", "title": "Jaaromzet en EBIT per prognosejaar", "page": "dashboard", "focus": ".demo-forecast-years", "align": "start", "focusOffset": 100}, {"id": "demomaand", "title": "Omzet en resultaat van de demomaand", "page": "dashboard", "focus": ".demo-dashboard-section", "align": "start", "focusOffset": 100}, {"id": "scenario", "title": "Groeiscenario in Forecasting", "page": "forecasting", "tab": "overview"}, {"id": "kanalen", "title": "Vergelijking per verkoopkanaal", "page": "forecasting", "tab": "revenue-channel"}, {"id": "jaardetail", "title": "Exploitatie van het prognosejaar", "page": "dashboard", "click": "[data-forecast-year=\"2027\"]:visible", "focus": ".workspace-root", "align": "start"}],
   "omzet": [
     {
       "id": "overzicht",

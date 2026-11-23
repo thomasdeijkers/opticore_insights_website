@@ -41,6 +41,11 @@ assert.equal(heatmap.values.length,42);assert.equal(heatmap.values.reduce((a,b)=
 assert(heatmap.values.every(n=>Number.isInteger(n)&&n>=0));
 const forecasts=D.annualForecast(s);assert.deepEqual(forecasts.map(f=>f.year),[2026,2027]);
 assert(forecasts.every(f=>Number.isFinite(f.ebit)&&f.revenue>0));
+for(const item of forecasts){
+  assert(Math.abs(item.revenue-item.cost-item.fee-item.shipping-item.advertising-item.grossProfit)<1e-7,'Forecast gross profit reconciles with direct costs');
+  assert.equal(item.ebit,item.grossProfit-item.fixed,'EBIT reconciles with gross profit and fixed costs');
+}
+
 const scenario=D.createState();scenario.growth=20;assert(D.annualForecast(scenario)[1].revenue>forecasts[1].revenue);
 assert(D.sales(s,D.product(s,'DEMO-1004')).revenue<D.sales(s,D.product(s,'DEMO-1004'),12,'all',true).revenue,'Example includes a real YoY decliner');
 assert.equal(D.available(p),p.stock-p.reserved);

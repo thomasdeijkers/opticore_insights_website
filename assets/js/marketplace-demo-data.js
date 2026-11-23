@@ -101,7 +101,23 @@
     const ad=state.campaigns.reduce((n,c)=>n+c.historyCosts.slice(2).reduce((a,b)=>a+b,0)+c.historyCosts.slice(0,2).reduce((a,b)=>a+b,0)*factor,0);
     const revenue=elapsed.revenue+remaining.revenue*factor,profit=elapsed.profit+remaining.profit*factor,previous=prior.revenue+remaining.revenue;
     const nextFactor=1.15*(1+state.growth/100);
-    return [{year:2026,revenue,ebit:profit-ad-(state.client?.fixedMonthly??420)*12,previous},{year:2027,revenue:revenue*nextFactor,ebit:(profit-ad)*nextFactor-(state.client?.fixedMonthly??420)*12,previous:revenue}];
+    const fixed=(state.client?.fixedMonthly??420)*12;
+    const current={
+      year:2026,revenue,previous,
+      cost:elapsed.cost+remaining.cost*factor,
+      fee:elapsed.fee+remaining.fee*factor,
+      shipping:elapsed.shipping+remaining.shipping*factor,
+      advertising:ad,fixed,grossProfit:profit-ad,ebit:profit-ad-fixed
+    };
+    const next={
+      year:2027,revenue:revenue*nextFactor,previous:revenue,
+      cost:current.cost*nextFactor,
+      fee:current.fee*nextFactor,
+      shipping:current.shipping*nextFactor,
+      advertising:ad*nextFactor,fixed,
+      grossProfit:(profit-ad)*nextFactor,ebit:(profit-ad)*nextFactor-fixed
+    };
+    return [current,next];
   }
   const advertising = (state,period=12,channel='all') => state.campaigns.filter(c=>channel==='all'||c.channel===channel).reduce((n,c)=>n+c.historyCosts.slice(-period).reduce((a,b)=>a+b,0),0);
   function signalRows(state) {
