@@ -653,5 +653,12 @@
       1440
     ],
     "scope": "Existing demo rendering; does not claim parity with all latest app changes."
+  },
+  "latestTargetedReview": {
+    "date": "2026-11-23",
+    "source": "opticore-intern@691c9332469c16e668febf8d6be169e230db8593",
+    "deployment": "https://github.com/thomasdeijkers/opticore-intern/actions/runs/45057417473",
+    "scope": "Annual forecast card gross profit, compact layout and year-specific finance navigation. Other recent app changes remain pending.",
+    "review_document": "docs/website-concepts/2026-11-23-forecast.md"
   }
 }

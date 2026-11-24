@@ -990,5 +990,15 @@
   "Reageer voor SEA specialist": {"de":"Interesse an SEA-Spezialist","en":"Apply for SEA specialist","fr":"Se présenter pour Spécialiste SEA"},
   "Reageer voor Buitendienst": {"de":"Interesse an Außendienst","en":"Apply for Field sales","fr":"Se présenter pour Commercial terrain"},
   "Software, modules of maatwerk →": {"de":"Software, Module oder Maßarbeit →","en":"Software, modules or custom work →","fr":"Logiciel, modules ou sur-mesure →"},
-  "Open de volledige demo →": {"de":"Vollständige Demo öffnen →","en":"Open the full demo →","fr":"Ouvrir la démo complète →"}
+  "Open de volledige demo →": {"de":"Vollständige Demo öffnen →","en":"Open the full demo →","fr":"Ouvrir la démo complète →"},
+  "Brutowinst": {"en": "Gross profit", "de": "Bruttogewinn", "fr": "Bénéfice brut"},
+  "Na directe kosten en advertenties": {"en": "After direct costs and advertising", "de": "Nach direkten Kosten und Werbung", "fr": "Après les coûts directs et la publicité"},
+  "Forecast": {"en": "Forecast", "de": "Prognose", "fr": "Prévisions"},
+  "Forecast __I18N_1__": {"en": "Forecast __I18N_1__", "de": "Prognose __I18N_1__", "fr": "Prévisions __I18N_1__"},
+  "Forecast __I18N_2__": {"en": "Forecast __I18N_2__", "de": "Prognose __I18N_2__", "fr": "Prévisions __I18N_2__"},
+  "Brutowinst __I18N_2__": {"en": "Gross profit __I18N_2__", "de": "Bruttogewinn __I18N_2__", "fr": "Bénéfice brut __I18N_2__"},
+  "Exploitatieopbouw ·": {"en": "Operating breakdown ·", "de": "Betriebsergebnis im Detail ·", "fr": "Détail du résultat ·"},
+  "Exploitatie van het prognosejaar": {"en": "Operating breakdown for the forecast year", "de": "Betriebsergebnis im Prognosejahr", "fr": "Détail du résultat de l’année prévue"},
+  "Vergroot: Exploitatie van het prognosejaar": {"en": "Enlarge: Operating breakdown for the forecast year", "de": "Vergrößern: Betriebsergebnis im Prognosejahr", "fr": "Agrandir : Détail du résultat de l’année prévue"},
+  "Exploitatie van het prognosejaar — darkmode met fictieve gegevens.": {"en": "Operating breakdown for the forecast year — dark mode with fictional data.", "de": "Betriebsergebnis im Prognosejahr — Dunkelmodus mit fiktiven Daten.", "fr": "Détail du résultat de l’année prévue — mode sombre avec des données fictives."}
 }

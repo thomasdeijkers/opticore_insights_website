@@ -23,7 +23,7 @@
   const textarea=(label,name,value='')=>`<label class="workspace-field">${esc(label)}<textarea name="${name}" rows="4">${esc(value)}</textarea></label>`;
   const form=(name,body,label='Opslaan',image='check')=>`<form class="workspace-form" data-w-form="${name}">${body}<p class="workspace-form-error" role="alert"></p><button class="workspace-button is-orange" type="submit">${icon(image)}${esc(label)}</button></form>`;
   const groupIcons={overview:'chart',products:'image',sales:'cart',revenue:'money',purchase:'box',inventory:'box',warehouse:'location',analysis:'signal',marketing:'chart',finance:'money',system:'settings',extra:'globe'};
-  let host,node,root,page='dashboard',tab='',query='',channel='all',period=12,classification='all',selection='DEMO-1001',view='overview',mounted=false,rendering=false,trail=[],lastExport=[],lastRendered='';
+  let host,node,root,page='dashboard',tab='',query='',channel='all',period=12,classification='all',selection='DEMO-1001',view='overview',mounted=false,rendering=false,trail=[],lastExport=[],lastRendered='',forecastYear=null;
   const state=()=>host.state(),client=()=>CD.ensure(state()),products=()=>state().products.filter(p=>(!query||[p.name,p.sku,p.ean,p.supplier,p.category].join(' ').toLowerCase().includes(query.toLowerCase()))&&(classification==='all'||p.classification===classification));
   const productOptions=()=>state().products.map(p=>[p.sku,p.name]);
   const brand=id=>host.brand(id);
@@ -127,6 +127,15 @@
     return metrics([['Open',number(c.tickets.filter(t=>t.status==='Open').length),'Eigen inbox','mail','green'],['Uitgesteld',number(c.tickets.filter(t=>t.status==='Uitgesteld').length),'Later beantwoorden','clock','orange'],['Archief',number(c.tickets.filter(t=>t.status==='Archief').length),'Afgehandeld','check']])+panel('Mailtickets',c.tickets.filter(t=>t.status===status&&(!query||[t.subject,t.body].join(' ').toLowerCase().includes(query.toLowerCase()))).map(t=>details(`<span>${icon('mail')} ${esc(t.subject)}</span>${badge(t.priority,t.priority==='Hoog'?'bad':'info')}`,`<p>${esc(c.customers.find(k=>k.id===t.customer)?.name)} · ${esc(t.order)}</p><p>${esc(t.body)}</p>${form('ticket-reply',`<input type="hidden" name="id" value="${t.id}">`+textarea('Conceptantwoord','reply',t.draft),'Concept bewaren','mail')}<div class="workspace-actions">${button('Maak voorbeeldantwoord','ticket-draft',t.id,'','signal')}${button('Uitstellen','ticket-snooze',t.id,'','clock')}${button(status==='Archief'?'Heropenen':'Archiveren',status==='Archief'?'ticket-reopen':'ticket-archive',t.id)}</div>`)).join('')||'<p>Geen tickets in deze weergave.</p>');
   }
   function financePage(){
+    if(page==='exploitatie'&&tab!=='settings'&&forecastYear){
+      const forecast=D.annualForecast(state()).find(item=>item.year===forecastYear);
+      const rows=[['Netto omzet',money(forecast.revenue)],['Inkoopwaarde','− '+money(forecast.cost)],['Kanaalkosten','− '+money(forecast.fee)],['Verzendkosten','− '+money(forecast.shipping)],['Advertentiekosten','− '+money(forecast.advertising)],['Brutowinst',money(forecast.grossProfit)],['Overige vaste kosten','− '+money(forecast.fixed)],['EBIT',money(forecast.ebit)]];
+      lastExport=[['Onderdeel','Periodebedrag'],...rows];
+      return panel('Jaarverwachting', '<div class="workspace-actions">'+D.annualForecast(state()).map(item=>`<button type="button" class="workspace-button" data-forecast-year="${item.year}" aria-pressed="${item.year===forecastYear}">Forecast ${item.year}</button>`).join('')+go('Laatste 12 maanden','exploitatie','stats','chart')+'</div>')+
+        metrics([['Netto omzet',money(forecast.revenue),'Forecast '+forecastYear,'money','green'],['Brutowinst',money(forecast.grossProfit),'Na directe kosten en advertenties','chart'],['EBIT',money(forecast.ebit),'Na advertenties en vaste kosten','money',forecast.ebit<0?'pink':'orange'],['EBIT-marge',pct(forecast.revenue?forecast.ebit/forecast.revenue*100:0),'Forecast '+forecastYear,'chart']])+
+        panel('Exploitatieopbouw · '+forecastYear,table(['Onderdeel','Periodebedrag'],rows));
+    }
+
     const c=client(),t=D.totals(state(),period,channel),ad=D.advertising(state(),period,channel),fixed=(c.fixedMonthly??420)*period,ebit=t.profit-ad-fixed;
     if(page==='bol-afrekening')return panel('Marketplace-tegoeden van je eigen kanalen',D.channels.map(ch=>{const x=D.totals(state(),period,ch.id),reserve=x.revenue*.05,expected=x.revenue-x.fee-reserve;return details(`${brand(ch.id)}<strong>${money(expected)}</strong>${badge('Verwacht','info')}`,table(['Onderdeel','Bedrag'],[['Netto verkoop',money(x.revenue)],['Kanaalkosten','− '+money(x.fee)],['Voorbeeldreserve 5%','− '+money(reserve)],['Verwachte uitbetaling',money(expected)],['Ontvangen in demo',money(c['payout-'+ch.id]||0)]])+button('Voorbeeldontvangst registreren','payout',ch.id,'','money'));}).join(''));
     if(tab==='settings')return panel('Kosten van je eigen exploitatie',form('fixed-costs',field('Overige vaste kosten per maand','fixed',c.fixedMonthly??420,'number','min="0" max="100000"'),'Kosten in scenario opslaan','money'));
@@ -254,21 +263,22 @@
       const filterPages=['omzet','omzet-overzicht','omzet-artikelen','voorraad','magazijn-voorraad','voorraad-incourant','voorraad-overstock','artikeltrends','orders','klanten','inkoop','leveranciers','forecasting','publicaties','bol-afrekening','exploitatie','marketing','ads-engine','retouren','media','verbeteringen'];
       lastExport=[];const nativeMarketing=['marketing-agent','ads-engine','orders-pakken','wms'].includes(page);
       root.querySelector('.demo-heading').hidden=nativeMarketing;
-      node.innerHTML=(nativeMarketing||page==='bol-ranking'||page==='ranking-movers'?'':nav)+(!nativeMarketing&&filterPages.includes(page)?filters():'')+renderers[page]();
+      node.innerHTML=(nativeMarketing||page==='bol-ranking'||page==='ranking-movers'?'':nav)+(!nativeMarketing&&filterPages.includes(page)&&!forecastYear?filters():'')+renderers[page]();
       if(page==='wms')window.DemoWms.mount(node,{api:wmsApi(),D,state:state(),tab,refresh,navigate});
       if(page==='orders-pakken'){const picking=window.DemoPicklist.model(state(),client(),D);window.DemoPicklist.mount(node.querySelector('[data-warehouse-picklist]'),{...picking,tab:client().pickTab||tab,onTab:value=>client().pickTab=value});}
       const detailNodes=node.querySelectorAll('details');openDetails.forEach(i=>{if(detailNodes[i])detailNodes[i].open=true;});node.querySelectorAll('.picklist-item').forEach(row=>row.querySelector('.picklist-item-main')?.setAttribute('aria-expanded',String(row.querySelector('.picklist-item-description')?.open||false)));lastRendered=page+'|'+tab;
       const tools=root.querySelector('.workspace-heading-actions');tools.innerHTML=button('Excel / CSV export','export','','','download')+button('Reset filters','reset-filters','','is-orange','reset');
       tools.hidden=page==='dashboard';
       root.querySelectorAll('[data-full-page]').forEach(b=>{if(b.closest('[data-demo-nav]')){b.setAttribute('aria-current',b.dataset.fullPage===page?'page':'false');if(b.dataset.fullPage===page)b.closest('details').open=true;}});
-      const address=new URLSearchParams({page});if(tab)address.set('tab',tab);if(selection&&page==='artikelkaart')address.set('sku',selection);history.replaceState({page,tab},'','?'+address);
+      const address=new URLSearchParams({page});if(tab)address.set('tab',tab);if(selection&&page==='artikelkaart')address.set('sku',selection);if(forecastYear&&page==='exploitatie')address.set('period',forecastYear);history.replaceState({page,tab},'','?'+address);
     }finally{rendering=false;}
   }
-  function navigate(next,nextTab='',push=true){
+  function navigate(next,nextTab='',push=true,year=null){
     if(!C.pages[next]||!renderers[next])return;
-    if(next!=='dashboard'&&window.DemoAccess&&!window.DemoAccess.authorized()){window.DemoAccess.request(()=>navigate(next,nextTab,push));return;}
-    if(push){trail.push({page,tab,selection});history.pushState({page:next,tab:nextTab},'','?'+new URLSearchParams({page:next,...(nextTab?{tab:nextTab}:{})}));}
+    if(next!=='dashboard'&&window.DemoAccess&&!window.DemoAccess.authorized()){window.DemoAccess.request(()=>navigate(next,nextTab,push,year));return;}
+    if(push){trail.push({page,tab,selection,forecastYear});history.pushState({page:next,tab:nextTab},'','?'+new URLSearchParams({page:next,...(nextTab?{tab:nextTab}:{})}));}
     if(next==='image-studio')host.setStudio(selection);
+    forecastYear=next==='exploitatie'&&D.annualForecast(state()).some(item=>item.year===Number(year))?Number(year):null;
     page=next;tab=nextTab&&C.pages[next].tabs.some(t=>t.id===nextTab)?nextTab:(C.pages[next].tabs[0]?.id||'');query='';classification='all';host.close();host.menu(false);refresh();window.scrollTo({top:0,behavior:'instant'});
   }
   function download(name,body,type='text/csv;charset=utf-8'){
@@ -325,7 +335,7 @@
         case 'article':selection=id;view='overview';navigate('artikelkaart');return;
         case 'article-view':view=['overview','sales','stock','content','images'].includes(id)?id:'overview';break;
         case 'export':exportCSV();return;
-        case 'reset-filters':query='';channel='all';period=12;classification='all';break;
+        case 'reset-filters':query='';channel='all';period=12;classification='all';forecastYear=null;break;
         case 'ean':if(p)p.ean='DEMO-EAN-'+p.sku.replace('DEMO-','')+'-NIEUW';break;
         case 'exclude':if(p)p.excluded=true;break;
         case 'include':if(p)p.excluded=false;break;
@@ -408,23 +418,25 @@
     const params=api.params||new URLSearchParams(location.search);
     if(params.get('page')==='magazijn-picklijst')params.set('page','orders-pakken');
     if(C.pages[params.get('page')]){page=params.get('page');tab=params.get('tab')||'';}else legacy(params.get('module')||'dashboard',params.get('view')||'overzicht',params.get('screen')||'');
+    if(page==='exploitatie'&&D.annualForecast(state()).some(item=>String(item.year)===params.get('period')))forecastYear=Number(params.get('period'));
     if(params.get('sku')&&D.product(state(),params.get('sku')))selection=params.get('sku');
     if(tab&&!C.pages[page].tabs.some(t=>t.id===tab))tab=C.pages[page].tabs[0]?.id||'';
     root.addEventListener('submit',event=>{const form=event.target.closest('[data-w-form]');if(form){event.preventDefault();event.stopImmediatePropagation();submit(form);}},true);
     root.addEventListener('click',event=>{
+      const forecast=event.target.closest('[data-forecast-year]');if(forecast){event.preventDefault();event.stopImmediatePropagation();navigate('exploitatie','stats',true,Number(forecast.dataset.forecastYear));return;}
       const article=event.target.closest('[data-open-article]');if(article){event.preventDefault();event.stopImmediatePropagation();runAction('article',article.dataset.openArticle);return;}
       const channelButton=event.target.closest('[data-dashboard-channel]');if(channelButton){event.preventDefault();event.stopImmediatePropagation();navigate('omzet-artikelen');channel=channelButton.dataset.dashboardChannel;period=1;refresh();return;}
       const next=event.target.closest('[data-full-page]');if(next){event.preventDefault();event.stopImmediatePropagation();if(next.dataset.fullPage==='orders-pakken')client().pickTab=next.dataset.fullTab||'to_pick';navigate(next.dataset.fullPage,next.dataset.fullTab||'');return;}
-      const t=event.target.closest('[data-full-tab]');if(t){event.preventDefault();event.stopImmediatePropagation();navigate(page,t.dataset.fullTab);return;}
+      const t=event.target.closest('[data-full-tab]');if(t){event.preventDefault();event.stopImmediatePropagation();navigate(page,t.dataset.fullTab,true,forecastYear);return;}
       const a=event.target.closest('[data-w-action]');if(a){event.preventDefault();event.stopImmediatePropagation();runAction(a.dataset.wAction,a.dataset.id);return;}
       const h=event.target.closest('[data-w-host]');if(h){event.preventDefault();event.stopImmediatePropagation();host.action({kind:h.dataset.wHost,id:h.dataset.id},D.product(state(),h.dataset.id)?.sku);return;}
-      if(event.target.closest('[data-workspace-back]')){event.stopImmediatePropagation();const previous=trail.pop();if(previous){selection=previous.selection;navigate(previous.page,previous.tab,false);}else navigate('dashboard','',false);return;}
+      if(event.target.closest('[data-workspace-back]')){event.stopImmediatePropagation();const previous=trail.pop();if(previous){selection=previous.selection;navigate(previous.page,previous.tab,false,previous.forecastYear);}else navigate('dashboard','',false);return;}
       if(event.target.closest('[data-demo-find]')){event.stopImmediatePropagation();host.open('Zoek in jouw WebApp',`<label class="workspace-field">Pagina of onderdeel<input type="search" data-full-search placeholder="Bijvoorbeeld voorraad, offertes of handleidingen"></label><div class="workspace-search-results">${C.groups.flatMap(g=>g.pages.map(id=>`<button type="button" data-full-page="${id}" data-full-search-text="${esc((C.pages[id].title+' '+g.label).toLowerCase())}">${icon(groupIcons[g.id])}<span>${esc(C.pages[id].title)}<small>${esc(g.label)}</small></span></button>`)).join('')}</div>`,{});root.querySelector('[data-full-search]').focus();}
     },true);
     root.addEventListener('change',event=>{if(event.target.matches('[data-studio-house]')){event.stopImmediatePropagation();runAction('studio-house','');}},true);
     root.addEventListener('input',event=>{if(event.target.matches('[data-full-search]')){const term=event.target.value.toLowerCase().trim();root.querySelectorAll('[data-full-search-text]').forEach(el=>el.hidden=!el.dataset.fullSearchText.includes(term));}});
-    window.addEventListener('popstate',()=>{const address=new URLSearchParams(location.search);if(C.pages[address.get('page')])navigate(address.get('page'),address.get('tab')||'',false);});
+    window.addEventListener('popstate',()=>{const address=new URLSearchParams(location.search);if(C.pages[address.get('page')])navigate(address.get('page'),address.get('tab')||'',false,Number(address.get('period')));});
     mounted=true;window.FullWorkspace.mounted=true;host.menu(false);refresh();
   }
-  window.FullWorkspace={mount,refresh,legacy,mounted:false,catalogue:C,renderers,inspect:()=>({page,tab,query,period,channel,selection,client:client()})};
+  window.FullWorkspace={mount,refresh,legacy,mounted:false,catalogue:C,renderers,inspect:()=>({page,tab,query,period,channel,selection,forecastYear,client:client()})};
 })();
