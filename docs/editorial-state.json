@@ -314,6 +314,44 @@
       "demo_url": "https://opticore-insights.nl/demo/modulaire-webapp/",
       "verified_images": 48,
       "scope": "Practical article about existing annual revenue and EBIT cards, with responsive demo screenshots. Demo application code unchanged."
+    },
+    {
+      "slug": "webapp-jaarprognose-demo-aansluiting-20261123",
+      "includes_news": false,
+      "approved_candidate": "1e0f4648fbe0b1fb159ccd00452b06688b9bb36f",
+      "approved_fingerprint": "1f11d8349ff3292b73e813df83f9b5025e27e9d4c69db96c157b599841df155d",
+      "source_app_commit": "691c9332469c16e668febf8d6be169e230db8593",
+      "website_commit": "78b148595ec1d6fea82957fbc970a9801ee6320f",
+      "upload_run": 45309724763,
+      "verified_deployment_run": 45309724763,
+      "verified_at": "2026-11-24T03:42:55.121740+01:00",
+      "demo_urls": [
+        "https://opticore-insights.nl/demo/modulaire-webapp/",
+        "https://opticore-insights.nl/en/demo/modular-webapp/",
+        "https://opticore-insights.nl/de/demo/modulare-webapp/",
+        "https://opticore-insights.nl/fr/demo/application-web-modulaire/"
+      ],
+      "verified_images": 60,
+      "scope": "Approved annual forecast correction only: gross profit, compact cards, year-specific finance navigation and regenerated fictional captures. Other recent app changes remain pending.",
+      "verification": "Deployment succeeded. Four-language public live controls passed at 390/834/1440 px with the normal login gate. Normal session GETs returned 200 in four languages. Deeper year navigation, settings, reload/reset and values passed twelve local browser combinations against identical deployed sources, allowing Git line-ending normalization. All sixty forecast screenshot variants and unchanged existing articles verified.",
+      "resolved_verification_issue": "Windows CRLF/LF difference corrected in read-only source comparison; a transient HTTP 429 from redundant session checks cleared with paced normal page loads. No redeployment was performed.",
+      "completion_run": 45314310974
+    }
+  ],
+  "pending_webapp_corrections": [
+    {
+      "id": "annual-forecast-article-navigation",
+      "observed_at": "2026-11-24T03:42:55.121740+01:00",
+      "article_slug": "webapp-jaarverwachting-omzet-resultaat",
+      "languages": [
+        "nl",
+        "en",
+        "de",
+        "fr"
+      ],
+      "finding": "Existing article instructs readers to click a forecast year to open Forecasting and adjust growth. Approved demo now opens that year in Exploitatie. Prepare a four-language correction through a new dashboard concept, preserving the existing publication date and URL.",
+      "publication_status": "requires_new_dashboard_review",
+      "related_release": "webapp-jaarprognose-demo-aansluiting-20261123"
     }
   ]
 }
