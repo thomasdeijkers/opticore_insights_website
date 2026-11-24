@@ -8,6 +8,7 @@
 }
 .screen-gallery.is-ready .screen-slide:not([hidden]){display:block}
 .screen-gallery[data-preview-count="2"] .screen-gallery-stage{grid-template-columns:repeat(2,minmax(0,1fr))}
+.screen-gallery[data-preview-count="3"] .screen-gallery-stage{grid-template-columns:repeat(3,minmax(0,1fr))}
 .module-screen-gallery[data-preview-count="4"] .screen-gallery-stage{grid-template-columns:repeat(2,minmax(0,1fr))}
 .module-screen-gallery .screen-slide{border:1px solid #cbd5df;border-radius:5px;overflow:hidden;background:#071c33}
 .module-screen-gallery .screen-slide img{border-radius:0}

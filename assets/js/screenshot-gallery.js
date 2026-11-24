@@ -175,7 +175,8 @@
         seen.add(item.src);
         return true;
       });
-      const requestedPreviews = Number(root.dataset.screenPreviews);
+      const responsivePreviews = device === 'desktop' ? (window.innerWidth >= 1440 ? root.dataset.screenWidePreviews : root.dataset.screenDesktopPreviews) : device === 'tablet' ? root.dataset.screenTabletPreviews : null;
+      const requestedPreviews = Number(responsivePreviews || root.dataset.screenPreviews);
       const previewLimit = Number.isInteger(requestedPreviews) && requestedPreviews > 0 ? Math.min(requestedPreviews, 4) : items[0].device === 'mobile' ? 2 : 1;
       const previews = items.slice(0, previewLimit);
       root.dataset.device = items[0].device;
@@ -191,6 +192,7 @@
     };
     mobile.addEventListener('change', adapt);
     tablet.addEventListener('change', adapt);
+    window.addEventListener('resize', adapt);
     adapt();
     const openAll = root.querySelector('[data-screen-open-all]');
     if (openAll) {
