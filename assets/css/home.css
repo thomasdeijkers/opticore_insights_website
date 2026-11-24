@@ -76,3 +76,16 @@
 
 /* Keep the introduction and dashboard together on wide screens. */
 @media(min-width:1440px){.home-page .home-intro-grid{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(40px,4vw,96px);align-items:start}.home-page .home-intro-copy{max-width:70ch;padding-top:clamp(16px,2vw,48px)}.home-page .home-intro .lead{max-width:65ch}.home-page .home-intro .webapp-demo-teaser-scroll{height:clamp(460px,55svh,700px)}}
+
+/* On extra-wide screens, arrange the introduction and the existing video alongside the dashboard. */
+.home-feature-layout{display:contents}
+@media(max-width:700px){.home-page .home-feature-layout>.webapp-promo-video{order:0}.home-page .home-feature-layout>.home-intro{order:1}}
+@media(min-width:1440px){
+ .home-feature-layout{display:grid;width:min(2560px,calc(100% - clamp(96px,7vw,240px)));margin-inline:auto;padding-block:48px;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);grid-template-rows:min-content auto;gap:28px clamp(40px,4vw,96px);align-items:start}
+ .home-page .home-feature-layout>.home-intro,.home-page .home-feature-layout .home-intro-grid{display:contents}
+ .home-page .home-feature-layout .home-intro-copy{grid-column:1;grid-row:1;padding-top:0;max-width:70ch}
+ .home-page .home-feature-layout .home-intro-demo{grid-column:2;grid-row:1 / span 2}
+ .home-page .home-feature-layout>.webapp-promo-video{grid-column:1;grid-row:2;padding:24px;border:1px solid #d9e1e8;border-radius:13px}
+ .home-page .home-feature-layout>.webapp-promo-video>.container{width:100%;margin:0;grid-template-columns:minmax(0,1fr);gap:18px}
+ .home-page .home-feature-layout .webapp-promo-video-copy h2{font-size:clamp(25px,1.4vw,32px)}
+}
