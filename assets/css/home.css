@@ -85,7 +85,7 @@
  .home-page .home-feature-layout>.home-intro,.home-page .home-feature-layout .home-intro-grid{display:contents}
  .home-page .home-feature-layout .home-intro-copy{grid-column:1;grid-row:1;padding-top:0;max-width:70ch}
  .home-page .home-feature-layout .home-intro-demo{grid-column:2;grid-row:1 / span 2}
- .home-page .home-feature-layout>.webapp-promo-video{grid-column:1;grid-row:2;padding:24px;border:1px solid #d9e1e8;border-radius:13px}
+ .home-page .home-feature-layout>.webapp-promo-video{grid-column:1;grid-row:2;padding:0;border:0;border-radius:0;background:transparent}
  .home-page .home-feature-layout>.webapp-promo-video>.container{width:100%;margin:0;grid-template-columns:minmax(0,1fr);gap:18px}
  .home-page .home-feature-layout .webapp-promo-video-copy h2{font-size:clamp(25px,1.4vw,32px)}
 }
